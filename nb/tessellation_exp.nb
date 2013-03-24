@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     22860,        585]
-NotebookOptionsPosition[     21765,        550]
-NotebookOutlinePosition[     22166,        567]
-CellTagsIndexPosition[     22123,        564]
+NotebookDataLength[     27398,        703]
+NotebookOptionsPosition[     26104,        663]
+NotebookOutlinePosition[     26504,        680]
+CellTagsIndexPosition[     26461,        677]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -238,10 +238,69 @@ Cell[BoxData[{
 
 Cell[BoxData[{
  RowBox[{
+  RowBox[{"ClearAll", "[", 
+   RowBox[{"Phi4", ",", "Moebius"}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Moebius", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"a_", ",", "b_"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"c_", ",", "d_"}], "}"}]}], "}"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"a", "#"}], "+", "b"}], ")"}], "/", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"c", "#"}], "+", "d"}], ")"}]}], "&"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Phi4", "[", "t_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"z", "=", 
+        RowBox[{
+         RowBox[{"Moebius", "[", 
+          RowBox[{"MatrixPower", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"I", ",", "1"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"1", ",", "I"}], "}"}]}], "}"}], ",", 
+            RowBox[{"1", "-", "t"}]}], "]"}], "]"}], "[", "#", "]"}]}], "}"}],
+       ",", 
+      RowBox[{
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"I", " ", "z"}], ")"}], 
+        RowBox[{"1", "-", "t"}]], 
+       RowBox[{"Exp", "[", 
+        RowBox[{"2", "I", " ", "Pi", " ", "t", " ", "z"}], "]"}]}]}], "]"}], 
+    "&"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.5731340690536575`*^9, 3.5731343022017193`*^9}, {
+   3.573134392642071*^9, 3.5731343928090754`*^9}, {3.573134578817911*^9, 
+   3.573134629618232*^9}, {3.5731347746530027`*^9, 3.573134813807021*^9}, {
+   3.573134897155188*^9, 3.573134914191631*^9}, {3.5731350046529827`*^9, 
+   3.5731350795999317`*^9}, {3.5731361473026905`*^9, 3.5731361663841867`*^9}, 
+   3.5731373396016903`*^9, {3.5731375840620456`*^9, 3.573137585184075*^9}, {
+   3.5731379539456625`*^9, 3.573137975358219*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
   RowBox[{"ClearAll", "[", "MyPlot", "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"MyPlot", "[", "phi_", "]"}], ":=", 
+   RowBox[{"MyPlot", "[", 
+    RowBox[{"phi_", ",", "options___"}], "]"}], ":=", 
    RowBox[{"ParametricPlot", "[", "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{"Table", "[", 
@@ -332,8 +391,7 @@ Cell[BoxData[{
       "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", ",", 
      RowBox[{"{", 
       RowBox[{"t", ",", "0", ",", "1"}], "}"}], "\[IndentingNewLine]", ",", 
-     RowBox[{"PlotRange", "\[Rule]", "1"}], "\[IndentingNewLine]", ",", 
-     RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "\[IndentingNewLine]", 
+     RowBox[{"Sequence", "[", "options", "]"}]}], "\[IndentingNewLine]", 
     "]"}]}], ";"}]}], "Input",
  CellChangeTimes->{{3.573028471471078*^9, 3.573028473982684*^9}, {
    3.573028965343011*^9, 3.573028990341279*^9}, {3.573029161719742*^9, 
@@ -356,7 +414,9 @@ Cell[BoxData[{
    3.5730428799341965`*^9, 3.5730430252595887`*^9}, {3.573043195109247*^9, 
    3.573043220898117*^9}, {3.5730432583724184`*^9, 3.573043304739743*^9}, {
    3.573043342182844*^9, 3.5730433453652534`*^9}, {3.573043901533155*^9, 
-   3.5730439061819677`*^9}, 3.573044087420657*^9, 3.5730442165522056`*^9}],
+   3.5730439061819677`*^9}, 3.573044087420657*^9, 3.5730442165522056`*^9, {
+   3.5731346910108285`*^9, 3.573134714076428*^9}, {3.5731379601738243`*^9, 
+   3.573137963425909*^9}, {3.5731382291758184`*^9, 3.573138236325004*^9}}],
 
 Cell[BoxData[{
  RowBox[{"Dynamic", "[", "plot", "]"}], "\[IndentingNewLine]", 
@@ -380,7 +440,10 @@ Cell[BoxData[{
       RowBox[{
        RowBox[{"plot", "=", 
         RowBox[{"MyPlot", "[", 
-         RowBox[{"Phi1", "[", "t", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Phi1", "[", "t", "]"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", "1"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
        RowBox[{"AppendTo", "[", 
         RowBox[{"anim1", ",", "plot"}], "]"}], ";", "\[IndentingNewLine]", 
        RowBox[{"progress", "=", "t"}], ";"}], "\[IndentingNewLine]", ",", 
@@ -410,7 +473,8 @@ Cell[BoxData[{
    3.573032521082617*^9}, {3.5730327920139484`*^9, 3.5730327994707685`*^9}, 
    3.573042833598071*^9, {3.5730434320918875`*^9, 3.573043484324828*^9}, {
    3.573043921205808*^9, 3.5730439622525187`*^9}, {3.5730441713558836`*^9, 
-   3.5730442088613853`*^9}, {3.573054002497241*^9, 3.573054010141262*^9}}],
+   3.5730442088613853`*^9}, {3.573054002497241*^9, 3.573054010141262*^9}, {
+   3.5731382454892426`*^9, 3.573138262160676*^9}}],
 
 Cell[BoxData[
  RowBox[{"ListAnimate", "@", "anim1"}]], "Input",
@@ -418,26 +482,20 @@ Cell[BoxData[
    3.5730070400684524`*^9, 3.573007053409799*^9}, 3.573054174141905*^9}],
 
 Cell[BoxData[
- RowBox[{"(*", 
-  RowBox[{
-   RowBox[{"Export", "[", 
-    RowBox[{"\"\<anim1.avi\>\"", ",", "anim1", ",", 
-     RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}], ";"}], 
-  "*)"}]], "Input",
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<anim1.avi\>\"", ",", "anim1", ",", 
+    RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}], ";"}]], "Input",
  CellChangeTimes->{{3.5730444861263337`*^9, 3.5730445715113645`*^9}, 
-   3.5730539985182304`*^9, {3.5730542551901236`*^9, 3.5730542687319603`*^9}, {
-   3.573092039662941*^9, 3.5730920454349566`*^9}}],
+   3.5730539985182304`*^9, {3.5730542551901236`*^9, 3.5730542687319603`*^9}}],
 
 Cell[BoxData[
- RowBox[{"(*", 
-  RowBox[{
-   RowBox[{"Export", "[", 
-    RowBox[{"\"\<anim1.gif\>\"", ",", "anim1", ",", 
-     RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}], ";"}], 
-  "*)"}]], "Input",
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<anim1.gif\>\"", ",", "anim1", ",", 
+    RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}], ";"}]], "Input",
  CellChangeTimes->{{3.5730445767841787`*^9, 3.5730445790305843`*^9}, 
-   3.573053999470833*^9, 3.5730542707755656`*^9, {3.573092047681363*^9, 
-   3.573092049506568*^9}}],
+   3.573053999470833*^9, 3.5730542707755656`*^9}],
 
 Cell[BoxData[{
  RowBox[{
@@ -453,7 +511,10 @@ Cell[BoxData[{
       RowBox[{
        RowBox[{"plot", "=", 
         RowBox[{"MyPlot", "[", 
-         RowBox[{"Phi2", "[", "t", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Phi2", "[", "t", "]"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", "1"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
        RowBox[{"AppendTo", "[", 
         RowBox[{"anim2", ",", "plot"}], "]"}], ";", "\[IndentingNewLine]", 
        RowBox[{"progress", "=", "t"}], ";"}], "\[IndentingNewLine]", ",", 
@@ -465,8 +526,8 @@ Cell[BoxData[{
  RowBox[{"time", "[", 
   RowBox[{"[", "1", "]"}], "]"}]}], "Input",
  CellChangeTimes->{{3.573043934700845*^9, 3.5730439450758724`*^9}, {
-  3.573043978243562*^9, 3.5730439805991683`*^9}, {3.57304766381572*^9, 
-  3.573047666358527*^9}}],
+   3.573043978243562*^9, 3.5730439805991683`*^9}, {3.57304766381572*^9, 
+   3.573047666358527*^9}, 3.57313827041689*^9}],
 
 Cell[BoxData[
  RowBox[{"ListAnimate", "@", "anim2"}]], "Input",
@@ -474,23 +535,17 @@ Cell[BoxData[
    3.5730070400684524`*^9, 3.573007053409799*^9}, 3.573044017777069*^9}],
 
 Cell[BoxData[
- RowBox[{"(*", 
-  RowBox[{
-   RowBox[{"Export", "[", 
-    RowBox[{"\"\<anim2.avi\>\"", ",", "anim2", ",", 
-     RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}], ";"}], 
-  "*)"}]], "Input",
- CellChangeTimes->{{3.5730445831811957`*^9, 3.5730445860672035`*^9}, {
-  3.573092052922977*^9, 3.573092055247383*^9}}],
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<anim2.avi\>\"", ",", "anim2", ",", 
+    RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.5730445831811957`*^9, 3.5730445860672035`*^9}}],
 
 Cell[BoxData[
- RowBox[{"(*", 
-  RowBox[{
-   RowBox[{"Export", "[", 
-    RowBox[{"\"\<anim2.gif\>\"", ",", "anim2", ",", 
-     RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}], ";"}], 
-  "*)"}]], "Input",
- CellChangeTimes->{{3.5730920575717897`*^9, 3.5730920598181953`*^9}}],
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<anim2.gif\>\"", ",", "anim2", ",", 
+    RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}], ";"}]], "Input"],
 
 Cell[BoxData[{
  RowBox[{
@@ -506,7 +561,10 @@ Cell[BoxData[{
       RowBox[{
        RowBox[{"plot", "=", 
         RowBox[{"MyPlot", "[", 
-         RowBox[{"Phi3", "[", "t", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Phi3", "[", "t", "]"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", "1"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
        RowBox[{"AppendTo", "[", 
         RowBox[{"anim3", ",", "plot"}], "]"}], ";", "\[IndentingNewLine]", 
        RowBox[{"progress", "=", "t"}], ";"}], "\[IndentingNewLine]", ",", 
@@ -518,8 +576,9 @@ Cell[BoxData[{
  RowBox[{"time", "[", 
   RowBox[{"[", "1", "]"}], "]"}]}], "Input",
  CellChangeTimes->{{3.573043934700845*^9, 3.5730439450758724`*^9}, {
-  3.573043978243562*^9, 3.5730439805991683`*^9}, {3.57304766381572*^9, 
-  3.573047666358527*^9}, {3.5730541977467685`*^9, 3.573054205063188*^9}}],
+   3.573043978243562*^9, 3.5730439805991683`*^9}, {3.57304766381572*^9, 
+   3.573047666358527*^9}, {3.5730541977467685`*^9, 3.573054205063188*^9}, 
+   3.5731382818911886`*^9}],
 
 Cell[BoxData[
  RowBox[{"ListAnimate", "@", "anim3"}]], "Input",
@@ -528,28 +587,82 @@ Cell[BoxData[
    3.573054212427408*^9, 3.5730542125366087`*^9}}],
 
 Cell[BoxData[
- RowBox[{"(*", 
-  RowBox[{
-   RowBox[{"Export", "[", 
-    RowBox[{"\"\<anim3.avi\>\"", ",", "anim3", ",", 
-     RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}], ";"}], 
-  "*)"}]], "Input",
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<anim3.avi\>\"", ",", "anim3", ",", 
+    RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}], ";"}]], "Input",
  CellChangeTimes->{{3.5730445831811957`*^9, 3.5730445860672035`*^9}, {
-  3.573054219088626*^9, 3.5730542222252345`*^9}, {3.573092062953804*^9, 
-  3.573092067056615*^9}}],
+  3.573054219088626*^9, 3.5730542222252345`*^9}}],
 
 Cell[BoxData[
- RowBox[{"(*", 
-  RowBox[{
-   RowBox[{"Export", "[", 
-    RowBox[{"\"\<anim3.gif\>\"", ",", "anim3", ",", 
-     RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}], ";"}], 
-  "*)"}]], "Input",
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<anim3.gif\>\"", ",", "anim3", ",", 
+    RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.5730542256572437`*^9, 3.57305422810645*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"progress", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"anim4", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"time", "=", 
+   RowBox[{"Timing", "@", 
+    RowBox[{"Do", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"plot", "=", 
+        RowBox[{"MyPlot", "[", 
+         RowBox[{
+          RowBox[{"Phi4", "[", "t", "]"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", "2"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"anim4", ",", "plot"}], "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"progress", "=", "t"}], ";"}], "\[IndentingNewLine]", ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", "0", ",", "1", ",", 
+        SuperscriptBox["2", 
+         RowBox[{"-", "5"}]]}], "}"}]}], "\[IndentingNewLine]", "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"time", "[", 
+  RowBox[{"[", "1", "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.573043934700845*^9, 3.5730439450758724`*^9}, {
+  3.573043978243562*^9, 3.5730439805991683`*^9}, {3.57304766381572*^9, 
+  3.573047666358527*^9}, {3.5730541977467685`*^9, 3.573054205063188*^9}, {
+  3.573134445609448*^9, 3.573134457030745*^9}, {3.573134723088662*^9, 
+  3.573134728501803*^9}, {3.573137899805255*^9, 3.573137905624406*^9}, {
+  3.573138301353695*^9, 3.5731383057558093`*^9}, {3.573139592819272*^9, 
+  3.573139594231309*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ListAnimate", "@", "anim4"}]], "Input",
+ CellChangeTimes->{{3.5730069835319824`*^9, 3.5730069870660744`*^9}, {
+   3.5730070400684524`*^9, 3.573007053409799*^9}, 3.573044017777069*^9, {
+   3.573054212427408*^9, 3.5730542125366087`*^9}, {3.5731344630139008`*^9, 
+   3.573134463144904*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<anim4.avi\>\"", ",", "anim4", ",", 
+    RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.5730445831811957`*^9, 3.5730445860672035`*^9}, {
+  3.573054219088626*^9, 3.5730542222252345`*^9}, {3.573134467640021*^9, 
+  3.5731344766822557`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<anim4.gif\>\"", ",", "anim4", ",", 
+    RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}], ";"}]], "Input",
  CellChangeTimes->{{3.5730542256572437`*^9, 3.57305422810645*^9}, {
-  3.5730920691002207`*^9, 3.573092071487027*^9}}]
+  3.573134471162112*^9, 3.573134473094163*^9}}]
 },
-WindowSize->{1025, 683},
-WindowMargins->{{-2, Automatic}, {Automatic, -3}},
+WindowSize->{1025, 642},
+WindowMargins->{{1, Automatic}, {15, Automatic}},
 ShowSelection->True,
 Magnification->0.8999999761581421,
 FrontEndVersion->"9.0 for Microsoft Windows (32-bit) (January 25, 2013)",
@@ -573,20 +686,25 @@ Cell[4742, 138, 1493, 37, 70, "Input"],
 Cell[6238, 177, 1050, 23, 50, "Input"],
 Cell[7291, 202, 542, 16, 50, "Input"],
 Cell[7836, 220, 545, 16, 50, "Input"],
-Cell[8384, 238, 5651, 120, 430, "Input"],
-Cell[14038, 360, 345, 6, 50, "Input"],
-Cell[14386, 368, 2379, 44, 198, "Input"],
-Cell[16768, 414, 207, 3, 29, "Input"],
-Cell[16978, 419, 405, 9, 29, "Input"],
-Cell[17386, 430, 376, 9, 29, "Input"],
-Cell[17765, 441, 1081, 27, 198, "Input"],
-Cell[18849, 470, 207, 3, 29, "Input"],
-Cell[19059, 475, 324, 8, 29, "Input"],
-Cell[19386, 485, 276, 7, 29, "Input"],
-Cell[19665, 494, 1129, 27, 198, "Input"],
-Cell[20797, 523, 259, 4, 29, "Input"],
-Cell[21059, 529, 375, 9, 29, "Input"],
-Cell[21437, 540, 324, 8, 29, "Input"]
+Cell[8384, 238, 1957, 56, 72, "Input"],
+Cell[10344, 296, 5763, 122, 410, "Input"],
+Cell[16110, 420, 345, 6, 50, "Input"],
+Cell[16458, 428, 2515, 48, 198, "Input"],
+Cell[18976, 478, 207, 3, 29, "Input"],
+Cell[19186, 483, 322, 6, 29, "Input"],
+Cell[19511, 491, 295, 6, 29, "Input"],
+Cell[19809, 499, 1188, 30, 198, "Input"],
+Cell[21000, 531, 207, 3, 29, "Input"],
+Cell[21210, 536, 244, 5, 29, "Input"],
+Cell[21457, 543, 175, 4, 29, "Input"],
+Cell[21635, 549, 1243, 31, 198, "Input"],
+Cell[22881, 582, 259, 4, 29, "Input"],
+Cell[23143, 588, 295, 6, 29, "Input"],
+Cell[23441, 596, 242, 5, 29, "Input"],
+Cell[23686, 603, 1457, 34, 198, "Input"],
+Cell[25146, 639, 311, 5, 29, "Input"],
+Cell[25460, 646, 346, 7, 29, "Input"],
+Cell[25809, 655, 291, 6, 29, "Input"]
 }
 ]
 *)
