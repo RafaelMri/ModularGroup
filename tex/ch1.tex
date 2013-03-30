@@ -2,7 +2,53 @@
 
 \section{Möbius transformations}
 
-This section is about Möbius transformations.
+In the following we define Möbius transformations and collect some basic properties which will be needed later on.
+
+\begin{definition}
+A non-constant rational function $f \in \C(z)$ of the form 
+\begin{equation*}
+f(z) = \moebius{a}{b}{c}{d}{z},\quad a, b, c, d \in \C,\quad ad - bc \ne 0
+\end{equation*}
+is called \defitemi{Mobius transformation}{Möbius transformation}.
+\end{definition}
+
+\begin{remark}
+The condition $ad - bc \ne 0$ just ensures that $f$ is in fact non-constant.
+\end{remark}
+
+\begin{theorem}
+The set of Möbius transformations forms a group under the action of function composition and can be identified with the projective general linear group $\PGL{\C}$.
+\end{theorem}
+\begin{proof}
+Let $f, g$ be Möbius transformations with
+\begin{equation*}
+\phi(z) = \moebius{a}{b}{c}{d}{z},\quad \psi(z) = \moebius{e}{f}{g}{h}{z}.
+\end{equation*}
+
+First, we make the trivial observation, that composing those two transformations again yields a rational function of the desired form:
+\begin{equation}
+\label{eqn_MoebiusComposition}
+\phi \circ \psi(z) 
+ = \moebius{a}{b}{c}{d}{\moebius{e}{f}{g}{h}{z}} 
+ = \frac{aez + af + bgz + bh}{cez + cf + dgz + dh} 
+ = \moebius{(ae + bg)}{(af + bh)}{(ce + dg)}{(cf + dh)}{z}
+\end{equation}
+
+Having a closer look on the resulting coefficients one might notice that they relate to the following matrix product:
+\begin{equation}
+\label{eqn_MatrixProduct}
+\mat{a}{b}{c}{d} \cdot \mat{e}{f}{g}{h} 
+ = \mat{ae + bg}{af + bh}{ce + dg}{cf + dh}
+\end{equation}
+
+This motivates the definition of the function $\pi$ which assigns every invertible 2-by-2 matrix a corresponding Möbius transformation:
+\begin{equation*}
+\pi: \mat{a}{b}{c}{d} \mapsto \left(z \mapsto \moebius{a}{b}{c}{d}{z}\right)
+\end{equation*}
+Note, that the domain of $\pi$ is the $\GL{\C}$, \ie the set of 2-by-2 matrices with nonzero determinant. This is perfectly consistent with the condition $ad - bc \ne 0$ we have for Möbius transformations. For this reason, $\pi$ is well-defined. 
+
+But $\pi$ is not only a function, it is in fact a homomorphism from the general linear group $\GL{\C}$ to the set of Möbius transformations, as can be seen from (\ref{eqn_MoebiusComposition}) and (\ref{eqn_MatrixProduct}). Trivially, $\pi$ is also surjective, which carries over the group structure of $\GL{\C}$ to the set of Möbius transformations. The kernel of $\pi$ comprises of all multiples of the identity matrix. Therefore, by the first isomorphism theorem the set of Möbius transformations is isomorphic to $\GL{\C}/\ker{\pi} \cong \PGL{\C}$, the projective general linear group.
+\end{proof}
 
 \section{The modular group}
 

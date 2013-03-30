@@ -1,4 +1,4 @@
-\documentclass[11pt,twoside,a4paper]{report}
+\documentclass[10pt,twoside,a4paper]{report}
 
 \usepackage[latin1]{inputenc}
 \usepackage[english]{babel}
@@ -7,6 +7,9 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{latexsym}
+\usepackage{makeidx}
+
+\makeindex
 
 \input{commands.tex}
 
@@ -23,5 +26,7 @@
 \tableofcontents
 
 \input{ch1.tex}
+
+\printindex
 
 \end{document}

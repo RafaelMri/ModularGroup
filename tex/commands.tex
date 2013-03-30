@@ -1,0 +1,27 @@
+% --------------------------------------------------------------------- Symbols
+\renewcommand{\phi}{\varphi}
+
+% ------------------------------------------------------------------------ Sets
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\GL}[1]{\operatorname{GL}_2(#1)}
+\newcommand{\PGL}[1]{\operatorname{PGL}_2(#1)}
+
+% ---------------------------------------------------------------------- Macros
+\newcommand{\ie}{i.e.\ }
+\newcommand{\defitem}[1]{\emph{#1}\index{#1}}
+\newcommand{\defitemi}[2]{\emph{#2}\index{#1@#2}}
+
+% ------------------------------------------------------------------- Functions
+\newcommand{\moebius}[5]{\frac{#1 #5 + #2}{#3 #5 + #4}}
+\newcommand{\mat}[4]{\begin{pmatrix}#1 & #2 \\ #3 & #4\end{pmatrix}}
+
+% ---------------------------------------------------------------- Environments
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\newenvironment{remark}{\emph{Remark:}}{}
