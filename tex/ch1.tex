@@ -9,7 +9,7 @@ A non-constant rational function $f \in \C(z)$ of the form
 \begin{equation*}
 f(z) = \moebius{a}{b}{c}{d}{z},\quad a, b, c, d \in \C,\quad ad - bc \ne 0
 \end{equation*}
-is called \defitemi{Mobius transformation}{Möbius transformation}.
+is called \defitems{Möbius transformation}{Mobius transformation}.
 \end{definition}
 
 \begin{remark}
@@ -17,10 +17,14 @@ The condition $ad - bc \ne 0$ just ensures that $f$ is in fact non-constant.
 \end{remark}
 
 \begin{theorem}
-The set of Möbius transformations forms a group under the action of function composition and can be identified with the projective general linear group $\PGL{\C}$.
+\label{thm_MoebiusGroup}
+The set of Möbius transformations forms a group under the action of function composition and can be identified with the \emph{projective general linear group} $\PGL{\C}$.
 \end{theorem}
-\begin{proof}
-Let $f, g$ be Möbius transformations with
+\begin{remark}
+The group \idxitems{$\PGL{\C}$}{PGL2C} is obtained from the \emph{general linear group} \idxitems{$\GL{\C}$}{GL2C}, \ie the set of invertible 2-by-2 matrices, by identifying all matrices which differ by a scalar multiple. Since over $\C$ every invertible matrix can be scaled such that its determinant gets 1, we also could have taken \idxitems{$\SL{\C}$}{SL2C}, the \emph{special linear group} consisting of all 2-by-2 matrices with determinant 1, as basic set for this construction. This again yields the same group but this time it is denoted \idxitems{$\PSL{\C}$}{PSL2C}, the \emph{projective special linear group}.
+\end{remark}
+\begin{proof}[Proof (Theorem \ref{thm_MoebiusGroup}):]
+Let $\phi$ and $\psi$ be Möbius transformations with
 \begin{equation*}
 \phi(z) = \moebius{a}{b}{c}{d}{z},\quad \psi(z) = \moebius{e}{f}{g}{h}{z}.
 \end{equation*}
@@ -45,10 +49,14 @@ This motivates the definition of the function $\pi$ which assigns every invertib
 \begin{equation*}
 \pi: \mat{a}{b}{c}{d} \mapsto \left(z \mapsto \moebius{a}{b}{c}{d}{z}\right)
 \end{equation*}
-Note, that the domain of $\pi$ is the $\GL{\C}$, \ie the set of 2-by-2 matrices with nonzero determinant. This is perfectly consistent with the condition $ad - bc \ne 0$ we have for Möbius transformations. For this reason, $\pi$ is well-defined. 
+Note, that the domain of $\pi$ is $\GL{\C}$, \ie the set of 2-by-2 matrices with nonzero determinant. This is perfectly consistent with the condition $ad - bc \ne 0$ we have for Möbius transformations. For this reason, $\pi$ is well-defined. 
 
-But $\pi$ is not only a function, it is in fact a homomorphism from the general linear group $\GL{\C}$ to the set of Möbius transformations, as can be seen from (\ref{eqn_MoebiusComposition}) and (\ref{eqn_MatrixProduct}). Trivially, $\pi$ is also surjective, which carries over the group structure of $\GL{\C}$ to the set of Möbius transformations. The kernel of $\pi$ comprises of all multiples of the identity matrix. Therefore, by the first isomorphism theorem the set of Möbius transformations is isomorphic to $\GL{\C}/\ker{\pi} \cong \PGL{\C}$, the projective general linear group.
+But $\pi$ is not only a function, it is in fact a homomorphism from $\GL{\C}$ to the set of Möbius transformations, as can be seen from (\ref{eqn_MoebiusComposition}) and (\ref{eqn_MatrixProduct}). Trivially, $\pi$ is also surjective, which carries over the group structure of $\GL{\C}$ to the set of Möbius transformations. The kernel of $\pi$ comprises of all multiples of the identity matrix. Therefore, by the first isomorphism theorem the set of Möbius transformations is isomorphic to $\GL{\C}/\ker{\pi} \cong \PGL{\C}$.
 \end{proof}
+
+\subsection{Generalized circles}
+
+\subsection{Stereographic projection}
 
 \section{The modular group}
 
