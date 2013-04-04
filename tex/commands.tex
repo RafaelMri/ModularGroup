@@ -3,18 +3,37 @@
 
 % ------------------------------------------------------------------------ Sets
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\Rplus}{\R^{+}}
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\RS}{\hat{\C}}
+
 \newcommand{\GL}[1]{\operatorname{GL}_2(#1)}
 \newcommand{\PGL}[1]{\operatorname{PGL}_2(#1)}
 \newcommand{\SL}[1]{\operatorname{SL}_2(#1)}
 \newcommand{\PSL}[1]{\operatorname{PSL}_2(#1)}
+\newcommand{\Mat}[3]{#1^{#2 \times #3}}
+
+\newcommand{\setdef}[2]{\{#1\ |\ #2\}}
 
 % ---------------------------------------------------------------------- Macros
 \newcommand{\ie}{i.e.\ }
 
 % ------------------------------------------------------------------- Functions
+\newcommand{\half}[1]{\frac{#1}{2}}
+\newcommand{\rezi}[1]{\frac{1}{#1}}
+\newcommand{\inv}[1]{#1^{-1}}
+
 \newcommand{\moebius}[5]{\frac{#1 #5 + #2}{#3 #5 + #4}}
 \newcommand{\mat}[4]{\begin{pmatrix}#1 & #2 \\ #3 & #4\end{pmatrix}}
+\newcommand{\rvec}[2]{\begin{pmatrix}#1 & #2\end{pmatrix}}
+\newcommand{\cvec}[2]{\begin{pmatrix}#1 \\ #2\end{pmatrix}}
+\newcommand{\transp}[1]{#1^{\textrm{H}}}
+
+\newcommand{\abs}[1]{|#1|}
+\newcommand{\conj}[1]{\overline{#1}}
+\renewcommand{\Re}[1]{\operatorname{Re}(#1)}
+\renewcommand{\Im}[1]{\operatorname{Im}(#1)}
+
 
 % ---------------------------------------------------------------- Environments
 

@@ -65,6 +65,95 @@ But $\pi$ is not only a function, it is in fact a homomorphism from $\GL{\C}$ to
 
 \subsection{Generalized circles}
 
+\index{Generalized circle}
+From the geometric point of view Möbius transformations have the beautiful property that they preserve generalized circles. \emph{Generalized circles} are either circles (in the usual sense) or lines on the complex plane $\C$. They can also be thought of circles on the Riemann sphere $\RS$, where lines on the complex plane have a one-to-one correspondence to great circles on the Riemann sphere. In order to give an exact definition, we first make the following considerations:
+
+A circle with center $m \in \C$ and radius $r > 0$ can be described as the set of points $z \in \C$ for which
+\begin{equation*}
+\abs{z - m} = r.
+\end{equation*}
+This is obviously equivalent to
+\begin{equation*}
+\abs{z - m}^2 = (z - m) \conj{(z - m)} = r^2
+\end{equation*}
+and
+\begin{equation}
+\label{eqn_Circle}
+z \conj{z} - m \conj{z} - \conj{m} z + m \conj{m} - r^2 = 0.
+\end{equation}
+The generalization comes into play if we multiply this last equation by a constant $A \in \R$
+\begin{equation*}
+A z \conj{z} - A m \conj{z} - A \conj{m} z + A m \conj{m} - A r^2 = 0
+\end{equation*}
+and introduce constants $B$, $C$ and $D$ appropriately such that we can write it in the form
+\begin{equation}
+\label{eqn_GenCircle}
+A z \conj{z} + B \conj{z} + C z + D = 0.
+\end{equation}
+Note that $D \in \R$ and $B = \conj{C}$ are complex conjugates. From an equation of form (\ref{eqn_GenCircle}) we can read off the center and radius of the corresponding circle by
+\begin{IEEEeqnarray}{rCl}
+m &=& -\frac{B}{A} \IEEEyessubnumber \\
+r &=& \sqrt{m \conj{m} - \frac{D}{A}} = \sqrt{\frac{BC - AD}{A^2}} \IEEEyessubnumber
+\end{IEEEeqnarray}
+Clearly we can only do so, if $A \ne 0$ and $BC - AD > 0$. 
+
+In the case when $A = 0$ equation (\ref{eqn_GenCircle}) reads
+\begin{equation*}
+\Re{C z} = -\half{D},
+\end{equation*}
+which defines a line on the complex plane. We see this by considering the simpler equation $\Re{z} = -\half{D}$ first, which obviously defines a line parallel to the imaginary axis through the real point $-\half{D}$. Then we observe, that the multiplication with $C$ just rotates this line clockwise by an angle which is given by $\arg(C)$.
+
+To conclude our considerations we finally note that equation (\ref{eqn_GenCircle}) can also be written in terms of a sesquilinear form
+\begin{equation*}
+\rvec{\conj{z}}{1} \cdot \mat{A}{B}{C}{D} \cdot \cvec{z}{1} = 0.
+\end{equation*}
+The matrix in the middle is Hermitian and has a negative determinant, because of the condition $BC - AD > 0$ from above. We can now give an exact definition for generalized circles.
+
+\begin{definition}
+Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$. A \emph{generalized circle} is the set of solutions $z \in \C$ to
+\begin{equation}
+\label{eqn_GenCircleMat}
+\rvec{\conj{z}}{1} \cdot M \cdot \cvec{z}{1} = 0.
+\end{equation}
+\end{definition}
+
+\begin{remark}
+Since danger of confusion is minimal, in the following we will use the same name for a generalized circle and its corresponding Hermitian matrix.
+\end{remark}
+
+\begin{theorem}
+\label{thm_MoebiusGenCircle}
+Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$ and $P \in \PGL{\C}$. The image of the generalized circle $M$ under the Möbius transformation $\phi$ corresponding to the matrix $P$ is the generalized circle  $\transp{(\inv{P})} \cdot M \cdot \inv{P}$.
+\end{theorem}
+\begin{proof}
+Let us write
+\begin{equation*}
+P = \mat{a}{b}{c}{d},
+\end{equation*}
+such that the corresponding Möbius transformation $\phi$ has the form
+\begin{equation*}
+\phi(z) = \moebius{a}{b}{c}{d}{z}.
+\end{equation*}
+First we observe the trivial fact that 
+\begin{equation}
+\label{eqn_HomogenousTransform}
+P \cdot \cvec{z}{1} = \cvec{a z + b}{c z + d}.
+\end{equation}
+We need to show that for all $z$ satisfying (\ref{eqn_GenCircleMat}), $\phi(z)$ lies on the generalized circle $\transp{(\inv{P})} \cdot M \cdot \inv{P}$, that is 
+\begin{equation*}
+\rvec{\conj{\phi(z)}}{1} \cdot \transp{(\inv{P})} \cdot M \cdot \inv{P} \cdot \cvec{\phi(z)}{1} = 0.
+\end{equation*}
+Multiplying with the scalar $c z + d$ and its complex conjugate we obtain
+\begin{equation*}
+\rvec{\conj{az + b}}{\conj{cz + d}} \cdot \transp{(\inv{P})} \cdot M \cdot \inv{P} \cdot \cvec{az + b}{cz + d} = 0.
+\end{equation*}
+Now we apply (\ref{eqn_HomogenousTransform}) and its Hermit transposed pendant
+\begin{equation*}
+\rvec{\conj{z}}{1} \cdot \transp{P} \transp{(\inv{P})} \cdot M \cdot \inv{P} \cdot P \cdot \cvec{z}{1} = 0,
+\end{equation*}
+which yields after canceling out $P$ and $\inv{P}$ the desired result (\ref{eqn_GenCircleMat}).
+\end{proof}
+
 \subsection{Stereographic projection}
 
 \section{The modular group}
