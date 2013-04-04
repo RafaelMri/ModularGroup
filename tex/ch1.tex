@@ -5,11 +5,12 @@
 In the following we define Möbius transformations and collect some basic properties which will be needed later on.
 
 \begin{definition}
+\index{Mobius transformation@Möbius transformation}
 A non-constant rational function $\phi \in \C(z)$ of the form 
 \begin{equation*}
 \phi(z) = \moebius{a}{b}{c}{d}{z},\quad a, b, c, d \in \C,\quad ad - bc \ne 0
 \end{equation*}
-is called \defitems{Möbius transformation}{Mobius transformation}.
+is called \emph{Möbius transformation}.
 \end{definition}
 
 \begin{remark}
@@ -21,7 +22,15 @@ The condition $ad - bc \ne 0$ just ensures that $\phi$ is in fact non-constant.
 The set of Möbius transformations forms a group under the action of function composition and can be identified with the \emph{projective general linear group} $\PGL{\C}$.
 \end{theorem}
 \begin{remark}
-The group \idxitems{$\PGL{\C}$}{PGL2C} is obtained from the \emph{general linear group} \idxitems{$\GL{\C}$}{GL2C}, \ie the set of invertible 2-by-2 matrices, by identifying all matrices which differ by a scalar multiple. Since over $\C$ every invertible matrix can be scaled such that its determinant gets 1, we also could have taken \idxitems{$\SL{\C}$}{SL2C}, the \emph{special linear group} consisting of all 2-by-2 matrices with determinant 1, as basic set for this construction. This again yields the same group but this time it is denoted \idxitems{$\PSL{\C}$}{PSL2C}, the \emph{projective special linear group}.
+\index{GL2C@$\GL{\C}$}
+\index{SL2C@$\SL{\C}$}
+\index{PGL2C@$\PGL{\C}$}
+\index{PSL2C@$\PSL{\C}$}
+\index{General linear group}
+\index{Special linear group}
+\index{Projective!general linear group}
+\index{Projective!special linear group}
+The group $\PGL{\C}$ is obtained from the \emph{general linear group} $\GL{\C}$, \ie the set of invertible 2-by-2 matrices, by identifying all matrices which differ by a scalar multiple. Since over $\C$ every invertible matrix can be scaled such that its determinant gets 1, we also could have taken $\SL{\C}$, the \emph{special linear group} consisting of all 2-by-2 matrices with determinant 1, as basic set for this construction. This again yields the same group but this time it is denoted $\PSL{\C}$, the \emph{projective special linear group}.
 \end{remark}
 \begin{proof}[Proof (Theorem \ref{thm_MoebiusGroup}):]
 Let $\phi$ and $\psi$ be Möbius transformations with
@@ -45,7 +54,7 @@ Having a closer look on the resulting coefficients one might notice that they re
  = \mat{ae + bg}{af + bh}{ce + dg}{cf + dh}
 \end{equation}
 
-This motivates the definition of the function $\pi$ which assigns every matrix in $\GL{\C}$ a corresponding Möbius transformation:
+This motivates the definition of a mapping $\pi$ between matrices in $\GL{\C}$ and Möbius transformations:
 \begin{equation*}
 \pi: \mat{a}{b}{c}{d} \mapsto \left(z \mapsto \moebius{a}{b}{c}{d}{z}\right)
 \end{equation*}
