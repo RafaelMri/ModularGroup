@@ -5,15 +5,15 @@
 In the following we define Möbius transformations and collect some basic properties which will be needed later on.
 
 \begin{definition}
-A non-constant rational function $f \in \C(z)$ of the form 
+A non-constant rational function $\phi \in \C(z)$ of the form 
 \begin{equation*}
-f(z) = \moebius{a}{b}{c}{d}{z},\quad a, b, c, d \in \C,\quad ad - bc \ne 0
+\phi(z) = \moebius{a}{b}{c}{d}{z},\quad a, b, c, d \in \C,\quad ad - bc \ne 0
 \end{equation*}
 is called \defitems{Möbius transformation}{Mobius transformation}.
 \end{definition}
 
 \begin{remark}
-The condition $ad - bc \ne 0$ just ensures that $f$ is in fact non-constant.
+The condition $ad - bc \ne 0$ just ensures that $\phi$ is in fact non-constant.
 \end{remark}
 
 \begin{theorem}
@@ -45,7 +45,7 @@ Having a closer look on the resulting coefficients one might notice that they re
  = \mat{ae + bg}{af + bh}{ce + dg}{cf + dh}
 \end{equation}
 
-This motivates the definition of the function $\pi$ which assigns every invertible 2-by-2 matrix a corresponding Möbius transformation:
+This motivates the definition of the function $\pi$ which assigns every matrix in $\GL{\C}$ a corresponding Möbius transformation:
 \begin{equation*}
 \pi: \mat{a}{b}{c}{d} \mapsto \left(z \mapsto \moebius{a}{b}{c}{d}{z}\right)
 \end{equation*}
