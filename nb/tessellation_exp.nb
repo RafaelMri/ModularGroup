@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     22510,        578]
-NotebookOptionsPosition[     21765,        552]
-NotebookOutlinePosition[     22165,        569]
-CellTagsIndexPosition[     22122,        566]
+NotebookDataLength[     24933,        644]
+NotebookOptionsPosition[     23989,        613]
+NotebookOutlinePosition[     24389,        630]
+CellTagsIndexPosition[     24346,        627]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -418,7 +418,8 @@ Cell[BoxData[{
   "]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"FundamentalRegionPlot", "[", "phi_", "]"}], ":=", 
+   RowBox[{"FundamentalRegionPlot", "[", 
+    RowBox[{"phi_", ",", "options___"}], "]"}], ":=", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", "z", "}"}], ",", "\[IndentingNewLine]", 
@@ -446,10 +447,78 @@ Cell[BoxData[{
         RowBox[{"u", ",", 
          RowBox[{"Pi", "/", "3"}], ",", 
          RowBox[{"2", 
-          RowBox[{"Pi", "/", "3"}]}]}], "}"}], ",", 
-       RowBox[{"PlotRange", "\[Rule]", "2"}]}], "]"}]}], 
+          RowBox[{"Pi", "/", "3"}]}]}], "}"}], ",", "options"}], "]"}]}], 
     "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",
- CellChangeTimes->{{3.573303902211008*^9, 3.573303960544566*^9}}],
+ CellChangeTimes->{{3.573303902211008*^9, 3.573303960544566*^9}, {
+  3.5746032518441415`*^9, 3.5746032672111835`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MyFrame", "[", 
+   RowBox[{"phi_", ",", "t_", ",", "options___"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"plot", ",", "viewRange", ",", "fundamentalRegion"}], "}"}], ",",
+     "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"plot", "=", 
+      RowBox[{"MyPlot", "[", 
+       RowBox[{
+        RowBox[{"phi", "[", "t", "]"}], ",", "options"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"fundamentalRegion", "=", 
+      RowBox[{"FundamentalRegionPlot", "[", 
+       RowBox[{
+        RowBox[{"phi", "[", "t", "]"}], ",", "options"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"viewRange", "=", 
+      RowBox[{"Exp", "[", 
+       RowBox[{
+        RowBox[{"-", "Pi"}], " ", "t"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"GraphicsRow", "@", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Show", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"plot", ",", 
+            RowBox[{"Graphics", "@", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"EdgeForm", "@", 
+                RowBox[{"{", 
+                 RowBox[{"Red", ",", "Dashed"}], "}"}]}], ",", "Transparent", 
+               ",", 
+               RowBox[{"Rectangle", "[", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"-", "viewRange"}], ",", 
+                   RowBox[{"-", "viewRange"}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"viewRange", ",", "viewRange"}], "}"}]}], "]"}]}], 
+              "}"}]}]}], "}"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", "1"}], ",", 
+          RowBox[{"ImageSize", "\[Rule]", "Medium"}], ",", 
+          RowBox[{"AxesOrigin", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}]}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Show", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"plot", ",", "fundamentalRegion"}], "}"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", "viewRange"}], ",", 
+          RowBox[{"ImageSize", "\[Rule]", "Medium"}], ",", 
+          RowBox[{"AxesOrigin", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}]}]}], "]"}]}], 
+       "\[IndentingNewLine]", "}"}]}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5744324743201785`*^9, 3.5744325043054595`*^9}, {
+  3.574603110995961*^9, 3.5746031141159697`*^9}, {3.5746031631509023`*^9, 
+  3.5746031693909187`*^9}, {3.5746032994740705`*^9, 3.5746033061830883`*^9}, {
+  3.5746034473744698`*^9, 3.574603467110523*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -457,64 +526,10 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{"MyAnim", "[", "phi_", "]"}], ":=", 
-   RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+   RowBox[{"Manipulate", "[", 
     RowBox[{
-     RowBox[{"Module", "[", 
-      RowBox[{
-       RowBox[{"{", 
-        RowBox[{"plot", ",", "viewRange", ",", "fundamentalRegion"}], "}"}], 
-       ",", "\[IndentingNewLine]", 
-       RowBox[{
-        RowBox[{"plot", "=", 
-         RowBox[{"MyPlot", "[", 
-          RowBox[{"phi", "[", "t", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-        RowBox[{"fundamentalRegion", "=", 
-         RowBox[{"FundamentalRegionPlot", "[", 
-          RowBox[{"phi", "[", "t", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-        RowBox[{"viewRange", "=", 
-         RowBox[{"Exp", "[", 
-          RowBox[{
-           RowBox[{"-", "Pi"}], " ", "t"}], "]"}]}], ";", 
-        "\[IndentingNewLine]", 
-        RowBox[{"GraphicsRow", "@", 
-         RowBox[{"{", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"Show", "[", 
-            RowBox[{
-             RowBox[{"{", 
-              RowBox[{"plot", ",", 
-               RowBox[{"Graphics", "@", 
-                RowBox[{"{", 
-                 RowBox[{
-                  RowBox[{"EdgeForm", "@", 
-                   RowBox[{"{", 
-                    RowBox[{"Red", ",", "Dashed"}], "}"}]}], ",", 
-                  "Transparent", ",", 
-                  RowBox[{"Rectangle", "[", 
-                   RowBox[{
-                    RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{"-", "viewRange"}], ",", 
-                    RowBox[{"-", "viewRange"}]}], "}"}], ",", 
-                    RowBox[{"{", 
-                    RowBox[{"viewRange", ",", "viewRange"}], "}"}]}], "]"}]}],
-                  "}"}]}]}], "}"}], ",", 
-             RowBox[{"PlotRange", "\[Rule]", "1"}], ",", 
-             RowBox[{"ImageSize", "\[Rule]", "Medium"}], ",", 
-             RowBox[{"AxesOrigin", "\[Rule]", 
-              RowBox[{"{", 
-               RowBox[{"0", ",", "0"}], "}"}]}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
-           RowBox[{"Show", "[", 
-            RowBox[{
-             RowBox[{"{", 
-              RowBox[{"plot", ",", "fundamentalRegion"}], "}"}], ",", 
-             RowBox[{"PlotRange", "\[Rule]", "viewRange"}], ",", 
-             RowBox[{"ImageSize", "\[Rule]", "Medium"}], ",", 
-             RowBox[{"AxesOrigin", "\[Rule]", 
-              RowBox[{"{", 
-               RowBox[{"0", ",", "0"}], "}"}]}]}], "]"}]}], 
-          "\[IndentingNewLine]", "}"}]}]}]}], "]"}], ",", 
+     RowBox[{"MyFrame", "[", 
+      RowBox[{"phi", ",", "t"}], "]"}], ",", 
      RowBox[{"{", 
       RowBox[{"t", ",", "0", ",", "1"}], "}"}]}], "]"}]}], ";"}]}], "Input",
  CellChangeTimes->{{3.5731945116286626`*^9, 3.5731945497395296`*^9}, 
@@ -538,7 +553,7 @@ Cell[BoxData[{
    3.5733024036683607`*^9, 3.5733024316890364`*^9}, {3.573303861585499*^9, 
    3.5733039000738025`*^9}, {3.573303963976575*^9, 3.5733040277077475`*^9}, {
    3.573305925939888*^9, 3.5733060144001274`*^9}, {3.5733062922744775`*^9, 
-   3.573306310012726*^9}}],
+   3.573306310012726*^9}, {3.5744325031198564`*^9, 3.5744325214197054`*^9}}],
 
 Cell[BoxData[
  RowBox[{"MyAnim", "[", "Phi", "]"}]], "Input",
@@ -548,7 +563,53 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{"MyAnim", "[", "Psi", "]"}]], "Input",
- CellChangeTimes->{{3.5733024554333005`*^9, 3.5733024583203087`*^9}}]
+ CellChangeTimes->{{3.5733024554333005`*^9, 3.5733024583203087`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"ProgressIndicator", "[", 
+  RowBox[{"Dynamic", "@", "p"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"frames", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"Module", "[", 
+       RowBox[{
+        RowBox[{"{", "frame", "}"}], ",", 
+        RowBox[{
+         RowBox[{"frame", "=", 
+          RowBox[{"MyFrame", "[", 
+           RowBox[{"Phi", ",", "#"}], "]"}]}], ";", 
+         RowBox[{"p", "=", "#"}], ";", "frame"}]}], "]"}], ")"}], "&"}], "/@", 
+    RowBox[{"Range", "[", 
+     RowBox[{"0", ",", "1", ",", 
+      RowBox[{"1", "/", "64"}]}], "]"}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.5745964751773963`*^9, 3.5745964820210185`*^9}, {
+   3.5746023335614243`*^9, 3.574602384031561*^9}, {3.574602469682792*^9, 
+   3.574602642924461*^9}, {3.5746026764363513`*^9, 3.5746027496523495`*^9}, {
+   3.574602780013031*^9, 3.5746029706137457`*^9}, {3.5746030728976583`*^9, 
+   3.574603073022459*^9}, {3.5746031781591425`*^9, 3.574603182542754*^9}, 
+   3.574603334233964*^9, {3.5746034766577487`*^9, 3.5746034896691837`*^9}, 
+   3.57460363268577*^9, {3.5746037496728864`*^9, 3.574603750218888*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ListAnimate", "[", "frames", "]"}]], "Input",
+ CellChangeTimes->{{3.5744374059500923`*^9, 3.5744374096629024`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<tessellation_exp.avi\>\"", ",", "frames"}], "]"}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.5746036442620015`*^9, 3.574603690473326*^9}, {
+  3.574604001581707*^9, 3.5746040038281136`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<tessellation_exp.gif\>\"", ",", "frames"}], "]"}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.5746039819080544`*^9, 3.574603996760294*^9}}]
 },
 WindowSize->{1132, 756},
 WindowMargins->{{1, Automatic}, {Automatic, -2}},
@@ -576,10 +637,15 @@ Cell[6238, 177, 620, 20, 50, "Input"],
 Cell[6861, 199, 3308, 70, 150, "Input"],
 Cell[10172, 271, 1259, 35, 110, "Input"],
 Cell[11434, 308, 4388, 105, 370, "Input"],
-Cell[15825, 415, 1309, 36, 150, "Input"],
-Cell[17137, 453, 4256, 87, 230, "Input"],
-Cell[21396, 542, 231, 4, 29, "Input"],
-Cell[21630, 548, 131, 2, 29, "Input"]
+Cell[15825, 415, 1360, 37, 150, "Input"],
+Cell[17188, 454, 2672, 66, 190, "Input"],
+Cell[19863, 522, 1997, 33, 50, "Input"],
+Cell[21863, 557, 231, 4, 29, "Input"],
+Cell[22097, 563, 131, 2, 29, "Input"],
+Cell[22231, 567, 1147, 25, 50, "Input"],
+Cell[23381, 594, 139, 2, 29, "Input"],
+Cell[23523, 598, 255, 6, 29, "Input"],
+Cell[23781, 606, 204, 5, 29, "Input"]
 }
 ]
 *)
