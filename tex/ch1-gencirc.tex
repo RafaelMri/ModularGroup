@@ -1,7 +1,7 @@
 \subsection{Generalized circles}
 
 \index{Generalized circle}
-From the geometric point of view Möbius transformations have the beautiful property that they preserve generalized circles. \emph{Generalized circles} are either circles (in the usual sense) or lines on the complex plane $\C$. They can also be thought of circles on the Riemann sphere $\RS$, where lines on the complex plane have a one-to-one correspondence to great circles on the Riemann sphere. In order to give an exact definition, we first make the following considerations:
+From the geometric point of view Möbius transformations have the beautiful property that they preserve generalized circles. \emph{Generalized circles} are either circles (in the usual sense) or lines on the complex plane $\C$. They can also be thought of circles on the Riemann sphere $\RS$, where lines on the complex plane have a one-to-one correspondence with circles through the point $\infty$ on the Riemann sphere. In order to give an exact definition, we first make the following considerations:
 
 A circle with center $m \in \C$ and radius $r > 0$ can be described as the set of points $z \in \C$ for which
 \begin{equation*}
@@ -32,7 +32,7 @@ r &=& \sqrt{m \conj{m} - \frac{D}{A}} = \sqrt{\frac{BC - AD}{A^2}}. \IEEEyessubn
 \end{IEEEeqnarray}
 Clearly we can only do so, if $A \ne 0$ and $BC - AD > 0$. 
 
-In the case when $A = 0$ equation (\ref{eqn_GenCircle}) reads
+In the case when $A = 0$ equation (\ref{eqn_GenCircle}) can be written as
 \begin{equation*}
 \Re{\frac{C}{\abs{C}} z} = -\frac{D}{2 \abs{C}},
 \end{equation*}
@@ -84,7 +84,7 @@ By multiplying with the scalar $c z + d$ and its complex conjugate we obtain
 \end{equation*}
 Now we apply (\ref{eqn_HomogenousTransform}) and its Hermit transposed companion
 \begin{equation*}
-\rvec{\conj{z}}{1} \cdot \htransp{P} h\htransp{(\inv{P})} \cdot M \cdot \inv{P} \cdot P \cdot \cvec{z}{1} = 0,
+\rvec{\conj{z}}{1} \cdot \htransp{P} \htransp{(\inv{P})} \cdot M \cdot \inv{P} \cdot P \cdot \cvec{z}{1} = 0,
 \end{equation*}
 which yields after canceling out $P$ and $\inv{P}$ the desired result (\ref{eqn_GenCircleMat}).
 \end{proof}
