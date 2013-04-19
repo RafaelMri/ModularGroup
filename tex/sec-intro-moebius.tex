@@ -1,5 +1,3 @@
-\chapter{Introduction}
-
 \section{Möbius transformations}
 
 In the following we define Möbius transformations and collect some basic properties which will be needed later on.
@@ -58,9 +56,9 @@ This motivates the definition of a mapping $\pi$ between matrices in $\GL{\C}$ a
 \begin{equation*}
 \pi: \mat{a}{b}{c}{d} \mapsto \left(z \mapsto \moebius{a}{b}{c}{d}{z}\right)
 \end{equation*}
-Note, that the domain of $\pi$ is $\GL{\C}$, \ie the set of 2-by-2 matrices with nonzero determinant. This is perfectly consistent with the condition $ad - bc \ne 0$ we have for Möbius transformations. For this reason, $\pi$ is well-defined. 
+Note, that the domain of $\pi$ is $\GL{\C}$, \ie the set of 2-by-2 matrices with nonzero determinant. This is perfectly consistent with the condition $ad - bc \ne 0$ we have for Möbius transformations. For this reason, $\pi$ is a well-defined function from $\GL{\C}$ to the set of Möbius transformations.
 
-But $\pi$ is not just a function, it is in fact a homomorphism from $\GL{\C}$ to the set of Möbius transformations, as can be seen from (\ref{eqn_MoebiusComposition}) and (\ref{eqn_MatrixProduct}). Trivially, $\pi$ is also surjective, which carries over the group structure of $\GL{\C}$ to the set of Möbius transformations. The kernel of $\pi$ comprises of all multiples of the identity matrix. Therefore, by the first isomorphism theorem the set of Möbius transformations is isomorphic to $\GL{\C}/\ker{\pi} \cong \PGL{\C}$.
+But $\pi$ is not just a function, it is in fact a homomorphism, as can be seen from (\ref{eqn_MoebiusComposition}) and (\ref{eqn_MatrixProduct}). Trivially, $\pi$ is also surjective, which carries over the group structure of $\GL{\C}$ to the set of Möbius transformations. The kernel of $\pi$ comprises of all multiples of the identity matrix. Therefore, by the first isomorphism theorem the group of Möbius transformations is isomorphic to $\GL{\C}/\ker{\pi} \cong \PGL{\C}$.
 \end{proof}
 
 \begin{lemma}
@@ -92,8 +90,9 @@ Now that we have defined the group of Möbius transformations, it is worth to get
 
 \index{Circle inversion}
 \index{Inversion}
-In 2-dimensional geometry, \emph{circle inversion} with respect to a reference circle with center $C$ and a radius $r$ takes each point $P$ on the plane to a point $P^{\prime}$ which is determined by $CP \cdot CP^{\prime} = r^2$. The image of $C$ is defined to be the point at infinity (and vice versa). Roughly speaking the inversion turns the circle ``inside out'', \ie points inside the reference circle are bijectively mapped to points outside while leaving rays from the center invariant.
-% TODO #15: Figure for circle inversion
+In 2-dimensional geometry, \emph{circle inversion} with respect to a reference circle with center $C$ and a radius $r$ takes each point $P$ on the plane to a point $P^{\prime}$ which is determined by $CP \cdot CP^{\prime} = r^2$. The image of $C$ is defined to be the point at infinity (and vice versa). Roughly speaking, the inversion turns the circle ``inside out'', \ie points inside the reference circle are bijectively mapped to points outside while rays from the circle center are invariant under the circle inversion.
+
+\todo{15}{Figure for circle inversion}
 
 Coming back to the concrete map $z \mapsto \rezi{z}$, it can now be interpreted the following way: Circle inversion with regard to the unit circle $\UnitCirc$ maps each $z \in \C$ to $\frac{z}{\abs{z}^2} = \rezi{\conj{z}}$. Then, reflection across the real axis (\ie complex conjugation) takes $\rezi{\conj{z}}$ to $\rezi{z}$. 
 
@@ -101,16 +100,9 @@ Summing up, all the basic types of Möbius transformations mentioned in Lemma \re
 
 Luckily there is another characterization of Möbius transformations which is both, elegant and visually accessible.
 
-% ----------------------------------------- Subsection Stereographic projection
-\input{ch1-mreveal.tex}
+% ---------------------------------------- Subsection: Stereographic projection
+\input{sub-intro-mreveal.tex}
 
-% ---------------------------------------------- Subsection Generalized circles
-\input{ch1-gencirc.tex}
+% --------------------------------------------- Subsection: Generalized circles
+\input{sub-intro-gencirc.tex}
 
-\section{The modular group}
-
-This section is about the modular group, a discrete subgroup of Möbius transformations.
-
-\section{Ford circles and continued fractions}
-
-This section is about continued fractions.
