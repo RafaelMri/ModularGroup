@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     27653,        741]
-NotebookOptionsPosition[     27274,        724]
-NotebookOutlinePosition[     27672,        741]
-CellTagsIndexPosition[     27629,        738]
+NotebookDataLength[     27757,        744]
+NotebookOptionsPosition[     27378,        727]
+NotebookOutlinePosition[     27776,        744]
+CellTagsIndexPosition[     27733,        741]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -350,7 +350,9 @@ Cell[BoxData[
           RowBox[{"c", " ", "z"}], "+", "d"}]}], "}"}], ",", 
        RowBox[{"If", "[", 
         RowBox[{
-         RowBox[{"denom", "\[Equal]", "0"}], ",", "ComplexInfinity", ",", 
+         RowBox[{"TrueQ", "[", 
+          RowBox[{"denom", "\[Equal]", "0"}], "]"}], ",", "ComplexInfinity", 
+         ",", 
          RowBox[{
           RowBox[{"(", 
            RowBox[{
@@ -561,7 +563,8 @@ Cell[BoxData[
    3.5718429964330425`*^9}, {3.5718432260682554`*^9, 
    3.5718432287358646`*^9}, {3.5718991313851147`*^9, 3.571899138935541*^9}, {
    3.5719009958413115`*^9, 3.571901043780281*^9}, {3.571902498255834*^9, 
-   3.5719025461480036`*^9}, {3.5722477815229254`*^9, 3.5722478387489433`*^9}}],
+   3.5719025461480036`*^9}, {3.5722477815229254`*^9, 
+   3.5722478387489433`*^9}, {3.5754592302153206`*^9, 3.5754592369773817`*^9}}],
 
 Cell[BoxData[
  RowBox[{"DynamicModule", "[", 
@@ -741,8 +744,8 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[557, 20, 314, 6, 29, "Input"],
-Cell[874, 28, 19817, 535, 1536, "Input"],
-Cell[20694, 565, 6576, 157, 590, "Input"]
+Cell[874, 28, 19921, 538, 1536, "Input"],
+Cell[20798, 568, 6576, 157, 590, "Input"]
 }
 ]
 *)
