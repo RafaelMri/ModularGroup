@@ -79,11 +79,11 @@ When we set $r_{-1} := a$ and $r_0 := c$, this rule is true for $0 \le j \le n$.
 \cdots \stackrel{T}{\mapsto}
 \cvec{\phantom{+}r_{n\phantom{+0}}}{\pm r_{n+1}} = \cvec{1}{0}.
 \end{equation*} 
-Because we know its first column, we can conclude that the resulting matrix must have the form
+Because we know its first column, we can conclude that for some $k \in \Z$ the resulting matrix must have the form
 \begin{equation*}
-\mat{1}{k}{0}{1} = U^k
+\mat{1}{k}{0}{1} = U^k.
 \end{equation*}
-for some $k \in \Z$ -- the right-lower matrix entry is 1 because the determinant is 1. By setting $e_n := (-1)^{n} q_n$, we finally have 
+Here, the right-lower matrix entry is necessarily 1 because the determinant is 1. By setting $e_n := (-1)^{n} q_n$, we finally have 
 \begin{equation*}
 TU^{-e_n} TU^{-e_{n-1}} \cdots TU^{-e_1}TU^{-e_0} A = U^k
 \end{equation*}
@@ -94,13 +94,29 @@ A = U^{e_0} TU^{e_1} \cdots TU^{e_{n-1}} TU^{e_n} T U^k,
 which gives the desired representation of $A$ in terms of $U$ and $T$.
 \end{proof}
 
-Since $U$ and $T$ are generators of the modular group, so are $T$ and $R = TU: z \mapsto -\reci{z+1}$. Moreover, we will see, that the generators $T$ and $R$ are in a certain sense better suited for describing the group structure of $\ModGrp$.
+It is worth formulating the algorithm used in the previous proof explicitly in the following
+
+\begin{theorem}
+An arbitrary modular transformation $A: z \mapsto \moebius{a}{b}{c}{d}{z}$ can be represented in terms of the transformations $U: z \mapsto z+1$ and $T : z \mapsto -\reci{z}$, by performing the following steps:
+\begin{enumerate}
+\item Apply the Euclidean algorithm to $a$ and $c$, with the first division being $a = q_0 \cdot c + r_1$ ($q_0$ may be 0) and let $n$ be the number of the  last division (start counting from 0).
+\item For $j \in \{0,1,\dots,n\}$ set $e_n := (-1)^n q_n$.
+\item Calculate the product $TU^{-e_n} TU^{-e_{n-1}} \cdots TU^{-e_1}TU^{-e_0} A$ and read off the right-upper entry from its matrix representation and call it $k$.
+\end{enumerate}
+The transformation $A$ can now be written as
+\begin{equation}
+\label{eqn_ModGrpTUAlg}
+A = U^{e_0} TU^{e_1} \cdots TU^{e_{n-1}} TU^{e_n} T U^k.
+\end{equation}
+\end{theorem}
+
+We have seen that $U$ and $T$ generate the modular group, but in order to characterize its structure, the generators $T$ and $R = TU$ better suited, as we see in the next
 
 \begin{theorem}
 \label{thm_ModGrpRel}
 The generators $T: z \mapsto -\reci{z}$ and $R: z \mapsto -\reci{z+1}$ of the modular group satisfy the relations
 \begin{equation}
-\label{eqn_TRRel}
+\label{eqn_ModGrpTRRel}
 T^2 = \id{\C}, \quad R^3 = \id{\C}
 \end{equation}
 and all other relations are derived from these two. Therefore the modular group is isomorphic to the free product of a cyclic group of order 2 and a cyclic group of order 3.
