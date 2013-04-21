@@ -101,8 +101,8 @@ It is worth formulating the algorithm used in the previous proof explicitly in t
 An arbitrary modular transformation $A: z \mapsto \moebius{a}{b}{c}{d}{z}$ can be represented in terms of the transformations $U: z \mapsto z+1$ and $T : z \mapsto -\reci{z}$, by performing the following steps:
 \begin{enumerate}
 \item Apply the Euclidean algorithm to $a$ and $c$, with the first division being $a = q_0 \cdot c + r_1$ ($q_0$ may be 0) and let $n$ be the number of the  last division (start counting from 0).
-\item For $j \in \{0,1,\dots,n\}$ set $e_n := (-1)^n q_n$.
-\item Calculate the product $TU^{-e_n} TU^{-e_{n-1}} \cdots TU^{-e_1}TU^{-e_0} A$ and read off the right-upper entry from its matrix representation and call it $k$.
+\item For $j \in \{0,1,\dots,n\}$ set $e_j := (-1)^j q_j$.
+\item Calculate the matrix product $TU^{-e_n} TU^{-e_{n-1}} \cdots TU^{-e_1}TU^{-e_0} A$ and multiply by $\pm 1$ in order to obtain a representation with positive diagonal elements. Read off the right-upper entry and call it $k$.
 \end{enumerate}
 The transformation $A$ can now be written as
 \begin{equation}
