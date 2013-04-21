@@ -55,28 +55,28 @@ r_{n-1} &=& q_n \cdot r_n + r_{n+1}\\
 \end{eqnarray*}
 We can use this to successively reduce the Matrix $A$ by multiplying powers of $U$ and $T$ from the left. Just note, that multiplication with $U^k$ adds $k$ times the second row to the first row and $T$ swaps the rows and changes the sign of one arbitrary row\footnote{This freedom of choice is due to the fact that the matrices $M$ and $-M$ are the same in $\PSL{\Z}$.}. If we concentrate only on the first column of $A$ and apply the first few transformations
 \begin{equation*}
-\cvec{a}{c}                           \stackrel{U^{-q_0}}{\longmapsto}
-\cvec{r_1}{c\phantom{_1}}             \stackrel{T}{\mapsto} 
-\cvec{\phantom{+}c\phantom{_1}}{-r_1} \stackrel{U^{q_1}}{\longmapsto}
-\cvec{\phantom{+}r_2}{-r_1}           \stackrel{T}{\mapsto} 
-\cvec{r_1}{r_2}                       \stackrel{U^{-q_2}}{\longmapsto}
-\cvec{r_3}{r_2}                       \stackrel{T}{\mapsto}
+\cvec{a}{c}                           \overset{U^{-q_0}}{\longmapsto}
+\cvec{r_1}{c\phantom{_1}}             \overset{T}{\mapsto} 
+\cvec{\phantom{+}c\phantom{_1}}{-r_1} \overset{U^{q_1}}{\longmapsto}
+\cvec{\phantom{+}r_2}{-r_1}           \overset{T}{\mapsto} 
+\cvec{r_1}{r_2}                       \overset{U^{-q_2}}{\longmapsto}
+\cvec{r_3}{r_2}                       \overset{T}{\mapsto}
 \cvec{\phantom{+}r_2}{-r_3}           \mapsto \dots,
 \end{equation*}
 we soon recognize the general mapping rule, which is
 \begin{IEEEeqnarray*}{rCll}
 \cvec{\phantom{+}r_{j-1}}{\phantom{+}r_{j\phantom{+0}}} 
-& \stackrel{TU^{-q_j}}{\longmapsto}
+& \overset{TU^{-q_j}}{\longmapsto}
 & \cvec{\phantom{+}r_{j\phantom{+0}}}{-r_{j+1}}
 & \quad \text{for even } j \text{ and}\\
 \cvec{\phantom{+}r_{j-1}}{-r_{j\phantom{+0}}}
-& \stackrel{TU^{q_j}}{\longmapsto}
+& \overset{TU^{q_j}}{\longmapsto}
 & \cvec{\phantom{+}r_{j\phantom{+0}}}{\phantom{+}r_{j+1}} 
 & \quad \text{for odd } j.
 \end{IEEEeqnarray*}
 When we set $r_{-1} := a$ and $r_0 := c$, this rule is true for $0 \le j \le n$. Obviously the described procedure ends with
 \begin{equation*}
-\cdots \stackrel{T}{\mapsto}
+\cdots \overset{T}{\mapsto}
 \cvec{\phantom{+}r_{n\phantom{+0}}}{\pm r_{n+1}} = \cvec{1}{0}.
 \end{equation*} 
 Because we know its first column, we can conclude that for some $k \in \Z$ the resulting matrix must have the form
@@ -97,6 +97,7 @@ which gives the desired representation of $A$ in terms of $U$ and $T$.
 It is worth formulating the algorithm used in the previous proof explicitly in the following
 
 \begin{theorem}
+\label{thm_ModGrpTUAlg}
 An arbitrary modular transformation $A: z \mapsto \moebius{a}{b}{c}{d}{z}$ can be represented in terms of the transformations $U: z \mapsto z+1$ and $T : z \mapsto -\reci{z}$, by performing the following steps:
 \begin{enumerate}
 \item Apply the Euclidean algorithm to $a$ and $c$, with the first division being $a = q_0 \cdot c + r_1$ ($q_0$ may be 0) and let $n$ be the number of the  last division (start counting from 0).

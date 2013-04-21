@@ -1,0 +1,52 @@
+\section{Ford circles and continued fractions}
+
+For an arbitrary modular transformation $A$, a representation as product of shifts $U^j: z \mapsto z+j$ and inversions $T: z \mapsto -\reci{z}$ can be found by the algorithm described in Theorem \ref{thm_ModGrpTUAlg}. By writing out this product, for example in the case, when $n=2$, we have
+\begin{equation*}
+A = U^{e_0}T U^{e_1}T U^{e_2}T U^k,
+\end{equation*}
+or more explicitly
+\begin{equation*}
+A(z) = e_0 - \reci{e_1 - \reci{e_2 - \reci{k + z}}}.
+\end{equation*}
+Here, a close relation between modular transformations and continued fractions immediately gets apparent. In this section, we will investigate this relation somewhat deeper. 
+First, we introduce a more space-saving notation for continued fractions of the form from above, namely
+\begin{equation}
+\label{eqn_ConFracNotation}
+b_0 \oplus^0 \reci{b_1 \oplus^1 \reci{b_2 \oplus^2 \dots}} =: 
+b_0 \ \oplus^0 \ \confr{b_1} \ \oplus^1 \ \confr{b_2} \ \oplus^2 \ \dots
+\end{equation}
+where each operator $\oplus^j$ shall either stand for ``$+$'' or ``$-$``. In the case when all $\oplus^j$ are ``$+$'', we adhere to the standard sequence notation for continued fractions:
+\begin{equation*}
+b_0 + \reci{b_1 + \reci{b_2 + \dots}} =: [b_0,b_1,b_2,\dots].
+\end{equation*}
+We can now reformulate Theorem \ref{thm_ModGrpTUAlg} in order to construct a continued fraction representation of any given modular transformation.
+\begin{lemma}
+An arbitrary modular transformation $A(z) = \moebius{a}{b}{c}{d}{z}$ can be written as continued fraction
+\begin{equation}
+\label{eqn_ModTransConFrac}
+A(z) = [q_0,q_1,\dots,q_n,(-1)^{n+1}(k+z)]
+\end{equation}
+where the integers $n$, $q_0,q_1,\dots,q_n$ and $k$ are determined by the algorithm described in Theorem \ref{thm_ModGrpTUAlg}.
+\end{lemma}
+\begin{proof}
+By the observation we made at the beginning of this section and because $e_j$ := $(-1)^j q_j$, we can write 
+\begin{IEEEeqnarray}{rCLLLLLL}
+A(z) &=& e_0 &- \confr{e_1} 
+          &- \confr{e_2} 
+          &- \dots 
+          &- \confr{e_n} 
+          &- \confr{k + z} \nonumber \\
+  &=& q_0 &- \confr{-q_1} 
+          &- \confr{q_2} 
+          &- \dots 
+          &- \confr{(-1)^n q_n} 
+          &- \confr{k + z}. \label{eqn_ModTransConFracInterim}
+\end{IEEEeqnarray}
+Now, for every even $j < n$, we can replace 
+\begin{equation*}
+q_j - \confr{-q_{j+1}} - \confr{\dots} \quad \text{with} \quad q_j + \confr{q_{j+1}} + \confr{\dots}.
+\end{equation*}
+Thus, if $n$ is odd, every ``$-$'' in (\ref{eqn_ModTransConFracInterim}) can be turned into ``$+$''. In the other case, when $n$ is even, only one ``$-$'' in the last segment, $q_n - \confr{k+z}$, remains, but this can easily be rewritten to $q_n + \confr{-(k+z)}$. Taking both cases together, we obtain (\ref{eqn_ModTransConFrac}).
+\end{proof}
+
+\todo{19}{The modular group and ford circles}
