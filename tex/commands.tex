@@ -18,7 +18,7 @@
 \newcommand{\ModGrp}{\overline{\Gamma}}
 \newcommand{\hModGrp}{\Gamma}
 
-\newcommand{\setdef}[2]{\{#1\ |\ #2\}}
+\newcommand{\setdef}[2]{\{#1 \mid #2\}}
 
 % ---------------------------------------------------------------------- Macros
 \newcommand{\todo}[2]{\bigskip\noindent\framebox[\textwidth]{\emph{TODO #1:} #2}\bigskip}
@@ -29,7 +29,11 @@
 % ------------------------------------------------------------------- Functions
 \newcommand{\half}[1]{\frac{#1}{2}}
 \newcommand{\reci}[1]{\frac{1}{#1}}
-\newcommand{\confr}[1]{\ {}^1\!\!\!\diagup #1}
+
+\newcommand{\cfr}[2]{
+\begin{array}{c}\multicolumn{1}{c|}{#1}\\
+\hline\multicolumn{1}{|c}{#2}\end{array}}
+
 \newcommand{\inv}[1]{#1^{-1}}
 
 \newcommand{\moebius}[5]{\frac{#1 #5 + #2}{#3 #5 + #4}}
