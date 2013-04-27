@@ -1,0 +1,40 @@
+\section{Groups and basic algebraic constructions}
+
+In this section, we recapitulate some basic algebraic concepts, most important the notions of \emph{free groups} and \emph{free products}, and the construction of a group in terms of \emph{generators} and \emph{relations}. 
+
+\subsection{Free monoids}
+\index{Free!monoid}
+Let $\Sigma$ be a set of formal symbols, for example $\Sigma = \{a, b, c, \dots\}$. Then, the set of words over the alphabet $\Sigma$ is defined as
+\begin{equation}
+\label{eqn_SigmaStarDef}
+\Words{\Sigma} := \bigcup_{n\ge0} \Sigma^n.
+\end{equation}
+We will call the elements of $\Words{\Sigma}$ \emph{words}. To make things easier, we will omit the parentheses when notating such a word $w \in \Words{\Sigma}$, e.g. $w = (a,b,b,a) =: abba$. Note, that also the empty tuple, which we will call the \emph{empty word} and denote as $\epsilon$, is an element of $\Words{\Sigma}$. It is now just natural to define a binary operation $\cdot$ on $\Words{\Sigma}$ which is given by concatenation of words:
+\begin{equation*}
+w_1 \cdot w_2 = w_1 w_2, \quad w_1, w_2 \in \Words{\Sigma}.
+\end{equation*}
+Obviously, $\Words{\Sigma}$ is closed under this operation and $\epsilon$ is a the neutral element. Thus $\Words{\Sigma}$ together with the operation $\cdot$ forms a monoid. Note, that in the exceptional case, when $\Sigma = \emptyset$ and thus $\Words{\Sigma} = \{\epsilon\}$, we obtain the trivial monoid by this construction. 
+
+\begin{definition}
+\label{dfn_FreeMonoid}
+Let $\Sigma$ be an arbitrary set of symbols (called the alphabet), and $\Words{\Sigma}$ be defined as in (\ref{eqn_SigmaStarDef}). Moreover, denote concatenation of words by $\cdot$ and let $\epsilon$ be the empty word. Then, the algebraic structure $\langle \Words{\Sigma}, \cdot, \epsilon \rangle$ is called the \emph{free monoid over the alphabet $\Sigma$}.
+\end{definition} 
+
+\subsection{Free groups}
+\index{Free!group}
+In a similar fashion, we can construct also a group from any given formal alphabet $\Sigma$. For this purpose we first choose a disjoint copy of $\Sigma$, denoted by $\inv{\Sigma}$, and a bijection $f : \Sigma \to \inv{\Sigma}$. We can extend this bijection between the sets $\Sigma$ and $\inv{\Sigma}$ to an involution on their union $\overline{\Sigma} := (\Sigma \cup \inv{\Sigma})$ by simply defining $f(f(a)) := a$ for all $a \in \Sigma$. Now we introduce the notation $f(a) =: \inv{a}$ and call $\inv{a}$ the \emph{(formal) inverse} of the symbol $a \in \overline{\Sigma}$.
+
+\index{Reduced form}
+Next, we construct the free monoid $\Words{\overline{\Sigma}}$. If $\sigma_1, \sigma_2, \dots, \sigma_n$ are symbols of $\overline{\Sigma}$, then we say the word $\sigma_1 \sigma_2 \dots \sigma_n$ is \emph{reduced}, if and only if no two subsequent symbols of the word are inverse to each other, that is
+\begin{equation}
+\label{eqn_GrpWordReducedForm}
+ \sigma_j \ne \sigma_{j+1}^{-1} \quad \text{for all } 1 \le j < n.
+\end{equation}
+Clearly, every word $w \in \Words{\overline{\Sigma}}$ can be brought into reduced form by successively ``canceling out'' adjacent inverse symbols until finally a word is obtained, which satisfies (\ref{eqn_GrpWordReducedForm}). We call the result of this procedure the \emph{reduced form of $w$}. Additionally, we define two words $w_1, w_2 \in \Words{\overline{\Sigma}}$ to be \emph{equivalent}, if and only if they have the same reduced form and we write $w_1 \sim w_2$ in this case. It is easy to see that this relation is a congruence relation (i.e. is compatible with word-concatenation)\footnote{Denote the reduced form of a word $w$ as $\phi(w)$. If $w_1 \sim w_2$ and $v_1 \sim v_2$ are given, then we also have $w_1 v_1 \sim w_2 v_2$ because $\phi(w_1) = \phi(w_2) := w$ and $\phi(v_1) = \phi(v_2) := v$ implies $\phi(w_1 v_1) = \phi(w v) = \phi(w_2 v_2)$.} and thus we can consider also the set of equivalence classes $\Words{\overline{\Sigma}}/_{\sim}$ as monoid under the operation of word-concatenation. Obviously the set of reduced words is a representative system for $\Words{\overline{\Sigma}}/_{\sim}$ and we agree to denote an equivalence class $[w]_{\sim}$ simply by the reduced word $w$. $\Words{\overline{\Sigma}}/_{\sim}$ is not just a monoid, but in fact a group, as the inverse of a word $\sigma_1 \sigma_2 \dots \sigma_{n-1} \sigma_n$ is trivially given by $\sigma_n^{-1} \sigma_{n-1}^{-1} \dots \sigma_2^{-1} \sigma_1^{-1}$. 
+\begin{definition}
+\label{dfn_FreeGroup}
+Let $\Sigma$ be an arbitrary set of formal symbols and define $\overline{\Sigma} := \Sigma \cup \inv{\Sigma}$ as above. On the free monoid $\Words{\overline{\Sigma}}$ define an equivalence relation $\sim$ by identifying words with same reduced form. Then, the algebraic structure $\langle \Words{\overline{\Sigma}}/_{\sim}, \cdot, \epsilon \rangle$ is called the \emph{free group over the alphabet $\Sigma$}.
+\end{definition}
+\begin{remark}
+In the exceptional case, when $\Sigma = \emptyset$  we obtain the trivial group by this construction\footnote{If $\Sigma = \emptyset$ then we can also choose $\inv{\Sigma} = \emptyset$ ($\Sigma$ and $\inv{\Sigma}$ are then disjoint as required). It follows that also $\overline{\Sigma}$ is empty and we end up with the trivial monoid $\{\epsilon\}$, which is in the same time the trivial group.}.
+\end{remark}
