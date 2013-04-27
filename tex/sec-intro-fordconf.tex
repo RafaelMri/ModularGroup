@@ -20,14 +20,14 @@ In the case when all $a_j = 1$, we adhere to the standard sequence notation for 
 \begin{equation*}
 b_0 + \reci{b_1 + \reci{b_2 + \dots}} =: [b_0,b_1,b_2,\dots].
 \end{equation*}
-We can now reformulate Theorem \ref{thm_ModGrpTUAlg} in order to construct a continued fraction representation of any given modular transformation.
+We can now reformulate Corollary \ref{cor_ModGrpTUAlg} in order to construct a continued fraction representation of any given modular transformation.
 \begin{corollary}
 An arbitrary modular transformation $A(z) = \moebius{a}{b}{c}{d}{z}$ can be written as continued fraction
 \begin{equation}
 \label{eqn_ModTransConFrac}
 A(z) = [q_0,q_1,\dots,q_n,(-1)^{n+1}(k+z)]
 \end{equation}
-where the integers $n$, $q_0,q_1,\dots,q_n$ and $k$ are determined by the algorithm described in Theorem \ref{thm_ModGrpTUAlg}.
+where the integers $n$, $q_0,q_1,\dots,q_n$ and $k$ are determined by the algorithm described in Corollary \ref{cor_ModGrpTUAlg}.
 \end{corollary}
 \begin{proof}
 By the observation we made at the beginning of this section and because of the definition $e_j$ := $(-1)^j q_j$, we have
@@ -43,11 +43,11 @@ A(z) &=& e_0 &+& \cfr{-1}{e_1}
           &+& \cfr{-1}{(-1)^n q_n} 
           &+& \cfr{-1}{k + z}. \label{eqn_ModTransConFracInterim}
 \end{IEEEeqnarray}
-Now, for every even $j < n$, we can rewrite 
+Now, for every odd $j \le n$, we can rewrite 
 \begin{equation*}
-q_j + \cfr{-1}{-q_{j+1}} + \cfr{-1}{\dots} \quad \text{with} \quad q_j + \cfr{1}{q_{j+1}} + \cfr{1}{\dots}.
+\cfr{-1}{-q_j} + \cfr{-1}{\dots} \quad \text{to} \quad \cfr{1}{q_j} + \cfr{1}{\dots}.
 \end{equation*}
-Thus, if $n$ is odd, every numerator $-1$ in (\ref{eqn_ModTransConFracInterim}) can be turned into $+1$. In the other case, when $n$ is even, only one negative numerator in the last segment, $q_n + \frac{-1}{k+z}$, remains, but this can easily be rewritten to $q_n + \frac{1}{-(k+z)}$. Taking both cases together, we obtain (\ref{eqn_ModTransConFrac}).
+Thus, if $n$ is odd, every numerator $-1$ in (\ref{eqn_ModTransConFracInterim}) can be turned into $+1$. In the other case, when $n$ is even, only one negative numerator at the end, $\frac{-1}{k+z}$, remains, but this can easily be rewritten to $\frac{1}{-(k+z)}$. Taking both cases together, we obtain (\ref{eqn_ModTransConFrac}).
 \end{proof}
 
 \todo{19}{The modular group and ford circles}
