@@ -9,7 +9,7 @@ Let $\Sigma$ be a set of formal symbols, for example $\Sigma = \{a, b, c, \dots\
 \label{eqn_SigmaStarDef}
 \Words{\Sigma} := \bigcup_{n\ge0} \Sigma^n.
 \end{equation}
-We will call the elements of $\Words{\Sigma}$ \emph{words}. To make things easier, we will omit the parentheses when notating such a word $w \in \Words{\Sigma}$, e.g. $w = (a,b,b,a) =: abba$. Note, that also the empty tuple, which we will call the \emph{empty word} and denote as $\epsilon$, is an element of $\Words{\Sigma}$. It is now just natural to define a binary operation $\cdot$ on $\Words{\Sigma}$ which is given by concatenation of words:
+We will call the tuples of $\Words{\Sigma}$ \emph{words}. To make things easier, we will omit the parentheses when notating such a word $w \in \Words{\Sigma}$, e.g. $w = (a,b,b,a) =: abba$. Note, that also the empty tuple, which we will call the \emph{empty word} and denote as $\epsilon$, is an element of $\Words{\Sigma}$. It is now just natural to define a binary operation $\cdot$ on $\Words{\Sigma}$ which is given by concatenation of words:
 \begin{equation*}
 w_1 \cdot w_2 = w_1 w_2, \quad w_1, w_2 \in \Words{\Sigma}.
 \end{equation*}
@@ -22,19 +22,103 @@ Let $\Sigma$ be an arbitrary set of symbols (called the alphabet), and $\Words{\
 
 \subsection{Free groups}
 \index{Free!group}
-In a similar fashion, we can construct also a group from any given formal alphabet $\Sigma$. For this purpose we first choose a disjoint copy of $\Sigma$, denoted by $\inv{\Sigma}$, and a bijection $f : \Sigma \to \inv{\Sigma}$. We can extend this bijection between the sets $\Sigma$ and $\inv{\Sigma}$ to an involution on their union $\overline{\Sigma} := (\Sigma \cup \inv{\Sigma})$ by simply defining $f(f(a)) := a$ for all $a \in \Sigma$. Now we introduce the notation $f(a) =: \inv{a}$ and call $\inv{a}$ the \emph{(formal) inverse} of the symbol $a \in \overline{\Sigma}$.
+In a similar fashion, we can construct also a group from any given formal alphabet $\Sigma$. For this purpose we first choose a disjoint copy of $\Sigma$, denoted by $\inv{\Sigma}$, and a bijection $f : \Sigma \to \inv{\Sigma}$. We can extend this bijection between the sets $\Sigma$ and $\inv{\Sigma}$ to an involution on their union $\overline{\Sigma} := (\Sigma \cup \inv{\Sigma})$ by simply defining $f(f(a)) := a$ for all $a \in \Sigma$. Now we introduce the notation $f(a) =: \inv{a}$ for all $a \in \overline{\Sigma}$ and call $\inv{a}$ the \emph{(formal) inverse} of the $a$.
 
 \index{Reduced form}
+\index{Group!word}
 Next, we construct the free monoid $\Words{\overline{\Sigma}}$. If $\sigma_1, \sigma_2, \dots, \sigma_n$ are symbols of $\overline{\Sigma}$, then we say the word $\sigma_1 \sigma_2 \dots \sigma_n$ is \emph{reduced}, if and only if no two subsequent symbols of the word are inverse to each other, that is
 \begin{equation}
 \label{eqn_GrpWordReducedForm}
  \sigma_j \ne \sigma_{j+1}^{-1} \quad \text{for all } 1 \le j < n.
 \end{equation}
-Clearly, every word $w \in \Words{\overline{\Sigma}}$ can be brought into reduced form by successively ``canceling out'' adjacent inverse symbols until finally a word is obtained, which satisfies (\ref{eqn_GrpWordReducedForm}). We call the result of this procedure the \emph{reduced form of $w$}. Additionally, we define two words $w_1, w_2 \in \Words{\overline{\Sigma}}$ to be \emph{equivalent}, if and only if they have the same reduced form and we write $w_1 \sim w_2$ in this case. It is easy to see that this relation is a congruence relation (i.e. is compatible with word-concatenation)\footnote{Denote the reduced form of a word $w$ as $\phi(w)$. If $w_1 \sim w_2$ and $v_1 \sim v_2$ are given, then we also have $w_1 v_1 \sim w_2 v_2$ because $\phi(w_1) = \phi(w_2) := w$ and $\phi(v_1) = \phi(v_2) := v$ implies $\phi(w_1 v_1) = \phi(w v) = \phi(w_2 v_2)$.} and thus we can consider also the set of equivalence classes $\Words{\overline{\Sigma}}/_{\sim}$ as monoid under the operation of word-concatenation. Obviously the set of reduced words is a representative system for $\Words{\overline{\Sigma}}/_{\sim}$ and we agree to denote an equivalence class $[w]_{\sim}$ simply by the reduced word $w$. $\Words{\overline{\Sigma}}/_{\sim}$ is not just a monoid, but in fact a group, as the inverse of a word $\sigma_1 \sigma_2 \dots \sigma_{n-1} \sigma_n$ is trivially given by $\sigma_n^{-1} \sigma_{n-1}^{-1} \dots \sigma_2^{-1} \sigma_1^{-1}$. 
+Clearly, every word $w \in \Words{\overline{\Sigma}}$ can be brought into reduced form by successively ``canceling out'' adjacent inverse symbols until finally a word is obtained, which satisfies (\ref{eqn_GrpWordReducedForm}). We call the result of this procedure the \emph{reduced form of $w$}. Additionally, we define two words $w_1, w_2 \in \Words{\overline{\Sigma}}$ to be \emph{equivalent}, if and only if they have the same reduced form and we write $w_1 \sim w_2$ in this case. It is easy to see that this relation is a congruence relation (\ie it is compatible with word-concatenation)\footnote{Denote the reduced form of a word $w$ as $\phi(w)$. If $w_1 \sim w_2$ and $v_1 \sim v_2$ are given, then we also have $w_1 v_1 \sim w_2 v_2$ because $\phi(w_1) = \phi(w_2) := w$ and $\phi(v_1) = \phi(v_2) := v$ implies $\phi(w_1 v_1) = \phi(w v) = \phi(w_2 v_2)$.} and thus we can consider also the set of equivalence classes $\Words{\overline{\Sigma}}/_{\sim}$ as monoid under the operation of word-concatenation. Obviously the set of reduced words is a representative system for $\Words{\overline{\Sigma}}/_{\sim}$ and we agree to denote an equivalence class $[w]_{\sim}$ simply by the reduced word $w$. $\Words{\overline{\Sigma}}/_{\sim}$ is not just a monoid, but in fact a group, as the inverse of a word $\sigma_1 \sigma_2 \dots \sigma_{n-1} \sigma_n$ is trivially given by $\sigma_n^{-1} \sigma_{n-1}^{-1} \dots \sigma_2^{-1} \sigma_1^{-1}$. We call a reduced word of $\Words{\overline{\Sigma}}$ (resp. its corresponding equivalence class in $\Words{\overline{\Sigma}}/_{\sim}$) a \emph{group word over the alphabet $\Sigma$}.
+
 \begin{definition}
 \label{dfn_FreeGroup}
 Let $\Sigma$ be an arbitrary set of formal symbols and define $\overline{\Sigma} := \Sigma \cup \inv{\Sigma}$ as above. On the free monoid $\Words{\overline{\Sigma}}$ define an equivalence relation $\sim$ by identifying words with same reduced form. Then, the algebraic structure $\langle \Words{\overline{\Sigma}}/_{\sim}, \cdot, \epsilon \rangle$ is called the \emph{free group over the alphabet $\Sigma$}.
 \end{definition}
+
 \begin{remark}
-In the exceptional case, when $\Sigma = \emptyset$  we obtain the trivial group by this construction\footnote{If $\Sigma = \emptyset$ then we can also choose $\inv{\Sigma} = \emptyset$ ($\Sigma$ and $\inv{\Sigma}$ are then disjoint as required). It follows that also $\overline{\Sigma}$ is empty and we end up with the trivial monoid $\{\epsilon\}$, which is in the same time the trivial group.}.
+In the exceptional case, when $\Sigma = \emptyset$,  we obtain the trivial group by this construction\footnote{If $\Sigma = \emptyset$ then we can also choose $\inv{\Sigma} = \emptyset$ ($\Sigma$ and $\inv{\Sigma}$ are then disjoint as required). It follows that also $\overline{\Sigma}$ is empty and we end up with the trivial monoid $\{\epsilon\}$, which is in the same time the trivial group.}.
 \end{remark}
+
+\begin{example}
+Let $\Sigma$ be the singleton set $\{a\}$. Now, the free group over $\Sigma$ consists precisely of the following group words:
+\begin{equation*}
+\Words{\overline{\Sigma}}/_{\sim} = \{\epsilon, a, aa, aaa, \dots, \inv{a}, \inv{a}\inv{a},\dots\}.
+\end{equation*}
+If we now agree on the notation
+\begin{equation*}
+\epsilon =: a^0, \quad 
+\underbrace{a a \dots a}_{k \text{ times}} =: a^k, \quad
+\underbrace{\inv{a} \inv{a} \dots \inv{a}}_{k \text{ times}} =: a^{-k},
+\end{equation*}
+we have $a^n \cdot a^m = a^{n+m}$ for all $n,m \in \Z$ and it is thus evident, that the free group over any one-element alphabet is isomorphic to the group $\langle \Z, +, 0 \rangle$. 
+
+Note, that this is the only case (besides the trivial one, when $\Sigma = \emptyset$), where the free group is commutative. In fact, the free group construction always yields a group with ``richest possible'' structure in the following sense:
+
+\begin{theorem}
+\label{thm_FreeGrpUniqueHom}
+Let $\Sigma$ be an arbitrary set and denote the free group over $\Sigma$ as $F$. Let $G$ be an arbitrary group. If a mapping $f : \Sigma \to G$ is given, then we can extend $f$ in a unique way to a homomorphism $\overline{f} : F \to G$.
+\end{theorem}
+
+In fact, the property described in Theorem \ref{thm_FreeGrpUniqueHom} completely characterizes the free group up to isomorphism, as stated in the next Theorem:
+
+\begin{theorem}
+\label{thm_FreeGrpUnivMapProp}
+Let $\Sigma$ be an arbitrary set and $F$ be a group together with an injective map $\iota : \Sigma \to F$. If $F$ has the property, that for any map $f : \Sigma \to G$, where $G$ is an arbitrary group, the map $f \circ \inv{\iota}: F \to G$ can be extended uniquely to a homomorphism $\overline{f}: F \to G$, then $F$ is (isomorphic to) the free group over the alphabet $\Sigma$.
+\end{theorem}
+
+\end{example}
+
+\subsection{Generators and relations}
+
+\index{Generator}
+\index{Group!generator}
+\begin{definition}
+Let $G$ be a group and $\Sigma \subseteq G$ a subgroup. We say $G$ is \emph{generated by} the elements of $\Sigma$, if every element $g \in G$ can be written as a product of elements from $\Sigma$, that is 
+\begin{equation}
+\label{eqn_GrpGenerators}
+\forall g \in G\ \exists n \in \N,\ (\sigma_j) \in \Sigma^n,\ (k_j) \in \Z^n:\quad 
+g = \sigma_1^{k_1} \sigma_2^{k_2} \dots \sigma_n^{k_n}.
+\end{equation}
+Moreover, in this case we call the elements of $\Sigma$ \emph{generators} of $G$. 
+\end{definition}
+
+Let us first consider the case, when some $g \in G$ can be generated in two  different ways, for example
+\begin{equation*}
+g = \sigma_1^{k_1} \sigma_2^{k_2} \dots \sigma_n^{k_n} 
+  = \tau_1^{\ell_1} \tau_2^{\ell_2} \dots \tau_m^{\ell_m}
+\end{equation*}
+with $\sigma_j, \tau_j \in \Sigma$ and $k_j, \ell_j \in \Z$. This immediately gives (here, we denote the neutral element by $e$)
+\begin{equation}
+\label{eqn_GrpRelation}
+\sigma_1^{k_1} \sigma_2^{k_e} \dots \sigma_n^{k_n} \cdot
+\tau_m^{-\ell_m} \tau_{m-1}^{-\ell_{m-1}} \dots \tau_1^{-\ell_1} = e.
+\end{equation}
+We call the group word occurring on the left hand side of (\ref{eqn_GrpRelation}) a \emph{relation} on $G$. If we denote by $F$ the free group over the alphabet $\Sigma$, the set of all such possible relations on $G$ forms a normal subgroup $N \unlhd F$. Moreover, $G$ is isomorphic to the factor group $F/N$. In the other case, when the product representation in (\ref{eqn_GrpGenerators}) is unique for all $g \in G$, then we have just the trivial relation $e = e$ and the normal subgroup $N$ thus consists just of the neutral element. $G$ is then said to be \emph{relation-free} -- that is where the term ``free group'' actually comes from -- and $G \cong F$. 
+
+Summing up, we see that every group can be described by supplying a set of generators $\Sigma$ and a the set of relations $N \unlhd \Words{\overline{\Sigma}}$. Of course, it is also sufficient to just supply a subset $R$ of relations from which the other relations can be derived. This leads to the next definition.
+
+\begin{definition}
+Let $\Sigma$ be an arbitrary set and $R \subseteq \Words{\overline{\Sigma}}$ a set of group words over the alphabet $\Sigma$. A group $G$ is said to be the \emph{group defined by} the \emph{generators} $\sigma \in \Sigma$ \emph{and relations} $r = e\ (r \in R)$, if $G$ is obtained by the following construction:
+\begin{enumerate}
+\item Construct the free group $F = \Words{\overline{\Sigma}}$.
+\item Let $N$ be the normal subgroup of $F$ generated by the relations $R$:
+\begin{equation*}
+N := \bigcap_{R \subseteq N^{\prime} \unlhd F} N^{\prime}.
+\end{equation*}
+\item Define $G$ to be the factor group $F/N$.
+\end{enumerate}
+Finally, $(\Sigma \mid R)$ is called a \emph{presentation} of $G$.
+\end{definition}
+\index{Word problem}
+\begin{remark}
+First of all, we note that the presentation $(\Sigma \mid R)$ of a group $G$ in terms of generators $\Sigma$ is by far not unique as the normal group $N$ can be generated by many different subsets $R \subseteq N$. Even worse, the $\emph{word problem}$, \ie the question if a given group word $w \in \Words{\overline{\Sigma}}$ is also in $N$ is in general not decidable, which means that there is no general algorithm for deciding, if two given group words represent the same element of $G$.
+\end{remark}
+
+We conclude this section with the statement, that among all groups, which satisfy a given set of relations $R$, the group constructed as above is in a certain sense the largest possible one.
+
+\begin{theorem}
+Let $(\Sigma \mid R)$ be a presentation of the group $G$. If $H$ is any group, which can be generated by $\Sigma$, and $H$ satisfies all relations $R$, then there is an epimorphism $G \to H$.
+\end{theorem}

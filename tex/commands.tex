@@ -2,6 +2,7 @@
 \renewcommand{\phi}{\varphi}
 
 % ------------------------------------------------------------------------ Sets
+\newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Rplus}{\R^{+}}
 \newcommand{\C}{\mathbb{C}}
@@ -55,14 +56,13 @@
 
 % ---------------------------------------------------------------- Environments
 
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}{Corollary}
-\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
 
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
 
-\newenvironment{remark}{\noindent\emph{Remark:}}{}
-\newenvironment{remarks}
-   {\noindent\emph{Remarks:}\begin{itemize}}
-   {\end{itemize}}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
