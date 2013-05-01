@@ -20,21 +20,7 @@ The condition $ad - bc \ne 0$ just ensures that $\phi$ is in fact non-constant.
 \label{thm_MoebiusGroup}
 The set of Möbius transformations forms a group under the action of function composition and can be identified with the projective general linear group $\PGL{\C}$ or the projective special linear group $\PSL{\C}$.
 \end{theorem}
-\begin{remark}
-\index{GL2C@$\GL{\C}$}
-\index{SL2C@$\SL{\C}$}
-\index{PGL2C@$\PGL{\C}$}
-\index{PSL2C@$\PSL{\C}$}
-\index{General linear group}
-\index{Special linear group}
-\index{Projective!general linear group}
-\index{Projective!special linear group}
-\index{Homogeneous!linear transformation}
-\index{Inhomogeneous!linear transformation}
-The group $\PGL{\C}$ is obtained from the \emph{general linear group} $\GL{\C}$, \ie the set of invertible 2-by-2 matrices, by identifying all matrices which differ by a scalar multiple. Since over $\C$ every invertible matrix can be scaled such that its determinant gets 1, we also could have taken $\SL{\C}$, the \emph{special linear group} consisting of all 2-by-2 matrices with determinant 1, as basic set for this construction. This again yields the same group but this time it is denoted $\PSL{\C}$, the \emph{projective special linear group}. 
-In Schoeneberg \cite{schoeneberg1974elliptic} the elements of $\GL{\C}$ are called \emph{homogeneous linear transformations} and Möbius transformations are called \emph{inhomogeneous linear transformations}.
-\end{remark}
-\begin{proof}[Proof (Theorem \ref{thm_MoebiusGroup}):]
+\begin{proof}
 Let $\phi$ and $\psi$ be Möbius transformations with
 \begin{equation*}
 \phi(z) = \moebius{a}{b}{c}{d}{z},\quad \psi(z) = \moebius{e}{f}{g}{h}{z}.
@@ -63,7 +49,7 @@ This motivates the definition of a mapping $\pi$ between matrices in $\GL{\C}$ a
 \end{equation}
 Note, that the domain of $\pi$ is $\GL{\C}$, \ie the set of 2-by-2 matrices with nonzero determinant. This is perfectly consistent with the condition $ad - bc \ne 0$ we have for Möbius transformations. For this reason, $\pi$ is a well-defined function from $\GL{\C}$ to the set of Möbius transformations.
 
-But $\pi$ is not just a function, it is in fact a homomorphism, as can be seen from (\ref{eqn_MoebiusComposition}) and (\ref{eqn_MatrixProduct}). Trivially, $\pi$ is also surjective, which carries over the group structure of $\GL{\C}$ to the set of Möbius transformations. The kernel of $\pi$ comprises of all multiples of the identity matrix. Therefore, by the first isomorphism theorem the group of Möbius transformations is isomorphic to $\GL{\C}/\ker{\pi} \cong \PGL{\C}$.
+But $\pi$ is not just a function, it is in fact a homomorphism, as we have seen in (\ref{eqn_MoebiusComposition}) and (\ref{eqn_MatrixProduct}). Trivially, $\pi$ is also surjective, which carries over the group structure of $\GL{\C}$ to the set of Möbius transformations. The kernel of $\pi$ comprises of all multiples of the identity matrix. Therefore, by the first isomorphism theorem the group of Möbius transformations is isomorphic to $\GL{\C}/\ker{\pi} \cong \PGL{\C}$ and we have seen in Example \ref{ex_ProjAndGenLinGrp} that $\PGL{\C} \cong \PSL{\C}$.
 \end{proof}
 
 \begin{lemma}
@@ -84,7 +70,7 @@ $\bullet$ & Inversion:   & $z \mapsto \reci{z}$           & ~
 \begin{proof}
 Let $\phi(z) = \moebius{a}{b}{c}{d}{z}$ be an arbitrary Möbius transformation. In the case when $c = 0$, we may further assume w.l.o.g. that $d = 1$ such that the transformation simply writes $\phi(z) = a z + b$. Obviously this is dilation and rotation by the factor $a$ and translation by $b$.
 
-Let's consider the more interesting case, when $c \ne 0$. \Wlog we assume that $c = 1$, such that 
+Let's consider the more interesting case, when $c \ne 0$. Without restriction we may assume that $c = 1$, such that 
 \begin{equation*}
 \phi(z) = \moebius{a}{b}{}{d}{z} = a + \frac{b - ad}{z + d}.
 \end{equation*}

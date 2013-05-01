@@ -12,16 +12,28 @@
 
 \newcommand{\Words}[1]{{#1}^{\star}}
 \newcommand{\presentation}[2]{\left\langle #1 \mid #2 \right\rangle}
-\newcommand{\GL}[1]{\operatorname{GL}_2(#1)}
-\newcommand{\PGL}[1]{\operatorname{PGL}_2(#1)}
-\newcommand{\SL}[1]{\operatorname{SL}_2(#1)}
-\newcommand{\PSL}[1]{\operatorname{PSL}_2(#1)}
+
+\newcommand{\LinGrp}[3]{\operatorname{#1}_{#2}(#3)}
+
+\newcommand{\GLn}[2]{\LinGrp{GL}{#1}{#2}}
+\newcommand{\SLn}[2]{\LinGrp{SL}{#1}{#2}}
+\newcommand{\PGLn}[2]{\LinGrp{PGL}{#1}{#2}}
+\newcommand{\PSLn}[2]{\LinGrp{PSL}{#1}{#2}}
+
+\newcommand{\GL}[1]{\GLn{2}{#1}}
+\newcommand{\SL}[1]{\SLn{2}{#1}}
+\newcommand{\PGL}[1]{\PGLn{2}{#1}}
+\newcommand{\PSL}[1]{\PSLn{2}{#1}}
+
+\newcommand{\Center}[1]{\operatorname{Z}(#1)}
+
 \newcommand{\Mat}[3]{{#1}^{#2 \times #3}}
+\newcommand{\SqMat}[2]{\Mat{#1}{#2}{#2}}
 
 \newcommand{\ModGrp}{\overline{\Gamma}}
 \newcommand{\hModGrp}{\Gamma}
 
-\newcommand{\setdef}[2]{\{#1 \mid #2\}}
+\newcommand{\setdef}[2]{\left\{#1 \mid #2\right\}}
 
 % ---------------------------------------------------------------------- Macros
 \newcommand{\todo}[2]{\bigskip\noindent\framebox[\textwidth]{\emph{TODO #1:} #2}\bigskip}
