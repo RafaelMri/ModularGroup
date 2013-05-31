@@ -41,12 +41,17 @@ Let $A: z \mapsto \moebius{a}{b}{c}{d}{z}$ be an arbitrary modular transformatio
 \begin{equation*}
 A = \mat{a}{b}{c}{d}, \quad U = \mat{1}{1}{0}{1}, \quad T = \mat{0}{-1}{1}{\phantom{+}0}.
 \end{equation*}
-Let's first consider the two special cases, when $a=0$ or $c=0$. In these cases, because of $\det(A) = 1$, we have
-\begin{IEEEeqnarray*}{rCcCll}
-A &=& \mat{0}{-1}{1}{\pm d} &=& TU^{\pm d}\quad &\text{ if } a = 0 \text{ and}\\
-A &=& \mat{1}{b}{0}{1} &=& U^b\quad & \text{ if } c = 0.
-\end{IEEEeqnarray*}
-In the general case, the condition $ad - bc = 1$ implies that $a$ and $c$ are coprime and the Euclidean algorithm therefore yields
+Remember that for a matrix $M \in \Mat{\Z}{2}{2}$, $M$ and $-M$ represent the same element in $\PSL{\Z}$ and we write $-M \sim M$.
+
+Let's first consider the two special cases, when $a$ or $c$ are zero. If $a=0$, it follows from $ad - bc = 1$, that $-b = c = \pm 1$.  Therefore we have
+\begin{equation*}
+A \sim c A = \mat{0}{-1}{1}{c d} = TU^{c d}.
+\end{equation*}
+Similarly, $c = 0$ gives $a = d = \pm 1$ and
+\begin{equation*}
+A \sim a A = \mat{1}{a b}{0}{1} = U^{a b}.
+\end{equation*}
+In the general case, when $a$ and $c$ are both nonzero, $ad - bc = 1$ implies that $a$ and $c$ are coprime and the Euclidean algorithm therefore yields
 \begin{eqnarray*}
       a &=& q_0 \cdot c\phantom{_0} + r_1 \\
       c &=& q_1 \cdot r_1 + r_2 \\
@@ -55,7 +60,7 @@ In the general case, the condition $ad - bc = 1$ implies that $a$ and $c$ are co
 r_{n-1} &=& q_n \cdot r_n + r_{n+1}\\
         &=& q_n \cdot 1\phantom{_n} + 0.
 \end{eqnarray*}
-We can use this to reduce the Matrix $A$ by successively multiplying powers of $U$ and $T$ from the left. Just note, that multiplication with $U^k$ adds $k$ times the second row to the first row, whereas $T$ swaps the rows and changes the sign of one arbitrary row\footnote{This freedom of choice is due to the fact that the matrices $M$ and $-M$ represent the same element in $\PSL{\Z}$.}. If we concentrate only on the first column of $A$ and apply the first few transformations
+We can use this to reduce the Matrix $A$ by successively multiplying powers of $U$ and $T$ from the left. Just note, that multiplication with $U^k$ adds $k$ times the second row to the first row, whereas $T$ swaps the rows and changes the sign of one arbitrary row\footnote{This freedom of choice is again due to the fact that the matrices $M$ and $-M$ represent the same element in $\PSL{\Z}$.}. If we concentrate only on the first column of $A$ and apply the first few transformations
 \begin{equation*}
 \cvec{a}{c}                           \overset{U^{-q_0}}{\longmapsto}
 \cvec{r_1}{c\phantom{_1}}             \overset{T}{\mapsto} 
@@ -101,7 +106,7 @@ It is worth formulating the algorithm used in the previous proof explicitly in t
 \label{cor_ModGrpTUAlg}
 An arbitrary modular transformation $A: z \mapsto \moebius{a}{b}{c}{d}{z}$ can be represented in terms of the transformations $U: z \mapsto z+1$ and $T : z \mapsto -\reci{z}$, by performing the following steps:
 \begin{enumerate}
-\item If $a = 0$, then $A = TU^{\pm d}$ and if $c = 0$, then $A = U^b$ and we are done. Otherwise, continue with \ref{itm_ModGrpTUAlgStart}.
+\item If $a = 0$, then $A = TU^{c d}$ and if $c = 0$, then $A = U^{a b}$ and we are done. Otherwise, continue with \ref{itm_ModGrpTUAlgStart}.
 \item \label{itm_ModGrpTUAlgStart} Apply the Euclidean algorithm to $a$ and $c$, with the first division being $a = q_0 \cdot c + r_1$ ($q_0$ may be $\le 0$) and let $n$ be the number of the  last division (start counting from 0). Call the arising quotients $q_0,q_1,\dots,q_n$.
 \item For $j \in \{0,1,\dots,n\}$ set $e_j := (-1)^j q_j$.
 \item Calculate the matrix product $TU^{-e_n} TU^{-e_{n-1}} \cdots TU^{-e_1}TU^{-e_0} A$ and multiply by $\pm 1$ in order to obtain a representation with positive diagonal elements. Read off the right-upper entry and call it $k$.
