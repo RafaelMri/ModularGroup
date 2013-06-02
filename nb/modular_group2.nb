@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     43581,       1086]
-NotebookOptionsPosition[     42783,       1059]
-NotebookOutlinePosition[     43147,       1075]
-CellTagsIndexPosition[     43104,       1072]
+NotebookDataLength[     45716,       1137]
+NotebookOptionsPosition[     44917,       1110]
+NotebookOutlinePosition[     45281,       1126]
+CellTagsIndexPosition[     45238,       1123]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -848,8 +848,8 @@ Cell[BoxData[
            RowBox[{"{", 
             RowBox[{"I", ",", "1"}], "}"}], ",", 
            RowBox[{"{", 
-            RowBox[{"1", ",", "I"}], "}"}]}], "}"}], ",", "t"}], "]"}]}], ";",
-       "\[IndentingNewLine]", 
+            RowBox[{"1", ",", "I"}], "}"}]}], "}"}], ",", "transform"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"mr", "=", 
        RowBox[{
         SuperscriptBox["2", 
@@ -887,6 +887,34 @@ Cell[BoxData[
       "\[IndentingNewLine]", 
       RowBox[{"g", "=", 
        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"MemberQ", "[", 
+         RowBox[{"show", ",", "\"\<Ford circles\>\""}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"AppendTo", "[", 
+          RowBox[{"g", ",", "\[IndentingNewLine]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"EdgeForm", "[", "Brown", "]"}], ",", "LightBrown", ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"GeneralizedDisk", "[", 
+                RowBox[{
+                 RowBox[{"MoebiusC", "[", 
+                  RowBox[{"phi", ".", "#"}], "]"}], "[", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", 
+                    RowBox[{"-", "I"}]}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"I", ",", "2"}], "}"}]}], "}"}], "]"}], "]"}], 
+               "&"}], "/@", "allElements"}]}], "}"}]}], "\[IndentingNewLine]",
+           "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+      "\[IndentingNewLine]", 
       RowBox[{"If", "[", 
        RowBox[{
         RowBox[{"MemberQ", "[", 
@@ -977,16 +1005,34 @@ Cell[BoxData[
          "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]", "]"}], ";", 
       "\[IndentingNewLine]", 
       RowBox[{"range", "=", 
-       RowBox[{
+       RowBox[{"{", 
         RowBox[{
          RowBox[{"{", 
           RowBox[{
-           RowBox[{"#", "-", 
+           RowBox[{
+            RowBox[{"move", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "-", 
+            RowBox[{"GoldenRatio", " ", 
+             SuperscriptBox["2", 
+              RowBox[{"-", "zoom"}]]}]}], ",", 
+           RowBox[{
+            RowBox[{"move", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "+", 
+            RowBox[{"GoldenRatio", " ", 
+             SuperscriptBox["2", 
+              RowBox[{"-", "zoom"}]]}]}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"move", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], "-", 
             SuperscriptBox["2", 
              RowBox[{"-", "zoom"}]]}], ",", 
-           RowBox[{"#", "+", 
+           RowBox[{
+            RowBox[{"move", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], "+", 
             SuperscriptBox["2", 
-             RowBox[{"-", "zoom"}]]}]}], "}"}], "&"}], "/@", "move"}]}], ";", 
+             RowBox[{"-", "zoom"}]]}]}], "}"}]}], "}"}]}], ";", 
       "\[IndentingNewLine]", 
       RowBox[{"Graphics", "[", 
        RowBox[{"g", ",", 
@@ -995,7 +1041,7 @@ Cell[BoxData[
         RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]}]}], 
     "\[IndentingNewLine]", "]"}], ",", 
    RowBox[{"{", 
-    RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+    RowBox[{"transform", ",", "0", ",", "1"}], "}"}], ",", 
    RowBox[{"{", 
     RowBox[{
      RowBox[{"{", 
@@ -1016,8 +1062,9 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"show", ",", 
      RowBox[{"{", 
-      RowBox[{"\"\<Extended Tessellation\>\"", ",", "\"\<Incircles\>\""}], 
-      "}"}], ",", 
+      RowBox[{
+      "\"\<Extended Tessellation\>\"", ",", "\"\<Ford circles\>\"", ",", " ", 
+       "\"\<Incircles\>\""}], "}"}], ",", 
      RowBox[{"ControlType", "\[Rule]", "TogglerBar"}]}], "}"}], ",", 
    RowBox[{"ControlPlacement", "\[Rule]", "Left"}]}], "\[IndentingNewLine]", 
   "]"}]], "Input",
@@ -1055,7 +1102,11 @@ Cell[BoxData[
    3.5791087207657795`*^9}, {3.5791087881597767`*^9, 3.579108789794791*^9}, {
    3.5791088562135153`*^9, 3.5791088583835344`*^9}, {3.579108949356201*^9, 
    3.579108949408202*^9}, {3.579109098389742*^9, 3.5791091006317596`*^9}, 
-   3.579109339683081*^9}]
+   3.579109339683081*^9, {3.57914464735077*^9, 3.5791447210142717`*^9}, {
+   3.5791447514499965`*^9, 3.579144752510801*^9}, {3.579144907287834*^9, 
+   3.5791449158054695`*^9}, {3.579145359252886*^9, 3.579145359939288*^9}, {
+   3.5791455523036766`*^9, 3.579145606077097*^9}, {3.579146097167108*^9, 
+   3.579146106729947*^9}}]
 },
 WindowSize->{1350, 673},
 WindowMargins->{{0, Automatic}, {Automatic, 0}},
@@ -1087,7 +1138,7 @@ Cell[22141, 569, 544, 16, 31, "Input"],
 Cell[22688, 587, 703, 22, 72, "Input"],
 Cell[23394, 611, 8441, 181, 767, "Input"],
 Cell[31838, 794, 1178, 35, 72, "Input"],
-Cell[33019, 831, 9760, 226, 727, "Input"]
+Cell[33019, 831, 11894, 277, 847, "Input"]
 }
 ]
 *)
