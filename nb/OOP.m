@@ -27,9 +27,9 @@ NewClass[class_] := (
 SetAttributes[NewClass, HoldFirst];
 
 New[class_?(InstanceQ[Class]), args___] := Module[{obj},
-  obj /: InstanceQ[class][obj] = True;
   Format[obj] ^= Unique[class];
   Init[class, obj, args];
+  obj /: InstanceQ[class][obj] = True;
   obj
 ];
 New[notaclass_, args___] := (
