@@ -2,24 +2,35 @@
 
 BeginPackage["OOP`"];
 
+(* ---------------------------------------------------------- Public Elements *)
+
 Class::usage = 
-  "Symbol for classes for usage with InsanceQ. " <>
-  "Example: InstanceQ[Class][myClass]";
+  "The type of a class. " <>
+  "After calling NewClass[myClass], InstanceQ[Class][myClass] will return True.";
 
 NewClass::usage = 
-  "Creates a new class. Example: NewClass[myClass]";
+  "NewClass[myClass] declares the symbol myClass to be a class.";
+NewAbstractClass::usage =
+  "NewAbstractClass[myClass] declares the symbol myClass to be an abstract class.";
 
-New::usage = "Instantiate an object. Example: myObj = New[myClass, args...]";
+AbstractQ::usage =
+  "AbstractQ[myClass] returns true if myClass is an abstract class.";
+
+New::usage = 
+  "New[myClass, args...] instantiates an objtect of type myClass, " <>
+  "passing the given arguments to the constructor.";
 New::notaclass = "`1` is not a class.";
+New::abstractinst = "`1` is an abstract class and cannot be instantiated.";
 
 Init::usage = 
-  "Used by function New to initialize an object, should not be called directly.";
+  "Init[myClass, newObj, args...] initializes an object of type myClass." <>
+  "Never call directly, use newObj = New[myClass, args...] instead.";
 Init::undef = 
   "Constructor for class `1` and arguments `2` not defined. " <> 
   "Make sure you have defined Init[`1`, obj_, args___] ^:= ...";
 
 Super::usage = 
-  "Call constructor of a baseclass, for usage within Init. " <>
+  "Super[myBaseClass, newObj, args...] calls the constructor of  " <>
   "Example: Super[myBaseClass, obj, args...]";
 
 InstanceQ::usage = 
@@ -37,13 +48,24 @@ NewClass[class_] := (
     $Failed
   );
 );
-SetAttributes[NewClass, HoldFirst];
+NewAbstractClass[class_] := (
+  NewClass[class];
+  AbstractQ[class] ^= True;
+);
 
-New[class_?(InstanceQ[Class]), args___] := Module[{obj},
-  Format[obj] ^= Unique[class];
-  Super[class, obj, args];
-  obj
-];
+New[class_?(InstanceQ[Class]), args___] := (
+  If[TrueQ@AbstractQ@class, (
+    Message[New::abstractclass, class];
+    $Failed
+  ), (
+    Module[{obj},
+      Format[obj] ^= Unique[class];
+      Super[class, obj, args];
+      obj
+    ]
+  )]
+);
+
 New[notaclass_, args___] := (
   Message[New::notaclass, notaclass];
   $Failed
