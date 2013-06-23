@@ -32,6 +32,21 @@ PriorityQueue::usage =
   "constructs a priority queue for element type t " <>
   "with p as ordering function.";
 
+Enumerator::usage = 
+  "e = New[Enumerator, queue, f] constructs an Enumerator " <> 
+  "with transition function f. " <>
+  "f should take one argument of the queue's element type t " <> 
+  "and return a list of new elements of type t to be enqueued.";
+
+GetNext::usage =
+  "GetNext[e] returns the next element of the Enumerator e. " <>
+  "The next element n is taken from the top of the Enumerator's queue " <>
+  "and all elements f[n] are added to the queue.";
+
+HasNext::usage = 
+  "HasNext[e] tests if the Enumerator e has a next element. " <>
+  "This is the case, if and only if the Enumerator's queue is not empty."; 
+
 Begin["`Private`"];
 
 (* -------------------------------------------------------------- Class Queue *)
@@ -182,7 +197,7 @@ Module[{contents, orderingFunction, size, i, c},
   While[c <= size && !orderingFunction[contents[[i]], contents[[c]]],
     {contents[[i]], contents[[c]]} = {contents[[c]], contents[[i]]};
     i = c;
-    c = SmallerChild[queue, i];
+    c = SmallerChild[contents, queue, i];
   ];
   contents
 ];
@@ -194,6 +209,26 @@ Module[{c},
     c++;
   ];
   c
+];
+
+(* --------------------------------------------------------- Class Enumerator *)
+NewClass[Enumerator];
+
+Init[Enumerator, obj_, queue_?(InstanceQ[Queue]), f_] ^:= (
+  Queue@obj ^= queue;
+  TransitionFunction@obj ^= f;
+);
+
+HasNext[obj_?(InstanceQ[Enumerator])] := (
+  !EmptyQ[Queue@obj]
+);
+
+GetNext[obj_?(InstanceQ[Enumerator])] :=
+Module[{q, next},
+  q = Queue@obj;
+  next = Dequeue[q];
+  Do[Enqueue[q, e], {e, TransitionFunction[obj][next]}];
+  next
 ];
 
 End[];
