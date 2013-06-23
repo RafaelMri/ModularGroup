@@ -10,36 +10,26 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     10868,        333]
-NotebookOptionsPosition[     10251,        310]
-NotebookOutlinePosition[     10616,        326]
-CellTagsIndexPosition[     10573,        323]
+NotebookDataLength[     10171,        301]
+NotebookOptionsPosition[      9592,        279]
+NotebookOutlinePosition[      9957,        295]
+CellTagsIndexPosition[      9914,        292]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[{
- RowBox[{"<<", "Queue`"}], "\[IndentingNewLine]", 
+ RowBox[{"Needs", "[", " ", "\"\<Queue`\>\"", "]"}], "\[IndentingNewLine]", 
  RowBox[{"On", "@", "Assert"}]}], "Input",
  CellChangeTimes->{{3.5808662063167133`*^9, 3.5808662119327316`*^9}, {
-  3.5809636004401865`*^9, 3.580963604386999*^9}}],
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{"NewClass", "[", "Int", "]"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"InstanceQ", "[", "Int", "]"}], "^=", "IntegerQ"}], 
-  ";"}]}], "Input",
- CellChangeTimes->{{3.5808663099684505`*^9, 3.5808663158652697`*^9}, {
-   3.580866504616285*^9, 3.5808665121979094`*^9}, 3.580872431896405*^9}],
+  3.5809636004401865`*^9, 3.580963604386999*^9}, {3.580989678881031*^9, 
+  3.580989681907049*^9}, {3.5809899529734507`*^9, 3.5809899537994566`*^9}, {
+  3.5809901279696956`*^9, 3.5809901620049596`*^9}}],
 
 Cell[BoxData[{
  RowBox[{
   RowBox[{"fifo", "=", 
-   RowBox[{"New", "[", 
-    RowBox[{"FifoQueue", "[", "Int", "]"}], "]"}]}], 
-  ";"}], "\[IndentingNewLine]", 
+   RowBox[{"New", "[", "FifoQueue", "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Assert", "[", 
    RowBox[{
@@ -49,17 +39,12 @@ Cell[BoxData[{
   RowBox[{"Assert", "[", 
    RowBox[{
     RowBox[{"InstanceQ", "[", "FifoQueue", "]"}], "@", "fifo"}], "]"}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"Assert", "[", 
-   RowBox[{
-    RowBox[{"InstanceQ", "[", 
-     RowBox[{"FifoQueue", "[", "Int", "]"}], "]"}], "@", "fifo"}], "]"}], 
   ";"}]}], "Input",
  CellChangeTimes->{{3.580872460820899*^9, 3.5808725469517803`*^9}, {
   3.5808732964474277`*^9, 3.580873306526061*^9}, {3.580874545367096*^9, 
   3.58087455283952*^9}, {3.580875268925853*^9, 3.580875274510671*^9}, {
-  3.5808883969783897`*^9, 3.580888404310414*^9}}],
+  3.5808883969783897`*^9, 3.580888404310414*^9}, {3.5809896970141544`*^9, 
+  3.580989704307198*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -101,9 +86,7 @@ Cell[BoxData[{
 Cell[BoxData[{
  RowBox[{
   RowBox[{"lifo", "=", 
-   RowBox[{"New", "[", 
-    RowBox[{"LifoQueue", "[", "Int", "]"}], "]"}]}], 
-  ";"}], "\[IndentingNewLine]", 
+   RowBox[{"New", "[", "LifoQueue", "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Assert", "[", 
    RowBox[{
@@ -113,16 +96,11 @@ Cell[BoxData[{
   RowBox[{"Assert", "[", 
    RowBox[{
     RowBox[{"InstanceQ", "[", "LifoQueue", "]"}], "@", "lifo"}], "]"}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"Assert", "[", 
-   RowBox[{
-    RowBox[{"InstanceQ", "[", 
-     RowBox[{"LifoQueue", "[", "Int", "]"}], "]"}], "@", "lifo"}], "]"}], 
   ";"}]}], "Input",
  CellChangeTimes->{{3.5808731119598207`*^9, 3.580873117608039*^9}, {
   3.5808732841077876`*^9, 3.5808733511900063`*^9}, {3.580875285104106*^9, 
-  3.580875327911645*^9}, {3.580888432578706*^9, 3.5808884425159383`*^9}}],
+  3.580875327911645*^9}, {3.580888432578706*^9, 3.5808884425159383`*^9}, {
+  3.5809898290551662`*^9, 3.5809898343252*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -166,9 +144,8 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"heap", "=", 
    RowBox[{"New", "[", 
-    RowBox[{
-     RowBox[{"PriorityQueue", "[", "Int", "]"}], ",", " ", "GreaterEqual"}], 
-    "]"}]}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"PriorityQueue", ",", " ", "GreaterEqual"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Assert", "[", 
    RowBox[{
@@ -178,16 +155,10 @@ Cell[BoxData[{
   RowBox[{"Assert", "[", 
    RowBox[{
     RowBox[{"InstanceQ", "[", "PriorityQueue", "]"}], "@", "heap"}], "]"}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"Assert", "[", 
-   RowBox[{
-    RowBox[{"InstanceQ", "[", 
-     RowBox[{"PriorityQueue", "[", "Int", "]"}], "]"}], "@", "heap"}], "]"}], 
   ";"}]}], "Input",
  CellChangeTimes->{{3.580887839429174*^9, 3.580887841597581*^9}, {
   3.580887888961335*^9, 3.5808880194753604`*^9}, {3.580888467289819*^9, 
-  3.5808884744970427`*^9}}],
+  3.5808884744970427`*^9}, {3.5809898448222637`*^9, 3.5809898498022943`*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -229,8 +200,7 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"heap", " ", "=", 
    RowBox[{"New", "[", 
-    RowBox[{
-     RowBox[{"PriorityQueue", "[", "Int", "]"}], ",", "LessEqual"}], "]"}]}], 
+    RowBox[{"PriorityQueue", ",", "LessEqual"}], "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Assert", "[", 
@@ -260,14 +230,12 @@ Cell[BoxData[{
    RowBox[{"OrderedQ", "[", "elems", "]"}], "]"}], ";"}]}], "Input",
  CellChangeTimes->{{3.580890658868557*^9, 3.580890677590618*^9}, {
   3.5808907142663374`*^9, 3.5808907905847864`*^9}, {3.580890881019281*^9, 
-  3.580890956384126*^9}}],
+  3.580890956384126*^9}, {3.5809898740204453`*^9, 3.580989874726451*^9}}],
 
 Cell[BoxData[{
  RowBox[{
   RowBox[{"stack", "=", 
-   RowBox[{"New", "[", 
-    RowBox[{"LifoQueue", "[", "Int", "]"}], "]"}]}], 
-  ";"}], "\[IndentingNewLine]", 
+   RowBox[{"New", "[", "LifoQueue", "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Enqueue", "[", 
    RowBox[{"stack", ",", "1"}], "]"}], ";"}], "\[IndentingNewLine]", 
@@ -306,10 +274,11 @@ Cell[BoxData[{
  CellChangeTimes->{{3.5809827712557015`*^9, 3.580982963635528*^9}, {
   3.580982997378438*^9, 3.5809830515418143`*^9}, {3.5809830834751186`*^9, 
   3.580983136749292*^9}, {3.5809852974775286`*^9, 3.580985348957697*^9}, {
-  3.580985504708604*^9, 3.580985507001811*^9}}]
+  3.580985504708604*^9, 3.580985507001811*^9}, {3.5809899731756988`*^9, 
+  3.580989973651703*^9}}]
 },
 WindowSize->{707, 543},
-WindowMargins->{{Automatic, 321}, {Automatic, 3}},
+WindowMargins->{{86, Automatic}, {Automatic, 42}},
 ShowSelection->True,
 FrontEndVersion->"9.0 for Microsoft Windows (32-bit) (January 25, 2013)",
 StyleDefinitions->"Default.nb"
@@ -325,16 +294,15 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[557, 20, 229, 4, 52, "Input"],
-Cell[789, 26, 345, 8, 52, "Input"],
-Cell[1137, 36, 901, 25, 92, "Input"],
-Cell[2041, 63, 1189, 35, 112, "Input"],
-Cell[3233, 100, 855, 24, 92, "Input"],
-Cell[4091, 126, 1287, 36, 112, "Input"],
-Cell[5381, 164, 861, 25, 92, "Input"],
-Cell[6245, 191, 1234, 34, 112, "Input"],
-Cell[7482, 227, 1208, 35, 132, "Input"],
-Cell[8693, 264, 1554, 44, 132, "Input"]
+Cell[557, 20, 407, 6, 52, "Input"],
+Cell[967, 28, 730, 18, 72, "Input"],
+Cell[1700, 48, 1189, 35, 112, "Input"],
+Cell[2892, 85, 682, 17, 72, "Input"],
+Cell[3577, 104, 1287, 36, 112, "Input"],
+Cell[4867, 142, 685, 18, 72, "Input"],
+Cell[5555, 162, 1234, 34, 112, "Input"],
+Cell[6792, 198, 1223, 34, 132, "Input"],
+Cell[8018, 234, 1570, 43, 132, "Input"]
 }
 ]
 *)
