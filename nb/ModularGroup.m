@@ -24,8 +24,8 @@ TUExponents::usage =
   "such that t = \!\(\*SuperscriptBox[\(U\), SubscriptBox[\(e\), \(0\)]]\)\!\(\*SuperscriptBox[\(TU\), SubscriptBox[\(e\), \(1\)]]\)...\!\(\*SuperscriptBox[\(TU\), SubscriptBox[\(e\), \(n\)]]\).";
 
 QuotientFunction::usage = 
-  "QuotientFunction is an option for TUExponents and defines the " <>
-  "integer quotient function to use for the euclidean algorithm. " <>
+  "QuotientFunction is an option which defines the " <>
+  "integer quotient function to be used within the euclidean algorithm. " <>
   "Default is Mathematica's built-in function Quotient. " <>
   "Predefined alternatives are CentralQuotient and CQuotient.";
 
@@ -39,13 +39,16 @@ CQuotient::usage =
   "(equivalent to integer division e.g. in the programming language C).";
 
 TUEval::usage = 
-  "Evaluate the group word in T and U of a ModularTransformation P " <>
-  "by supplying values for T and U and a product and power function. " <>
+  "TUEval[t, subsT, subsU, product, power] " <>
+  "substitutes the symbols T and U " <>
+  "in the group word representation of the ModularTransformation t " <>
+  "with subsT and subsU respectively " <>
+  "and evaluates using the provided product and power functions. " <>
   "Example: TUEval[phi, Mat[mtT], Mat[mtU], Dot, MatrixPower]";
 
 TUWord::usage = 
   "TUWord[t] returns a symbolic group word representation " <>
-  "of the ModularTransformation t, in terms of the group generators T and U.";
+  "of the ModularTransformation t in terms of the group generators T and U.";
 
 (* Some frequently used ModularTransformations *)
 mtId::usage = 
@@ -58,22 +61,40 @@ mtR::usage = "The ModularTransformation R = TU : z \[RightTeeArrow] -\!\(\*Fract
 
 GeneralizedDisk::usage = 
   "New[GeneralizedDisk, {{a, b},{c, d}}] constructs the a generalized disk " <> 
-  "whose points z satisfy a\[CenterDot]|z\!\(\*SuperscriptBox[\(|\), \(2\)]\) + b\[CenterDot]\!\(\*OverscriptBox[\(z\), \(_\)]\) + c\[CenterDot]z + d \[LessSlantEqual] 0. "
+  "whose points z satisfy a\[CenterDot]|z\!\(\*SuperscriptBox[\(|\), \(2\)]\) + b\[CenterDot]\!\(\*OverscriptBox[\(z\), \(_\)]\) + c\[CenterDot]z + d \[LessSlantEqual] 0. " <>
   "The matrix {{a, b}, {c, d}} must be Hermitian with negative determinant.";
 NoncompactDisk::usage =
   "New[NoncompactDisk, c, r] constructs a GeneralizedDisk " <>
   "which contains the point \[Infinity] and whose complement in \[DoubleStruckCapitalC] is a disk " <>
-  "with center c and radius r".
+  "with center c and radius r.";
 Halfplane::usage = 
   "New[Halfplane, z, n] constructs a GeneralizedDisk " <>
   "containing all points of a halfplane " <> 
   "which is given by a point z on its border " <>
-  "and a complex number n pointing in normal direction to the border inside the halfplane.";
+  "and a complex number n pointing inside the halfplane " <> 
+  "in normal direction to its border.";
 CompactDisk::usage =
   "New[CompactDisk, c, r] constructs a GeneralizedDisk " <>
   "with center c and radius r.";
 InteriorQ::usage =
-  "InteriorQ[d,z] tests if the GeneralizedDisk d contains the point z.";
+  "InteriorQ[d, z] tests if the GeneralizedDisk d contains the point z.";
+GDiskTransform::usage =
+  "GDiskTransform[d, t] transforms the GeneralizedDisk d " <>
+  "by applying the moebius transformation t, " <>
+  "which may be given either as MoebiusTransformation object " <>
+  "or directly as matrix.";
+
+ModularGroupExcerpt::usage =
+  "ModularGroupExcerpt[p] " <> 
+  "performs a depth-first-search and returns ModularTransformations " <>
+  "satisfying the predicate p.\n";
+ModularGroupExcerpt::maxit =
+  "Maximum number of iterations exceeded. Current setting: MaxIterations \[RightArrow] `1`.";
+
+ModularGroupEnumerator::usage = 
+  "ModularGroupEnumerator[p] " <>
+  "Returns an Enumerator for modular transformations " <>
+  "using p as ordering prdicate for the internal PriorityQueue.";
 
 Begin["`Private`"];
 
@@ -166,10 +187,55 @@ InteriorQ[disk_?(InstanceQ[GeneralizedDisk]), z_] := (
   Re[{Conjugate@z,1}.Mat[disk].{z,1}] <= 0
 );
 
+GDiskTransform[disk_?(InstanceQ[GeneralizedDisk]), t_?(InstanceQ[MoebiusTransformation])] := 
+Module[{transformed},
+  transformed = (ConjugateTranspose@Mat@Inv@t).(Mat@disk).(Mat@Inv@t);
+  New[GeneralizedDisk, transformed]
+];
+
+GDiskTransform[disk_?(InstanceQ[GeneralizedDisk]), t_?MatrixQ] := 
+Module[{tInv},
+  tInv = Inverse@t;
+  New[GeneralizedDisk, ConjugateTranspose[tInv].Mat[disk].tInv]
+];
+
 (* --------------------------------------------------- Enumeration algorithms *)
 
-(*ListModularGroup[stopCriteria_] := (
-);*)
+Transition[ModularTransformation] = Function[top, 
+Module[{current, steps},
+  current = top[[1]];
+  steps = top[[2]];
+  Table[{
+    New[ModularTransformation, Mat[current].Mat[step]],
+    If[step === mtT, Inv@#&/@Rest[steps], {mtT, step}]
+    }, {step, steps}]
+]];
+
+ModularGroupExcerpt[criteria_, opts:OptionsPattern[]] := Reap[
+Module[{i, max, mtStart, queue, top, next},
+  i = 0;
+  max = OptionValue[MaxIterations];
+  mtStart = OptionValue[StartTransformation];
+  queue = New[LifoQueue];
+  If[criteria[mtStart], Enqueue[queue, {mtStart, {mtT, mtU, Inv@mtU}}]];
+  While[i++ < max && !EmptyQ[queue],
+    top = Dequeue[queue];
+    Sow[top[[1]]];
+    next = Transition[ModularTransformation][top]; 
+    Do[Enqueue[queue, n], {n, Select[next, criteria[#[[1]]]&]}];
+  ];
+  If[i >= max, Message[Excerpt::maxit, max]];
+]][[2,1]];
+Options[ModularGroupExcerpt] = {MaxIterations -> 2^12, StartTransformation->mtId};
+
+ModularGroupEnumerator[ordering_] := 
+Module[{mtStart, queue, transition},
+  mtStart = OptionValue[StartTransformation];
+  queue = New[PriorityQueue, ordering];
+  Enqueue[queue, {mtStart, {mtT, mtU, Inv@mtU}}];
+  New[Enumerator, queue, Transition[ModularTransformation]]
+];
+Options[ModularGroupEnumerator] = {StartTransformation -> mtId};
 
 (* ------------------------------------------- Special ModularTransformations *)
 mtId = New[ModularTransformation, IdentityMatrix[2]];

@@ -5,7 +5,7 @@ BeginPackage["Queue`", {"OOP`"}];
 (* ---------------------------------------------------------- Public Elements *)
 
 Queue::usage = 
-  "Abstract base class for all queues, cannot be instantiated.";
+  "Queue is an abstract base class for queues and cannot be instantiated.";
 
 Enqueue::usage =
   "Enqueue[queue, elem] enqueues elem to queue.";
@@ -17,18 +17,18 @@ EmptyQ::usage =
   "EmptyQ[queue] tests if queue is empty.";
 
 FifoQueue::usage = 
-  "First-in-first-out queue. ";
+  "New[FifoQueue] constructs an empty first-in-first-out queue.";
 
 LifoQueue::usage =
-  "Last-in-first-out queue (a.k.a. stack).";
+  "New[LifoQueue] constructs an empty last-in-first-out queue, " <>
+  "also known as stack.";
 
 PriorityQueue::usage =
-  "Priority queue (a.k.a heap). " <>
-  "Example: myHeap = New[PriorityQueue, p] " <>
-  "constructs a priority queue using p as ordering function.";
+  "New[PriorityQueue, p] constructs an empty priority queue " <>
+  "with p as the ordering predicate.";
 
 Enumerator::usage = 
-  "e = New[Enumerator, queue, f] constructs an Enumerator " <> 
+  "New[Enumerator, queue, f] constructs an Enumerator " <> 
   "with transition function f. " <>
   "f should take one argument corresponding to the queue's element type " <> 
   "and return a list of elements of same type to be enqueued.";
