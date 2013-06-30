@@ -2,42 +2,58 @@
 
 BeginPackage["OOP`"];
 
+Unprotect[Class, NewClass, New, Init, Super, InstanceQ, Info];
+Unprotect[Iterator, ListIterator, HasNext, GetNext];
+
 (* ---------------------------------------------------------- Public Elements *)
 
 Class::usage = 
-  "The type of a class. " <>
-  "After calling NewClass[myClass], InstanceQ[Class][myClass] will return True.";
-
+  "Class is a reserved symbol identifying the type of a class.";
 NewClass::usage = 
-  "NewClass[myClass] declares the symbol myClass to be a class.";
+  "NewClass[c] declares the symbol c to be a class.";
 NewAbstractClass::usage =
-  "NewAbstractClass[myClass] declares the symbol myClass to be an abstract class.";
+  "NewAbstractClass[c] declares the symbol c to be an abstract class.";
 
 AbstractQ::usage =
-  "AbstractQ[myClass] returns true if myClass is an abstract class.";
+  "AbstractQ[c] returns True if c is an abstract class.";
 
 New::usage = 
-  "New[myClass, args...] instantiates an objtect of type myClass, " <>
-  "passing the given arguments to the constructor.";
+  "New[c, args...] instantiates an objtect of class c, " <>
+  "passing the given arguments to its constructor.";
 New::notaclass = "`1` is not a class.";
 New::abstractinst = "`1` is an abstract class and cannot be instantiated.";
 
 Init::usage = 
-  "Init[myClass, newObj, args...] initializes an object of type myClass." <>
-  "Never call directly, use newObj = New[myClass, args...] instead.";
+  "Init[c, o, args...] defines the constructor of a class c " <>
+  "and initializes the new object o. " <>
+  "Never call directly, use o = New[c, args...] instead.";
 Init::undef = 
   "Constructor for class `1` and arguments `2` not defined. " <> 
   "Make sure you have defined Init[`1`, obj_, args___] ^:= ...";
 
 Super::usage = 
-  "Super[myBaseClass, newObj, args...] calls the constructor of  " <>
-  "Example: Super[myBaseClass, obj, args...]";
+  "Super[b, o, args...] calls the constructor of a base-class b " <>
+  "for a new object o. " <>
+  "To be used within the Init function of a class c which inherits from b.";
 
 InstanceQ::usage = 
-  "Test if object is instance of class. Example: InstanceQ[myClass][myObj]";
+  "InstanceQ[c][o] returns True, if the object o is instance of class c.";
 
 Info::usage = 
-  "Display data associated with an object. Example: Info[myObj]";
+  "Info[o] displays data associated with the object o.";
+
+Iterator::usage = 
+  "Iterator is an abstract base class for objects o providing methods " <>
+  "HasNext[o] and GetNext[o].";
+
+HasNext::usage =
+  "HasNext[o] tests if the Iterator o has a next element.";
+
+GetNext::usage =
+  "GetNext[o] returns the next value of the Iterator o.";
+
+ListIterator::usage =
+  "New[ListIterator, l] creates an iterator for the objects in the list l.";
 
 Begin["`Private`"];
 
@@ -78,8 +94,24 @@ Super[class_?(InstanceQ[Class]), obj_, args___] := (
 
 Info[obj_] := Information@Evaluate@obj;
 
+NewAbstractClass[Iterator];
+Init[Iterator, obj_] ^:= Null;
+
+NewClass[ListIterator];
+Init[ListIterator, obj_, list_] ^:= (
+  Super[Iterator, obj];
+  Pos[obj] ^= 1;
+  HasNext[obj] ^:= Pos[obj] <= Length[list];
+  GetNext[obj] ^:= Module[{next}, 
+    next = list[[Pos[obj]]]; 
+    Pos[obj] ^= Pos[obj]+1;
+    next
+  ];
+);
+
 End[];
 
 Protect[Class, NewClass, New, Init, Super, InstanceQ, Info];
+Protect[Iterator, ListIterator, HasNext, GetNext];
 
 EndPackage[];
