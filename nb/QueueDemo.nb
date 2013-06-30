@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     31398,        976]
-NotebookOptionsPosition[     26160,        799]
-NotebookOutlinePosition[     28033,        857]
-CellTagsIndexPosition[     27620,        844]
+NotebookDataLength[     31589,        982]
+NotebookOptionsPosition[     26312,        804]
+NotebookOutlinePosition[     28185,        862]
+CellTagsIndexPosition[     27772,        849]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -793,7 +793,12 @@ Cell[BoxData[
      RowBox[{"Assert", "[", 
       RowBox[{"OrderedQ", "[", "result", "]"}], "]"}], ";"}]}], 
    "\[IndentingNewLine]", "]"}], ";"}]], "Input",
- CellChangeTimes->{{3.581569387857398*^9, 3.581569432038742*^9}}]
+ CellChangeTimes->{{3.581569387857398*^9, 3.581569432038742*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Off", "[", "Assert", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.5815814958061953`*^9, 3.5815814985050044`*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -843,15 +848,15 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Info3581575795-8783860", 26489, 810},
- {"Info3581575796-8783860", 26597, 813},
- {"Info3581575797-8783860", 26705, 816},
- {"Info3581575798-8783860", 26891, 821},
- {"Info3581575799-8783860", 27000, 824},
- {"Info3581575800-8783860", 27109, 827},
- {"Info3581575801-8783860", 27218, 830},
- {"Info3581575802-8783860", 27406, 835},
- {"Info3581575803-8783860", 27516, 838}
+ {"Info3581575795-8783860", 26641, 815},
+ {"Info3581575796-8783860", 26749, 818},
+ {"Info3581575797-8783860", 26857, 821},
+ {"Info3581575798-8783860", 27043, 826},
+ {"Info3581575799-8783860", 27152, 829},
+ {"Info3581575800-8783860", 27261, 832},
+ {"Info3581575801-8783860", 27370, 835},
+ {"Info3581575802-8783860", 27558, 840},
+ {"Info3581575803-8783860", 27668, 843}
  }
 *)
 (*NotebookFileOutline
@@ -975,7 +980,8 @@ Cell[18123, 574, 1857, 47, 212, "Input"],
 Cell[19983, 623, 1498, 37, 172, "Input"],
 Cell[21484, 662, 1612, 45, 159, "Input"],
 Cell[23099, 709, 1405, 39, 138, "Input"],
-Cell[24507, 750, 1625, 45, 159, "Input"]
+Cell[24507, 750, 1625, 45, 159, "Input"],
+Cell[26135, 797, 149, 3, 31, "Input"]
 }, Open  ]]
 }, Open  ]]
 }

@@ -13,6 +13,9 @@ Mat::usage =
 Inv::usage = 
   "Inv[t] returns the inverse of the MoebiusTransformation t.";
 
+Inhom::usage = 
+  "Inhom[{z1,z2}] returns z1 / z2 or \[Infinity], if z2 == 0.";
+
 ModularTransformation::usage = 
   "New[ModularTransformation, {{a, b}, {c, d}}] " <>
   "creates the modular transformation " <>
@@ -21,8 +24,9 @@ ModularTransformation::usage =
 TUExponents::usage = 
   "TUExponents[t] returns for a ModularTransformation t a list of exponents " <>
   "{\!\(\*SubscriptBox[\(e\), \(0\)]\),...,\!\(\*SubscriptBox[\(e\), \(n\)]\)} " <>
-  "such that t = \!\(\*SuperscriptBox[\(U\), SubscriptBox[\(e\), \(0\)]]\)\!\(\*SuperscriptBox[\(TU\), SubscriptBox[\(e\), \(1\)]]\)...\!\(\*SuperscriptBox[\(TU\), SubscriptBox[\(e\), \(n\)]]\).";
-
+  "such that t = \!\(\*SuperscriptBox[\(U\), SubscriptBox[\(e\), \(0\)]]\)\!\(\*SuperscriptBox[\(TU\), SubscriptBox[\(e\), \(1\)]]\)...\!\(\*SuperscriptBox[\(TU\), SubscriptBox[\(e\), \(n\)]]\). \n" <>
+  "Options: QuotientFunction.";
+ 
 QuotientFunction::usage = 
   "QuotientFunction is an option which defines the " <>
   "integer quotient function to be used within the euclidean algorithm. " <>
@@ -43,21 +47,23 @@ TUEval::usage =
   "substitutes the symbols T and U " <>
   "in the group word representation of the ModularTransformation t " <>
   "with subsT and subsU respectively " <>
-  "and evaluates using the provided product and power functions. " <>
-  "Example: TUEval[phi, Mat[mtT], Mat[mtU], Dot, MatrixPower]";
+  "and evaluates using the provided product and power functions.\n" <>
+  "Example: TUEval[phi, Mat[mtT], Mat[mtU], Dot, MatrixPower]\n" <>
+  "Options: QuotientFunction.";
 
 TUWord::usage = 
   "TUWord[t] returns a symbolic group word representation " <>
-  "of the ModularTransformation t in terms of the group generators T and U.";
+  "of the ModularTransformation t in terms of the group generators T and U.\n" <>
+  "Options: QuotientFunction";
 
 (* Some frequently used ModularTransformations *)
 mtId::usage = 
   "mtId is the identity element " <>
   "of the classes MoebiusTransformation and ModularTransformation.";
 
-mtU::usage = "The ModularTransformation U: z \[RightTeeArrow] z+1.";
-mtT::usage = "The ModularTransformation T: z \[RightTeeArrow] -\!\(\*FractionBox[\(1\), \(z\)]\).";
-mtR::usage = "The ModularTransformation R = TU : z \[RightTeeArrow] -\!\(\*FractionBox[\(1\), \(z + 1\)]\).";
+mtU::usage = "mtU is the ModularTransformation U: z \[RightTeeArrow] z+1.";
+mtT::usage = "mtT is the ModularTransformation T: z \[RightTeeArrow] -\!\(\*FractionBox[\(1\), \(z\)]\).";
+mtR::usage = "mtR is the ModularTransformation R = TU : z \[RightTeeArrow] -\!\(\*FractionBox[\(1\), \(z + 1\)]\).";
 
 GeneralizedDisk::usage = 
   "New[GeneralizedDisk, {{a, b},{c, d}}] constructs the a generalized disk " <> 
@@ -87,12 +93,13 @@ GDiskTransform::usage =
 ModularGroupExcerpt::usage =
   "ModularGroupExcerpt[p] " <> 
   "performs a depth-first-search and returns ModularTransformations " <>
-  "satisfying the predicate p.\n";
+  "satisfying the predicate p.\n" <>
+  "Options: StartTransformation, MaxIterations";
 ModularGroupExcerpt::maxit =
   "Maximum number of iterations exceeded. Current setting: MaxIterations \[RightArrow] `1`.";
 
-ModularGroupEnumerator::usage = 
-  "ModularGroupEnumerator[p] " <>
+ModularGroupIterator::usage = 
+  "ModularGroupIterator[p] " <>
   "Returns an Enumerator for modular transformations " <>
   "using p as ordering prdicate for the internal PriorityQueue.";
 
@@ -102,19 +109,33 @@ Begin["`Private`"];
 
 NewClass[MoebiusTransformation];
 
+Inhom[{z1_,z2_}] := (
+  If[TrueQ[z2 == 0], 
+    ComplexInfinity, 
+    z1 / z2
+  ]
+);
+
 Init[MoebiusTransformation, obj_, mat_?MatrixQ] ^:= (
   Mat[obj] ^= mat;
   obj /: InstanceQ[ModularTransformation][obj] := (
-     obj /: InstanceQ[ModularTransformation][obj] = MatrixQ[mat,IntegerQ] && Det[mat]==1
+  obj /: InstanceQ[ModularTransformation][obj] = 
+    MatrixQ[mat, IntegerQ] && Det[mat] == 1
   );
+  obj@t_?(InstanceQ[MoebiusTransformation]) := 
+    New[MoebiusTransformation, mat.Mat[t]];
+  obj@m_?MatrixQ := mat.m;
+  m_?MatrixQ@obj ^:= m.mat;
+  obj@h_?VectorQ := mat.h;
+  obj@z_ := If[TrueQ[z === ComplexInfinity], Inhom[mat.{1,0}], Inhom[mat.{z, 1}]];
 );
 
-Inv[obj_?(InstanceQ[MoebiusTransformation])] := Inv[obj] ^= 
-  Module[{mat, invMat, inverse},
-    mat = Mat[obj];
-    invMat = {{mat[[2,2]], -mat[[1,2]]}, {-mat[[2,1]], mat[[1,1]]}};
-    inverse = New[MoebiusTransformation, invMat];
-    Inv[inverse] ^= obj;
+Inv[m_?MatrixQ] := {{m[[2,2]], -m[[1,2]]}, {-m[[2,1]], m[[1,1]]}};
+
+Inv[t_?(InstanceQ[MoebiusTransformation])] := Inv[t] ^= 
+  Module[{inverse},
+    inverse = New[MoebiusTransformation, Inv[Mat[t]]];
+    Inv[inverse] ^= t;
     inverse
   ];
 
@@ -122,6 +143,7 @@ Inv[obj_?(InstanceQ[MoebiusTransformation])] := Inv[obj] ^=
 NewClass[ModularTransformation];
 
 Init[ModularTransformation, obj_, mat_?(MatrixQ[#,IntegerQ]&)] ^:= (
+  Assert[Det[mat] == 1];
   Super[MoebiusTransformation, obj, mat];
 );
 
@@ -149,7 +171,10 @@ TUEval[obj_?(InstanceQ[ModularTransformation]), t_, u_, product_, power_, opts :
 );
 
 TUWord[obj_?(InstanceQ[ModularTransformation]), opts:OptionsPattern[]] := (
-  TUEval[obj, "T", "U", Composition[Row,List], Superscript, opts]
+  Row@DeleteCases[
+    TUEval[obj, "T", "U", List, Superscript, opts],
+    Superscript["U",0]
+  ]
 );
 
 (* -------------------------------------------------- Class GeneralizedDisk *)
@@ -203,15 +228,14 @@ Module[{tInv},
 
 Transition[ModularTransformation] = Function[top, 
 Module[{current, steps},
-  current = top[[1]];
-  steps = top[[2]];
+  {current, steps} = top;
   Table[{
     New[ModularTransformation, Mat[current].Mat[step]],
     If[step === mtT, Inv@#&/@Rest[steps], {mtT, step}]
     }, {step, steps}]
 ]];
 
-ModularGroupExcerpt[criteria_, opts:OptionsPattern[]] := Reap[
+ModularGroupExcerpt[criteria_, OptionsPattern[]] := Reap[
 Module[{i, max, mtStart, queue, top, next},
   i = 0;
   max = OptionValue[MaxIterations];
@@ -228,12 +252,11 @@ Module[{i, max, mtStart, queue, top, next},
 ]][[2,1]];
 Options[ModularGroupExcerpt] = {MaxIterations -> 2^12, StartTransformation->mtId};
 
-ModularGroupEnumerator[ordering_] := 
-Module[{mtStart, queue, transition},
+ModularGroupIterator[ordering_, OptionsPattern[]] := 
+Module[{mtStart},
   mtStart = OptionValue[StartTransformation];
-  queue = New[PriorityQueue, ordering];
-  Enqueue[queue, {mtStart, {mtT, mtU, Inv@mtU}}];
-  New[Enumerator, queue, Transition[ModularTransformation]]
+  New[PFSIterator, {mtStart, {mtT, mtU, Inv@mtU}}, 
+    Transition[ModularTransformation], ordering]
 ];
 Options[ModularGroupEnumerator] = {StartTransformation -> mtId};
 
