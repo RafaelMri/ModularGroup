@@ -29,7 +29,7 @@ TUExponents::usage =
  
 QuotientFunction::usage = 
   "QuotientFunction is an option which defines the " <>
-  "integer quotient function to be used within the euclidean algorithm. " <>
+  "integer quotient function to be used within the Euclidean algorithm. " <>
   "Default is Mathematica's built-in function Quotient. " <>
   "Predefined alternatives are CentralQuotient and CQuotient.";
 
@@ -83,12 +83,33 @@ CompactDisk::usage =
   "New[CompactDisk, c, r] constructs a GeneralizedDisk " <>
   "with center c and radius r.";
 InteriorQ::usage =
-  "InteriorQ[d, z] tests if the GeneralizedDisk d contains the point z.";
-GDiskTransform::usage =
-  "GDiskTransform[d, t] transforms the GeneralizedDisk d " <>
-  "by applying the moebius transformation t, " <>
-  "which may be given either as MoebiusTransformation object " <>
-  "or directly as matrix.";
+  "InteriorQ[d, z] tests if the GeneralizedDisk d contains the point z, " <>
+  "which also may be given in homogeneous form.";
+
+(* Some predefined GeneralizedDisks *)
+gdUnitDisk::usage =
+  "gdUnitDisk is the set of points z satisfying |z| \[LessEqual] 1.";
+gdUpperHalfplane::usage =
+  "gdUpperHalfPlane is the set of points z satisfying Im[z] \[GreaterSlantEqual] 0.";
+gdLowerHalfplane::usage =
+  "gdLowerHalfPlane is the set of points z satisfying Im[z] \[LessSlantEqual] 0.";
+gdRightHalfplane::usage =
+  "gdRightHalfPlane is the set of points z satisfying Re[z] \[GreaterSlantEqual] 0.";
+gdLeftHalfplane::usage =
+  "gdLeftHalfPlane is the set of points z satisfying Re[z] \[LessSlantEqual] 0.";
+
+GDiskRadius::usage =
+  "GDiskRadius[d] returns the radius of the GeneralizedDisk d. " <> 
+  "It is defined for CompactDisks only.";
+GDiskCenter::usage = 
+  "GDiskCenter[d] returns the center of a GeneralizdeDisk d. " <>
+  "It is defined for CompactDisks only.";
+GDiskCoradius::usage =
+  "GDiskCoradius[d] returns the co-radius of a GeneralizedDisk d. " <>
+  "It is defined for NoncompactDisks only.";
+GDiskCocenter::usage =
+  "GDiskCocenter[d] returns the co-center of a GeneralizedDisk d. " <>
+  "It is defined for NoncompactDisks only.";
 
 ModularGroupExcerpt::usage =
   "ModularGroupExcerpt[p] " <> 
@@ -124,8 +145,6 @@ Init[MoebiusTransformation, obj_, mat_?MatrixQ] ^:= (
   );
   obj@t_?(InstanceQ[MoebiusTransformation]) := 
     New[MoebiusTransformation, mat.Mat[t]];
-  obj@m_?MatrixQ := mat.m;
-  m_?MatrixQ@obj ^:= m.mat;
   obj@h_?VectorQ := mat.h;
   obj@z_ := If[TrueQ[z === ComplexInfinity], Inhom[mat.{1,0}], Inhom[mat.{z, 1}]];
 );
@@ -184,21 +203,32 @@ NewClass[Halfplane];
 NewClass[CompactDisk];
 
 Init[GeneralizedDisk, obj_, mat_?MatrixQ] ^:= Module[{a},
+  Assert[HermitianMatrixQ@mat && Det[mat] < 0];
   Mat[obj] ^= mat;
   a = mat[[1,1]];
   obj /: InstanceQ[NoncompactDisk][obj] = (a < 0);
   obj /: InstanceQ[Halfplane][obj] = (a == 0);
   obj /: InstanceQ[CompactDisk][obj] = (a > 0); 
+  
+  t_?(InstanceQ[MoebiusTransformation])[obj] ^:=
+  Module[{transformed},
+    transformed = (ConjugateTranspose@Mat@Inv@t).mat.(Mat@Inv@t);
+    New[GeneralizedDisk, transformed]
+  ];
 ];
 
 Init[NoncompactDisk, obj_, cocenter_, coradius_] ^:= Module[{mat},
   mat = {{-1, cocenter}, {Conjugate@cocenter, coradius^2 - cocenter*Conjugate@cocenter}};
   Super[GeneralizedDisk, obj, mat];
+  GDiskCocenter[obj] ^= cocenter;
+  GDiskCoradius[obj] ^= coradius;
 ];
 
 Init[CompactDisk, obj_, center_, radius_] ^:= Module[{mat},
   mat = {{1, -center}, {-Conjugate@center, center*Conjugate@center - radius^2}};
   Super[GeneralizedDisk, obj, mat];
+  GDiskCenter[obj] ^= center;
+  GDiskRadius[obj] ^= radius;
 ];
 
 Init[Halfplane, obj_, pt_, normal_] ^:= Module[{b, d, mat},
@@ -208,21 +238,45 @@ Init[Halfplane, obj_, pt_, normal_] ^:= Module[{b, d, mat},
   Super[GeneralizedDisk, obj, mat];
 ];
 
+InteriorQ[disk_?(InstanceQ[GeneralizedDisk]), z_?VectorQ] := (
+  Re[Conjugate[z].Mat[disk].z] <= 0
+)
+
 InteriorQ[disk_?(InstanceQ[GeneralizedDisk]), z_] := (
-  Re[{Conjugate@z,1}.Mat[disk].{z,1}] <= 0
+  If[TrueQ[z === ComplexInfinity], 
+    !InstanceQ[CompactDisk][disk], 
+    InteriorQ[disk,{z,1}]
+  ]
 );
 
-GDiskTransform[disk_?(InstanceQ[GeneralizedDisk]), t_?(InstanceQ[MoebiusTransformation])] := 
-Module[{transformed},
-  transformed = (ConjugateTranspose@Mat@Inv@t).(Mat@disk).(Mat@Inv@t);
-  New[GeneralizedDisk, transformed]
-];
+gdUnitDisk = New[CompactDisk, 0, 1];
+gdUpperHalfplane = New[Halfplane, 0, I];
+gdLowerHalfplane = New[Halfplane, 0, -I];
+gdRightHalfplane = New[Halfplane, 0, 1];
+gdLeftHalfplane = New[Halfplane, 0, -1];
 
-GDiskTransform[disk_?(InstanceQ[GeneralizedDisk]), t_?MatrixQ] := 
-Module[{tInv},
-  tInv = Inverse@t;
-  New[GeneralizedDisk, ConjugateTranspose[tInv].Mat[disk].tInv]
-];
+radius[m_] := Sqrt[-Det[m] m[[1,1]]^-2];
+center[m_] := -m[[1,2]] / m[[1,1]];
+
+GDiskRadius[disk_?(InstanceQ[CompactDisk])] := 
+GDiskRadius[disk] ^= (
+  radius[Mat[disk]]
+);
+
+GDiskCenter[disk_?(InstanceQ[CompactDisk])] :=
+GDiskCenter[disk] ^= (
+  center[Mat[disk]]
+);
+
+GDiskCoradius[disk_?(InstanceQ[NoncompactDisk])] :=
+GDiskCoradius[disk] ^= (
+  radius[Mat[disk]]
+);
+
+GDiskCocenter[disk_?(InstanceQ[NoncompactDisk])] :=
+GDiskCocenter[disk] ^= (
+  center[Mat[disk]]
+);
 
 (* --------------------------------------------------- Enumeration algorithms *)
 

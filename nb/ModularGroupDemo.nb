@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     52036,       1589]
-NotebookOptionsPosition[     43823,       1325]
-NotebookOutlinePosition[     46778,       1411]
-CellTagsIndexPosition[     46020,       1390]
+NotebookDataLength[     48102,       1360]
+NotebookOptionsPosition[     44710,       1257]
+NotebookOutlinePosition[     45230,       1279]
+CellTagsIndexPosition[     45144,       1274]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -38,25 +38,14 @@ Cell[CellGroupData[{
 
 Cell["\<\
 
-Class MoebiusTransformation\
+Moebius Transformations\
 \>", "Subtitle",
- CellChangeTimes->{{3.581581535267724*^9, 3.5815815390439367`*^9}}],
-
-Cell[CellGroupData[{
+ CellChangeTimes->{{3.581581535267724*^9, 3.5815815390439367`*^9}, {
+  3.581739965394067*^9, 3.5817399944101615`*^9}}],
 
 Cell[BoxData[
  RowBox[{"?", "MoebiusTransformation"}]], "Input",
  CellChangeTimes->{{3.5815033554581327`*^9, 3.5815033676115723`*^9}}],
-
-Cell[BoxData[
- StyleBox["\<\"New[MoebiusTransformation, {{a, b}, {c, d}}] creates the \
-moebius transformation z \[RightTeeArrow] \
-\!\(\*FractionBox[\(\(a\[CenterDot]z\)\(\\\\ \)\(+\)\(\\\\ \)\(b\)\(\\\\ \
-\)\), \(c\[CenterDot]z\\\\  + \\\\ d\)]\).\"\>", "MSG"]], "Print", \
-"PrintUsage",
- CellChangeTimes->{3.5815816569893208`*^9},
- CellTags->"Info3581588856-3048158"]
-}, Open  ]],
 
 Cell[BoxData[
  RowBox[{
@@ -78,8 +67,6 @@ Evaluation for complex numbers:\
  CellChangeTimes->{{3.581583130719924*^9, 3.581583131983528*^9}, {
   3.581583369473303*^9, 3.5815833987575984`*^9}}],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{
   RowBox[{
@@ -90,26 +77,10 @@ Cell[BoxData[
  CellChangeTimes->{{3.5815833078101015`*^9, 3.581583334214188*^9}, {
   3.581583406354823*^9, 3.581583431597705*^9}}],
 
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   FractionBox[
-    RowBox[{"1", "+", 
-     RowBox[{"\[ImaginaryI]", " ", "\<\"z\"\>"}]}], 
-    RowBox[{"\[ImaginaryI]", "+", "\<\"z\"\>"}]], ",", "0", ",", 
-   "ComplexInfinity", ",", "\[ImaginaryI]"}], "}"}]], "Output",
- CellChangeTimes->{
-  3.5815831486453824`*^9, 3.581583180956088*^9, {3.5815832409900837`*^9, 
-   3.581583247354904*^9}, {3.5815832934882545`*^9, 3.58158333468219*^9}, {
-   3.5815834034532137`*^9, 3.581583432206107*^9}}]
-}, Open  ]],
-
 Cell["\<\
 Evaluation for homogeneos representation of complex numbers:\
 \>", "Text",
  CellChangeTimes->{{3.581583682826324*^9, 3.581583707148803*^9}}],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{"hom", "=", 
@@ -132,42 +103,10 @@ Cell[BoxData[{
    RowBox[{"Inhom", "[", "#", "]"}], "&"}], "/@", "hom"}]}], "Input",
  CellChangeTimes->{{3.5815835936328335`*^9, 3.581583673262493*^9}}],
 
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   RowBox[{"{", 
-    RowBox[{
-     RowBox[{"1", "+", 
-      RowBox[{"\[ImaginaryI]", " ", "\<\"z\"\>"}]}], ",", 
-     RowBox[{"\[ImaginaryI]", "+", "\<\"z\"\>"}]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"0", ",", 
-     RowBox[{"2", " ", "\[ImaginaryI]"}]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"2", ",", "0"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"\[ImaginaryI]", ",", "1"}], "}"}]}], "}"}]], "Output",
- CellChangeTimes->{3.5815836219031253`*^9, 3.581583674058095*^9, 
-  3.5815837095824113`*^9, 3.5815838764603558`*^9}],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   FractionBox[
-    RowBox[{"1", "+", 
-     RowBox[{"\[ImaginaryI]", " ", "\<\"z\"\>"}]}], 
-    RowBox[{"\[ImaginaryI]", "+", "\<\"z\"\>"}]], ",", "0", ",", 
-   "ComplexInfinity", ",", "\[ImaginaryI]"}], "}"}]], "Output",
- CellChangeTimes->{3.5815836219031253`*^9, 3.581583674058095*^9, 
-  3.5815837095824113`*^9, 3.581583876507156*^9}]
-}, Open  ]],
-
 Cell["\<\
 Composition of transformations:\
 \>", "Text",
  CellChangeTimes->{{3.5815837390841074`*^9, 3.581583742430319*^9}}],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
@@ -199,17 +138,6 @@ Cell[BoxData[{
   3.5816070440707684`*^9}}],
 
 Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"0", ",", "0"}], "}"}]], "Output",
- CellChangeTimes->{
-  3.581585133968655*^9, {3.581585245767619*^9, 3.5815852592938633`*^9}, {
-   3.5815853018236017`*^9, 3.581585308609624*^9}, {3.5815854725489583`*^9, 
-   3.581585490217216*^9}}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{
   RowBox[{
    RowBox[{"composition", "[", "\"\<z\>\"", "]"}], "\[Equal]", 
@@ -218,103 +146,9 @@ Cell[BoxData[
   "Simplify"}]], "Input",
  CellChangeTimes->{{3.5816070460529747`*^9, 3.5816070473009787`*^9}}],
 
-Cell[BoxData["True"], "Output",
- CellChangeTimes->{
-  3.581585133968655*^9, {3.581585245767619*^9, 3.5815852592938633`*^9}, {
-   3.5815853018236017`*^9, 3.581585308609624*^9}, {3.5815854725489583`*^9, 
-   3.581585490248416*^9}}]
-}, Open  ]],
-
-Cell["Compatibility with matrices:", "Text",
- CellChangeTimes->{{3.58158597340639*^9, 3.581585979084809*^9}}],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{
-   RowBox[{"MatrixForm", "[", "#", "]"}], "&"}], "/@", 
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"phi", "@", 
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"{", 
-        RowBox[{"1", ",", 
-         RowBox[{"-", "1"}]}], "}"}], ",", 
-       RowBox[{"{", 
-        RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}], ",", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"{", 
-        RowBox[{"1", ",", 
-         RowBox[{"-", "1"}]}], "}"}], ",", 
-       RowBox[{"{", 
-        RowBox[{"0", ",", "1"}], "}"}]}], "}"}], "@", "phi"}]}], 
-   "}"}]}]], "Input",
- CellChangeTimes->{{3.5815859842484255`*^9, 3.5815860660922923`*^9}}],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   TagBox[
-    RowBox[{"(", "\[NoBreak]", GridBox[{
-       {"\[ImaginaryI]", 
-        RowBox[{"1", "-", "\[ImaginaryI]"}]},
-       {"1", 
-        RowBox[{
-         RowBox[{"-", "1"}], "+", "\[ImaginaryI]"}]}
-      },
-      GridBoxAlignment->{
-       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
-        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
-      GridBoxSpacings->{"Columns" -> {
-          Offset[0.27999999999999997`], {
-           Offset[0.7]}, 
-          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-          Offset[0.2], {
-           Offset[0.4]}, 
-          Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
-    Function[BoxForm`e$, 
-     MatrixForm[BoxForm`e$]]], ",", 
-   TagBox[
-    RowBox[{"(", "\[NoBreak]", GridBox[{
-       {
-        RowBox[{
-         RowBox[{"-", "1"}], "+", "\[ImaginaryI]"}], 
-        RowBox[{"1", "-", "\[ImaginaryI]"}]},
-       {"1", "\[ImaginaryI]"}
-      },
-      GridBoxAlignment->{
-       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
-        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
-      GridBoxSpacings->{"Columns" -> {
-          Offset[0.27999999999999997`], {
-           Offset[0.7]}, 
-          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-          Offset[0.2], {
-           Offset[0.4]}, 
-          Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
-    Function[BoxForm`e$, 
-     MatrixForm[BoxForm`e$]]]}], "}"}]], "Output",
- CellChangeTimes->{{3.5815859957622633`*^9, 3.5815860666538944`*^9}}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{"?", "Mat"}]], "Input",
  CellChangeTimes->{{3.5815862089061575`*^9, 3.5815862109497643`*^9}}],
-
-Cell[BoxData[
- StyleBox["\<\"Mat[t] returns the coefficients of the MoebiusTransformation t \
-as matrix.\"\>", "MSG"]], "Print", "PrintUsage",
- CellChangeTimes->{3.5815862131347713`*^9},
- CellTags->"Info3581593412-3048158"]
-}, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
@@ -323,40 +157,8 @@ Cell[BoxData[
   3.581606730986747*^9, 3.5816067327339525`*^9}}],
 
 Cell[BoxData[
- TagBox[
-  RowBox[{"(", "\[NoBreak]", GridBox[{
-     {"\[ImaginaryI]", "1"},
-     {"1", "\[ImaginaryI]"}
-    },
-    GridBoxAlignment->{
-     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
-      "RowsIndexed" -> {}},
-    GridBoxSpacings->{"Columns" -> {
-        Offset[0.27999999999999997`], {
-         Offset[0.7]}, 
-        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-        Offset[0.2], {
-         Offset[0.4]}, 
-        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
-  Function[BoxForm`e$, 
-   MatrixForm[BoxForm`e$]]]], "Output",
- CellChangeTimes->{3.5815862187975903`*^9, 3.581606733092754*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"?", "Inv"}]], "Input",
  CellChangeTimes->{{3.5815862222608013`*^9, 3.5815862274878182`*^9}}],
-
-Cell[BoxData[
- StyleBox["\<\"Inv[t] returns the inverse of the MoebiusTransformation \
-t.\"\>", "MSG"]], "Print", "PrintUsage",
- CellChangeTimes->{3.581586228845023*^9},
- CellTags->"Info3581593428-3048158"]
-}, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -369,23 +171,6 @@ Cell[BoxData[
   3.5815862836052012`*^9, 3.581586291031825*^9}}],
 
 Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   FractionBox[
-    RowBox[{"1", "+", 
-     RowBox[{"\[ImaginaryI]", " ", "\<\"z\"\>"}]}], 
-    RowBox[{"\[ImaginaryI]", "+", "\<\"z\"\>"}]], ",", 
-   FractionBox[
-    RowBox[{
-     RowBox[{"-", "1"}], "+", 
-     RowBox[{"\[ImaginaryI]", " ", "\<\"z\"\>"}]}], 
-    RowBox[{"\[ImaginaryI]", "-", "\<\"z\"\>"}]]}], "}"}]], "Output",
- CellChangeTimes->{3.581586291624627*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{
   RowBox[{
    RowBox[{
@@ -395,20 +180,17 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"Inv", "[", "phi", "]"}], "@", "\"\<z\>\""}]}], "\[Equal]", 
    "\"\<z\>\""}], "//", "Simplify"}]], "Input",
- CellChangeTimes->{{3.58158630794328*^9, 3.5815863650746665`*^9}}],
-
-Cell[BoxData["True"], "Output",
- CellChangeTimes->{{3.581586332016159*^9, 3.581586365464668*^9}}]
-}, Open  ]]
+ CellChangeTimes->{{3.58158630794328*^9, 3.5815863650746665`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["\<\
 
-Class ModularTransformation\
+Modular Transformations\
 \>", "Subtitle",
- CellChangeTimes->{{3.581581629687232*^9, 3.5815816337744455`*^9}}],
+ CellChangeTimes->{{3.581581629687232*^9, 3.5815816337744455`*^9}, {
+  3.5817399858925333`*^9, 3.581739988809743*^9}}],
 
 Cell[CellGroupData[{
 
@@ -434,8 +216,6 @@ ModularTransformations are MoebiusTransformations:\
 \>", "Text",
  CellChangeTimes->{{3.581607765054337*^9, 3.5816077730103626`*^9}}],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[{
  RowBox[{
   RowBox[{"phi", "=", 
@@ -456,20 +236,12 @@ Cell[BoxData[{
  CellChangeTimes->{{3.5816071529057226`*^9, 3.581607261491295*^9}, {
   3.581608546053294*^9, 3.581608599659069*^9}}],
 
-Cell[BoxData["True"], "Output",
- CellChangeTimes->{
-  3.5816072631605005`*^9, 3.5816085604063416`*^9, {3.5816085908752403`*^9, 
-   3.5816085999710703`*^9}}]
-}, Open  ]],
-
 Cell["\<\
 Some MoebiusTransformations are ModularTransformations:\
 \>", "Text",
  CellChangeTimes->{{3.5816073368143406`*^9, 3.5816073610276194`*^9}, {
   3.5816073942577276`*^9, 3.5816074121207857`*^9}, {3.5816077821373925`*^9, 
   3.581607786879808*^9}}],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
@@ -501,43 +273,6 @@ Cell[BoxData[{
    3.581607675924247*^9, 3.5816076826166687`*^9}, 3.581608101744034*^9, {
    3.581608144959175*^9, 3.5816081538366036`*^9}}],
 
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   TagBox[
-    RowBox[{"(", "\[NoBreak]", GridBox[{
-       {
-        FractionBox["1", 
-         SqrtBox["2"]], 
-        FractionBox["\[ImaginaryI]", 
-         SqrtBox["2"]]},
-       {
-        RowBox[{"-", 
-         FractionBox["\[ImaginaryI]", 
-          SqrtBox["2"]]}], 
-        RowBox[{"-", 
-         FractionBox["1", 
-          SqrtBox["2"]]}]}
-      },
-      GridBoxAlignment->{
-       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
-        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
-      GridBoxSpacings->{"Columns" -> {
-          Offset[0.27999999999999997`], {
-           Offset[0.7]}, 
-          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-          Offset[0.2], {
-           Offset[0.4]}, 
-          Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
-    Function[BoxForm`e$, 
-     MatrixForm[BoxForm`e$]]], ",", "False"}], "}"}]], "Output",
- CellChangeTimes->{
-  3.581607550505438*^9, {3.5816076283868914`*^9, 3.5816076388711257`*^9}, 
-   3.5816081111050644`*^9, {3.581608149858591*^9, 3.581608154273405*^9}}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
 Cell[BoxData[{
  RowBox[{
   RowBox[{"psiSqr", "=", 
@@ -551,93 +286,19 @@ Cell[BoxData[{
     "]"}]}], "}"}]}], "Input",
  CellChangeTimes->{{3.5816075651080856`*^9, 3.5816076016776047`*^9}}],
 
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   TagBox[
-    RowBox[{"(", "\[NoBreak]", GridBox[{
-       {"1", "0"},
-       {"0", "1"}
-      },
-      GridBoxAlignment->{
-       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
-        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
-      GridBoxSpacings->{"Columns" -> {
-          Offset[0.27999999999999997`], {
-           Offset[0.7]}, 
-          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-          Offset[0.2], {
-           Offset[0.4]}, 
-          Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
-    Function[BoxForm`e$, 
-     MatrixForm[BoxForm`e$]]], ",", "True"}], "}"}]], "Output",
- CellChangeTimes->{
-  3.5816075505366383`*^9, {3.5816076020052056`*^9, 3.5816076400567293`*^9}, 
-   3.5816081169862833`*^9}]
-}, Open  ]],
-
 Cell["\<\
 There are some predifined ModularTransformations:\
 \>", "Text",
  CellChangeTimes->{{3.581608688711159*^9, 3.581608696245185*^9}, {
   3.5816088518160925`*^9, 3.5816088535476985`*^9}}],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"?", "mtId"}]], "Input",
- CellChangeTimes->{{3.5816086983667917`*^9, 3.5816086997395964`*^9}}],
-
-Cell[BoxData[
- StyleBox["\<\"mtId is the identity element of the classes \
-MoebiusTransformation and ModularTransformation.\"\>", "MSG"]], "Print", \
-"PrintUsage",
- CellChangeTimes->{3.581608701471202*^9},
- CellTags->"Info3581615901-3048158"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"?", "mtU"}]], "Input",
- CellChangeTimes->{{3.5816087066046185`*^9, 3.5816087145762444`*^9}}],
-
-Cell[BoxData[
- StyleBox["\<\"mtU is the ModularTransformation U: z \[RightTeeArrow] \
-z+1.\"\>", "MSG"]], "Print", "PrintUsage",
- CellChangeTimes->{3.581608715371847*^9},
- CellTags->"Info3581615914-3048158"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"?", "mtT"}]], "Input",
- CellChangeTimes->{{3.5816087162922497`*^9, 3.5816087173530536`*^9}}],
-
-Cell[BoxData[
- StyleBox["\<\"\\\"mtT is the ModularTransformation T: z \[RightTeeArrow] \
--\\!\\(\\*FractionBox[\\(1\\), \\(z\\)]\\).\\\"\"\>", "MSG"]], "Print", \
-"PrintUsage",
- CellChangeTimes->{3.5816087184918575`*^9},
- CellTags->"Info3581615918-3048158"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"?", "mtR"}]], "Input",
- CellChangeTimes->{{3.581608720988866*^9, 3.5816087222056694`*^9}}],
-
-Cell[BoxData[
- StyleBox["\<\"\\\"mtR is the ModularTransformation R = TU : z \
-\[RightTeeArrow] -\\!\\(\\*FractionBox[\\(1\\), \\(z + 1\\)]\\).\\\"\"\>", 
-  "MSG"]], "Print", "PrintUsage",
- CellChangeTimes->{3.581608723297673*^9},
- CellTags->"Info3581615922-3048158"]
-}, Open  ]],
-
-Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{"?", "mtId"}], "\[IndentingNewLine]", 
+ RowBox[{"?", "mtU"}], "\[IndentingNewLine]", 
+ RowBox[{"?", "mtT"}], "\[IndentingNewLine]", 
+ RowBox[{"?", "mtR"}]}], "Input",
+ CellChangeTimes->{{3.5816086983667917`*^9, 3.5816086997395964`*^9}, {
+  3.581741061968438*^9, 3.581741072233271*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -649,96 +310,28 @@ Cell[BoxData[
  CellChangeTimes->{{3.581608743422738*^9, 3.5816087670228167`*^9}, {
   3.581608809567155*^9, 3.581608824826005*^9}}],
 
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"\<\"z\"\>", ",", 
-   RowBox[{"1", "+", "\<\"z\"\>"}], ",", 
-   RowBox[{"-", 
-    FractionBox["1", "\<\"z\"\>"]}], ",", 
-   RowBox[{"-", 
-    FractionBox["1", 
-     RowBox[{"1", "+", "\<\"z\"\>"}]]}]}], "}"}]], "Output",
- CellChangeTimes->{3.5816087676312184`*^9, 3.5816088253408065`*^9}]
-}, Open  ]],
-
 Cell["\<\
-Algorithms for finding and using group word representations:\
+Finding a group word representations of a ModularTransformation:\
 \>", "Text",
- CellChangeTimes->{{3.581609088767665*^9, 3.5816091062407217`*^9}}],
-
-Cell[CellGroupData[{
+ CellChangeTimes->{{3.581609088767665*^9, 3.5816091062407217`*^9}, {
+  3.581738333131895*^9, 3.581738342460726*^9}}],
 
 Cell[BoxData[
  RowBox[{"?", "TUWord"}]], "Input",
  CellChangeTimes->{{3.5816082939672604`*^9, 3.581608295480465*^9}}],
 
 Cell[BoxData[
- StyleBox["\<\"TUWord[t] returns a symbolic group word representation of the \
-ModularTransformation t in terms of the group generators T and U.\\nOptions: \
-QuotientFunction\"\>", "MSG"]], "Print", "PrintUsage",
- CellChangeTimes->{3.581608371959327*^9},
- CellTags->"Info3581615571-3048158"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"TUWord", "[", "phi", "]"}]], "Input"],
-
-Cell[BoxData[
- TemplateBox[{TemplateBox[{"\"U\"", 
-     RowBox[{"-", "2"}]}, "Superscript"],"\"T\"",TemplateBox[{"\"U\"", 
-     RowBox[{"-", "2"}]}, "Superscript"],"\"T\"",
-   TemplateBox[{"\"U\"", "1"}, "Superscript"],"\"T\"",TemplateBox[{"\"U\"", 
-     RowBox[{"-", "2"}]}, "Superscript"],"\"T\""},
-  "RowDefault"]], "Output",
- CellChangeTimes->{3.581609351835722*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"?", "QuotientFunction"}]], "Input",
  CellChangeTimes->{{3.5816093570773387`*^9, 3.5816093593559465`*^9}}],
 
-Cell[BoxData[
- StyleBox["\<\"QuotientFunction is an option which defines the integer \
-quotient function to be used within the euclidean algorithm. Default is \
-Mathematica's built-in function Quotient. Predefined alternatives are \
-CentralQuotient and CQuotient.\"\>", "MSG"]], "Print", "PrintUsage",
- CellChangeTimes->{3.5816093606195507`*^9},
- CellTags->"Info3581616560-3048158"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"?", "CentralQuotient"}]], "Input",
- CellChangeTimes->{{3.5816093711339846`*^9, 3.5816093750505977`*^9}}],
-
-Cell[BoxData[
- StyleBox["\<\"CentralQuotient[m,n] returns the integer quotient q of m = q n \
-+ r, such that Abs[r] \[LessEqual] Abs[n/2].\"\>", "MSG"]], "Print", \
-"PrintUsage",
- CellChangeTimes->{3.5816093763766017`*^9},
- CellTags->"Info3581616575-3048158"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"?", "CQuotient"}]], "Input",
- CellChangeTimes->{{3.581609377905407*^9, 3.581609379824213*^9}}],
-
-Cell[BoxData[
- StyleBox["\<\"CQuotient[m,n] returns the integer quotient of m and n with \
-rounding towards 0 (equivalent to integer division e.g. in the programming \
-language C).\"\>", "MSG"]], "Print", "PrintUsage",
- CellChangeTimes->{3.5816093808538165`*^9},
- CellTags->"Info3581616580-3048158"]
-}, Open  ]],
-
-Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{"?", "CentralQuotient"}], "\[IndentingNewLine]", 
+ RowBox[{"?", "CQuotient"}]}], "Input",
+ CellChangeTimes->{{3.5816093711339846`*^9, 3.5816093750505977`*^9}, {
+  3.581741100094962*^9, 3.5817411039013743`*^9}}],
 
 Cell[BoxData[
  RowBox[{"Grid", "[", 
@@ -759,64 +352,14 @@ Cell[BoxData[
  CellChangeTimes->{{3.5816093862212343`*^9, 3.5816094401078095`*^9}, {
   3.5816099252761903`*^9, 3.5816099401308393`*^9}}],
 
-Cell[BoxData[
- TagBox[GridBox[{
-    {"Quotient", 
-     TemplateBox[{TemplateBox[{"\"U\"", 
-         RowBox[{"-", "2"}]}, "Superscript"],"\"T\"",TemplateBox[{"\"U\"", 
-         RowBox[{"-", "2"}]}, "Superscript"],"\"T\"",
-       TemplateBox[{"\"U\"", "1"}, "Superscript"],"\"T\"",
-       TemplateBox[{"\"U\"", 
-         RowBox[{"-", "2"}]}, "Superscript"],"\"T\""},
-      "RowDefault"]},
-    {"CentralQuotient", 
-     TemplateBox[{TemplateBox[{"\"U\"", 
-         RowBox[{"-", "2"}]}, "Superscript"],"\"T\"",TemplateBox[{"\"U\"", 
-         RowBox[{"-", "3"}]}, "Superscript"],"\"T\"",TemplateBox[{"\"U\"", 
-         RowBox[{"-", "3"}]}, "Superscript"],"\"T\""},
-      "RowDefault"]},
-    {"CQuotient", 
-     TemplateBox[{TemplateBox[{"\"U\"", 
-         RowBox[{"-", "1"}]}, "Superscript"],"\"T\"",
-       TemplateBox[{"\"U\"", "1"}, "Superscript"],"\"T\"",
-       TemplateBox[{"\"U\"", 
-         RowBox[{"-", "1"}]}, "Superscript"],"\"T\"",
-       TemplateBox[{"\"U\"", "1"}, "Superscript"],"\"T\"",
-       TemplateBox[{"\"U\"", 
-         RowBox[{"-", "2"}]}, "Superscript"],"\"T\""},
-      "RowDefault"]}
-   },
-   AutoDelete->False,
-   GridBoxAlignment->{"Columns" -> {{Left}}},
-   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
-  "Grid"]], "Output",
- CellChangeTimes->{{3.5816094293115745`*^9, 3.581609440544611*^9}, 
-   3.5816099405208406`*^9}]
-}, Open  ]],
-
 Cell["\<\
 Sometimes the list of exponents of the U\[CloseCurlyQuote]s is more useful:\
 \>", "Text",
  CellChangeTimes->{{3.5816094988460007`*^9, 3.581609525617688*^9}}],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{"?", "TUExponents"}]], "Input",
  CellChangeTimes->{{3.581609111155738*^9, 3.5816091138701468`*^9}}],
-
-Cell[BoxData[
- StyleBox["\<\"TUExponents[t] returns for a ModularTransformation t a list of \
-exponents {\!\(\*SubscriptBox[\(e\), \(0\)]\),...,\!\(\*SubscriptBox[\(e\), \
-\(n\)]\)} such that t = \!\(\*SuperscriptBox[\(U\), SubscriptBox[\(e\), \
-\(0\)]]\)\!\(\*SuperscriptBox[\(TU\), SubscriptBox[\(e\), \
-\(1\)]]\)...\!\(\*SuperscriptBox[\(TU\), SubscriptBox[\(e\), \(n\)]]\). \
-\\nOptions: QuotientFunction.\"\>", "MSG"]], "Print", "PrintUsage",
- CellChangeTimes->{3.5816095281292963`*^9},
- CellTags->"Info3581616727-3048158"]
-}, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Grid", "[", 
@@ -838,60 +381,16 @@ Cell[BoxData[
   3.5816097783741117`*^9, 3.581609854040358*^9}, {3.5816098946970906`*^9, 
   3.581609912014147*^9}}],
 
-Cell[BoxData[
- TagBox[GridBox[{
-    {"Quotient", 
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"-", "2"}], ",", 
-       RowBox[{"-", "2"}], ",", "1", ",", 
-       RowBox[{"-", "2"}], ",", "0"}], "}"}]},
-    {"CentralQuotient", 
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"-", "2"}], ",", 
-       RowBox[{"-", "3"}], ",", 
-       RowBox[{"-", "3"}], ",", "0"}], "}"}]},
-    {"CQuotient", 
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"-", "1"}], ",", "1", ",", 
-       RowBox[{"-", "1"}], ",", "1", ",", 
-       RowBox[{"-", "2"}], ",", "0"}], "}"}]}
-   },
-   AutoDelete->False,
-   GridBoxAlignment->{"Columns" -> {{Left}}},
-   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
-  "Grid"]], "Output",
- CellChangeTimes->{{3.581609548364562*^9, 3.5816095540117807`*^9}, {
-   3.5816097826797256`*^9, 3.581609793522761*^9}, 3.581609854367959*^9, {
-   3.581609900314109*^9, 3.5816099125299487`*^9}}]
-}, Open  ]],
-
 Cell["\<\
-TUEval can be used for calculating backwards:\
+TUEval can be used for evaluating group words:\
 \>", "Text",
  CellChangeTimes->{{3.581609659210923*^9, 3.58160966426634*^9}, {
   3.581610103413971*^9, 3.581610106892782*^9}, {3.5816101376736827`*^9, 
-  3.5816101391556873`*^9}}],
-
-Cell[CellGroupData[{
+  3.5816101391556873`*^9}, {3.5817411392666893`*^9, 3.5817411475503163`*^9}}],
 
 Cell[BoxData[
  RowBox[{"?", "TUEval"}]], "Input",
  CellChangeTimes->{{3.581609186774184*^9, 3.5816091957296133`*^9}}],
-
-Cell[BoxData[
- StyleBox["\<\"TUEval[t, subsT, subsU, product, power] substitutes the \
-symbols T and U in the group word representation of the ModularTransformation \
-t with subsT and subsU respectively and evaluates using the provided product \
-and power functions.\\nExample: TUEval[phi, Mat[mtT], Mat[mtU], Dot, \
-MatrixPower]\\nOptions: QuotientFunction.\"\>", "MSG"]], "Print", "PrintUsage",
- CellChangeTimes->{3.581609196946417*^9},
- CellTags->"Info3581616396-3048158"]
-}, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
@@ -952,117 +451,445 @@ Cell[BoxData[
           "}"}]}], "}"}]}], "\[IndentingNewLine]", "]"}]}]}], 
    "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]"}]], "Input",
  CellChangeTimes->{{3.581610325686096*^9, 3.5816105768035145`*^9}, 
-   3.581610614964239*^9, {3.581610781331382*^9, 3.5816108756718893`*^9}}],
-
-Cell[BoxData[
- TagBox[
-  StyleBox[
-   DynamicModuleBox[{OOP`Private`f$$ = Quotient, Typeset`show$$ = True, 
-    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
-    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
-    "\"untitled\"", Typeset`specs$$ = {{{
-       Hold[OOP`Private`f$$], Quotient}, {
-      Quotient, ModularGroup`CentralQuotient, ModularGroup`CQuotient}}}, 
-    Typeset`size$$ = {407.5, {42., 15.}}, Typeset`update$$ = 0, 
-    Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
-    OOP`Private`f$168889$$ = 0}, 
-    DynamicBox[Manipulate`ManipulateBoxes[
-     1, StandardForm, "Variables" :> {OOP`Private`f$$ = Quotient}, 
-      "ControllerVariables" :> {
-        Hold[OOP`Private`f$$, OOP`Private`f$168889$$, 0]}, 
-      "OtherVariables" :> {
-       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
-        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
-        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
-         Typeset`skipInitDone$$}, 
-      "Body" :> (
-       OOP`Private`word$168886 = 
-        ModularGroup`TUWord[
-         OOP`Private`phi$168886, ModularGroup`QuotientFunction -> 
-          OOP`Private`f$$]; 
-       OOP`Private`factors$168886 = 
-        ModularGroup`TUEval[OOP`Private`phi$168886, 
-          ModularGroup`Mat[ModularGroup`mtT], 
-          ModularGroup`Mat[ModularGroup`mtU], List, MatrixPower, 
-          ModularGroup`QuotientFunction -> OOP`Private`f$$]; 
-       Row[{OOP`Private`word$168886, " = ", 
-          Apply[Sequence, 
-           Riffle[
-            Map[MatrixForm[#]& , OOP`Private`factors$168886], 
-            "\[CenterDot]"]], " = ", 
-          MatrixForm[
-           Apply[Dot, OOP`Private`factors$168886]]}]), 
-      "Specifications" :> {{{OOP`Private`f$$, Quotient}, {
-         Quotient, ModularGroup`CentralQuotient, ModularGroup`CQuotient}}}, 
-      "Options" :> {}, "DefaultOptions" :> {}],
-     ImageSizeCache->{459., {71., 76.}},
-     SingleEvaluation->True],
-    Deinitialization:>None,
-    DynamicModuleValues:>{},
-    SynchronousInitialization->True,
-    UnsavedVariables:>{Typeset`initDone$$},
-    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
-   Deployed->True,
-   StripOnInput->False],
-  Manipulate`InterpretManipulate[1]]], "Output",
- CellChangeTimes->{
-  3.5816105783635197`*^9, 3.581610615635041*^9, {3.581610868822467*^9, 
-   3.581610876795093*^9}}]
+   3.581610614964239*^9, {3.581610781331382*^9, 3.5816108756718893`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
+Cell["\<\
+
+Generalized Circles\
+\>", "Subtitle",
+ CellChangeTimes->{{3.5817399431483946`*^9, 3.5817399477036095`*^9}}],
+
 Cell[BoxData[
- RowBox[{"?", "Quotient"}]], "Input",
- CellChangeTimes->{{3.581610720844985*^9, 3.581610723262993*^9}}],
+ RowBox[{"?", "GeneralizedDisk"}]], "Input",
+ CellChangeTimes->{{3.5817400071242027`*^9, 3.581740009947812*^9}}],
+
+Cell["\<\
+There are some convenience functions for creating GeneralizedDisks:\
+\>", "Text",
+ CellChangeTimes->{{3.5817406748063774`*^9, 3.5817407104368935`*^9}, {
+  3.581740880524247*^9, 3.5817409199143753`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"?", "CompactDisk"}], "\[IndentingNewLine]", 
+ RowBox[{"?", "NoncompactDisk"}], "\[IndentingNewLine]", 
+ RowBox[{"?", "Halfplane"}]}], "Input",
+ CellChangeTimes->{{3.581740724289738*^9, 3.581740727706149*^9}, {
+  3.5817410348711495`*^9, 3.581741042296774*^9}}],
+
+Cell["\<\
+CompactDisks are identified by their radius and center, Noncompact disks by \
+their \[OpenCurlyDoubleQuote]coradius\[CloseCurlyDoubleQuote] and \
+\[OpenCurlyDoubleQuote]cocenter\[CloseCurlyDoubleQuote]:\
+\>", "Text",
+ CellChangeTimes->{{3.581760835542945*^9, 3.5817609744769974`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"?", "GDiskRadius"}], "\[IndentingNewLine]", 
+ RowBox[{"?", "GDiskCenter"}], "\[IndentingNewLine]", 
+ RowBox[{"?", "GDiskCoradius"}], "\[IndentingNewLine]", 
+ RowBox[{"?", "GDiskCocenter"}]}], "Input",
+ CellChangeTimes->{{3.581760975818602*^9, 3.581761009218311*^9}}],
+
+Cell["\<\
+Predifined GeneralizedDisks are:\
+\>", "Text",
+ CellChangeTimes->{{3.5817409420664473`*^9, 3.5817409507868757`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"?", "gdUnitDisk"}], "\[IndentingNewLine]", 
+ RowBox[{"?", "gdUpperHalfplane"}], "\[IndentingNewLine]", 
+ RowBox[{"?", "gdLowerHalfplane"}], "\[IndentingNewLine]", 
+ RowBox[{"?", "gdRightHalfplane"}], "\[IndentingNewLine]", 
+ RowBox[{"?", "gdLeftHalfplane"}]}], "Input",
+ CellChangeTimes->{{3.5817409525964813`*^9, 3.5817409583997006`*^9}, {
+  3.5817410253395185`*^9, 3.5817410295671325`*^9}, {3.581741187002845*^9, 
+  3.5817412013392916`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"GDiskCenter", "[", "gdUnitDisk", "]"}], ",", 
+   RowBox[{"GDiskRadius", "[", "gdUnitDisk", "]"}]}], "}"}]], "Input",
+ CellChangeTimes->{{3.5817611233482823`*^9, 3.5817611405707383`*^9}}],
+
+Cell["\<\
+Testing if a GeneralizedDisk contains a given point:\
+\>", "Text",
+ CellChangeTimes->{{3.581742171314456*^9, 3.581742195541335*^9}, {
+   3.5817422334650583`*^9, 3.581742245227496*^9}, 3.5817611884316945`*^9}],
+
+Cell[BoxData[
+ RowBox[{"?", "InteriorQ"}]], "Input",
+ CellChangeTimes->{{3.581742246959102*^9, 3.581742250375513*^9}}],
 
 Cell[BoxData[
  RowBox[{
-  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Quotient\\\", \\\"[\\\", \
-RowBox[{StyleBox[\\\"m\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \
-\\\"TI\\\"]}], \\\"]\\\"}]\\) gives the integer quotient of \
-\\!\\(\\*StyleBox[\\\"m\\\", \\\"TI\\\"]\\) and \\!\\(\\*StyleBox[\\\"n\\\", \
-\\\"TI\\\"]\\). \\n\\!\\(\\*RowBox[{\\\"Quotient\\\", \\\"[\\\", \
-RowBox[{StyleBox[\\\"m\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \
-\\\"TI\\\"], \\\",\\\", StyleBox[\\\"d\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) \
-uses an offset \\!\\(\\*StyleBox[\\\"d\\\", \\\"TI\\\"]\\). \"\>", "MSG"], 
-  "\[NonBreakingSpace]", 
-  ButtonBox[
-   StyleBox["\[RightSkeleton]", "SR"],
-   Active->True,
-   BaseStyle->"Link",
-   ButtonData->"paclet:ref/Quotient"]}]], "Print", "PrintUsage",
- CellChangeTimes->{3.581610724089795*^9},
- CellTags->"Info3581617923-3048158"]
-}, Open  ]],
-
-Cell[CellGroupData[{
+  RowBox[{
+   RowBox[{"InteriorQ", "[", 
+    RowBox[{"gdUnitDisk", ",", "#"}], "]"}], "&"}], "/@", 
+  RowBox[{"{", 
+   RowBox[{"0", ",", "1", ",", "2", ",", "ComplexInfinity"}], 
+   "}"}]}]], "Input",
+ CellChangeTimes->{{3.5817401192105675`*^9, 3.581740162329108*^9}, 
+   3.581741018693897*^9, 3.581741173477601*^9, {3.5817423917275734`*^9, 
+   3.5817424007132025`*^9}, {3.581743048957714*^9, 3.5817430783170094`*^9}}],
 
 Cell[BoxData[
- RowBox[{"?", "CentralQuotient"}]], "Input",
- CellChangeTimes->{{3.581610729176412*^9, 3.581610732436823*^9}}],
+ RowBox[{
+  RowBox[{
+   RowBox[{"InteriorQ", "[", 
+    RowBox[{"gdUnitDisk", ",", "#"}], "]"}], "&"}], "/@", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", "1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "0"}], "}"}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.5817612017697372`*^9, 3.5817612215350018`*^9}}],
+
+Cell["\<\
+For drawing GeneralizedDisks, RegionPlot in conjunction with InteriorQ may be \
+used:\
+\>", "Text",
+ CellChangeTimes->{{3.5817612678671527`*^9, 3.5817612910332284`*^9}}],
 
 Cell[BoxData[
- StyleBox["\<\"CentralQuotient[m,n] returns the integer quotient q of m = q n \
-+ r, such that Abs[r] \[LessEqual] Abs[n/2].\"\>", "MSG"]], "Print", \
-"PrintUsage",
- CellChangeTimes->{3.5816107332168255`*^9},
- CellTags->"Info3581617932-3048158"]
-}, Open  ]],
+ RowBox[{"Module", "[", 
+  RowBox[{
+   RowBox[{"{", "disk", "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"disk", "[", "\"\<Unit disk\>\"", "]"}], "=", "gdUnitDisk"}], 
+    ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"disk", "[", "\"\<Upper half\>\"", "]"}], "=", 
+     "gdUpperHalfplane"}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"disk", "[", "\"\<Lower half\>\"", "]"}], "=", 
+     "gdLowerHalfplane"}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"disk", "[", "\"\<Right half\>\"", "]"}], "=", 
+     "gdRightHalfplane"}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"disk", "[", "\"\<Left half\>\"", "]"}], "=", 
+     "gdLeftHalfplane"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"RegionPlot", "[", 
+       RowBox[{
+        RowBox[{"InteriorQ", "[", 
+         RowBox[{
+          RowBox[{"disk", "[", "Selection", "]"}], ",", 
+          RowBox[{"x", "+", 
+           RowBox[{"I", " ", "y"}]}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", 
+          RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"y", ",", 
+          RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Frame", "\[Rule]", "False"}], ",", 
+        RowBox[{"Axes", "\[Rule]", "True"}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"Selection", ",", " ", "\"\<Unit disk\>\""}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+         "\"\<Unit disk\>\"", ",", "\"\<Upper half\>\"", ",", 
+          "\"\<Lower half\>\"", ",", "\"\<Right half\>\"", ",", 
+          "\"\<Left half\>\""}], "}"}]}], "}"}]}], "\[IndentingNewLine]", 
+     "]"}]}]}], "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.581742406812823*^9, 3.5817427759880247`*^9}, {
+  3.581761315634508*^9, 3.581761318224117*^9}}],
 
-Cell[CellGroupData[{
+Cell["\<\
+Generalized circles can be transformed by MoebiusTransformations, e.g. the \
+upper halfplane can be transformed to the unit disk:\
+\>", "Text",
+ CellChangeTimes->{{3.5817431526980515`*^9, 3.5817431668004975`*^9}, {
+  3.5817613580042467`*^9, 3.5817613704374866`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"phi", "=", 
+   RowBox[{"New", "[", 
+    RowBox[{"MoebiusTransformation", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"I", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "I"}], "}"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"disk", "=", 
+   RowBox[{"phi", "[", "gdUpperHalfplane", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"InteriorQ", "[", 
+   RowBox[{"disk", ",", "\"\<z\>\""}], "]"}], "//", 
+  "FullSimplify"}]}], "Input",
+ CellChangeTimes->{{3.581743169998508*^9, 3.58174326572042*^9}, {
+  3.581743877554412*^9, 3.5817439132473283`*^9}, {3.5817614035563946`*^9, 
+  3.581761479435042*^9}}],
+
+Cell["\<\
+Continuous animation of the above transformation and its powers up to 4:\
+\>", "Text",
+ CellChangeTimes->{{3.581743445698206*^9, 3.58174348997115*^9}, {
+  3.581744333637497*^9, 3.581744348582346*^9}, {3.581761486455065*^9, 
+  3.5817615106507435`*^9}}],
 
 Cell[BoxData[
- RowBox[{"?", "CQuotient"}]], "Input",
- CellChangeTimes->{{3.581610735229232*^9, 3.5816107388650436`*^9}}],
+ RowBox[{"Module", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"phi", ",", "disk"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"phi", "=", 
+       RowBox[{"New", "[", 
+        RowBox[{"MoebiusTransformation", ",", 
+         RowBox[{"MatrixPower", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"I", ",", "1"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"1", ",", "I"}], "}"}]}], "}"}], ",", "t"}], "]"}]}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"disk", "=", 
+       RowBox[{"phi", "[", "gdUpperHalfplane", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Column", "@", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Superscript", "[", 
+          RowBox[{"\"\<\[Phi]\>\"", ",", "t"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"RegionPlot", "[", 
+          RowBox[{
+           RowBox[{"InteriorQ", "[", 
+            RowBox[{"disk", ",", 
+             RowBox[{"x", "+", 
+              RowBox[{"I", " ", "y"}]}]}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", 
+             RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"y", ",", 
+             RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+           RowBox[{"Frame", "\[Rule]", "False"}], ",", 
+           RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}]}], 
+        "\[IndentingNewLine]", "}"}]}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", "4"}], "}"}]}], "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.5817434914531546`*^9, 3.5817436525860796`*^9}, {
+  3.581743960780683*^9, 3.5817439609054832`*^9}, {3.5817440476261663`*^9, 
+  3.5817441638621445`*^9}, {3.581744194485044*^9, 3.581744208790291*^9}, {
+  3.58174423931959*^9, 3.581744302125395*^9}}],
+
+Cell["\<\
+The above transformation can be thought of a simple rotation of the \
+Riemannian sphere:\
+\>", "Text",
+ CellChangeTimes->{{3.5817590643599777`*^9, 3.581759093890874*^9}}],
 
 Cell[BoxData[
- StyleBox["\<\"CQuotient[m,n] returns the integer quotient of m and n with \
-rounding towards 0 (equivalent to integer division e.g. in the programming \
-language C).\"\>", "MSG"]], "Print", "PrintUsage",
- CellChangeTimes->{3.581610739676246*^9},
- CellTags->"Info3581617939-3048158"]
-}, Open  ]]
+ RowBox[{"Module", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"phi", ",", "disk", ",", "cone"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"phi", "=", 
+       RowBox[{"New", "[", 
+        RowBox[{"MoebiusTransformation", ",", 
+         RowBox[{"MatrixPower", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"I", ",", "1"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"1", ",", "I"}], "}"}]}], "}"}], ",", "t"}], "]"}]}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"disk", "=", 
+       RowBox[{"phi", "[", "gdUpperHalfplane", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"cone", "=", 
+       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"showProjection", "&&", 
+         RowBox[{
+          RowBox[{"InstanceQ", "[", "CompactDisk", "]"}], "[", "disk", 
+          "]"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"cone", "=", 
+          RowBox[{"Module", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"c", "=", 
+              RowBox[{"GDiskCenter", "[", "disk", "]"}]}], "}"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"GeometricTransformation", "[", 
+             RowBox[{
+              RowBox[{"Cone", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", 
+                    RowBox[{"-", "2"}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], "}"}], ",", 
+                RowBox[{"2", " ", 
+                 RowBox[{"GDiskRadius", "[", "disk", "]"}]}]}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"1", ",", "0", ",", 
+                    RowBox[{"-", 
+                    RowBox[{"Re", "[", "c", "]"}]}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "1", ",", 
+                    RowBox[{"-", 
+                    RowBox[{"Im", "[", "c", "]"}]}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}]}], "]"}]}],
+            "\[IndentingNewLine]", "]"}]}], ";"}]}], "\[IndentingNewLine]", 
+       "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Column", "@", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Superscript", "[", 
+          RowBox[{"\"\<\[Phi]\>\"", ",", "t"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Show", "[", 
+          RowBox[{
+           RowBox[{"{", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"ParametricPlot3D", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"Cos", "[", "phi", "]"}], 
+                   RowBox[{"Cos", "[", "theta", "]"}]}], ",", 
+                  RowBox[{"Sin", "[", "theta", "]"}], ",", 
+                  RowBox[{
+                   RowBox[{"-", 
+                    RowBox[{"Sin", "[", "phi", "]"}]}], 
+                   RowBox[{"Cos", "[", "theta", "]"}]}]}], "}"}], ".", 
+                RowBox[{"RotationMatrix", "[", 
+                 RowBox[{
+                  RowBox[{"Pi", " ", 
+                   RowBox[{"t", "/", "2"}]}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "]"}]}], ",", 
+               RowBox[{"{", 
+                RowBox[{"phi", ",", 
+                 RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"theta", ",", "0", ",", 
+                 RowBox[{"Pi", "/", "2"}]}], "}"}], ",", 
+               RowBox[{"Mesh", "\[Rule]", "False"}], ",", 
+               RowBox[{"PlotStyle", "\[Rule]", 
+                RowBox[{"{", 
+                 RowBox[{"Lighter", "@", "Blue"}], "}"}]}]}], "]"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Graphics3D", "[", 
+              RowBox[{"{", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"RegionPlot", "[", 
+                    RowBox[{
+                    RowBox[{"InteriorQ", "[", 
+                    RowBox[{"disk", ",", 
+                    RowBox[{"x", "+", 
+                    RowBox[{"I", " ", "y"}]}]}], "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"x", ",", 
+                    RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"y", ",", 
+                    RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+                    RowBox[{"PlotStyle", "\[Rule]", "Gray"}], ",", 
+                    RowBox[{"Axes", "\[Rule]", "True"}]}], "]"}], "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], "/.", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"x_Real", ",", "y_Real"}], "}"}], "\[Rule]", 
+                   RowBox[{"{", 
+                    RowBox[{"x", ",", "y", ",", "0"}], "}"}]}]}], ")"}], ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"PointSize", "\[Rule]", "Large"}], ",", "Red", ",", 
+                  RowBox[{"Point", "[", 
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "1"}], "}"}], "]"}]}], "}"}], 
+                ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"Opacity", "[", "0.25", "]"}], ",", "Yellow", ",", 
+                  RowBox[{"EdgeForm", "[", "]"}], ",", "cone"}], "}"}]}], 
+               "\[IndentingNewLine]", "}"}], "]"}]}], "\[IndentingNewLine]", 
+            "}"}], ",", 
+           RowBox[{"PlotRange", "\[Rule]", "2"}], ",", 
+           RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+           RowBox[{"AxesLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"\"\<Re[z]\>\"", ",", "\"\<Im[z]\>\"", ",", "\"\<\>\""}],
+              "}"}]}], ",", 
+           RowBox[{"Lighting", "\[Rule]", "\"\<Neutral\>\""}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "Medium"}], ",", 
+           RowBox[{"ViewPoint", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"5", ",", 
+              RowBox[{"-", "2"}], ",", "2"}], "}"}]}]}], "]"}]}], 
+        "\[IndentingNewLine]", "}"}]}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", "4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "showProjection", ",", "True", ",", "\"\<Show projection\>\""}], 
+        "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"True", ",", "False"}], "}"}]}], "}"}]}], "]"}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.581759118538954*^9, 3.581759124435773*^9}, {
+  3.5817591552614737`*^9, 3.5817592511393857`*^9}, {3.581759570675226*^9, 
+  3.581759574606439*^9}, {3.5817596371782427`*^9, 3.5817596375214443`*^9}, {
+  3.581759739233775*^9, 3.581759760652645*^9}, {3.5817598600405684`*^9, 
+  3.581759863831381*^9}, {3.5817599130339413`*^9, 3.581759928275191*^9}, {
+  3.5817599676497188`*^9, 3.581760071748858*^9}, {3.5817601110453863`*^9, 
+  3.581760111138986*^9}, {3.58176037641785*^9, 3.581760376823451*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1318,13 +1145,118 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "disks", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"disks", "=", 
+      RowBox[{"{", 
+       RowBox[{"gdUnitDisk", ",", " ", 
+        RowBox[{"New", "[", 
+         RowBox[{"NoncompactDisk", ",", "0", ",", "1"}], "]"}], ",", 
+        "gdUpperHalfplane"}], "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Assert", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"InteriorQ", "[", 
+          RowBox[{"#", ",", "0"}], "]"}], "&"}], "/@", "disks"}], "\[Equal]", 
+       RowBox[{"{", 
+        RowBox[{"True", ",", "False", ",", "True"}], "}"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Assert", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"InteriorQ", "[", 
+          RowBox[{"#", ",", "2"}], "]"}], "&"}], "/@", "disks"}], "\[Equal]", 
+       RowBox[{"{", 
+        RowBox[{"False", ",", "True", ",", "True"}], "}"}]}], "]"}], ";", 
+     RowBox[{"Assert", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"InteriorQ", "[", 
+          RowBox[{"#", ",", "I"}], "]"}], "&"}], "/@", "disks"}], "\[Equal]", 
+       RowBox[{"{", 
+        RowBox[{"True", ",", "True", ",", "True"}], "}"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Assert", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"InteriorQ", "[", 
+          RowBox[{"#", ",", 
+           RowBox[{"-", "I"}]}], "]"}], "&"}], "/@", "disks"}], "\[Equal]", 
+       RowBox[{"{", 
+        RowBox[{"True", ",", "True", ",", "False"}], "}"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Assert", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"InteriorQ", "[", 
+          RowBox[{"#", ",", "ComplexInfinity"}], "]"}], "&"}], "/@", 
+        "disks"}], "\[Equal]", 
+       RowBox[{"{", 
+        RowBox[{"False", ",", "True", ",", "True"}], "}"}]}], "]"}], ";"}]}], 
+   "\[IndentingNewLine]", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.5817415559440465`*^9, 3.581741979340231*^9}, {
+  3.5817421303799224`*^9, 3.581742137025544*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"phi", ",", "disk", ",", "expectedType"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"expectedType", "=", 
+      RowBox[{"{", 
+       RowBox[{
+       "Halfplane", ",", "CompactDisk", ",", "Halfplane", ",", 
+        "NoncompactDisk", ",", "Halfplane"}], "}"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Do", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"phi", "=", 
+         RowBox[{"New", "[", 
+          RowBox[{"MoebiusTransformation", ",", 
+           RowBox[{"MatrixPower", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"I", ",", "1"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"1", ",", "I"}], "}"}]}], "}"}], ",", "i"}], "]"}]}], 
+          "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"disk", "=", 
+         RowBox[{"phi", "[", "gdUpperHalfplane", "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Assert", "[", 
+         RowBox[{
+          RowBox[{"InstanceQ", "[", 
+           RowBox[{"expectedType", "[", 
+            RowBox[{"[", 
+             RowBox[{"i", "+", "1"}], "]"}], "]"}], "]"}], "[", "disk", "]"}],
+          "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "0", ",", "4"}], "}"}]}], "\[IndentingNewLine]", 
+      "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.581760502981062*^9, 3.5817607708651342`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
   RowBox[{"Off", "[", "Assert", "]"}], ";"}]], "Input",
  CellChangeTimes->{{3.5804877427507343`*^9, 3.580487744950344*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{736, 639},
-WindowMargins->{{Automatic, 303}, {Automatic, 17}},
+WindowSize->{736, 640},
+WindowMargins->{{183, Automatic}, {Automatic, -1}},
 ShowSelection->True,
 FrontEndVersion->"9.0 for Microsoft Windows (32-bit) (January 25, 2013)",
 StyleDefinitions->"Default.nb"
@@ -1334,78 +1266,14 @@ StyleDefinitions->"Default.nb"
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "Info3581588856-3048158"->{
-  Cell[1452, 50, 370, 7, 60, "Print",
-   CellTags->"Info3581588856-3048158"]},
- "Info3581593412-3048158"->{
-  Cell[9575, 309, 223, 4, 40, "Print",
-   CellTags->"Info3581593412-3048158"]},
- "Info3581593428-3048158"->{
-  Cell[10879, 351, 206, 4, 40, "Print",
-   CellTags->"Info3581593428-3048158"]},
  "Info3581614347-3048158"->{
-  Cell[12683, 418, 468, 10, 79, "Print",
-   CellTags->"Info3581614347-3048158"]},
- "Info3581615571-3048158"->{
-  Cell[20609, 674, 305, 5, 75, "Print",
-   CellTags->"Info3581615571-3048158"]},
- "Info3581615901-3048158"->{
-  Cell[18124, 590, 242, 5, 40, "Print",
-   CellTags->"Info3581615901-3048158"]},
- "Info3581615914-3048158"->{
-  Cell[18522, 604, 207, 4, 40, "Print",
-   CellTags->"Info3581615914-3048158"]},
- "Info3581615918-3048158"->{
-  Cell[18885, 617, 258, 5, 59, "Print",
-   CellTags->"Info3581615918-3048158"]},
- "Info3581615922-3048158"->{
-  Cell[19297, 631, 267, 5, 60, "Print",
-   CellTags->"Info3581615922-3048158"]},
- "Info3581616396-3048158"->{
-  Cell[27772, 883, 475, 7, 109, "Print",
-   CellTags->"Info3581616396-3048158"]},
- "Info3581616560-3048158"->{
-  Cell[21554, 703, 382, 6, 75, "Print",
-   CellTags->"Info3581616560-3048158"]},
- "Info3581616575-3048158"->{
-  Cell[22104, 718, 259, 5, 40, "Print",
-   CellTags->"Info3581616575-3048158"]},
- "Info3581616580-3048158"->{
-  Cell[22521, 732, 299, 5, 58, "Print",
-   CellTags->"Info3581616580-3048158"]},
- "Info3581616727-3048158"->{
-  Cell[25196, 807, 528, 8, 59, "Print",
-   CellTags->"Info3581616727-3048158"]},
- "Info3581617923-3048158"->{
-  Cell[33221, 1018, 856, 17, 62, "Print",
-   CellTags->"Info3581617923-3048158"]},
- "Info3581617932-3048158"->{
-  Cell[34241, 1044, 259, 5, 40, "Print",
-   CellTags->"Info3581617932-3048158"]},
- "Info3581617939-3048158"->{
-  Cell[34660, 1058, 297, 5, 58, "Print",
-   CellTags->"Info3581617939-3048158"]}
+  Cell[6111, 200, 468, 10, 60, "Print",
+   CellTags->"Info3581614347-3048158"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Info3581588856-3048158", 44153, 1336},
- {"Info3581593412-3048158", 44261, 1339},
- {"Info3581593428-3048158", 44370, 1342},
- {"Info3581614347-3048158", 44480, 1345},
- {"Info3581615571-3048158", 44591, 1348},
- {"Info3581615901-3048158", 44701, 1351},
- {"Info3581615914-3048158", 44811, 1354},
- {"Info3581615918-3048158", 44921, 1357},
- {"Info3581615922-3048158", 45031, 1360},
- {"Info3581616396-3048158", 45141, 1363},
- {"Info3581616560-3048158", 45252, 1366},
- {"Info3581616575-3048158", 45362, 1369},
- {"Info3581616580-3048158", 45472, 1372},
- {"Info3581616727-3048158", 45582, 1375},
- {"Info3581617923-3048158", 45692, 1378},
- {"Info3581617932-3048158", 45804, 1381},
- {"Info3581617939-3048158", 45915, 1384}
+ {"Info3581614347-3048158", 45040, 1268}
  }
 *)
 (*NotebookFileOutline
@@ -1414,181 +1282,84 @@ Cell[CellGroupData[{
 Cell[579, 22, 104, 1, 90, "Title"],
 Cell[686, 25, 455, 9, 52, "Input"],
 Cell[CellGroupData[{
-Cell[1166, 38, 124, 4, 77, "Subtitle"],
-Cell[CellGroupData[{
-Cell[1315, 46, 134, 2, 31, "Input"],
-Cell[1452, 50, 370, 7, 60, "Print",
- CellTags->"Info3581588856-3048158"]
-}, Open  ]],
-Cell[1837, 60, 431, 12, 31, "Input"],
-Cell[2271, 74, 172, 4, 30, "Text"],
-Cell[CellGroupData[{
-Cell[2468, 82, 345, 8, 31, "Input"],
-Cell[2816, 92, 481, 11, 47, "Output"]
-}, Open  ]],
-Cell[3312, 106, 150, 3, 30, "Text"],
-Cell[CellGroupData[{
-Cell[3487, 113, 617, 19, 52, "Input"],
-Cell[4107, 134, 575, 16, 31, "Output"],
-Cell[4685, 152, 376, 9, 47, "Output"]
-}, Open  ]],
-Cell[5076, 164, 123, 3, 30, "Text"],
-Cell[CellGroupData[{
-Cell[5224, 171, 996, 27, 72, "Input"],
-Cell[6223, 200, 270, 6, 31, "Output"]
+Cell[1166, 38, 171, 5, 77, "Subtitle"],
+Cell[1340, 45, 134, 2, 31, "Input"],
+Cell[1477, 49, 431, 12, 31, "Input"],
+Cell[1911, 63, 172, 4, 30, "Text"],
+Cell[2086, 69, 345, 8, 31, "Input"],
+Cell[2434, 79, 150, 3, 30, "Text"],
+Cell[2587, 84, 617, 19, 52, "Input"],
+Cell[3207, 105, 123, 3, 30, "Text"],
+Cell[3333, 110, 996, 27, 72, "Input"],
+Cell[4332, 139, 278, 7, 31, "Input"],
+Cell[4613, 148, 116, 2, 31, "Input"],
+Cell[4732, 152, 210, 4, 31, "Input"],
+Cell[4945, 158, 116, 2, 31, "Input"],
+Cell[5064, 162, 304, 8, 31, "Input"],
+Cell[5371, 172, 375, 10, 31, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6530, 211, 278, 7, 31, "Input"],
-Cell[6811, 220, 228, 4, 31, "Output"]
-}, Open  ]],
-Cell[7054, 227, 109, 1, 30, "Text"],
+Cell[5783, 187, 171, 5, 77, "Subtitle"],
 Cell[CellGroupData[{
-Cell[7188, 232, 665, 23, 31, "Input"],
-Cell[7856, 257, 1563, 43, 44, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[9456, 305, 116, 2, 31, "Input"],
-Cell[9575, 309, 223, 4, 40, "Print",
- CellTags->"Info3581593412-3048158"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[9835, 318, 210, 4, 31, "Input"],
-Cell[10048, 324, 675, 18, 58, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[10760, 347, 116, 2, 31, "Input"],
-Cell[10879, 351, 206, 4, 40, "Print",
- CellTags->"Info3581593428-3048158"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[11122, 360, 304, 8, 31, "Input"],
-Cell[11429, 370, 412, 12, 47, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[11878, 387, 375, 10, 31, "Input"],
-Cell[12256, 399, 97, 1, 31, "Output"]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[12402, 406, 124, 4, 77, "Subtitle"],
-Cell[CellGroupData[{
-Cell[12551, 414, 129, 2, 31, "Input"],
-Cell[12683, 418, 468, 10, 79, "Print",
+Cell[5979, 196, 129, 2, 31, "Input"],
+Cell[6111, 200, 468, 10, 60, "Print",
  CellTags->"Info3581614347-3048158"]
 }, Open  ]],
-Cell[13166, 431, 142, 3, 30, "Text"],
-Cell[CellGroupData[{
-Cell[13333, 438, 601, 18, 52, "Input"],
-Cell[13937, 458, 156, 3, 31, "Output"]
-}, Open  ]],
-Cell[14108, 464, 253, 5, 30, "Text"],
-Cell[CellGroupData[{
-Cell[14386, 473, 1036, 28, 52, "Input"],
-Cell[15425, 503, 1097, 32, 78, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[16559, 540, 418, 11, 52, "Input"],
-Cell[16980, 553, 792, 22, 42, "Output"]
-}, Open  ]],
-Cell[17787, 578, 192, 4, 30, "Text"],
-Cell[CellGroupData[{
-Cell[18004, 586, 117, 2, 31, "Input"],
-Cell[18124, 590, 242, 5, 40, "Print",
- CellTags->"Info3581615901-3048158"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[18403, 600, 116, 2, 31, "Input"],
-Cell[18522, 604, 207, 4, 40, "Print",
- CellTags->"Info3581615914-3048158"]
+Cell[6594, 213, 142, 3, 30, "Text"],
+Cell[6739, 218, 601, 18, 52, "Input"],
+Cell[7343, 238, 253, 5, 30, "Text"],
+Cell[7599, 245, 1036, 28, 52, "Input"],
+Cell[8638, 275, 418, 11, 52, "Input"],
+Cell[9059, 288, 192, 4, 30, "Text"],
+Cell[9254, 294, 309, 6, 92, "Input"],
+Cell[9566, 302, 366, 8, 31, "Input"],
+Cell[9935, 312, 205, 4, 30, "Text"],
+Cell[10143, 318, 117, 2, 31, "Input"],
+Cell[10263, 322, 61, 1, 31, "Input"],
+Cell[10327, 325, 129, 2, 31, "Input"],
+Cell[10459, 329, 234, 4, 52, "Input"],
+Cell[10696, 335, 633, 17, 52, "Input"],
+Cell[11332, 354, 167, 3, 30, "Text"],
+Cell[11502, 359, 122, 2, 31, "Input"],
+Cell[11627, 363, 683, 18, 52, "Input"],
+Cell[12313, 383, 287, 5, 30, "Text"],
+Cell[12603, 390, 117, 2, 31, "Input"],
+Cell[12723, 394, 2368, 59, 312, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18766, 613, 116, 2, 31, "Input"],
-Cell[18885, 617, 258, 5, 59, "Print",
- CellTags->"Info3581615918-3048158"]
+Cell[15128, 458, 118, 4, 77, "Subtitle"],
+Cell[15249, 464, 126, 2, 31, "Input"],
+Cell[15378, 468, 212, 4, 30, "Text"],
+Cell[15593, 474, 284, 5, 72, "Input"],
+Cell[15880, 481, 294, 5, 49, "Text"],
+Cell[16177, 488, 291, 5, 92, "Input"],
+Cell[16471, 495, 126, 3, 30, "Text"],
+Cell[16600, 500, 468, 8, 112, "Input"],
+Cell[17071, 510, 238, 5, 31, "Input"],
+Cell[17312, 517, 218, 4, 30, "Text"],
+Cell[17533, 523, 118, 2, 31, "Input"],
+Cell[17654, 527, 442, 10, 31, "Input"],
+Cell[18099, 539, 480, 15, 31, "Input"],
+Cell[18582, 556, 179, 4, 30, "Text"],
+Cell[18764, 562, 1998, 49, 272, "Input"],
+Cell[20765, 613, 276, 5, 49, "Text"],
+Cell[21044, 620, 740, 22, 72, "Input"],
+Cell[21787, 644, 261, 5, 30, "Text"],
+Cell[22051, 651, 2100, 51, 252, "Input"],
+Cell[24154, 704, 180, 4, 30, "Text"],
+Cell[24337, 710, 7781, 181, 632, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19180, 627, 114, 2, 31, "Input"],
-Cell[19297, 631, 267, 5, 60, "Print",
- CellTags->"Info3581615922-3048158"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[19601, 641, 366, 8, 31, "Input"],
-Cell[19970, 651, 327, 9, 46, "Output"]
-}, Open  ]],
-Cell[20312, 663, 152, 3, 30, "Text"],
-Cell[CellGroupData[{
-Cell[20489, 670, 117, 2, 31, "Input"],
-Cell[20609, 674, 305, 5, 75, "Print",
- CellTags->"Info3581615571-3048158"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[20951, 684, 61, 1, 31, "Input"],
-Cell[21015, 687, 370, 7, 31, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[21422, 699, 129, 2, 31, "Input"],
-Cell[21554, 703, 382, 6, 75, "Print",
- CellTags->"Info3581616560-3048158"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[21973, 714, 128, 2, 31, "Input"],
-Cell[22104, 718, 259, 5, 40, "Print",
- CellTags->"Info3581616575-3048158"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[22400, 728, 118, 2, 31, "Input"],
-Cell[22521, 732, 299, 5, 58, "Print",
- CellTags->"Info3581616580-3048158"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[22857, 742, 633, 17, 52, "Input"],
-Cell[23493, 761, 1371, 32, 66, "Output"]
-}, Open  ]],
-Cell[24879, 796, 167, 3, 30, "Text"],
-Cell[CellGroupData[{
-Cell[25071, 803, 122, 2, 31, "Input"],
-Cell[25196, 807, 528, 8, 59, "Print",
- CellTags->"Info3581616727-3048158"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[25761, 820, 683, 18, 52, "Input"],
-Cell[26447, 840, 929, 27, 57, "Output"]
-}, Open  ]],
-Cell[27391, 870, 236, 5, 30, "Text"],
-Cell[CellGroupData[{
-Cell[27652, 879, 117, 2, 31, "Input"],
-Cell[27772, 883, 475, 7, 109, "Print",
- CellTags->"Info3581616396-3048158"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[28284, 895, 2368, 59, 312, "Input"],
-Cell[30655, 956, 2409, 53, 164, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[33101, 1014, 117, 2, 31, "Input"],
-Cell[33221, 1018, 856, 17, 62, "Print",
- CellTags->"Info3581617923-3048158"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[34114, 1040, 124, 2, 31, "Input"],
-Cell[34241, 1044, 259, 5, 40, "Print",
- CellTags->"Info3581617932-3048158"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[34537, 1054, 120, 2, 31, "Input"],
-Cell[34660, 1058, 297, 5, 58, "Print",
- CellTags->"Info3581617939-3048158"]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[35006, 1069, 106, 4, 77, "Subtitle"],
-Cell[35115, 1075, 2771, 73, 232, "Input"],
-Cell[37889, 1150, 1352, 39, 112, "Input"],
-Cell[39244, 1191, 2246, 60, 192, "Input"],
-Cell[41493, 1253, 907, 24, 112, "Input"],
-Cell[42403, 1279, 643, 18, 52, "Input"],
-Cell[43049, 1299, 596, 17, 52, "Input"],
-Cell[43648, 1318, 147, 3, 31, "Input"]
+Cell[32155, 896, 106, 4, 77, "Subtitle"],
+Cell[32264, 902, 2771, 73, 232, "Input"],
+Cell[35038, 977, 1352, 39, 112, "Input"],
+Cell[36393, 1018, 2246, 60, 192, "Input"],
+Cell[38642, 1080, 907, 24, 112, "Input"],
+Cell[39552, 1106, 643, 18, 52, "Input"],
+Cell[40198, 1126, 596, 17, 52, "Input"],
+Cell[40797, 1145, 2140, 59, 172, "Input"],
+Cell[42940, 1206, 1592, 42, 212, "Input"],
+Cell[44535, 1250, 147, 3, 31, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
