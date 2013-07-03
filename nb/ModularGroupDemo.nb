@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     48989,       1382]
-NotebookOptionsPosition[     45558,       1278]
-NotebookOutlinePosition[     46078,       1300]
-CellTagsIndexPosition[     45992,       1295]
+NotebookDataLength[     66291,       1832]
+NotebookOptionsPosition[     59280,       1618]
+NotebookOutlinePosition[     61567,       1686]
+CellTagsIndexPosition[     61103,       1672]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -462,15 +462,30 @@ Generalized Circles\
 \>", "Subtitle",
  CellChangeTimes->{{3.5817399431483946`*^9, 3.5817399477036095`*^9}}],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
  RowBox[{"?", "GeneralizedDisk"}]], "Input",
  CellChangeTimes->{{3.5817400071242027`*^9, 3.581740009947812*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"\\\"New[GeneralizedDisk, {{a, b},{c, d}}] constructs the a \
+generalized disk whose points z satisfy \
+a\[CenterDot]|z\\!\\(\\*SuperscriptBox[\\(|\\), \\(2\\)]\\) + \
+b\[CenterDot]\\!\\(\\*OverscriptBox[\\(z\\), \\(_\\)]\\) + c\[CenterDot]z + d \
+\[LessSlantEqual] 0. The matrix {{a, b}, {c, d}} must be Hermitian with \
+negative determinant.\\\"\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.5818608577045736`*^9},
+ CellTags->"Info3581868057-3373323"]
+}, Open  ]],
 
 Cell["\<\
 There are some convenience functions for creating GeneralizedDisks:\
 \>", "Text",
  CellChangeTimes->{{3.5817406748063774`*^9, 3.5817407104368935`*^9}, {
   3.581740880524247*^9, 3.5817409199143753`*^9}}],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{"?", "CompactDisk"}], "\[IndentingNewLine]", 
@@ -479,12 +494,40 @@ Cell[BoxData[{
  CellChangeTimes->{{3.581740724289738*^9, 3.581740727706149*^9}, {
   3.5817410348711495`*^9, 3.581741042296774*^9}}],
 
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ StyleBox["\<\"New[CompactDisk, c, r] constructs a GeneralizedDisk with \
+center c and radius r.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.581860858406575*^9},
+ CellTags->"Info3581868057-3373323"],
+
+Cell[BoxData[
+ StyleBox["\<\"New[NoncompactDisk, c, r] constructs a GeneralizedDisk which \
+contains the point \[Infinity] and whose complement in \
+\[DoubleStruckCapitalC] is a disk with center c and radius r.\"\>", 
+  "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.5818608590149765`*^9},
+ CellTags->"Info3581868058-3373323"],
+
+Cell[BoxData[
+ StyleBox["\<\"New[Halfplane, z, n] constructs a GeneralizedDisk containing \
+all points of a halfplane which is given by a point z on its border and a \
+complex number n pointing inside the halfplane in normal direction to its \
+border.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.5818608595921783`*^9},
+ CellTags->"Info3581868059-3373323"]
+}, Open  ]]
+}, Open  ]],
+
 Cell["\<\
 CompactDisks are identified by their radius and center, Noncompact disks by \
 their \[OpenCurlyDoubleQuote]coradius\[CloseCurlyDoubleQuote] and \
 \[OpenCurlyDoubleQuote]cocenter\[CloseCurlyDoubleQuote]:\
 \>", "Text",
  CellChangeTimes->{{3.581760835542945*^9, 3.5817609744769974`*^9}}],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{"?", "GDiskRadius"}], "\[IndentingNewLine]", 
@@ -493,10 +536,40 @@ Cell[BoxData[{
  RowBox[{"?", "GDiskCocenter"}]}], "Input",
  CellChangeTimes->{{3.581760975818602*^9, 3.581761009218311*^9}}],
 
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ StyleBox["\<\"GDiskRadius[d] returns the radius of the GeneralizedDisk d. It \
+is defined for CompactDisks only.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.5818608601849794`*^9},
+ CellTags->"Info3581868059-3373323"],
+
+Cell[BoxData[
+ StyleBox["\<\"GDiskCenter[d] returns the center of a GeneralizdeDisk d. It \
+is defined for CompactDisks only.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.581860860808981*^9},
+ CellTags->"Info3581868060-3373323"],
+
+Cell[BoxData[
+ StyleBox["\<\"GDiskCoradius[d] returns the co-radius of a GeneralizedDisk d. \
+It is defined for NoncompactDisks only.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.581860861339382*^9},
+ CellTags->"Info3581868060-3373323"],
+
+Cell[BoxData[
+ StyleBox["\<\"GDiskCocenter[d] returns the co-center of a GeneralizedDisk d. \
+It is defined for NoncompactDisks only.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.581860861916584*^9},
+ CellTags->"Info3581868061-3373323"]
+}, Open  ]]
+}, Open  ]],
+
 Cell["\<\
 Predifined GeneralizedDisks are:\
 \>", "Text",
  CellChangeTimes->{{3.5817409420664473`*^9, 3.5817409507868757`*^9}}],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{"?", "gdUnitDisk"}], "\[IndentingNewLine]", 
@@ -508,6 +581,42 @@ Cell[BoxData[{
   3.5817410253395185`*^9, 3.5817410295671325`*^9}, {3.581741187002845*^9, 
   3.5817412013392916`*^9}}],
 
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ StyleBox["\<\"gdUnitDisk is the set of points z satisfying |z| \[LessEqual] \
+1.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.5818608625249853`*^9},
+ CellTags->"Info3581868062-3373323"],
+
+Cell[BoxData[
+ StyleBox["\<\"gdUpperHalfPlane is the set of points z satisfying Im[z] \
+\[GreaterSlantEqual] 0.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.581860863164587*^9},
+ CellTags->"Info3581868062-3373323"],
+
+Cell[BoxData[
+ StyleBox["\<\"gdLowerHalfPlane is the set of points z satisfying Im[z] \
+\[LessSlantEqual] 0.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.5818608637885885`*^9},
+ CellTags->"Info3581868063-3373323"],
+
+Cell[BoxData[
+ StyleBox["\<\"gdRightHalfPlane is the set of points z satisfying Re[z] \
+\[GreaterSlantEqual] 0.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.5818608643501897`*^9},
+ CellTags->"Info3581868063-3373323"],
+
+Cell[BoxData[
+ StyleBox["\<\"gdLeftHalfPlane is the set of points z satisfying Re[z] \
+\[LessSlantEqual] 0.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.581860864911791*^9},
+ CellTags->"Info3581868064-3373323"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell[BoxData[
  RowBox[{"{", 
   RowBox[{
@@ -515,15 +624,33 @@ Cell[BoxData[
    RowBox[{"GDiskRadius", "[", "gdUnitDisk", "]"}]}], "}"}]], "Input",
  CellChangeTimes->{{3.5817611233482823`*^9, 3.5817611405707383`*^9}}],
 
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", "1"}], "}"}]], "Output",
+ CellChangeTimes->{3.581860865130192*^9}]
+}, Open  ]],
+
 Cell["\<\
 Testing if a GeneralizedDisk contains a given point:\
 \>", "Text",
  CellChangeTimes->{{3.581742171314456*^9, 3.581742195541335*^9}, {
    3.5817422334650583`*^9, 3.581742245227496*^9}, 3.5817611884316945`*^9}],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
  RowBox[{"?", "InteriorQ"}]], "Input",
  CellChangeTimes->{{3.581742246959102*^9, 3.581742250375513*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"InteriorQ[d, z] tests if the GeneralizedDisk d contains the \
+point z, which also may be given in homogeneous form.\"\>", "MSG"]], "Print", \
+"PrintUsage",
+ CellChangeTimes->{3.5818608655669928`*^9},
+ CellTags->"Info3581868065-3373323"]
+}, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
@@ -536,6 +663,14 @@ Cell[BoxData[
  CellChangeTimes->{{3.5817401192105675`*^9, 3.581740162329108*^9}, 
    3.581741018693897*^9, 3.581741173477601*^9, {3.5817423917275734`*^9, 
    3.5817424007132025`*^9}, {3.581743048957714*^9, 3.5817430783170094`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"True", ",", "True", ",", "False", ",", "False"}], "}"}]], "Output",
+ CellChangeTimes->{3.581860865816593*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
@@ -554,11 +689,19 @@ Cell[BoxData[
      RowBox[{"1", ",", "0"}], "}"}]}], "}"}]}]], "Input",
  CellChangeTimes->{{3.5817612017697372`*^9, 3.5817612215350018`*^9}}],
 
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"True", ",", "True", ",", "False", ",", "False"}], "}"}]], "Output",
+ CellChangeTimes->{3.581860865847793*^9}]
+}, Open  ]],
+
 Cell["\<\
 For drawing GeneralizedDisks, RegionPlot in conjunction with InteriorQ may be \
 used:\
 \>", "Text",
  CellChangeTimes->{{3.5817612678671527`*^9, 3.5817612910332284`*^9}}],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Module", "[", 
@@ -611,12 +754,54 @@ Cell[BoxData[
  CellChangeTimes->{{3.581742406812823*^9, 3.5817427759880247`*^9}, {
   3.581761315634508*^9, 3.581761318224117*^9}}],
 
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{Selection$$ = "Unit disk", Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[Selection$$], "Unit disk"}, {
+      "Unit disk", "Upper half", "Lower half", "Right half", "Left half"}}}, 
+    Typeset`size$$ = {360., {178., 182.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True, Selection$15959$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {Selection$$ = "Unit disk"}, 
+      "ControllerVariables" :> {
+        Hold[Selection$$, Selection$15959$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> RegionPlot[
+        ModularGroup`InteriorQ[
+         $CellContext`disk$15958[Selection$$], $CellContext`x + 
+         I $CellContext`y], {$CellContext`x, -2, 2}, {$CellContext`y, -2, 2}, 
+        Frame -> False, Axes -> True], 
+      "Specifications" :> {{{Selection$$, "Unit disk"}, {
+         "Unit disk", "Upper half", "Lower half", "Right half", 
+          "Left half"}}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{411., {222., 227.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.5818608661909943`*^9, 3.581863242251366*^9}]
+}, Open  ]],
+
 Cell["\<\
 Generalized circles can be transformed by MoebiusTransformations, e.g. the \
 upper halfplane can be transformed to the unit disk:\
 \>", "Text",
  CellChangeTimes->{{3.5817431526980515`*^9, 3.5817431668004975`*^9}, {
   3.5817613580042467`*^9, 3.5817613704374866`*^9}}],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
@@ -642,12 +827,20 @@ Cell[BoxData[{
   3.581743877554412*^9, 3.5817439132473283`*^9}, {3.5817614035563946`*^9, 
   3.581761479435042*^9}}],
 
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Abs", "[", "\<\"z\"\>", "]"}], "\[LessEqual]", "1"}]], "Output",
+ CellChangeTimes->{3.581860867282997*^9}]
+}, Open  ]],
+
 Cell["\<\
 Continuous animation of the above transformation and its powers up to 4:\
 \>", "Text",
  CellChangeTimes->{{3.581743445698206*^9, 3.58174348997115*^9}, {
   3.581744333637497*^9, 3.581744348582346*^9}, {3.581761486455065*^9, 
   3.5817615106507435`*^9}}],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Module", "[", 
@@ -700,13 +893,64 @@ Cell[BoxData[
  CellChangeTimes->{{3.5817434914531546`*^9, 3.5817436525860796`*^9}, {
   3.581743960780683*^9, 3.5817439609054832`*^9}, {3.5817440476261663`*^9, 
   3.5817441638621445`*^9}, {3.581744194485044*^9, 3.581744208790291*^9}, {
-  3.58174423931959*^9, 3.581744302125395*^9}}],
+  3.58174423931959*^9, 3.581744302125395*^9}, {3.581863320797556*^9, 
+  3.581863389562521*^9}, {3.5818670165184755`*^9, 3.5818670195604825`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{ModularGroup`Private`t$$ = 0., Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[ModularGroup`Private`t$$], 0, 4}}, Typeset`size$$ = {
+    360., {186.5, 191.5}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, ModularGroup`Private`t$72885$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {ModularGroup`Private`t$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[ModularGroup`Private`t$$, ModularGroup`Private`t$72885$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> (
+       ModularGroup`Private`phi$72884 = 
+        OOP`New[ModularGroup`MoebiusTransformation, 
+          MatrixPower[{{I, 1}, {1, I}}, ModularGroup`Private`t$$]]; 
+       ModularGroup`Private`disk$72884 = 
+        ModularGroup`Private`phi$72884[ModularGroup`gdUpperHalfplane]; Column[{
+          Superscript["\[Phi]", ModularGroup`Private`t$$], 
+          RegionPlot[
+           ModularGroup`InteriorQ[
+           ModularGroup`Private`disk$72884, ModularGroup`Private`x + 
+            I ModularGroup`Private`y], {ModularGroup`Private`x, -2, 2}, {
+           ModularGroup`Private`y, -2, 2}, Frame -> False, Axes -> True, 
+           ImageSize -> Medium]}]), 
+      "Specifications" :> {{ModularGroup`Private`t$$, 0, 4}}, "Options" :> {},
+       "DefaultOptions" :> {}],
+     ImageSizeCache->{411., {234., 239.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.5818670214480867`*^9}]
+}, Open  ]],
 
 Cell["\<\
-The above transformation can be thought of a simple rotation of the \
-Riemannian sphere:\
+The above transformation can be thought of a rotation of the Riemannian \
+sphere:\
 \>", "Text",
- CellChangeTimes->{{3.5817590643599777`*^9, 3.581759093890874*^9}}],
+ CellChangeTimes->{{3.5817590643599777`*^9, 3.581759093890874*^9}, {
+  3.581861014952953*^9, 3.5818610200073647`*^9}}],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Module", "[", 
@@ -739,8 +983,72 @@ Cell[BoxData[
         RowBox[{"Mesh", "\[Rule]", "False"}], ",", 
         RowBox[{"PlotStyle", "\[Rule]", 
          RowBox[{"{", 
-          RowBox[{"Lighter", "@", "Blue"}], "}"}]}]}], "]"}], "[", 
+          RowBox[{"Darker", "@", "Green"}], "}"}]}]}], "]"}], "[", 
       RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"cone", "[", "disk_", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"c", ",", "r", ",", "color"}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"InstanceQ", "[", "Halfplane", "]"}], "[", "disk", "]"}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"InstanceQ", "[", "CompactDisk", "]"}], "[", "disk", 
+             "]"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"c", "=", 
+              RowBox[{"GDiskCenter", "[", "disk", "]"}]}], ";", 
+             RowBox[{"r", "=", 
+              RowBox[{"GDiskRadius", "[", "disk", "]"}]}], ";", 
+             RowBox[{"color", "=", "Yellow"}]}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"c", "=", 
+              RowBox[{"GDiskCocenter", "[", "disk", "]"}]}], ";", 
+             RowBox[{"r", "=", 
+              RowBox[{"GDiskCoradius", "[", "disk", "]"}]}], ";", 
+             RowBox[{"color", "=", "Black"}], ";"}]}], "\[IndentingNewLine]", 
+           "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"color", ",", "\[IndentingNewLine]", 
+            RowBox[{"GeometricTransformation", "[", 
+             RowBox[{
+              RowBox[{"Cone", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", 
+                    RowBox[{"-", "2"}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], "}"}], ",", 
+                RowBox[{"2", " ", "r"}]}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"1", ",", "0", ",", 
+                    RowBox[{"-", 
+                    RowBox[{"Re", "[", "c", "]"}]}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "1", ",", 
+                    RowBox[{"-", 
+                    RowBox[{"Im", "[", "c", "]"}]}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}]}], "]"}]}],
+            "\[IndentingNewLine]", "}"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+      "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
     RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{
@@ -759,53 +1067,6 @@ Cell[BoxData[
        RowBox[{"disk", "=", 
         RowBox[{"phi", "[", "gdUpperHalfplane", "]"}]}], ";", 
        "\[IndentingNewLine]", 
-       RowBox[{"cone", "=", 
-        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"If", "[", 
-        RowBox[{
-         RowBox[{"showProjection", "&&", 
-          RowBox[{
-           RowBox[{"InstanceQ", "[", "CompactDisk", "]"}], "[", "disk", 
-           "]"}]}], ",", "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"cone", "=", 
-           RowBox[{"Module", "[", 
-            RowBox[{
-             RowBox[{"{", 
-              RowBox[{"c", "=", 
-               RowBox[{"GDiskCenter", "[", "disk", "]"}]}], "}"}], ",", 
-             "\[IndentingNewLine]", 
-             RowBox[{"GeometricTransformation", "[", 
-              RowBox[{
-               RowBox[{"Cone", "[", 
-                RowBox[{
-                 RowBox[{"{", 
-                  RowBox[{
-                   RowBox[{"{", 
-                    RowBox[{"0", ",", "0", ",", 
-                    RowBox[{"-", "2"}]}], "}"}], ",", 
-                   RowBox[{"{", 
-                    RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], "}"}], ",", 
-                 RowBox[{"2", " ", 
-                  RowBox[{"GDiskRadius", "[", "disk", "]"}]}]}], "]"}], ",", 
-               RowBox[{"{", 
-                RowBox[{
-                 RowBox[{"{", 
-                  RowBox[{
-                   RowBox[{"{", 
-                    RowBox[{"1", ",", "0", ",", 
-                    RowBox[{"-", 
-                    RowBox[{"Re", "[", "c", "]"}]}]}], "}"}], ",", 
-                   RowBox[{"{", 
-                    RowBox[{"0", ",", "1", ",", 
-                    RowBox[{"-", 
-                    RowBox[{"Im", "[", "c", "]"}]}]}], "}"}], ",", 
-                   RowBox[{"{", 
-                    RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}], ",", 
-                 RowBox[{"{", 
-                  RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}]}], 
-              "]"}]}], "\[IndentingNewLine]", "]"}]}], ";"}]}], 
-        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
        RowBox[{"regionPlot", "=", 
         RowBox[{"RegionPlot", "[", 
          RowBox[{
@@ -819,7 +1080,8 @@ Cell[BoxData[
           RowBox[{"{", 
            RowBox[{"y", ",", 
             RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
-          RowBox[{"PlotStyle", "\[Rule]", "Gray"}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", 
+           RowBox[{"Lighter", "@", "Blue"}]}], ",", 
           RowBox[{"Axes", "\[Rule]", "True"}], ",", 
           RowBox[{"AxesLabel", "\[Rule]", 
            RowBox[{"{", 
@@ -868,8 +1130,9 @@ Cell[BoxData[
                   ",", 
                   RowBox[{"{", 
                    RowBox[{
-                    RowBox[{"Opacity", "[", "0.25", "]"}], ",", "Yellow", ",", 
-                    RowBox[{"EdgeForm", "[", "]"}], ",", "cone"}], "}"}]}], 
+                    RowBox[{"Opacity", "[", "0.25", "]"}], ",", 
+                    RowBox[{"EdgeForm", "[", "]"}], ",", 
+                    RowBox[{"cone", "[", "disk", "]"}]}], "}"}]}], 
                  "\[IndentingNewLine]", "}"}], ",", 
                 RowBox[{"PlotRange", "\[Rule]", "2"}], ",", 
                 RowBox[{"Axes", "\[Rule]", "True"}], ",", 
@@ -906,11 +1169,88 @@ Cell[BoxData[
    3.581760111138986*^9}, {3.58176037641785*^9, 3.581760376823451*^9}, {
    3.581768125331362*^9, 3.5817684128402987`*^9}, {3.581768448720415*^9, 
    3.5817684619960585`*^9}, {3.5817686776043606`*^9, 3.5817688575041466`*^9}, 
-   3.5817693477825427`*^9, {3.5817800798912587`*^9, 3.581780088611687*^9}}],
+   3.5817693477825427`*^9, {3.5817800798912587`*^9, 3.581780088611687*^9}, {
+   3.581867123987134*^9, 3.5818671296031475`*^9}, {3.58186719701091*^9, 
+   3.5818672046081285`*^9}, {3.581867243031021*^9, 3.5818675338313217`*^9}, {
+   3.581867859388507*^9, 3.581868005108458*^9}, {3.581868081314642*^9, 
+   3.581868143855192*^9}, {3.5818682767207127`*^9, 3.581868290261545*^9}, {
+   3.5818683364376564`*^9, 3.5818683594321117`*^9}}],
 
 Cell[BoxData[
- RowBox[{"?", "Circle"}]], "Input",
- CellChangeTimes->{{3.581769957401328*^9, 3.581770017851525*^9}}]
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`showProjection$$ = True, $CellContext`t$$ = 
+    0., Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], 0, 4}, {{
+       Hold[$CellContext`showProjection$$], True, "Show projection"}, {
+      True, False}}}, Typeset`size$$ = {576., {157., 162.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`t$34640$$ = 0, $CellContext`showProjection$34641$$ = 
+    False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`showProjection$$ = True, $CellContext`t$$ = 
+        0}, "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$34640$$, 0], 
+        Hold[$CellContext`showProjection$$, \
+$CellContext`showProjection$34641$$, False]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`phi$34627 = 
+        OOP`New[ModularGroup`MoebiusTransformation, 
+          
+          MatrixPower[{{I, 1}, {
+            1, I}}, $CellContext`t$$]]; $CellContext`disk$34627 = \
+$CellContext`phi$34627[
+         ModularGroup`gdUpperHalfplane]; $CellContext`regionPlot$34627 = 
+        RegionPlot[
+          
+          ModularGroup`InteriorQ[$CellContext`disk$34627, $CellContext`x + 
+           I $CellContext`y], {$CellContext`x, -2, 2}, {$CellContext`y, -2, 
+           2}, PlotStyle -> Lighter[Blue], Axes -> True, 
+          AxesLabel -> {"Re[z]", "Im[z]"}, Frame -> False]; Column[{
+          Superscript["\[Phi]", $CellContext`t$$], 
+          GraphicsRow[{$CellContext`regionPlot$34627, 
+            Graphics3D[{
+              
+              Rotate[$CellContext`halfSphere$34627, 
+               Pi ($CellContext`t$$/2), {-1, 0, 0}], 
+              ReplaceAll[
+               Part[$CellContext`regionPlot$34627, 1], {
+                 Pattern[$CellContext`x, 
+                  Blank[Real]], 
+                 Pattern[$CellContext`y, 
+                  Blank[Real]]} -> {$CellContext`x, $CellContext`y, 0}], {
+              PointSize -> Large, Red, 
+               Point[{0, 0, 1}]}, {
+               Opacity[0.25], 
+               EdgeForm[], 
+               $CellContext`cone$34627[$CellContext`disk$34627]}}, PlotRange -> 
+             2, Axes -> True, AxesLabel -> {"Re[z]", "Im[z]", ""}, Lighting -> 
+             "Neutral", ViewPoint -> {5, -2, 2}]}, ImageSize -> Large]}]), 
+      "Specifications" :> {{$CellContext`t$$, 0, 
+         4}, {{$CellContext`showProjection$$, True, "Show projection"}, {
+         True, False}}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{627., {213., 218.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.58186796014915*^9, {3.5818679915988255`*^9, 3.5818680063564606`*^9}, {
+   3.5818680857762527`*^9, 3.5818681443075933`*^9}, 3.581868291135147*^9, {
+   3.58186835029049*^9, 3.581868360180914*^9}}]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1277,7 +1617,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{812, 634},
-WindowMargins->{{188, Automatic}, {Automatic, -1}},
+WindowMargins->{{188, Automatic}, {Automatic, 0}},
 ShowSelection->True,
 FrontEndVersion->"9.0 for Microsoft Windows (32-bit) (January 25, 2013)",
 StyleDefinitions->"Default.nb"
@@ -1289,12 +1629,58 @@ StyleDefinitions->"Default.nb"
 CellTagsIndex->{
  "Info3581614347-3048158"->{
   Cell[6111, 200, 468, 10, 60, "Print",
-   CellTags->"Info3581614347-3048158"]}
+   CellTags->"Info3581614347-3048158"]},
+ "Info3581868057-3373323"->{
+  Cell[15400, 470, 494, 8, 60, "Print",
+   CellTags->"Info3581868057-3373323"],
+  Cell[16455, 498, 227, 4, 40, "Print",
+   CellTags->"Info3581868057-3373323"]},
+ "Info3581868058-3373323"->{
+  Cell[16685, 504, 332, 6, 58, "Print",
+   CellTags->"Info3581868058-3373323"]},
+ "Info3581868059-3373323"->{
+  Cell[17020, 512, 370, 6, 58, "Print",
+   CellTags->"Info3581868059-3373323"],
+  Cell[18052, 540, 246, 4, 40, "Print",
+   CellTags->"Info3581868059-3373323"]},
+ "Info3581868060-3373323"->{
+  Cell[18301, 546, 242, 4, 40, "Print",
+   CellTags->"Info3581868060-3373323"],
+  Cell[18546, 552, 250, 4, 40, "Print",
+   CellTags->"Info3581868060-3373323"]},
+ "Info3581868061-3373323"->{
+  Cell[18799, 558, 250, 4, 40, "Print",
+   CellTags->"Info3581868061-3373323"]},
+ "Info3581868062-3373323"->{
+  Cell[19720, 585, 214, 4, 40, "Print",
+   CellTags->"Info3581868062-3373323"],
+  Cell[19937, 591, 228, 4, 40, "Print",
+   CellTags->"Info3581868062-3373323"]},
+ "Info3581868063-3373323"->{
+  Cell[20168, 597, 227, 4, 40, "Print",
+   CellTags->"Info3581868063-3373323"],
+  Cell[20398, 603, 230, 4, 40, "Print",
+   CellTags->"Info3581868063-3373323"]},
+ "Info3581868064-3373323"->{
+  Cell[20631, 609, 224, 4, 40, "Print",
+   CellTags->"Info3581868064-3373323"]},
+ "Info3581868065-3373323"->{
+  Cell[21639, 644, 265, 5, 40, "Print",
+   CellTags->"Info3581868065-3373323"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Info3581614347-3048158", 45888, 1289}
+ {"Info3581614347-3048158", 59609, 1629},
+ {"Info3581868057-3373323", 59719, 1632},
+ {"Info3581868058-3373323", 59909, 1637},
+ {"Info3581868059-3373323", 60019, 1640},
+ {"Info3581868060-3373323", 60209, 1645},
+ {"Info3581868061-3373323", 60399, 1650},
+ {"Info3581868062-3373323", 60509, 1653},
+ {"Info3581868063-3373323", 60699, 1658},
+ {"Info3581868064-3373323", 60889, 1663},
+ {"Info3581868065-3373323", 60999, 1666}
  }
 *)
 (*NotebookFileOutline
@@ -1349,39 +1735,103 @@ Cell[12723, 394, 2368, 59, 292, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[15128, 458, 118, 4, 77, "Subtitle"],
-Cell[15249, 464, 126, 2, 31, "Input"],
-Cell[15378, 468, 212, 4, 30, "Text"],
-Cell[15593, 474, 284, 5, 72, "Input"],
-Cell[15880, 481, 294, 5, 30, "Text"],
-Cell[16177, 488, 291, 5, 92, "Input"],
-Cell[16471, 495, 126, 3, 30, "Text"],
-Cell[16600, 500, 468, 8, 112, "Input"],
-Cell[17071, 510, 238, 5, 31, "Input"],
-Cell[17312, 517, 218, 4, 30, "Text"],
-Cell[17533, 523, 118, 2, 31, "Input"],
-Cell[17654, 527, 442, 10, 31, "Input"],
-Cell[18099, 539, 480, 15, 31, "Input"],
-Cell[18582, 556, 179, 4, 30, "Text"],
-Cell[18764, 562, 1998, 49, 272, "Input"],
-Cell[20765, 613, 276, 5, 49, "Text"],
-Cell[21044, 620, 740, 22, 72, "Input"],
-Cell[21787, 644, 261, 5, 30, "Text"],
-Cell[22051, 651, 2100, 51, 252, "Input"],
-Cell[24154, 704, 180, 4, 30, "Text"],
-Cell[24337, 710, 8511, 198, 632, "Input"],
-Cell[32851, 910, 115, 2, 31, "Input"]
+Cell[CellGroupData[{
+Cell[15271, 466, 126, 2, 31, "Input"],
+Cell[15400, 470, 494, 8, 60, "Print",
+ CellTags->"Info3581868057-3373323"]
+}, Open  ]],
+Cell[15909, 481, 212, 4, 30, "Text"],
+Cell[CellGroupData[{
+Cell[16146, 489, 284, 5, 72, "Input"],
+Cell[CellGroupData[{
+Cell[16455, 498, 227, 4, 40, "Print",
+ CellTags->"Info3581868057-3373323"],
+Cell[16685, 504, 332, 6, 58, "Print",
+ CellTags->"Info3581868058-3373323"],
+Cell[17020, 512, 370, 6, 58, "Print",
+ CellTags->"Info3581868059-3373323"]
+}, Open  ]]
+}, Open  ]],
+Cell[17417, 522, 294, 5, 30, "Text"],
+Cell[CellGroupData[{
+Cell[17736, 531, 291, 5, 92, "Input"],
+Cell[CellGroupData[{
+Cell[18052, 540, 246, 4, 40, "Print",
+ CellTags->"Info3581868059-3373323"],
+Cell[18301, 546, 242, 4, 40, "Print",
+ CellTags->"Info3581868060-3373323"],
+Cell[18546, 552, 250, 4, 40, "Print",
+ CellTags->"Info3581868060-3373323"],
+Cell[18799, 558, 250, 4, 40, "Print",
+ CellTags->"Info3581868061-3373323"]
+}, Open  ]]
+}, Open  ]],
+Cell[19076, 566, 126, 3, 30, "Text"],
+Cell[CellGroupData[{
+Cell[19227, 573, 468, 8, 112, "Input"],
+Cell[CellGroupData[{
+Cell[19720, 585, 214, 4, 40, "Print",
+ CellTags->"Info3581868062-3373323"],
+Cell[19937, 591, 228, 4, 40, "Print",
+ CellTags->"Info3581868062-3373323"],
+Cell[20168, 597, 227, 4, 40, "Print",
+ CellTags->"Info3581868063-3373323"],
+Cell[20398, 603, 230, 4, 40, "Print",
+ CellTags->"Info3581868063-3373323"],
+Cell[20631, 609, 224, 4, 40, "Print",
+ CellTags->"Info3581868064-3373323"]
+}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[33003, 917, 106, 4, 77, "Subtitle"],
-Cell[33112, 923, 2771, 73, 232, "Input"],
-Cell[35886, 998, 1352, 39, 112, "Input"],
-Cell[37241, 1039, 2246, 60, 192, "Input"],
-Cell[39490, 1101, 907, 24, 112, "Input"],
-Cell[40400, 1127, 643, 18, 31, "Input"],
-Cell[41046, 1147, 596, 17, 52, "Input"],
-Cell[41645, 1166, 2140, 59, 172, "Input"],
-Cell[43788, 1227, 1592, 42, 192, "Input"],
-Cell[45383, 1271, 147, 3, 31, "Input"]
+Cell[20904, 619, 238, 5, 31, "Input"],
+Cell[21145, 626, 115, 3, 31, "Output"]
+}, Open  ]],
+Cell[21275, 632, 218, 4, 30, "Text"],
+Cell[CellGroupData[{
+Cell[21518, 640, 118, 2, 31, "Input"],
+Cell[21639, 644, 265, 5, 40, "Print",
+ CellTags->"Info3581868065-3373323"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21941, 654, 442, 10, 31, "Input"],
+Cell[22386, 666, 149, 3, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22572, 674, 480, 15, 31, "Input"],
+Cell[23055, 691, 149, 3, 31, "Output"]
+}, Open  ]],
+Cell[23219, 697, 179, 4, 30, "Text"],
+Cell[CellGroupData[{
+Cell[23423, 705, 1998, 49, 272, "Input"],
+Cell[25424, 756, 1873, 37, 466, "Output"]
+}, Open  ]],
+Cell[27312, 796, 276, 5, 49, "Text"],
+Cell[CellGroupData[{
+Cell[27613, 805, 740, 22, 72, "Input"],
+Cell[28356, 829, 141, 3, 31, "Output"]
+}, Open  ]],
+Cell[28512, 835, 261, 5, 30, "Text"],
+Cell[CellGroupData[{
+Cell[28798, 844, 2199, 52, 252, "Input"],
+Cell[31000, 898, 2183, 44, 490, "Output"]
+}, Open  ]],
+Cell[33198, 945, 224, 5, 30, "Text"],
+Cell[CellGroupData[{
+Cell[33447, 954, 9672, 222, 772, "Input"],
+Cell[43122, 1178, 3554, 73, 448, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[46725, 1257, 106, 4, 77, "Subtitle"],
+Cell[46834, 1263, 2771, 73, 232, "Input"],
+Cell[49608, 1338, 1352, 39, 112, "Input"],
+Cell[50963, 1379, 2246, 60, 192, "Input"],
+Cell[53212, 1441, 907, 24, 112, "Input"],
+Cell[54122, 1467, 643, 18, 31, "Input"],
+Cell[54768, 1487, 596, 17, 52, "Input"],
+Cell[55367, 1506, 2140, 59, 172, "Input"],
+Cell[57510, 1567, 1592, 42, 192, "Input"],
+Cell[59105, 1611, 147, 3, 31, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
