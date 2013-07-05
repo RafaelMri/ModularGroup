@@ -36,9 +36,9 @@ PriorityQueue::usage = StringJoin[
 SearchIterator::usage = StringJoin[
   "it = New[SearchIterator, q, f] constructs an iterator over a sequence ",
   "which is defined by the initial contents of the Queue q ",
-  "and the transition function f.\n",
-  "HasNext[it] returns True as long as q is not empty.\n",
-  "GetNext[it] returns the top element t of q ",
+  "and the transition function f.",
+  "\nHasNext[it] returns True as long as q is not empty.",
+  "\nGetNext[it] returns the top element t of q ",
   "and enqueues all elements f[t]={a,b,c,...} to q."
 ];
 

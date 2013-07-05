@@ -18,7 +18,7 @@ AbstractQ::usage =
   "AbstractQ[c] returns True if c is an abstract class.";
 
 New::usage = StringJoin[
-  "New[c, args...] instantiates an objtect of class c, "
+  "New[c, args...] instantiates an objtect of class c, ",
   "passing the given arguments to its constructor."
 ];
 New::notaclass = "`1` is not a class.";
