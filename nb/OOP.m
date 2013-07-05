@@ -17,34 +17,41 @@ NewAbstractClass::usage =
 AbstractQ::usage =
   "AbstractQ[c] returns True if c is an abstract class.";
 
-New::usage = 
-  "New[c, args...] instantiates an objtect of class c, " <>
-  "passing the given arguments to its constructor.";
+New::usage = StringJoin[
+  "New[c, args...] instantiates an objtect of class c, "
+  "passing the given arguments to its constructor."
+];
 New::notaclass = "`1` is not a class.";
 New::abstractinst = "`1` is an abstract class and cannot be instantiated.";
 
-Init::usage = 
-  "Init[c, o, args...] defines the constructor of a class c " <>
-  "and initializes the new object o. " <>
-  "Never call directly, use o = New[c, args...] instead.";
-Init::undef = 
-  "Constructor for class `1` and arguments `2` not defined. " <> 
-  "Make sure you have defined Init[`1`, obj_, args___] ^:= ...";
+Init::usage = StringJoin[
+  "Init[c, o, args...] defines the constructor of a class c ",
+  "and initializes the new object o. ",
+  "Never call directly, use o = New[c, args...] instead."
+];
+Init::undef = StringJoin[
+  "Constructor for class `1` and arguments `2` not defined. ",
+  "Make sure you have defined Init[`1`, obj_, args___] ^:= ..."
+];
 
-Super::usage = 
-  "Super[b, o, args...] calls the constructor of a base-class b " <>
-  "for a new object o. " <>
-  "To be used within the Init function of a class c which inherits from b.";
+Super::usage = StringJoin[
+  "Super[b, o, args...] calls the constructor of a base-class b ",
+  "for a new object o. ",
+  "To be used within the Init function of a class c which inherits from b."
+];
 
-InstanceQ::usage = 
-  "InstanceQ[c][o] returns True, if the object o is instance of class c.";
+InstanceQ::usage = StringJoin[
+  "InstanceQ[c][o] returns True, if the object o is instance of class c."
+];
 
-Info::usage = 
-  "Info[o] displays data associated with the object o.";
+Info::usage = StringJoin[
+  "Info[o] displays data associated with the object o."
+];
 
-Iterator::usage = 
-  "Iterator is an abstract base class for objects o providing methods " <>
-  "HasNext[o] and GetNext[o].";
+Iterator::usage = StringJoin[
+  "Iterator is an abstract base class for objects o providing methods ",
+  "HasNext[o] and GetNext[o]."
+];
 
 HasNext::usage =
   "HasNext[o] tests if the Iterator o has a next element.";

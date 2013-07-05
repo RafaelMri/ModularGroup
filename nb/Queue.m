@@ -23,40 +23,46 @@ EmptyQ::usage =
 FifoQueue::usage = 
   "New[FifoQueue] constructs an empty first-in-first-out queue.";
 
-LifoQueue::usage =
-  "New[LifoQueue] constructs an empty last-in-first-out queue, " <>
-  "also known as stack.";
+LifoQueue::usage = StringJoin[
+  "New[LifoQueue] constructs an empty last-in-first-out queue, ",
+  "also known as stack."
+];
 
-PriorityQueue::usage =
-  "New[PriorityQueue, p] constructs an empty priority queue " <>
-  "with p as the ordering predicate.";
+PriorityQueue::usage = StringJoin[
+  "New[PriorityQueue, p] constructs an empty priority queue ",
+  "with p as the ordering predicate."
+];
 
-SearchIterator::usage = 
-  "it = New[SearchIterator, q, f] constructs an iterator over a sequence " <>
-  "which is defined by the initial contents of the Queue q " <>
-  "and the transition function f.\n" <>
-  "HasNext[it] returns True as long as q is not empty.\n" <>
-  "GetNext[it] returns the top element t of q " <>
-  "and enqueues all elements f[t]={a,b,c,...} to q.";
+SearchIterator::usage = StringJoin[
+  "it = New[SearchIterator, q, f] constructs an iterator over a sequence ",
+  "which is defined by the initial contents of the Queue q ",
+  "and the transition function f.\n",
+  "HasNext[it] returns True as long as q is not empty.\n",
+  "GetNext[it] returns the top element t of q ",
+  "and enqueues all elements f[t]={a,b,c,...} to q."
+];
 
-BFSIterator::usage = 
-  "New[BFSIterator, s, f] constructs an iterator " <>
-  "for performing a breadth-first-search " <>
-  "starting with the element s. For any element e, " <>
-  "f[e] should return a (possibly empty) list of elements to be visited next.";
+BFSIterator::usage = StringJoin[
+  "New[BFSIterator, s, f] constructs an iterator ",
+  "for performing a breadth-first-search ",
+  "starting with the element s. For any element e, ",
+  "f[e] should return a (possibly empty) list of elements to be visited next."
+];
 
-DFSIterator::usage = 
-  "New[DFSIterator, s, f] constructs an iterator " <>
-  "for performing a depth-first-search " <>
-  "starting with the element s. For any element e, " <>
-  "f[e] should return a (possibly empty) list of elements to be visited next.";
+DFSIterator::usage = StringJoin[
+  "New[DFSIterator, s, f] constructs an iterator ",
+  "for performing a depth-first-search ",
+  "starting with the element s. For any element e, ",
+  "f[e] should return a (possibly empty) list of elements to be visited next."
+];
 
-PFSIterator::usage = 
-  "New[PFSIterator, s, f, p] constructs an iterator " <>
-  "for performing a priority-first-search " <>
-  "starting with the element s and using the ordering predicate p. " <>
-  "For any element e, " <>
-  "f[e] should return a (possibly empty) list of elements to be visited next.";
+PFSIterator::usage = StringJoin[
+  "New[PFSIterator, s, f, p] constructs an iterator ",
+  "for performing a priority-first-search ",
+  "starting with the element s and using the ordering predicate p. ",
+  "For any element e, ",
+  "f[e] should return a (possibly empty) list of elements to be visited next."
+];
 
 Begin["`Private`"];
 

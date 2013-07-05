@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     50335,       1407]
-NotebookOptionsPosition[     46943,       1304]
-NotebookOutlinePosition[     47462,       1326]
-CellTagsIndexPosition[     47376,       1321]
+NotebookDataLength[     51488,       1437]
+NotebookOptionsPosition[     47979,       1331]
+NotebookOutlinePosition[     48498,       1353]
+CellTagsIndexPosition[     48412,       1348]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -612,6 +612,19 @@ Cell[BoxData[
   3.581761315634508*^9, 3.581761318224117*^9}}],
 
 Cell["\<\
+A faster alternative for drawing GeneralizedDisks is provided by GDisk and \
+GCircle:\
+\>", "Text",
+ CellChangeTimes->{{3.5820072749481792`*^9, 3.5820073235462966`*^9}, {
+  3.58200859676517*^9, 3.582008602772185*^9}, {3.582009337295556*^9, 
+  3.582009339869563*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"?", "GDisk"}], "\[IndentingNewLine]", 
+ RowBox[{"?", "GCircle"}]}], "Input",
+ CellChangeTimes->{{3.5820073281649075`*^9, 3.582007335403325*^9}}],
+
+Cell["\<\
 Generalized circles can be transformed by MoebiusTransformations, e.g. the \
 upper halfplane can be transformed to the unit disk:\
 \>", "Text",
@@ -678,30 +691,37 @@ Cell[BoxData[
          RowBox[{"Superscript", "[", 
           RowBox[{"\"\<\[Phi]\>\"", ",", "t"}], "]"}], ",", 
          "\[IndentingNewLine]", 
-         RowBox[{"RegionPlot", "[", 
+         RowBox[{"Graphics", "[", 
           RowBox[{
-           RowBox[{"InteriorQ", "[", 
-            RowBox[{"disk", ",", 
-             RowBox[{"x", "+", 
-              RowBox[{"I", " ", "y"}]}]}], "]"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"x", ",", 
-             RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"y", ",", 
-             RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
-           RowBox[{"Frame", "\[Rule]", "False"}], ",", 
+           RowBox[{"{", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"Lighter", "@", "Blue"}], ",", 
+               RowBox[{"GDisk", "[", "disk", "]"}]}], "}"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"Darker", "@", "Blue"}], ",", 
+               RowBox[{"GCircle", "[", "disk", "]"}]}], "}"}]}], 
+            "\[IndentingNewLine]", "}"}], ",", 
            RowBox[{"Axes", "\[Rule]", "True"}], ",", 
-           RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}]}], 
-        "\[IndentingNewLine]", "}"}]}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{"PlotRange", "\[Rule]", "2"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], 
+          "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "}"}]}]}], 
+     ",", "\[IndentingNewLine]", 
      RowBox[{"{", 
       RowBox[{"t", ",", "0", ",", "4"}], "}"}]}], "\[IndentingNewLine]", 
     "]"}]}], "\[IndentingNewLine]", "]"}]], "Input",
  CellChangeTimes->{{3.5817434914531546`*^9, 3.5817436525860796`*^9}, {
-  3.581743960780683*^9, 3.5817439609054832`*^9}, {3.5817440476261663`*^9, 
-  3.5817441638621445`*^9}, {3.581744194485044*^9, 3.581744208790291*^9}, {
-  3.58174423931959*^9, 3.581744302125395*^9}, {3.581863320797556*^9, 
-  3.581863389562521*^9}, {3.5818670165184755`*^9, 3.5818670195604825`*^9}}],
+   3.581743960780683*^9, 3.5817439609054832`*^9}, {3.5817440476261663`*^9, 
+   3.5817441638621445`*^9}, {3.581744194485044*^9, 3.581744208790291*^9}, {
+   3.58174423931959*^9, 3.581744302125395*^9}, {3.581863320797556*^9, 
+   3.581863389562521*^9}, {3.5818670165184755`*^9, 3.5818670195604825`*^9}, {
+   3.5820051903007507`*^9, 3.5820052531895022`*^9}, {3.582006211763415*^9, 
+   3.5820062312966623`*^9}, {3.5820064713534408`*^9, 
+   3.5820064719150424`*^9}, {3.5820071161735964`*^9, 3.582007155457491*^9}, 
+   3.582007233495879*^9}],
 
 Cell["\<\
 The above transformation can be thought of a rotation of the Riemannian \
@@ -1298,12 +1318,19 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   RowBox[{"Off", "[", "Assert", "]"}], ";"}]], "Input",
- CellChangeTimes->{{3.5804877427507343`*^9, 3.580487744950344*^9}}]
+ CellChangeTimes->{{3.5804877427507343`*^9, 3.580487744950344*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ZeroTest", "@", 
+  RowBox[{"Im", "@", 
+   RowBox[{"Exp", "[", 
+    RowBox[{"2.", "Pi", " ", "I"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.581868800364792*^9, 3.5818688450765*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{812, 634},
-WindowMargins->{{188, Automatic}, {Automatic, 0}},
+WindowMargins->{{250, Automatic}, {Automatic, 5}},
 ShowSelection->True,
 FrontEndVersion->"9.0 for Microsoft Windows (32-bit) (January 25, 2013)",
 StyleDefinitions->"Default.nb"
@@ -1320,7 +1347,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Info3581614347-3048158", 47272, 1315}
+ {"Info3581614347-3048158", 48308, 1342}
  }
 *)
 (*NotebookFileOutline
@@ -1389,24 +1416,27 @@ Cell[17654, 527, 442, 10, 31, "Input"],
 Cell[18099, 539, 480, 15, 31, "Input"],
 Cell[18582, 556, 179, 4, 30, "Text"],
 Cell[18764, 562, 1998, 49, 272, "Input"],
-Cell[20765, 613, 276, 5, 49, "Text"],
-Cell[21044, 620, 740, 22, 72, "Input"],
-Cell[21787, 644, 261, 5, 30, "Text"],
-Cell[22051, 651, 2199, 52, 252, "Input"],
-Cell[24253, 705, 224, 5, 30, "Text"],
-Cell[24480, 712, 9871, 226, 772, "Input"]
+Cell[20765, 613, 276, 6, 30, "Text"],
+Cell[21044, 621, 169, 3, 52, "Input"],
+Cell[21216, 626, 276, 5, 49, "Text"],
+Cell[21495, 633, 740, 22, 72, "Input"],
+Cell[22238, 657, 261, 5, 30, "Text"],
+Cell[22502, 664, 2574, 59, 312, "Input"],
+Cell[25079, 725, 224, 5, 30, "Text"],
+Cell[25306, 732, 9871, 226, 772, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[34388, 943, 106, 4, 77, "Subtitle"],
-Cell[34497, 949, 2771, 73, 232, "Input"],
-Cell[37271, 1024, 1352, 39, 112, "Input"],
-Cell[38626, 1065, 2246, 60, 192, "Input"],
-Cell[40875, 1127, 907, 24, 112, "Input"],
-Cell[41785, 1153, 643, 18, 31, "Input"],
-Cell[42431, 1173, 596, 17, 52, "Input"],
-Cell[43030, 1192, 2140, 59, 172, "Input"],
-Cell[45173, 1253, 1592, 42, 192, "Input"],
-Cell[46768, 1297, 147, 3, 31, "Input"]
+Cell[35214, 963, 106, 4, 77, "Subtitle"],
+Cell[35323, 969, 2771, 73, 232, "Input"],
+Cell[38097, 1044, 1352, 39, 112, "Input"],
+Cell[39452, 1085, 2246, 60, 192, "Input"],
+Cell[41701, 1147, 907, 24, 112, "Input"],
+Cell[42611, 1173, 643, 18, 31, "Input"],
+Cell[43257, 1193, 596, 17, 52, "Input"],
+Cell[43856, 1212, 2140, 59, 172, "Input"],
+Cell[45999, 1273, 1592, 42, 192, "Input"],
+Cell[47594, 1317, 147, 3, 31, "Input"],
+Cell[47744, 1322, 207, 5, 31, "Input"]
 }, Open  ]]
 }, Open  ]]
 }

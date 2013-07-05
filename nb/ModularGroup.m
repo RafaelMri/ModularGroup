@@ -4,10 +4,11 @@ BeginPackage["ModularGroup`", {"OOP`", "Queue`"}];
 
 (* ---------------------------------------------------------- Public Elements *)
 
-MoebiusTransformation::usage = 
-  "New[MoebiusTransformation, {{a, b}, {c, d}}] " <>
-  "creates the moebius transformation " <>
-  "z \[RightTeeArrow] \!\(\*FractionBox[\(\(a\[CenterDot]z\)\(\\\ \)\(+\)\(\\\ \)\(b\)\(\\\ \)\), \(c\[CenterDot]z\\\  + \\\ d\)]\).";
+MoebiusTransformation::usage = StringJoin[
+  "New[MoebiusTransformation, {{a, b}, {c, d}}] ",
+  "creates the moebius transformation ",
+  "z \[RightTeeArrow] \!\(\*FractionBox[\(\(a\[CenterDot]z\)\(\\\ \)\(+\)\(\\\ \)\(b\)\(\\\ \)\), \(c\[CenterDot]z\\\  + \\\ d\)]\)."
+];
 Mat::usage = 
   "Mat[t] returns the coefficients of the MoebiusTransformation t as matrix.";
 Inv::usage = 
@@ -16,75 +17,88 @@ Inv::usage =
 Inhom::usage = 
   "Inhom[{z1,z2}] returns z1 / z2 or \[Infinity], if z2 == 0.";
 
-ModularTransformation::usage = 
-  "New[ModularTransformation, {{a, b}, {c, d}}] " <>
-  "creates the modular transformation " <>
-  "z \[RightTeeArrow] \!\(\*FractionBox[\(\(a\[CenterDot]z\)\(\\\ \)\(+\)\(\\\ \)\(b\)\(\\\ \)\), \(c\[CenterDot]z\\\  + \\\ d\)]\).";
+ModularTransformation::usage = StringJoin[
+  "New[ModularTransformation, {{a, b}, {c, d}}] ",
+  "creates the modular transformation ",
+  "z \[RightTeeArrow] \!\(\*FractionBox[\(\(a\[CenterDot]z\)\(\\\ \)\(+\)\(\\\ \)\(b\)\(\\\ \)\), \(c\[CenterDot]z\\\  + \\\ d\)]\)."
+];
 
-TUExponents::usage = 
-  "TUExponents[t] returns for a ModularTransformation t a list of exponents " <>
-  "{\!\(\*SubscriptBox[\(e\), \(0\)]\),...,\!\(\*SubscriptBox[\(e\), \(n\)]\)} " <>
-  "such that t = \!\(\*SuperscriptBox[\(U\), SubscriptBox[\(e\), \(0\)]]\)\!\(\*SuperscriptBox[\(TU\), SubscriptBox[\(e\), \(1\)]]\)...\!\(\*SuperscriptBox[\(TU\), SubscriptBox[\(e\), \(n\)]]\). \n" <>
-  "Options: QuotientFunction.";
+TUExponents::usage = StringJoin[
+  "TUExponents[t] returns for a ModularTransformation t a list of exponents ",
+  "{\!\(\*SubscriptBox[\(e\), \(0\)]\),...,\!\(\*SubscriptBox[\(e\), \(n\)]\)} ",
+  "such that t = \!\(\*SuperscriptBox[\(U\), SubscriptBox[\(e\), \(0\)]]\)\!\(\*SuperscriptBox[\(TU\), SubscriptBox[\(e\), \(1\)]]\)...\!\(\*SuperscriptBox[\(TU\), SubscriptBox[\(e\), \(n\)]]\). \n",
+  "Options: QuotientFunction."
+];
  
-QuotientFunction::usage = 
-  "QuotientFunction is an option which defines the " <>
-  "integer quotient function to be used within the Euclidean algorithm. " <>
-  "Default is Mathematica's built-in function Quotient. " <>
-  "Predefined alternatives are CentralQuotient and CQuotient.";
+QuotientFunction::usage = StringJoin[
+  "QuotientFunction is an option which defines the ",
+  "integer quotient function to be used within the Euclidean algorithm. ",
+  "Default is Mathematica's built-in function Quotient. ",
+  "Predefined alternatives are CentralQuotient and CQuotient."
+];
 
-CentralQuotient::usage = 
-  "CentralQuotient[m,n] returns the integer quotient q of m = q n + r, " <>
-  "such that Abs[r] \[LessEqual] Abs[n/2].";
+CentralQuotient::usage = StringJoin[
+  "CentralQuotient[m,n] returns the integer quotient q of m = q n + r, ",
+  "such that Abs[r] \[LessEqual] Abs[n/2]."
+];
 
-CQuotient::usage = 
-  "CQuotient[m,n] returns the integer quotient of m and n " <>
-  "with rounding towards 0 " <>
-  "(equivalent to integer division e.g. in the programming language C).";
+CQuotient::usage = StringJoin[
+  "CQuotient[m,n] returns the integer quotient of m and n ",
+  "with rounding towards 0 ",
+  "(equivalent to integer division e.g. in the programming language C)."
+];
 
-TUEval::usage = 
-  "TUEval[t, subsT, subsU, product, power] " <>
-  "substitutes the symbols T and U " <>
-  "in the group word representation of the ModularTransformation t " <>
-  "with subsT and subsU respectively " <>
-  "and evaluates using the provided product and power functions.\n" <>
-  "Example: TUEval[phi, Mat[mtT], Mat[mtU], Dot, MatrixPower]\n" <>
-  "Options: QuotientFunction.";
+TUEval::usage = StringJoin[
+  "TUEval[t, subsT, subsU, product, power] ",
+  "substitutes the symbols T and U ",
+  "in the group word representation of the ModularTransformation t ",
+  "with subsT and subsU respectively ",
+  "and evaluates using the provided product and power functions.\n",
+  "Example: TUEval[phi, Mat[mtT], Mat[mtU], Dot, MatrixPower]\n",
+  "The options QuotientFunction is supported."
+];
 
-TUWord::usage = 
-  "TUWord[t] returns a symbolic group word representation " <>
-  "of the ModularTransformation t in terms of the group generators T and U.\n" <>
-  "Options: QuotientFunction";
+TUWord::usage = StringJoin[
+  "TUWord[t] returns a symbolic group word representation ",
+  "of the ModularTransformation t in terms of the group generators T and U.\n",
+  "Options: QuotientFunction"
+];
 
 (* Some frequently used ModularTransformations *)
-mtId::usage = 
-  "mtId is the identity element " <>
-  "of the classes MoebiusTransformation and ModularTransformation.";
+mtId::usage = StringJoin[
+  "mtId is the identity element ",
+  "of the classes MoebiusTransformation and ModularTransformation."
+];
 
 mtU::usage = "mtU is the ModularTransformation U: z \[RightTeeArrow] z+1.";
 mtT::usage = "mtT is the ModularTransformation T: z \[RightTeeArrow] -\!\(\*FractionBox[\(1\), \(z\)]\).";
 mtR::usage = "mtR is the ModularTransformation R = TU : z \[RightTeeArrow] -\!\(\*FractionBox[\(1\), \(z + 1\)]\).";
 
-GeneralizedDisk::usage = 
-  "New[GeneralizedDisk, {{a, b},{c, d}}] constructs the a generalized disk " <> 
-  "whose points z satisfy a\[CenterDot]|z\!\(\*SuperscriptBox[\(|\), \(2\)]\) + b\[CenterDot]\!\(\*OverscriptBox[\(z\), \(_\)]\) + c\[CenterDot]z + d \[LessSlantEqual] 0. " <>
-  "The matrix {{a, b}, {c, d}} must be Hermitian with negative determinant.";
-NoncompactDisk::usage =
-  "New[NoncompactDisk, c, r] constructs a GeneralizedDisk " <>
-  "which contains the point \[Infinity] and whose complement in \[DoubleStruckCapitalC] is a disk " <>
-  "with center c and radius r.";
-Halfplane::usage = 
-  "New[Halfplane, z, n] constructs a GeneralizedDisk " <>
-  "containing all points of a halfplane " <> 
-  "which is given by a point z on its border " <>
-  "and a complex number n pointing inside the halfplane " <> 
-  "in normal direction to its border.";
-CompactDisk::usage =
-  "New[CompactDisk, c, r] constructs a GeneralizedDisk " <>
-  "with center c and radius r.";
-InteriorQ::usage =
-  "InteriorQ[d, z] tests if the GeneralizedDisk d contains the point z, " <>
-  "which also may be given in homogeneous form.";
+GeneralizedDisk::usage = StringJoin[
+  "New[GeneralizedDisk, {{a, b},{c, d}}] constructs the a generalized disk ", 
+  "whose points z satisfy a\[CenterDot]|z\!\(\*SuperscriptBox[\(|\), \(2\)]\) + b\[CenterDot]\!\(\*OverscriptBox[\(z\), \(_\)]\) + c\[CenterDot]z + d \[LessSlantEqual] 0. ",
+  "The matrix {{a, b}, {c, d}} must be Hermitian with negative determinant."
+];
+NoncompactDisk::usage = StringJoin[
+  "New[NoncompactDisk, c, r] constructs a GeneralizedDisk ",
+  "which contains the point \[Infinity] and whose complement in \[DoubleStruckCapitalC] is a disk ",
+  "with center c and radius r."
+];
+Halfplane::usage = StringJoin[
+  "New[Halfplane, z, n] constructs a GeneralizedDisk ",
+  "containing all points of a halfplane ",
+  "which is given by a point z on its border ",
+  "and a complex number n pointing inside the halfplane ",
+  "in normal direction to its border."
+];
+CompactDisk::usage = StringJoin[
+  "New[CompactDisk, c, r] constructs a GeneralizedDisk ",
+  "with center c and radius r."
+];
+InteriorQ::usage = StringJoin[
+  "InteriorQ[d, z] tests if the GeneralizedDisk d contains the point z, ",
+  "which also may be given in homogeneous form."
+];
 
 (* Some predefined GeneralizedDisks *)
 gdUnitDisk::usage =
@@ -98,31 +112,65 @@ gdRightHalfplane::usage =
 gdLeftHalfplane::usage =
   "gdLeftHalfPlane is the set of points z satisfying Re[z] \[LessSlantEqual] 0.";
 
-GDiskRadius::usage =
-  "GDiskRadius[d] returns the radius of the GeneralizedDisk d. " <> 
-  "It is defined for CompactDisks only.";
-GDiskCenter::usage = 
-  "GDiskCenter[d] returns the center of a GeneralizdeDisk d. " <>
-  "It is defined for CompactDisks only.";
-GDiskCoradius::usage =
-  "GDiskCoradius[d] returns the co-radius of a GeneralizedDisk d. " <>
-  "It is defined for NoncompactDisks only.";
-GDiskCocenter::usage =
-  "GDiskCocenter[d] returns the co-center of a GeneralizedDisk d. " <>
-  "It is defined for NoncompactDisks only.";
+GDiskRadius::usage = StringJoin[
+  "GDiskRadius[d] returns the radius of the GeneralizedDisk d. ", 
+  "It is defined for CompactDisks only."
+];
+GDiskCenter::usage = StringJoin[
+  "GDiskCenter[d] returns the center of a GeneralizdeDisk d. ",
+  "It is defined for CompactDisks only."
+];
+GDiskCoradius::usage = StringJoin[
+  "GDiskCoradius[d] returns the co-radius of a GeneralizedDisk d. ",
+  "It is defined for NoncompactDisks only."
+];
+GDiskCocenter::usage = StringJoin[
+  "GDiskCocenter[d] returns the co-center of a GeneralizedDisk d. ",
+  "It is defined for NoncompactDisks only."
+];
 
-ModularGroupExcerpt::usage =
-  "ModularGroupExcerpt[p] " <> 
-  "performs a depth-first-search and returns ModularTransformations " <>
-  "satisfying the predicate p.\n" <>
-  "Options: StartTransformation, MaxIterations";
+GDisk::usage = StringJoin[
+  "GDisk[d] gives a two-dimensional graphics object ",
+  "representing the GeneralizedDisk d.\n",
+  "GDisk[d, {{{\!\(\*SubscriptBox[\(a\), \(1\)]\),\!\(\*SubscriptBox[\(b\), \(1\)]\)},{\!\(\*SubscriptBox[\(c\), \(1\)]\),\!\(\*SubscriptBox[\(d\), \(1\)]\)}}, {{\!\(\*SubscriptBox[\(a\), \(2\)]\),\!\(\*SubscriptBox[\(b\), \(2\)]\)},{\!\(\*SubscriptBox[\(c\), \(2\)]\),\!\(\*SubscriptBox[\(d\), \(2\)]\)}}, ...}] ",
+  "gives all GeneralizedDisks d under the Moebius transformations ",
+  "z \[RightTeeArrow] (\!\(\*SubscriptBox[\(a\), \(i\)]\)z + \!\(\*SubscriptBox[\(b\), \(i\)]\))/(\!\(\*SubscriptBox[\(c\), \(i\)]\)z + \!\(\*SubscriptBox[\(d\), \(i\)]\))\n",
+  "The options GDiskClipRadius and GDiskNPoints are supported."
+];
+GCircle::usage = StringJoin[
+  "GCircle[d] gives a two-dimensional grphics object ",
+  "representing the boundary of the GeneralizedDisk d.\n",
+  "GCircle[d, {{{\!\(\*SubscriptBox[\(a\), \(1\)]\),\!\(\*SubscriptBox[\(b\), \(1\)]\)},{\!\(\*SubscriptBox[\(c\), \(1\)]\),\!\(\*SubscriptBox[\(d\), \(1\)]\)}}, {{\!\(\*SubscriptBox[\(a\), \(2\)]\),\!\(\*SubscriptBox[\(b\), \(2\)]\)},{\!\(\*SubscriptBox[\(c\), \(2\)]\),\!\(\*SubscriptBox[\(d\), \(2\)]\)}}, ...}] ",
+  "gives all the boundaries of the GeneralizedDisks d ",
+  "under the Moebius transformations ",
+  "z \[RightTeeArrow] (\!\(\*SubscriptBox[\(a\), \(i\)]\)z + \!\(\*SubscriptBox[\(b\), \(i\)]\))/(\!\(\*SubscriptBox[\(c\), \(i\)]\)z + \!\(\*SubscriptBox[\(d\), \(i\)]\))\n",
+  "The option GDiskClipRadius is supported."
+];
+
+GDiskClipRadius::usage = StringJoin[
+  "GDiskClipRadius is an option of GDisk. ",
+  "Set it to a value, which is greater or equal ",
+  "to the maximum 2-norm of all points within the plot range."
+];
+GDiskNPoints::usage = StringJoin[
+  "GDiskNPoints is an option of GDisk. It specifies, how many points are used ",
+  "in the approximation of the boundary of a NoncompactDisk with a regular n-gon."
+];
+
+ModularGroupExcerpt::usage = StringJoin[
+  "ModularGroupExcerpt[p] ",
+  "performs a depth-first-search and returns ModularTransformations ",
+  "satisfying the predicate p.\n",
+  "The options StartTransformation, MaxIterations are supported."
+];
 ModularGroupExcerpt::maxit =
   "Maximum number of iterations exceeded. Current setting: MaxIterations \[RightArrow] `1`.";
 
-ModularGroupIterator::usage = 
-  "ModularGroupIterator[p] " <>
-  "Returns an Enumerator for modular transformations " <>
-  "using p as ordering prdicate for the internal PriorityQueue.";
+ModularGroupIterator::usage = StringJoin[
+  "ModularGroupIterator[p] ",
+  "Returns an Enumerator for modular transformations ",
+  "using p as ordering prdicate for the internal PriorityQueue."
+];
 
 Begin["`Private`"];
 
@@ -146,7 +194,12 @@ Init[MoebiusTransformation, obj_, mat_?MatrixQ] ^:= (
   obj@t_?(InstanceQ[MoebiusTransformation]) := 
     New[MoebiusTransformation, mat.Mat[t]];
   obj@h_?VectorQ := mat.h;
-  obj@z_ := If[TrueQ[z === ComplexInfinity], Inhom[mat.{1,0}], Inhom[mat.{z, 1}]];
+  obj@z_ := (
+    If[TrueQ[z === ComplexInfinity], 
+      Inhom[mat.{1,0}], 
+      Inhom[mat.{z, 1}]
+    ]
+  );
 );
 
 Inv[m_?MatrixQ] := {{m[[2,2]], -m[[1,2]]}, {-m[[2,1]], m[[1,1]]}};
@@ -257,6 +310,20 @@ gdLeftHalfplane = New[Halfplane, 0, -1];
 
 radius[m_] := Sqrt[-Det[m] m[[1,1]]^-2];
 center[m_] := -m[[1,2]] / m[[1,1]];
+class = With[{maxRadiusSqr=N[2^30]},
+  Compile[{{m, _Complex, 2}},
+    Module[{a,b,d,aSqr},
+      a = Re@m[[1,1]];
+      b = m[[2,1]];
+      d = Re@m[[2,2]];
+      aSqr = a^2;
+      If[aSqr == 0. || ((Re[b]^2+Im[b]^2) - a d)/aSqr > maxRadiusSqr,
+        0,
+        Sign@a
+      ]
+    ]
+  ]
+];
 
 GDiskRadius[disk_?(InstanceQ[CompactDisk])] := 
 GDiskRadius[disk] ^= (
@@ -277,6 +344,70 @@ GDiskCocenter[disk_?(InstanceQ[NoncompactDisk])] :=
 GDiskCocenter[disk] ^= (
   center[Mat[disk]]
 );
+
+Options[GDisk] ^= {GDiskClipRadius->1024, GDiskNPoints->64};
+Options[GCircle] ^= {GDiskClipRadius->1024};
+
+GDisk[disk_?(InstanceQ[GeneralizedDisk]), OptionsPattern[]] :=
+Module[{m},
+  m=Mat@disk;
+  Switch[class[m],
+    1, (* CompactDisk *)
+    Module[{c = GDiskCenter[disk]},
+      Disk[{Re[c],Im[c]}, GDiskRadius[disk]]
+    ],
+    -1, (* NoncompactDisk *)
+    Module[{points, clip, c, r, n},
+      clip = OptionValue[GDiskClipRadius];
+      n = OptionValue[GDiskNPoints];
+      c = GDiskCocenter[disk];
+      r = GDiskCoradius[disk];
+      points = Join[
+        Table[c+r Exp[2 Pi I t], {t, 1/2, -1/2, -1/n}],
+          (-I-1) clip {1,I,-1,-I,1}
+      ];
+      Polygon[{Re@#,Im@#}&/@points]
+    ],
+    _, (* Halfplane *) 
+    Module[{absb, b0, rot, clip},
+      absb = Abs[m[[1,2]]];
+      b0 = m[[1,2]] / absb;
+      rot = {{Re@b0, -Im@b0}, {Im@b0, Re@b0}};
+      clip = OptionValue[GDiskClipRadius];
+      GeometricTransformation[
+        Rectangle[{-clip, -clip}, {-m[[2,2]]/(2 absb), clip}],
+        rot
+      ]
+    ]
+  ]
+];
+
+GCircle[disk_?(InstanceQ[GeneralizedDisk]), OptionsPattern[]] :=
+Module[{m},
+  m=Mat@disk;
+  Switch[class[m],
+    1, (* CompactDisk *)
+    Module[{c = GDiskCenter[disk]},
+      Circle[{Re[c],Im[c]}, GDiskRadius[disk]]
+    ],
+    -1, (* NoncompactDisk *)
+    Module[{c = GDiskCocenter[disk]},
+      Circle[{Re[c],Im[c]}, GDiskCoradius[disk]]
+    ],
+    _, (* Halfplane *) 
+    Module[{absb, b0, rot, clip, x},
+      absb = Abs[m[[1,2]]];
+      b0 = m[[1,2]] / absb;
+      rot = {{Re@b0, -Im@b0}, {Im@b0, Re@b0}};
+      clip = OptionValue[GDiskClipRadius];
+      x = -m[[2,2]]/(2 absb);
+      GeometricTransformation[
+        Line[{{x, -clip}, {x,clip}}],
+        rot
+      ]
+    ]
+  ]
+];
 
 (* --------------------------------------------------- Enumeration algorithms *)
 
