@@ -27,7 +27,7 @@ TUExponents::usage = StringJoin[
   "TUExponents[t] returns for a ModularTransformation t a list of exponents ",
   "{\!\(\*SubscriptBox[\(e\), \(0\)]\),...,\!\(\*SubscriptBox[\(e\), \(n\)]\)} ",
   "such that t = \!\(\*SuperscriptBox[\(U\), SubscriptBox[\(e\), \(0\)]]\)\!\(\*SuperscriptBox[\(TU\), SubscriptBox[\(e\), \(1\)]]\)...\!\(\*SuperscriptBox[\(TU\), SubscriptBox[\(e\), \(n\)]]\).",
-  "\nOptions: QuotientFunction."
+  "\nThe options QuotientFunction is supported."
 ];
  
 QuotientFunction::usage = StringJoin[
@@ -61,7 +61,7 @@ TUEval::usage = StringJoin[
 TUWord::usage = StringJoin[
   "TUWord[t] returns a symbolic group word representation ",
   "of the ModularTransformation t in terms of the group generators T and U.",
-  "\nOptions: QuotientFunction"
+  "\nThe options QuotientFunction is supported."
 ];
 
 (* Some frequently used ModularTransformations *)
@@ -404,7 +404,6 @@ class = With[{maxRadiusSqr=N[2^30]},
   ]
 ];
 
-(* ----------------------------------------------------- Drawing algorithms *)
 GDiskRadius[disk_?(InstanceQ[CompactDisk])] := 
 GDiskRadius[disk] ^= (
   radius[Mat[disk]]
@@ -425,6 +424,7 @@ GDiskCocenter[disk] ^= (
   center[Mat[disk]]
 );
 
+(* ----------------------------------------------------- Drawing algorithms *)
 Options[GDisk] ^= {GDiskClipRadius->1024, GDiskNPoints->64};
 Options[GCircle] ^= {GDiskClipRadius->1024};
 
@@ -488,16 +488,8 @@ GCircle[disk_?(InstanceQ[GeneralizedDisk]), opts:OptionsPattern[]] := (
 );
 
 GCircle[m_?MatrixQ, opts:OptionsPattern[]] :=
-Switch[class[m],
-  1, (* CompactDisk *)
-  Module[{c = GDiskCenter[disk]},
-    Circle[{Re[c],Im[c]}, GDiskRadius[disk]]
-  ],
-  -1, (* NoncompactDisk *)
-  Module[{c = GDiskCocenter[disk]},
-    Circle[{Re[c],Im[c]}, GDiskCoradius[disk]]
-  ],
-  _, (* Halfplane *) 
+If[class[m] == 0,
+  (* Halfplane *) 
   Module[{absb, b0, rot, clip, x},
     absb = Abs[m[[1,2]]];
     b0 = m[[1,2]] / absb;
@@ -508,7 +500,11 @@ Switch[class[m],
       Line[{{x, -clip}, {x,clip}}],
       rot
     ]
-  ]
+  ],
+  (* CompactDisk or NoncompactDisk *)
+  Module[{c = center[m]},
+    Circle[{Re[c],Im[c]}, radius[m]]
+  ] 
 ];
 
 GCircle[disk_?(InstanceQ[GeneralizedDisk]), tlist_List, opts:OptionsPattern[]] :=
@@ -516,9 +512,9 @@ Module[{dm, mlists},
   dm = Mat@disk;
   mlists = SplitBy[ConjugateTranspose[Mat@Inv@#].dm.Mat[Inv@#]& /@ tlist, class];
   Table[
-    If[class[mlist[[1]]] == 1,
-      GeometricTransformation[Circle[], udTransforms[mlist]],
-      Table[GCircle[m, opts], {m, mlist}]
+    If[class[mlist[[1]]] == 0,
+      Table[GCircle[m, opts], {m, mlist}],      
+      GeometricTransformation[Circle[], udTransforms[mlist]]
     ],
   {mlist, mlists}]
 ];
