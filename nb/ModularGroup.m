@@ -27,7 +27,7 @@ TUExponents::usage = StringJoin[
   "TUExponents[t] returns for a ModularTransformation t a list of exponents ",
   "{\!\(\*SubscriptBox[\(e\), \(0\)]\),...,\!\(\*SubscriptBox[\(e\), \(n\)]\)} ",
   "such that t = \!\(\*SuperscriptBox[\(U\), SubscriptBox[\(e\), \(0\)]]\)\!\(\*SuperscriptBox[\(TU\), SubscriptBox[\(e\), \(1\)]]\)...\!\(\*SuperscriptBox[\(TU\), SubscriptBox[\(e\), \(n\)]]\).",
-  "\nThe options QuotientFunction is supported."
+  "\nThe option QuotientFunction is supported."
 ];
  
 QuotientFunction::usage = StringJoin[
@@ -55,13 +55,18 @@ TUEval::usage = StringJoin[
   "with subsT and subsU respectively ",
   "and evaluates using the provided product and power functions.",
   "\nExample: TUEval[phi, Mat[mtT], Mat[mtU], Dot, MatrixPower]",
-  "\nThe options QuotientFunction is supported."
+  "\nThe option QuotientFunction is supported."
 ];
 
 TUWord::usage = StringJoin[
   "TUWord[t] returns a symbolic group word representation ",
   "of the ModularTransformation t in terms of the group generators T and U.",
-  "\nThe options QuotientFunction is supported."
+  "\nThe option QuotientFunction is supported."
+];
+
+TRWord::usage = StringJoin[
+  "TRWord[t] returns the unique reduced group word representation ",
+  "of the ModularTransformation t in terms of the group generators T and R."
 ];
 
 (* Some frequently used ModularTransformations *)
@@ -154,8 +159,8 @@ GDiskNPoints::usage = StringJoin[
   "in the approximation of the boundary of a NoncompactDisk with a regular n-gon."
 ];
 
-ModularGroupExcerpt::usage = StringJoin[
-  "ModularGroupExcerpt[p] ",
+ModularGroupList::usage = StringJoin[
+  "ModularGroupList[p] ",
   "returns a list of ModularTransformations satisfying the predicate p. ",
   "Starting with the identity transformation, ",
   "a duplicate-free list of transformations is generated ",
@@ -164,7 +169,7 @@ ModularGroupExcerpt::usage = StringJoin[
   "which continues as long as p returns True.",
   "\nThe options StartTransformation and MaxIterations are supported."
 ];
-ModularGroupExcerpt::maxit =
+ModularGroupList::maxit =
   "Maximum number of iterations exceeded. Current setting: MaxIterations \[RightArrow] `1`.";
 
 ModularGroupIterator::usage = StringJoin[
@@ -178,7 +183,7 @@ ModularGroupIterator::usage = StringJoin[
 ];
 StartTransformation::usage = StringJoin[
   "StartTransformation is an option ",
-  "of ModularGroupExcerpt and ModularGroupIterator. ",
+  "of ModularGroupList and ModularGroupIterator. ",
   "It defines the ModularTransformation which is used for starting the enumeration."
 ];
 
@@ -271,7 +276,23 @@ Module[{factors},
     TUEval[obj, "T", "U", List, Superscript, opts],
     Superscript["U",0]
   ];
-  If[factors=={}, "1", Row@factors]
+  If[factors === {}, "1", Row@factors]
+];
+
+TRWord[obj_?(InstanceQ[ModularTransformation])] :=
+Module[{pow, factors},
+  pow = Function[{b, e}, 
+    If[e >= 0, 
+      Array[{"T", 1}&, e], 
+      Array[{2, "T"}&, -e]
+    ]
+  ];
+  factors = Flatten[TUEval[obj, "T", "U", List, pow]] //. {
+    {h___, "T", "T", t___} -> {h,t},
+    {h___, a_Integer, b_Integer, t___} -> {h, Mod[a + b, 3], t},
+     {h___, 0, t___} -> {h, t}
+  } /. n_Integer -> Superscript["R", n];
+  If[factors === {}, "1", Row@factors]
 ];
 
 (* --------------------------------------------------- Enumeration algorithms *)
@@ -285,7 +306,7 @@ Module[{steps, t},
     t, {step, steps}]
 ]];
 
-ModularGroupExcerpt[criteria_, OptionsPattern[]] := Reap[
+ModularGroupList[criteria_, OptionsPattern[]] := Reap[
 Module[{i, max, mtStart, queue, top, next},
   i = 0;
   max = OptionValue[MaxIterations];
@@ -301,9 +322,9 @@ Module[{i, max, mtStart, queue, top, next},
     next = Transition[ModularGroup][top]; 
     Do[If[criteria[n],Enqueue[queue, n]], {n, next}];
   ];
-  If[i >= max, Message[ModularGroupExcerpt::maxit, max]];
+  If[i >= max, Message[ModularGroupList::maxit, max]];
 ]][[2,1]];
-Options[ModularGroupExcerpt] = {MaxIterations -> 2^12, StartTransformation->mtId};
+Options[ModularGroupList] = {MaxIterations -> 2^12, StartTransformation->mtId};
 
 ModularGroupIterator[ordering_, OptionsPattern[]] := 
 Module[{mtStart},
