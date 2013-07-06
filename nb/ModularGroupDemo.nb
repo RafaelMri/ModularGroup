@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     54941,       1521]
-NotebookOptionsPosition[     51346,       1413]
-NotebookOutlinePosition[     51866,       1435]
-CellTagsIndexPosition[     51780,       1430]
+NotebookDataLength[     61037,       1655]
+NotebookOptionsPosition[     57432,       1550]
+NotebookOutlinePosition[     57798,       1566]
+CellTagsIndexPosition[     57755,       1563]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -192,28 +192,11 @@ Modular Transformations\
  CellChangeTimes->{{3.581581629687232*^9, 3.5815816337744455`*^9}, {
   3.5817399858925333`*^9, 3.581739988809743*^9}}],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{"?", "ModularTransformation"}]], "Input",
  CellChangeTimes->{{3.58150337928141*^9, 3.581503384569827*^9}}],
 
-Cell[BoxData[
- StyleBox[
-  "\"\<New[ModularTransformation, {{a, b}, {c, d}}] creates the modular \
-transformation z \[RightTeeArrow] \
-\!\(\*FractionBox[\(\(a\[CenterDot]z\)\(\\\\\\\ \)\(+\)\(\\\\\\\ \
-\)\(b\)\(\\\\\\\ \)\), \(c\[CenterDot]z\\\\\\\  + \\\\\\\ d\)]\).\\\\n\>\"", 
-  "MSG"]], "Print", "PrintUsage",
- GeneratedCell->False,
- CellAutoOverwrite->False,
- CellChangeTimes->{{3.5816071475539055`*^9, 3.581607158867756*^9}},
- CellTags->"Info3581614347-3048158"]
-}, Open  ]],
-
-Cell["\<\
-ModularTransformations are MoebiusTransformations:\
-\>", "Text",
+Cell["ModularTransformations are MoebiusTransformations:", "Text",
  CellChangeTimes->{{3.581607765054337*^9, 3.5816077730103626`*^9}}],
 
 Cell[BoxData[{
@@ -301,20 +284,24 @@ Cell[BoxData[{
   3.581741061968438*^9, 3.581741072233271*^9}}],
 
 Cell[BoxData[
- RowBox[{"{", 
+ RowBox[{
   RowBox[{
-   RowBox[{"mtId", "[", "\"\<z\>\"", "]"}], ",", 
-   RowBox[{"mtU", "[", "\"\<z\>\"", "]"}], ",", 
-   RowBox[{"mtT", "[", "\"\<z\>\"", "]"}], ",", 
-   RowBox[{"mtR", "[", "\"\<z\>\"", "]"}]}], "}"}]], "Input",
+   RowBox[{"Row", "@", 
+    RowBox[{"{", 
+     RowBox[{"\"\<z \[RightTeeArrow] \>\"", ",", 
+      RowBox[{"#", "[", "\"\<z\>\"", "]"}]}], "}"}]}], "&"}], "/@", 
+  RowBox[{"{", 
+   RowBox[{"mtId", ",", "mtU", ",", "mtT", ",", "mtR"}], "}"}]}]], "Input",
  CellChangeTimes->{{3.581608743422738*^9, 3.5816087670228167`*^9}, {
-  3.581608809567155*^9, 3.581608824826005*^9}}],
+  3.581608809567155*^9, 3.581608824826005*^9}, {3.5820958479611177`*^9, 
+  3.582095909689704*^9}, {3.58209595973999*^9, 3.5820959631040764`*^9}}],
 
 Cell["\<\
-Finding a group word representations of a ModularTransformation:\
+Finding a group word representation for a ModularTransformation:\
 \>", "Text",
  CellChangeTimes->{{3.581609088767665*^9, 3.5816091062407217`*^9}, {
-  3.581738333131895*^9, 3.581738342460726*^9}}],
+  3.581738333131895*^9, 3.581738342460726*^9}, {3.5820959784494705`*^9, 
+  3.5820959843836236`*^9}}],
 
 Cell[BoxData[
  RowBox[{"?", "TUWord"}]], "Input",
@@ -381,9 +368,7 @@ Cell[BoxData[
   3.5816097783741117`*^9, 3.581609854040358*^9}, {3.5816098946970906`*^9, 
   3.581609912014147*^9}}],
 
-Cell["\<\
-TUEval can be used for evaluating group words:\
-\>", "Text",
+Cell["TUEval can be used for evaluating group words:", "Text",
  CellChangeTimes->{{3.581609659210923*^9, 3.58160966426634*^9}, {
   3.581610103413971*^9, 3.581610106892782*^9}, {3.5816101376736827`*^9, 
   3.5816101391556873`*^9}, {3.5817411392666893`*^9, 3.5817411475503163`*^9}}],
@@ -451,7 +436,166 @@ Cell[BoxData[
           "}"}]}], "}"}]}], "\[IndentingNewLine]", "]"}]}]}], 
    "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]"}]], "Input",
  CellChangeTimes->{{3.581610325686096*^9, 3.5816105768035145`*^9}, 
-   3.581610614964239*^9, {3.581610781331382*^9, 3.5816108756718893`*^9}}]
+   3.581610614964239*^9, {3.581610781331382*^9, 3.5816108756718893`*^9}}],
+
+Cell["\<\
+For creating a List of ModularTransformations, ModularGroupExcerpt may be \
+used:\
+\>", "Text",
+ CellChangeTimes->{{3.582096033096875*^9, 3.5820960807060986`*^9}, {
+  3.5820962104054317`*^9, 3.5820962303409443`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"?", "ModularGroupExcerpt"}]], "Input",
+ CellChangeTimes->{{3.582096082383142*^9, 3.582096088250293*^9}, {
+  3.582096232333996*^9, 3.582096232613003*^9}}],
+
+Cell["\<\
+Creating a list of all ModularTransformations, where the absolte values of \
+all U exponents add up to at most 3:\
+\>", "Text",
+ CellChangeTimes->{{3.582096253706545*^9, 3.5820962654298463`*^9}, {
+  3.5820965594964037`*^9, 3.5820965601974216`*^9}, {3.582096669673235*^9, 
+  3.582096709773266*^9}, {3.582096989954466*^9, 3.5820970361776543`*^9}, {
+  3.582097075679669*^9, 3.582097075960676*^9}, {3.5820994614749823`*^9, 
+  3.582099470449213*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Module", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"p", ",", "transformations"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"p", "=", 
+       RowBox[{"Function", "[", 
+        RowBox[{"t", ",", 
+         RowBox[{
+          RowBox[{"Total", "@", 
+           RowBox[{"Abs", "@", 
+            RowBox[{"TUExponents", "[", 
+             RowBox[{"t", ",", 
+              RowBox[{"QuotientFunction", "\[Rule]", "f"}]}], "]"}]}]}], 
+          "\[LessEqual]", " ", "3"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"transformations", "=", 
+       RowBox[{"ModularGroupExcerpt", "[", "p", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"TUWord", "[", 
+         RowBox[{"#", ",", 
+          RowBox[{"QuotientFunction", "\[Rule]", "f"}]}], "]"}], "&"}], "/@", 
+       "transformations"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"f", ",", "Quotient"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"Quotient", ",", "CentralQuotient", ",", "CQuotient"}], 
+        "}"}]}], "}"}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.5820967905863423`*^9, 3.5820968103638506`*^9}, {
+  3.5820969297469187`*^9, 3.5820969500544405`*^9}, {3.5820972981283855`*^9, 
+  3.582097366668147*^9}, {3.582097402259062*^9, 3.582097415965414*^9}, {
+  3.582097462986623*^9, 3.582097478994034*^9}, {3.582097528295301*^9, 
+  3.5820975633322015`*^9}, {3.5820976025302086`*^9, 3.582097610518414*^9}, {
+  3.5820977235733194`*^9, 3.582097726943406*^9}, {3.582097815110672*^9, 
+  3.582097817608736*^9}, {3.5820979650555253`*^9, 3.5820979783178663`*^9}, {
+  3.5820981968894835`*^9, 3.582098243945693*^9}, {3.582101923044243*^9, 
+  3.5821019239152656`*^9}}],
+
+Cell["\<\
+For searching certain ModularTransformations, it is more practical to iterate \
+over an infinite sequence rather than having available just a finite list:\
+\>", "Text",
+ CellChangeTimes->{{3.582099484213567*^9, 3.5820994844215717`*^9}, {
+  3.5820995726438394`*^9, 3.5820998140160427`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"?", "ModularGroupIterator"}]], "Input",
+ CellChangeTimes->{{3.5820993649365015`*^9, 3.58209936993363*^9}}],
+
+Cell["\<\
+Find the \[OpenCurlyDoubleQuote]first\[CloseCurlyDoubleQuote] two \
+ModularTransformations, whose coefficients add up to 10:\
+\>", "Text",
+ CellChangeTimes->{{3.5820998221622515`*^9, 3.5820998534150553`*^9}, {
+   3.582100663709879*^9, 3.582100673163122*^9}, 3.5821023450730886`*^9, {
+   3.582102910570622*^9, 3.58210292605902*^9}, {3.5821035043068805`*^9, 
+   3.5821035051629024`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Module", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "ordering", ",", "it", ",", "t", ",", "n", ",", "transformations"}], 
+    "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ordering", "=", 
+     RowBox[{"Function", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"a", ",", "b"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"Total", "@", 
+         RowBox[{"Abs", "@", 
+          RowBox[{"TUExponents", "@", "a"}]}]}], "\[LessEqual]", 
+        RowBox[{"Total", "@", 
+         RowBox[{"Abs", "@", 
+          RowBox[{"TUExponents", "@", "b"}]}]}]}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"it", "=", 
+     RowBox[{"ModularGroupIterator", "[", "ordering", "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"t", "=", 
+     RowBox[{"GetNext", "[", "it", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"n", "=", "0"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"transformations", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"Reap", "[", "\[IndentingNewLine]", 
+       RowBox[{"While", "[", 
+        RowBox[{
+         RowBox[{"n", "<", "2"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Total", "[", 
+              RowBox[{
+               RowBox[{"Mat", "@", "t"}], ",", "Infinity"}], "]"}], 
+             "\[Equal]", "10"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Sow", "[", "t", "]"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"n", "++"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"t", "=", 
+           RowBox[{"GetNext", "[", "it", "]"}]}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}], "[", 
+      RowBox[{"[", 
+       RowBox[{"2", ",", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Column", "@", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Row", "@", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"TUWord", "[", "t", "]"}], ",", 
+          "\"\<: z \[RightTeeArrow] \>\"", ",", " ", 
+          RowBox[{"t", "[", "\"\<z\>\"", "]"}]}], "}"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", "transformations"}], "}"}]}], "]"}]}]}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.58210072054134*^9, 3.5821007773738003`*^9}, {
+  3.582100807485574*^9, 3.582100819979895*^9}, {3.58210086412803*^9, 
+  3.582100944454094*^9}, {3.582101001967572*^9, 3.582101012076832*^9}, {
+  3.5821010744434347`*^9, 3.582101079043553*^9}, {3.58210235015722*^9, 
+  3.582102365999627*^9}, {3.5821024021225553`*^9, 3.5821024031605816`*^9}, {
+  3.5821024375224648`*^9, 3.5821026460388236`*^9}, {3.582102735871132*^9, 
+  3.5821027408992615`*^9}, {3.5821027763271723`*^9, 3.5821028568102407`*^9}, {
+  3.5821029342562304`*^9, 3.58210313772946*^9}, {3.5821031703022966`*^9, 
+  3.582103248169298*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -480,11 +624,12 @@ Cell[BoxData[{
   3.5817410348711495`*^9, 3.581741042296774*^9}}],
 
 Cell["\<\
-CompactDisks are identified by their radius and center, Noncompact disks by \
+CompactDisks are defined by their radius and center, Noncompact disks by \
 their \[OpenCurlyDoubleQuote]coradius\[CloseCurlyDoubleQuote] and \
 \[OpenCurlyDoubleQuote]cocenter\[CloseCurlyDoubleQuote]:\
 \>", "Text",
- CellChangeTimes->{{3.581760835542945*^9, 3.5817609744769974`*^9}}],
+ CellChangeTimes->{{3.581760835542945*^9, 3.5817609744769974`*^9}, {
+  3.5820855194176807`*^9, 3.582085521256728*^9}}],
 
 Cell[BoxData[{
  RowBox[{"?", "GDiskRadius"}], "\[IndentingNewLine]", 
@@ -671,9 +816,8 @@ Cell[BoxData[
            "]"}]}], "]"}], ",", "\[IndentingNewLine]", 
        RowBox[{"{", 
         RowBox[{"p", ",", 
-         RowBox[{"-", "10"}], ",", "10", ",", 
-         RowBox[{"1", "/", "2"}]}], "}"}]}], "\[IndentingNewLine]", "]"}]}], 
-    ";", "\[IndentingNewLine]", 
+         RowBox[{"-", "10."}], ",", "10.", ",", "0.5"}], "}"}]}], 
+      "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
     RowBox[{"Graphics", "[", 
      RowBox[{
       RowBox[{"{", 
@@ -688,7 +832,7 @@ Cell[BoxData[
  CellChangeTimes->{{3.5820171485673723`*^9, 3.5820173181307297`*^9}, {
    3.58201740840305*^9, 3.582017445707009*^9}, 3.5820174842019978`*^9, {
    3.5820176197574816`*^9, 3.582017763850185*^9}, {3.582017846385306*^9, 
-   3.582017891005452*^9}}],
+   3.582017891005452*^9}, {3.58201981702595*^9, 3.5820199944775105`*^9}}],
 
 Cell[TextData[{
  "Generalized circles can be transformed by Moebius transformations, e.g. the \
@@ -1400,19 +1544,12 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   RowBox[{"Off", "[", "Assert", "]"}], ";"}]], "Input",
- CellChangeTimes->{{3.5804877427507343`*^9, 3.580487744950344*^9}}],
-
-Cell[BoxData[
- RowBox[{"ZeroTest", "@", 
-  RowBox[{"Im", "@", 
-   RowBox[{"Exp", "[", 
-    RowBox[{"2.", "Pi", " ", "I"}], "]"}]}]}]], "Input",
- CellChangeTimes->{{3.581868800364792*^9, 3.5818688450765*^9}}]
+ CellChangeTimes->{{3.5804877427507343`*^9, 3.580487744950344*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{812, 611},
-WindowMargins->{{120, Automatic}, {Automatic, -7}},
+WindowMargins->{{165, Automatic}, {Automatic, 13}},
 ShowSelection->True,
 FrontEndVersion->"9.0 for Microsoft Windows (32-bit) (January 25, 2013)",
 StyleDefinitions->"Default.nb"
@@ -1421,16 +1558,10 @@ StyleDefinitions->"Default.nb"
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{
- "Info3581614347-3048158"->{
-  Cell[6111, 200, 468, 10, 60, "Print",
-   CellTags->"Info3581614347-3048158"]}
- }
+CellTagsIndex->{}
 *)
 (*CellTagsIndex
-CellTagsIndex->{
- {"Info3581614347-3048158", 51676, 1424}
- }
+CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
@@ -1456,71 +1587,74 @@ Cell[5371, 172, 375, 10, 31, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[5783, 187, 171, 5, 77, "Subtitle"],
-Cell[CellGroupData[{
-Cell[5979, 196, 129, 2, 31, "Input"],
-Cell[6111, 200, 468, 10, 60, "Print",
- CellTags->"Info3581614347-3048158"]
-}, Open  ]],
-Cell[6594, 213, 142, 3, 30, "Text"],
-Cell[6739, 218, 601, 18, 52, "Input"],
-Cell[7343, 238, 253, 5, 30, "Text"],
-Cell[7599, 245, 1036, 28, 52, "Input"],
-Cell[8638, 275, 418, 11, 52, "Input"],
-Cell[9059, 288, 192, 4, 30, "Text"],
-Cell[9254, 294, 309, 6, 92, "Input"],
-Cell[9566, 302, 366, 8, 31, "Input"],
-Cell[9935, 312, 205, 4, 30, "Text"],
-Cell[10143, 318, 117, 2, 31, "Input"],
-Cell[10263, 322, 61, 1, 31, "Input"],
-Cell[10327, 325, 129, 2, 31, "Input"],
-Cell[10459, 329, 234, 4, 52, "Input"],
-Cell[10696, 335, 633, 17, 52, "Input"],
-Cell[11332, 354, 167, 3, 30, "Text"],
-Cell[11502, 359, 122, 2, 31, "Input"],
-Cell[11627, 363, 683, 18, 52, "Input"],
-Cell[12313, 383, 287, 5, 30, "Text"],
-Cell[12603, 390, 117, 2, 31, "Input"],
-Cell[12723, 394, 2368, 59, 292, "Input"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[15128, 458, 118, 4, 77, "Subtitle"],
-Cell[15249, 464, 126, 2, 31, "Input"],
-Cell[15378, 468, 212, 4, 30, "Text"],
-Cell[15593, 474, 284, 5, 72, "Input"],
-Cell[15880, 481, 294, 5, 30, "Text"],
-Cell[16177, 488, 291, 5, 92, "Input"],
-Cell[16471, 495, 126, 3, 30, "Text"],
-Cell[16600, 500, 468, 8, 112, "Input"],
-Cell[17071, 510, 238, 5, 31, "Input"],
-Cell[17312, 517, 218, 4, 30, "Text"],
-Cell[17533, 523, 118, 2, 31, "Input"],
-Cell[17654, 527, 442, 10, 31, "Input"],
-Cell[18099, 539, 480, 15, 31, "Input"],
-Cell[18582, 556, 179, 4, 30, "Text"],
-Cell[18764, 562, 1998, 49, 272, "Input"],
-Cell[20765, 613, 276, 6, 30, "Text"],
-Cell[21044, 621, 169, 3, 52, "Input"],
-Cell[21216, 626, 680, 19, 41, "Text"],
-Cell[21899, 647, 1683, 43, 172, "Input"],
-Cell[23585, 692, 632, 14, 59, "Text"],
-Cell[24220, 708, 740, 22, 72, "Input"],
-Cell[24963, 732, 302, 5, 30, "Text"],
-Cell[25268, 739, 2761, 61, 312, "Input"],
-Cell[28032, 802, 224, 5, 30, "Text"],
-Cell[28259, 809, 10285, 231, 792, "Input"]
+Cell[5957, 194, 129, 2, 31, "Input"],
+Cell[6089, 198, 134, 1, 30, "Text"],
+Cell[6226, 201, 601, 18, 52, "Input"],
+Cell[6830, 221, 253, 5, 30, "Text"],
+Cell[7086, 228, 1036, 28, 52, "Input"],
+Cell[8125, 258, 418, 11, 52, "Input"],
+Cell[8546, 271, 192, 4, 30, "Text"],
+Cell[8741, 277, 309, 6, 92, "Input"],
+Cell[9053, 285, 502, 11, 31, "Input"],
+Cell[9558, 298, 258, 5, 30, "Text"],
+Cell[9819, 305, 117, 2, 31, "Input"],
+Cell[9939, 309, 61, 1, 31, "Input"],
+Cell[10003, 312, 129, 2, 31, "Input"],
+Cell[10135, 316, 234, 4, 52, "Input"],
+Cell[10372, 322, 633, 17, 52, "Input"],
+Cell[11008, 341, 167, 3, 30, "Text"],
+Cell[11178, 346, 122, 2, 31, "Input"],
+Cell[11303, 350, 683, 18, 52, "Input"],
+Cell[11989, 370, 279, 3, 30, "Text"],
+Cell[12271, 375, 117, 2, 31, "Input"],
+Cell[12391, 379, 2368, 59, 292, "Input"],
+Cell[14762, 440, 226, 5, 30, "Text"],
+Cell[14991, 447, 177, 3, 31, "Input"],
+Cell[15171, 452, 455, 8, 30, "Text"],
+Cell[15629, 462, 1903, 43, 180, "Input"],
+Cell[17535, 507, 299, 5, 49, "Text"],
+Cell[17837, 514, 130, 2, 31, "Input"],
+Cell[17970, 518, 395, 7, 30, "Text"],
+Cell[18368, 527, 2948, 70, 332, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[38581, 1045, 106, 4, 77, "Subtitle"],
-Cell[38690, 1051, 2771, 73, 232, "Input"],
-Cell[41464, 1126, 1352, 39, 112, "Input"],
-Cell[42819, 1167, 2246, 60, 192, "Input"],
-Cell[45068, 1229, 907, 24, 112, "Input"],
-Cell[45978, 1255, 643, 18, 31, "Input"],
-Cell[46624, 1275, 596, 17, 52, "Input"],
-Cell[47223, 1294, 2140, 59, 172, "Input"],
-Cell[49366, 1355, 1592, 42, 192, "Input"],
-Cell[50961, 1399, 147, 3, 31, "Input"],
-Cell[51111, 1404, 207, 5, 31, "Input"]
+Cell[21353, 602, 118, 4, 77, "Subtitle"],
+Cell[21474, 608, 126, 2, 31, "Input"],
+Cell[21603, 612, 212, 4, 30, "Text"],
+Cell[21818, 618, 284, 5, 72, "Input"],
+Cell[22105, 625, 342, 6, 30, "Text"],
+Cell[22450, 633, 291, 5, 92, "Input"],
+Cell[22744, 640, 126, 3, 30, "Text"],
+Cell[22873, 645, 468, 8, 112, "Input"],
+Cell[23344, 655, 238, 5, 31, "Input"],
+Cell[23585, 662, 218, 4, 30, "Text"],
+Cell[23806, 668, 118, 2, 31, "Input"],
+Cell[23927, 672, 442, 10, 31, "Input"],
+Cell[24372, 684, 480, 15, 31, "Input"],
+Cell[24855, 701, 179, 4, 30, "Text"],
+Cell[25037, 707, 1998, 49, 272, "Input"],
+Cell[27038, 758, 276, 6, 30, "Text"],
+Cell[27317, 766, 169, 3, 52, "Input"],
+Cell[27489, 771, 680, 19, 41, "Text"],
+Cell[28172, 792, 1706, 42, 172, "Input"],
+Cell[29881, 836, 632, 14, 59, "Text"],
+Cell[30516, 852, 740, 22, 72, "Input"],
+Cell[31259, 876, 302, 5, 30, "Text"],
+Cell[31564, 883, 2761, 61, 312, "Input"],
+Cell[34328, 946, 224, 5, 30, "Text"],
+Cell[34555, 953, 10285, 231, 792, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[44877, 1189, 106, 4, 77, "Subtitle"],
+Cell[44986, 1195, 2771, 73, 232, "Input"],
+Cell[47760, 1270, 1352, 39, 112, "Input"],
+Cell[49115, 1311, 2246, 60, 192, "Input"],
+Cell[51364, 1373, 907, 24, 112, "Input"],
+Cell[52274, 1399, 643, 18, 31, "Input"],
+Cell[52920, 1419, 596, 17, 52, "Input"],
+Cell[53519, 1438, 2140, 59, 172, "Input"],
+Cell[55662, 1499, 1592, 42, 192, "Input"],
+Cell[57257, 1543, 147, 3, 31, "Input"]
 }, Open  ]]
 }, Open  ]]
 }

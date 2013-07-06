@@ -156,17 +156,30 @@ GDiskNPoints::usage = StringJoin[
 
 ModularGroupExcerpt::usage = StringJoin[
   "ModularGroupExcerpt[p] ",
-  "performs a depth-first-search and returns ModularTransformations ",
-  "satisfying the predicate p.",
-  "\nThe options StartTransformation, MaxIterations are supported."
+  "returns a list of ModularTransformations satisfying the predicate p. ",
+  "Starting with the identity transformation, ",
+  "a duplicate-free list of transformations is generated ",
+  "by successively applying T and U from the right, ",
+  "using a depth-first-search algorithm ",
+  "which continues as long as p returns True.",
+  "\nThe options StartTransformation and MaxIterations are supported."
 ];
 ModularGroupExcerpt::maxit =
   "Maximum number of iterations exceeded. Current setting: MaxIterations \[RightArrow] `1`.";
 
 ModularGroupIterator::usage = StringJoin[
-  "ModularGroupIterator[p] ",
-  "Returns an Enumerator for modular transformations ",
-  "using p as ordering prdicate for the internal PriorityQueue."
+  "it = ModularGroupIterator[p] returns an Iterator for ModularTransformations ",
+  "with ordering defined by the ordering predicate p.",
+  "\nHasNext[it] returns True forever, as the ModularGroup has infinitely many elements.",
+  "\nGetNext[it] returns the next ModularTransformation ",
+  "determined by a priority-first-search algorithm, ",
+  "which successively applies transformations T and U from the right ",
+  "to already known transformations and uses the ordering predicate p."
+];
+StartTransformation::usage = StringJoin[
+  "StartTransformation is an option ",
+  "of ModularGroupExcerpt and ModularGroupIterator. ",
+  "It defines the ModularTransformation which is used for starting the enumeration."
 ];
 
 Begin["`Private`"];
@@ -216,6 +229,19 @@ Init[ModularTransformation, obj_, mat_?(MatrixQ[#,IntegerQ]&)] ^:= (
   Super[MoebiusTransformation, obj, mat];
 );
 
+(* ------------------------------------------- Special ModularTransformations *)
+mtId = New[ModularTransformation, IdentityMatrix[2]];
+Inv[mtId] ^= mtId; (* Identity is self-inverse *)
+
+mtU = New[ModularTransformation, {{1,1},{0,1}}];
+
+mtT = New[ModularTransformation, {{0,-1},{1,0}}];
+Inv[mtT] ^= mtT; (* T is self-inverse *)
+
+mtR = New[ModularTransformation, Mat[mtT].Mat[mtU]];
+
+(* ---------------------------------------------------- Group word algorithms *)
+
 TUExponents[obj_?(InstanceQ[ModularTransformation]), OptionsPattern[]] := 
   Module[{quotientFu, sgn, m, q},
     quotientFu = OptionValue[QuotientFunction];
@@ -239,12 +265,55 @@ TUEval[obj_?(InstanceQ[ModularTransformation]), t_, u_, product_, power_, opts :
   product@@Riffle[power[u,#]&/@TUExponents[obj,opts],"T "]/."T "->t
 );
 
-TUWord[obj_?(InstanceQ[ModularTransformation]), opts:OptionsPattern[]] := (
-  Row@DeleteCases[
+TUWord[obj_?(InstanceQ[ModularTransformation]), opts:OptionsPattern[]] := 
+Module[{factors},
+  factors = DeleteCases[
     TUEval[obj, "T", "U", List, Superscript, opts],
     Superscript["U",0]
-  ]
-);
+  ];
+  If[factors=={}, "1", Row@factors]
+];
+
+(* --------------------------------------------------- Enumeration algorithms *)
+
+Transition[ModularGroup] = Function[top, 
+Module[{steps, t},
+  steps = NeighborSteps[top];
+  Table[
+    t = New[ModularTransformation, Mat[top].Mat[step]];
+    NeighborSteps[t] ^= If[step === mtT, Inv@#&/@Rest[steps], {mtT, step}];
+    t, {step, steps}]
+]];
+
+ModularGroupExcerpt[criteria_, OptionsPattern[]] := Reap[
+Module[{i, max, mtStart, queue, top, next},
+  i = 0;
+  max = OptionValue[MaxIterations];
+  mtStart = OptionValue[StartTransformation];
+  queue = New[LifoQueue];
+  If[criteria[mtStart], 
+    NeighborSteps[mtStart] ^= {mtT, mtU, Inv@mtU};
+    Enqueue[queue, mtStart]
+  ];
+  While[i++ < max && !EmptyQ[queue],
+    top = Dequeue[queue];
+    Sow[top];
+    next = Transition[ModularGroup][top]; 
+    Do[If[criteria[n],Enqueue[queue, n]], {n, next}];
+  ];
+  If[i >= max, Message[ModularGroupExcerpt::maxit, max]];
+]][[2,1]];
+Options[ModularGroupExcerpt] = {MaxIterations -> 2^12, StartTransformation->mtId};
+
+ModularGroupIterator[ordering_, OptionsPattern[]] := 
+Module[{mtStart},
+  mtStart = OptionValue[StartTransformation];
+  NeighborSteps[mtStart] ^= {mtT, mtU, Inv@mtU};
+  New[PFSIterator, mtStart, 
+    Transition[ModularGroup], ordering]
+];
+Options[ModularGroupIterator] = {StartTransformation -> mtId};
+
 
 (* -------------------------------------------------- Class GeneralizedDisk *)
 NewClass[GeneralizedDisk];
@@ -288,6 +357,17 @@ Init[Halfplane, obj_, pt_, normal_] ^:= Module[{b, d, mat},
   Super[GeneralizedDisk, obj, mat];
 ];
 
+(* ----------------------------------------------- Special GeneralizedDisks *)
+
+gdUnitDisk = New[CompactDisk, 0, 1];
+gdUpperHalfplane = New[Halfplane, 0, I];
+gdLowerHalfplane = New[Halfplane, 0, -I];
+gdRightHalfplane = New[Halfplane, 0, 1];
+gdLeftHalfplane = New[Halfplane, 0, -1];
+gdUnitCodisk = New[NoncompactDisk, 0, 1];
+
+(* ------------------------------------------- Methods for GeneralizedDisks *)
+
 InteriorQ[disk_?(InstanceQ[GeneralizedDisk]), z_?VectorQ] := (
   Re[Conjugate[z].Mat[disk].z] <= 0
 )
@@ -298,13 +378,6 @@ InteriorQ[disk_?(InstanceQ[GeneralizedDisk]), z_] := (
     InteriorQ[disk,{z,1}]
   ]
 );
-
-gdUnitDisk = New[CompactDisk, 0, 1];
-gdUpperHalfplane = New[Halfplane, 0, I];
-gdLowerHalfplane = New[Halfplane, 0, -I];
-gdRightHalfplane = New[Halfplane, 0, 1];
-gdLeftHalfplane = New[Halfplane, 0, -1];
-gdUnitCodisk = New[NoncompactDisk, 0, 1];
 
 radius = Compile[{{m,_Complex,2}},
   Module[{a,b,d,aSqr},
@@ -331,6 +404,7 @@ class = With[{maxRadiusSqr=N[2^30]},
   ]
 ];
 
+(* ----------------------------------------------------- Drawing algorithms *)
 GDiskRadius[disk_?(InstanceQ[CompactDisk])] := 
 GDiskRadius[disk] ^= (
   radius[Mat[disk]]
@@ -409,79 +483,45 @@ Module[{dm, mlists},
   {mlist, mlists}]
 ];
 
-GCircle[disk_?(InstanceQ[GeneralizedDisk]), OptionsPattern[]] :=
-Module[{m},
-  m=Mat@disk;
-  Switch[class[m],
-    1, (* CompactDisk *)
-    Module[{c = GDiskCenter[disk]},
-      Circle[{Re[c],Im[c]}, GDiskRadius[disk]]
-    ],
-    -1, (* NoncompactDisk *)
-    Module[{c = GDiskCocenter[disk]},
-      Circle[{Re[c],Im[c]}, GDiskCoradius[disk]]
-    ],
-    _, (* Halfplane *) 
-    Module[{absb, b0, rot, clip, x},
-      absb = Abs[m[[1,2]]];
-      b0 = m[[1,2]] / absb;
-      rot = {{Re@b0, -Im@b0}, {Im@b0, Re@b0}};
-      clip = OptionValue[GDiskClipRadius];
-      x = -m[[2,2]]/(2 absb);
-      GeometricTransformation[
-        Line[{{x, -clip}, {x,clip}}],
-        rot
-      ]
+GCircle[disk_?(InstanceQ[GeneralizedDisk]), opts:OptionsPattern[]] := (
+  GCircle[Mat@disk, opts]
+);
+
+GCircle[m_?MatrixQ, opts:OptionsPattern[]] :=
+Switch[class[m],
+  1, (* CompactDisk *)
+  Module[{c = GDiskCenter[disk]},
+    Circle[{Re[c],Im[c]}, GDiskRadius[disk]]
+  ],
+  -1, (* NoncompactDisk *)
+  Module[{c = GDiskCocenter[disk]},
+    Circle[{Re[c],Im[c]}, GDiskCoradius[disk]]
+  ],
+  _, (* Halfplane *) 
+  Module[{absb, b0, rot, clip, x},
+    absb = Abs[m[[1,2]]];
+    b0 = m[[1,2]] / absb;
+    rot = {{Re@b0, -Im@b0}, {Im@b0, Re@b0}};
+    clip = OptionValue[GDiskClipRadius];
+    x = -m[[2,2]]/(2 absb);
+    GeometricTransformation[
+      Line[{{x, -clip}, {x,clip}}],
+      rot
     ]
   ]
 ];
 
-(* --------------------------------------------------- Enumeration algorithms *)
-
-Transition[ModularTransformation] = Function[top, 
-Module[{current, steps},
-  {current, steps} = top;
-  Table[{
-    New[ModularTransformation, Mat[current].Mat[step]],
-    If[step === mtT, Inv@#&/@Rest[steps], {mtT, step}]
-    }, {step, steps}]
-]];
-
-ModularGroupExcerpt[criteria_, OptionsPattern[]] := Reap[
-Module[{i, max, mtStart, queue, top, next},
-  i = 0;
-  max = OptionValue[MaxIterations];
-  mtStart = OptionValue[StartTransformation];
-  queue = New[LifoQueue];
-  If[criteria[mtStart], Enqueue[queue, {mtStart, {mtT, mtU, Inv@mtU}}]];
-  While[i++ < max && !EmptyQ[queue],
-    top = Dequeue[queue];
-    Sow[top[[1]]];
-    next = Transition[ModularTransformation][top]; 
-    Do[Enqueue[queue, n], {n, Select[next, criteria[#[[1]]]&]}];
-  ];
-  If[i >= max, Message[Excerpt::maxit, max]];
-]][[2,1]];
-Options[ModularGroupExcerpt] = {MaxIterations -> 2^12, StartTransformation->mtId};
-
-ModularGroupIterator[ordering_, OptionsPattern[]] := 
-Module[{mtStart},
-  mtStart = OptionValue[StartTransformation];
-  New[PFSIterator, {mtStart, {mtT, mtU, Inv@mtU}}, 
-    Transition[ModularTransformation], ordering]
+GCircle[disk_?(InstanceQ[GeneralizedDisk]), tlist_List, opts:OptionsPattern[]] :=
+Module[{dm, mlists},
+  dm = Mat@disk;
+  mlists = SplitBy[ConjugateTranspose[Mat@Inv@#].dm.Mat[Inv@#]& /@ tlist, class];
+  Table[
+    If[class[mlist[[1]]] == 1,
+      GeometricTransformation[Circle[], udTransforms[mlist]],
+      Table[GCircle[m, opts], {m, mlist}]
+    ],
+  {mlist, mlists}]
 ];
-Options[ModularGroupEnumerator] = {StartTransformation -> mtId};
-
-(* ------------------------------------------- Special ModularTransformations *)
-mtId = New[ModularTransformation, IdentityMatrix[2]];
-Inv[mtId] ^= mtId; (* Identity is self-inverse *)
-
-mtU = New[ModularTransformation, {{1,1},{0,1}}];
-
-mtT = New[ModularTransformation, {{0,-1},{1,0}}];
-Inv[mtT] ^= mtT; (* T is self-inverse *)
-
-mtR = New[ModularTransformation, Mat[mtT].Mat[mtU]];
 
 End[];
 
