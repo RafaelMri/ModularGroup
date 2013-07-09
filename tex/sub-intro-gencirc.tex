@@ -38,11 +38,11 @@ In the case when $A = 0$, equation (\ref{eqn_GenCircle}) can be written as
 \end{equation*}
 which defines a line on the complex plane. We see this by considering the simpler equation $\Re{z} = -\frac{D}{2 \abs{C}}$ first (we omit the factor $\frac{C}{\abs{C}}$), which obviously defines a line parallel to the imaginary axis through the real point $-\frac{D}{2 \abs{C}}$. Then we observe, that the multiplication with $\frac{C}{\abs{C}}$ just rotates this line clockwise around the origin by an angle which is given by $\arg(C)$.
 
-To conclude our considerations we finally note that equation (\ref{eqn_GenCircle}) can also be written in terms of a sesquilinear form
+To conclude our considerations we finally note that equation (\ref{eqn_GenCircle}) can also be written in matrix form:
 \begin{equation*}
 \rvec{\conj{z}}{1} \cdot \mat{A}{B}{C}{D} \cdot \cvec{z}{1} = 0.
 \end{equation*}
-The matrix occurring in the middle is Hermitian and has a negative determinant, because of the condition $BC - AD > 0$ from above. We can now give an exact definition for generalized circles.
+The matrix in this equation is Hermitian and has a negative determinant, because of the condition $BC - AD > 0$ from above. We can now give an exact definition for generalized circles.
 
 \begin{definition}
 Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$. A \emph{generalized circle} is the set of solutions $z \in \C$ to

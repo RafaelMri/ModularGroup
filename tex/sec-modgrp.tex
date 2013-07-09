@@ -27,10 +27,26 @@ The proof is very similar to that of Theorem \ref{thm_MoebiusGroup}. The only th
 \index{Inhomogeneous!modular transformation}
 \index{Homogeneous!modular transformation}
 \index{Modular!transformation}
-Sometimes the elements of $\SL{\Z}$ (Schoeneberg \cite{schoeneberg1974elliptic} uses the notation $\Gamma$ instead) are called \emph{homogeneous modular transformations}, whereas the transformations of $\ModGrp$ are called \emph{inhomogeneous}. We will use this distinction only if it is beneficial for clarity.
+The elements of $\SL{\Z}$ are often called \emph{homogeneous modular transformations}, whereas the transformations of $\ModGrp = \PSL{\Z}$ are called \emph{inhomogeneous}. Strictly seen, an inhomogeneous transformation has to be denoted as $[M]_{\sim}$, which is the equivalence class in $\PSL{\Z}$ of a matrix $M \in \SL{\Z}$. It is clear, that $[M]_{\sim}$ is nothing but the set $\{\pm M\}$ and again for easier notation, we will from now on simply write either $M$ or $-M$ instead of $[M]_{\sim}$.
 \end{remark}
 
 \todo{16}{Basic mapping properties}
+
+\subsection{Generators and relations}
+
+In group theory it is an important question, which systems of group elements and relations (in the sense of definition \ref{dfn_GrpConstructGenRel}) completely describe the structure of any given group. This section is devoted to the answer of this question in the case of the modular group.
+
+Before we start, we introduce the following modular transformations which will serve as group generators:
+
+\begin{IEEEeqnarray*}{RL}
+U: & z \mapsto z + 1 \\
+T: & z \mapsto -\reci{z} \\
+R = TU: & z \mapsto -\reci{z + 1}
+\end{IEEEeqnarray*}
+
+\begin{remark}
+Sadly, in literature there is no consensus about the notation of these transformations. We use the notation of Schoeneberg \cite{schoeneberg1974elliptic} here, but other notations are frequent. In Klein/Fricke \cite{klein1966vorlesungen}, the symbol $S$ is used instead of $U$ and in other literature as well as on Wikipedia, additionally the roles of $S$ and $T$ are swapped.
+\end{remark}
 
 \begin{theorem}
 \label{thm_ModGrpGen}
@@ -41,7 +57,6 @@ Let $A: z \mapsto \moebius{a}{b}{c}{d}{z}$ be an arbitrary modular transformatio
 \begin{equation*}
 A = \mat{a}{b}{c}{d}, \quad U = \mat{1}{1}{0}{1}, \quad T = \mat{0}{-1}{1}{\phantom{+}0}.
 \end{equation*}
-Remember that for a matrix $M \in \Mat{\Z}{2}{2}$, $M$ and $-M$ represent the same element in $\PSL{\Z}$ and we write $-M \sim M$.
 
 Let's first consider the two special cases, when $a$ or $c$ are zero. If $a=0$, it follows from $ad - bc = 1$, that $-b = c = \pm 1$.  Therefore we have
 \begin{equation*}
@@ -118,7 +133,19 @@ A = U^{e_0} TU^{e_1} \cdots TU^{e_{n-1}} TU^{e_n} T U^k.
 \end{equation}
 \end{corollary}
 
-We have seen that $U$ and $T$ generate the modular group, but in order to characterize its structure, the generators $T$ and $R = TU$ better suited, as we see in the next theorem.
+We have seen that $U$ and $T$ generate the modular group, but it is not yet clear, which group words in $U$ and $T$ give the same modular transformations. For example, it is easy to see that $T^2 = 1$ and $(TU)^3 = 1$ are relations satisfied by $T$ and $U$. Before we can show, that these two relations are ``the only ones'', \ie all other relations can be derived from them, we need the following Lemma:
+
+\begin{lemma}
+Let $a, b, c, d \in \Z$ be arbitrary integers satisfying $ad - bc = 1$. Then one, and only one of the following three conditions is true:
+\begin{IEEEeqnarray*}{RRCCCRCC}
+  (i)\quad & ac       &\ge& 0 &\quad\land\quad&       bd &\ge& 0\\
+ (ii)\quad & a^2 + ac &\le& 0 &\quad\land\quad& b^2 + bd &\le& 0\\
+(iii)\quad & c^2 + ac &\le& 0 &\quad\land\quad& d^2 + bd &\le& 0
+\end{IEEEeqnarray*}
+\end{lemma}
+\begin{proof}
+It is trivial to see, that $(i)$ implies $\lnot (ii)$ and $\lnot (iii)$. It therefore remains to show, that $\lnot(i)$ implies either $(ii)$ or $(iii)$.
+\end{proof}
 
 \begin{theorem}
 \label{thm_ModGrpRel}
