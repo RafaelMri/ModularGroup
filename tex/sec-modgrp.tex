@@ -168,6 +168,7 @@ Moreover, the elements of $\presentation{T,R}{T^2 = R^3 = 1}$ are precisely the 
 For proving Theorem~\ref{thm_ModGrpTRProd}, we first study certain properties of transformations, which we will define next. We will see, that they partition the modular group into three classes.
 
 \begin{definition}
+\label{dfn_trsPredicates}
 For a modular transformation $A: z \mapsto \moebius{a}{b}{c}{d}{z}$ we define the predicates $t$, $r$ and $s$ as well as a ``norm'' $n$:
 \begin{IEEEeqnarray}{rCcCc}
 \label{eqn_tpred}
@@ -258,10 +259,29 @@ r(A_0) \Rightarrow M_0 := R, \quad
 s(A_0) \Rightarrow M_0 := \inv{R}
 \end{equation*}
 and set $A_1 := M_0^{-1} A_0$. Continue in the same fashion in order to obtain new transformations $A_2 = M_1^{-1} A_1$, $A_3 = M_2^{-1} A_2$, \dots, until for some $n \in \N: A_n = 1$.
-This is always possible, because the relations (\ref{itm_trsPropA}) and (\ref{itm_trsPropB}) of Lemma~\ref{lem_trsnRelations} guarantee that for every pair of subsequent transformations $M_k$, $M_{k-1}$, one of them is $T$ and the other is either $R$ or $\inv{R}$. Together with relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) this implies $n(A_k) > n(A_{k+2})$ for all $k$. Because $n(1) = n(T) = 2$ is a lower bound for $n(A_k)$, the described procedure must terminate and the product $A = M_0 M_1 \cdots M_n$ has indeed of the desired form (\ref{eqn_ModGrpTRPod}).
-\item[Uniqueness:] We need to show, that the only way of representing the identity map as product of form (\ref{eqn_ModGrpTRPod}) is the empty product. From the relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) of Lemma~\ref{lem_trsnRelations} we see that any product $P$ of the form (\ref{eqn_ModGrpTRPod}) containing at least one factor $R$ or $\inv{R}$ has a ``norm'' $n(P) > n(1) = 2$ and therefore $P \ne 1$. The only products which are free of factors $R$ and $\inv{R}$ are T and the empty product. Since $T \ne 1$, the identity map can only be represented by the empty product. \qedhere
+This is always possible, because the relations (\ref{itm_trsPropA}) and (\ref{itm_trsPropB}) of Lemma~\ref{lem_trsnRelations} guarantee that for every pair of subsequent transformations $M_k$, $M_{k+1}$, one of them is $T$ and the other is either $R$ or $\inv{R}$. Together with relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) this implies $n(A_k) > n(A_{k+2})$ for all $k$. Because $n(1) = n(T) = 2$ is a lower bound for $n(A_k)$, the described procedure must terminate and the product $A = M_0 M_1 \cdots M_n$ is indeed of the desired form (\ref{eqn_ModGrpTRPod}).
+\item[Uniqueness:] We need to show, that the only way of representing the identity map in the form (\ref{eqn_ModGrpTRPod}) is the empty product. From the relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) of Lemma~\ref{lem_trsnRelations} we see that any product $P$ of the form (\ref{eqn_ModGrpTRPod}) containing at least one factor $R$ or $\inv{R}$ has a ``norm'' $n(P) > n(1) = 2$ and therefore $P \ne 1$. The only products which are free of factors $R$ and $\inv{R}$ are T and the empty product. Since $T \ne 1$, the identity map can indeed only be represented by the empty product. \qedhere
 \end{description}
 \end{proof}
+
+\begin{corollary}
+\label{cor_ModGrpTRAlg}
+For an arbitrary modular ransformation $A: z \mapsto \moebius{a}{b}{c}{d}{z}$ a product representation of the form (\ref{eqn_ModGrpTRPod}) can be found by performing the following steps:
+\begin{enumerate}
+\item Set $n := 0$ and $A_0 := A$.
+\item If $A_n = 1$ we are done, otherwise continue with \ref{itm_ModGrpTRAlgCont}.
+\label{itm_ModGrpTRAlgLoop}
+\item Define $M_n$ as follows:
+\label{itm_ModGrpTRAlgCont}
+\begin{equation*}
+t(A) \Rightarrow M_n := T,\quad
+r(A) \Rightarrow M_n := R,\quad
+s(A) \Rightarrow M_n := \inv{R}.
+\end{equation*}
+\item Set $A_{n+1} := M_n^{-1} A_n$, increase $n$ by one and continue with step \ref{itm_ModGrpTRAlgLoop}.
+\end{enumerate}
+Finally, if $n = 0$, the desired product representation is the empty product and otherwise it is $A = M_0 M_1 \cdots M_n$.
+\end{corollary}
 
 % ------------------------------- Subsection: Fundamental domains, tessellation
 \input{sub-fundomtess.tex}
