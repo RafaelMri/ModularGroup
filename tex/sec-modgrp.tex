@@ -139,13 +139,13 @@ We have seen that $T$ and $U$ generate the modular group, but it is not yet clea
 \label{thm_ModGrpTRProd}
 Let $T: z \mapsto -\reci{z}$ and $R = TU: z \mapsto -\reci{z+1}$. Every modular transformation $A \in \ModGrp$ can be written uniquely in the form
 \begin{equation}
-\label{eqn_ModGrpTRPod}
+\label{eqn_ModGrpTRProd}
 A = R^{k_1} T R^{k_2} T \cdots R^{k_{n-1}} T R^{k_n} 
 \end{equation}
 with $n \in \N$, $k_2,\dots,k_{n-1} \in \{\pm 1\}$ and $k_1, k_n \in \{0, \pm 1\}$.
 \end{theorem}
 
-From the uniqueness of the product representation (\ref{eqn_ModGrpTRPod}) it follows, that we have found in fact a \emph{presentation} of the modular group in the sense of Definition~\ref{dfn_GrpConstructGenRel}:
+From the uniqueness of the product representation (\ref{eqn_ModGrpTRProd}) it follows, that we have in fact a \emph{presentation} of the modular group in the sense of Definition~\ref{dfn_GrpConstructGenRel}:
 
 \begin{corollary}
 \label{cor_ModGrpPresentation}
@@ -162,10 +162,10 @@ It is easy to see, that the relations $T^2 = R^2 = 1$ are indeed satisfied:
 T^2 &=& \mat{0}{-1}{1}{\phantom{-}0}^2 = \mat{-1}{\phantom{-}0}{\phantom{-}0}{-1} \sim \mat{1}{0}{0}{1}, \\
 R^3 &=& \mat{0}{-1}{1}{\phantom{+}1}^3 = \mat{-1}{\phantom{-}0}{\phantom{-}0}{-1} \sim \mat{1}{0}{0}{1}.
 \end{eqnarray*}
-Moreover, the elements of $\presentation{T,R}{T^2 = R^3 = 1}$ are precisely the group words of the form~(\ref{eqn_ModGrpTRPod}), as we have seen in Examples~\ref{ex_RTGroup} and \ref{ex_RTFreeProd}.
+Moreover, the elements of $\presentation{T,R}{T^2 = R^3 = 1}$ are precisely the group words of the form~(\ref{eqn_ModGrpTRProd}), as we have seen in Examples~\ref{ex_RTGroup} and \ref{ex_RTFreeProd}.
 \end{proof}
 
-For proving Theorem~\ref{thm_ModGrpTRProd}, we first study certain properties of transformations, which we will define next. We will see, that they partition the modular group into three classes.
+Before we turn to the proof of Theorem~\ref{thm_ModGrpTRProd} we first make one helpful Definition and study its consequences.
 
 \begin{definition}
 \label{dfn_trsPredicates}
@@ -183,16 +183,16 @@ n(A) := a^2 + b^2 + c^2 + d^2.
 \end{equation}
 \end{definition}
 
-Note, that $t$, $r$, $s$ and $n$ are well-defined, since they do not change their value if we switch from the matrix $A \in \PSL{\Z}$ to the equivalent matrix $-A$, \eg $t(A) \Leftrightarrow t(-A)$ and $n(A) = n(-A)$.
+Note, that $t$, $r$, $s$ and $n$ are well-defined, since they do not change their value if we switch from the matrix $A \in \PSL{\Z}$ to the equivalent matrix $-A$, \eg $t(A) \Leftrightarrow t(-A)$ and $n(A) = n(-A)$. Moreover, the predicates $t$, $r$, and $s$ partition the elements of the modular group into three classes:
 
 \begin{lemma}
 \label{lem_trsPartition}
-Let $A: z \mapsto \moebius{a}{b}{c}{d}{z}$ be an arbitrary modular transformation. Then one, and only one of the predicates $t(A)$, $r(A)$ and $s(A)$ is true.
+Let $A: z \mapsto \moebius{a}{b}{c}{d}{z}$ be an arbitrary modular transformation. Then one, and only one of the predicates $t(A)$, $r(A)$ and $s(A)$ is satisfied.
 \end{lemma}
 \begin{proof}
 We start by considering the two easiest cases first: If $A$ is the identity transformation or $A = T$, we have $t(A)$, $\lnot s(A)$ and $\lnot r(A)$.
 
-For all other cases, we note that at least three of the coefficients $a,b,c,d$ are nonzero. Therefore, if one of the predicates $t(A), r(A), s(A)$ is satisfied, then at least one of the two inequalities involved is \emph{strictly} fulfilled. Having this said, it is easy to see that $t(A) \Rightarrow \lnot r(A) \land \lnot s(A)$. Thus it remains to show 
+For all other cases, we note that at least three of the coefficients $a,b,c,d$ are nonzero. Therefore, if one of the predicates $t(A)$, $r(A)$, $s(A)$ is satisfied, then at least one of the two inequalities involved is \emph{strictly} fulfilled. Having this said, it is easy to see that $t(A) \Rightarrow \lnot r(A) \land \lnot s(A)$. Thus it remains to show 
 \begin{equation*}
 \lnot t(A) \Rightarrow r(A) \lxor s(A),
 \end{equation*}
@@ -203,6 +203,8 @@ for all transformations with at least three nonzero coefficients (here, $\lxor$ 
 \item[Case $a^2 = c^2$:] Note that this case is only possible with $a = -c = \pm 1$ (as $a$ and $c$ are coprime). Hence we have $a^2 + ac = c^2 + ac = 0$. However, $ad - bc = 1$ implies $b^2 \ne d^2$ and therefore we have $b^2 + bd \le 0 \lxor d^2 + bd \le 0$. So, also in this case we have $r(A) \lxor s(A)$.\qedhere
 \end{description}
 \end{proof}
+
+We have not yet seen the real benefit and meaning of the predicates $t$, $r$ and $s$. The following lemma will imply that they do nothing but indicate the leftmost symbol in the unique $R$-$T$ product representation (\ref{eqn_ModGrpTRProd}) of $A$. To be precise, if we denote this leftmost symbol by $\alpha(A)$, we will see that $t(A) \Leftrightarrow \alpha(A) = T$, $r(A) \Leftrightarrow \alpha(A) = R$ and $s(A) \Leftrightarrow \alpha(A) = \inv{R}$. Moreover, we will show that the ``norm'' $n(A)$ grows monotonically with the number of symbols $R$ and $\inv{R}$ in the product representation of $A$.
 
 \begin{lemma}
 \label{lem_trsnRelations}
@@ -218,11 +220,8 @@ The predicates $t$, $r$, $s$ and the ``norm'' $n$ satisfy the following relation
 \label{itm_trsPropD}
 \end{enumerate}
 \end{lemma}
-\begin{remark}
-We know that the identity map 1 and $T$ both satisfy the predicate $t$. By induction on word length we see from (\ref{itm_trsPropA}) and (\ref{itm_trsPropB}) that the predicates $t$, $r$ and $s$ just indicate the leftmost symbol of the unique group word representation (\ref{eqn_ModGrpTRPod}) of $A$. Thus, if we denote this leftmost symbol by $\ell(A)$, we have $t(A) \Leftrightarrow \ell(A) = T$, $r(A) \Leftrightarrow \ell(A) = R$ and $s(A) \Leftrightarrow \ell(A) = \inv{R}$. Moreover, the relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) tell us, that $n(A)$ is increasing monotonically with the number of symbols $R$ and $\inv{R}$ in the $R$-$S$ word representation of $A$.
-\end{remark}
-\begin{proof}[Poof of Lemma \ref{lem_trsnRelations}]
-For better overview, we first write out the matrices corresponding to $TA$, $RA$ and $\inv{R}A$. Since $A = \smallmat{a}{b}{c}{d}$, $T = \smallmat{0}{-1}{1}{\phantom{-}0}$, $R = \smallmat{0}{-1}{1}{\phantom{+}1}$ and $\inv{R} = \smallmat{\phantom{+}1}{1}{-1}{0}$ these are:
+\begin{proof}
+For a better overview, we first write out the matrices corresponding to $TA$, $RA$ and $\inv{R}A$. Since $A = \smallmat{a}{b}{c}{d}$, $T = \smallmat{0}{-1}{1}{\phantom{-}0}$, $R = \smallmat{0}{-1}{1}{\phantom{+}1}$ and $\inv{R} = \smallmat{\phantom{+}1}{1}{-1}{0}$ these are:
 \begin{equation*}
 TA = \mat{-c}{-d}{\phantom{+}a}{\phantom{+}b},\quad RA = \mat{-c}{-d}{a+c}{b+d},\quad
 \inv{R}A = \mat{a+c}{b+d}{-a}{-b}.
@@ -237,7 +236,7 @@ s(\inv{R}A)
 &\Leftrightarrow& a^2 - a(a+c) \le 0 \land b^2 - b(b+d) \le 0 & & \\
 &\Leftrightarrow& ac \ge 0 \land bd \ge 0 &\Leftrightarrow& t(A)
 \end{IEEEeqnarray*}
-\item[ad (\ref{itm_trsPropB}):] We have already seen in the proof of Lemma~{\ref{lem_trsPartition}} that $\lnot t(A)$ implies $ac \le 0\ \land\ bd \le 0$ and one of these two inequalities is satisfied strictly. Therefore, $t(TA): -ca \ge 0\ \land\ -db \ge 0$ is fulfilled.
+\item[ad (\ref{itm_trsPropB}):] We have already seen in the proof of Lemma~{\ref{lem_trsPartition}} that $\lnot t(A)$ implies $ac \le 0\ \land\ bd \le 0$ and one of these two inequalities is strictly satisfied. Therefore, also $t(TA): -ca \ge 0\ \land\ -db \ge 0$ is fulfilled.
 \item[ad (\ref{itm_trsPropC}):] $n(A) = n(TA)$ is trivial.
 \item[ad (\ref{itm_trsPropD}):] Note that $ad - bc = 1$ implies that always at least one of the numbers $a$ and $c$ (resp.\ $b$ and $d$) will be nonzero. Moreover, $t(A) \Rightarrow ac \ge 0 \land bd \ge 0$, and thus we have
 \begin{IEEEeqnarray*}{+rCl+x*}
@@ -247,41 +246,75 @@ n(\inv{R}A) - n(A) &=& a^2 + 2ac + b^2 + 2bd > 0.&\qedhere
 \end{description}
 \end{proof}
 
-We can now formulate an algorithm for effectively finding the $T$-$R$ group word representation (\ref{eqn_ModGrpTRPod}) of a given modular transformation $A$. Moreover, this algorithm will proof the correctness Theorem~\ref{thm_ModGrpTRProd}.
+We can now formulate an algorithm, which yields a product representation of any arbitrary modular transformation in terms of the generators $R$ and $T$.
 
-\begin{proof}[Proof of Theorem \ref{thm_ModGrpTRProd}]
-Let $A: z \mapsto \moebius{a}{b}{c}{d}{z}$ be an arbitrary modular transformation. We need to show the existence and the uniqueness of the product representation (\ref{eqn_ModGrpTRPod}). 
-\begin{description}
-\item[Existence:] Define $A_0 := A$. From Lemma~\ref{lem_trsPartition} we know, that $A_0$ satisfies exactly one of the predicates $t$, $r$, $s$. In dependence on this, define $M_0$ as follows:
+\begin{theorem}
+\label{thm_ModGrpTRAlg}
+For a modular transformation $A: z \mapsto \moebius{a}{b}{c}{d}{z}$, a product representation of the form (\ref{eqn_ModGrpTRProd}) can be found by performing the following steps:
+\begin{enumerate}
+\item Start with $k := 0$ and set $A_0 := A$.
+
+\item If $A_k = 1$ go to step \ref{itm_ModGrpTRAlgFin}.
+\label{itm_ModGrpTRAlgLoop}
+
+\item Define $M_k$ as follows:
+\label{itm_ModGrpTRAlgMDfn}
 \begin{equation*}
-t(A_0) \Rightarrow M_0 := T, \quad 
-r(A_0) \Rightarrow M_0 := R, \quad
-s(A_0) \Rightarrow M_0 := \inv{R}
+t(A) \Rightarrow M_k := T,\quad
+r(A) \Rightarrow M_k := R,\quad
+s(A) \Rightarrow M_k := \inv{R}.
 \end{equation*}
-and set $A_1 := M_0^{-1} A_0$. Continue in the same fashion in order to obtain new transformations $A_2 = M_1^{-1} A_1$, $A_3 = M_2^{-1} A_2$, \dots, until for some $n \in \N: A_n = 1$.
-This is always possible, because the relations (\ref{itm_trsPropA}) and (\ref{itm_trsPropB}) of Lemma~\ref{lem_trsnRelations} guarantee that for every pair of subsequent transformations $M_k$, $M_{k+1}$, one of them is $T$ and the other is either $R$ or $\inv{R}$. Together with relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) this implies $n(A_k) > n(A_{k+2})$ for all $k$. Because $n(1) = n(T) = 2$ is a lower bound for $n(A_k)$, the described procedure must terminate and the product $A = M_0 M_1 \cdots M_n$ is indeed of the desired form (\ref{eqn_ModGrpTRPod}).
-\item[Uniqueness:] We need to show, that the only way of representing the identity map in the form (\ref{eqn_ModGrpTRPod}) is the empty product. From the relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) of Lemma~\ref{lem_trsnRelations} we see that any product $P$ of the form (\ref{eqn_ModGrpTRPod}) containing at least one factor $R$ or $\inv{R}$ has a ``norm'' $n(P) > n(1) = 2$ and therefore $P \ne 1$. The only products which are free of factors $R$ and $\inv{R}$ are T and the empty product. Since $T \ne 1$, the identity map can indeed only be represented by the empty product. \qedhere
-\end{description}
+
+\item Set $A_{k+1} := M_k^{-1} A_k$, increment $k$ by one and continue with step \ref{itm_ModGrpTRAlgLoop}.
+\label{itm_ModGrpTRAlgADfn}
+
+\item Set $m := k$. If $m = 0$, $A = 1$ and the desired product representation is the empty product and otherwise it is $A = M_m M_{m-1} \cdots M_0$.
+\label{itm_ModGrpTRAlgFin}
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+First we observe, that the described algorithm yields a sequence of equations 
+\begin{eqnarray*}
+A_1 &=& M_0^{-1} A_0\\
+A_2 &=& M_1^{-1} A_1\\
+A_3 &=& M_2^{-1} A_2\\
+    &\vdots&
+\end{eqnarray*}
+Note, that because of Lemma~\ref{lem_trsPartition}, the rule for the definition of the transformations $M_k$ from step \ref{itm_ModGrpTRAlgMDfn} is unambiguous. The relations (\ref{itm_trsPropA}) and (\ref{itm_trsPropB}) of Lemma~\ref{lem_trsnRelations} guarantee that for every pair of subsequent transformations $M_k$, $M_{k+1}$, one of them is $T$ and the other is either $R$ or $\inv{R}$. Additionally, the relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) imply $n(A_k) > n(A_{k+2})$. Since $n(1) = n(T) = 2$ is a lower bound for $n(A_k)$, the described procedure must terminate after a finite number $m$ of iterations and the product $A = M_m M_{m-1} \cdots M_0$ is indeed of the desired form (\ref{eqn_ModGrpTRProd}).
 \end{proof}
 
-\begin{corollary}
-\label{cor_ModGrpTRAlg}
-For an arbitrary modular ransformation $A: z \mapsto \moebius{a}{b}{c}{d}{z}$ a product representation of the form (\ref{eqn_ModGrpTRPod}) can be found by performing the following steps:
-\begin{enumerate}
-\item Set $n := 0$ and $A_0 := A$.
-\item If $A_n = 1$ we are done, otherwise continue with \ref{itm_ModGrpTRAlgCont}.
-\label{itm_ModGrpTRAlgLoop}
-\item Define $M_n$ as follows:
-\label{itm_ModGrpTRAlgCont}
-\begin{equation*}
-t(A) \Rightarrow M_n := T,\quad
-r(A) \Rightarrow M_n := R,\quad
-s(A) \Rightarrow M_n := \inv{R}.
-\end{equation*}
-\item Set $A_{n+1} := M_n^{-1} A_n$, increase $n$ by one and continue with step \ref{itm_ModGrpTRAlgLoop}.
-\end{enumerate}
-Finally, if $n = 0$, the desired product representation is the empty product and otherwise it is $A = M_0 M_1 \cdots M_n$.
-\end{corollary}
+Now have all tools in hand in order to give a proof to Theorem~\ref{thm_ModGrpTRProd}.
+
+\begin{proof}[Proof of Theorem \ref{thm_ModGrpTRProd}]
+Let $A: z \mapsto \moebius{a}{b}{c}{d}{z}$ be an arbitrary modular transformation. The existence of a product representation of the form (\ref{eqn_ModGrpTRProd}) is ensured by the algorithm of Theorem~\ref{thm_ModGrpTRAlg}. In order to prove also its uniqueness, it is sufficient to show that the identity map has a unique product representation (namely the empty product). 
+
+From the relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) of Lemma~\ref{lem_trsnRelations} we see that any product $P$ of the form (\ref{eqn_ModGrpTRProd}) containing at least one factor $R$ or $\inv{R}$ has a ``norm'' $n(P) > n(1) = 2$ and therefore $P \ne 1$. The only products which are free of factors $R$ and $\inv{R}$ are T and the empty product. Since $T \ne 1$, the identity map can indeed only be represented by the empty product. \qedhere
+\end{proof}
+
+We conclude this section with the final remark that algorithm~\ref{thm_ModGrpTRAlg} successively reduces a given matrix $A \in \PSL{\Z}$ by multiplication from the left with $T$, $R$ or $\inv{R}$. Of course, by using a dual approach also multiplication from the right can be used. This has the advantage that the factors $M_k$ are determined in the same order as they occur in the final product representation and therefore do not need to be reversed. All we have to do in order to adapt algorithm~\ref{thm_ModGrpTRAlg} appropriately is to substitute the predicates $t$, $r$, $s$ by predicates $t^{\prime}$, $r^{\prime}$, $s^{\prime}$ and to change the definition in step \ref{itm_ModGrpTRAlgADfn} from $A_{k+1} := M_k^{-1} A_k$ to $A_{k+1} := A_k M_k^{-1}$. But how do the predicates $t^{\prime}$, $r^{\prime}$ and $s^{\prime}$ have to be defined?
+
+For this consideration we denote the leftmost symbol in the $R$-$T$ product representation (\ref{eqn_ModGrpTRProd}) of $A$ by $\alpha(A)$ and the rightmost symbol by $\omega(A)$. We have already seen, that $t(A) \Leftrightarrow \alpha(A) = T$, $r(A) \Leftrightarrow \alpha(A) = R$ and $s(A) \Leftrightarrow \alpha(A) = \inv{R}$. In analogy to that, we see that we have to define 
+\begin{IEEEeqnarray*}{RrClCrClCc}
+t^{\prime}(A):\quad& \omega(A) &=& T 
+              &\quad\Leftrightarrow\quad& \alpha(\inv{A}) &=& T
+              &\quad\Leftrightarrow\quad& t(\inv{A}), \\
+r^{\prime}(A):\quad& \omega(A) &=& R 
+              &\quad\Leftrightarrow\quad& \alpha(\inv{A}) &=& \inv{R}
+              &\quad\Leftrightarrow\quad& s(\inv{A}), \\
+s^{\prime}(A):\quad& \omega(A) &=& \inv{R}
+              &\quad\Leftrightarrow\quad& \alpha(\inv{A}) &=& R
+              &\quad\Leftrightarrow\quad& r(\inv{A}).
+\end{IEEEeqnarray*}
+Written out explicitly, this gives for a matrix $A = \smallmat{a}{b}{c}{d} \in \PSL{\Z}$:
+\begin{IEEEeqnarray}{rCcCc}
+\label{eqn_trpred}
+t^{\prime}(A) &:\quad& ab \le 0       &\quad\land\quad& cd \le 0 \\
+\label{eqn_rrpred}
+r^{\prime}(A) &:\quad& a^2 - ab \le 0 &\quad\land\quad& c^2 - cd \le 0 \\
+\label{eqn_srpred}
+s^{\prime}(A) &:\quad& b^2 - ab \le 0 &\quad\land\quad& d^2 - cd \le 0
+\end{IEEEeqnarray}
+Note, that also the Lemmas \ref{lem_trsPartition} and \ref{lem_trsnRelations} remain valid, if the predicates $t$, $r$, $s$ are substitued by $t^{\prime}$, $r^{\prime}$, $s^{\prime}$ and the order of matrix multiplication is reversed whenever needed.
 
 % ------------------------------- Subsection: Fundamental domains, tessellation
 \input{sub-fundomtess.tex}
