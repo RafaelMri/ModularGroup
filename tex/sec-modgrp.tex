@@ -1,6 +1,6 @@
 \section{The modular group}
 
-Throughout this section and also later, we adopt the notation of Schoeneberg \cite{schoeneberg1974elliptic}.
+Throughout this section and also later, we adopt the notation of \Schoeneberg.
 
 \begin{definition}
 \label{dfn_ModularGroup}
@@ -34,7 +34,7 @@ The elements of $\SL{\Z}$ are often called \emph{homogeneous modular transformat
 
 \subsection{Generators and relations}
 
-In group theory it is an important question, which systems of group elements and relations completely describe the structure of any given group (in the sense of definition \ref{dfn_GrpConstructGenRel}). This section is devoted to the investigation of this question in the case of the modular group.
+In group theory it is an important question, which systems of group elements and relations completely describe the structure of any given group (in the sense of Definition~\ref{dfn_GrpConstructGenRel}). This section is devoted to the investigation of this question in the case of the modular group.
 
 Before we start, we introduce the following three important modular transformations which will be used very frequently from now on:
 
@@ -45,7 +45,7 @@ R = TU: & z \mapsto -\reci{z + 1}
 \end{IEEEeqnarray*}
 
 \begin{remark}
-Unfortunately, in literature there is no consensus on the notation of these transformations. We use the notation of Schoeneberg \cite{schoeneberg1974elliptic} here, but other notations are frequent. For example in Klein/Fricke \cite{klein1966vorlesungen}, the symbol $S$ is used instead of $U$ and in other literature as well as on Wikipedia, additionally the roles of $S$ and $T$ are swapped.
+Unfortunately, in literature there is no consensus on the notation of these transformations. We use the notation of \Schoeneberg here, but other notations are frequent. For example in \Klein, the symbol $S$ is used instead of $U$ and in other literature as well as on Wikipedia, additionally the roles of $S$ and $T$ are swapped.
 \end{remark}
 
 \begin{theorem}
@@ -268,7 +268,7 @@ s(A) \Rightarrow M_k := \inv{R}.
 \item Set $A_{k+1} := M_k^{-1} A_k$, increment $k$ by one and continue with step \ref{itm_ModGrpTRAlgLoop}.
 \label{itm_ModGrpTRAlgADfn}
 
-\item Set $m := k$. If $m = 0$, $A = 1$ and the desired product representation is the empty product and otherwise it is $A = M_m M_{m-1} \cdots M_0$.
+\item Set $m := k$. If $m = 0$, $A = 1$ and the desired product representation is the empty product and otherwise it is $A = M_0 M_1 \cdots M_m$.
 \label{itm_ModGrpTRAlgFin}
 \end{enumerate}
 \end{theorem}
@@ -280,10 +280,10 @@ A_2 &=& M_1^{-1} A_1\\
 A_3 &=& M_2^{-1} A_2\\
     &\vdots&
 \end{eqnarray*}
-Note, that because of Lemma~\ref{lem_trsPartition}, the rule for the definition of the transformations $M_k$ from step \ref{itm_ModGrpTRAlgMDfn} is unambiguous. The relations (\ref{itm_trsPropA}) and (\ref{itm_trsPropB}) of Lemma~\ref{lem_trsnRelations} guarantee that for every pair of subsequent transformations $M_k$, $M_{k+1}$, one of them is $T$ and the other is either $R$ or $\inv{R}$. Additionally, the relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) imply $n(A_k) > n(A_{k+2})$. Since $n(1) = n(T) = 2$ is a lower bound for $n(A_k)$, the described procedure must terminate after a finite number $m$ of iterations and the product $A = M_m M_{m-1} \cdots M_0$ is indeed of the desired form (\ref{eqn_ModGrpTRProd}).
+Note, that because of Lemma~\ref{lem_trsPartition}, the rule for the definition of the transformations $M_k$ from step \ref{itm_ModGrpTRAlgMDfn} is unambiguous. The relations (\ref{itm_trsPropA}) and (\ref{itm_trsPropB}) of Lemma~\ref{lem_trsnRelations} guarantee that for every pair of subsequent transformations $M_k$, $M_{k+1}$, one of them is $T$ and the other is either $R$ or $\inv{R}$. Additionally, the relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) imply $n(A_k) > n(A_{k+2})$. Since $n(1) = n(T) = 2$ is a lower bound for $n(A_k)$, the described procedure must terminate after a finite number $m$ of iterations and the product $A = M_0 M_1 \cdots M_m$ is indeed of the desired form (\ref{eqn_ModGrpTRProd}).
 \end{proof}
 
-Now have all tools in hand in order to give a proof to Theorem~\ref{thm_ModGrpTRProd}.
+Now have all tools in hand for the proof of Theorem~\ref{thm_ModGrpTRProd}. Note, that two alternative proofs can be found in \Schoeneberg, §4 and in \Klein, p.\ 452ff. 
 
 \begin{proof}[Proof of Theorem \ref{thm_ModGrpTRProd}]
 Let $A: z \mapsto \moebius{a}{b}{c}{d}{z}$ be an arbitrary modular transformation. The existence of a product representation of the form (\ref{eqn_ModGrpTRProd}) is ensured by the algorithm of Theorem~\ref{thm_ModGrpTRAlg}. In order to prove also its uniqueness, it is sufficient to show that the identity map has a unique product representation (namely the empty product). 
@@ -291,9 +291,9 @@ Let $A: z \mapsto \moebius{a}{b}{c}{d}{z}$ be an arbitrary modular transformatio
 From the relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) of Lemma~\ref{lem_trsnRelations} we see that any product $P$ of the form (\ref{eqn_ModGrpTRProd}) containing at least one factor $R$ or $\inv{R}$ has a ``norm'' $n(P) > n(1) = 2$ and therefore $P \ne 1$. The only products which are free of factors $R$ and $\inv{R}$ are T and the empty product. Since $T \ne 1$, the identity map can indeed only be represented by the empty product. \qedhere
 \end{proof}
 
-We conclude this section with the final remark that algorithm~\ref{thm_ModGrpTRAlg} successively reduces a given matrix $A \in \PSL{\Z}$ by multiplication from the left with $T$, $R$ or $\inv{R}$. Of course, by using a dual approach also multiplication from the right can be used. This has the advantage that the factors $M_k$ are determined in the same order as they occur in the final product representation and therefore do not need to be reversed. All we have to do in order to adapt algorithm~\ref{thm_ModGrpTRAlg} appropriately is to substitute the predicates $t$, $r$, $s$ by predicates $t^{\prime}$, $r^{\prime}$, $s^{\prime}$ and to change the definition in step \ref{itm_ModGrpTRAlgADfn} from $A_{k+1} := M_k^{-1} A_k$ to $A_{k+1} := A_k M_k^{-1}$. But how do the predicates $t^{\prime}$, $r^{\prime}$ and $s^{\prime}$ have to be defined?
+We conclude this section with the final remark that algorithm~\ref{thm_ModGrpTRAlg} successively reduces a given matrix $A \in \PSL{\Z}$ by multiplication from the left with $T$, $R$ or $\inv{R}$. Of course, by using a dual approach also multiplication from the right can be used. All we have to do in order to adapt algorithm~\ref{thm_ModGrpTRAlg} appropriately is to substitute the predicates $t$, $r$, $s$ by predicates $t^{\prime}$, $r^{\prime}$, $s^{\prime}$ and to change the definition in step \ref{itm_ModGrpTRAlgADfn} from $A_{k+1} := M_k^{-1} A_k$ to $A_{k+1} := A_k M_k^{-1}$. But how do the predicates $t^{\prime}$, $r^{\prime}$ and $s^{\prime}$ have to be defined?
 
-For this consideration we denote the leftmost symbol in the $R$-$T$ product representation (\ref{eqn_ModGrpTRProd}) of $A$ by $\alpha(A)$ and the rightmost symbol by $\omega(A)$. We have already seen, that $t(A) \Leftrightarrow \alpha(A) = T$, $r(A) \Leftrightarrow \alpha(A) = R$ and $s(A) \Leftrightarrow \alpha(A) = \inv{R}$. In analogy to that, we see that we have to define 
+For this consideration we denote the leftmost symbol in the $R$-$T$ product representation (\ref{eqn_ModGrpTRProd}) of $A$ by $\alpha(A)$ and the rightmost symbol by $\omega(A)$. In the case of the empty product, we define $\alpha(1) := \omega(1) := T$. We have already seen, that $t(A) \Leftrightarrow \alpha(A) = T$, $r(A) \Leftrightarrow \alpha(A) = R$ and $s(A) \Leftrightarrow \alpha(A) = \inv{R}$. In correspondence to that, we see that we have to define 
 \begin{IEEEeqnarray*}{RrClCrClCc}
 t^{\prime}(A):\quad& \omega(A) &=& T 
               &\quad\Leftrightarrow\quad& \alpha(\inv{A}) &=& T

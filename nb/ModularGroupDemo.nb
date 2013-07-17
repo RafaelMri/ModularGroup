@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     61954,       1676]
-NotebookOptionsPosition[     58232,       1568]
-NotebookOutlinePosition[     58598,       1584]
-CellTagsIndexPosition[     58555,       1581]
+NotebookDataLength[     62171,       1679]
+NotebookOptionsPosition[     58449,       1571]
+NotebookOutlinePosition[     58815,       1587]
+CellTagsIndexPosition[     58772,       1584]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -309,7 +309,9 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{"TRWord", "[", "phi", "]"}]], "Input",
- CellChangeTimes->{{3.5821229143241587`*^9, 3.5821229239274054`*^9}}],
+ CellChangeTimes->{{3.5821229143241587`*^9, 3.5821229239274054`*^9}, {
+  3.5830652599409003`*^9, 3.583065261282504*^9}, {3.5830659046438403`*^9, 
+  3.583065915376669*^9}, {3.58306601577854*^9, 3.5830660169953437`*^9}}],
 
 Cell["\<\
 In general, the word representation in terms of the generators T and U is \
@@ -468,14 +470,14 @@ Cell[BoxData[
    3.582096232333996*^9, 3.582096232613003*^9}, 3.5821233239676867`*^9}],
 
 Cell["\<\
-Creating a list of all ModularTransformations, where the absolte values of \
+Creating a list of all ModularTransformations, where the absolute values of \
 all U exponents add up to at most 3:\
 \>", "Text",
  CellChangeTimes->{{3.582096253706545*^9, 3.5820962654298463`*^9}, {
-  3.5820965594964037`*^9, 3.5820965601974216`*^9}, {3.582096669673235*^9, 
-  3.582096709773266*^9}, {3.582096989954466*^9, 3.5820970361776543`*^9}, {
-  3.582097075679669*^9, 3.582097075960676*^9}, {3.5820994614749823`*^9, 
-  3.582099470449213*^9}}],
+   3.5820965594964037`*^9, 3.5820965601974216`*^9}, {3.582096669673235*^9, 
+   3.582096709773266*^9}, {3.582096989954466*^9, 3.5820970361776543`*^9}, {
+   3.582097075679669*^9, 3.582097075960676*^9}, {3.5820994614749823`*^9, 
+   3.582099470449213*^9}, 3.582132809488546*^9}],
 
 Cell[BoxData[
  RowBox[{"Module", "[", 
@@ -524,10 +526,11 @@ Cell[BoxData[
 
 Cell["\<\
 For searching certain ModularTransformations, it is more practical to iterate \
-over an infinite sequence rather than having available just a finite list:\
+over an infinite sequence rather than working with finite lists:\
 \>", "Text",
  CellChangeTimes->{{3.582099484213567*^9, 3.5820994844215717`*^9}, {
-  3.5820995726438394`*^9, 3.5820998140160427`*^9}}],
+  3.5820995726438394`*^9, 3.5820998140160427`*^9}, {3.582132836991412*^9, 
+  3.5821328410474215`*^9}}],
 
 Cell[BoxData[
  RowBox[{"?", "ModularGroupIterator"}]], "Input",
@@ -1567,7 +1570,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{812, 611},
-WindowMargins->{{202, Automatic}, {Automatic, 31}},
+WindowMargins->{{171, Automatic}, {Automatic, -5}},
 ShowSelection->True,
 FrontEndVersion->"9.0 for Microsoft Windows (32-bit) (January 25, 2013)",
 StyleDefinitions->"Default.nb"
@@ -1616,66 +1619,66 @@ Cell[8741, 277, 309, 6, 92, "Input"],
 Cell[9053, 285, 502, 11, 31, "Input"],
 Cell[9558, 298, 258, 5, 30, "Text"],
 Cell[9819, 305, 117, 2, 31, "Input"],
-Cell[9939, 309, 131, 2, 31, "Input"],
-Cell[10073, 313, 204, 4, 30, "Text"],
-Cell[10280, 319, 218, 4, 31, "Input"],
-Cell[10501, 325, 180, 3, 31, "Input"],
-Cell[10684, 330, 129, 2, 31, "Input"],
-Cell[10816, 334, 234, 4, 52, "Input"],
-Cell[11053, 340, 633, 17, 52, "Input"],
-Cell[11689, 359, 167, 3, 30, "Text"],
-Cell[11859, 364, 122, 2, 31, "Input"],
-Cell[11984, 368, 683, 18, 52, "Input"],
-Cell[12670, 388, 279, 3, 30, "Text"],
-Cell[12952, 393, 117, 2, 31, "Input"],
-Cell[13072, 397, 2368, 59, 292, "Input"],
-Cell[15443, 458, 244, 4, 30, "Text"],
-Cell[15690, 464, 199, 3, 31, "Input"],
-Cell[15892, 469, 455, 8, 30, "Text"],
-Cell[16350, 479, 1932, 43, 180, "Input"],
-Cell[18285, 524, 299, 5, 49, "Text"],
-Cell[18587, 531, 130, 2, 31, "Input"],
-Cell[18720, 535, 395, 7, 30, "Text"],
-Cell[19118, 544, 2948, 70, 332, "Input"]
+Cell[9939, 309, 280, 4, 31, "Input"],
+Cell[10222, 315, 204, 4, 30, "Text"],
+Cell[10429, 321, 218, 4, 31, "Input"],
+Cell[10650, 327, 180, 3, 31, "Input"],
+Cell[10833, 332, 129, 2, 31, "Input"],
+Cell[10965, 336, 234, 4, 52, "Input"],
+Cell[11202, 342, 633, 17, 52, "Input"],
+Cell[11838, 361, 167, 3, 30, "Text"],
+Cell[12008, 366, 122, 2, 31, "Input"],
+Cell[12133, 370, 683, 18, 52, "Input"],
+Cell[12819, 390, 279, 3, 30, "Text"],
+Cell[13101, 395, 117, 2, 31, "Input"],
+Cell[13221, 399, 2368, 59, 292, "Input"],
+Cell[15592, 460, 244, 4, 30, "Text"],
+Cell[15839, 466, 199, 3, 31, "Input"],
+Cell[16041, 471, 482, 8, 49, "Text"],
+Cell[16526, 481, 1932, 43, 172, "Input"],
+Cell[18461, 526, 340, 6, 49, "Text"],
+Cell[18804, 534, 130, 2, 31, "Input"],
+Cell[18937, 538, 395, 7, 30, "Text"],
+Cell[19335, 547, 2948, 70, 332, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[22103, 619, 118, 4, 77, "Subtitle"],
-Cell[22224, 625, 126, 2, 31, "Input"],
-Cell[22353, 629, 212, 4, 30, "Text"],
-Cell[22568, 635, 284, 5, 72, "Input"],
-Cell[22855, 642, 342, 6, 30, "Text"],
-Cell[23200, 650, 291, 5, 92, "Input"],
-Cell[23494, 657, 126, 3, 30, "Text"],
-Cell[23623, 662, 468, 8, 112, "Input"],
-Cell[24094, 672, 238, 5, 31, "Input"],
-Cell[24335, 679, 218, 4, 30, "Text"],
-Cell[24556, 685, 118, 2, 31, "Input"],
-Cell[24677, 689, 442, 10, 31, "Input"],
-Cell[25122, 701, 480, 15, 31, "Input"],
-Cell[25605, 718, 179, 4, 30, "Text"],
-Cell[25787, 724, 1998, 49, 272, "Input"],
-Cell[27788, 775, 276, 6, 30, "Text"],
-Cell[28067, 783, 169, 3, 52, "Input"],
-Cell[28239, 788, 680, 19, 41, "Text"],
-Cell[28922, 809, 1756, 43, 172, "Input"],
-Cell[30681, 854, 632, 14, 59, "Text"],
-Cell[31316, 870, 740, 22, 72, "Input"],
-Cell[32059, 894, 302, 5, 30, "Text"],
-Cell[32364, 901, 2761, 61, 312, "Input"],
-Cell[35128, 964, 224, 5, 30, "Text"],
-Cell[35355, 971, 10285, 231, 792, "Input"]
+Cell[22320, 622, 118, 4, 77, "Subtitle"],
+Cell[22441, 628, 126, 2, 31, "Input"],
+Cell[22570, 632, 212, 4, 30, "Text"],
+Cell[22785, 638, 284, 5, 72, "Input"],
+Cell[23072, 645, 342, 6, 30, "Text"],
+Cell[23417, 653, 291, 5, 92, "Input"],
+Cell[23711, 660, 126, 3, 30, "Text"],
+Cell[23840, 665, 468, 8, 112, "Input"],
+Cell[24311, 675, 238, 5, 31, "Input"],
+Cell[24552, 682, 218, 4, 30, "Text"],
+Cell[24773, 688, 118, 2, 31, "Input"],
+Cell[24894, 692, 442, 10, 31, "Input"],
+Cell[25339, 704, 480, 15, 31, "Input"],
+Cell[25822, 721, 179, 4, 30, "Text"],
+Cell[26004, 727, 1998, 49, 272, "Input"],
+Cell[28005, 778, 276, 6, 30, "Text"],
+Cell[28284, 786, 169, 3, 52, "Input"],
+Cell[28456, 791, 680, 19, 41, "Text"],
+Cell[29139, 812, 1756, 43, 172, "Input"],
+Cell[30898, 857, 632, 14, 59, "Text"],
+Cell[31533, 873, 740, 22, 72, "Input"],
+Cell[32276, 897, 302, 5, 30, "Text"],
+Cell[32581, 904, 2761, 61, 312, "Input"],
+Cell[35345, 967, 224, 5, 30, "Text"],
+Cell[35572, 974, 10285, 231, 792, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[45677, 1207, 106, 4, 77, "Subtitle"],
-Cell[45786, 1213, 2771, 73, 232, "Input"],
-Cell[48560, 1288, 1352, 39, 112, "Input"],
-Cell[49915, 1329, 2246, 60, 192, "Input"],
-Cell[52164, 1391, 907, 24, 112, "Input"],
-Cell[53074, 1417, 643, 18, 31, "Input"],
-Cell[53720, 1437, 596, 17, 52, "Input"],
-Cell[54319, 1456, 2140, 59, 172, "Input"],
-Cell[56462, 1517, 1592, 42, 192, "Input"],
-Cell[58057, 1561, 147, 3, 31, "Input"]
+Cell[45894, 1210, 106, 4, 77, "Subtitle"],
+Cell[46003, 1216, 2771, 73, 232, "Input"],
+Cell[48777, 1291, 1352, 39, 112, "Input"],
+Cell[50132, 1332, 2246, 60, 192, "Input"],
+Cell[52381, 1394, 907, 24, 112, "Input"],
+Cell[53291, 1420, 643, 18, 31, "Input"],
+Cell[53937, 1440, 596, 17, 52, "Input"],
+Cell[54536, 1459, 2140, 59, 172, "Input"],
+Cell[56679, 1520, 1592, 42, 192, "Input"],
+Cell[58274, 1564, 147, 3, 31, "Input"]
 }, Open  ]]
 }, Open  ]]
 }

@@ -2,6 +2,7 @@
 
 BeginPackage["ModularGroup`", {"OOP`", "Queue`"}];
 
+
 (* ---------------------------------------------------------- Public Elements *)
 
 MoebiusTransformation::usage = StringJoin[
@@ -21,6 +22,36 @@ ModularTransformation::usage = StringJoin[
   "New[ModularTransformation, {{a, b}, {c, d}}] ",
   "creates the modular transformation ",
   "z \[RightTeeArrow] \!\(\*FractionBox[\(\(a\[CenterDot]z\)\(\\\ \)\(+\)\(\\\ \)\(b\)\(\\\ \)\), \(c\[CenterDot]z\\\  + \\\ d\)]\)."
+];
+
+TRList::usage = StringJoin[
+  "TRList[t] returns the factors of unique R-T-product representation ",
+  "of the modular transformation t as list ",
+  "consisting of the ModularTransformations mtT, mtR and Inv@mtR. ", 
+  "The transformation t may be given in matrix form ",
+  "or as ModularTransformation object. "
+];
+
+TRRight::usage = StringJoin[
+  "TRRight[t] returns the rightmost factor of the unique R-T-product representation ",
+  "of the modular transformation t, which may be given in matrix form ",
+  "or as ModularTransformation object. ",
+  "The return value is one of the ModularTransformations mtT, mtR and Inv@mtR.\n",
+  "TRRight[t] is equivalent to Last[TRList[t]]."
+];
+
+TRLeft::usage = StringJoin[
+  "Returns the leftmost factor of the unique R-T-product representation ",
+  "of the modular transformation t, which may be given in matrix form ",
+  "or as ModularTransformation object. ",
+  "The return value is one of the ModularTransformations mtT, mtR and Inv@mtR.\n", 
+  "TRLeft[t] is equivalent to First[TRList[t]]."
+];
+
+TRWord::usage = StringJoin[
+  "TRWord[t] returns the unique R-T-group word representation ",
+  "of the modular transformation t which may be given in matrix form ",
+  "or as ModularTransformation object."
 ];
 
 TUExponents::usage = StringJoin[
@@ -62,11 +93,6 @@ TUWord::usage = StringJoin[
   "TUWord[t] returns a symbolic group word representation ",
   "of the ModularTransformation t in terms of the group generators T and U.",
   "\nThe option QuotientFunction is supported."
-];
-
-TRWord::usage = StringJoin[
-  "TRWord[t] returns the unique reduced group word representation ",
-  "of the ModularTransformation t in terms of the group generators T and R."
 ];
 
 (* Some frequently used ModularTransformations *)
@@ -187,7 +213,9 @@ StartTransformation::usage = StringJoin[
   "It defines the ModularTransformation which is used for starting the enumeration."
 ];
 
+
 Begin["`Private`"];
+
 
 (* ---------------------------------------------- Class MoebiusTransformation *)
 
@@ -225,6 +253,9 @@ Inv[t_?(InstanceQ[MoebiusTransformation])] := Inv[t] ^=
     Inv[inverse] ^= t;
     inverse
   ];
+
+
+
 
 (* ---------------------------------------------- Class ModularTransformation *)
 NewClass[ModularTransformation];
@@ -279,21 +310,38 @@ Module[{factors},
   If[factors === {}, "1", Row@factors]
 ];
 
-TRWord[obj_?(InstanceQ[ModularTransformation])] :=
-Module[{pow, factors},
-  pow = Function[{b, e}, 
-    If[e >= 0, 
-      Array[{"T", 1}&, e], 
-      Array[{2, "T"}&, -e]
-    ]
-  ];
-  factors = Flatten[TUEval[obj, "T", "U", List, pow]] //. {
-    {h___, "T", "T", t___} -> {h,t},
-    {h___, a_Integer, b_Integer, t___} -> {h, Mod[a + b, 3], t},
-     {h___, 0, t___} -> {h, t}
-  } /. n_Integer -> Superscript["R", n];
-  If[factors === {}, "1", Row@factors]
+TRLeft[obj_?(InstanceQ[ModularTransformation])] :=
+TRLeft[obj] ^= TRRight[Mat@obj];
+TRLeft[mat_?MatrixQ] := Module[{a,b,c,d, ac, bd},
+  {{a,b},{c,d}} = mat;
+  ac = a c; bd = b d;
+  Which[
+    ac >= 0 && bd >= 0, mtT,
+    a^2 + ac <= 0 && b^2 + bd <= 0, mtR,
+    True, Inv@mtR
+  ]
 ];
+TRRight[obj_?(InstanceQ[ModularTransformation])] := 
+TRRight[obj] ^= Inv@TRLeft[Inv@obj];
+TRRight[mat_?MatrixQ] := Inv@TRLeft[Inv@mat];
+
+TRList[obj_?(InstanceQ[ModularTransformation])] :=
+TRList[obj] ^= TRList[Mat@obj];
+TRList[obj_?MatrixQ] := Module[{mat = obj}, 
+  Reap[
+    While[!MatchQ[mat, {{_,0},{0,_}}],
+      mat = Mat[Inv[Sow@TRLeft@mat]] . mat;
+    ];
+  ][[2,1]]
+];
+
+TRWord[obj_?(InstanceQ[ModularTransformation])] :=
+TRWord[obj] ^= TRWord[Mat@obj];
+TRWord[mat_?MatrixQ] := Row@(TRList[mat] /. {
+  mtT -> "T", 
+  mtR -> Superscript["R",1], 
+  Inv@mtR -> Superscript["R",2]
+});
 
 (* --------------------------------------------------- Enumeration algorithms *)
 
