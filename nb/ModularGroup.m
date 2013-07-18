@@ -70,7 +70,8 @@ QuotientFunction::usage = StringJoin[
 
 CentralQuotient::usage = StringJoin[
   "CentralQuotient[m,n] returns the integer quotient q of m = q n + r, ",
-  "such that Abs[r] \[LessEqual] Abs[n/2]."
+  "such that -n/2 \[LessEqual] r < n/2 (for positive q and n).\n",
+  "CentralQuotient[m,n] is eqivalent to Quotient[m, n, -n/2]"
 ];
 
 CQuotient::usage = StringJoin[
@@ -311,7 +312,7 @@ Module[{factors},
 ];
 
 TRLeft[obj_?(InstanceQ[ModularTransformation])] :=
-TRLeft[obj] ^= TRRight[Mat@obj];
+TRLeft[obj] ^= TRLeft[Mat@obj];
 TRLeft[mat_?MatrixQ] := Module[{a,b,c,d, ac, bd},
   {{a,b},{c,d}} = mat;
   ac = a c; bd = b d;
@@ -328,20 +329,27 @@ TRRight[mat_?MatrixQ] := Inv@TRLeft[Inv@mat];
 TRList[obj_?(InstanceQ[ModularTransformation])] :=
 TRList[obj] ^= TRList[Mat@obj];
 TRList[obj_?MatrixQ] := Module[{mat = obj}, 
-  Reap[
+  Assert[MatrixQ[mat,IntegerQ] && Det[mat] == 1];
+  Flatten[Reap[
     While[!MatchQ[mat, {{_,0},{0,_}}],
       mat = Mat[Inv[Sow@TRLeft@mat]] . mat;
     ];
-  ][[2,1]]
+  ][[2]]]
 ];
 
 TRWord[obj_?(InstanceQ[ModularTransformation])] :=
 TRWord[obj] ^= TRWord[Mat@obj];
-TRWord[mat_?MatrixQ] := Row@(TRList[mat] /. {
-  mtT -> "T", 
-  mtR -> Superscript["R",1], 
-  Inv@mtR -> Superscript["R",2]
-});
+TRWord[mat_?MatrixQ] := Module[{factors},
+  factors = TRList[mat];
+  If[factors === {}, 
+    "1",
+    Row@(factors /. {
+      mtT -> "T", 
+      mtR -> Superscript["R",1], 
+      Inv@mtR -> Superscript["R",2]
+    })
+  ]
+];
 
 (* --------------------------------------------------- Enumeration algorithms *)
 
