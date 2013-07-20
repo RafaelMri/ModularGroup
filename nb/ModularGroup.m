@@ -239,7 +239,7 @@ Init[MoebiusTransformation, obj_, mat_?MatrixQ] ^:= (
     New[MoebiusTransformation, mat.Mat[t]];
   obj@h_?VectorQ := mat.h;
   obj@z_ := (
-    If[TrueQ[z === ComplexInfinity], 
+    If[z === ComplexInfinity, 
       Inhom[mat.{1,0}], 
       Inhom[mat.{z, 1}]
     ]
@@ -357,7 +357,7 @@ Transition[ModularGroup] = Function[top,
 Module[{steps, t},
   steps = NeighborSteps[top];
   Table[
-    t = New[ModularTransformation, Mat[top].Mat[step]];
+    t = top@step;
     NeighborSteps[t] ^= If[step === mtT, Inv@#&/@Rest[steps], {mtT, step}];
     t, {step, steps}]
 ]];
