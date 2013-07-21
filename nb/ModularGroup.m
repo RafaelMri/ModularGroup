@@ -200,18 +200,32 @@ ModularGroupList::maxit =
   "Maximum number of iterations exceeded. Current setting: MaxIterations \[RightArrow] `1`.";
 
 ModularGroupIterator::usage = StringJoin[
-  "it = ModularGroupIterator[p] returns an Iterator for ModularTransformations ",
-  "with ordering defined by the ordering predicate p.",
+  "it = ModularGroupIterator[o] returns an Iterator for ModularTransformations ",
+  "with ordering defined by the ordering predicate o.",
   "\nHasNext[it] returns True forever, as the ModularGroup has infinitely many elements.",
   "\nGetNext[it] returns the next ModularTransformation ",
   "determined by a priority-first-search algorithm, ",
   "which successively applies transformations T and U from the right ",
-  "to already known transformations and uses the ordering predicate p."
+  "to already known transformations and uses the ordering predicate o."
 ];
 StartTransformation::usage = StringJoin[
   "StartTransformation is an option ",
   "of ModularGroupList and ModularGroupIterator. ",
   "It defines the ModularTransformation which is used for starting the enumeration."
+];
+
+ModularSubgroupCosets::usage = StringJoin[
+  "ModularSubgroupCosets[s, o] returns a list of coset representatives ",
+  "of a subgroup of the modular group given by the membership predicate s. ",
+  "The algorithm starts with the emtpy set ",
+  "and successively adds applicable ModularTransformations ",
+  "until a complete system of coset representatives is found. ",
+  "The subgroup given by the membership predicate s ",
+  "has to be of finite index within the modular group, ",
+  "otherwise the algorithm will not terminate. ",
+  "The order in which ModularTransformations are added to the result set ",
+  "is given by the the ordering predicate o.\n",
+  "The option StartTrasformation is supported."
 ];
 
 
@@ -351,15 +365,17 @@ TRWord[mat_?MatrixQ] := Module[{factors},
   ]
 ];
 
+
 (* --------------------------------------------------- Enumeration algorithms *)
 
-Transition[ModularGroup] = Function[top, 
-Module[{steps, t},
-  steps = NeighborSteps[top];
+Transition[ModularGroup] = Function[cur, 
+Module[{steps, next},
+  steps = NeighborSteps[cur];
   Table[
-    t = top@step;
-    NeighborSteps[t] ^= If[step === mtT, Inv@#&/@Rest[steps], {mtT, step}];
-    t, {step, steps}]
+    next = cur@step;
+    Parent[next] ^= cur;
+    NeighborSteps[next] ^= If[step === mtT, Inv@#&/@Rest[steps], {mtT, step}];
+    next, {step, steps}]
 ]];
 
 ModularGroupList[criteria_, OptionsPattern[]] := Reap[
@@ -390,6 +406,38 @@ Module[{mtStart},
     Transition[ModularGroup], ordering]
 ];
 Options[ModularGroupIterator] = {StartTransformation -> mtId};
+
+ModularSubgroupCosets[subgroupMemberQ_, ordering_, OptionsPattern[]] := 
+Module[{NotYetSeen, Steps,
+        i, max, mtStart, cosets, transition, steps, step, it, parent, neighbors, next},
+  i = 0;
+  max = OptionValue[MaxIterations];
+ 
+  mtStart = OptionValue[StartTransformation];
+  Steps@mtStart = {mtT, mtU, Inv@mtU};
+  cosets = {};
+
+  NotYetSeen[m_] := !MemberQ[cosets, _?(subgroupMemberQ[Inv[m]@#]&)];
+
+  transition = Function[cur,  
+    steps = Steps@cur;
+    neighbors = Table[
+      next = cur@step;
+      Steps@next = DeleteCases[{mtT, mtU, Inv@mtU}, Inv@step];
+      next,
+      {step, steps}
+    ];
+    Select[neighbors, NotYetSeen]
+  ];
+  it = New[PFSIterator, mtStart, transition, ordering];
+  While[i++ < max && HasNext[it],
+    next = GetNext[it];
+    If[NotYetSeen[next], AppendTo[cosets, next]];
+  ];
+  If[i >= max, Message[ModularGroupList::maxit, max]];
+  cosets
+];
+Options[ModularSubgroupCosets] = {MaxIterations -> 2^10, StartTransformation -> mtId};
 
 
 (* -------------------------------------------------- Class GeneralizedDisk *)
@@ -595,6 +643,8 @@ Module[{dm, mlists},
     ],
   {mlist, mlists}]
 ];
+
+
 
 End[];
 

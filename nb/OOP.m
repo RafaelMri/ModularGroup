@@ -81,8 +81,7 @@ New[class_?(InstanceQ[Class]), args___] := (
     Message[New::abstractclass, class];
     $Failed
   ), (
-    Module[{obj},
-      Format[obj] ^= Unique[class];
+    Module[{obj = Unique[class]},
       Super[class, obj, args];
       obj
     ]
