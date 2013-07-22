@@ -417,7 +417,7 @@ Module[{NotYetSeen, Steps,
   Steps@mtStart = {mtT, mtU, Inv@mtU};
   cosets = {};
 
-  NotYetSeen[m_] := !MemberQ[cosets, _?(subgroupMemberQ[Inv[m]@#]&)];
+  NotYetSeen[m_] := !MemberQ[cosets, _?(subgroupMemberQ[#@Inv[m]]&)];
 
   transition = Function[cur,  
     steps = Steps@cur;
