@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     98097,       2591]
-NotebookOptionsPosition[     93171,       2451]
-NotebookOutlinePosition[     93571,       2468]
-CellTagsIndexPosition[     93528,       2465]
+NotebookDataLength[     98238,       2594]
+NotebookOptionsPosition[     93311,       2454]
+NotebookOutlinePosition[     93712,       2471]
+CellTagsIndexPosition[     93669,       2468]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1339,19 +1339,20 @@ Cell[BoxData[{
   RowBox[{
    RowBox[{"disk", "[", "t_", "]"}], ":=", 
    RowBox[{
-    RowBox[{"disk", "[", "t", "]"}], "=", 
+    RowBox[{"disk", "[", "t", "]"}], "^=", 
     RowBox[{"mtPhi", "@", 
      RowBox[{"t", "@", "incircle0"}]}]}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"size", "[", "t_", "]"}], ":=", 
    RowBox[{
-    RowBox[{"size", "[", "t", "]"}], "=", 
+    RowBox[{"size", "[", "t", "]"}], "^=", 
     RowBox[{"GDiskRadius", "[", 
      RowBox[{"disk", "[", "t", "]"}], "]"}]}]}], ";"}]}], "Input",
  CellChangeTimes->{{3.583163507070007*^9, 3.5831635765308685`*^9}, {
   3.583165972484664*^9, 3.5831660096956615`*^9}, {3.5832387291406527`*^9, 
-  3.5832387300922556`*^9}, {3.5833929338134327`*^9, 3.5833929563087125`*^9}}],
+  3.5832387300922556`*^9}, {3.5833929338134327`*^9, 3.5833929563087125`*^9}, {
+  3.5840276901643677`*^9, 3.584027691287572*^9}}],
 
 Cell[TextData[{
  "Get a list of all modular transformations with \[OpenCurlyDoubleQuote]size\
@@ -1936,7 +1937,7 @@ Cell[BoxData[
        RowBox[{
         RowBox[{"{", 
          RowBox[{
-         "showCosets", ",", "True", ",", 
+         "showCosets", ",", "False", ",", 
           "\"\<Show coset representatives\>\""}], "}"}], " ", ",", 
         RowBox[{"{", 
          RowBox[{"True", ",", "False"}], "}"}]}], "}"}], ",", 
@@ -1944,12 +1945,14 @@ Cell[BoxData[
       RowBox[{"ContinuousAction", "\[Rule]", "False"}]}], 
      "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "]"}]], "Input",
  CellChangeTimes->CompressedData["
-1:eJxTTMoPSmViYGAQAWIQ/fBKW8eaTa8c3ylP7wbR6rf/TjwBpBUqHWeBaL1N
+1:eJxTTMoPSmViYGCQBGIQ/fBKW8eaTa8c3ylP7wbR6rf/TjwBpBUqHWeBaL1N
 qstB9ItvF9eC6HOTCjaB6DnvzbeC6Da27hMgej276EUQvScv9zqIDq5tugE2
 J+nBPRDt2bT6PYj2WzNZ/CSQ3jDjMJi2WrlNFkS7/JugAKKf6XxPA9FJa/Uy
 wOLeZ36C6AA7IdZTQFrEgJ0TRC/Q5QXTWzoseUG0QoMfmDY4scwORGunrPUC
 00/uBIDokMy+EBDdsPZeBNicavdkEL2sdTbXJSA9xeIuL4hWeeUmBKIVBCNF
-QPRM4XVxl4H0iVaOBBA98/qe5CtAuufzy1QQDQB18LbS
+QPRM4XVxl4H0iVaOBBA98/qe5CtAuufzy1QQbSF6SPfv5leOT3nrDEG0Efs/
+OxD9qWS7O4iWqNcOANH2lUWBIHrfEYWpIFpg4925IHrqhWVHQPT8h1uPgmgA
+xjDm4w==
   "]]
 }, Open  ]],
 
@@ -2450,7 +2453,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{693, 672},
-WindowMargins->{{10, Automatic}, {Automatic, -5}},
+WindowMargins->{{131, Automatic}, {Automatic, -1}},
 ShowSelection->True,
 Magnification->0.8999999761581421,
 FrontEndVersion->"9.0 for Microsoft Windows (32-bit) (January 25, 2013)",
@@ -2562,35 +2565,35 @@ Cell[49623, 1295, 293, 8, 29, "Input"],
 Cell[49919, 1305, 272, 5, 28, "Text"],
 Cell[50194, 1312, 384, 11, 29, "Input"],
 Cell[50581, 1325, 553, 9, 85, "Text"],
-Cell[51137, 1336, 678, 17, 50, "Input"],
-Cell[51818, 1355, 461, 13, 28, "Text"],
-Cell[52282, 1370, 580, 13, 31, "Input"],
-Cell[52865, 1385, 4791, 114, 532, "Input"],
-Cell[57659, 1501, 5882, 129, 623, "Input"],
-Cell[63544, 1632, 3821, 89, 339, "Input"]
+Cell[51137, 1336, 731, 18, 50, "Input"],
+Cell[51871, 1356, 461, 13, 28, "Text"],
+Cell[52335, 1371, 580, 13, 31, "Input"],
+Cell[52918, 1386, 4791, 114, 532, "Input"],
+Cell[57712, 1502, 5882, 129, 623, "Input"],
+Cell[63597, 1633, 3821, 89, 339, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[67402, 1726, 110, 1, 44, "Subtitle"],
-Cell[67515, 1729, 130, 2, 29, "Input"],
-Cell[67648, 1733, 240, 6, 29, "Input"],
-Cell[67891, 1741, 8577, 211, 850, "Input"]
+Cell[67455, 1727, 110, 1, 44, "Subtitle"],
+Cell[67568, 1730, 130, 2, 29, "Input"],
+Cell[67701, 1734, 240, 6, 29, "Input"],
+Cell[67944, 1742, 8664, 213, 850, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[76505, 1957, 159, 5, 70, "Subtitle"],
-Cell[76667, 1964, 146, 3, 29, "Input"],
-Cell[76816, 1969, 2771, 73, 230, "Input"],
-Cell[79590, 2044, 1352, 39, 110, "Input"],
-Cell[80945, 2085, 2246, 60, 190, "Input"],
-Cell[83194, 2147, 907, 24, 110, "Input"],
-Cell[84104, 2173, 643, 18, 29, "Input"],
-Cell[84750, 2193, 596, 17, 50, "Input"],
-Cell[85349, 2212, 2062, 66, 250, "Input"],
-Cell[87414, 2280, 656, 20, 50, "Input"],
-Cell[88073, 2302, 994, 29, 70, "Input"],
-Cell[89070, 2333, 185, 4, 29, "Input"],
-Cell[89258, 2339, 2140, 59, 170, "Input"],
-Cell[91401, 2400, 1592, 42, 190, "Input"],
-Cell[92996, 2444, 147, 3, 29, "Input"]
+Cell[76645, 1960, 159, 5, 70, "Subtitle"],
+Cell[76807, 1967, 146, 3, 29, "Input"],
+Cell[76956, 1972, 2771, 73, 230, "Input"],
+Cell[79730, 2047, 1352, 39, 110, "Input"],
+Cell[81085, 2088, 2246, 60, 190, "Input"],
+Cell[83334, 2150, 907, 24, 110, "Input"],
+Cell[84244, 2176, 643, 18, 29, "Input"],
+Cell[84890, 2196, 596, 17, 50, "Input"],
+Cell[85489, 2215, 2062, 66, 250, "Input"],
+Cell[87554, 2283, 656, 20, 39, "Input"],
+Cell[88213, 2305, 994, 29, 55, "Input"],
+Cell[89210, 2336, 185, 4, 23, "Input"],
+Cell[89398, 2342, 2140, 59, 170, "Input"],
+Cell[91541, 2403, 1592, 42, 190, "Input"],
+Cell[93136, 2447, 147, 3, 29, "Input"]
 }, Open  ]]
 }, Open  ]]
 }

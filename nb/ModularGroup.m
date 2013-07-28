@@ -379,20 +379,14 @@ Module[{steps, next},
 ]];
 
 ModularGroupList[criteria_, OptionsPattern[]] := Reap[
-Module[{i, max, mtStart, queue, top, next},
+Module[{i, max, mtStart, it},
   i = 0;
   max = OptionValue[MaxIterations];
   mtStart = OptionValue[StartTransformation];
-  queue = New[LifoQueue];
-  If[criteria[mtStart], 
-    NeighborSteps[mtStart] ^= {mtT, mtU, Inv@mtU};
-    Enqueue[queue, mtStart]
-  ];
-  While[i++ < max && !EmptyQ[queue],
-    top = Dequeue[queue];
-    Sow[top];
-    next = Transition[ModularGroup][top]; 
-    Do[If[criteria[n],Enqueue[queue, n]], {n, next}];
+  NeighborSteps[mtStart] ^= {mtT, mtU, Inv@mtU};
+  it = New[DFSIterator, mtStart, Transition[ModularGroup], criteria];
+  While[i++ < max && HasNext@it,
+    Sow@GetNext@it
   ];
   If[i >= max, Message[ModularGroupList::maxit, max]];
 ]][[2,1]];
@@ -402,37 +396,29 @@ ModularGroupIterator[ordering_, OptionsPattern[]] :=
 Module[{mtStart},
   mtStart = OptionValue[StartTransformation];
   NeighborSteps[mtStart] ^= {mtT, mtU, Inv@mtU};
-  New[PFSIterator, mtStart, 
-    Transition[ModularGroup], ordering]
+  New[PFSIterator, mtStart, Transition[ModularGroup], ordering]
 ];
 Options[ModularGroupIterator] = {StartTransformation -> mtId};
 
 ModularSubgroupCosets[subgroupMemberQ_, ordering_, OptionsPattern[]] := 
-Module[{NotYetSeen, Steps,
-        i, max, mtStart, cosets, transition, steps, step, it, parent, neighbors, next},
+Module[{i, max, cosets, mtStart, Exclude, Neighbors, NotYetSeen, n, it},
   i = 0;
   max = OptionValue[MaxIterations];
+  cosets = {};
  
   mtStart = OptionValue[StartTransformation];
-  Steps@mtStart = {mtT, mtU, Inv@mtU};
-  cosets = {};
-
+  Exclude@mtStart = Null;
+ 
   NotYetSeen[m_] := !MemberQ[cosets, _?(subgroupMemberQ[#@Inv[m]]&)];
+  Neighbors[m_] := (
+    n = m@#;
+    Exclude@n = Inv@#;
+    n
+  )& /@ DeleteCases[{mtT, mtU, Inv@mtU}, Exclude@m];
 
-  transition = Function[cur,  
-    steps = Steps@cur;
-    neighbors = Table[
-      next = cur@step;
-      Steps@next = DeleteCases[{mtT, mtU, Inv@mtU}, Inv@step];
-      next,
-      {step, steps}
-    ];
-    Select[neighbors, NotYetSeen]
-  ];
-  it = New[PFSIterator, mtStart, transition, ordering];
+  it = New[PFSIterator, mtStart, Neighbors, ordering, NotYetSeen];
   While[i++ < max && HasNext[it],
-    next = GetNext[it];
-    If[NotYetSeen[next], AppendTo[cosets, next]];
+    AppendTo[cosets, GetNext[it]];
   ];
   If[i >= max, Message[ModularGroupList::maxit, max]];
   cosets

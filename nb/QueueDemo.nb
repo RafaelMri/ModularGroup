@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     22095,        665]
-NotebookOptionsPosition[     20344,        605]
-NotebookOutlinePosition[     20709,        621]
-CellTagsIndexPosition[     20666,        618]
+NotebookDataLength[     37805,       1169]
+NotebookOptionsPosition[     31669,        964]
+NotebookOutlinePosition[     33727,       1026]
+CellTagsIndexPosition[     33394,       1015]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -41,21 +41,57 @@ Class Queue\
  CellChangeTimes->{{3.5815662385824237`*^9, 3.5815662419364347`*^9}, {
    3.5815662861801786`*^9, 3.581566289424989*^9}, 3.5815663738866644`*^9}],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
  RowBox[{"?", "Queue"}]], "Input",
  CellChangeTimes->{{3.58156560847517*^9, 3.581565609067972*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"Queue is an abstract base class for queues and cannot be \
+instantiated.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.5840249568006954`*^9},
+ CellTags->"Info3584032156-2900078"]
+}, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"?", "Enqueue"}]], "Input",
  CellChangeTimes->{{3.5815658717020283`*^9, 3.5815658726692314`*^9}}],
 
 Cell[BoxData[
+ StyleBox["\<\"Enqueue[q, e] enqueues the element e to the queue q.\"\>", 
+  "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.584024957143897*^9},
+ CellTags->"Info3584032156-2900078"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
  RowBox[{"?", "Dequeue"}]], "Input",
  CellChangeTimes->{{3.5815658749624395`*^9, 3.5815658759920425`*^9}}],
 
 Cell[BoxData[
+ StyleBox["\<\"Dequeue[q] returns the element at the top of the queue q.\"\>",
+   "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.584024957518298*^9},
+ CellTags->"Info3584032157-2900078"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
  RowBox[{"?", "EmptyQ"}]], "Input",
- CellChangeTimes->{{3.581565877505247*^9, 3.5815658804692574`*^9}}]
+ CellChangeTimes->{{3.581565877505247*^9, 3.5815658804692574`*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"EmptyQ[q] tests if queue q is empty.\"\>", "MSG"]], "Print", \
+"PrintUsage",
+ CellChangeTimes->{3.5840249579082994`*^9},
+ CellTags->"Info3584032157-2900078"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -67,9 +103,20 @@ Class FifoQueue\
  CellChangeTimes->{{3.581566278660954*^9, 3.581566292966201*^9}, 
    3.5815663727010603`*^9}],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
  RowBox[{"?", "FifoQueue"}]], "Input",
  CellChangeTimes->{{3.5815657556958494`*^9, 3.581565757224654*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"New[FifoQueue] constructs an empty first-in-first-out queue.\"\
+\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.584024958329501*^9},
+ CellTags->"Info3584032158-2900078"]
+}, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
@@ -95,7 +142,23 @@ Cell[BoxData[{
  CellChangeTimes->{{3.581565767146287*^9, 3.5815657702974973`*^9}, {
   3.581565854900774*^9, 3.5815658590971875`*^9}, {3.5815658922950954`*^9, 
   3.5815659513110876`*^9}, {3.5815688216011524`*^9, 3.5815688652042947`*^9}, {
-  3.5815688954995933`*^9, 3.581568912036647*^9}}]
+  3.5815688954995933`*^9, 3.581568912036647*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["1"], "Print",
+ CellChangeTimes->{3.584023140609454*^9, 3.584024256502613*^9, 
+  3.584024958454302*^9}],
+
+Cell[BoxData["2"], "Print",
+ CellChangeTimes->{3.584023140609454*^9, 3.584024256502613*^9, 
+  3.5840249584855013`*^9}],
+
+Cell[BoxData["3"], "Print",
+ CellChangeTimes->{3.584023140609454*^9, 3.584024256502613*^9, 
+  3.5840249585011015`*^9}]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -107,9 +170,20 @@ Class LifoQueue\
  CellChangeTimes->{{3.581566327101112*^9, 3.581566329019918*^9}, 
    3.581566371203456*^9}],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
  RowBox[{"?", "LifoQueue"}]], "Input",
  CellChangeTimes->{{3.5815659569895067`*^9, 3.581565958767912*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"New[LifoQueue] constructs an empty last-in-first-out queue, \
+also known as stack.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.5840249588131027`*^9},
+ CellTags->"Info3584032158-2900078"]
+}, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
@@ -132,7 +206,20 @@ Cell[BoxData[{
      RowBox[{"EmptyQ", "[", "stack", "]"}]}], ",", 
     RowBox[{"Print", "[", 
      RowBox[{"Dequeue", "[", "stack", "]"}], "]"}]}], "]"}], ";"}]}], "Input",
- CellChangeTimes->{{3.581566010905282*^9, 3.5815660497358084`*^9}}]
+ CellChangeTimes->{{3.581566010905282*^9, 3.5815660497358084`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["3"], "Print",
+ CellChangeTimes->{3.584024256986215*^9, 3.5840249590159035`*^9}],
+
+Cell[BoxData["2"], "Print",
+ CellChangeTimes->{3.584024256986215*^9, 3.5840249590315037`*^9}],
+
+Cell[BoxData["1"], "Print",
+ CellChangeTimes->{3.584024256986215*^9, 3.5840249590627036`*^9}]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -143,9 +230,20 @@ Class PriorityQueue\
 \>", "Subtitle",
  CellChangeTimes->{{3.5815669656029916`*^9, 3.581566971047409*^9}}],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
  RowBox[{"?", "PriorityQueue"}]], "Input",
  CellChangeTimes->{{3.5815669756494246`*^9, 3.5815669789410353`*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"New[PriorityQueue, p] constructs an empty priority queue with \
+p as the ordering predicate.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.5840249593279047`*^9},
+ CellTags->"Info3584032159-2900078"]
+}, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
@@ -170,7 +268,26 @@ Cell[BoxData[{
      RowBox[{"EmptyQ", "[", "heap", "]"}]}], ",", 
     RowBox[{"Print", "[", 
      RowBox[{"Dequeue", "[", "heap", "]"}], "]"}]}], "]"}], ";"}]}], "Input",
- CellChangeTimes->{{3.5815669842460527`*^9, 3.581567056352487*^9}}]
+ CellChangeTimes->{{3.5815669842460527`*^9, 3.581567056352487*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["1"], "Print",
+ CellChangeTimes->{3.5840242574698167`*^9, 3.584024959468305*^9}],
+
+Cell[BoxData["2"], "Print",
+ CellChangeTimes->{3.5840242574698167`*^9, 3.584024959499505*^9}],
+
+Cell[BoxData["3"], "Print",
+ CellChangeTimes->{3.5840242574698167`*^9, 3.5840249595151052`*^9}],
+
+Cell[BoxData["4"], "Print",
+ CellChangeTimes->{3.5840242574698167`*^9, 3.5840249595151052`*^9}],
+
+Cell[BoxData["5"], "Print",
+ CellChangeTimes->{3.5840242574698167`*^9, 3.5840249595151052`*^9}]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -181,25 +298,50 @@ Search algorithms\
 \>", "Subtitle",
  CellChangeTimes->{{3.581567148099386*^9, 3.5815671523582*^9}}],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
  RowBox[{"?", "SearchIterator"}]], "Input",
  CellChangeTimes->{{3.581567155821411*^9, 3.581567162561633*^9}}],
 
 Cell[BoxData[
+ StyleBox["\<\"it = New[SearchIterator, q, f, p] constructs an iterator over \
+a sequence which is defined by the initial contents of the Queue q and the \
+transition function f and a predicate p.\\nHasNext[it] returns True as long \
+as q contains elements satisfying p.\\nGetNext[it] returns the first element \
+t of q which satisfies p and enqueues all elements f[t]={a,b,c,...} to \
+q.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.5840249598115063`*^9},
+ CellTags->"Info3584032159-2900078"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
  RowBox[{"?", "BFSIterator"}]], "Input",
  CellChangeTimes->{{3.581567189409321*^9, 3.581567192654131*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"New[BFSIterator, s, f, p] constructs an iterator for \
+performing a breadth-first-search starting with the element s. For any \
+element e, f[e] should return a (possibly empty) list of elements to be \
+visited next.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.5840249603419085`*^9},
+ CellTags->"Info3584032160-2900078"]
+}, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
   RowBox[{"bfs", "=", 
    RowBox[{"New", "[", 
     RowBox[{"BFSIterator", ",", "\"\<\>\"", ",", 
-     RowBox[{"Function", "[", 
-      RowBox[{"s", ",", 
-       RowBox[{"{", 
-        RowBox[{
-         RowBox[{"s", "<>", "\"\<a\>\""}], ",", 
-         RowBox[{"s", "<>", "\"\<b\>\""}]}], "}"}]}], "]"}]}], "]"}]}], 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"#", "<>", "\"\<a\>\""}], ",", 
+        RowBox[{"#", "<>", "\"\<b\>\""}]}], "}"}], "&"}]}], "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{"Table", "[", 
   RowBox[{
@@ -208,13 +350,126 @@ Cell[BoxData[{
     RowBox[{"i", ",", "10"}], "}"}]}], "]"}]}], "Input",
  CellChangeTimes->{{3.581567340300012*^9, 3.581567527508622*^9}, {
   3.581567672173893*^9, 3.5815677306136837`*^9}, {3.58156831725611*^9, 
-  3.581568318535314*^9}}],
+  3.581568318535314*^9}, {3.584023109986546*^9, 3.5840231114529514`*^9}, {
+  3.584028957622052*^9, 3.584028963690474*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"\"\>", ",", "\<\"a\"\>", ",", "\<\"b\"\>", ",", "\<\"aa\"\>", 
+   ",", "\<\"ab\"\>", ",", "\<\"ba\"\>", ",", "\<\"bb\"\>", 
+   ",", "\<\"aaa\"\>", ",", "\<\"aab\"\>", ",", "\<\"aba\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.5840237984537926`*^9, 3.5840240833576007`*^9, 
+  3.58402425840582*^9, 3.584024960482309*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"?", "DFSIterator"}]], "Input",
  CellChangeTimes->{{3.5815671979591484`*^9, 3.5815672004551563`*^9}}],
 
+Cell[BoxData[
+ StyleBox["\<\"New[DFSIterator, s, f] constructs an iterator for performing a \
+depth-first-search starting with the element s. For any element e, f[e] \
+should return a (possibly empty) list of elements to be visited next.\"\>", 
+  "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.58402496082551*^9},
+ CellTags->"Info3584032160-2900078"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dfs", " ", "=", 
+   RowBox[{"New", "[", 
+    RowBox[{"DFSIterator", ",", "\"\<\>\"", ",", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"#", "<>", "\"\<a\>\""}], ",", 
+        RowBox[{"#", "<>", "\"\<b\>\""}]}], "}"}], "&"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"StringLength", "@", "#"}], "<", "4"}], "&"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"GetNext", "[", "dfs", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "10"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.581567559162125*^9, 3.58156759128463*^9}, {
+   3.5815677616451845`*^9, 3.581567768836808*^9}, {3.5815678053751273`*^9, 
+   3.581567879556369*^9}, {3.5815683158989058`*^9, 3.581568316023706*^9}, {
+   3.581569000260935*^9, 3.5815690086849623`*^9}, 3.5815690507469*^9, {
+   3.5840228408231936`*^9, 3.5840228564544487`*^9}, {3.5840238266118927`*^9, 
+   3.5840238540991898`*^9}, {3.584024506587098*^9, 3.5840245074919014`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"\"\>", ",", "\<\"b\"\>", ",", "\<\"bb\"\>", ",", "\<\"bbb\"\>",
+    ",", "\<\"bba\"\>", ",", "\<\"ba\"\>", ",", "\<\"bab\"\>", 
+   ",", "\<\"baa\"\>", ",", "\<\"a\"\>", ",", "\<\"ab\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{3.5840238584048047`*^9, 3.584024087476015*^9, 
+  3.5840242588114214`*^9, 3.584024961075111*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "PFSIterator"}]], "Input",
+ CellChangeTimes->{{3.5815672025767636`*^9, 3.5815672070851784`*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"New[PFSIterator, s, f, o, p] constructs an iterator for \
+performing a priority-first-search starting with the element s and using the \
+ordering predicate o. For any element e, f[e] should return a (possibly \
+empty) list of elements to be visited next.\"\>", "MSG"]], "Print", \
+"PrintUsage",
+ CellChangeTimes->{3.584024961402712*^9},
+ CellTags->"Info3584032161-2900078"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"pfs", "=", 
+   RowBox[{"New", "[", 
+    RowBox[{"PFSIterator", ",", "\"\<\>\"", ",", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"#", "<>", "\"\<a\>\""}], ",", 
+        RowBox[{"#", "<>", "\"\<b\>\""}]}], "}"}], "&"}], ",", 
+     RowBox[{
+      RowBox[{"OrderedQ", "@", 
+       RowBox[{"{", "##", "}"}]}], "&"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"StringLength", "@", "#"}], "<", "4"}], "&"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"GetNext", "[", "pfs", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "10"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.5815679233779116`*^9, 3.581567938526561*^9}, {
+   3.5815679702434645`*^9, 3.581567971382268*^9}, {3.5815682860394087`*^9, 
+   3.581568342060191*^9}, 3.5815684551947594`*^9, {3.5840241191441274`*^9, 
+   3.58402415666226*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"\"\>", ",", "\<\"a\"\>", ",", "\<\"aa\"\>", ",", "\<\"aaa\"\>",
+    ",", "\<\"aab\"\>", ",", "\<\"ab\"\>", ",", "\<\"aba\"\>", 
+   ",", "\<\"abb\"\>", ",", "\<\"b\"\>", ",", "\<\"ba\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{3.5840240926708336`*^9, 3.5840241285353603`*^9, 
+  3.5840241589710684`*^9, 3.584024259295023*^9, 3.5840249615431128`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
  RowBox[{
   RowBox[{
    RowBox[{"f", "[", "s_", "]"}], ":=", 
@@ -226,43 +481,144 @@ Cell[BoxData[{
       RowBox[{
        RowBox[{"s", "<>", "\"\<a\>\""}], ",", 
        RowBox[{"s", "<>", "\"\<b\>\""}]}], "}"}], ",", 
-     RowBox[{"{", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"dfs", " ", "=", 
+     RowBox[{"{", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+  RowBox[{"bfs", "=", 
    RowBox[{"New", "[", 
-    RowBox[{"DFSIterator", ",", "\"\<\>\"", ",", "f"}], "]"}]}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{"Table", "[", 
-  RowBox[{
-   RowBox[{"GetNext", "[", "dfs", "]"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"i", ",", "10"}], "}"}]}], "]"}]}], "Input",
- CellChangeTimes->{{3.581567559162125*^9, 3.58156759128463*^9}, {
-   3.5815677616451845`*^9, 3.581567768836808*^9}, {3.5815678053751273`*^9, 
-   3.581567879556369*^9}, {3.5815683158989058`*^9, 3.581568316023706*^9}, {
-   3.581569000260935*^9, 3.5815690086849623`*^9}, 3.5815690507469*^9}],
+    RowBox[{"BFSIterator", ",", "\"\<\>\"", ",", "f"}], "]"}]}], 
+  ";"}]], "Input"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"?", "PFSIterator"}]], "Input",
- CellChangeTimes->{{3.5815672025767636`*^9, 3.5815672070851784`*^9}}],
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{"pfs", "=", 
-   RowBox[{"New", "[", 
-    RowBox[{"PFSIterator", ",", "\"\<\>\"", ",", "f", ",", 
-     RowBox[{
-      RowBox[{"OrderedQ", "@", 
-       RowBox[{"{", "##", "}"}]}], "&"}]}], "]"}]}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{"Table", "[", 
+ RowBox[{"If", "[", 
   RowBox[{
-   RowBox[{"GetNext", "[", "pfs", "]"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"i", ",", "10"}], "}"}]}], "]"}]}], "Input",
- CellChangeTimes->{{3.5815679233779116`*^9, 3.581567938526561*^9}, {
-   3.5815679702434645`*^9, 3.581567971382268*^9}, {3.5815682860394087`*^9, 
-   3.581568342060191*^9}, 3.5815684551947594`*^9}]
+   RowBox[{"HasNext", "[", "bfs", "]"}], ",", 
+   RowBox[{"GetNext", "[", "bfs", "]"}], ",", "\"\<EOF\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.5840245899341974`*^9, 3.5840246093406663`*^9}}],
+
+Cell[BoxData["\<\"\"\>"], "Output",
+ CellChangeTimes->{{3.58402461046387*^9, 3.584024662490054*^9}, 
+   3.5840249616055126`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Info", "@", "bfs"}]], "Input",
+ CellChangeTimes->{{3.58402471501544*^9, 3.584024716949847*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Queue`BFSIterator$46065", "Print", "PrintUsage",
+ CellChangeTimes->{3.5840249618239136`*^9},
+ CellTags->"Info3584032161-2900078"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"GetNext", "[", "BFSIterator$46065", "]"}], "^:=", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+           "Queue`Private`current$46070", "=", "Queue`Private`next$46070"}], 
+           ";", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"Enqueue", "[", 
+               RowBox[{"FifoQueue$46068", ",", "#1"}], "]"}], "&"}], ")"}], "/@", 
+            RowBox[{"f", "[", "Queue`Private`current$46070", "]"}]}], ";", 
+           "Queue`Private`SetNext$46070", ";", 
+           "Queue`Private`current$46070"}], ")"}]}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"HasNext", "[", "BFSIterator$46065", "]"}], "^:=", 
+         "Queue`Private`hasNext$46070"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{
+          RowBox[{"InstanceQ", "[", "BFSIterator", "]"}], "[", 
+          "BFSIterator$46065", "]"}], "^=", "True"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{
+          RowBox[{"InstanceQ", "[", "SearchIterator", "]"}], "[", 
+          "BFSIterator$46065", "]"}], "^=", "True"}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[Queue`BFSIterator$46065],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.5840249618707137`*^9},
+ CellTags->"Info3584032161-2900078"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Info", "@", "FifoQueue$33263"}]], "Input",
+ CellChangeTimes->{{3.584024823264223*^9, 3.5840248526859274`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Queue`FifoQueue$33263", "Print", "PrintUsage",
+ CellChangeTimes->{3.584024962260715*^9},
+ CellTags->"Info3584032162-2900078"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"Queue`Private`Contents", "[", "FifoQueue$33263", "]"}], "^=", 
+         RowBox[{"{", "}"}]}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{
+          RowBox[{"InstanceQ", "[", "FifoQueue", "]"}], "[", 
+          "FifoQueue$33263", "]"}], "^=", "True"}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{
+          RowBox[{"InstanceQ", "[", "Queue", "]"}], "[", "FifoQueue$33263", 
+          "]"}], "^=", "True"}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[Queue`FifoQueue$33263],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.584024962291915*^9},
+ CellTags->"Info3584032162-2900078"]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -506,7 +862,10 @@ Cell[BoxData[
         RowBox[{"StringLength", "@", "#"}], "&"}], "/@", "result"}], "]"}], 
      "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]], "Input",
  CellChangeTimes->{{3.581568930430107*^9, 3.5815689875146933`*^9}, {
-  3.581569067922556*^9, 3.5815693104927464`*^9}}],
+  3.581569067922556*^9, 3.5815693104927464`*^9}, {3.584024306001589*^9, 
+  3.584024310151203*^9}, {3.5840243452981277`*^9, 3.5840243455009284`*^9}, {
+  3.5840243876054773`*^9, 3.5840243992431183`*^9}, {3.584024948969468*^9, 
+  3.584024949983472*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -604,7 +963,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{707, 543},
-WindowMargins->{{39, Automatic}, {Automatic, 54}},
+WindowMargins->{{Automatic, 269}, {Automatic, 8}},
 ShowSelection->True,
 FrontEndVersion->"9.0 for Microsoft Windows (32-bit) (January 25, 2013)",
 StyleDefinitions->"Default.nb"
@@ -613,10 +972,56 @@ StyleDefinitions->"Default.nb"
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "Info3584032156-2900078"->{
+  Cell[1494, 49, 220, 4, 40, "Print",
+   CellTags->"Info3584032156-2900078"],
+  Cell[1874, 62, 201, 4, 40, "Print",
+   CellTags->"Info3584032156-2900078"]},
+ "Info3584032157-2900078"->{
+  Cell[2235, 75, 206, 4, 40, "Print",
+   CellTags->"Info3584032157-2900078"],
+  Cell[2598, 88, 186, 4, 40, "Print",
+   CellTags->"Info3584032157-2900078"]},
+ "Info3584032158-2900078"->{
+  Cell[3119, 111, 208, 4, 40, "Print",
+   CellTags->"Info3584032158-2900078"],
+  Cell[4992, 178, 230, 4, 40, "Print",
+   CellTags->"Info3584032158-2900078"]},
+ "Info3584032159-2900078"->{
+  Cell[6599, 238, 240, 4, 40, "Print",
+   CellTags->"Info3584032159-2900078"],
+  Cell[8464, 306, 521, 8, 92, "Print",
+   CellTags->"Info3584032159-2900078"]},
+ "Info3584032160-2900078"->{
+  Cell[9145, 323, 363, 6, 58, "Print",
+   CellTags->"Info3584032160-2900078"],
+  Cell[10819, 371, 356, 6, 58, "Print",
+   CellTags->"Info3584032160-2900078"]},
+ "Info3584032161-2900078"->{
+  Cell[12770, 423, 402, 7, 75, "Print",
+   CellTags->"Info3584032161-2900078"],
+  Cell[15638, 511, 135, 2, 42, "Print",
+   CellTags->"Info3584032161-2900078"],
+  Cell[15776, 515, 1839, 52, 171, "Print",
+   CellTags->"Info3584032161-2900078"]},
+ "Info3584032162-2900078"->{
+  Cell[17823, 579, 131, 2, 42, "Print",
+   CellTags->"Info3584032162-2900078"],
+  Cell[17957, 583, 1187, 35, 83, "Print",
+   CellTags->"Info3584032162-2900078"]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"Info3584032156-2900078", 31998, 975},
+ {"Info3584032157-2900078", 32184, 980},
+ {"Info3584032158-2900078", 32370, 985},
+ {"Info3584032159-2900078", 32558, 990},
+ {"Info3584032160-2900078", 32746, 995},
+ {"Info3584032161-2900078", 32935, 1000},
+ {"Info3584032162-2900078", 33208, 1007}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
@@ -625,46 +1030,145 @@ Cell[579, 22, 153, 2, 90, "Title"],
 Cell[735, 26, 407, 6, 52, "Input"],
 Cell[CellGroupData[{
 Cell[1167, 36, 186, 5, 77, "Subtitle"],
-Cell[1356, 43, 113, 2, 31, "Input"],
-Cell[1472, 47, 120, 2, 31, "Input"],
-Cell[1595, 51, 120, 2, 31, "Input"],
-Cell[1718, 55, 117, 2, 31, "Input"]
+Cell[CellGroupData[{
+Cell[1378, 45, 113, 2, 31, "Input"],
+Cell[1494, 49, 220, 4, 40, "Print",
+ CellTags->"Info3584032156-2900078"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1872, 62, 138, 5, 77, "Subtitle"],
-Cell[2013, 69, 120, 2, 31, "Input"],
-Cell[2136, 73, 900, 24, 72, "Input"]
+Cell[1751, 58, 120, 2, 31, "Input"],
+Cell[1874, 62, 201, 4, 40, "Print",
+ CellTags->"Info3584032156-2900078"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3073, 102, 136, 5, 77, "Subtitle"],
-Cell[3212, 109, 120, 2, 31, "Input"],
-Cell[3335, 113, 699, 21, 72, "Input"]
+Cell[2112, 71, 120, 2, 31, "Input"],
+Cell[2235, 75, 206, 4, 40, "Print",
+ CellTags->"Info3584032157-2900078"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4071, 139, 116, 4, 77, "Subtitle"],
-Cell[4190, 145, 126, 2, 31, "Input"],
-Cell[4319, 149, 758, 23, 72, "Input"]
+Cell[2478, 84, 117, 2, 31, "Input"],
+Cell[2598, 88, 186, 4, 40, "Print",
+ CellTags->"Info3584032157-2900078"]
+}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5114, 177, 110, 4, 77, "Subtitle"],
-Cell[5227, 183, 123, 2, 31, "Input"],
-Cell[5353, 187, 120, 2, 31, "Input"],
-Cell[5476, 191, 691, 19, 52, "Input"],
-Cell[6170, 212, 124, 2, 31, "Input"],
-Cell[6297, 216, 1001, 26, 72, "Input"],
-Cell[7301, 244, 124, 2, 31, "Input"],
-Cell[7428, 248, 616, 16, 52, "Input"]
+Cell[2833, 98, 138, 5, 77, "Subtitle"],
+Cell[CellGroupData[{
+Cell[2996, 107, 120, 2, 31, "Input"],
+Cell[3119, 111, 208, 4, 40, "Print",
+ CellTags->"Info3584032158-2900078"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8081, 269, 106, 4, 77, "Subtitle"],
-Cell[8190, 275, 1974, 48, 212, "Input"],
-Cell[10167, 325, 1985, 48, 212, "Input"],
-Cell[12155, 375, 1857, 47, 212, "Input"],
-Cell[14015, 424, 1498, 37, 172, "Input"],
-Cell[15516, 463, 1612, 45, 159, "Input"],
-Cell[17131, 510, 1405, 39, 138, "Input"],
-Cell[18539, 551, 1625, 45, 159, "Input"],
-Cell[20167, 598, 149, 3, 31, "Input"]
+Cell[3364, 120, 900, 24, 72, "Input"],
+Cell[CellGroupData[{
+Cell[4289, 148, 116, 2, 23, "Print"],
+Cell[4408, 152, 118, 2, 23, "Print"],
+Cell[4529, 156, 118, 2, 23, "Print"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4708, 165, 136, 5, 77, "Subtitle"],
+Cell[CellGroupData[{
+Cell[4869, 174, 120, 2, 31, "Input"],
+Cell[4992, 178, 230, 4, 40, "Print",
+ CellTags->"Info3584032158-2900078"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5259, 187, 699, 21, 72, "Input"],
+Cell[CellGroupData[{
+Cell[5983, 212, 93, 1, 23, "Print"],
+Cell[6079, 215, 93, 1, 23, "Print"],
+Cell[6175, 218, 93, 1, 23, "Print"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6329, 226, 116, 4, 77, "Subtitle"],
+Cell[CellGroupData[{
+Cell[6470, 234, 126, 2, 31, "Input"],
+Cell[6599, 238, 240, 4, 40, "Print",
+ CellTags->"Info3584032159-2900078"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6876, 247, 758, 23, 72, "Input"],
+Cell[CellGroupData[{
+Cell[7659, 274, 93, 1, 23, "Print"],
+Cell[7755, 277, 93, 1, 23, "Print"],
+Cell[7851, 280, 95, 1, 23, "Print"],
+Cell[7949, 283, 95, 1, 23, "Print"],
+Cell[8047, 286, 95, 1, 23, "Print"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8203, 294, 110, 4, 77, "Subtitle"],
+Cell[CellGroupData[{
+Cell[8338, 302, 123, 2, 31, "Input"],
+Cell[8464, 306, 521, 8, 92, "Print",
+ CellTags->"Info3584032159-2900078"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9022, 319, 120, 2, 31, "Input"],
+Cell[9145, 323, 363, 6, 58, "Print",
+ CellTags->"Info3584032160-2900078"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9545, 334, 740, 19, 52, "Input"],
+Cell[10288, 355, 367, 7, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10692, 367, 124, 2, 31, "Input"],
+Cell[10819, 371, 356, 6, 58, "Print",
+ CellTags->"Info3584032160-2900078"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11212, 382, 1025, 24, 52, "Input"],
+Cell[12240, 408, 366, 6, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12643, 419, 124, 2, 31, "Input"],
+Cell[12770, 423, 402, 7, 75, "Print",
+ CellTags->"Info3584032161-2900078"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13209, 435, 916, 25, 72, "Input"],
+Cell[14128, 462, 392, 6, 31, "Output"]
+}, Open  ]],
+Cell[14535, 471, 524, 16, 52, "Input"],
+Cell[CellGroupData[{
+Cell[15084, 491, 242, 5, 31, "Input"],
+Cell[15329, 498, 128, 2, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15494, 505, 119, 2, 31, "Input"],
+Cell[CellGroupData[{
+Cell[15638, 511, 135, 2, 42, "Print",
+ CellTags->"Info3584032161-2900078"],
+Cell[15776, 515, 1839, 52, 171, "Print",
+ CellTags->"Info3584032161-2900078"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17664, 573, 134, 2, 31, "Input"],
+Cell[CellGroupData[{
+Cell[17823, 579, 131, 2, 42, "Print",
+ CellTags->"Info3584032162-2900078"],
+Cell[17957, 583, 1187, 35, 83, "Print",
+ CellTags->"Info3584032162-2900078"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19205, 625, 106, 4, 77, "Subtitle"],
+Cell[19314, 631, 1974, 48, 212, "Input"],
+Cell[21291, 681, 1985, 48, 212, "Input"],
+Cell[23279, 731, 1857, 47, 212, "Input"],
+Cell[25139, 780, 1498, 37, 172, "Input"],
+Cell[26640, 819, 1813, 48, 159, "Input"],
+Cell[28456, 869, 1405, 39, 138, "Input"],
+Cell[29864, 910, 1625, 45, 159, "Input"],
+Cell[31492, 957, 149, 3, 31, "Input"]
 }, Open  ]]
 }, Open  ]]
 }

@@ -34,16 +34,16 @@ PriorityQueue::usage = StringJoin[
 ];
 
 SearchIterator::usage = StringJoin[
-  "it = New[SearchIterator, q, f] constructs an iterator over a sequence ",
-  "which is defined by the initial contents of the Queue q ",
-  "and the transition function f.",
-  "\nHasNext[it] returns True as long as q is not empty.",
-  "\nGetNext[it] returns the top element t of q ",
+  "it = New[SearchIterator, q, f, p] constructs an iterator over a sequence ",
+  "which is defined by the initial contents of the Queue q, ",
+  "a transition function f and a predicate p.",
+  "\nHasNext[it] returns True as long as q contains elements satisfying p.",
+  "\nGetNext[it] returns the first element t of q which satisfies p ",
   "and enqueues all elements f[t]={a,b,c,...} to q."
 ];
 
 BFSIterator::usage = StringJoin[
-  "New[BFSIterator, s, f] constructs an iterator ",
+  "New[BFSIterator, s, f, p] constructs an iterator ",
   "for performing a breadth-first-search ",
   "starting with the element s. For any element e, ",
   "f[e] should return a (possibly empty) list of elements to be visited next."
@@ -57,9 +57,9 @@ DFSIterator::usage = StringJoin[
 ];
 
 PFSIterator::usage = StringJoin[
-  "New[PFSIterator, s, f, p] constructs an iterator ",
+  "New[PFSIterator, s, f, o, p] constructs an iterator ",
   "for performing a priority-first-search ",
-  "starting with the element s and using the ordering predicate p. ",
+  "starting with the element s and using the ordering predicate o. ",
   "For any element e, ",
   "f[e] should return a (possibly empty) list of elements to be visited next."
 ];
@@ -200,34 +200,41 @@ Module[{c},
 
 (* --------------------------------------------------------- Class Enumerator *)
 NewClass[SearchIterator];
-Init[SearchIterator, obj_, queue_?(InstanceQ[Queue]), f_] ^:= (
-  HasNext[obj] ^:= !EmptyQ[queue];
-  GetNext[obj] ^:= Module[{next},
-    next = Dequeue[queue];
-    Do[Enqueue[queue, e], {e, f[next]}];
-    next
-  ];
-);
+Init[SearchIterator, obj_, queue_?(InstanceQ[Queue]), f_, p_:(True&)] ^:= 
+Module[{current, next, hasNext, SetNext},
+  SetNext := (
+    hasNext = False;
+    While[!EmptyQ[queue] && !(hasNext = p[next = Dequeue[queue]])];
+  );
+  SetNext;
+  HasNext[obj] ^:= hasNext;
+  GetNext[obj] ^:= (
+    current = next; 
+    Enqueue[queue, #]& /@ f[current];
+    SetNext;
+    current
+  );
+];
 
 NewClass[BFSIterator];
-Init[BFSIterator, obj_, s_, f_] ^:= Module[{fifo},
+Init[BFSIterator, obj_, s_, f_, p_:(True&)] ^:= Module[{fifo},
   fifo = New[FifoQueue];
-  If[Head[s] === List, Do[Enqueue[fifo, e], {e,s}], Enqueue[fifo,s]];
-  Super[SearchIterator, obj, fifo, f];
+  If[Head[s] === List, Enqueue[fifo, #]& /@ s, Enqueue[fifo,s]];
+  Super[SearchIterator, obj, fifo, f, p];
 ];
 
 NewClass[DFSIterator];
-Init[DFSIterator, obj_, s_, f_] ^:= Module[{stack},
+Init[DFSIterator, obj_, s_, f_, p_:(True&)] ^:= Module[{stack},
   stack = New[LifoQueue];
-  If[Head[s] === List, Do[Enqueue[stack, e], {e,s}], Enqueue[stack,s]];
-  Super[SearchIterator, obj, stack, f];
+  If[Head[s] === List, Enqueue[stack, #]& /@ s, Enqueue[stack,s]];
+  Super[SearchIterator, obj, stack, f, p];
 ];
 
 NewClass[PFSIterator];
-Init[PFSIterator, obj_, s_, f_, p_] ^:= Module[{heap},
-  heap = New[PriorityQueue, p];
-  If[Head[s] === List, Do[Enqueue[heap, e], {e,s}], Enqueue[heap,s]];
-  Super[SearchIterator, obj, heap, f];
+Init[PFSIterator, obj_, s_, f_, o_, p_:(True&)] ^:= Module[{heap},
+  heap = New[PriorityQueue, o];
+  If[Head[s] === List, Enqueue[heap, #]& /@ s, Enqueue[heap,s]];
+  Super[SearchIterator, obj, heap, f, p];
 ];
 
 End[];
