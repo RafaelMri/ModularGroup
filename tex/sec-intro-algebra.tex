@@ -1,6 +1,6 @@
 \section{Groups and basic algebraic constructions}
 
-In this section, we will recapitulate some basic algebraic concepts, most important the notions of \emph{free groups} and \emph{free products}, and the construction of a group in terms of \emph{generators} and \emph{relations}. Additionally, we give the definitions of the \emph{(projective) general} and \emph{special linear groups}. A reader familiar to this concepts may readily skip this section. Moreover, we will give no rigorous proofs here, as they may be found in every good algebra book, as for example in Hungerford \cite{hungerford1974algebra}.
+In this section, we will recapitulate some basic algebraic concepts, most important the notions of \emph{free groups} and \emph{free products}, and the construction of a group in terms of \emph{generators} and \emph{relations}. Additionally, we give the definitions of the \emph{(projective) general} and \emph{special linear groups}. A reader familiar to this concepts may readily skip this section. Moreover, we will give no rigorous proofs here, as they may be found in many algebra books, as for example in \Hungerford.
 
 \subsection{Free monoids}
 \index{Free!monoid}
@@ -11,14 +11,14 @@ Let $\Syms$ be a set of formal symbols, for example $\Syms = \{a, b, c, \dots\}$
 \end{equation}
 as the set of all \emph{words over the alphabet $\Syms$}. It is now just natural to define a binary operation $\cdot$ on $\Words{\Syms}$ which is given by concatenation of words:
 \begin{equation*}
-w_1 \cdot w_2 = w_1 w_2, \quad w_1, w_2 \in \Words{\Syms}.
+w_1 \cdot w_2 := w_1 w_2, \quad w_1, w_2 \in \Words{\Syms}.
 \end{equation*}
 \index{Monoid}
-Since $\Words{\Syms}$ together with the operation $\cdot$ satisfies the axioms of \emph{associativity}
+Since $\Words{\Syms}$ together with the operation $\cdot$ satisfies the axioms of \emph{associativity},
 \begin{equation*}
 \forall w_1,w_2,w_3 \in \Words{\Syms}:\quad (w_1 \cdot w_2) \cdot w_3 = w_1 \cdot (w_2 \cdot w_3)
 \end{equation*}
-and \emph{existence of an identity element}
+and \emph{existence of an identity element},
 \begin{equation*}
 \forall w \in \Words{\Syms}:\quad w \cdot  \epsilon = \epsilon \cdot w = w,
 \end{equation*}
@@ -31,7 +31,15 @@ Let $\Syms$ be an arbitrary set of symbols (called the alphabet), and $\Words{\S
 
 \subsection{Free groups}
 \index{Free!group}
-In a similar fashion, we can construct also a group from any given formal alphabet $\Syms$. For this purpose we first choose a ``disjoint copy'' of $\Syms$ which we denote by $\inv{\Syms}$. To be precise, $\inv{\Syms}$ may be any arbitrary set satisfying $\Syms \cap \inv{\Syms} = \emptyset$ and having same cardinality as $\Syms$. In particular we could for example set $\inv{\Syms} := \Syms \times \{1\}$. Next, we choose a bijection $f : \Syms \to \inv{\Syms}$. We can extend this bijection between the sets $\Syms$ and $\inv{\Syms}$ to an involution on their union $\overline{\Syms} := (\Syms \cup \inv{\Syms})$ by simply defining $f(f(a)) := a$ for all $a \in \Syms$. Now we introduce the notation $f(a) =: \inv{a}$ for all $a \in \overline{\Syms}$ and call $\inv{a}$ the \emph{(formal) inverse} of the element $a$.
+\index{Formal!inverse}
+In a similar fashion, we can construct also a group from any given formal alphabet $\Syms$. For this purpose we first choose a ``disjoint copy'' of $\Syms$ which we denote by $\inv{\Syms}$. To be precise, $\inv{\Syms}$ may be any arbitrary set satisfying $\Syms \cap \inv{\Syms} = \emptyset$ and having same cardinality as $\Syms$. In particular we could for example set $\inv{\Syms} := \Syms \times \{1\}$. Next, we choose a bijection $f : \Syms \to \inv{\Syms}$. We can extend this bijection between the sets $\Syms$ and $\inv{\Syms}$ to an involution $\overline{f}$ living on the union $\overline{\Syms} := \Syms \cup \inv{\Syms}$ by defining $\overline{f} := f \cup \inv{f}$ or more verbose:
+\begin{equation*}
+\overline{f}(a) := \begin{cases}
+f(a)       & \text{if } a \in \Syms\\
+\inv{f}(a) & \text{if } a \in \inv{\Syms}
+\end{cases}
+\end{equation*}
+Now we introduce the notation $\overline{f}(a) =: \inv{a}$ for all $a \in \overline{\Syms}$ and call $\inv{a}$ the \emph{(formal) inverse} of the element $a$. 
 
 \index{Reduced form}
 \index{Group!word}
@@ -48,21 +56,21 @@ Moreover, we observe that if $w_1 \sim w_2$ and $v_1 \sim v_2$, then also have $
 \begin{equation*}
 \phi(w_1 v_1) = \phi(w v) = \phi(w_2 v_2).
 \end{equation*}
-Thus we see that the equivalence relation $\sim$ is compatible with the operation of word-concatenation. Therefore we can consider also the set of equivalence classes $\Words{\overline{\Syms}}/_{\sim}$ as a monoid under the operation of word-concatenation. Obviously the set of reduced words is a system of representatives for $\Words{\overline{\Syms}}/_{\sim}$ and we agree to denote an equivalence class $[w]_{\sim}$ simply by the reduced word $w$. $\Words{\overline{\Syms}}/_{\sim}$ is not just a monoid, but in fact a group, as the inverse of a word $\sigma_1 \sigma_2 \dots \sigma_{n-1} \sigma_n$ is trivially given by $\sigma_n^{-1} \sigma_{n-1}^{-1} \dots \sigma_2^{-1} \sigma_1^{-1}$. We call a reduced word of $\Words{\overline{\Syms}}$ (resp. its corresponding equivalence class in $\Words{\overline{\Syms}}/_{\sim}$) a \emph{group word over the alphabet $\Syms$}.
+Thus we see that the equivalence relation $\sim$ is compatible with the operation of word-concatenation. Therefore we can consider also the set of equivalence classes $\Words{\overline{\Syms}}/{\sim}$ as a monoid under the operation of word-concatenation. Obviously the set of reduced words is a system of representatives for $\Words{\overline{\Syms}}/{\sim}$ and we agree to denote an equivalence class $[w]_{\sim}$ simply by the reduced word $w$. $\Words{\overline{\Syms}}/{\sim}$ is not just a monoid, but in fact a group, as the inverse of a word $\sigma_1 \sigma_2 \dots \sigma_{n-1} \sigma_n$ is trivially given by $\sigma_n^{-1} \sigma_{n-1}^{-1} \dots \sigma_2^{-1} \sigma_1^{-1}$. We call a reduced word of $\Words{\overline{\Syms}}$ (resp. its corresponding equivalence class in $\Words{\overline{\Syms}}/{\sim}$) a \emph{group word over the alphabet $\Syms$}.
 
 \begin{definition}
 \label{dfn_FreeGroup}
-Let $\Syms$ be an arbitrary set of formal symbols and define $\overline{\Syms} := \Syms \cup \inv{\Syms}$ as above. On the free monoid $\Words{\overline{\Syms}}$ define an equivalence relation $\sim$ by identifying words with the same reduced form. Then the algebraic structure $\langle \Words{\overline{\Syms}}/_{\sim}, \cdot, \epsilon \rangle$ is called the \emph{free group over the alphabet $\Syms$}.
+Let $\Syms$ be an arbitrary set of formal symbols and define $\overline{\Syms} := \Syms \cup \inv{\Syms}$ as above. On the free monoid $\Words{\overline{\Syms}}$ define an equivalence relation $\sim$ by identifying words with the same reduced form. Then the algebraic structure $\Syms_{\sim} := \langle \Words{\overline{\Syms}}/{\sim}, \cdot, \epsilon \rangle$ is called the \emph{free group over the alphabet $\Syms$}.
 \end{definition}
 
 \begin{remark}
-In the exceptional case, when $\Syms = \emptyset$,  we obtain the trivial group by this construction: Namely, if $\Syms = \emptyset$ then we can also choose $\inv{\Syms} = \emptyset$ ($\Syms$ and $\inv{\Syms}$ are then disjoint as required). It follows that also $\overline{\Syms}$ is empty and we end up with the trivial monoid $\Words{\overline{\Syms}} = \{\epsilon\}$, which is in the same time the trivial group.
+In the exceptional case, when $\Syms = \emptyset$,  we obtain the trivial group by this construction: Namely, if $\Syms = \emptyset$ then we can also choose $\inv{\Syms} = \emptyset$ ($\Syms$ and $\inv{\Syms}$ are then disjoint as required). It follows that also $\overline{\Syms}$ is empty and we end up with the trivial monoid $\Words{\overline{\Syms}} = \{\epsilon\}$, which corresponds to the trivial group.
 \end{remark}
 
 \begin{example}
 Let $\Syms$ be the singleton set $\{a\}$. Now, the free group over $\Syms$ consists precisely of the following group words:
 \begin{equation*}
-\Words{\overline{\Syms}}/_{\sim} = \{\epsilon, a, aa, aaa, \dots, \inv{a}, \inv{a}\inv{a},\dots\}.
+\Syms_{\sim} = \{\epsilon, a, aa, aaa, \dots, \inv{a}, \inv{a}\inv{a},\dots\}.
 \end{equation*}
 If we now introduce the notation
 \begin{equation*}
