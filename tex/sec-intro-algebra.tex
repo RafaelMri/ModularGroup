@@ -241,13 +241,25 @@ As above, let $F$ be a field, $R$ a ring and $n > 0$. The \emph{projective gener
 
 \begin{example}
 \label{ex_ProjAndGenLinGrp}
-If $M \in \GL{\R}$, then the corresponding equivalence class $[M]_{\sim} \in \PGL{\R}$ consists of all matrices $\lambda M$, $\lambda \in \R \setminus \{0\}$. If $\det(M) > 0$ then among these matrices, there is exactly one matrix with determinant 1, namely $M^{\prime} = \reci{\sqrt{\det(M)}} M$. We can therefore identify the equivalence class $[M]_{\sim} \in \PGL{R}$ with $[M^{\prime}]_{\sim} \in \PSL{\R}$. In the other case, when $\det(M) < 0$, we cannot find such a matrix $M^{\prime}$, as the square root of a negative number is not real. Therefore $\PSL{\R}$ is a proper subgroup of $\PGL{\R}$,
+Consider a matrix $M \in \SL{\R}$. The equivalence class $[M]_{\sim} \in \PSL{\R}$ consists precisely of the two matrices $M$ and $-M$, whereas the equivalence class $[M]_{\sim} \in \PGL{\R}$ is nothing but the set $\setdef{\lambda M}{\lambda \in \R \setminus \{0\}}$. For a clearer distinction of these equivalence classes, let us introduce the notation 
+\begin{eqnarray*}
+{}_{\pm}M     &:=& [M]_{\sim} \in \PSL{\R} \quad \text{and} \\
+{}_{\lambda}M &:=& [M]_{\sim} \in \PGL{\R}.
+\end{eqnarray*}
+Clearly, ${}_{\lambda}M = {}_{\lambda}(-M)$ which is why we can define an injective homomorphism 
 \begin{equation*}
-\PSL{\R} \lneq \PGL{\R}.
+\iota : \left\{\begin{array}{rcl}
+\PSL{\R}  &\to&     \PGL{\R} \\
+{}_{\pm}M &\mapsto& {}_{\lambda}M
+\end{array}\right.
 \end{equation*}
-In contrast to that, if we take $M \in \GL{\C}$, then we can always set $M^{\prime} = \reci{\sqrt{\det(M)}} M$ and identify $[M]_{\sim} \in \PGL{\C}$ with $[M^{\prime}]_{\sim} \in \PSL{\C}$ and we have
+which embeds $\PSL{\R}$ into $\PGL{\R}$. Because $\det(\lambda M) = \lambda^2 \det(M) = \lambda^2 > 0$, the image of $\iota$ consists of equivalence classes matrices with positive determinant only, whereas $\PGL{\R}$ also contains equivalence classes of matrices with negative determinant. Therefore the embedding $\iota$ is not surjective and $\PSL{\R}$ isomorphic to a proper subgroup of $\PGL{\R}$:
+\begin{equation*}
+\PSL{\R} \cong \iota(\PSL{\R}) \lneq \PGL{\R}.
+\end{equation*}
+In contrast to that, if we switch to $\PSL{\C}$ and $\PGL{\C}$ respectively and define $\iota$ analogously, we see that for every equivalence class $[M]_{\sim} \in \PGL{\C}$, the matrix $M^{\prime} := \reci{\sqrt{\det M}} M$ is in $\SL{\C}$ and satisfies $\iota([M^{\prime}]_{\sim}) = [M]_{\sim}$. Therefore $\iota$ is now also surjective and thus we have 
 \begin{equation*}
 \PSL{\C} \cong \PGL{\C}.
 \end{equation*}
-More generally, for an arbitrary field $F$ the groups $\PGLn{n}{F}$ and $\PSLn{n}{F}$ are isomorphic, if and only if $F$ is closed under taking the $n$-th root, otherwise $\PSLn{n}{F} \lneq \PGLn{n}{F}$.
+More generally, for an arbitrary field $F$ the groups $\PSLn{n}{F}$ and $\PGLn{n}{F}$ are isomorphic, if and only if $F$ is closed under taking the $n$-th root, otherwise $\PSLn{n}{F}$ is isomorphic to a proper subgroup of $\PGLn{n}{F}$.
 \end{example}
