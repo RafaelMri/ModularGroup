@@ -246,14 +246,14 @@ Consider a matrix $M \in \SL{\R}$. The equivalence class $[M]_{\sim} \in \PSL{\R
 {}_{\pm}M     &:=& [M]_{\sim} \in \PSL{\R} \quad \text{and} \\
 {}_{\lambda}M &:=& [M]_{\sim} \in \PGL{\R}.
 \end{eqnarray*}
-Clearly, ${}_{\lambda}M = {}_{\lambda}(-M)$ which is why we can define an injective homomorphism 
+Clearly, ${}_{\lambda}M = {}_{\lambda}(-M)$ which allows us to define an injective homomorphism $\iota$ which embeds $\PSL{\R}$ into $\PGL{\R}$:
 \begin{equation*}
 \iota : \left\{\begin{array}{rcl}
 \PSL{\R}  &\to&     \PGL{\R} \\
 {}_{\pm}M &\mapsto& {}_{\lambda}M
 \end{array}\right.
 \end{equation*}
-which embeds $\PSL{\R}$ into $\PGL{\R}$. Because $\det(\lambda M) = \lambda^2 \det(M) = \lambda^2 > 0$, the image of $\iota$ consists of equivalence classes matrices with positive determinant only, whereas $\PGL{\R}$ also contains equivalence classes of matrices with negative determinant. Therefore the embedding $\iota$ is not surjective and $\PSL{\R}$ isomorphic to a proper subgroup of $\PGL{\R}$:
+Because $\det(\lambda M) = \lambda^2 \det(M) = \lambda^2 > 0$, the image of $\iota$ consists of equivalence classes matrices with positive determinant only, whereas $\PGL{\R}$ also contains equivalence classes of matrices with negative determinant. Therefore the embedding $\iota$ is not surjective and $\PSL{\R}$ isomorphic to a proper subgroup of $\PGL{\R}$:
 \begin{equation*}
 \PSL{\R} \cong \iota(\PSL{\R}) \lneq \PGL{\R}.
 \end{equation*}

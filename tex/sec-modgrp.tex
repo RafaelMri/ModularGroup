@@ -58,7 +58,7 @@ Let $A: z \mapsto \moebius{a}{b}{c}{d}{z}$ be an arbitrary modular transformatio
 A = \mat{a}{b}{c}{d}, \quad U = \mat{1}{1}{0}{1}, \quad T = \mat{0}{-1}{1}{\phantom{+}0}.
 \end{equation*}
 
-Let's first consider the two special cases, when $a$ or $c$ are zero. If $a=0$, it follows from $ad - bc = 1$, that $-b = c = \pm 1$. Therefore we have (equivalence of Matrices is again denoted by $\sim$)
+Let's first consider the two special cases, when $a$ or $c$ are zero. If $a=0$, it follows from $ad - bc = 1$, that $-b = c = \pm 1$. Therefore we have (equivalence of matrices is again denoted by $\sim$)
 \begin{equation*}
 A \sim c A = \mat{0}{-1}{1}{c d} = TU^{c d}.
 \end{equation*}
@@ -196,7 +196,7 @@ For all other cases, we note that at least three of the coefficients $a,b,c,d$ a
 \begin{equation*}
 \lnot t(A) \Rightarrow r(A) \lxor s(A),
 \end{equation*}
-for all transformations with at least three nonzero coefficients (here, $\lxor$ denotes logical exclusive or). If $t(A)$ is false, we have $ac < 0$ or $bd < 0$. Since both cases are completely symmetric, we may assume without restriction that $ac < 0$. Note, that $ac < 0$ and $ad - bc = 1$ implies $bd \le 0$ because otherwise if $bd > 0$, both terms $ad$ and $bc$ would have different signs and their difference could not be 1. We conclude the proof by distinguishing three cases:
+for all transformations with at least three nonzero coefficients (here, $\lxor$ denotes logical exclusive or). If $t(A)$ is false, we have $ac < 0$ or $bd < 0$. Since both cases are completely symmetric, we may assume without restriction that $ac < 0$. Note, that $ac < 0$ and $ad - bc = 1$ implies $bd \le 0$ because otherwise if $bd > 0$, both terms $ad$ and $bc$ would have different nonzero signs and their difference could not be 1. We conclude the proof by distinguishing three cases:
 \begin{description}
 \item[Case $a^2 < c^2$:] From $ac < 0$ it follows that $a^2 + ac < 0\ (i)$ and $c^2 + ac > 0\ (ii)$. Additionally, from $ad - bc = 1$ we can conclude that $b^2 \le d^2$, because otherwise $\abs{ad}$ would differ from $\abs{bc}$ by more than 1. Therefore we also have $b^2 + bd \le 0\ (iii)$. Taking these pieces together, we have $(ii) \Rightarrow \lnot s(A)$ and $(i) \land (iii) \Rightarrow r(A)$.
 \item[Case $a^2 > c^2$:] This case is complementary to the first one: Because of $ac < 0$ we have $a^2 + ac > 0\ (i)$ and $c^2 + ac < 0\ (ii)$. The equation $ad - bc = 1$ here implies $b^2 \ge d^2$ and $d^2 + bd \le 0\ (iii)$. Thus we have $(i) \Rightarrow \lnot r(A)$ and $(ii) \land (iii) \Rightarrow s(A)$.
@@ -260,15 +260,15 @@ For a modular transformation $A: z \mapsto \moebius{a}{b}{c}{d}{z}$, a product r
 \item Define $M_k$ as follows:
 \label{itm_ModGrpTRAlgMDfn}
 \begin{equation*}
-t(A) \Rightarrow M_k := T,\quad
-r(A) \Rightarrow M_k := R,\quad
-s(A) \Rightarrow M_k := \inv{R}.
+t(A_k) \Rightarrow M_k := T,\quad
+r(A_k) \Rightarrow M_k := R,\quad
+s(A_k) \Rightarrow M_k := \inv{R}.
 \end{equation*}
 
 \item Set $A_{k+1} := M_k^{-1} A_k$, increment $k$ by one and continue with step \ref{itm_ModGrpTRAlgLoop}.
 \label{itm_ModGrpTRAlgADfn}
 
-\item Set $m := k$. If $m = 0$, $A = 1$ and the desired product representation is the empty product and otherwise it is $A = M_0 M_1 \cdots M_m$.
+\item If $k = 0$, $A = 1$ and the desired product representation is the empty product and otherwise it is $A = M_0 M_1 \cdots M_{k-1}$.
 \label{itm_ModGrpTRAlgFin}
 \end{enumerate}
 \end{theorem}
@@ -280,7 +280,7 @@ A_2 &=& M_1^{-1} A_1\\
 A_3 &=& M_2^{-1} A_2\\
     &\vdots&
 \end{eqnarray*}
-Note, that because of Lemma~\ref{lem_trsPartition}, the rule for the definition of the transformations $M_k$ from step \ref{itm_ModGrpTRAlgMDfn} is unambiguous. The relations (\ref{itm_trsPropA}) and (\ref{itm_trsPropB}) of Lemma~\ref{lem_trsnRelations} guarantee that for every pair of subsequent transformations $M_k$, $M_{k+1}$, one of them is $T$ and the other is either $R$ or $\inv{R}$. Additionally, the relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) imply $n(A_k) > n(A_{k+2})$. Since $n(1) = n(T) = 2$ is a lower bound for $n(A_k)$, the described procedure must terminate after a finite number $m$ of iterations and the product $A = M_0 M_1 \cdots M_m$ is indeed of the desired form (\ref{eqn_ModGrpTRProd}).
+Note, that because of Lemma~\ref{lem_trsPartition}, the rule for the definition of the transformations $M_k$ from step \ref{itm_ModGrpTRAlgMDfn} is unambiguous. The relations (\ref{itm_trsPropA}) and (\ref{itm_trsPropB}) of Lemma~\ref{lem_trsnRelations} guarantee that for every pair of subsequent transformations $M_k$, $M_{k+1}$, one of them is $T$ and the other is either $R$ or $\inv{R}$. Additionally, the relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) imply $n(A_k) > n(A_{k+2})$. Since $n(1) = n(T) = 2$ is a lower bound for $n(A_k)$, the described procedure must terminate after a finite number $m$ of iterations and the product $A = M_0 M_1 \cdots M_{m-1}$ is indeed of the desired form (\ref{eqn_ModGrpTRProd}).
 \end{proof}
 
 Now have all tools in hand for the proof of Theorem~\ref{thm_ModGrpTRProd}. Note, that two alternative proofs can be found in \Schoeneberg{}, §4 and in \Klein{}, p.\ 452ff. 
