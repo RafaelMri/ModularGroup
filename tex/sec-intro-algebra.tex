@@ -1,6 +1,6 @@
 \section{Groups and basic algebraic constructions}
 
-In this section, we will recapitulate some basic algebraic concepts, most important the notions of \emph{free groups} and \emph{free products}, and the construction of a group in terms of \emph{generators} and \emph{relations}. Additionally, we give the definitions of the \emph{(projective) general} and \emph{special linear groups}. A reader familiar to this concepts may readily skip this section. Moreover, we will give no rigorous proofs here, as they may be found in many algebra books, as for example in \Hungerford.
+In this section, we will recapitulate some basic algebraic concepts, most important the notions of \emph{free groups} and \emph{free products}, and the construction of a group in terms of \emph{generators} and \emph{relations}. Additionally, we give the definitions of the \emph{(projective) general} and \emph{special linear groups}. Lastly, \emph{group actions} on sets will be introduced. A reader familiar to this concepts may readily skip this section. Moreover, we will give no rigorous proofs here, as they may be found in many algebra books, as for example in \Hungerford.
 
 \subsection{Free monoids}
 \index{Free!monoid}
@@ -52,7 +52,7 @@ Clearly, every word $w \in \Words{\overline{\Syms}}$ can be brought into reduced
 \begin{equation*}
 w_1 \sim w_2 \Leftrightarrow \phi(w_1) = \phi(w_2).
 \end{equation*}
-Moreover, we observe that if $w_1 \sim w_2$ and $v_1 \sim v_2$, then also have $w_1 v_1 \sim w_2 v_2$ because $\phi(w_1) = \phi(w_2) := w$ and $\phi(v_1) = \phi(v_2) := v$ implies 
+Moreover, we observe that if $w_1 \sim w_2$ and $v_1 \sim v_2$, then also have $w_1 v_1 \sim w_2 v_2$ because $\phi(w_1) = \phi(w_2) =: w$ and $\phi(v_1) = \phi(v_2) =: v$ implies 
 \begin{equation*}
 \phi(w_1 v_1) = \phi(w v) = \phi(w_2 v_2).
 \end{equation*}
@@ -263,3 +263,45 @@ In contrast to that, if we switch to $\PSL{\C}$ and $\PGL{\C}$ respectively and 
 \end{equation*}
 More generally, for an arbitrary field $F$ the groups $\PSLn{n}{F}$ and $\PGLn{n}{F}$ are isomorphic, if and only if $F$ is closed under taking the $n$-th root, otherwise $\PSLn{n}{F}$ is isomorphic to a proper subgroup of $\PGLn{n}{F}$.
 \end{example}
+
+\subsection{The action of a group on a set}
+
+\begin{definition}
+\label{dfn_GroupAction}
+\index{Group!action}
+Let $\langle G, \cdot, 1 \rangle$ be a group and $S$ be an arbitrary set. A function $G \times S \to S$, $(g, x) \mapsto g x$ is called a \emph{group action} on the set $S$ (we say $G$ \emph{acts on the set} $S$), if
+\begin{equation*}
+\forall x \in S,\ g_1, g_2 \in G:\quad 1 x = x \quad \text{and} \quad (g_1 g_2) x = g_1 (g_2 x).
+\end{equation*}
+\end{definition}
+
+\begin{theorem}
+Let $G$ be a group acting on the set $S$.
+\begin{enumerate}[(i)]
+\item The relation $\sim$ on $S$ defined by
+\begin{equation}
+\label{eqn_GroupActionEquivalence}
+x_1 \sim x_2 \quad:\Leftrightarrow\quad \exists g \in G: x_1 = g x_2
+\end{equation}
+is an equivalence relation.
+\item The set $G_x := \setdef{g \in G}{gx = x}$ forms a subgroup of $G$.
+\end{enumerate}
+\end{theorem}
+
+\index{Group!orbit}
+\index{Orbit}
+\index{Group!stabilizer}
+\index{Stabilizer}
+\begin{definition}
+\label{dfn_OrbitStabilizer}
+The equivalence classes of the relation $\sim$ defined in (\ref{eqn_GroupActionEquivalence}) are called \emph{orbits} of $G$ on $S$ and the group $G_x := \setdef{g \in G}{gx = x} \le G$ is called the \emph{stabilizer} of $x$.
+\end{definition}
+
+\begin{theorem}
+\label{thm_GroupActionHom}
+The action of a group $G$ on a set $S$ induces a homomorphism from $G$ to the group of permutations on $S$ which is given by $g \mapsto (x \mapsto gx)$.
+\end{theorem}
+
+\begin{corollary}[Cayley]
+The action of a group $G$ on itself induces a monomorphism from $G$ to the group of permutations of the elements of $G$. Hence every group is isomorphic to a permutation group. In particular every finite group is isomorphic to a subgroup of a symmetric group $S_n$ with $n = |G|$.
+\end{corollary}
