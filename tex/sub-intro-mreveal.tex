@@ -2,7 +2,7 @@
 
 This section is about the great work of Douglas Arnold and Jonathan Rogness, ``Möbius transformations revealed'' \cite{arnold2008mobius}, in which the authors give a characterization of Möbius transformations in terms of stereographic projections and rigid motions of spheres 3D-space.
 
-In order to introduce stereographic projection, we first have to embed $\C$ into $\R^3$, which we do by using the map $\iota: \C \to \R^3,\ z \mapsto \left(\Re{z}, \Im{z}, 0\right)$, which means that we identify the complex plane with the plane $x_3 = 0$. Next we have to define admissible spheres:
+In order to introduce stereographic projection, we first have to embed $\C$ into $\R^3$. We do by using the map $\iota: \C \to \R^3,\ z \mapsto \left(\Re{z}, \Im{z}, 0\right)$, which means that we identify the complex plane with the plane $x_3 = 0$. Next we have to define admissible spheres:
 
 \begin{definition}
 A \emph{sphere} with center $c \in \R^3$ and radius $r > 0$ is the set $S := \setdef{x \in \R^3}{\eucnorm{x - c} = r}$. Its \emph{north-pole} is the unique point $n \in S$ with maximal $x_3$-coordinate. A sphere whose north pole lies in the upper half-space $H := \setdef{x \in \R^3}{x_3 > 0}$ is called an \emph{admissible sphere}.
@@ -17,20 +17,22 @@ Note, that the stereographic projection maps $\RS$ bijectively to every admissib
 
 \begin{theorem}
 \label{thm_MoebiusRevealed}
-A function $f : \RS \to \RS$ is a Möbius transformation, if an only if it can be obtained by stereographic projection of the $\RS$ to an admissible sphere $S \subseteq \R^3$, followed by a \emph{rigid motion}\footnote{Rigid motions are affine transformations of $\R^3$ which are only composed of rotations and translations.} T of $\R^3$ which maps $S$ to another admissible sphere $TS$, followed by inverse stereographic projection from $TS$ back to $\RS$:
+A function $\phi : \RS \to \RS$ is a Möbius transformation, if an only if it can be obtained by stereographic projection of $\RS$ to an admissible sphere $S \subseteq \R^3$, followed by a \emph{rigid motion}\footnote{Rigid motions are affine transformations of $\R^3$ which are only composed of rotations and translations.} T of $\R^3$ which maps $S$ to another admissible sphere $TS$, followed by inverse stereographic projection from $TS$ back to $\RS$:
 \begin{equation}
 \label{eqn_MoebiusRevealedForm}
-f = P_{TS}^{-1} \circ T \circ P_S.
+\phi = P_{TS}^{-1} \circ T \circ P_S.
 \end{equation}
 \end{theorem}
 \begin{proof}[Sketch of proof]
-For the proof of the theorem we will utilize Lemma~\ref{lem_MoebiusGenerators}. First we consider the four basic types of transformaions and how they can realized in the form (\ref{eqn_MoebiusRevealedForm}):
+We will only show that each Möbius transformation $\phi$ can be realized in the form $\ref{eqn_MoebiusRevealedForm}$. The fact that all maps of this form are indeed Möbius transformations can be seen either by direct calculation or by the observation that $\phi$ corresponds to map $P_S \circ \phi \circ P_S^{-1} = P_S \circ P_{TS}^{-1} \circ T$ from $S$ to itself which is a holomorphic automorphism and applying the theorem which states that the group of holomorphic automorphisms of the Riemann sphere is given exactly by all Möbius transformations.
+
+First we consider the four basic types of transformaions and how they can be realized in the form (\ref{eqn_MoebiusRevealedForm}):
 \begin{description}
-\item[Translation:] The map $z \mapsto z + \alpha,\ \alpha \in \C$ can be realized by choosing an arbitrary admissible sphere $S$ and setting $T: x \mapsto x + \iota(\alpha)$, which simply translates $S$ in a direction parallel to the $x_3 = 0$ plane by $\iota(\alpha)$.
-\item[Dilation:] The map $z \mapsto \rho z,\ \rho \in \R$ can be obtained by choosing an arbitrary admissible sphere with north pole $n$ and setting $T: x \mapsto x + \left(0, 0, (\rho-1) n_3\right)$, which moves $S$ up- ($\rho > 1$)  or downwards ($\rho < 1$) in $x_3$ direction.
+\item[Translation:] The map $z \mapsto z + \alpha,\ \alpha \in \C$ can be realized by choosing an arbitrary admissible sphere $S$ and setting $T = T_{\alpha}: x \mapsto x + \iota(\alpha)$, which simply translates $S$ in a direction parallel to the $x_3 = 0$ plane by $\iota(\alpha)$.
+\item[Dilation:] The map $z \mapsto \rho z,\ \rho \in \R$ can be obtained by choosing an arbitrary admissible sphere with north pole $n$ and setting $T = D_{\rho}: x \mapsto x + \left(0, 0, (\rho-1) n_3\right)$, which moves $S$ up- ($\rho > 1$)  or downwards ($\rho < 1$) in $x_3$ direction.
 \item[Rotation:] The map $z \mapsto \epo{\ii \theta} z,\ \theta \in (-\pi, \pi]$ can be realized by choosing an admissible sphere with center $c = \left(0, 0, c_3\right)$ with arbitrary $c_3$ and setting 
 \begin{equation*}
-T: x \mapsto 
+T = R_{\theta}: x \mapsto 
 \begin{pmatrix}
 \cos{\theta} & -\sin{\theta}            & 0\\
 \sin{\theta} & \phantom{+}\cos{\theta}  & 0\\
@@ -42,7 +44,7 @@ T: x \mapsto
 which rotates $S$ around the $x_3$ axis by an angle of $\theta$.
 \item[Inversion:] The map $z \mapsto \reci{z}$ can be realized by choosing $S$ as the unit sphere centered at the origin and setting
 \begin{equation*}
-T: x \mapsto
+T = V: x \mapsto
 \begin{pmatrix}
 1 & \phantom{+}0 & \phantom{+}0 \\
 0 & -1           & \phantom{+}0 \\
@@ -53,6 +55,16 @@ T: x \mapsto
 \end{equation*}
 which is a rotation of $S$ around the $x_1$ axis by an angle of 180 degrees.
 \end{description}
-Now we can apply Lemma~\ref{lem_MoebiusGenerators}: 
+Now, let $\phi(z) = \moebius{a}{b}{c}{d}{z}$ be an arbitrary Möbius transformation. Following the proof of Lemma~\ref{lem_MoebiusGenerators}, we again distinguish the cases $c = 0$ and $c \ne 0$. If $c = 0$ we may assume without restriction that $d = 1$ and therefore $\phi(z) = az + b$. Clearly this map can be realized in the form (\ref{eqn_MoebiusRevealedForm}) by starting with an arbitrary admissible sphere $S$ and composing $T$ out of rotation by $\arg(a)$, dilation by $\abs{a}$ (in either order), followed by translation by $b$:
+\begin{equation*}
+T := T_b \circ D_{\abs{a}} \circ R_{\arg(a)}.
+\end{equation*}
+If $c \ne 0$, we can scale the coefficients such that $c = 1$ and write $\phi$ in the slightly more complicated form
+\begin{equation*}
+\phi(z) = a + \frac{b - ad}{z + d}.
+\end{equation*}
+In this case, we choose $S$ to be the sphere with unit radius centered at the point $\iota(-d)$ and we can again compose $T$ out of rigid motions to obtain a presentation of $\phi$ in the form (\ref{eqn_MoebiusRevealedForm}): First, translation by $d$ transforms $S$ to the unit sphere centered at the origin. Thus we can indeed apply the second transformation $V$ in order to perform an inversion. Finally we apply rotation and dilation by the factor $b - ad$ followed by a translation by $a$:
+\begin{equation*}
+T := T_a \circ D_{\abs{b - ad}} \circ R_{\arg(b - ad)} \circ V \circ T_d. \qedhere
+\end{equation*}
 \end{proof}
-\todo{13}{Proof of characterization in terms of stereographic projection}
