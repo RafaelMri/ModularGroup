@@ -24,12 +24,12 @@ A function $\phi : \RS \to \RS$ is a Möbius transformation, if an only if it can
 \end{equation}
 \end{theorem}
 \begin{proof}[Sketch of proof]
-We will only show that each Möbius transformation $\phi$ can be realized in the form $\ref{eqn_MoebiusRevealedForm}$. The fact that all maps of this form are indeed Möbius transformations can be seen either by direct calculation or by the observation that $\phi$ corresponds to map $P_S \circ \phi \circ P_S^{-1} = P_S \circ P_{TS}^{-1} \circ T$ from $S$ to itself which is a holomorphic automorphism and applying the theorem which states that the group of holomorphic automorphisms of the Riemann sphere is given exactly by all Möbius transformations.
+The fact that all maps of form ($\ref{eqn_MoebiusRevealedForm}$) are indeed Möbius transformations can be seen either by direct calculation or by the observation that $\phi$ corresponds to map $P_S \circ \phi \circ P_S^{-1} = P_S \circ P_{TS}^{-1} \circ T$ from $S$ to itself. If we identify $S$ with the Riemann sphere, we can regard $\phi$ as a holomorphic automorphism of the Riemann sphere and is therefore a Möbius transformation [REFERENCE].
 
-First we consider the four basic types of transformaions and how they can be realized in the form (\ref{eqn_MoebiusRevealedForm}):
+It remains to show that every given transformation can indeed be realized in the form (\ref{eqn_MoebiusRevealedForm}). For this purpose, we first consider the four basic types of Möbius transformations:
 \begin{description}
 \item[Translation:] The map $z \mapsto z + \alpha,\ \alpha \in \C$ can be realized by choosing an arbitrary admissible sphere $S$ and setting $T = T_{\alpha}: x \mapsto x + \iota(\alpha)$, which simply translates $S$ in a direction parallel to the $x_3 = 0$ plane by $\iota(\alpha)$.
-\item[Dilation:] The map $z \mapsto \rho z,\ \rho \in \R$ can be obtained by choosing an arbitrary admissible sphere with north pole $n$ and setting $T = D_{\rho}: x \mapsto x + \left(0, 0, (\rho-1) n_3\right)$, which moves $S$ up- ($\rho > 1$)  or downwards ($\rho < 1$) in $x_3$ direction.
+\item[Dilation:] The map $z \mapsto \rho z,\ \rho > 0$ can be obtained by choosing an arbitrary admissible sphere with north pole $n$ and setting $T = D_{\rho}: x \mapsto x + \left(0, 0, (\rho-1) n_3\right)$, which moves $S$ up- ($\rho > 1$)  or downwards ($\rho < 1$) in $x_3$ direction.
 \item[Rotation:] The map $z \mapsto \epo{\ii \theta} z,\ \theta \in (-\pi, \pi]$ can be realized by choosing an admissible sphere with center $c = \left(0, 0, c_3\right)$ with arbitrary $c_3$ and setting 
 \begin{equation*}
 T = R_{\theta}: x \mapsto 
@@ -55,15 +55,15 @@ T = V: x \mapsto
 \end{equation*}
 which is a rotation of $S$ around the $x_1$ axis by an angle of 180 degrees.
 \end{description}
-Now, let $\phi(z) = \moebius{a}{b}{c}{d}{z}$ be an arbitrary Möbius transformation. Following the proof of Lemma~\ref{lem_MoebiusGenerators}, we again distinguish the cases $c = 0$ and $c \ne 0$. If $c = 0$ we may assume without restriction that $d = 1$ and therefore $\phi(z) = az + b$. Clearly this map can be realized in the form (\ref{eqn_MoebiusRevealedForm}) by starting with an arbitrary admissible sphere $S$ and composing $T$ out of rotation by $\arg(a)$, dilation by $\abs{a}$ (in either order), followed by translation by $b$:
+Now, let $\phi(z) = \moebius{a}{b}{c}{d}{z}$ be an arbitrary Möbius transformation. As in the proof of Lemma~\ref{lem_MoebiusGenerators}, if $c = 0$ we may assume without restriction that $d = 1$ and therefore $\phi(z) = az + b$. Clearly this map can be realized in the form (\ref{eqn_MoebiusRevealedForm}) by starting with an arbitrary admissible sphere $S$ and take $T$ as the composition of rotation by $\arg(a)$, dilation by $\abs{a}$ (in either order), followed by translation by $b$:
 \begin{equation*}
 T := T_b \circ D_{\abs{a}} \circ R_{\arg(a)}.
 \end{equation*}
-If $c \ne 0$, we can scale the coefficients such that $c = 1$ and write $\phi$ in the slightly more complicated form
+If $c \ne 0$, we can scale the coefficients $a,b,c,d$ such that $c = 1$ and write $\phi$ in the form
 \begin{equation*}
 \phi(z) = a + \frac{b - ad}{z + d}.
 \end{equation*}
-In this case, we choose $S$ to be the sphere with unit radius centered at the point $\iota(-d)$ and we can again compose $T$ out of rigid motions to obtain a presentation of $\phi$ in the form (\ref{eqn_MoebiusRevealedForm}): First, translation by $d$ transforms $S$ to the unit sphere centered at the origin. Thus we can indeed apply the second transformation $V$ in order to perform an inversion. Finally we apply rotation and dilation by the factor $b - ad$ followed by a translation by $a$:
+In this case, we choose $S$ to be the sphere with unit radius centered at the point $\iota(-d)$ and we compose $T$ out of the following rigid motions: First, translation by $d$ transforms $S$ to the unit sphere centered at the origin. Thus we can indeed apply $V$ as the second transformation in order to perform an inversion. Finally we apply rotation and dilation by the factor $b - ad$ followed by a translation by $a$:
 \begin{equation*}
 T := T_a \circ D_{\abs{b - ad}} \circ R_{\arg(b - ad)} \circ V \circ T_d. \qedhere
 \end{equation*}
