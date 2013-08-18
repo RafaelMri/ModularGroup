@@ -432,8 +432,9 @@ NewClass[NoncompactDisk];
 NewClass[Halfplane];
 NewClass[CompactDisk];
 
-Init[GeneralizedDisk, obj_, mat_?MatrixQ] ^:= Module[{a},
-  Assert[HermitianMatrixQ@mat && Det[mat] < 0];
+Init[GeneralizedDisk, obj_, pmat_?MatrixQ] ^:= Module[{a, mat},
+  mat=FullSimplify[pmat];
+  Assert[HermitianMatrixQ@mat && Simplify[Det[mat] < 0]];
   Mat[obj] ^= mat;
   a = mat[[1,1]];
   obj /: InstanceQ[NoncompactDisk][obj] = (a < 0);
