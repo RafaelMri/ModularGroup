@@ -1,6 +1,6 @@
 \subsection{Stereographic projection}
 
-This section is about the great work of Douglas Arnold and Jonathan Rogness, ``Möbius transformations revealed'' \cite{arnold2008mobius}, in which the authors give a characterization of Möbius transformations in terms of stereographic projections and rigid motions of spheres 3D-space.
+This section is about the great work of Douglas Arnold and Jonathan Rogness, ``Möbius transformations revealed'' \cite{arnold2008mobius}, in which the authors give a characterization of Möbius transformations in terms of stereographic projections and rigid motions of spheres in 3D-space.
 
 In order to introduce stereographic projection, we first have to embed $\C$ into $\R^3$. We do by using the map 
 \begin{equation}
@@ -9,7 +9,7 @@ In order to introduce stereographic projection, we first have to embed $\C$ into
 z  & \mapsto & \left(\Re{z}, \Im{z}, 0\right)
 \end{array}\right.,
 \end{equation}
-which means that we identify the complex plane with the plane $x_3 = 0$. Next we have to define admissible spheres:
+which means that we identify the complex plane with the plane $x_3 = 0$ in $\R^3$. Next we have to define admissible spheres:
 
 \index{Admissible sphere}
 \begin{definition}
@@ -19,7 +19,7 @@ A \emph{sphere} with center $c \in \R^3$ and radius $r > 0$ is the set $S := \se
 \index{Stereographic projection}
 \begin{definition}
 \label{dfn_StereoProject}
-Let $S$ be an admissible sphere and $n \in S$ be its north pole. If $x \in S \setminus \{n\}$, then denote by $L_{x,n}$ the unique line joining $x$ with $n$ and by $y$ the intersection point of $L_{x,n}$ with $\iota(\C)$. Now, \emph{stereographic projection} with regard to $S$ is the map $P_S : S \to \EC$ defined as $P_S(x) := \inv{\iota}(y)$ for $x \ne n$ and $P_S(n) := \infty$.
+Let $S$ be an admissible sphere and $n \in S$ be its north pole. If $x \in S \setminus \{n\}$, then denote by $L_{x,n}$ the unique line joining $x$ with $n$ and by $y$ the intersection point of $L_{x,n}$ with the plane $\iota(\C)$. Now, \emph{stereographic projection} with regard to $S$ is the map $P_S : S \to \EC$ defined as $P_S(x) := \inv{\iota}(y)$ for $x \ne n$ and $P_S(n) := \infty$.
 \end{definition}
 
 \begin{figure}
@@ -29,8 +29,10 @@ Let $S$ be an admissible sphere and $n \in S$ be its north pole. If $x \in S \se
 \label{fig_StereoProj}
 \end{figure}
 
+\begin{remark}
+\label{rem_RiemannSphere}
 \index{Riemann sphere}
-Note, that stereographic projection with regard to any admissible sphere $S \subseteq \R^3$ maps $S$ bijectively to $\EC$. Of course the most natural choice for $S$ in this context is the unit sphere $\UnitSphere := \setdef{x \in \R^3}{\eucnorm{x} = 1}$ having the advantage, that stereographic projection follows the simple formula
+Stereographic projection with regard to any admissible sphere $S \subseteq \R^3$ maps $S$ bijectively to $\EC$. Of course the most natural choice for $S$ in this context is the unit sphere $\UnitSphere := \setdef{x \in \R^3}{\eucnorm{x} = 1}$ having the advantage, that stereographic projection follows the simple formula
 \begin{equation}
 P_{\UnitSphere}:
 \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} 
@@ -43,6 +45,7 @@ P_{\UnitSphere}^{-1}: z \mapsto
 \begin{pmatrix}2 \Re{z} \\ 2 \Im{z} \\ \abs{z}^2 - 1\end{pmatrix}.
 \end{equation}
 By pointwise identifying $\EC$ with $S_1$ using the above two mappings, we obtain the $\emph{Riemann sphere}$ model of the extended complex plane. One of its benefits is, that certain functions $\EC \to \EC$ can be interpreted nicely as simple rotations of the Riemann sphere.
+\end{remark}
 
 \begin{example}
 \label{ex_StereoProjInversion}
@@ -58,18 +61,18 @@ In the first three rows of Figure~\ref{fig_StereoProj} on the left, the action o
 \begin{equation*}
 f(z) = \moebius{\ii}{1}{}{\ii}{z}
 \end{equation*}
-and can be considered as a quarter turn of the Riemann sphere around the real axis. In contrast to its better known ``brother'', the \emph{Cayley transform}, which is given by
+and can be either considered as a quarter turn of the Riemann sphere around the real axis or as ``half of an inversion'', since indeed $f^2(z) = f(f(z)) = \reci{z}$. In contrast to its better known brother, the \emph{Cayley transform} given by
 \begin{equation*}
 c(z) = -\ii f(z) = \frac{z - \ii}{z + \ii},
 \end{equation*}
 $f$ leaves the points $\{\pm 1\}$ fixed, which often beneficial for visualization purposes.
 \end{example}
 
-We have now seen exemplarily, that rotation of the Riemann sphere induces a whole class of interesting maps. If we are willing to allow not only rotations of the Riemann sphere but also translations, we indeed obtain a new characterization of Möbius transformations, as stated in the next theorem.
+We have now seen exemplarily, that rotation of the Riemann sphere induces quite a few interesting maps. If we are willing to allow not only rotations of the Riemann sphere but also translations, we indeed obtain a new characterization of Möbius transformations, as stated in the next theorem.
 
-\index{Rigid motion}
 \begin{definition}
-A \emph{rigid motion} of $\R^n$ is an affine isometric transformation of $\R^n$ which is obtained purely by composition of rotations and translations.
+\index{Rigid motion}
+A \emph{rigid motion} of $\R^3$ is an affine isometric transformation of $\R^3$ which is obtained purely by composition of rotations and translations.
 \end{definition}
 
 \begin{theorem}
