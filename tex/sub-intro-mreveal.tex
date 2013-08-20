@@ -25,7 +25,7 @@ Let $S$ be an admissible sphere and $n \in S$ be its north pole. If $x \in S \se
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{figures/stereo-proj-1}
-\caption{Inversion $z \mapsto \reci{z}$ can be interpreted as rotation of the Riemann sphere by $180^{\circ}$ around the real axis. It maps the upper to the lower halfplane (left) and the unit circle to the set of numbers $\abs{z} > 1$ (right).}
+\caption{Inversion $z \mapsto \reci{z}$ can be interpreted as rotation of the Riemann sphere by $180^{\circ}$ around the antipodal points $\pm 1$. It maps the upper to the lower halfplane (left) and the unit circle to the set of numbers $\abs{z} > 1$ (right).}
 \label{fig_StereoProj}
 \end{figure}
 
@@ -49,7 +49,7 @@ By pointwise identifying $\EC$ with $S_1$ using the above two mappings, we obtai
 
 \begin{example}
 \label{ex_StereoProjInversion}
-Consider the map $f: z \mapsto \reci{z}$. The first row of Figure~\ref{fig_StereoProj} shows the upper halfplane $U$ on the left and the unit disk $D$ on the right together with their images under reverse stereographic projection. We see that both, $U$ and $D$ correspond to a certain ``halfsphere'' of the Riemann sphere. If we rotate these halfspheres around the $x_1$ axis (leaving the points $\{\pm 1\}$ fixed) and continuously perform stereographic projection, we see that after a half turn -- in the last row of Figure~\ref{fig_StereoProj} -- we end up with $f(U)$, the lower halfplane and $f(D)$, the set of points $z$ with $\abs{z} > 1$. Thus, $z \mapsto \reci{z}$ can be interpreted as rotation of the Riemann sphere around the real axis by $180^{\circ}$.
+Consider the map $f: z \mapsto \reci{z}$. The first row of Figure~\ref{fig_StereoProj} shows the upper halfplane $U$ on the left and the unit disk $D$ on the right together with their images under reverse stereographic projection. We see that both, $U$ and $D$ correspond to a certain ``halfsphere'' of the Riemann sphere. If we rotate these halfspheres around the $x_1$ axis (leaving the points $\{\pm 1\}$ fixed) and continuously perform stereographic projection, we see that after a half turn -- in the last row of Figure~\ref{fig_StereoProj} -- we end up with $f(U)$, the lower halfplane and $f(D)$, the set of points $z$ with $\abs{z} > 1$. Thus, $z \mapsto \reci{z}$ can be interpreted as rotation of the Riemann sphere around the $x_1$ axis by $180^{\circ}$.
 \end{example}
 
 Other examples for transformations corresponding to a half-turn of the Riemann sphere are $z \mapsto -z$ (rotation around the $x_3$ axis) and $T: z \mapsto -\reci{z}$ (rotation around the $x_2$ axis), a function which maps the upper halfplane to itself and which will be important in the study of the modular group -- see Section~\ref{sec_ModularGroupGenRel}.  
@@ -61,7 +61,7 @@ In the first three rows of Figure~\ref{fig_StereoProj} on the left, the action o
 \begin{equation*}
 f(z) = \moebius{\ii}{1}{}{\ii}{z}
 \end{equation*}
-and can be either considered as a quarter turn of the Riemann sphere around the real axis or as ``half of an inversion'', since indeed $f^2(z) = f(f(z)) = \reci{z}$. In contrast to its better known brother, the \emph{Cayley transform} given by
+and can be either considered as a quarter turn of the Riemann sphere around the $x_1$ axis or as ``half of an inversion'', since indeed $f^2(z) = f(f(z)) = \reci{z}$. In contrast to its better known brother, the \emph{Cayley transform} given by
 \begin{equation*}
 c(z) = -\ii f(z) = \frac{z - \ii}{z + \ii},
 \end{equation*}
