@@ -185,6 +185,11 @@ GDiskNPoints::usage = StringJoin[
   "GDiskNPoints is an option of GDisk and GCircle. It specifies, how many points are used ",
   "in the approximation of the boundary of a NoncompactDisk with a regular n-gon."
 ];
+InitialTransformation::usage = StringJoin[
+  "InitialTransformation is an option of GDisk and GCircle. ",
+  "If set to a MoebiusTransformation t, ",
+  "all input of GDisk and GCircle is first transformed by t."
+];
 FinalTransformation::usage = StringJoin[
   "FinalTransformation is an option of GDisk and GCircle. ",
   "If set to a MoebiusTransformation t, ",
@@ -542,8 +547,23 @@ GDiskCocenter[disk] ^= (
 );
 
 (* ----------------------------------------------------- Drawing algorithms *)
-Options[GDisk] ^= {GDiskClipRadius->1024, GDiskNPoints->64, FinalTransformation->Null};
-Options[GCircle] ^= {GDiskClipRadius->1024, FinalTransformation->Null};
+Options[GDisk] ^= {
+  GDiskClipRadius->1024, 
+  GDiskNPoints->64, 
+  InitialTransformation->Null,
+  FinalTransformation->Null
+};
+Options[GCircle] ^= {
+  GDiskClipRadius->1024,
+  InitialTransformation->Null,
+  FinalTransformation->Null
+};
+
+initTransformMat[t_] := Which[
+  TrueQ[InstanceQ[MoebiusTransformation]@t], Mat@t,
+  MatrixQ@t, t,
+  True, IdentityMatrix@2
+];
 
 finalTransformMat[t_] := Which[
   TrueQ[InstanceQ[MoebiusTransformation]@t], Mat@t,
@@ -555,8 +575,10 @@ GDisk[disk_?(InstanceQ[GeneralizedDisk]), opts:OptionsPattern[]] := (
   GDisk[Mat@disk, opts]
 );
 
-GDisk[mp_?MatrixQ, opts:OptionsPattern[]] := Module[{t, m},
-  t = Inv@finalTransformMat[OptionValue[FinalTransformation]];
+GDisk[mp_?MatrixQ, opts:OptionsPattern[]] := Module[{tinit, tfinal, t, m},
+  tinit = Inv@initTransformMat[OptionValue[InitialTransformation]];
+  tfinal = Inv@finalTransformMat[OptionValue[FinalTransformation]];
+  t = tinit.tfinal;
   m = ConjugateTranspose[t].mp.t;
   Switch[class[m],
     1, (* CompactDisk *)
@@ -598,10 +620,11 @@ udTransforms[mlist_] := Module[{c,r},
 ]
 
 GDisk[disk_?(InstanceQ[GeneralizedDisk]), tlist_List, opts:OptionsPattern[]] :=
-Module[{md, mf, tlistf, mlists},
+Module[{md, mf, mi, tlistf, mlists},
   md = Mat@disk;
+  mi = Inv@initTransformMat[OptionValue[InitialTransformation]];
   mf = Inv@finalTransformMat[OptionValue[FinalTransformation]];
-  tlistf = Mat@Inv[#].mf& /@ tlist;
+  tlistf = mi.Mat@Inv[#].mf& /@ tlist;
   mlists = SplitBy[ConjugateTranspose[#].md.#& /@ tlistf, class];
   Table[
     If[class[mlist[[1]]] == 1,
@@ -615,8 +638,10 @@ GCircle[disk_?(InstanceQ[GeneralizedDisk]), opts:OptionsPattern[]] := (
   GCircle[Mat@disk, opts]
 );
 
-GCircle[mp_?MatrixQ, opts:OptionsPattern[]] := Module[{t, m},
-  t = Inv@finalTransformMat[OptionValue[FinalTransformation]];
+GCircle[mp_?MatrixQ, opts:OptionsPattern[]] := Module[{tinit, tfinal, t, m},
+  tinit = Inv@initTransformMat[OptionValue[InitialTransformation]];
+  tfinal = Inv@finalTransformMat[OptionValue[FinalTransformation]];
+  t = tinit.tfinal;
   m = ConjugateTranspose[t].mp.t;
   If[class[m] == 0,
     (* Halfplane *) 
@@ -639,10 +664,11 @@ GCircle[mp_?MatrixQ, opts:OptionsPattern[]] := Module[{t, m},
 ];
 
 GCircle[disk_?(InstanceQ[GeneralizedDisk]), tlist_List, opts:OptionsPattern[]] :=
-Module[{md, mf, tlistf, mlists},
+Module[{md, mi, mf, tlistf, mlists},
   md = Mat@disk;
+  mi = Inv@initTransformMat[OptionValue[InitialTransformation]];
   mf = Inv@finalTransformMat[OptionValue[FinalTransformation]];
-  tlistf = Mat@Inv[#].mf& /@ tlist;
+  tlistf = mi.Mat@Inv[#].mf& /@ tlist;
   mlists = SplitBy[ConjugateTranspose[#].md.#& /@ tlistf, class];
   Table[
     If[class[mlist[[1]]] == 0,
