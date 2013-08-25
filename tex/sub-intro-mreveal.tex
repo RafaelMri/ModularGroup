@@ -58,11 +58,13 @@ Other examples for transformations corresponding to a half-turn of the Riemann s
 \index{Cayley transform}
 \label{ex_StereoProjCayleyMap}
 In the first three rows of Figure~\ref{fig_StereoProj} on the left, the action of yet another interesting transformation can be seen, which maps the upper halfplane to the unit disk. It is given by
-\begin{equation*}
+\begin{equation}
+\label{eqn_ModCayleyTransform}
 f(z) = \moebius{\ii}{1}{}{\ii}{z}
-\end{equation*}
+\end{equation}
 and can be either considered as a quarter turn of the Riemann sphere around the $x_1$ axis or as ``half of an inversion'', since indeed $f^2(z) = f(f(z)) = \reci{z}$. In contrast to its better known brother, the \emph{Cayley transform} given by
 \begin{equation*}
+\label{eqn_CayleyTransform}
 c(z) = -\ii f(z) = \frac{z - \ii}{z + \ii},
 \end{equation*}
 $f$ leaves the points $\{\pm 1\}$ fixed, which often beneficial for visualization purposes.
