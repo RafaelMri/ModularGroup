@@ -96,6 +96,14 @@ TUWord::usage = StringJoin[
   "\nThe option QuotientFunction is supported."
 ];
 
+FundamentalRepresentative::usage = StringJoin[
+  "{\!\(\*SubscriptBox[\(z\), \(0\)]\),m} = FundamentalRepresentative[z] ",
+  "returns the unique point \!\(\*SubscriptBox[\(z\), \(0\)]\) in the classical fundamental domain ",
+  "equivalent to z in the upper halfplane ",
+  "together with the according transformation matrix such that ",
+  "New[ModularTransformation, m][\!\(\*SubscriptBox[\(z\), \(0\)]\)] = z."
+];
+
 (* Some frequently used ModularTransformations *)
 mtId::usage = StringJoin[
   "mtId is the identity element ",
@@ -374,6 +382,20 @@ TRWord[mat_?MatrixQ] := Module[{factors},
     })
   ]
 ];
+
+FundamentalRepresentative[z_] := 
+  Module[{z0, m, mT, n},
+    z0 = If[VectorQ[z], z, {z, 1}];
+    m = IdentityMatrix[2];
+    mT = {{0, -1}, {1, 0}};
+    If[Abs[z0[[1]]] < Abs[z0[[2]]], z0 = mT.z0; m = m.mT];
+    While[Abs@Re@z0 > 1/2,
+      n = Quotient[Re[z0], 1, -1/2];
+      z0 = z0 - n; m = m.{{1, n}, {0, 1}};
+      If[Abs[z0] < 1, z0 = -1/z0; m = mT];
+    ];
+    {Inhom@z0, m}
+  ];
 
 
 (* --------------------------------------------------- Enumeration algorithms *)
