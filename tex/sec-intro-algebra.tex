@@ -170,10 +170,10 @@ Let $\presentation{\Syms}{R}$ be a presentation of the group $G$. If $H$ is any 
 \subsection{Free products}
 
 \index{Free!product}
-Let $\langle G_i, \cdot, e_i \rangle_{i \in I}$ a family of pairwise disjoint groups, \ie $i \ne j \Rightarrow G_i \cap G_j = \emptyset$. We define the \emph{free product} of the family of groups $(G_i)_{i \in I}$ by a construction in terms of generators and relations (see Definition~\ref{dfn_GrpConstructGenRel}) as follows. As the set of generators we choose the alphabet $\Syms = \bigcup_{i \in I} G_i$ and as the set of relations we take all the relations coming from any of the groups $G_i$. Note, that a priori the neutral elements $e_i \in G_i$ are all different symbols, but the final factorization by the normal subgroup $N$ automatically identifies them with each other, as $N$ includes all the $e_i$ as trivial relations.
+Let $\langle G_i, \cdot, e_i \rangle_{i \in I}$ a family of pairwise disjoint groups, \ie $G_i \cap G_j = \emptyset$ for $i \ne j$. We define the \emph{free product} of the family of groups $(G_i)_{i \in I}$ by a construction in terms of generators and relations (see Definition~\ref{dfn_GrpConstructGenRel}) as follows. As the set of generators we choose the alphabet $\Syms = \bigcup_{i \in I} G_i$ and as the set of relations we take all the relations coming from any of the groups $G_i$. Note, that a priori the neutral elements $e_i \in G_i$ are all different symbols, but the final factorization by the normal subgroup $N$ automatically identifies them with each other, as $N$ includes all the $e_i$ as trivial relations.
 
 \begin{definition}
-Let $(G_i)_{i \in I}$ be a family of disjoint groups. For every $i \in I$, let $\overline{\phi}_i$ be the unique extension of the identity map on $G_i$ to a homomorphism $\FreeGrp{G_i} \to G_i$ according to Theorem~\ref{thm_FreeGrpUniqueHom}\footnote{In other words, $\overline{\phi}_i$ is the map which evaluates group words over the alphabet $G_i$ to concrete elements of $G_i$ in the obvious way.}. The \emph{free product} of the family $(G_i)_{i \in I}$ is defined as
+Let $(G_i)_{i \in I}$ be a family of disjoint groups. For every $i \in I$, let $\overline{\phi}_i$ be the unique extension of the identity map on $G_i$ to a homomorphism $\FreeGrp{G_i} \to G_i$ according to Theorem~\ref{thm_FreeGrpUniqueHom}.\footnote{In other words, $\overline{\phi}_i$ is the map which evaluates group words over the alphabet $G_i$ to concrete elements of $G_i$ in the obvious way.} The \emph{free product} of the family $(G_i)_{i \in I}$ is defined as
 \begin{equation*}
 {\prod_{i \in I}}^{\star} G_i := \presentation{\Syms}{R}, 
 \quad \text{where } \Syms = \bigcup_{i \in I} G_i \text{ and } R = \bigcup_{i \in I} \ker \overline{\phi}_i.
@@ -241,7 +241,7 @@ As above, let $F$ be a field, $R$ a ring and $n > 0$. The \emph{projective gener
 
 \begin{example}
 \label{ex_ProjAndGenLinGrp}
-Consider a matrix $M \in \SL{\R}$. The equivalence class $[M]_{\sim} \in \PSL{\R}$ consists precisely of the two matrices $M$ and $-M$, whereas the equivalence class $[M]_{\sim} \in \PGL{\R}$ is nothing but the set $\setdef{\lambda M}{\lambda \in \R \setminus \{0\}}$. For a clearer distinction of these equivalence classes, let us introduce the notation 
+Consider a matrix $M \in \SL{\R}$. The equivalence class $[M]_{\sim} \in \PSL{\R}$ consists precisely of the two matrices $M$ and $-M$, whereas the equivalence class $[M]_{\sim} \in \PGL{\R}$ is juts the set $\setdef{\lambda M}{\lambda \in \R \setminus \{0\}}$. For a clearer distinction of these equivalence classes, let us introduce the notation 
 \begin{eqnarray*}
 {}_{\pm}M     &:=& [M]_{\sim} \in \PSL{\R} \quad \text{and} \\
 {}_{\lambda}M &:=& [M]_{\sim} \in \PGL{\R}.
@@ -269,7 +269,7 @@ More generally, for an arbitrary field $F$ the groups $\PSLn{n}{F}$ and $\PGLn{n
 \begin{definition}
 \label{dfn_GroupAction}
 \index{Group!action}
-Let $\langle G, \cdot, 1 \rangle$ be a group and $S$ be an arbitrary set. A function $G \times S \to S$, $(g, x) \mapsto g x$ is called a \emph{group action} on the set $S$ (alternatively we say $G$ \emph{acts on the set} $S$), if
+Let $\langle G, \cdot, 1 \rangle$ be a group and $S$ be an arbitrary set. A function $G \times S \to S$, $(g, x) \mapsto g x$ is called a \emph{group action} of $G$ on the set $S$ (alternatively we say $G$ \emph{acts on the set} $S$), if
 \begin{equation*}
 \forall x \in S,\ g_1, g_2 \in G:\quad 1 x = x \quad \text{and} \quad (g_1 g_2) x = g_1 (g_2 x).
 \end{equation*}
@@ -284,7 +284,7 @@ Let $G$ be a group acting on the set $S$.
 x_1 \sim x_2 \quad:\Leftrightarrow\quad \exists g \in G: x_1 = g x_2
 \end{equation}
 is an equivalence relation.
-\item The set $G_x := \setdef{g \in G}{gx = x}$ forms a subgroup of $G$.
+\item For all $x \in S$ the set $G_x := \setdef{g \in G}{gx = x}$ forms a subgroup of $G$.
 \end{enumerate}
 \end{theorem}
 

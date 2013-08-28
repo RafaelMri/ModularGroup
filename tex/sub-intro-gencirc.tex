@@ -1,7 +1,7 @@
 \subsection{Generalized circles}
 
 \index{Generalized circle}
-From the geometric point of view Möbius transformations have the beautiful property that they preserve generalized circles. \emph{Generalized circles} are either circles (in the usual sense) or lines on the complex plane $\C$. They can also be thought of circles on the Riemann sphere (\ie the extended complex plane $\EC$ projected to the unit sphere $\UnitSphere$, see Remark~\ref{rem_RiemannSphere}), where lines on the complex plane have a one-to-one correspondence to circles through the point $\infty$ on the Riemann sphere. In order to give an exact definition, we first make the following considerations:
+From the geometric point of view Möbius transformations have the beautiful property that they preserve generalized circles. \emph{Generalized circles} are either circles (in the usual sense) or lines on the complex plane $\C$. They can also be thought of circles on the Riemann sphere (\ie the extended complex plane $\EC$ projected to the unit sphere $\UnitSphere$, see Remark~\ref{rem_RiemannSphere}), where lines on the complex plane stand in a one-to-one correspondence to circles through the point $\infty$ on the Riemann sphere. In order to give an exact definition, we first make the following considerations:
 
 A circle with center $m \in \C$ and radius $r > 0$ can be described as the set of points $z \in \C$ for which
 \begin{equation*}
@@ -45,11 +45,12 @@ To conclude our considerations we finally note that equation (\ref{eqn_GenCircle
 The matrix in this equation is Hermitian and has a negative determinant, because of the condition $BC - AD > 0$ from above. We can now give an exact definition for generalized circles.
 
 \begin{definition}
-Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$. A \emph{generalized circle} is the set of solutions $z \in \C$ to
+Let $M = \smallmat{A}{B}{C}{D} \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$. A \emph{generalized circle} is the set of solutions $z \in \C$ to
 \begin{equation}
 \label{eqn_GenCircleMat}
-\rvec{\conj{z}}{1} \cdot M \cdot \cvec{z}{1} = 0.
+\rvec{\conj{z}}{1} \cdot M \cdot \cvec{z}{1} = 0
 \end{equation}
+plus eventually the point $\infty$, if and only if $A = 0$.\footnote{In this case, the generalized circle corresponds to a line on the complex plane.}
 \end{definition}
 
 \begin{remark}

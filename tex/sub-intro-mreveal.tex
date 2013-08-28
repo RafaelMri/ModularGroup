@@ -2,14 +2,18 @@
 
 This section is about the great work of Douglas Arnold and Jonathan Rogness, ``Möbius transformations revealed'' \cite{arnold2008mobius}, in which the authors give a characterization of Möbius transformations in terms of stereographic projections and rigid motions of spheres in 3D-space.
 
-In order to introduce stereographic projection, we first have to embed $\C$ into $\R^3$. We do by using the map 
+\index{Euclidean norm}
+In order to introduce stereographic projection, we first have to embed $\C$ into $\R^3$. We do so by using the map 
 \begin{equation}
 \iota : \left\{\begin{array}{ccc}
 \C & \to & \R^3 \\
 z  & \mapsto & \left(\Re{z}, \Im{z}, 0\right)
 \end{array}\right.,
 \end{equation}
-which means that we identify the complex plane with the plane $x_3 = 0$ in $\R^3$. Next we have to define admissible spheres:
+which means that we identify the complex plane with the plane $x_3 = 0$ in $\R^3$. Additionally we equip $R^3$ with the standard Euclidean norm:
+\begin{equation}
+\eucnorm{x} := \sqrt{x_1^2 + x_2^2 + x_3^2}, \quad x \in \R^3.
+\end{equation}
 
 \index{Admissible sphere}
 \begin{definition}
@@ -24,7 +28,7 @@ Let $S$ be an admissible sphere and $n \in S$ be its north pole. If $x \in S \se
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/stereo-proj-1}
+\includegraphics[width=0.9\textwidth]{figures/stereo-proj-1}
 \caption{Inversion $z \mapsto \reci{z}$ can be interpreted as rotation of the Riemann sphere by $180^{\circ}$ around the antipodal points $\pm 1$. It maps the upper to the lower halfplane (left) and the unit circle to the set of numbers $\abs{z} > 1$ (right).}
 \label{fig_StereoProj}
 \end{figure}
@@ -34,12 +38,14 @@ Let $S$ be an admissible sphere and $n \in S$ be its north pole. If $x \in S \se
 \index{Riemann sphere}
 Stereographic projection with regard to any admissible sphere $S \subseteq \R^3$ maps $S$ bijectively to $\EC$. Of course the most natural choice for $S$ in this context is the unit sphere $\UnitSphere := \setdef{x \in \R^3}{\eucnorm{x} = 1}$ having the advantage, that stereographic projection follows the simple formula
 \begin{equation}
+\label{eqn_StdStereoProj}
 P_{\UnitSphere}:
 \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} 
 \mapsto \frac{x_1 + \\i x_2}{1 - x_3}.
 \end{equation}
 Also reverse stereographic projection can be done easily using the unit sphere:
 \begin{equation}
+\label{eqn_RevStdStereoProj}
 P_{\UnitSphere}^{-1}: z \mapsto 
 \reci{\abs{z}^2 + 1} 
 \begin{pmatrix}2 \Re{z} \\ 2 \Im{z} \\ \abs{z}^2 - 1\end{pmatrix}.
@@ -49,10 +55,46 @@ By pointwise identifying $\EC$ with $S_1$ using the above two mappings, we obtai
 
 \begin{example}
 \label{ex_StereoProjInversion}
-Consider the map $f: z \mapsto \reci{z}$. The first row of Figure~\ref{fig_StereoProj} shows the upper halfplane $U$ on the left and the unit disk $D$ on the right together with their images under reverse stereographic projection. We see that both, $U$ and $D$ correspond to a certain ``halfsphere'' of the Riemann sphere. If we rotate these halfspheres around the $x_1$ axis (leaving the points $\{\pm 1\}$ fixed) and continuously perform stereographic projection, we see that after a half turn -- in the last row of Figure~\ref{fig_StereoProj} -- we end up with $f(U)$, the lower halfplane and $f(D)$, the set of points $z$ with $\abs{z} > 1$. Thus, $z \mapsto \reci{z}$ can be interpreted as rotation of the Riemann sphere around the $x_1$ axis by $180^{\circ}$.
+Consider the map $f: z \mapsto \reci{z}$ and the map $V: \UnitSphere \to \UnitSphere$, which rotates the Riemann sphere around the $x_1$ axis by $180^{\circ}$:
+\begin{equation}
+\label{eqn_RiemannX1Rotation}
+V: x \mapsto
+\begin{pmatrix}
+1 & \phantom{+}0 & \phantom{+}0 \\
+0 & -1           & \phantom{+}0 \\
+0 & \phantom{+}0 & -1
+\end{pmatrix}
+\cdot
+\begin{pmatrix}x_1 \\ x_2 \\ x_3 \end{pmatrix}.
+\end{equation}
+The first row of Figure~\ref{fig_StereoProj} shows the upper halfplane $U$ on the left and the unit disk $D$ on the right together with their images under reverse stereographic projection. We see that both, $U$ and $D$ correspond to a certain ``halfsphere'' of the Riemann sphere. If we rotate these halfspheres around the $x_1$ axis (leaving the points $\{\pm 1\}$ fixed) and continuously perform stereographic projection, we see that after a half turn (in the last row of Figure~\ref{fig_StereoProj}) we end up with $f(U)$, the lower halfplane and $f(D)$, the set of points $z$ with $\abs{z} > 1$. One might wonder if this works the same way for every $z \in  \EC$ and indeed, $f: z \mapsto \reci{z}$ can be interpreted as rotation of the Riemann sphere around the $x_1$ axis by $180^{\circ}$ in the following sense:
+\begin{equation*}
+f = P_{\UnitSphere} \circ V \circ P_{\UnitSphere}^{-1}.
+\end{equation*}
+We show this by a simple calculation, using the fact that $\reci{z} = \frac{\conj{z}}{\abs{z}^2}$ as well as (\ref{eqn_RevStdStereoProj}) and noting that for the case $z = \infty$, limits have to be introduced appropriately:
+\begin{IEEEeqnarray*}{rCcCl}
+(P_{\UnitSphere}^{-1} \circ f)(z)
+&=& \reci{\reci{\abs{z}^2} + 1} 
+\begin{pmatrix}
+  2 \Re{\reci{z}} \\ 2 \Im{\reci{z}} \\ \reci{\abs{z}^2} - 1
+\end{pmatrix}
+&=& \frac{\abs{z}^2}{1 + \abs{z}^2}
+\begin{pmatrix}
+  2 \reci{\abs{z}^2} \Re{\conj{z}} \\
+  2 \reci{\abs{z}^2} \Im{\conj{z}} \\
+  \frac{1 - \abs{z}^2}{\abs{z}^2}
+\end{pmatrix} 
+\\
+&=&\reci{\abs{z}^2 + 1}
+\begin{pmatrix}
+  \phantom{+}2 \Re{z} \\ -2 \Im{z} \\ -\abs{z}^2 + 1
+\end{pmatrix}
+&=&
+(V \circ P_{\UnitSphere}^{-1})(z).
+\end{IEEEeqnarray*}
 \end{example}
 
-Other examples for transformations corresponding to a half-turn of the Riemann sphere are $z \mapsto -z$ (rotation around the $x_3$ axis) and $T: z \mapsto -\reci{z}$ (rotation around the $x_2$ axis), a function which maps the upper halfplane to itself and which will be important in the study of the modular group -- see Section~\ref{sec_ModularGroupGenRel}.  
+Other examples for transformations corresponding to a half-turn of the Riemann sphere are $z \mapsto -z$ (rotation around the $x_3$ axis) and $T: z \mapsto -\reci{z}$ (rotation around the $x_2$ axis; as product of half turns around the $x_1$ and $x_3$ axes). $T$ is a function which maps the upper halfplane to itself and which will be important in the study of the modular group in Section~\ref{sec_ModularGroupGenRel}.  
 
 \begin{example}
 \index{Cayley transform}
@@ -74,19 +116,19 @@ We have now seen exemplarily, that rotation of the Riemann sphere induces quite 
 
 \begin{definition}
 \index{Rigid motion}
-A \emph{rigid motion} of $\R^3$ is an affine isometric transformation of $\R^3$ which is obtained purely by composition of rotations and translations.
+A \emph{rigid motion} of $\R^3$ is an affine transformation of $\R^3$ which is obtained purely by composition of rotations and translations.
 \end{definition}
 
 \begin{theorem}
 \label{thm_MoebiusRevealed}
-A function $\phi : \EC \to \EC$ is a Möbius transformation, if an only if it can be obtained by reverse stereographic projection of $\EC$ to an admissible sphere $S \subseteq \R^3$, followed by a rigid motion T of $\R^3$ which maps $S$ to another admissible sphere $TS$, followed by stereographic projection from $TS$ back to $\EC$:
+A function $\phi : \EC \to \EC$ is a Möbius transformation, if and only if it can be obtained by reverse stereographic projection of $\EC$ to an admissible sphere $S \subseteq \R^3$, followed by a rigid motion T of $\R^3$ which maps $S$ to another admissible sphere $TS$, followed by stereographic projection from $TS$ back to $\EC$:
 \begin{equation}
 \label{eqn_MoebiusRevealedForm}
 \phi = P_{TS} \circ T \circ P_S^{-1}.
 \end{equation}
 \end{theorem}
 \begin{proof}[Sketch of proof]
-The fact that all maps of form ($\ref{eqn_MoebiusRevealedForm}$) are indeed Möbius transformations can be seen either by direct calculation or by the observation that $\phi$ corresponds to map $P_S \circ \phi \circ P_S^{-1} = P_S \circ P_{TS}^{-1} \circ T$ from $S$ to itself. If we identify $S$ with the Riemann sphere, we can regard $\phi$ as a holomorphic automorphism of the Riemann sphere which is therefore a Möbius transformation [REFERENCE].
+The fact that all maps of form ($\ref{eqn_MoebiusRevealedForm}$) are indeed Möbius transformations can be seen either by direct calculation or by the observation that $\phi$ corresponds to the map $P_S^{-1} \circ \phi \circ P_S = P_S^{-1} \circ P_{TS} \circ T$ from $S$ to itself. If we identify $S$ with the Riemann sphere, we can regard $\phi$ as a holomorphic automorphism of the Riemann sphere which is therefore a Möbius transformation [REFERENCE].
 
 It remains to show that every given transformation can indeed be realized in the form (\ref{eqn_MoebiusRevealedForm}). For this purpose, we first consider the four basic types of Möbius transformations:
 \begin{description}
@@ -104,18 +146,7 @@ T = R_{\theta}: x \mapsto
 \begin{pmatrix}x_1 \\ x_2 \\ x_3 \end{pmatrix},
 \end{equation*}
 which rotates $S$ around the $x_3$ axis by an angle of $\theta$.
-\item[Inversion:] We have seen in Example~\ref{ex_StereoProjInversion} that the map $z \mapsto \reci{z}$ can be realized by choosing $S$ as the unit sphere $\UnitSphere$ and setting
-\begin{equation*}
-T = V: x \mapsto
-\begin{pmatrix}
-1 & \phantom{+}0 & \phantom{+}0 \\
-0 & -1           & \phantom{+}0 \\
-0 & \phantom{+}0 & -1
-\end{pmatrix}
-\cdot
-\begin{pmatrix}x_1 \\ x_2 \\ x_3 \end{pmatrix},
-\end{equation*}
-which is a rotation of $S$ around the $x_1$ axis by an angle of $180^{\circ}$.
+\item[Inversion:] We have seen in Example~\ref{ex_StereoProjInversion} that the map $z \mapsto \reci{z}$ can be realized by choosing $S$ as the unit sphere $\UnitSphere$ and setting $T = V$ -- as defined in (\ref{eqn_RiemannX1Rotation}) -- which is a rotation of $\UnitSphere$ around the $x_1$ axis by an angle of $180^{\circ}$.
 \end{description}
 Now, let $\phi(z) = \moebius{a}{b}{c}{d}{z}$ be an arbitrary Möbius transformation. As in the proof of Lemma~\ref{lem_MoebiusGenerators}, if $c = 0$ we may assume without restriction that $d = 1$ and therefore $\phi(z) = az + b$. Clearly this map can be realized in the form (\ref{eqn_MoebiusRevealedForm}) by starting with an arbitrary admissible sphere $S$ and take $T$ as the composition of rotation by $\arg(a)$, dilation by $\abs{a}$ (in either order), followed by translation by $b$:
 \begin{equation*}
