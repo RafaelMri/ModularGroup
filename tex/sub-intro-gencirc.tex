@@ -1,7 +1,7 @@
 \subsection{Generalized circles}
 
-\index{Generalized circle}
-From the geometric point of view Möbius transformations have the beautiful property that they preserve generalized circles. \emph{Generalized circles} are either circles (in the usual sense) or lines on the complex plane $\C$. They can also be thought of circles on the Riemann sphere (\ie the extended complex plane $\EC$ projected to the unit sphere $\UnitSphere$, see Remark~\ref{rem_RiemannSphere}), where lines on the complex plane stand in a one-to-one correspondence to circles through the point $\infty$ on the Riemann sphere. In order to give an exact definition, we first make the following considerations:
+\index{Generalized!circle}
+From the geometric point of view, Möbius transformations have the beautiful property that they preserve generalized circles. \emph{Generalized circles} are either circles (in the usual sense) or lines on the complex plane $\C$. They can also be thought of circles on the Riemann sphere (\ie the extended complex plane $\EC$ projected to the unit sphere $\UnitSphere$, see Remark~\ref{rem_RiemannSphere}), where lines on the complex plane stand in a one-to-one correspondence to circles through the point $\infty$ on the Riemann sphere. In order to give an exact definition, we first make the following considerations:
 
 A circle with center $m \in \C$ and radius $r > 0$ can be described as the set of points $z \in \C$ for which
 \begin{equation*}
@@ -38,54 +38,70 @@ In the case when $A = 0$, equation (\ref{eqn_GenCircle}) can be written as
 \end{equation*}
 which defines a line on the complex plane. We see this by considering the simpler equation $\Re{z} = -\frac{D}{2 \abs{C}}$ first (we omit the factor $\frac{C}{\abs{C}}$), which obviously defines a line parallel to the imaginary axis through the real point $-\frac{D}{2 \abs{C}}$. Then we observe that the multiplication with $\frac{C}{\abs{C}}$ just rotates this line clockwise around the origin by an angle which is given by $\arg(C)$.
 
-To conclude our considerations we finally note that equation (\ref{eqn_GenCircle}) can also be written in matrix form:
+To conclude our considerations, we note that equation (\ref{eqn_GenCircle}) can also be written in matrix form:
 \begin{equation*}
 \rvec{\conj{z}}{1} \cdot \mat{A}{B}{C}{D} \cdot \cvec{z}{1} = 0.
 \end{equation*}
-The matrix in this equation is Hermitian and has a negative determinant, because of the condition $BC - AD > 0$ from above. We can now give an exact definition for generalized circles.
-
+The matrix in this equation has a negative determinant, because of the condition $BC - AD > 0$ from above. Moreover, it is a Hermitian matrix, a notion which we will shortly recall:
+\begin{definition}
+\label{dfn_HermitianMatrix}
+\index{Hermitian!matrix}
+\index{Hermitian!transpose}
+\index{Conjugate transpose}
+Let $n > 0$ and $M \in \Mat{\C}{n}{n}$. The matrix
+\begin{equation*}
+\htransp{M} := \transp{\overline{M}}
+\end{equation*}
+obtained by complex conjugation and transposition of $M$ is called \emph{Hermitian transpose} or \emph{conjugate transpose} of $M$. If $M$ has the property $\htransp{M} = M$, it is called a \emph{Hermitian} matrix.
+\end{definition}
+Having now the right vocabulary at hand, we can give an exact definition for generalized circles.
 \begin{definition}
 Let $M = \smallmat{A}{B}{C}{D} \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$. A \emph{generalized circle} is the set of solutions $z \in \C$ to
 \begin{equation}
 \label{eqn_GenCircleMat}
 \rvec{\conj{z}}{1} \cdot M \cdot \cvec{z}{1} = 0
 \end{equation}
-plus eventually the point $\infty$, if and only if $A = 0$.\footnote{In this case, the generalized circle corresponds to a line on the complex plane.}
+plus eventually the point $\infty$, if and only if $A = 0$, \ie when the generalized circle corresponds to a line on the complex plane.
 \end{definition}
 
 \begin{remark}
 Since there should be no danger of confusion, we will from now on use the same name for a generalized circle and its corresponding Hermitian matrix (which is uniquely determined up to a real scalar factor).
 \end{remark}
 
+\begin{remark}
+\label{rem_GeneralizedDisk}
+\index{Generalized!disk}
+One could easily do the same thing as above starting with the equations
+\begin{equation*}
+\abs{z - m} < r \quad \text{or} \quad  
+\abs{z - m} \le r
+\end{equation*}
+instead of $\abs{z - m} = r$, which naturally leads to the notions of open or closed \emph{generalized disks}, determined by
+\begin{equation}
+\rvec{\conj{z}}{1} \cdot M \cdot \cvec{z}{1} < 0 \quad \text{or} \quad
+\rvec{\conj{z}}{1} \cdot M \cdot \cvec{z}{1} \le 0.
+\end{equation}
+\end{remark}
+
 \begin{theorem}
 \label{thm_MoebiusGenCircle}
-Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$ and $P \in \PGL{\C}$. The image of the generalized circle $M$ under the Möbius transformation $\phi$ corresponding to the matrix $P \in \PGL{\C}$ is the generalized circle  $\htransp{(\inv{P})} \cdot M \cdot \inv{P}$.
+Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$ and $P \in \GL{\C}$. The image of the generalized circle $M$ under the Möbius transformation $\phi$ corresponding to the matrix $P \in \GL{\C}$ is the generalized circle  $\htransp{(\inv{P})} \cdot M \cdot \inv{P}$.
 \end{theorem}
 \begin{proof}
-Let us write
-\begin{equation*}
-P = \mat{a}{b}{c}{d},
-\end{equation*}
-such that the corresponding Möbius transformation $\phi$ has the form
+Let us write $P = \smallmat{a}{b}{c}{d}$, such that the corresponding Möbius transformation $\phi$ has the form
 \begin{equation*}
 \phi(z) = \moebius{a}{b}{c}{d}{z}.
 \end{equation*}
-First we observe the trivial fact that 
-\begin{equation}
-\label{eqn_HomogenousTransform}
-P \cdot \cvec{z}{1} = \cvec{a z + b}{c z + d}.
-\end{equation}
-We need to show that for all $z$ satisfying (\ref{eqn_GenCircleMat}), $\phi(z)$ lies on the generalized circle $\htransp{(\inv{P})} \cdot M \cdot \inv{P}$, that is 
+Now we set $w = \phi(z)$ and show that 
 \begin{equation*}
-\rvec{\conj{\phi(z)}}{1} \cdot \htransp{(\inv{P})} \cdot M \cdot \inv{P} \cdot \cvec{\phi(z)}{1} = 0.
+\rvec{\conj{z}}{1} \cdot M \cdot \cvec{z}{1} = 0
 \end{equation*}
-By multiplying with the scalar $c z + d$ and its complex conjugate we obtain
+if and only if
 \begin{equation*}
-\rvec{\conj{az + b}}{\conj{cz + d}} \cdot \htransp{(\inv{P})} \cdot M \cdot \inv{P} \cdot \cvec{az + b}{cz + d} = 0.
+\rvec{\conj{w}}{1} \cdot \htransp{(\inv{P})} \cdot M \cdot \inv{P} \cdot \cvec{w}{1} = 0.
 \end{equation*}
-Now we apply (\ref{eqn_HomogenousTransform}) and its conjugate transposed companion
+But this follows immediately from
 \begin{equation*}
-\rvec{\conj{z}}{1} \cdot \htransp{P} \htransp{(\inv{P})} \cdot M \cdot \inv{P} \cdot P \cdot \cvec{z}{1} = 0,
+P \cdot \cvec{z}{1} = \cvec{a z + b}{c z + d} = (c z + d) \cvec{w}{1}.\qedhere
 \end{equation*}
-which yields after canceling out $P$ and $\inv{P}$ the desired result (\ref{eqn_GenCircleMat}).
 \end{proof}

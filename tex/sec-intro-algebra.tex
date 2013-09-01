@@ -129,7 +129,7 @@ with $\sigma_j, \tau_j \in \Syms$ and $k_j, \ell_j \in \Z$. This immediately giv
 \sigma_1^{k_1} \sigma_2^{k_e} \dots \sigma_n^{k_n} \cdot
 \tau_m^{-\ell_m} \tau_{m-1}^{-\ell_{m-1}} \dots \tau_1^{-\ell_1} = 1.
 \end{equation}
-We call the group word occurring on the left hand side of (\ref{eqn_GrpRelation}) a \emph{relation} on $G$. The set of all such possible relations on $G$ forms a normal subgroup of $\FreeGrp{\Syms}$. To see this, let $\phi : \Sigma \to G$ be the canonical embedding. According to Theorem~\ref{thm_FreeGrpUniqueHom} there exists a unique extension of $\phi$ to a homomorphism $\overline{\phi}: \FreeGrp{\Syms} \to G$. In fact, this homomorphism just evaluates group words over $\Sigma$ to concrete group elements in $G$. It is therefore obvious, that the set of all possible relations is given by $N := \ker(\overline{\phi})$, which is a normal subgroup and by the first isomorphism theorem it follows that $G \cong \FreeGrp{\Syms} / N$. In the case, when the product representation in (\ref{eqn_GrpGenerators}) is unique for all $g \in G$, then $N$ just consists of the identity element, $G \cong \FreeGrp{\Syms}$ and $G$ is said to be \emph{relation-free} (this is where the terminology ``free group'' actually comes from). 
+We call the group word occurring on the left hand side of (\ref{eqn_GrpRelation}) a \emph{relation} on $G$. The set of all such possible relations on $G$ forms a normal subgroup of $\FreeGrp{\Syms}$. To see this, let $\phi : \Sigma \to G$ be the canonical embedding. According to Theorem~\ref{thm_FreeGrpUniqueHom} there exists a unique extension of $\phi$ to a homomorphism $\overline{\phi}: \FreeGrp{\Syms} \to G$. In fact, this homomorphism just evaluates group words over $\Sigma$ to concrete group elements in $G$. By definition, the set of all relations on $G$ is now given by $N := \ker(\overline{\phi})$, which is a normal subgroup of $\FreeGrp{\Syms}$. Moreover, it follows from the first isomorphism theorem that $G \cong \FreeGrp{\Syms} / N$. In the case, when the product representation in (\ref{eqn_GrpGenerators}) is unique for all $g \in G$, then $N$ just consists of the identity element, $G \cong \FreeGrp{\Syms}$ and $G$ is said to be \emph{relation-free} (this is where the terminology ``free group'' actually comes from). 
 
 Summing up, we see that every group can be described by supplying a set of generators $\Syms$ and a the set of relations $N \unlhd \FreeGrp{\Syms}$. Of course, it is also sufficient to just supply a subset $R$ of relations from which the other relations can be derived. This leads to the following definition:
 
@@ -269,7 +269,7 @@ More generally, for an arbitrary field $F$ the groups $\PSLn{n}{F}$ and $\PGLn{n
 \begin{definition}
 \label{dfn_GroupAction}
 \index{Group!action}
-Let $\langle G, \cdot, 1 \rangle$ be a group and $S$ be an arbitrary set. A function $G \times S \to S$, $(g, x) \mapsto g x$ is called a \emph{group action} of $G$ on the set $S$ (alternatively we say $G$ \emph{acts on the set} $S$), if
+Let $\langle G, \cdot, 1 \rangle$ be a group and $S$ be an arbitrary set. A function $G \times S \to S$, $(g, x) \mapsto g x$ is called a \emph{group action} of $G$ on the set $S$ (alternatively we say $G$ \emph{acts on the set} $S$), if and only if
 \begin{equation*}
 \forall x \in S,\ g_1, g_2 \in G:\quad 1 x = x \quad \text{and} \quad (g_1 g_2) x = g_1 (g_2 x).
 \end{equation*}
