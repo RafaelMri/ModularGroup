@@ -10,7 +10,7 @@ In order to introduce stereographic projection, we first have to embed $\C$ into
 z  & \mapsto & \left(\Re{z}, \Im{z}, 0\right)
 \end{array}\right.,
 \end{equation}
-which means that we identify the complex plane with the plane $x_3 = 0$ in $\R^3$. Additionally we equip $R^3$ with the standard Euclidean norm:
+which means that we identify the complex plane with the plane $x_3 = 0$ in $\R^3$. Additionally we equip $\R^3$ with the standard Euclidean norm:
 \begin{equation}
 \eucnorm{x} := \sqrt{x_1^2 + x_2^2 + x_3^2}, \quad x \in \R^3.
 \end{equation}
@@ -23,15 +23,8 @@ A \emph{sphere} with center $c \in \R^3$ and radius $r > 0$ is the set $S := \se
 \index{Stereographic projection}
 \begin{definition}
 \label{dfn_StereoProject}
-Let $S$ be an admissible sphere and $n \in S$ be its north pole. If $x \in S \setminus \{n\}$, then denote by $L_{x,n}$ the unique line joining $x$ with $n$ and by $y$ the intersection point of $L_{x,n}$ with the plane $\iota(\C)$. Now, \emph{stereographic projection} with regard to $S$ is the map $P_S : S \to \EC$ defined as $P_S(x) := \inv{\iota}(y)$ for $x \ne n$ and $P_S(n) := \infty$.
+Let $S$ be an admissible sphere and $n \in S$ be its north pole. If $x \in S \setminus \{n\}$, then denote by $L_{x,n}$ the unique line joining $x$ with $n$ and let $y$ be the intersection point of $L_{x,n}$ with the plane $\iota(\C)$. Now, \emph{stereographic projection} with regard to $S$ is the map $P_S : S \to \EC$ defined as $P_S(x) := \inv{\iota}(y)$ for $x \ne n$ and $P_S(n) := \infty$.
 \end{definition}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.9\textwidth]{figures/stereo-proj-1}
-\caption{Inversion $z \mapsto \reci{z}$ can be interpreted as rotation of the Riemann sphere by $180^{\circ}$ around the antipodal points $\pm 1$. It maps the upper to the lower halfplane (left) and the unit circle to the set of numbers $\abs{z} > 1$ (right).}
-\label{fig_StereoProj}
-\end{figure}
 
 \begin{remark}
 \label{rem_RiemannSphere}
@@ -53,6 +46,13 @@ P_{\UnitSphere}^{-1}: z \mapsto
 By pointwise identifying $\EC$ with $S_1$ using the above two mappings, we obtain the $\emph{Riemann sphere}$ model of the extended complex plane. One of its benefits is, that certain functions $\EC \to \EC$ can be interpreted nicely as simple rotations of the Riemann sphere.
 \end{remark}
 
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{figures/stereo-proj-1}
+\caption{Inversion $z \mapsto \reci{z}$ can be interpreted as rotation of the Riemann sphere by $180^{\circ}$ around the antipodal points $\pm 1$. It maps the upper to the lower halfplane (left) and the unit circle to the set of numbers $\abs{z} > 1$ (right).}
+\label{fig_StereoProjInversion}
+\end{figure}
+
 \begin{example}
 \label{ex_StereoProjInversion}
 Consider the map $f: z \mapsto \reci{z}$ and the map $V: \UnitSphere \to \UnitSphere$, which rotates the Riemann sphere around the $x_1$ axis by $180^{\circ}$:
@@ -67,7 +67,7 @@ V: x \mapsto
 \cdot
 \begin{pmatrix}x_1 \\ x_2 \\ x_3 \end{pmatrix}.
 \end{equation}
-The first row of Figure~\ref{fig_StereoProj} shows the upper halfplane $U$ on the left and the unit disk $D$ on the right together with their images under reverse stereographic projection. We see that both, $U$ and $D$ correspond to a certain ``halfsphere'' of the Riemann sphere. If we rotate these halfspheres around the $x_1$ axis (leaving the points $\{\pm 1\}$ fixed) and continuously perform stereographic projection, we see that after a half turn (in the last row of Figure~\ref{fig_StereoProj}) we end up with $f(U)$, the lower halfplane and $f(D)$, the set of points $z$ with $\abs{z} > 1$. 
+The first row of Figure~\ref{fig_StereoProjInversion} shows the upper halfplane $U$ on the left and the unit disk $D$ on the right together with their images under reverse stereographic projection. We see that both, $U$ and $D$, correspond to a certain ``halfsphere'' of the Riemann sphere. If we rotate these halfspheres around the $x_1$ axis (leaving the points $\{\pm 1\}$ fixed) and continuously perform stereographic projection, we see that after a half turn (in the last row of Figure~\ref{fig_StereoProjInversion}) we end up with $f(U)$, the lower halfplane and $f(D)$, the set of points $z$ with $\abs{z} > 1$. 
 
 One might wonder if this works the same way for every $z \in  \EC$. Indeed, $f: z \mapsto \reci{z}$ can be interpreted as rotation of the Riemann sphere around the $x_1$ axis by $180^{\circ}$ in the following sense:
 \begin{equation*}
@@ -98,20 +98,29 @@ We show this by a simple calculation, using the fact that $\reci{z} = \frac{\con
 
 Other examples for transformations corresponding to a half-turn of the Riemann sphere are $z \mapsto -z$ (rotation around the $x_3$ axis) and $T: z \mapsto -\reci{z}$ (rotation around the $x_2$ axis; as product of half turns around the $x_1$ and $x_3$ axes). $T$ is a function which maps the upper halfplane to itself and which will be important in the study of the modular group in Section~\ref{sec_ModularGroupGenRel}.  
 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{figures/stereo-proj-2}
+\caption{The modified Cayley transform $z \mapsto \moebius{\ii}{1}{}{\ii}{z}$ maps the upper halfplane to the unit disk, leaving the points $\{\pm 1\}$ fixed. It can be considered as a quarter turn of the Riemann sphere around the $x_1$ axis.}
+\label{fig_StereoProjModCayley}
+\end{figure}
+
 \begin{example}
+\index{Modified Cayley transform}
 \index{Cayley transform}
 \label{ex_StereoProjCayleyMap}
-In the first three rows of Figure~\ref{fig_StereoProj} on the left, the action of yet another interesting transformation can be seen, which maps the upper halfplane to the unit disk. It is given by
+In Figure~\ref{fig_StereoProjModCayley}, the action of yet another interesting transformation can be seen, which maps the upper halfplane to the unit disk. It is given by
 \begin{equation}
 \label{eqn_ModCayleyTransform}
-f(z) = \moebius{\ii}{1}{}{\ii}{z}
+\ModCayley(z) = \moebius{\ii}{1}{}{\ii}{z}
 \end{equation}
-and can be either considered as a quarter turn of the Riemann sphere around the $x_1$ axis or as ``half of an inversion'', since indeed $f^2(z) = f(f(z)) = \reci{z}$. In contrast to its better known brother, the \emph{Cayley transform} given by
-\begin{equation*}
+and can be either considered as a quarter turn of the Riemann sphere around the $x_1$ axis or as ``half of an inversion'', since indeed $\ModCayley^2(z) = \ModCayley(\ModCayley(z)) = \reci{z}$ (compare with left column of Figure~\ref{fig_StereoProjInversion}). In contrast to its better known brother, the \emph{Cayley transform} given by
+\begin{equation}
 \label{eqn_CayleyTransform}
-c(z) = -\ii f(z) = \frac{z - \ii}{z + \ii},
-\end{equation*}
-$f$ leaves the points $\{\pm 1\}$ fixed, which often beneficial for visualization purposes.
+\Cayley(z) = -\ii \ModCayley(z) = \frac{z - \ii}{z + \ii},
+\end{equation}
+$\ModCayley$ leaves the points $\{\pm 1\}$ fixed, which often beneficial for visualization purposes. We will call $\ModCayley$ the \emph{modified Cayley transform}.
 \end{example}
 
 We have now seen exemplarily, that rotation of the Riemann sphere induces quite a few interesting maps. If we are willing to allow not only rotations of the Riemann sphere but also translations, we indeed obtain a new characterization of Möbius transformations, as stated in the next theorem.

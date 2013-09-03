@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    110371,       2899]
-NotebookOptionsPosition[    105322,       2755]
-NotebookOutlinePosition[    105721,       2772]
-CellTagsIndexPosition[    105678,       2769]
+NotebookDataLength[    112335,       2921]
+NotebookOptionsPosition[    107283,       2777]
+NotebookOutlinePosition[    107682,       2794]
+CellTagsIndexPosition[    107639,       2791]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1560,9 +1560,8 @@ Cell[BoxData[
             RowBox[{"GDisk", "[", 
              RowBox[{"gdFord0", ",", 
               RowBox[{"fordTransforms", "[", "mode", "]"}], ",", 
-              RowBox[{"FinalTransformation", "\[Rule]", 
-               RowBox[{"phi", ".", "mt0"}]}]}], "]"}]}], "}"}], ",", 
-          "\[IndentingNewLine]", 
+              RowBox[{"FinalTransformation", "\[Rule]", "phi"}]}], "]"}]}], 
+           "}"}], ",", "\[IndentingNewLine]", 
           RowBox[{"{", "}"}]}], "\[IndentingNewLine]", "]"}]}], ";", 
        "\[IndentingNewLine]", 
        RowBox[{"incircles", " ", "=", " ", 
@@ -1577,9 +1576,8 @@ Cell[BoxData[
             RowBox[{"GDisk", "[", 
              RowBox[{"incircle0", ",", 
               RowBox[{"allTransforms", "[", "mode", "]"}], ",", 
-              RowBox[{"FinalTransformation", "\[Rule]", 
-               RowBox[{"phi", ".", "mt0"}]}]}], "]"}]}], "}"}], ",", 
-          "\[IndentingNewLine]", 
+              RowBox[{"FinalTransformation", "\[Rule]", "phi"}]}], "]"}]}], 
+           "}"}], ",", "\[IndentingNewLine]", 
           RowBox[{"{", "}"}]}], "\[IndentingNewLine]", "]"}]}], ";", 
        "\[IndentingNewLine]", 
        RowBox[{"tessellation", "=", 
@@ -1592,9 +1590,8 @@ Cell[BoxData[
            RowBox[{"GCircle", "[", 
             RowBox[{"gdUnitDisk", ",", 
              RowBox[{"arcTransforms", "[", "mode", "]"}], ",", 
-             RowBox[{"FinalTransformation", "\[Rule]", 
-              RowBox[{"phi", ".", "mt0"}]}]}], "]"}], "}"}], ",", 
-          "\[IndentingNewLine]", 
+             RowBox[{"FinalTransformation", "\[Rule]", "phi"}]}], "]"}], 
+           "}"}], ",", "\[IndentingNewLine]", 
           RowBox[{"{", "}"}]}], "\[IndentingNewLine]", "]"}]}], ";", 
        "\[IndentingNewLine]", 
        RowBox[{"Graphics", "[", 
@@ -1651,29 +1648,54 @@ Cell[BoxData[
        RowBox[{
         RowBox[{"{", 
          RowBox[{"zoom", ",", "0", ",", "\"\<Zoom\>\""}], "}"}], ",", "0", 
-        ",", "7"}], "}"}], ",", "\[IndentingNewLine]", 
+        ",", "5"}], "}"}], ",", "\[IndentingNewLine]", 
       RowBox[{"{", 
        RowBox[{
         RowBox[{"{", 
-         RowBox[{"imageSize", ",", "320", ",", "\"\<Image Size\>\""}], "}"}], 
+         RowBox[{"imageSize", ",", "600", ",", "\"\<Image Size\>\""}], "}"}], 
         ",", "200", ",", "1024"}], "}"}], ",", "\[IndentingNewLine]", 
       RowBox[{"ControlPlacement", "\[Rule]", "Left"}]}], 
      "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "]"}]], "Input",
- CellChangeTimes->CompressedData["
-1:eJwdyVtIUwEAh/G1DLLLtkQoMrfGMjdwDmbgwOG2h8I7NsfMTcOWlaXmSpQy
-U7xkECmK7rRNiGmhYiplNu3iWK6WBKkJlWCzNTVLrdWWrgyh8z8PH7+Hj6sr
-Vp6i02g0MRmUmYi4saElxUDEaipMuXTrOBw2uPVwSlRSBR8qtDdgKMPYCNNu
-Zz+DufL5lzBxYdQJt2WMfPpBKo4pWYDE29Jv8BCR+B2e4df4oXvX5wDsD1wO
-9pKaXePbYeT980u7h5cU8bHEMrSk9/ng1/XI6D2kdxJCpVBiE1KGTBuT4Doz
-MRna/g5lwkmGSAsJqflJLenjojIPZG/mJdWRFrL6UuEk4VNBm3yjEIYcaamA
-55oK6mCjZqoVEs0jBKz8UNsPeaOCB/BRV74fNqyq1mD1iy7HNdJuDvs1zF8V
-jcPcN82UVo3zHfXnv7yHO7YMfqT+UbELVnSk0etJC2aFQdAS8DJgZqeVCWUa
-fRj8qbpKOXf2NBda7+YJYOWyKQv6UtTZsCK67gQsGsi5AFkCTimkE/VlMObV
-r3J4kK2+Au3GqmpoaGqhjC3e4F4nndY1HIBZHmcc/OcMlsI/+hklVGpZGZBm
-tWtgeLeHcufNCSucS+h1QPE9bqiZdGYiig0v9tTyYCFfEgEXtyYL4MpseBTc
-O8p3QXWHaxHSmU8D0CEf3IDlPWOb2kgZh1uD4H4/Lwyye2soa3J0IigxGSRw
-Jc8eD/cJjTJ40us2PSddO5beBn9zbBbY2e5rh/8BIdC8zA==
-  "]]
+ CellChangeTimes->{{3.586015708706207*^9, 3.5860158556608515`*^9}, {
+   3.5860159887334347`*^9, 3.586016135018276*^9}, {3.5860162515995874`*^9, 
+   3.58601633885177*^9}, {3.5860163727517185`*^9, 3.5860167388943243`*^9}, {
+   3.5860168151328583`*^9, 3.586016822090489*^9}, {3.5860948459163866`*^9, 
+   3.5860948915999994`*^9}, {3.586094923681834*^9, 3.5860949542995853`*^9}, {
+   3.586095004067432*^9, 3.586095039033432*^9}, {3.5860951798114843`*^9, 
+   3.586095198464551*^9}, {3.586178899459003*^9, 3.5861789086942434`*^9}, {
+   3.586178965416092*^9, 3.586179441249378*^9}, {3.586179552633867*^9, 
+   3.58617955342947*^9}, {3.586179668776376*^9, 3.5861796742832003`*^9}, {
+   3.586179773749236*^9, 3.586179801470558*^9}, {3.5863997008198957`*^9, 
+   3.586400019700894*^9}, {3.5864008490941305`*^9, 3.5864008774082546`*^9}, {
+   3.5864009355809097`*^9, 3.586401127914153*^9}, {3.5864012526023035`*^9, 
+   3.5864013153613787`*^9}, {3.586401446573554*^9, 3.5864014619240217`*^9}, {
+   3.586401652120055*^9, 3.5864016733049483`*^9}, {3.586402203270472*^9, 
+   3.5864022266549745`*^9}, {3.5864038692427373`*^9, 
+   3.5864039209413643`*^9}, {3.586403953498707*^9, 3.58640395655632*^9}, {
+   3.586404014198573*^9, 3.586404023215412*^9}, {3.586404069625616*^9, 
+   3.5864040735724335`*^9}, {3.5864043704573345`*^9, 
+   3.5864043854334006`*^9}, {3.5864044714989777`*^9, 3.586404477707805*^9}, {
+   3.5864045715110164`*^9, 3.5864045719166183`*^9}, {3.5864046192004256`*^9, 
+   3.5864046831451063`*^9}, {3.5864050688099966`*^9, 
+   3.5864050906968927`*^9}, {3.5864051321306744`*^9, 
+   3.5864052589280305`*^9}, {3.5864052889737625`*^9, 
+   3.5864053002058115`*^9}, {3.5864053355555663`*^9, 3.58640533869118*^9}, {
+   3.5864053879873962`*^9, 3.586405388611399*^9}, {3.586406671919826*^9, 
+   3.586406692418316*^9}, {3.5864068782151303`*^9, 3.5864068803055396`*^9}, {
+   3.58640706285754*^9, 3.5864070645111475`*^9}, {3.586407126022217*^9, 
+   3.5864071270830216`*^9}, {3.586407862485846*^9, 3.5864079653838973`*^9}, {
+   3.586445473052148*^9, 3.586445553400373*^9}, {3.5864455961145563`*^9, 
+   3.5864456097549343`*^9}, {3.5864456423448367`*^9, 3.586445664933462*^9}, {
+   3.586447081273694*^9, 3.5864471669260664`*^9}, {3.586447293845582*^9, 
+   3.5864473416329055`*^9}, {3.58644737427081*^9, 3.5864473966334295`*^9}, {
+   3.5864475771234283`*^9, 3.5864475800835104`*^9}, {3.5864477390739145`*^9, 
+   3.5864478126749535`*^9}, {3.5864478620123196`*^9, 
+   3.5864478687555065`*^9}, {3.586526415029222*^9, 3.5865264265108595`*^9}, {
+   3.5865264699414005`*^9, 3.5865264795822325`*^9}, {3.5872283671959066`*^9, 
+   3.587228368568712*^9}, 3.58722844815084*^9, {3.587228567968331*^9, 
+   3.587228610451705*^9}, {3.587228643104639*^9, 3.5872286559288917`*^9}, {
+   3.5872288204831915`*^9, 3.587228826208415*^9}, {3.587229537130128*^9, 
+   3.5872295747760825`*^9}, {3.5872296417053566`*^9, 3.587229750150401*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2869,36 +2891,36 @@ Cell[50678, 1325, 553, 9, 47, "Text"],
 Cell[51234, 1336, 731, 18, 50, "Input"],
 Cell[51968, 1356, 461, 13, 28, "Text"],
 Cell[52432, 1371, 580, 13, 31, "Input"],
-Cell[53015, 1386, 11691, 289, 1097, "Input"]
+Cell[53015, 1386, 13652, 311, 1097, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[64743, 1680, 183, 5, 70, "Subtitle"],
-Cell[64929, 1687, 4791, 114, 532, "Input"],
-Cell[69723, 1803, 5882, 129, 603, "Input"],
-Cell[75608, 1934, 3821, 89, 339, "Input"]
+Cell[66704, 1702, 183, 5, 70, "Subtitle"],
+Cell[66890, 1709, 4791, 114, 532, "Input"],
+Cell[71684, 1825, 5882, 129, 603, "Input"],
+Cell[77569, 1956, 3821, 89, 339, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[79466, 2028, 110, 1, 39, "Subtitle"],
-Cell[79579, 2031, 130, 2, 26, "Input"],
-Cell[79712, 2035, 240, 6, 26, "Input"],
-Cell[79955, 2043, 8664, 213, 764, "Input"]
+Cell[81427, 2050, 110, 1, 44, "Subtitle"],
+Cell[81540, 2053, 130, 2, 29, "Input"],
+Cell[81673, 2057, 240, 6, 29, "Input"],
+Cell[81916, 2065, 8664, 213, 850, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[88656, 2261, 159, 5, 62, "Subtitle"],
-Cell[88818, 2268, 146, 3, 26, "Input"],
-Cell[88967, 2273, 2771, 73, 206, "Input"],
-Cell[91741, 2348, 1352, 39, 98, "Input"],
-Cell[93096, 2389, 2246, 60, 170, "Input"],
-Cell[95345, 2451, 907, 24, 80, "Input"],
-Cell[96255, 2477, 643, 18, 21, "Input"],
-Cell[96901, 2497, 596, 17, 36, "Input"],
-Cell[97500, 2516, 2062, 66, 182, "Input"],
-Cell[99565, 2584, 656, 20, 36, "Input"],
-Cell[100224, 2606, 994, 29, 51, "Input"],
-Cell[101221, 2637, 185, 4, 21, "Input"],
-Cell[101409, 2643, 2140, 59, 109, "Input"],
-Cell[103552, 2704, 1592, 42, 138, "Input"],
-Cell[105147, 2748, 147, 3, 21, "Input"]
+Cell[90617, 2283, 159, 5, 70, "Subtitle"],
+Cell[90779, 2290, 146, 3, 29, "Input"],
+Cell[90928, 2295, 2771, 73, 230, "Input"],
+Cell[93702, 2370, 1352, 39, 110, "Input"],
+Cell[95057, 2411, 2246, 60, 190, "Input"],
+Cell[97306, 2473, 907, 24, 110, "Input"],
+Cell[98216, 2499, 643, 18, 29, "Input"],
+Cell[98862, 2519, 596, 17, 50, "Input"],
+Cell[99461, 2538, 2062, 66, 250, "Input"],
+Cell[101526, 2606, 656, 20, 50, "Input"],
+Cell[102185, 2628, 994, 29, 70, "Input"],
+Cell[103182, 2659, 185, 4, 29, "Input"],
+Cell[103370, 2665, 2140, 59, 150, "Input"],
+Cell[105513, 2726, 1592, 42, 190, "Input"],
+Cell[107108, 2770, 147, 3, 29, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
