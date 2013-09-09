@@ -14,6 +14,8 @@ Mat::usage =
   "Mat[t] returns the coefficients of the MoebiusTransformation t as matrix.";
 Inv::usage = 
   "Inv[t] returns the inverse of the MoebiusTransformation t.";
+PGL2Inv::usage = 
+  "PGL2Inv[m] returns a matrix which is inverse to m within \!\(\*SubscriptBox[\(PGL\), \(2\)]\)(\[DoubleStruckCapitalC])";
 
 Inhom::usage = 
   "Inhom[{z1,z2}] returns z1 / z2 or \[Infinity], if z2 == 0.";
@@ -151,6 +153,15 @@ gdRightHalfplane::usage =
   "gdRightHalfPlane is the set of points z satisfying Re[z] \[GreaterSlantEqual] 0.";
 gdLeftHalfplane::usage =
   "gdLeftHalfPlane is the set of points z satisfying Re[z] \[LessSlantEqual] 0.";
+gdUnitCodisk::usage = 
+  "gdUnitCodisk is the set of points z satisfying |z| \[GreaterSlantEqual] 1.";
+gdFord0::usage = 
+  "gdFord0 is the ford circle at infinity, i.e. the set of points z satisfying Im[z] \[GreaterSlantEqual] 1";
+gdIncircle0::usage = StringJoin[
+  "gdIncircle0 is the GeneralziedDisk ",
+  "corresponding to the incircle of the standard fundamental domain, ",
+  "i.e. the disk around the point \!\(\*FractionBox[\(3  \[ImaginaryI]\), \(2\)]\) with radius \!\(\*FractionBox[\(1\), \(2\)]\)."
+];
 
 GDiskRadius::usage = StringJoin[
   "GDiskRadius[d] returns the radius of the GeneralizedDisk d. ", 
@@ -167,6 +178,29 @@ GDiskCoradius::usage = StringJoin[
 GDiskCocenter::usage = StringJoin[
   "GDiskCocenter[d] returns the co-center of a GeneralizedDisk d. ",
   "It is defined for NoncompactDisks only."
+];
+GDiskMatRadius::usage = StringJoin[
+  "GDiskMatRadius[m] returns the radius or coradius ",
+  "of the generalized disk corresponding to the matrix m. ",
+  "The matrix m must be Hermitian with negative determinant."
+];
+GDiskMatCenter::usage = StringJoin[
+  "GDiskMatCenter[m] returns the center ", 
+  "of the generalized disk corresponding to the matrix m. ",
+  "The matrix m must be Hermitian with negative determinant."
+];
+GDiskMatClass::usage = StringJoin[
+  "GDiskMatClass[m] returns -1, 0 or 1, indicating if ",
+  "if the generalized disk corresponding to the matrix m is ",
+  "a compact disk (1), a halfplane (0), or a non-compact disk (-1). ",
+  "The matrix m must be Hermitian with negative determinant."
+];  
+GDiskMatMap::usage = StringJoin[
+  "GDiskMatMap[m, t] returns the image ",
+  "of the generalized disk corresponding to the matrix m ",
+  "under the Moebius transformation t as matrix. ",
+  "The transformation t may be given as matrix or as MoebiusTransformation object.",
+  "The matrix m must be Hermitian with negative determinant."
 ];
 
 GDisk::usage = StringJoin[
@@ -278,11 +312,11 @@ Init[MoebiusTransformation, obj_, mat_?MatrixQ] ^:= (
   );
 );
 
-Inv[m_?MatrixQ] := {{m[[2,2]], -m[[1,2]]}, {-m[[2,1]], m[[1,1]]}};
+PGL2Inv[{{a_,b_},{c_,d_}}] := {{d, -b}, {-c, a}};
 
 Inv[t_?(InstanceQ[MoebiusTransformation])] := Inv[t] ^= 
   Module[{inverse},
-    inverse = New[MoebiusTransformation, Inv[Mat[t]]];
+    inverse = New[MoebiusTransformation, PGL2Inv@Mat@t];
     Inv[inverse] ^= t;
     inverse
   ];
@@ -464,9 +498,21 @@ NewClass[NoncompactDisk];
 NewClass[Halfplane];
 NewClass[CompactDisk];
 
+GDiskMatMap = Compile[{{m, _Complex, 2},{t, _Complex, 2}},
+  Module[{a,b,d,minv, minvH},
+    a = Re[m[[1,1]]];
+    b = m[[1,2]];
+    d = Re[m[[2,2]]];
+    minv = {{d, -b}, {-Conjugate@b, a}};
+    minvH = {{d, -Conjugate@b}, {-b, a}};
+    minvH . m . minv
+  ],
+  RuntimeAttributes -> {Listable}
+];
+
 Init[GeneralizedDisk, obj_, pmat_?MatrixQ] ^:= Module[{a, mat},
   mat=FullSimplify[pmat];
-  Assert[HermitianMatrixQ@mat && Simplify[Det[mat] < 0]];
+  (*Assert[HermitianMatrixQ@mat && Simplify[Det[mat] < 0]];*)
   Mat[obj] ^= mat;
   a = mat[[1,1]];
   obj /: InstanceQ[NoncompactDisk][obj] = (a < 0);
@@ -474,10 +520,7 @@ Init[GeneralizedDisk, obj_, pmat_?MatrixQ] ^:= Module[{a, mat},
   obj /: InstanceQ[CompactDisk][obj] = (a > 0); 
   
   t_?(InstanceQ[MoebiusTransformation])[obj] ^:=
-  Module[{transformed},
-    transformed = (ConjugateTranspose@Mat@Inv@t).mat.(Mat@Inv@t);
-    New[GeneralizedDisk, transformed]
-  ];
+    New[GeneralizedDisk, GDiskMatMap[mat, Mat@t]];
 ];
 
 Init[NoncompactDisk, obj_, cocenter_, coradius_] ^:= Module[{mat},
@@ -509,6 +552,8 @@ gdLowerHalfplane = New[Halfplane, 0, -I];
 gdRightHalfplane = New[Halfplane, 0, 1];
 gdLeftHalfplane = New[Halfplane, 0, -1];
 gdUnitCodisk = New[NoncompactDisk, 0, 1];
+gdFord0 = New[Halfplane, I, I];
+gdIncircle0 = New[CompactDisk, 3 I / 2, 1 / 2];
 
 (* ------------------------------------------- Methods for GeneralizedDisks *)
 
@@ -523,17 +568,21 @@ InteriorQ[disk_?(InstanceQ[GeneralizedDisk]), z_] := (
   ]
 );
 
-radius = Compile[{{m,_Complex,2}},
+GDiskMatRadius = Compile[{{m,_Complex,2}},
   Module[{a,b,d,aSqr},
    a = Re@m[[1,1]];
    b = m[[2,1]];
    d = Re@m[[2,2]];
    aSqr = a^2;   
    Sqrt[(Re[b]^2 + Im[b]^2 - a d) / aSqr]
-  ]
+  ],
+  RuntimeAttributes -> {Listable}
 ];
-center[m_] := -m[[1,2]] / m[[1,1]];
-class = With[{maxRadiusSqr=N[2^30]},
+GDiskMatCenter = Compile[{{m, _Complex, 2}},
+  -m[[1,2]] / m[[1,1]],
+  RuntimeAttributes -> {Listable}
+];
+GDiskMatClass = With[{maxRadiusSqr=N[2^30]},
   Compile[{{m, _Complex, 2}},
     Module[{a,b,d,aSqr},
       a = Re@m[[1,1]];
@@ -544,28 +593,29 @@ class = With[{maxRadiusSqr=N[2^30]},
         0,
         Sign@a
       ]
-    ]
+    ],
+    RuntimeAttributes -> {Listable}
   ]
 ];
 
 GDiskRadius[disk_?(InstanceQ[CompactDisk])] := 
 GDiskRadius[disk] ^= (
-  radius[Mat[disk]]
+  GDiskMatRadius[Mat[disk]]
 );
 
 GDiskCenter[disk_?(InstanceQ[CompactDisk])] :=
 GDiskCenter[disk] ^= (
-  center[Mat[disk]]
+  GDiskMatCenter[Mat[disk]]
 );
 
 GDiskCoradius[disk_?(InstanceQ[NoncompactDisk])] :=
 GDiskCoradius[disk] ^= (
-  radius[Mat[disk]]
+  GDiskMatRadius[Mat[disk]]
 );
 
 GDiskCocenter[disk_?(InstanceQ[NoncompactDisk])] :=
 GDiskCocenter[disk] ^= (
-  center[Mat[disk]]
+  GDiskMatCenter[Mat[disk]]
 );
 
 (* ----------------------------------------------------- Drawing algorithms *)
@@ -598,21 +648,21 @@ GDisk[disk_?(InstanceQ[GeneralizedDisk]), opts:OptionsPattern[]] := (
 );
 
 GDisk[mp_?MatrixQ, opts:OptionsPattern[]] := Module[{tinit, tfinal, t, m},
-  tinit = Inv@initTransformMat[OptionValue[InitialTransformation]];
-  tfinal = Inv@finalTransformMat[OptionValue[FinalTransformation]];
+  tinit = PGL2Inv@initTransformMat[OptionValue[InitialTransformation]];
+  tfinal = PGL2Inv@finalTransformMat[OptionValue[FinalTransformation]];
   t = tinit.tfinal;
   m = ConjugateTranspose[t].mp.t;
-  Switch[class[m],
+  Switch[GDiskMatClass[m],
     1, (* CompactDisk *)
-    Module[{c = center[m]},
-      Disk[{Re[c],Im[c]}, radius[m]]
+    Module[{c = GDiskMatCenter[m]},
+      Disk[{Re[c],Im[c]}, GDiskMatRadius[m]]
     ],
     -1, (* NoncompactDisk *)
     Module[{points, clip, c, r, n},
       clip = OptionValue[GDiskClipRadius];
       n = OptionValue[GDiskNPoints];
-      c = center[m];
-      r = radius[m];
+      c = GDiskMatCenter[m];
+      r = GDiskMatRadius[m];
       points = Join[
         Table[c+r Exp[2 Pi I t], {t, 1/2, -1/2, -1/n}],
           (-I-1) clip {1,I,-1,-I,1}
@@ -635,8 +685,8 @@ GDisk[mp_?MatrixQ, opts:OptionsPattern[]] := Module[{tinit, tfinal, t, m},
 
 udTransforms[mlist_] := Module[{c,r},
   Table[
-    c = center[m];
-    r = radius[m];
+    c = GDiskMatCenter[m];
+    r = GDiskMatRadius[m];
     {{{r,0},{0,r}}, {Re@c, Im@c}},
   {m, mlist}]
 ]
@@ -644,12 +694,12 @@ udTransforms[mlist_] := Module[{c,r},
 GDisk[disk_?(InstanceQ[GeneralizedDisk]), tlist_List, opts:OptionsPattern[]] :=
 Module[{md, mf, mi, tlistf, mlists},
   md = Mat@disk;
-  mi = Inv@initTransformMat[OptionValue[InitialTransformation]];
-  mf = Inv@finalTransformMat[OptionValue[FinalTransformation]];
+  mi = PGL2Inv@initTransformMat[OptionValue[InitialTransformation]];
+  mf = PGL2Inv@finalTransformMat[OptionValue[FinalTransformation]];
   tlistf = mi.Mat@Inv[#].mf& /@ tlist;
-  mlists = SplitBy[ConjugateTranspose[#].md.#& /@ tlistf, class];
+  mlists = SplitBy[ConjugateTranspose[#].md.#& /@ tlistf, GDiskMatClass];
   Table[
-    If[class[mlist[[1]]] == 1,
+    If[GDiskMatClass[mlist[[1]]] == 1,
       GeometricTransformation[Disk[], udTransforms[mlist]],
       Table[GDisk[m, opts], {m, mlist}]
     ],
@@ -661,11 +711,11 @@ GCircle[disk_?(InstanceQ[GeneralizedDisk]), opts:OptionsPattern[]] := (
 );
 
 GCircle[mp_?MatrixQ, opts:OptionsPattern[]] := Module[{tinit, tfinal, t, m},
-  tinit = Inv@initTransformMat[OptionValue[InitialTransformation]];
-  tfinal = Inv@finalTransformMat[OptionValue[FinalTransformation]];
+  tinit = PGL2Inv@initTransformMat[OptionValue[InitialTransformation]];
+  tfinal = PGL2Inv@finalTransformMat[OptionValue[FinalTransformation]];
   t = tinit.tfinal;
   m = ConjugateTranspose[t].mp.t;
-  If[class[m] == 0,
+  If[GDiskMatClass[m] == 0,
     (* Halfplane *) 
     Module[{absb, b0, rot, clip, x},
       absb = Abs[m[[1,2]]];
@@ -679,8 +729,8 @@ GCircle[mp_?MatrixQ, opts:OptionsPattern[]] := Module[{tinit, tfinal, t, m},
       ]
     ],
     (* CompactDisk or NoncompactDisk *)
-    Module[{c = center[m]},
-      Circle[{Re[c],Im[c]}, radius[m]]
+    Module[{c = GDiskMatCenter[m]},
+      Circle[{Re[c],Im[c]}, GDiskMatRadius[m]]
     ] 
   ]
 ];
@@ -688,12 +738,12 @@ GCircle[mp_?MatrixQ, opts:OptionsPattern[]] := Module[{tinit, tfinal, t, m},
 GCircle[disk_?(InstanceQ[GeneralizedDisk]), tlist_List, opts:OptionsPattern[]] :=
 Module[{md, mi, mf, tlistf, mlists},
   md = Mat@disk;
-  mi = Inv@initTransformMat[OptionValue[InitialTransformation]];
-  mf = Inv@finalTransformMat[OptionValue[FinalTransformation]];
+  mi = PGL2Inv@initTransformMat[OptionValue[InitialTransformation]];
+  mf = PGL2Inv@finalTransformMat[OptionValue[FinalTransformation]];
   tlistf = mi.Mat@Inv[#].mf& /@ tlist;
-  mlists = SplitBy[ConjugateTranspose[#].md.#& /@ tlistf, class];
+  mlists = SplitBy[ConjugateTranspose[#].md.#& /@ tlistf, GDiskMatClass];
   Table[
-    If[class[mlist[[1]]] == 0,
+    If[GDiskMatClass[mlist[[1]]] == 0,
       Table[GCircle[m, opts], {m, mlist}],      
       GeometricTransformation[Circle[], udTransforms[mlist]]
     ],
