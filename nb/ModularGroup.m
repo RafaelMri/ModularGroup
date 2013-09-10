@@ -199,7 +199,7 @@ GDiskMatMap::usage = StringJoin[
   "GDiskMatMap[m, t] returns the image ",
   "of the generalized disk corresponding to the matrix m ",
   "under the Moebius transformation t as matrix. ",
-  "The transformation t may be given as matrix or as MoebiusTransformation object.",
+  "The transformation t must be given matrix form.",
   "The matrix m must be Hermitian with negative determinant."
 ];
 
@@ -499,13 +499,9 @@ NewClass[Halfplane];
 NewClass[CompactDisk];
 
 GDiskMatMap = Compile[{{m, _Complex, 2},{t, _Complex, 2}},
-  Module[{a,b,d,minv, minvH},
-    a = Re[m[[1,1]]];
-    b = m[[1,2]];
-    d = Re[m[[2,2]]];
-    minv = {{d, -b}, {-Conjugate@b, a}};
-    minvH = {{d, -Conjugate@b}, {-b, a}};
-    minvH . m . minv
+  Module[{tinv},
+    tinv = {{t[[2,2]], -t[[1,2]]},{-t[[2,1]], t[[1,1]]}};
+    ConjugateTranspose@tinv . m . tinv
   ],
   RuntimeAttributes -> {Listable}
 ];
