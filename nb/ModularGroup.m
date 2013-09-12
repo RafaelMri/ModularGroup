@@ -227,7 +227,7 @@ GDiskNPoints::usage = StringJoin[
   "GDiskNPoints is an option of GDisk and GCircle. It specifies, how many points are used ",
   "in the approximation of the boundary of a NoncompactDisk with a regular n-gon."
 ];
-InitialTransformation::usage = StringJoin[
+(*InitialTransformation::usage = StringJoin[
   "InitialTransformation is an option of GDisk and GCircle. ",
   "If set to a MoebiusTransformation t, ",
   "all input of GDisk and GCircle is first transformed by t."
@@ -236,7 +236,7 @@ FinalTransformation::usage = StringJoin[
   "FinalTransformation is an option of GDisk and GCircle. ",
   "If set to a MoebiusTransformation t, ",
   "all output of GDisk and GCircle is transformed by t right before drawing."
-];
+];*)
 
 ModularGroupList::usage = StringJoin[
   "ModularGroupList[p] ",
@@ -616,18 +616,10 @@ GDiskCocenter[disk] ^= (
 
 (* ----------------------------------------------------- Drawing algorithms *)
 Options[GDisk] ^= {
-  GDiskClipRadius->1024, 
-  GDiskNPoints->64, 
-  InitialTransformation->Null,
-  FinalTransformation->Null
-};
-Options[GCircle] ^= {
-  GDiskClipRadius->1024,
-  InitialTransformation->Null,
-  FinalTransformation->Null
+  GDiskNPoints->64
 };
 
-initTransformMat[t_] := Which[
+(*initTransformMat[t_] := Which[
   TrueQ[InstanceQ[MoebiusTransformation]@t], Mat@t,
   MatrixQ@t, t,
   True, IdentityMatrix@2
@@ -637,42 +629,30 @@ finalTransformMat[t_] := Which[
   TrueQ[InstanceQ[MoebiusTransformation]@t], Mat@t,
   MatrixQ@t, t,
   True, IdentityMatrix@2
-];
+];*)
 
-GDisk[disk_?(InstanceQ[GeneralizedDisk]), opts:OptionsPattern[]] := (
-  GDisk[Mat@disk, opts]
-);
-
-GDisk[mp_?MatrixQ, opts:OptionsPattern[]] := Module[{tinit, tfinal, t, m},
-  tinit = PGL2Inv@initTransformMat[OptionValue[InitialTransformation]];
-  tfinal = PGL2Inv@finalTransformMat[OptionValue[FinalTransformation]];
-  t = tinit.tfinal;
-  m = ConjugateTranspose[t].mp.t;
+GDisk[disk_, opts:OptionsPattern[]] := Module[{m},
+  m = If[MatrixQ[disk], disk, Mat@disk];
   Switch[GDiskMatClass[m],
     1, (* CompactDisk *)
     Module[{c = GDiskMatCenter[m]},
       Disk[{Re[c],Im[c]}, GDiskMatRadius[m]]
     ],
     -1, (* NoncompactDisk *)
-    Module[{points, clip, c, r, n},
-      clip = OptionValue[GDiskClipRadius];
+    Module[{points, c, r, n},
       n = OptionValue[GDiskNPoints];
       c = GDiskMatCenter[m];
       r = GDiskMatRadius[m];
-      points = Join[
-        Table[c+r Exp[2 Pi I t], {t, 1/2, -1/2, -1/n}],
-          (-I-1) clip {1,I,-1,-I,1}
-      ];
-      Polygon[{Re@#,Im@#}&/@points]
+      points = Table[c+r Exp[2 Pi I t], {t, 1/2, -1/2, -1/n}];
+      Polygon[Join[{Re@#, Im@#}& /@ points, Scaled /@ {{-1,0.5},{-1,-1},{2,-1},{2,2},{-1,2},{-1,0.5}}]]
     ],
     _, (* Halfplane *) 
-    Module[{absb, b0, rot, clip},
+    Module[{absb, b0, rot},
       absb = Abs[m[[1,2]]];
       b0 = m[[1,2]] / absb;
       rot = {{Re@b0, -Im@b0}, {Im@b0, Re@b0}};
-      clip = OptionValue[GDiskClipRadius];
       GeometricTransformation[
-        Rectangle[{-clip, -clip}, {-m[[2,2]]/(2 absb), clip}],
+        Rectangle[Scaled@{-1, -1}, Scaled[{0, 1}, {-m[[2,2]]/(2 absb), 0}]],
         rot
       ]
     ]
@@ -687,40 +667,34 @@ udTransforms[mlist_] := Module[{c,r},
   {m, mlist}]
 ]
 
-GDisk[disk_?(InstanceQ[GeneralizedDisk]), tlist_List, opts:OptionsPattern[]] :=
-Module[{md, mf, mi, tlistf, mlists},
-  md = Mat@disk;
-  mi = PGL2Inv@initTransformMat[OptionValue[InitialTransformation]];
-  mf = PGL2Inv@finalTransformMat[OptionValue[FinalTransformation]];
-  tlistf = mi.Mat@Inv[#].mf& /@ tlist;
-  mlists = SplitBy[ConjugateTranspose[#].md.#& /@ tlistf, GDiskMatClass];
-  Table[
-    If[GDiskMatClass[mlist[[1]]] == 1,
-      GeometricTransformation[Disk[], udTransforms[mlist]],
-      Table[GDisk[m, opts], {m, mlist}]
+GDisk[disk_, tlist_List, opts:OptionsPattern[]] :=
+Module[{m, ts, mlists},
+  If[Length@tlist > 0,
+    m = If[MatrixQ@disk, disk, Mat@disk];
+    ts = If[MatrixQ[tlist[[1]]], tlist, Mat /@ tlist];
+    mlists = SplitBy[GDiskMatMap[m, ts], GDiskMatClass];
+    Table[
+      If[GDiskMatClass[mlist[[1]]] == 1,
+        GeometricTransformation[Disk[], udTransforms[mlist]],
+        GDisk[#, opts]& /@ mlist
+      ], {mlist, mlists}
     ],
-  {mlist, mlists}]
+  (* else: tlist is empty *)
+    {}
+  ]
 ];
 
-GCircle[disk_?(InstanceQ[GeneralizedDisk]), opts:OptionsPattern[]] := (
-  GCircle[Mat@disk, opts]
-);
-
-GCircle[mp_?MatrixQ, opts:OptionsPattern[]] := Module[{tinit, tfinal, t, m},
-  tinit = PGL2Inv@initTransformMat[OptionValue[InitialTransformation]];
-  tfinal = PGL2Inv@finalTransformMat[OptionValue[FinalTransformation]];
-  t = tinit.tfinal;
-  m = ConjugateTranspose[t].mp.t;
+GCircle[disk_] := Module[{m},
+  m = If[MatrixQ@disk, disk, Mat@disk];
   If[GDiskMatClass[m] == 0,
     (* Halfplane *) 
-    Module[{absb, b0, rot, clip, x},
+    Module[{absb, b0, rot, x},
       absb = Abs[m[[1,2]]];
       b0 = m[[1,2]] / absb;
       rot = {{Re@b0, -Im@b0}, {Im@b0, Re@b0}};
-      clip = OptionValue[GDiskClipRadius];
       x = -m[[2,2]]/(2 absb);
       GeometricTransformation[
-        Line[{{x, -clip}, {x,clip}}],
+        Line[Scaled[#, {x, 0}]& /@ {{0, -1}, {0, 2}}],
         rot
       ]
     ],
@@ -731,21 +705,22 @@ GCircle[mp_?MatrixQ, opts:OptionsPattern[]] := Module[{tinit, tfinal, t, m},
   ]
 ];
 
-GCircle[disk_?(InstanceQ[GeneralizedDisk]), tlist_List, opts:OptionsPattern[]] :=
-Module[{md, mi, mf, tlistf, mlists},
-  md = Mat@disk;
-  mi = PGL2Inv@initTransformMat[OptionValue[InitialTransformation]];
-  mf = PGL2Inv@finalTransformMat[OptionValue[FinalTransformation]];
-  tlistf = mi.Mat@Inv[#].mf& /@ tlist;
-  mlists = SplitBy[ConjugateTranspose[#].md.#& /@ tlistf, GDiskMatClass];
-  Table[
-    If[GDiskMatClass[mlist[[1]]] == 0,
-      Table[GCircle[m, opts], {m, mlist}],      
-      GeometricTransformation[Circle[], udTransforms[mlist]]
+GCircle[disk_, tlist_List] :=
+Module[{m, ts, mlists},
+  If[Length@tlist > 0,
+    m = If[MatrixQ@disk, disk, Mat@disk];
+    ts = If[MatrixQ[tlist[[1]]], tlist, Mat /@ tlist];
+    mlists = SplitBy[GDiskMatMap[m, ts], GDiskMatClass];
+    Table[
+      If[GDiskMatClass[mlist[[1]]] == 0,
+        GCircle /@ mlist,      
+        GeometricTransformation[Circle[], udTransforms[mlist]]
+      ], {mlist, mlists}
     ],
-  {mlist, mlists}]
+    (* else: tlist empty *)
+    {}
+  ]
 ];
-
 
 
 End[];

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     21333,        514]
-NotebookOptionsPosition[     20977,        498]
-NotebookOutlinePosition[     21355,        514]
-CellTagsIndexPosition[     21312,        511]
+NotebookDataLength[     27400,        667]
+NotebookOptionsPosition[     26637,        636]
+NotebookOutlinePosition[     27156,        658]
+CellTagsIndexPosition[     27071,        653]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -494,11 +494,149 @@ Cell[BoxData[{
    3.5872252613409386`*^9}, {3.5872253288892155`*^9, 3.587225414767567*^9}, 
    3.587225476965022*^9, 3.587225522408008*^9, {3.587225554029338*^9, 
    3.587225567663793*^9}, {3.5872256079899583`*^9, 3.5872256097371655`*^9}, {
-   3.587226013993427*^9, 3.587226028002284*^9}}]
+   3.587226013993427*^9, 3.587226028002284*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Needs", "[", "\"\<ModularGroup`\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Module", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"phi", ",", "size", ",", "mtList"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"size", "=", 
+     RowBox[{
+      RowBox[{"GDiskMatRadius", "@", 
+       RowBox[{"GDiskMatMap", "[", 
+        RowBox[{
+         RowBox[{"Mat", "@", "gdIncircle0"}], ",", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"I", ",", "1"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "I"}], "}"}]}], "}"}], ".", 
+          RowBox[{"Mat", "@", "#"}]}]}], "]"}]}], "&"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"mtList", "=", 
+     RowBox[{"ModularGroupList", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"size", "@", "#"}], ">", 
+        SuperscriptBox["2", 
+         RowBox[{"-", "7"}]]}], "&"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"phi", "=", 
+        RowBox[{"MatrixPower", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"I", ",", "1"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "I"}], "}"}]}], "}"}], ",", "t"}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"Graphics", "[", 
+        RowBox[{
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"GCircle", "[", 
+            RowBox[{"gdIncircle0", ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"phi", ".", 
+                RowBox[{"Mat", "@", "#"}]}], "&"}], " ", "/@", " ", 
+              "mtList"}]}], "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"GCircle", "[", 
+            RowBox[{"gdUpperHalfplane", ",", 
+             RowBox[{"{", "phi", "}"}]}], "]"}]}], "\[IndentingNewLine]", 
+          "}"}], ",", 
+         RowBox[{"PlotRange", "\[Rule]", "2"}], ",", 
+         RowBox[{"Axes", "\[Rule]", "True"}]}], "]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", "0", ",", "1"}], "}"}]}], "\[IndentingNewLine]", 
+     "]"}]}]}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.587736980242491*^9, 3.5877370307710977`*^9}, {
+  3.58773706796165*^9, 3.587737070098859*^9}, {3.58773712409068*^9, 
+  3.587737147771577*^9}, {3.587737730309163*^9, 3.587737746845231*^9}, {
+  3.5877397756805954`*^9, 3.5877397763357983`*^9}, {3.5879963561677327`*^9, 
+  3.587996556284216*^9}, {3.5879971684019876`*^9, 3.587997256132391*^9}, {
+  3.5879973196901326`*^9, 3.5879973412197227`*^9}, {3.587997371570554*^9, 
+  3.587997417948825*^9}, {3.5879974556428576`*^9, 3.587997541586212*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`t$$ = 0., Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], 0, 1}}, Typeset`size$$ = {360., {180., 184.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`t$77217$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`t$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$77217$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`phi$75599 = 
+        MatrixPower[{{I, 1}, {1, I}}, $CellContext`t$$]; Graphics[{
+          ModularGroup`GCircle[ModularGroup`gdIncircle0, 
+           Map[Dot[$CellContext`phi$75599, 
+             ModularGroup`Mat[#]]& , $CellContext`mtList$75599]], 
+          ModularGroup`GCircle[
+          ModularGroup`gdUpperHalfplane, {$CellContext`phi$75599}]}, 
+         PlotRange -> 2, Axes -> True]), 
+      "Specifications" :> {{$CellContext`t$$, 0, 1}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{411., {226., 231.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.5879972219304543`*^9, 3.5879972626595697`*^9, 3.5879973431567755`*^9, {
+   3.587997379179763*^9, 3.5879974182678337`*^9}, 3.5879974568058896`*^9, {
+   3.587997507981292*^9, 3.5879975420392246`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "ModularGroupList"}]], "Input",
+ CellChangeTimes->{{3.5877370715496645`*^9, 3.587737075590081*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"ModularGroupList[p] returns a list of ModularTransformations \
+satisfying the predicate p. Starting with the identity transformation, a \
+duplicate-free list of transformations is generated by successively applying \
+T and U from the right, using a depth-first-search algorithm which continues \
+as long as p returns True.\\nThe options StartTransformation and \
+MaxIterations are supported.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.5877370766976857`*^9},
+ CellTags->"Info3587744276-4420727"]
+}, Open  ]]
 },
-WindowSize->{1350, 673},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
-Magnification->0.8999999761581421,
+WindowSize->{1088, 595},
+WindowMargins->{{86, Automatic}, {Automatic, -3}},
+ShowSelection->True,
 FrontEndVersion->"9.0 for Microsoft Windows (32-bit) (January 25, 2013)",
 StyleDefinitions->"Default.nb"
 ]
@@ -506,16 +644,31 @@ StyleDefinitions->"Default.nb"
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "Info3587744276-4420727"->{
+  Cell[26082, 625, 539, 8, 75, "Print",
+   CellTags->"Info3587744276-4420727"]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"Info3587744276-4420727", 26967, 647}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[557, 20, 146, 3, 29, "Input"],
-Cell[706, 25, 1303, 30, 150, "Input"],
-Cell[2012, 57, 18961, 439, 1130, "Input"]
+Cell[557, 20, 146, 3, 31, "Input"],
+Cell[706, 25, 1303, 30, 152, "Input"],
+Cell[2012, 57, 18961, 439, 1172, "Input"],
+Cell[CellGroupData[{
+Cell[20998, 500, 2861, 72, 301, "Input"],
+Cell[23862, 574, 2053, 42, 506, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25952, 621, 127, 2, 31, "Input"],
+Cell[26082, 625, 539, 8, 75, "Print",
+ CellTags->"Info3587744276-4420727"]
+}, Open  ]]
 }
 ]
 *)
