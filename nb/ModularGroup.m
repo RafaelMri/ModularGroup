@@ -218,6 +218,16 @@ GCircle::usage = StringJoin[
   "\nThe option GDiskClipRadius is supported."
 ];
 
+GDiskLabel::usage = StringJoin[
+  "TODO.\n"
+];
+GDiskLabel::listlength = StringJoin[
+  "Number of disks and labels does not match."
+]
+GDiskLabel::noncompact = StringJoin[
+  "Labels for noncompact disks are not yet supported."
+] 
+
 GDiskClipRadius::usage = StringJoin[
   "GDiskClipRadius is an option of GDisk and GCircle. ",
   "Set it to a value, which is greater or equal ",
@@ -227,6 +237,7 @@ GDiskNPoints::usage = StringJoin[
   "GDiskNPoints is an option of GDisk and GCircle. It specifies, how many points are used ",
   "in the approximation of the boundary of a NoncompactDisk with a regular n-gon."
 ];
+
 (*InitialTransformation::usage = StringJoin[
   "InitialTransformation is an option of GDisk and GCircle. ",
   "If set to a MoebiusTransformation t, ",
@@ -681,6 +692,30 @@ Module[{m, ts, mlists},
     ],
   (* else: tlist is empty *)
     {}
+  ]
+];
+
+Options[GDiskLabel] = {
+  Magnification -> Off
+};
+GDiskLabel[disk_, tlist_List, labels_List, opts:OptionsPattern[]] :=
+Module[{m, ts, disks, magFactor, magLabels},
+  Which[
+    Length@tlist != Length@labels, (
+      Message[GDiskLabel::listlength]
+      $Failed
+    ), 
+    Length@tlist > 0, (
+      m = If[MatrixQ@disk, disk, Mat@disk];
+      ts = If[MatrixQ[tlist[[1]]], tlist, Mat /@ tlist];
+      disks = GDiskMatMap[m, ts];
+      magFactor = OptionValue[Magnification];
+      magLabels = If[magFactor === Off, labels, 
+        Thread@Magnify[labels, magFactor GDiskMatRadius[disks]]
+      ];
+      Thread@Text[magLabels, {Re@#, Im@#}& /@ GDiskMatCenter[disks]]
+    ), 
+    _, {}
   ]
 ];
 
