@@ -208,46 +208,37 @@ GDisk::usage = StringJoin[
   "representing the GeneralizedDisk d.",
   "\nGDisk[d, {\!\(\*SubscriptBox[\(t\), \(1\)]\),\!\(\*SubscriptBox[\(t\), \(2\)]\),...}] ",
   "draws all Moebius transformed GeneralizedDisks \!\(\*SubscriptBox[\(t\), \(1\)]\)[d], \!\(\*SubscriptBox[\(t\), \(2\)]\)[d], ...",
-  "\nThe options GDiskClipRadius and GDiskNPoints are supported."
+  "\nThe option GDiskNPoints is supported."
 ];
+GDiskNPoints::usage = StringJoin[
+  "GDiskNPoints is an option of GDisk. It specifies, how many points are used ",
+  "in the approximation of the boundary of a NoncompactDisk with a regular n-gon."
+];
+
 GCircle::usage = StringJoin[
   "GCircle[d] gives a two-dimensional grphics object ",
   "representing the boundary of the GeneralizedDisk d.",
   "\nGCircle[d, {\!\(\*SubscriptBox[\(t\), \(1\)]\),\!\(\*SubscriptBox[\(t\), \(2\)]\),...}] ",
-  "draws all boundaries of the Moebius transformed GeneralizedDisks \!\(\*SubscriptBox[\(t\), \(1\)]\)[d], \!\(\*SubscriptBox[\(t\), \(2\)]\)[d], ...",
-  "\nThe option GDiskClipRadius is supported."
+  "draws all boundaries of the Moebius transformed GeneralizedDisks \!\(\*SubscriptBox[\(t\), \(1\)]\)[d], \!\(\*SubscriptBox[\(t\), \(2\)]\)[d], ..."
 ];
 
 GDiskLabel::usage = StringJoin[
-  "TODO.\n"
+  "GDiskLabel[d, {\!\(\*SubscriptBox[\(t\), \(1\)]\),\!\(\*SubscriptBox[\(t\), \(2\)]\),...}, {\!\(\*SubscriptBox[\(l\), \(1\)]\),\!\(\*SubscriptBox[\(l\), \(2\)]\),...}] ",
+  "can be used for labelling compact disks or circles drawn with GDisk or GCircle. ",
+  "GDiskLabel outputs the list {Text[\!\(\*SubscriptBox[\(l\), \(1\)]\), \!\(\*SubscriptBox[\(p\), \(1\)]\)], Text[\!\(\*SubscriptBox[\(l\), \(2\)]\), \!\(\*SubscriptBox[\(p\), \(2\)]\)],...} where each \!\(\*SubscriptBox[\(p\), \(i\)]\) is the ",
+  "center of the Moebius transformed disk \!\(\*SubscriptBox[\(t\), \(i\)]\)[d]. ",
+  "\nThe option Magnification is supported. ",
+  "If Magnification is set to a numerical value m, ",
+  "(default: Magnification -> Off) ",
+  "each label \!\(\*SubscriptBox[\(l\), \(\(i\)\(\\\ \)\)]\)is magnified by the factor m\[CenterDot]\!\(\*SubscriptBox[\(r\), \(i\)]\), ",
+  "where \!\(\*SubscriptBox[\(r\), \(i\)]\) is the radius of the Moebius transformed disk \!\(\*SubscriptBox[\(t\), \(i\)]\)[d]."
 ];
 GDiskLabel::listlength = StringJoin[
   "Number of disks and labels does not match."
-]
+];
 GDiskLabel::noncompact = StringJoin[
   "Labels for noncompact disks are not yet supported."
-] 
-
-GDiskClipRadius::usage = StringJoin[
-  "GDiskClipRadius is an option of GDisk and GCircle. ",
-  "Set it to a value, which is greater or equal ",
-  "to the maximum 2-norm of all points within the plot range."
-];
-GDiskNPoints::usage = StringJoin[
-  "GDiskNPoints is an option of GDisk and GCircle. It specifies, how many points are used ",
-  "in the approximation of the boundary of a NoncompactDisk with a regular n-gon."
-];
-
-(*InitialTransformation::usage = StringJoin[
-  "InitialTransformation is an option of GDisk and GCircle. ",
-  "If set to a MoebiusTransformation t, ",
-  "all input of GDisk and GCircle is first transformed by t."
-];
-FinalTransformation::usage = StringJoin[
-  "FinalTransformation is an option of GDisk and GCircle. ",
-  "If set to a MoebiusTransformation t, ",
-  "all output of GDisk and GCircle is transformed by t right before drawing."
-];*)
+]; 
 
 ModularGroupList::usage = StringJoin[
   "ModularGroupList[p] ",
@@ -256,7 +247,7 @@ ModularGroupList::usage = StringJoin[
   "a duplicate-free list of transformations is generated ",
   "by successively applying T and U from the right, ",
   "using a depth-first-search algorithm ",
-  "which continues as long as p returns True.",
+  "which continues as long as p returns True. ",
   "\nThe options StartTransformation and MaxIterations are supported."
 ];
 ModularGroupList::maxit =
@@ -630,18 +621,6 @@ Options[GDisk] ^= {
   GDiskNPoints->64
 };
 
-(*initTransformMat[t_] := Which[
-  TrueQ[InstanceQ[MoebiusTransformation]@t], Mat@t,
-  MatrixQ@t, t,
-  True, IdentityMatrix@2
-];
-
-finalTransformMat[t_] := Which[
-  TrueQ[InstanceQ[MoebiusTransformation]@t], Mat@t,
-  MatrixQ@t, t,
-  True, IdentityMatrix@2
-];*)
-
 GDisk[disk_, opts:OptionsPattern[]] := Module[{m},
   m = If[MatrixQ[disk], disk, Mat@disk];
   Switch[GDiskMatClass[m],
@@ -680,7 +659,7 @@ udTransforms[mlist_] := Module[{c,r},
 
 GDisk[disk_, tlist_List, opts:OptionsPattern[]] :=
 Module[{m, ts, mlists},
-  If[Length@tlist > 0,
+  If[Length@tlist > 0, (
     m = If[MatrixQ@disk, disk, Mat@disk];
     ts = If[MatrixQ[tlist[[1]]], tlist, Mat /@ tlist];
     mlists = SplitBy[GDiskMatMap[m, ts], GDiskMatClass];
@@ -689,34 +668,10 @@ Module[{m, ts, mlists},
         GeometricTransformation[Disk[], udTransforms[mlist]],
         GDisk[#, opts]& /@ mlist
       ], {mlist, mlists}
-    ],
-  (* else: tlist is empty *)
-    {}
-  ]
-];
-
-Options[GDiskLabel] = {
-  Magnification -> Off
-};
-GDiskLabel[disk_, tlist_List, labels_List, opts:OptionsPattern[]] :=
-Module[{m, ts, disks, magFactor, magLabels},
-  Which[
-    Length@tlist != Length@labels, (
-      Message[GDiskLabel::listlength]
-      $Failed
-    ), 
-    Length@tlist > 0, (
-      m = If[MatrixQ@disk, disk, Mat@disk];
-      ts = If[MatrixQ[tlist[[1]]], tlist, Mat /@ tlist];
-      disks = GDiskMatMap[m, ts];
-      magFactor = OptionValue[Magnification];
-      magLabels = If[magFactor === Off, labels, 
-        Thread@Magnify[labels, magFactor GDiskMatRadius[disks]]
-      ];
-      Thread@Text[magLabels, {Re@#, Im@#}& /@ GDiskMatCenter[disks]]
-    ), 
-    _, {}
-  ]
+    ]
+  ), (* else: tlist is empty *) (
+    {} 
+  )]
 ];
 
 GCircle[disk_] := Module[{m},
@@ -756,6 +711,32 @@ Module[{m, ts, mlists},
     {}
   ]
 ];
+
+Options[GDiskLabel] = {
+  Magnification -> Off
+};
+GDiskLabel[disk_, tlist_List, labels_List, opts:OptionsPattern[]] :=
+Module[{m, ts, disks, magFactor, magLabels},
+  Which[
+    Length@tlist != Length@labels, (
+      Message[GDiskLabel::listlength]
+      $Failed
+    ), 
+    Length@tlist > 0, (
+      m = If[MatrixQ@disk, disk, Mat@disk];
+      ts = If[MatrixQ[tlist[[1]]], tlist, Mat /@ tlist];
+      disks = GDiskMatMap[m, ts];
+      magFactor = OptionValue[Magnification];
+      magLabels = If[magFactor === Off, labels, 
+        Thread@Magnify[labels, magFactor GDiskMatRadius[disks]]
+      ];
+      Thread@Text[magLabels, {Re@#, Im@#}& /@ GDiskMatCenter[disks]]
+    ), 
+    _, {}
+  ]
+];
+
+
 
 
 End[];
