@@ -42,6 +42,9 @@ TRRight::usage = StringJoin[
   "TRRight[t] is equivalent to Last[TRList[t]]."
 ];
 
+TRIndicateLeft::usage = "TODO\n";
+TRIndicateRight::usage = "TODO\n";
+
 TRLeft::usage = StringJoin[
   "Returns the leftmost factor of the unique R-T-product representation ",
   "of the modular transformation t, which may be given in matrix form ",
@@ -281,16 +284,16 @@ StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): Function for drawin
   "\nMagnification \[Rule] n/\!\(\*
 StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): If set to a numerical value n, labels are magnified with a factor n\[CenterDot]r, where r is the according tile inradius. " 
 ];
-(#::usage = ToString@# <> " is an option of ModularTiling. See usage of ModularTiling for more information.")& /@
-{
-  InteriorMode, InteriorStyle,
-  ExteriorMode, ExterorStyle,
-  TilingMode, TilingStyle, TilingThreshold,
-  ExtendedTilingMode, ExtendedTilingStyle,
-  FordDiskMode, FordDiskStyle, FordDiskThreshold,
-  IncircleMode, IncircleStyle, IncircleThreshold,
-  LabelingMode, LabelingStyle, LabelingThreshold
+Options[ModularTiling] = {
+  InteriorMode -> GCircle, InteriorStyle -> Black,
+  ExteriorMode -> GDisk, ExteriorStyle -> White,
+  TilingMode -> GCircle, TilingStyle -> Black, TilingThreshold -> 2^-7,
+  ExtendedTilingMode -> Off, ExtendedTilingStyle -> Gray,
+  FordDiskMode -> Off, FordDiskStyle -> Brown, FordDiskThreshold -> 2^-7,
+  IncircleMode -> Off, IncircleStyle -> Blue, IncircleThreshold -> 2^-7,
+  LabelingMode -> Off, LabelingThreshold -> 2^-3, Magnification -> Off
 };
+(#::usage = ToString@# <> " is an option of ModularTiling. See usage of ModularTiling for more information.")& /@ DeleteCases[#[[1]]& /@ Options[ModularTiling], Magnification];
 
 ModularGroupList::usage = StringJoin[
   "ModularGroupList[p] ",
@@ -431,20 +434,37 @@ Module[{factors},
   If[factors === {}, "1", Row@factors]
 ];
 
+TRIndicateLeft = Compile[{{mat, _Integer, 2}},
+  Module[{a,b,c,d, ac, bd},
+    {{a,b},{c,d}} = mat;
+    ac = a c; bd = b d;
+    Which[
+      ac >= 0 && bd >= 0, 0,
+      a^2 + ac <= 0 && b^2 + bd <= 0, 1,
+      True, -1
+    ]
+  ], RuntimeAttributes->Listable
+];
+
+TRIndicateRight = Compile[{{mat, _Integer, 2}},
+  Module[{a,b,c,d, ab, cd},
+    {{a,b},{c,d}} = mat;
+    ab = a b; cd = c d;
+    Which[
+      ab <= 0 && cd <= 0, 0,
+      a^2 - ab <= 0 && c^2 + cd <= 0, 1,
+      True, -1
+    ]
+  ], RuntimeAttributes->Listable
+];
+
 TRLeft[obj_?(InstanceQ[ModularTransformation])] :=
 TRLeft[obj] ^= TRLeft[Mat@obj];
-TRLeft[mat_?MatrixQ] := Module[{a,b,c,d, ac, bd},
-  {{a,b},{c,d}} = mat;
-  ac = a c; bd = b d;
-  Which[
-    ac >= 0 && bd >= 0, mtT,
-    a^2 + ac <= 0 && b^2 + bd <= 0, mtR,
-    True, Inv@mtR
-  ]
-];
+TRLeft[mat_?MatrixQ] := TRIndicateLeft[mat] /. {0 -> mtT, 1 -> mtR, -1 -> Inv@mtR};
+
 TRRight[obj_?(InstanceQ[ModularTransformation])] := 
-TRRight[obj] ^= Inv@TRLeft[Inv@obj];
-TRRight[mat_?MatrixQ] := Inv@TRLeft[Inv@mat];
+TRRight[obj] ^= TRRight[Mat@obj];
+TRRight[mat_?MatrixQ] := TRIndicateRight[mat] /. {0 -> mtT, 1 -> mtR, -1 -> Inv@mtR};
 
 TRList[obj_?(InstanceQ[ModularTransformation])] :=
 TRList[obj] ^= TRList[Mat@obj];
@@ -788,7 +808,57 @@ Module[{m, ts, disks, magFactor, magLabels},
   ]
 ];
 
+ModularTiling[tlist_List, phi_:mtId, opts:OptionsPattern[]] :=
+If[Length[tlist] > 0,
+  Module[{output = {}, all, notTStart, labelTs, f, min, mag},
+    all := all = If[MatrixQ[tlist[[1]]], tlist, Mat /@ tlist];
+    notTStart := notTStart = Append[Pick[all, TRIndicateRight@all, -1|1], IdentityMatrix[2]];
 
+    (* Draw upper halfplane *)
+    f = OptionValue[InteriorMode]; 
+    If[!(f === Off),
+      AppendTo[output, {OptionValue[InteriorStyle], f[gdUpperHalfplane,{phi}]}];
+    ];
+
+    (* Draw ford disks *)
+    f = OptionValue[FordDiskMode];
+    If[!(f === Off),
+      AppendTo[output, {OptionValue[FordDiskStyle], f[gdFord0, phi.#& /@ all]}];
+    ];
+  
+    (* Draw incircles *)
+    f = OptionValue[IncircleMode];
+    If[!(f === Off),
+      AppendTo[output, {OptionValue[IncircleStyle], f[gdIncircle0, phi.#& /@ all]}];
+    ];
+
+    (* Draw tiling *)
+    f = OptionValue[TilingMode];
+    If[!(f === Off),
+      AppendTo[output, {OptionValue[TilingStyle], f[gdUnitDisk, phi.#& /@ notTStart]}];
+    ];
+
+    (* Draw labels *)
+    f = OptionValue[LabelingMode];
+    If[!(f === Off),
+      min = OptionValue[LabelingThreshold];
+      mag = OptionValue[Magnification];
+      labelTs = Select[all, GDiskMatRadius[GDiskMatMap[Mat@gdIncircle0, phi.#]] >= min&];
+      AppendTo[output, GDiskLabel[
+        gdIncircle0, phi.#& /@ labelTs, f /@ labelTs, 
+        FilterRules[{opts}, Options[GDiskLabel]]
+      ]];
+    ];
+
+    (* Draw lower halfplane *)
+    f = OptionValue[ExteriorMode]; 
+    If[!(f === Off),
+      AppendTo[output, {OptionValue[ExteriorStyle], f[gdLowerHalfplane,{phi}]}];
+    ];
+
+    output
+  ], {} (* mtList is empty *)
+];
 
 
 End[];
