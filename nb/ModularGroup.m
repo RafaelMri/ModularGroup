@@ -278,9 +278,11 @@ StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): Function for drawin
   "\nIncircleStyle \[Rule] \!\(\*
 StyleBox[\"Blue\",\nFontVariations->{\"Underline\"->True}]\): Graphics style for drawing incircles of tiles. ",
   "\nIncircleThreshold \[Rule] \!\(\*SuperscriptBox[\(2\), \(-7\)]\): Minimum radius for drawing incircles. ",
-  "\nLabelingMode \[Rule] TUWord/TRWord/Mat/.../\!\(\*
-StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): Function for drawing tile labels. ",
-  "\nLabelingThreshold \[Rule] \!\(\*SuperscriptBox[\(2\), \(-3\)]\): Minimum inradius of tiles for drawing tile labels. ",
+  "\nLabelMode \[Rule] TUWord/TRWord/Mat/.../\!\(\*
+StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): Function for printing tile labels. ",
+  "\nLabelStyle \[Rule] \!\(\*
+StyleBox[\"Black\",\nFontVariations->{\"Underline\"->True}]\): Style for printing tile lables. ",
+  "\nLabelThreshold \[Rule] \!\(\*SuperscriptBox[\(2\), \(-3\)]\): Minimum inradius of tiles for printing tile labels. ",
   "\nMagnification \[Rule] n/\!\(\*
 StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): If set to a numerical value n, labels are magnified with a factor n\[CenterDot]r, where r is the according tile inradius. " 
 ];
@@ -291,9 +293,9 @@ Options[ModularTiling] = {
   ExtendedTilingMode -> Off, ExtendedTilingStyle -> Gray,
   FordDiskMode -> Off, FordDiskStyle -> Brown, FordDiskThreshold -> 2^-7,
   IncircleMode -> Off, IncircleStyle -> Blue, IncircleThreshold -> 2^-7,
-  LabelingMode -> Off, LabelingThreshold -> 2^-3, Magnification -> Off
+  LabelMode -> Off, LabelThreshold -> 2^-3, LabelStyle -> Black, Magnification -> Off
 };
-(#::usage = ToString@# <> " is an option of ModularTiling. See usage of ModularTiling for more information.")& /@ DeleteCases[#[[1]]& /@ Options[ModularTiling], Magnification];
+(#::usage = ToString@# <> " is an option of ModularTiling. See usage of ModularTiling for more information.")& /@ DeleteCases[#[[1]]& /@ Options[ModularTiling], Magnification|LabelStyle];
 
 ModularGroupList::usage = StringJoin[
   "ModularGroupList[p] ",
@@ -811,43 +813,46 @@ Module[{m, ts, disks, magFactor, magLabels},
 ModularTiling[tlist_List, phi_:mtId, opts:OptionsPattern[]] :=
 If[Length[tlist] > 0,
   Module[{output = {}, all, notTStart, labelTs, f, min, mag},
-    all := all = If[MatrixQ[tlist[[1]]], tlist, Mat /@ tlist];
-    notTStart := notTStart = Append[Pick[all, TRIndicateRight@all, -1|1], IdentityMatrix[2]];
+    all = tlist;
+    notTStart := notTStart = Append[Pick[all, TRIndicateRight[Mat/@all], -1|1], mtId];
 
     (* Draw upper halfplane *)
     f = OptionValue[InteriorMode]; 
     If[!(f === Off),
-      AppendTo[output, {OptionValue[InteriorStyle], f[gdUpperHalfplane,{phi}]}];
+      AppendTo[output, {OptionValue[InteriorStyle], f[gdUpperHalfplane, {phi}]}];
     ];
 
     (* Draw ford disks *)
     f = OptionValue[FordDiskMode];
     If[!(f === Off),
-      AppendTo[output, {OptionValue[FordDiskStyle], f[gdFord0, phi.#& /@ all]}];
+      AppendTo[output, {OptionValue[FordDiskStyle], f[gdFord0, phi.Mat@#& /@ all]}];
     ];
   
     (* Draw incircles *)
     f = OptionValue[IncircleMode];
     If[!(f === Off),
-      AppendTo[output, {OptionValue[IncircleStyle], f[gdIncircle0, phi.#& /@ all]}];
+      AppendTo[output, {OptionValue[IncircleStyle], f[gdIncircle0, phi.Mat@#& /@ all]}];
     ];
 
     (* Draw tiling *)
     f = OptionValue[TilingMode];
     If[!(f === Off),
-      AppendTo[output, {OptionValue[TilingStyle], f[gdUnitDisk, phi.#& /@ notTStart]}];
+      AppendTo[output, {OptionValue[TilingStyle], f[gdUnitDisk, phi.Mat@#& /@ notTStart]}];
     ];
 
     (* Draw labels *)
-    f = OptionValue[LabelingMode];
+    f = OptionValue[LabelMode];
     If[!(f === Off),
-      min = OptionValue[LabelingThreshold];
+      min = OptionValue[LabelThreshold];
       mag = OptionValue[Magnification];
-      labelTs = Select[all, GDiskMatRadius[GDiskMatMap[Mat@gdIncircle0, phi.#]] >= min&];
-      AppendTo[output, GDiskLabel[
-        gdIncircle0, phi.#& /@ labelTs, f /@ labelTs, 
-        FilterRules[{opts}, Options[GDiskLabel]]
-      ]];
+      labelTs = Select[all, GDiskMatRadius[GDiskMatMap[Mat@gdIncircle0, phi.Mat@#]] >= min&];
+      AppendTo[output, {
+        OptionValue[LabelStyle], 
+        GDiskLabel[
+          gdIncircle0, phi.Mat@#& /@ labelTs, f /@ labelTs, 
+          FilterRules[{opts}, Options[GDiskLabel]]
+        ]
+      }];
     ];
 
     (* Draw lower halfplane *)
