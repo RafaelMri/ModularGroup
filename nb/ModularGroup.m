@@ -240,6 +240,58 @@ GDiskLabel::noncompact = StringJoin[
   "Labels for noncompact disks are not yet supported."
 ]; 
 
+ModularTiling::usage = StringJoin[
+  "ModularTiling[{\!\(\*SubscriptBox[\(m\), \(1\)]\), \!\(\*SubscriptBox[\(m\), \(2\)]\),...}, t] produces a graphic ",
+  "of the tiling of the upper halflplane associated to the modular group, ",
+  "with the optional ModularTransformation t applied. ", 
+  "By default, the output is just the orbit of the unit circle ",
+  "under the given ModularTransformations \!\(\*SubscriptBox[\(m\), \(1\)]\), \!\(\*SubscriptBox[\(m\), \(2\)]\), ..., ",
+  "(ModularGroupList may be used to generate a appropriate list of ModularTransformations). ",
+  "\nFollowing Options are supported (default values are underlined): ",
+  "\nInteriorMode \[Rule] GDisk/\!\(\*
+StyleBox[\"GCircle\",\nFontVariations->{\"Underline\"->True}]\)/Off: Function for drawing the (transformed) upper halfplane. ",
+  "\nInteriorStyle \[Rule] \!\(\*
+StyleBox[\"Black\",\nFontVariations->{\"Underline\"->True}]\): Graphics style for drawing the (transformed) upper halfplane. ",
+  "\nExteriorMode \[Rule] \!\(\*
+StyleBox[\"GDisk\",\nFontVariations->{\"Underline\"->True}]\)/GCircle/Off: Function for drawing the (transformed) lower halfplane. ", 
+  "\nExteriorStyle \[Rule] \!\(\*
+StyleBox[\"White\",\nFontVariations->{\"Underline\"->True}]\): Graphics style for drawing the (transformed) lower halfplane. ", 
+  "\nTilingMode \[Rule] GDisk/\!\(\*
+StyleBox[\"GCircle\",\nFontVariations->{\"Underline\"->True}]\)/Off: Function for drawing the orbit of the unit disk (tiling). ",
+  "\nTilingStyle \[Rule] \!\(\*
+StyleBox[\"Black\",\nFontVariations->{\"Underline\"->True}]\): Graphics style for drawing the orbit of the unit disk (tiling). ",
+  "\nTilingThreshold \[Rule] \!\(\*SuperscriptBox[\(2\), \(-7\)]\): Minimum radius for drawing tiling arcs. ",
+  "\nExtendedTilingMode \[Rule] GDisk/GCircle/\!\(\*
+StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): Function for drawing the orbit of the imaginary axis (extended tiling). ",
+  "\nExtendedTilingStyle \[Rule] \!\(\*
+StyleBox[\"Gray\",\nFontVariations->{\"Underline\"->True}]\): Graphics style for drawing the orbit of the imaginary axis (extended tiling). ",
+  "\nFordDiskMode \[Rule] GDisk/GCircle/\!\(\*
+StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): Function for drawing ford circles. ",
+  "\nFordDiskStyle \[Rule] \!\(\*
+StyleBox[\"Brown\",\nFontVariations->{\"Underline\"->True}]\): Graphics style for drawing ford circles. ",
+  "\nFordDiskThreshold \[Rule] \!\(\*SuperscriptBox[\(2\), \(-7\)]\): Minimum radius for drawing ford circles. ",
+  "\nIncircleMode \[Rule] GDisk/GCircle/\!\(\*
+StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): Function for drawing incircles of tiles. ",
+  "\nIncircleStyle \[Rule] \!\(\*
+StyleBox[\"Blue\",\nFontVariations->{\"Underline\"->True}]\): Graphics style for drawing incircles of tiles. ",
+  "\nIncircleThreshold \[Rule] \!\(\*SuperscriptBox[\(2\), \(-7\)]\): Minimum radius for drawing incircles. ",
+  "\nLabelingMode \[Rule] TUWord/TRWord/Mat/.../\!\(\*
+StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): Function for drawing tile labels. ",
+  "\nLabelingThreshold \[Rule] \!\(\*SuperscriptBox[\(2\), \(-3\)]\): Minimum inradius of tiles for drawing tile labels. ",
+  "\nMagnification \[Rule] n/\!\(\*
+StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): If set to a numerical value n, labels are magnified with a factor n\[CenterDot]r, where r is the according tile inradius. " 
+];
+(#::usage = ToString@# <> " is an option of ModularTiling. See usage of ModularTiling for more information.")& /@
+{
+  InteriorMode, InteriorStyle,
+  ExteriorMode, ExterorStyle,
+  TilingMode, TilingStyle, TilingThreshold,
+  ExtendedTilingMode, ExtendedTilingStyle,
+  FordDiskMode, FordDiskStyle, FordDiskThreshold,
+  IncircleMode, IncircleStyle, IncircleThreshold,
+  LabelingMode, LabelingStyle, LabelingThreshold
+};
+
 ModularGroupList::usage = StringJoin[
   "ModularGroupList[p] ",
   "returns a list of ModularTransformations satisfying the predicate p. ",
