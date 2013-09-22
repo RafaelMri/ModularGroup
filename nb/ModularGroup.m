@@ -642,11 +642,14 @@ InteriorQ[disk_?(InstanceQ[GeneralizedDisk]), z_] := (
 
 GDiskMatRadius = Compile[{{m,_Complex,2}},
   Module[{a,b,d,aSqr},
-   a = Re@m[[1,1]];
-   b = m[[2,1]];
-   d = Re@m[[2,2]];
-   aSqr = a^2;   
-   Sqrt[(Re[b]^2 + Im[b]^2 - a d) / aSqr]
+    a = Re@m[[1,1]];
+    b = m[[2,1]];
+    d = Re@m[[2,2]];
+    aSqr = a^2;   
+    If[aSqr < Evaluate[2.^-64], 
+      Evaluate[2.^64], 
+      Sqrt[(Re[b]^2 + Im[b]^2 - a d) / aSqr]
+    ]
   ],
   RuntimeAttributes -> {Listable}
 ];
@@ -820,10 +823,8 @@ fordCriteria = Compile[{{m,_Integer,2}},
 
 ModularTiling[tlist_List, phi_:mtId, opts:OptionsPattern[]] :=
 If[Length[tlist] > 0,
-  Module[{output = {}, all, tTiling, tFord, labelTs, f, min, mag},
-    all = tlist;
-    tTiling := tTiling = Rest@Pick[all, TRIndicateRight[Mat/@all], 0];
-    tFord := tFord = Pick[all, fordCriteria[Mat/@ all]];
+  Module[{output = {}, tTiling, tFord, tIncircle, tLabel, f, min},
+    tTiling := tTiling = Rest@Pick[tlist, TRIndicateRight[Mat/@tlist], 0];
 
     (* Draw upper halfplane *)
     f = OptionValue[InteriorMode]; 
@@ -834,18 +835,41 @@ If[Length[tlist] > 0,
     (* Draw ford disks *)
     f = OptionValue[FordDiskMode];
     If[!(f === Off),
+      tFord = Pick[tlist, fordCriteria[Mat/@tlist]]; (* Danger: Assumes that tlist starts with identity map! *)
+      min = OptionValue[FordDiskThreshold];
+      If[TrueQ[min > 0], 
+        tFord = Pick[
+          tFord, 
+          Thread[GDiskMatRadius[GDiskMatMap[Mat@gdFord0, phi.Mat@#& /@ tFord]] >= min]
+        ]
+      ];
       AppendTo[output, {OptionValue[FordDiskStyle], f[gdFord0, phi.Mat@#& /@ tFord]}];
     ];
   
     (* Draw incircles *)
     f = OptionValue[IncircleMode];
     If[!(f === Off),
-      AppendTo[output, {OptionValue[IncircleStyle], f[gdIncircle0, phi.Mat@#& /@ all]}];
+      min = OptionValue[IncircleThreshold];
+      tIncircle = If[TrueQ[min > 0],
+        Pick[
+          tlist, 
+          Thread[GDiskMatRadius[GDiskMatMap[Mat@gdIncircle0, phi.Mat@#& /@ tlist]] >= min]
+        ],
+        tlist
+      ];
+      AppendTo[output, {OptionValue[IncircleStyle], f[gdIncircle0, phi.Mat@#& /@ tIncircle]}];
     ];
 
     (* Draw tiling *)
     f = OptionValue[TilingMode];
     If[!(f === Off),
+      min = OptionValue[TilingThreshold];
+      If[TrueQ[min > 0],
+        tTiling = Pick[
+          tTiling, 
+          Thread[GDiskMatRadius[GDiskMatMap[Mat@gdUnitDisk, phi.Mat@#& /@ tTiling]] >= min]
+        ];
+      ];
       AppendTo[output, {OptionValue[TilingStyle], f[gdUnitDisk, phi.Mat@#& /@ tTiling]}];
     ];
 
@@ -853,12 +877,17 @@ If[Length[tlist] > 0,
     f = OptionValue[LabelMode];
     If[!(f === Off),
       min = OptionValue[LabelThreshold];
-      mag = OptionValue[Magnification];
-      labelTs = Select[all, GDiskMatRadius[GDiskMatMap[Mat@gdIncircle0, phi.Mat@#]] >= min&];
+      tLabel = If[TrueQ[min > 0],
+        Pick[
+          tlist, 
+          Thread[GDiskMatRadius[GDiskMatMap[Mat@gdIncircle0, phi.Mat@#& /@ tlist]] >= min]
+        ],
+        tlist
+      ];
       AppendTo[output, {
         OptionValue[LabelStyle], 
         GDiskLabel[
-          gdIncircle0, phi.Mat@#& /@ labelTs, f /@ labelTs, 
+          gdIncircle0, phi.Mat@#& /@ tLabel, f /@ tLabel, 
           FilterRules[{opts}, Options[GDiskLabel]]
         ]
       }];
