@@ -810,11 +810,20 @@ Module[{m, ts, disks, magFactor, magLabels},
   ]
 ];
 
+fordCriteria = Compile[{{m,_Integer,2}},
+  Module[{a,b,c,d, ab, cd},
+    {{a,b},{c,d}} = m;
+    ab = a b; cd = c d;
+    ab <= 0 && cd <= 0 && (Abs@a > Abs@b || Abs@c > Abs@d)
+  ], RuntimeAttributes -> Listable
+];
+
 ModularTiling[tlist_List, phi_:mtId, opts:OptionsPattern[]] :=
 If[Length[tlist] > 0,
-  Module[{output = {}, all, notTStart, labelTs, f, min, mag},
+  Module[{output = {}, all, tTiling, tFord, labelTs, f, min, mag},
     all = tlist;
-    notTStart := notTStart = Append[Pick[all, TRIndicateRight[Mat/@all], -1|1], mtId];
+    tTiling := tTiling = Rest@Pick[all, TRIndicateRight[Mat/@all], 0];
+    tFord := tFord = Pick[all, fordCriteria[Mat/@ all]];
 
     (* Draw upper halfplane *)
     f = OptionValue[InteriorMode]; 
@@ -825,7 +834,7 @@ If[Length[tlist] > 0,
     (* Draw ford disks *)
     f = OptionValue[FordDiskMode];
     If[!(f === Off),
-      AppendTo[output, {OptionValue[FordDiskStyle], f[gdFord0, phi.Mat@#& /@ all]}];
+      AppendTo[output, {OptionValue[FordDiskStyle], f[gdFord0, phi.Mat@#& /@ tFord]}];
     ];
   
     (* Draw incircles *)
@@ -837,7 +846,7 @@ If[Length[tlist] > 0,
     (* Draw tiling *)
     f = OptionValue[TilingMode];
     If[!(f === Off),
-      AppendTo[output, {OptionValue[TilingStyle], f[gdUnitDisk, phi.Mat@#& /@ notTStart]}];
+      AppendTo[output, {OptionValue[TilingStyle], f[gdUnitDisk, phi.Mat@#& /@ tTiling]}];
     ];
 
     (* Draw labels *)
