@@ -251,8 +251,8 @@ ModularTiling::usage = StringJoin[
   "under the given ModularTransformations \!\(\*SubscriptBox[\(m\), \(1\)]\), \!\(\*SubscriptBox[\(m\), \(2\)]\), ..., ",
   "(ModularGroupList may be used to generate a appropriate list of ModularTransformations). ",
   "\nFollowing Options are supported (default values are underlined): ",
-  "\nInteriorMode \[Rule] GDisk/\!\(\*
-StyleBox[\"GCircle\",\nFontVariations->{\"Underline\"->True}]\)/Off: Function for drawing the (transformed) upper halfplane. ",
+  "\nInteriorMode \[Rule] GDisk/GCircle/\!\(\*
+StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): Function for drawing the (transformed) upper halfplane. ",
   "\nInteriorStyle \[Rule] \!\(\*
 StyleBox[\"Black\",\nFontVariations->{\"Underline\"->True}]\): Graphics style for drawing the (transformed) upper halfplane. ",
   "\nBorderMode \[RightArrow] \!\(\*
@@ -291,7 +291,7 @@ StyleBox[\"Black\",\nFontVariations->{\"Underline\"->True}]\): Style for printin
 StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): If set to a numerical value n, labels are magnified with a factor n\[CenterDot]r, where r is the according tile inradius. " 
 ];
 Options[ModularTiling] = {
-  InteriorMode -> GCircle, InteriorStyle -> Black,
+  InteriorMode -> Off, InteriorStyle -> Black,
   ExteriorMode -> GDisk, ExteriorStyle -> White,
   BorderMode -> GCircle, BorderStyle -> Black,
   TilingMode -> GCircle, TilingStyle -> Black, TilingThreshold -> 2^-7,
