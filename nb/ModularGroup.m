@@ -255,6 +255,10 @@ ModularTiling::usage = StringJoin[
 StyleBox[\"GCircle\",\nFontVariations->{\"Underline\"->True}]\)/Off: Function for drawing the (transformed) upper halfplane. ",
   "\nInteriorStyle \[Rule] \!\(\*
 StyleBox[\"Black\",\nFontVariations->{\"Underline\"->True}]\): Graphics style for drawing the (transformed) upper halfplane. ",
+  "\nBorderMode \[RightArrow] \!\(\*
+StyleBox[\"GCircle\",\nFontVariations->{\"Underline\"->True}]\)/Off: Function for drawing the (transformed) real axis. ",
+  "\nBoderStyle \[Rule] \!\(\*
+StyleBox[\"Black\",\nFontVariations->{\"Underline\"->True}]\): Style for drawing the (transformed) real axis. ",
   "\nExteriorMode \[Rule] \!\(\*
 StyleBox[\"GDisk\",\nFontVariations->{\"Underline\"->True}]\)/GCircle/Off: Function for drawing the (transformed) lower halfplane. ", 
   "\nExteriorStyle \[Rule] \!\(\*
@@ -289,6 +293,7 @@ StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): If set to a numeric
 Options[ModularTiling] = {
   InteriorMode -> GCircle, InteriorStyle -> Black,
   ExteriorMode -> GDisk, ExteriorStyle -> White,
+  BorderMode -> GCircle, BorderStyle -> Black,
   TilingMode -> GCircle, TilingStyle -> Black, TilingThreshold -> 2^-7,
   ExtendedTilingMode -> Off, ExtendedTilingStyle -> Gray,
   FordDiskMode -> Off, FordDiskStyle -> Brown, FordDiskThreshold -> 2^-7,
@@ -897,6 +902,12 @@ If[Length[tlist] > 0,
     f = OptionValue[ExteriorMode]; 
     If[!(f === Off),
       AppendTo[output, {OptionValue[ExteriorStyle], f[gdLowerHalfplane,{phi}]}];
+    ];
+
+    (* Draw real axis *)
+    f = OptionValue[BorderMode]; 
+    If[!(f === Off),
+      AppendTo[output, {OptionValue[BorderStyle], f[gdLowerHalfplane,{phi}]}];
     ];
 
     output
