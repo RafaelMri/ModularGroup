@@ -409,11 +409,11 @@ mtR = New[ModularTransformation, Mat[mtT].Mat[mtU]];
 
 (* ---------------------------------------------------- Group word algorithms *)
 
-TUExponents[obj_?(InstanceQ[ModularTransformation]), OptionsPattern[]] := 
+TUExponents[obj_, OptionsPattern[]] := 
   Module[{quotientFu, sgn, m, q},
     quotientFu = OptionValue[QuotientFunction];
     Reap[
-      m = Mat[obj];
+      m = If[MatrixQ[obj], obj, Mat[obj]];
       sgn = 1;
       While[m[[2,1]] != 0,
         q = quotientFu[m[[1,1]], m[[2,1]]];
@@ -428,11 +428,11 @@ Options[TUExponents] = {QuotientFunction->Quotient};
 CentralQuotient[p_, q_] := Quotient[p, q, -q/2];
 CQuotient[p_, q_] := If[p q > 0, Quotient[p, q], -Quotient[-p, q]];
 
-TUEval[obj_?(InstanceQ[ModularTransformation]), t_, u_, product_, power_, opts : OptionsPattern[]] := (
+TUEval[obj_, t_, u_, product_, power_, opts : OptionsPattern[]] := (
   product@@Riffle[power[u,#]&/@TUExponents[obj,opts],"T "]/."T "->t
 );
 
-TUWord[obj_?(InstanceQ[ModularTransformation]), opts:OptionsPattern[]] := 
+TUWord[obj_, opts:OptionsPattern[]] := 
 Module[{factors},
   factors = DeleteCases[
     TUEval[obj, "T", "U", List, Superscript, opts],
@@ -826,9 +826,12 @@ fordCriteria = Compile[{{m,_Integer,2}},
   ], RuntimeAttributes -> Listable
 ];
 
-ModularTiling[tlist_List, phi_:mtId, opts:OptionsPattern[]] :=
-If[Length[tlist] > 0,
-  Module[{output = {}, tTiling, tFord, tIncircle, tLabel, f, min},
+ModularTiling[ptlist_List, pphi_:mtId, opts:OptionsPattern[]] :=
+If[Length[ptlist] > 0,
+  Module[{tlist, phi, output = {}, tTiling, tFord, tIncircle, tLabel, f, min},
+    tlist = ptlist; (*If[MatrixQ[ptlist[[1]]], ptlist, Mat/@ptlist];*)
+    phi = If[MatrixQ[pphi], pphi, Mat@pphi];
+
     tTiling := tTiling = Rest@Pick[tlist, TRIndicateRight[Mat/@tlist], 0];
 
     (* Draw upper halfplane *)
