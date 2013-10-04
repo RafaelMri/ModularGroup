@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     77518,       1799]
-NotebookOptionsPosition[     76996,       1779]
-NotebookOutlinePosition[     77362,       1795]
-CellTagsIndexPosition[     77319,       1792]
+NotebookDataLength[     77569,       1800]
+NotebookOptionsPosition[     77048,       1780]
+NotebookOutlinePosition[     77413,       1796]
+CellTagsIndexPosition[     77370,       1793]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1369,7 +1369,7 @@ Cell[BoxData[
         RowBox[{"tilingPlots", "[", 
          RowBox[{"[", "i", "]"}], "]"}], ",", 
         RowBox[{"labelPlot", "[", 
-         RowBox[{"6", ",", 
+         RowBox[{"5", ",", 
           RowBox[{
            RowBox[{"(", 
             RowBox[{"i", "-", "1"}], ")"}], "/", 
@@ -1392,7 +1392,7 @@ Cell[BoxData[
          RowBox[{"[", "6", "]"}], "]"}], ",", 
         RowBox[{"labelPlot", "[", 
          RowBox[{
-          RowBox[{"6", "/", "z"}], ",", "1"}], "]"}], ",", 
+          RowBox[{"5", "/", "z"}], ",", "1"}], "]"}], ",", 
         "\[IndentingNewLine]", 
         RowBox[{"Graphics", "[", 
          RowBox[{"{", 
@@ -1619,11 +1619,11 @@ Cell[BoxData[
        RowBox[{
         RowBox[{"display", "[", 
          RowBox[{
-         "figure1", ",", "800", ",", "\"\<modular-tiling-exp-fan.eps\>\""}], 
+         "figure1", ",", "600", ",", "\"\<modular-tiling-exp-fan.eps\>\""}], 
          "]"}], ",", "\[IndentingNewLine]", 
         RowBox[{"display", "[", 
          RowBox[{
-         "figure2", ",", "800", ",", "\"\<modular-tiling-exp-zoom.eps\>\""}], 
+         "figure2", ",", "600", ",", "\"\<modular-tiling-exp-zoom.eps\>\""}], 
          "]"}]}], "\[IndentingNewLine]", "}"}]}]}]}], "\[IndentingNewLine]", 
    "]"}], "\[IndentingNewLine]"}]], "Input",
  CellChangeTimes->{{3.5898144830977535`*^9, 3.589814734511416*^9}, 
@@ -1694,7 +1694,8 @@ Cell[BoxData[
    3.5898311585286407`*^9}, {3.5898315314465227`*^9, 3.589831565473425*^9}, {
    3.589831600441351*^9, 3.5898317420911045`*^9}, {3.5898317806011257`*^9, 
    3.5898318259133263`*^9}, {3.589832063914633*^9, 3.5898322358211884`*^9}, {
-   3.589832293873727*^9, 3.589832311432192*^9}}],
+   3.589832293873727*^9, 3.589832311432192*^9}, {3.5898334999906883`*^9, 
+   3.589833520158222*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -1778,7 +1779,7 @@ Cell[BoxData[{
    3.5892064926650867`*^9, 3.589206530370409*^9}}]
 },
 WindowSize->{1170, 664},
-WindowMargins->{{Automatic, 70}, {Automatic, -2}},
+WindowMargins->{{Automatic, 70}, {Automatic, 0}},
 ShowSelection->True,
 FrontEndVersion->"9.0 for Microsoft Windows (32-bit) (January 25, 2013)",
 StyleDefinitions->"Default.nb"
@@ -1799,8 +1800,8 @@ Cell[706, 25, 1552, 35, 152, "Input"],
 Cell[2261, 62, 18961, 439, 1172, "Input"],
 Cell[21225, 503, 18713, 394, 1066, "Input"],
 Cell[39941, 899, 12036, 300, 955, "Input"],
-Cell[51980, 1201, 21817, 495, 1300, "Input"],
-Cell[73800, 1698, 3192, 79, 320, "Input"]
+Cell[51980, 1201, 21869, 496, 1300, "Input"],
+Cell[73852, 1699, 3192, 79, 320, "Input"]
 }
 ]
 *)
