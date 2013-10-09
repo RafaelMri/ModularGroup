@@ -214,14 +214,18 @@ We have not yet seen the real benefit and meaning of the predicates $t$, $r$ and
 \label{lem_trsnRelations}
 The predicates $t$, $r$, $s$ and the grading $n$ satisfy the following relations:
 \begin{enumerate}[\qquad(i)]
-\item $t(A) \Leftrightarrow r(RA) \Leftrightarrow s(\inv{R}A)$
-\label{itm_trsPropA}
-\item $\lnot t(A) \Rightarrow t(TA)$
-\label{itm_trsPropB}
-\item $n(A) = n(TA)$
-\label{itm_trsPropC}
-\item $t(A) \Rightarrow n(A) < n(RA)\ \land\ n(A) < n(\inv{R}A)$
-\label{itm_trsPropD}
+\item \label{itm_trsPropA}
+$t(A) \Leftrightarrow r(RA) \Leftrightarrow s(\inv{R}A)$
+
+\item \label{itm_trsPropB}
+$t(A) \land t(TA) \Leftrightarrow A \in \{1,T\}$
+
+\item \label{itm_trsPropC} 
+$n(A) = n(TA)$
+
+\item \label{itm_trsPropD}
+$t(A) \Rightarrow n(A) < n(RA)\ \land\ n(A) < n(\inv{R}A)$
+
 \end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -240,7 +244,7 @@ s(\inv{R}A)
 &\Leftrightarrow& a^2 - a(a+c) \le 0 \land b^2 - b(b+d) \le 0 & & \\
 &\Leftrightarrow& ac \ge 0 \land bd \ge 0 &\Leftrightarrow& t(A)
 \end{IEEEeqnarray*}
-\item[ad (\ref{itm_trsPropB}):] We have already seen in the proof of Lemma~{\ref{lem_trsPartition}} that $\lnot t(A)$ implies $ac \le 0\ \land\ bd \le 0$ and one of these two inequalities is strictly satisfied. Therefore, also $t(TA): -ca \ge 0\ \land\ -db \ge 0$ is fulfilled.
+\item[ad (\ref{itm_trsPropB}):] It is immediate to see that $t(A) \land t(TA)$ is equivalent to $ac = bd = 0$. Clearly, 1 and $T$ are the only two transformations satisfying this condition.
 \item[ad (\ref{itm_trsPropC}):] $n(A) = n(TA)$ is trivial.
 \item[ad (\ref{itm_trsPropD}):] Note that $ad - bc = 1$ implies that always at least one of the numbers $a$ and $b$ (resp.\ $c$ and $d$) will be nonzero. Moreover, $t(A) \Rightarrow ac \ge 0 \land bd \ge 0$, and thus we have
 \begin{IEEEeqnarray*}{+rCl+x*}
@@ -272,7 +276,7 @@ s(A_k) \Rightarrow M_k := \inv{R}.
 \item Set $A_{k+1} := M_k^{-1} A_k$, increment $k$ by one and continue with step \ref{itm_ModGrpTRAlgLoop}.
 \label{itm_ModGrpTRAlgADfn}
 
-\item If $k = 0$, $A = 1$ and the desired product representation is the empty product and otherwise it is $A = M_0 M_1 \cdots M_{k-1}$.
+\item If $k = 0$, then $A = 1$, represented by the empty product. Otherwise, the desired product representation is $A = M_0 M_1 \cdots M_{k-1}$.
 \label{itm_ModGrpTRAlgFin}
 \end{enumerate}
 \end{theorem}

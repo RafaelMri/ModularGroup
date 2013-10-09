@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     73462,       1758]
-NotebookOptionsPosition[     72986,       1739]
-NotebookOutlinePosition[     73351,       1755]
-CellTagsIndexPosition[     73308,       1752]
+NotebookDataLength[     76220,       1843]
+NotebookOptionsPosition[     75482,       1814]
+NotebookOutlinePosition[     75847,       1830]
+CellTagsIndexPosition[     75804,       1827]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -59,6 +59,14 @@ Cell[BoxData[
   3.5858046191544085`*^9, 3.5858046570374236`*^9}, {3.5858047395916357`*^9, 
   3.5858047780636673`*^9}, {3.5888657138217106`*^9, 3.588865737261332*^9}, {
   3.5888660439644594`*^9, 3.5888660726452193`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+
+Modified Cayley Transform, Stereographic Projection\
+\>", "Subtitle",
+ CellChangeTimes->{{3.5898633737382154`*^9, 3.589863403581113*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -499,7 +507,16 @@ Cell[BoxData[{
    3.5872252613409386`*^9}, {3.5872253288892155`*^9, 3.587225414767567*^9}, 
    3.587225476965022*^9, 3.587225522408008*^9, {3.587225554029338*^9, 
    3.587225567663793*^9}, {3.5872256079899583`*^9, 3.5872256097371655`*^9}, {
-   3.587226013993427*^9, 3.587226028002284*^9}}],
+   3.587226013993427*^9, 3.587226028002284*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+
+Modified Cayley Transform and Modular Tiling\
+\>", "Subtitle",
+ CellChangeTimes->{{3.5898634289779954`*^9, 3.589863453641676*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -895,7 +912,16 @@ Cell[BoxData[{
    3.5889558206848373`*^9}, {3.5889561018632884`*^9, 
    3.5889561146206264`*^9}, {3.588956223590514*^9, 3.588956235278824*^9}, {
    3.589034735329452*^9, 3.5890347581080556`*^9}, {3.589034806915349*^9, 
-   3.5890348208477182`*^9}, {3.5890350136398273`*^9, 3.5890350360994225`*^9}}],
+   3.5890348208477182`*^9}, {3.5890350136398273`*^9, 3.5890350360994225`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+
+Modular Tiling and Exponential Transformation\
+\>", "Subtitle",
+ CellChangeTimes->{{3.589863462986106*^9, 3.5898634771821527`*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -1226,7 +1252,7 @@ Cell[BoxData[{
            RowBox[{"Im", "@", 
             RowBox[{"#", "[", "I", "]"}]}], "\[LessEqual]", 
            RowBox[{"1", "/", "6"}]}]}], "&"}]}], "]"}]}]}], ";", 
-    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
     RowBox[{"tilingPlots", "=", 
      RowBox[{"Table", "[", 
       RowBox[{
@@ -1354,7 +1380,9 @@ Cell[BoxData[{
     "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{"zoomPlot", "[", 
-      RowBox[{"z_", ",", "nextZ_"}], "]"}], ":=", 
+      RowBox[{"z_", ",", "nextZ_", ",", 
+       RowBox[{"opts", ":", 
+        RowBox[{"OptionsPattern", "[", "]"}]}]}], "]"}], ":=", 
      RowBox[{"Show", "[", 
       RowBox[{
        RowBox[{"incirclePlots", "[", 
@@ -1387,7 +1415,11 @@ Cell[BoxData[{
        RowBox[{"AxesOrigin", "\[Rule]", 
         RowBox[{"{", 
          RowBox[{"0", ",", "0"}], "}"}]}], ",", 
-       RowBox[{"AxesStyle", "\[Rule]", "Gray"}]}], "]"}]}], ";", 
+       RowBox[{"AxesStyle", "\[Rule]", "Gray"}], ",", 
+       RowBox[{"FilterRules", "[", 
+        RowBox[{
+         RowBox[{"{", "opts", "}"}], ",", 
+         RowBox[{"Options", "@", "Graphics"}]}], "]"}]}], "]"}]}], ";", 
     "\[IndentingNewLine]", "\[IndentingNewLine]", 
     RowBox[{"(*", 
      RowBox[{
@@ -1580,30 +1612,65 @@ Cell[BoxData[{
     RowBox[{"figure2", "=", 
      RowBox[{"GraphicsGrid", "[", "\[IndentingNewLine]", 
       RowBox[{
-       RowBox[{"Table", "[", 
+       RowBox[{"{", "\[IndentingNewLine]", 
         RowBox[{
-         RowBox[{"{", "\[IndentingNewLine]", 
+         RowBox[{"{", 
           RowBox[{
            RowBox[{"zoomPlot", "[", 
             RowBox[{
              RowBox[{"zoomList", "[", 
-              RowBox[{"[", "i", "]"}], "]"}], ",", 
+              RowBox[{"[", "1", "]"}], "]"}], ",", 
              RowBox[{"zoomList", "[", 
-              RowBox[{"[", 
-               RowBox[{"i", "+", "1"}], "]"}], "]"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
+              RowBox[{"[", "2", "]"}], "]"}]}], "]"}], ",", 
            RowBox[{"zoomPlot", "[", 
             RowBox[{
              RowBox[{"zoomList", "[", 
-              RowBox[{"[", 
-               RowBox[{"i", "+", "1"}], "]"}], "]"}], ",", 
+              RowBox[{"[", "2", "]"}], "]"}], ",", 
              RowBox[{"zoomList", "[", 
-              RowBox[{"[", 
-               RowBox[{"i", "+", "2"}], "]"}], "]"}], ",", "Ticks"}], "]"}]}],
-           "\[IndentingNewLine]", "}"}], ",", 
+              RowBox[{"[", "3", "]"}], "]"}]}], "]"}]}], "}"}], ",", 
+         "\[IndentingNewLine]", 
          RowBox[{"{", 
-          RowBox[{"i", ",", "1", ",", "5", ",", "2"}], "}"}]}], 
-        "\[IndentingNewLine]", "]"}], ",", 
+          RowBox[{
+           RowBox[{"zoomPlot", "[", 
+            RowBox[{
+             RowBox[{"zoomList", "[", 
+              RowBox[{"[", "3", "]"}], "]"}], ",", 
+             RowBox[{"zoomList", "[", 
+              RowBox[{"[", "4", "]"}], "]"}]}], "]"}], ",", 
+           RowBox[{"zoomPlot", "[", 
+            RowBox[{
+             RowBox[{"zoomList", "[", 
+              RowBox[{"[", "4", "]"}], "]"}], ",", 
+             RowBox[{"zoomList", "[", 
+              RowBox[{"[", "5", "]"}], "]"}]}], "]"}]}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"zoomPlot", "[", 
+            RowBox[{
+             RowBox[{"zoomList", "[", 
+              RowBox[{"[", "5", "]"}], "]"}], ",", 
+             RowBox[{"zoomList", "[", 
+              RowBox[{"[", "6", "]"}], "]"}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Ticks", "\[Rule]", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"-", "#"}], ",", "#"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"-", "#"}], ",", "#"}], "}"}]}], "}"}]}], "&"}], 
+              "@", "0.001"}]}], "]"}], ",", 
+           RowBox[{"zoomPlot", "[", 
+            RowBox[{
+             RowBox[{"zoomList", "[", 
+              RowBox[{"[", "6", "]"}], "]"}], ",", 
+             RowBox[{"zoomList", "[", 
+              RowBox[{"[", "7", "]"}], "]"}]}], "]"}]}], "}"}]}], 
+        "\[IndentingNewLine]", "}"}], ",", 
        RowBox[{"Spacings", "\[Rule]", 
         RowBox[{"{", 
          RowBox[{
@@ -1616,11 +1683,11 @@ Cell[BoxData[{
       RowBox[{
        RowBox[{"display", "[", 
         RowBox[{
-        "figure1", ",", "400", ",", "\"\<modular-tiling-exp-fan.eps\>\""}], 
+        "figure1", ",", "500", ",", "\"\<modular-tiling-exp-fan.eps\>\""}], 
         "]"}], ",", "\[IndentingNewLine]", 
        RowBox[{"display", "[", 
         RowBox[{
-        "figure2", ",", "400", ",", "\"\<modular-tiling-exp-zoom.eps\>\""}], 
+        "figure2", ",", "500", ",", "\"\<modular-tiling-exp-zoom.eps\>\""}], 
         "]"}]}], "\[IndentingNewLine]", "}"}]}]}]}], "\[IndentingNewLine]", 
   "]"}]}], "Input",
  CellChangeTimes->{{3.589812295533785*^9, 3.589812328874668*^9}, {
@@ -1654,7 +1721,14 @@ Cell[BoxData[{
    3.5898590694351764`*^9, 3.589859083447548*^9}, 3.589859284541877*^9, {
    3.589859613606597*^9, 3.589859649136538*^9}, {3.5898600284565897`*^9, 
    3.5898600525342283`*^9}, {3.589860736999366*^9, 3.5898608161584635`*^9}, {
-   3.5898617735418334`*^9, 3.5898617794449897`*^9}}],
+   3.5898617735418334`*^9, 3.5898617794449897`*^9}, {3.5898635478971825`*^9, 
+   3.5898635494259872`*^9}, {3.589864631621716*^9, 3.5898646565519996`*^9}, {
+   3.5898646950861254`*^9, 3.589864700827944*^9}, {3.5898655232838516`*^9, 
+   3.589865527059064*^9}, {3.5898655913800735`*^9, 3.5898657589336195`*^9}, 
+   3.5898658181856117`*^9, {3.5898661841538057`*^9, 3.58986618552661*^9}}],
+
+Cell[BoxData["\[AliasDelimiter]"], "Input",
+ CellChangeTimes->{3.589864689033305*^9}],
 
 Cell[BoxData[{
  RowBox[{
@@ -1736,6 +1810,7 @@ Cell[BoxData[{
    3.589205999672281*^9, 3.589206151226774*^9}, {3.589206197371725*^9, 
    3.589206236465452*^9}, {3.589206454429362*^9, 3.5892064558489666`*^9}, {
    3.5892064926650867`*^9, 3.589206530370409*^9}}]
+}, Open  ]]
 },
 WindowSize->{1170, 664},
 WindowMargins->{{Automatic, 70}, {Automatic, 0}},
@@ -1756,10 +1831,20 @@ CellTagsIndex->{}
 Notebook[{
 Cell[557, 20, 146, 3, 31, "Input"],
 Cell[706, 25, 1552, 35, 152, "Input"],
-Cell[2261, 62, 18961, 439, 1172, "Input"],
-Cell[21225, 503, 18713, 394, 1066, "Input"],
-Cell[39941, 899, 29846, 757, 2303, "Input"],
-Cell[69790, 1658, 3192, 79, 320, "Input"]
+Cell[CellGroupData[{
+Cell[2283, 64, 148, 4, 77, "Subtitle"],
+Cell[2434, 70, 18961, 439, 1172, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21432, 514, 141, 4, 77, "Subtitle"],
+Cell[21576, 520, 18713, 394, 1066, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[40326, 919, 142, 4, 77, "Subtitle"],
+Cell[40471, 925, 31712, 802, 2283, "Input"],
+Cell[72186, 1729, 85, 1, 31, "Input"],
+Cell[72274, 1732, 3192, 79, 320, "Input"]
+}, Open  ]]
 }
 ]
 *)
