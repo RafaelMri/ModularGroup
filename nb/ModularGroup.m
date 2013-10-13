@@ -72,7 +72,7 @@ TRIndicatorList::usage = StringJoin[
   "representing the unique R-T-product representation ",
   "of the modular transformation t given in matrix form. ",
   "The meaning of the numbers is: -1\[RightArrow]\!\(\*SuperscriptBox[\(R\), \(-1\)]\) - 0\[RightArrow]T - 1\[RightArrow]R."
-]
+];
 
 TRLeft::usage = StringJoin[
   "Returns the leftmost factor of the unique R-T-product representation ",
@@ -131,12 +131,18 @@ TUWord::usage = StringJoin[
   "\nThe option QuotientFunction is supported."
 ];
 
-FundamentalRepresentative::usage = StringJoin[
-  "{\!\(\*SubscriptBox[\(z\), \(0\)]\),m} = FundamentalRepresentative[z] ",
-  "returns the unique point \!\(\*SubscriptBox[\(z\), \(0\)]\) in the classical fundamental domain ",
-  "equivalent to z in the upper halfplane ",
-  "together with the according transformation matrix such that ",
-  "New[ModularTransformation, m][\!\(\*SubscriptBox[\(z\), \(0\)]\)] = z."
+AssociatedMap::usage = StringJoin[
+  "AssociatedMap[z] returns a matrix ",
+  "representing the unique modular transformation ",
+  "where the preimage of z lies in the funcamental region ",
+  "F = {x \[Element] \[DoubleStruckCapitalC] | Abs[Re[x]] <= 1/2 && Abs[x] >= 1}."
+];
+
+InvAssociatedMap::usage = StringJoin[
+  "InvAssociatedMap[z] returns a matrix ",
+  "representing the unique modular transformation ",
+  "where the image of z lies in the fundamental region ",
+  "F = {x \[Element] \[DoubleStruckCapitalC] | Abs[Re[x]] <= 1/2 && Abs[x] >= 1}."
 ];
 
 (* Some frequently used ModularTransformations *)
@@ -594,19 +600,32 @@ TRWord[obj_] := Module[{mat, list},
   ]
 ];
 
-FundamentalRepresentative[z_] := 
-  Module[{z0, m, mT, n},
-    z0 = If[VectorQ[z], z, {z, 1}];
-    m = IdentityMatrix[2];
+InvAssociatedMap = Compile[{{zp, _Complex}},
+  Module[{z, m, mT, n},
+    z = zp;
+    m = {{1,0},{0,1}};
     mT = {{0, -1}, {1, 0}};
-    If[Abs[z0[[1]]] < Abs[z0[[2]]], z0 = mT.z0; m = m.mT];
-    While[Abs@Re@z0 > 1/2,
-      n = Quotient[Re[z0], 1, -1/2];
-      z0 = z0 - n; m = m.{{1, n}, {0, 1}};
-      If[Abs[z0] < 1, z0 = -1/z0; m = mT];
+    
+    If[Abs[z] < 1, m = mT.m; z = If[z != 0.+0I, -1/z, 1.I]];
+
+    While[Abs@Re@z > 1/2,
+      n = Quotient[Re@z, 1, -1/2];
+      m = {{1, -n}, {0, 1}}.m;
+      z -= n;
+      If[Abs[z] < 1, 
+        m = mT.m; z = If[z != 0.+0I, -1/z, 1.I],
+        Break[]
+      ];
     ];
-    {Inhom@z0, m}
-  ];
+    m
+  ], RuntimeAttributes -> Listable
+];
+
+AssociatedMap = Compile[{{z, _Complex}},
+  PSL2ZInv@InvAssociatedMap@z,
+  RuntimeAttributes -> Listable,
+  CompilationOptions -> {"InlineExternalDefinitions" -> True}
+];
 
 
 (* --------------------------------------------------- Enumeration algorithms *)
