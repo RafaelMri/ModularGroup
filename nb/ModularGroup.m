@@ -303,7 +303,7 @@ StyleBox[\"White\",\nFontVariations->{\"Underline\"->True}]\): Graphics style fo
 StyleBox[\"GCircle\",\nFontVariations->{\"Underline\"->True}]\)/Off: Function for drawing the orbit of the unit disk (tiling). ",
   "\nTilingStyle \[Rule] \!\(\*
 StyleBox[\"Black\",\nFontVariations->{\"Underline\"->True}]\): Graphics style for drawing the orbit of the unit disk (tiling). ",
-  "\nTilingThreshold \[Rule] \!\(\*SuperscriptBox[\(2\), \(-7\)]\): Minimum radius for drawing tiling arcs. ",
+  "\nTilingThreshold \[Rule] 0: Minimum radius for drawing tiling arcs. ",
   "\nExtendedTilingMode \[Rule] GDisk/GCircle/\!\(\*
 StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): Function for drawing the orbit of the imaginary axis (extended tiling). ",
   "\nExtendedTilingStyle \[Rule] \!\(\*
@@ -312,12 +312,12 @@ StyleBox[\"Gray\",\nFontVariations->{\"Underline\"->True}]\): Graphics style for
 StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): Function for drawing ford circles. ",
   "\nFordDiskStyle \[Rule] \!\(\*
 StyleBox[\"Brown\",\nFontVariations->{\"Underline\"->True}]\): Graphics style for drawing ford circles. ",
-  "\nFordDiskThreshold \[Rule] \!\(\*SuperscriptBox[\(2\), \(-7\)]\): Minimum radius for drawing ford circles. ",
+  "\nFordDiskThreshold \[Rule] 0: Minimum radius for drawing ford circles. ",
   "\nIncircleMode \[Rule] GDisk/GCircle/\!\(\*
 StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): Function for drawing incircles of tiles. ",
   "\nIncircleStyle \[Rule] \!\(\*
 StyleBox[\"Blue\",\nFontVariations->{\"Underline\"->True}]\): Graphics style for drawing incircles of tiles. ",
-  "\nIncircleThreshold \[Rule] \!\(\*SuperscriptBox[\(2\), \(-7\)]\): Minimum radius for drawing incircles. ",
+  "\nIncircleThreshold \[Rule] 0: Minimum radius for drawing incircles. ",
   "\nLabelMode \[Rule] TUWord/TRWord/Mat/.../\!\(\*
 StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): Function for printing tile labels. ",
   "\nLabelStyle \[Rule] \!\(\*
@@ -330,11 +330,12 @@ Options[ModularTiling] = {
   InteriorMode -> Off, InteriorStyle -> Black,
   ExteriorMode -> GDisk, ExteriorStyle -> White,
   BorderMode -> GCircle, BorderStyle -> Black,
-  TilingMode -> GCircle, TilingStyle -> Black, TilingThreshold -> 2^-7,
+  TilingMode -> GCircle, TilingStyle -> Black, TilingThreshold -> 0,
   ExtendedTilingMode -> Off, ExtendedTilingStyle -> Gray,
-  FordDiskMode -> Off, FordDiskStyle -> Brown, FordDiskThreshold -> 2^-7,
-  IncircleMode -> Off, IncircleStyle -> Blue, IncircleThreshold -> 2^-7,
-  LabelMode -> Off, LabelThreshold -> 2^-3, LabelStyle -> Black, Magnification -> Off
+  FordDiskMode -> Off, FordDiskStyle -> Brown, FordDiskThreshold -> 0,
+  IncircleMode -> Off, IncircleStyle -> Blue, IncircleThreshold -> 0,
+  LabelMode -> Off, LabelThreshold -> 2^-3, LabelStyle -> Black, Magnification -> Off,
+  FordLabelMode -> Off, FordLabelThreshold -> 2^-3, FordLabelStyle -> Black 
 };
 (#::usage = ToString@# <> " is an option of ModularTiling. See usage of ModularTiling for more information.")& /@ DeleteCases[#[[1]]& /@ Options[ModularTiling], Magnification|LabelStyle];
 
@@ -384,33 +385,7 @@ ModularSubgroupCosets::usage = StringJoin[
 Begin["`Private`"];
 
 
-(* ---------------------------------------------- Class MoebiusTransformation *)
-
-NewClass[MoebiusTransformation];
-
-Inhom[{z1_,z2_}] := (
-  If[TrueQ[z2 == 0], 
-    ComplexInfinity, 
-    z1 / z2
-  ]
-);
-
-Init[MoebiusTransformation, obj_, mat_?MatrixQ] ^:= (
-  Mat[obj] ^= mat;
-  obj /: InstanceQ[ModularTransformation][obj] := (
-  obj /: InstanceQ[ModularTransformation][obj] = 
-    MatrixQ[mat, IntegerQ] && Det[mat] == 1
-  );
-  obj@t_?(InstanceQ[MoebiusTransformation]) := 
-    New[MoebiusTransformation, mat.Mat[t]];
-  obj@h_?VectorQ := mat.h;
-  obj@z_ := (
-    If[z === ComplexInfinity, 
-      Inhom[mat.{1,0}], 
-      Inhom[mat.{z, 1}]
-    ]
-  );
-);
+(* ---------------------------------------------- Basic PSL and PGL functions *)
 
 PSL2CInv = Compile[{{m,_Complex,2}},
   {{m[[2,2]], -m[[1,2]]}, {-m[[2,1]], m[[1,1]]}},
@@ -448,6 +423,35 @@ RandomPSL2Z[n_Integer, N_Integer] := Module[{mats, l, firstRows, scndRows, gcds,
 ];
 
 
+
+(* ---------------------------------------------- Class MoebiusTransformation *)
+
+NewClass[MoebiusTransformation];
+
+Inhom[{z1_,z2_}] := (
+  If[TrueQ[z2 == 0], 
+    ComplexInfinity, 
+    z1 / z2
+  ]
+);
+
+Init[MoebiusTransformation, obj_, mat_?MatrixQ] ^:= (
+  Mat[obj] ^= mat;
+  obj /: InstanceQ[ModularTransformation][obj] := (
+  obj /: InstanceQ[ModularTransformation][obj] = 
+    MatrixQ[mat, IntegerQ] && Det[mat] == 1
+  );
+  obj@t_?(InstanceQ[MoebiusTransformation]) := 
+    New[MoebiusTransformation, mat.Mat[t]];
+  obj@h_?VectorQ := mat.h;
+  obj@z_ := (
+    If[z === ComplexInfinity, 
+      Inhom[mat.{1,0}], 
+      Inhom[mat.{z, 1}]
+    ]
+  );
+);
+
 Inv[t_?(InstanceQ[MoebiusTransformation])] := Inv[t] ^= 
   Module[{inverse},
     inverse = If[TrueQ@InstanceQ[ModularTransformation][t],
@@ -466,7 +470,7 @@ NewClass[ModularTransformation];
 
 Init[ModularTransformation, obj_, mat_?(MatrixQ[#,IntegerQ]&)] ^:= (
   Assert[Det[mat] == 1];
-  Super[MoebiusTransformation, obj, mat];
+  Super[MoebiusTransformation, obj, PSL2ZNormalForm@mat];
 );
 
 (* ------------------------------------------- Special ModularTransformations *)
@@ -943,7 +947,7 @@ fordCriteria = Compile[{{m,_Integer,2}},
 
 ModularTiling[ptlist_List, pphi_:mtId, opts:OptionsPattern[]] :=
 If[Length[ptlist] > 0,
-  Module[{tlist, phi, output = {}, tTiling, tFord, tIncircle, tLabel, f, min},
+  Module[{tlist, phi, output = {}, tTiling, tFord, tIncircle, tLabel, f, min, ds, sel},
     tlist = ptlist; (*If[MatrixQ[ptlist[[1]]], ptlist, Mat/@ptlist];*)
     phi = If[MatrixQ[pphi], pphi, Mat@pphi];
 
@@ -958,7 +962,7 @@ If[Length[ptlist] > 0,
     (* Draw ford disks *)
     f = OptionValue[FordDiskMode];
     If[!(f === Off),
-      tFord = Pick[tlist, fordCriteria[Mat/@tlist]]; (* Danger: Assumes that tlist starts with identity map! *)
+      tFord = Pick[tlist, fordCriteria[Mat/@tlist]];
       min = OptionValue[FordDiskThreshold];
       If[TrueQ[min > 0], 
         tFord = Pick[
@@ -994,6 +998,31 @@ If[Length[ptlist] > 0,
         ];
       ];
       AppendTo[output, {OptionValue[TilingStyle], f[gdUnitDisk, phi.Mat@#& /@ tTiling]}];
+    ];
+
+    (* Draw Ford disk labels *)
+    f = OptionValue[FordLabelMode];
+    If[!(f === Off),
+      min = OptionValue[FordLabelThreshold];
+      tFord = Pick[tlist, fordCriteria[Mat/@tlist]];
+      ds = GDiskMatMap[Mat@gdFord0, phi.Mat@#& /@ tFord];
+      sel = Re[#[[1,1]]] > 0& /@ ds;
+      tFord = Pick[tFord, sel];
+      ds = Pick[ds, sel];
+      tLabel = If[TrueQ[min > 0],
+        Pick[
+          tFord, 
+          Thread[GDiskMatRadius[ds] >= min]
+        ],
+        tFord
+      ];
+      AppendTo[output, {
+        OptionValue[LabelStyle], 
+        GDiskLabel[
+          gdFord0, phi.Mat@#& /@ tLabel, f /@ tLabel, 
+          FilterRules[{opts}, Options[GDiskLabel]]
+        ]
+      }];
     ];
 
     (* Draw labels *)
