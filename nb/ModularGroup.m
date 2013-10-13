@@ -459,7 +459,7 @@ TRIndicateRight = Compile[{{mat, _Integer, 2}},
     ab = a b; cd = c d;
     Which[
       ab <= 0 && cd <= 0, 0,
-      a^2 - ab <= 0 && c^2 + cd <= 0, 1,
+      a^2 - ab <= 0 && c^2 - cd <= 0, 1,
       True, -1
     ]
   ], RuntimeAttributes->Listable
@@ -724,7 +724,7 @@ GDisk[disk_, opts:OptionsPattern[]] := Module[{m},
       b0 = m[[1,2]] / absb;
       rot = {{Re@b0, -Im@b0}, {Im@b0, Re@b0}};
       GeometricTransformation[
-        Rectangle[Scaled@{-1, -1}, Scaled[{0, 1}, {-m[[2,2]]/(2 absb), 0}]],
+        Rectangle[Scaled@{-1024, -1024}, Scaled[{0, 1024}, {-m[[2,2]]/(2 absb), 0}]],
         rot
       ]
     ]
