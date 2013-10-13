@@ -14,11 +14,23 @@ Mat::usage =
   "Mat[t] returns the coefficients of the MoebiusTransformation t as matrix.";
 Inv::usage = 
   "Inv[t] returns the inverse of the MoebiusTransformation t.";
-PGL2Inv::usage = 
-  "PGL2Inv[m] returns a matrix which is inverse to m within \!\(\*SubscriptBox[\(PGL\), \(2\)]\)(\[DoubleStruckCapitalC])";
+
+PSL2CInv::usage = 
+  "PSL2CInv[m] returns a matrix which is inverse to m within \!\(\*SubscriptBox[\(PSL\), \(2\)]\)(\[DoubleStruckCapitalC])";
+PSL2ZInv::usage = 
+  "PSL2ZInv[m] returns a matrix which is inverse to m within \!\(\*SubscriptBox[\(PSL\), \(2\)]\)(\[DoubleStruckCapitalZ])";
+PSL2ZNormalForm::usage = StringJoin[
+  "PSL2ZNormalForm[m] returns a scalar multiple ",
+  "{{a,b},{c,d}} = \[PlusMinus]m of the matrix m \[Element] \!\(\*SubscriptBox[\(PSL\), \(2\)]\)(\[DoubleStruckCapitalZ]) ",
+  "such that c > 0 && (c == 0 || a > 0)."
+];
+RandomPSL2Z::usage = StringJoin[
+  "RandomPSL2Z[n,N] returns a list of n random matrices within \!\(\*SubscriptBox[\(PSL\), \(2\)]\)(\[DoubleStruckCapitalZ]) ",
+  "with coefficient absolute values <= N."
+];
 
 Inhom::usage = 
-  "Inhom[{z1,z2}] returns z1 / z2 or \[Infinity], if z2 == 0.";
+  "Inhom[{z1,z2}] returns z1 / z2 or ComplexInfinity, if z2 == 0.";
 
 ModularTransformation::usage = StringJoin[
   "New[ModularTransformation, {{a, b}, {c, d}}] ",
@@ -42,8 +54,25 @@ TRRight::usage = StringJoin[
   "TRRight[t] is equivalent to Last[TRList[t]]."
 ];
 
-TRIndicateLeft::usage = "TODO\n";
-TRIndicateRight::usage = "TODO\n";
+TRIndicateLeft::usage = StringJoin[
+  "TRIndicateLeft[t] returns one of the numbers -1, 0 or 1, ",
+  "depending on the leftmost factor of the unique R-T-product representation ",
+  "of the modular transformation t, given in matrix form. ",
+  "The meaning of the numbers is: -1\[RightArrow]\!\(\*SuperscriptBox[\(R\), \(-1\)]\) - 0\[RightArrow]T - 1\[RightArrow]R."
+];
+TRIndicateRight::usage = StringJoin[
+  "TRIndicateRight[t] returns one of the numbers -1, 0 or 1, ",
+  "depending on the rightmost factor of the unique R-T-product representation ",
+  "of the modular transformation t given in matrix form. ",
+  "The meaning of the numbers is: -1\[RightArrow]\!\(\*SuperscriptBox[\(R\), \(-1\)]\) - 0\[RightArrow]T - 1\[RightArrow]R."
+];
+
+TRIndicatorList::usage = StringJoin[
+  "TRIndicatorList[t] returns a list of numbers -1, 0 or 1, ",
+  "representing the unique R-T-product representation ",
+  "of the modular transformation t given in matrix form. ",
+  "The meaning of the numbers is: -1\[RightArrow]\!\(\*SuperscriptBox[\(R\), \(-1\)]\) - 0\[RightArrow]T - 1\[RightArrow]R."
+]
 
 TRLeft::usage = StringJoin[
   "Returns the leftmost factor of the unique R-T-product representation ",
@@ -52,6 +81,7 @@ TRLeft::usage = StringJoin[
   "The return value is one of the ModularTransformations mtT, mtR and Inv@mtR.\n", 
   "TRLeft[t] is equivalent to First[TRList[t]]."
 ];
+
 
 TRWord::usage = StringJoin[
   "TRWord[t] returns the unique R-T-group word representation ",
@@ -376,11 +406,48 @@ Init[MoebiusTransformation, obj_, mat_?MatrixQ] ^:= (
   );
 );
 
-PGL2Inv[{{a_,b_},{c_,d_}}] := {{d, -b}, {-c, a}};
+PSL2CInv = Compile[{{m,_Complex,2}},
+  {{m[[2,2]], -m[[1,2]]}, {-m[[2,1]], m[[1,1]]}},
+  RuntimeAttributes->Listable
+];
+
+PSL2ZInv = Compile[{{m,_Integer,2}},
+  {{m[[2,2]], -m[[1,2]]}, {-m[[2,1]], m[[1,1]]}},
+  RuntimeAttributes->Listable
+];
+
+PSL2ZNormalForm = Compile[{{m,_Integer,2}}, 
+  Module[{a,c},
+    a = m[[1,1]]; c = m[[2,1]];
+    If[a > 0 || (a == 0 && c > 0), m, -m]
+  ], RuntimeAttributes->Listable
+];
+
+RandomPSL2Z[n_Integer, N_Integer] := Module[{mats, l, firstRows, scndRows, gcds, coprime},
+  mats = {};
+  l = 0;
+  While[l < n,
+    firstRows = RandomInteger[{-N,N}, {n-l,2}];
+    gcds = ExtendedGCD@@@firstRows;
+    coprime = (#[[1]]==1)& /@ gcds;
+    firstRows = Pick[firstRows, coprime];
+    If[Length@firstRows > 0,
+      gcds = Pick[gcds, coprime];
+      scndRows = #[[2]]& /@ gcds;
+      mats = mats ~Join~ Thread@{firstRows, scndRows.{{0,1},{-1,0}}};
+      l = Length[mats];
+    ];
+  ];
+  mats  
+];
+
 
 Inv[t_?(InstanceQ[MoebiusTransformation])] := Inv[t] ^= 
   Module[{inverse},
-    inverse = New[MoebiusTransformation, PGL2Inv@Mat@t];
+    inverse = If[TrueQ@InstanceQ[ModularTransformation][t],
+       New[ModularTransformation, PSL2ZInv@Mat@t],
+       New[MoebiusTransformation, PSL2CInv@Mat@t]
+    ];
     Inv[inverse] ^= t;
     inverse
   ];
@@ -465,35 +532,64 @@ TRIndicateRight = Compile[{{mat, _Integer, 2}},
   ], RuntimeAttributes->Listable
 ];
 
-TRLeft[obj_?(InstanceQ[ModularTransformation])] :=
-TRLeft[obj] ^= TRLeft[Mat@obj];
-TRLeft[mat_?MatrixQ] := TRIndicateLeft[mat] /. {0 -> mtT, 1 -> mtR, -1 -> Inv@mtR};
-
-TRRight[obj_?(InstanceQ[ModularTransformation])] := 
-TRRight[obj] ^= TRRight[Mat@obj];
-TRRight[mat_?MatrixQ] := TRIndicateRight[mat] /. {0 -> mtT, 1 -> mtR, -1 -> Inv@mtR};
-
-TRList[obj_?(InstanceQ[ModularTransformation])] :=
-TRList[obj] ^= TRList[Mat@obj];
-TRList[obj_?MatrixQ] := Module[{mat = obj}, 
-  Assert[MatrixQ[mat,IntegerQ] && Det[mat] == 1];
-  Flatten[Reap[
-    While[!MatchQ[mat, {{_,0},{0,_}}],
-      mat = Mat[Inv[Sow@TRLeft@mat]] . mat;
+TRIndicatorList = Compile[{{m, _Integer, 2}},
+  Module[{r,mat,mT,mR,mRInv,e},
+    r = Rest@{0}; (* Trick for telling the compilor that r is an integer tensor. *)
+    mat = m;
+    mT = {{0,-1},{1,0}};
+    mR = {{0,-1},{1,1}};
+    mRInv = {{1,1},{-1,0}};
+    While[PSL2ZNormalForm@mat != {{1,0},{0,1}},
+      e = TRIndicateLeft[mat];
+      AppendTo[r, e];
+      Which[
+        e == 0, mat = mT.mat,
+        e == 1, mat = mRInv.mat,
+        True, mat = mR.mat
+      ];
     ];
-  ][[2]]]
+    r
+  ], RuntimeAttributes->Listable, CompilationOptions -> {"InlineExternalDefinitions" -> True}
 ];
 
-TRWord[obj_?(InstanceQ[ModularTransformation])] :=
-TRWord[obj] ^= TRWord[Mat@obj];
-TRWord[mat_?MatrixQ] := Module[{factors},
-  factors = TRList[mat];
-  If[factors === {}, 
+TRIndicatorReplacements = {0 -> mtT, 1 -> mtR, -1 -> Inv@mtR};
+
+TRLeft[obj_] := Module[{mat},
+  mat = Which[
+    MatrixQ[obj], obj,
+    ListQ[obj], Mat /@ obj,
+    True, Mat@obj
+  ];
+  TRIndicateLeft[mat] /. TRIndicatorReplacements
+];
+
+TRRight[obj_] := Module[{mat},
+  mat = Which[
+    MatrixQ[obj], obj,
+    ListQ[obj], Mat /@ obj,
+    True, Mat@obj
+  ];
+  TRIndicateRight[mat] /. TRIndicatorReplacements
+];
+
+TRList[obj_] := Module[{mat},
+  mat = Which[
+    MatrixQ[obj], obj,
+    ListQ[obj], Mat /@ obj,
+    True, Mat@obj
+  ];
+  TRIndicatorList[mat] /. TRIndicatorReplacements
+];
+
+TRWord[obj_] := Module[{mat, list},
+  mat = If[MatrixQ[obj], obj, Mat@obj];
+  list = TRIndicatorList[mat];
+  If[Length@list == 0,
     "1",
-    Row@(factors /. {
-      mtT -> "T", 
-      mtR -> Superscript["R",1], 
-      Inv@mtR -> Superscript["R",2]
+    Row@(list /. {
+      -1 -> Superscript["R", 2],
+      0 -> "T",
+      1 -> Superscript["R", 1]
     })
   ]
 ];
