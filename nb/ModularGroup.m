@@ -282,7 +282,7 @@ GDiskLabel::noncompact = StringJoin[
 ModularTiling::usage = StringJoin[
   "ModularTiling[{\!\(\*SubscriptBox[\(m\), \(1\)]\), \!\(\*SubscriptBox[\(m\), \(2\)]\),...}, t] produces a graphic ",
   "of the tiling of the upper halflplane associated to the modular group, ",
-  "with the optional ModularTransformation t applied. ", 
+  "with the optional MoebiusTransformation t applied. ", 
   "By default, the output is just the orbit of the unit circle ",
   "under the given ModularTransformations \!\(\*SubscriptBox[\(m\), \(1\)]\), \!\(\*SubscriptBox[\(m\), \(2\)]\), ..., ",
   "(ModularGroupList may be used to generate a appropriate list of ModularTransformations). ",
