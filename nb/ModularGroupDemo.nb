@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    119816,       3146]
-NotebookOptionsPosition[    114634,       2998]
-NotebookOutlinePosition[    115036,       3015]
-CellTagsIndexPosition[    114993,       3012]
+NotebookDataLength[    120740,       3163]
+NotebookOptionsPosition[    115558,       3015]
+NotebookOutlinePosition[    115960,       3032]
+CellTagsIndexPosition[    115917,       3029]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1767,8 +1767,8 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{
     "z", ",", "m", ",", "plotRange", ",", "zf", ",", "ts", ",", 
-     "mtPreviewList", ",", "quotients", ",", "convergents"}], "}"}], ",", 
-   "\[IndentingNewLine]", 
+     "mtPreviewList", ",", "quotients", ",", "convergents", ",", 
+     "controlPoints", ",", "viewCenter"}], "}"}], ",", "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"mtPreviewList", "=", 
      RowBox[{"Select", "[", 
@@ -1784,38 +1784,56 @@ Cell[BoxData[
         RowBox[{"ControlActive", "[", 
          RowBox[{"mtPreviewList", ",", "mtList"}], "]"}]}], ";", 
        "\[IndentingNewLine]", 
-       RowBox[{"z", "=", 
-        RowBox[{"Complex", "@@", "P"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"m", "=", 
-        RowBox[{"AssociatedMap", "[", "z", "]"}]}], ";", 
-       "\[IndentingNewLine]", 
-       RowBox[{"zf", "=", 
-        RowBox[{"Exp", "[", 
-         RowBox[{"-", "zoom"}], "]"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"plotRange", "=", 
-        RowBox[{"{", 
-         RowBox[{
-          RowBox[{
-           RowBox[{"P", "[", 
-            RowBox[{"[", "1", "]"}], "]"}], "+", 
-           RowBox[{
-            SuperscriptBox["GoldenRatio", "2"], 
-            RowBox[{"{", 
-             RowBox[{
-              RowBox[{"-", "zf"}], ",", "zf"}], "}"}]}]}], ",", 
-          RowBox[{
-           RowBox[{"P", "[", 
-            RowBox[{"[", "2", "]"}], "]"}], "+", 
-           RowBox[{"GoldenRatio", 
-            RowBox[{"{", 
-             RowBox[{
-              RowBox[{"-", "zf"}], ",", "zf"}], "}"}]}]}]}], "}"}]}], ";", 
-       "\[IndentingNewLine]", 
        RowBox[{"quotients", "=", 
         RowBox[{"MyContinuedFraction", "[", 
          RowBox[{"number", ",", "6"}], "]"}]}], ";", "\[IndentingNewLine]", 
        RowBox[{"convergents", "=", 
         RowBox[{"ModularConvergents", "[", "quotients", "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"m", "=", 
+        RowBox[{"convergents", "[", 
+         RowBox[{"[", 
+          RowBox[{"1", "+", 
+           RowBox[{"Floor", "[", 
+            RowBox[{"t", " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"Length", "[", "convergents", "]"}], "-", "1"}], 
+              ")"}]}], "]"}]}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"controlPoints", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Re", "@", "#"}], ",", 
+            RowBox[{"Im", "@", "#"}]}], "}"}], "&"}], "/@", 
+         RowBox[{"GDiskMatCenter", "[", 
+          RowBox[{"GDiskMatMap", "[", 
+           RowBox[{
+            RowBox[{"Mat", "@", "gdIncircle0"}], ",", "convergents"}], "]"}], 
+          "]"}]}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"viewCenter", "=", 
+        RowBox[{
+         RowBox[{"BSplineFunction", "[", 
+          RowBox[{"controlPoints", ",", 
+           RowBox[{"SplineDegree", "\[Rule]", "2"}]}], "]"}], "[", "t", 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"zf", "=", " ", 
+        RowBox[{"viewCenter", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"plotRange", "=", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"viewCenter", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "+", 
+           RowBox[{"GoldenRatio", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "zf"}], ",", "zf"}], "}"}]}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"2", "zf"}]}], "}"}]}], "}"}]}], ";", 
        "\[IndentingNewLine]", 
        RowBox[{"Graphics", "[", 
         RowBox[{
@@ -1857,8 +1875,7 @@ Cell[BoxData[
                    "QuotientFunction", "\[Rule]", "CentralQuotient"}]}], 
                   "]"}]}], "&"}], ")"}]}], ",", 
              RowBox[{"Magnification", "\[Rule]", 
-              RowBox[{"4", 
-               RowBox[{"Exp", "[", "zoom", "]"}]}]}], ",", 
+              RowBox[{"4", "/", "zf"}]}], ",", 
              RowBox[{"LabelThreshold", "\[Rule]", 
               RowBox[{
                SuperscriptBox["2", 
@@ -1878,13 +1895,6 @@ Cell[BoxData[
                SuperscriptBox["2", 
                 RowBox[{"-", "3"}]], "zf"}]}]}], "\[IndentingNewLine]", "]"}],
             ",", "\[IndentingNewLine]", 
-           RowBox[{"{", 
-            RowBox[{"Red", ",", 
-             RowBox[{"Opacity", "[", "0.5", "]"}], ",", 
-             RowBox[{"GDisk", "[", 
-              RowBox[{"gdIncircle0", ",", 
-               RowBox[{"{", "m", "}"}]}], "]"}]}], "}"}], ",", 
-           "\[IndentingNewLine]", 
            RowBox[{"{", 
             RowBox[{"Yellow", ",", 
              RowBox[{"Opacity", "[", "0.5", "]"}], ",", 
@@ -1910,19 +1920,26 @@ Cell[BoxData[
            RowBox[{"{", 
             RowBox[{"number", ",", "\"\<: \>\"", ",", "quotients"}], 
             "}"}]}]}]}], "\[IndentingNewLine]", "]"}]}], ",", 
+      "\[IndentingNewLine]", 
       RowBox[{"{", 
-       RowBox[{
-        RowBox[{"{", 
-         RowBox[{"P", ",", 
-          RowBox[{"{", 
-           RowBox[{"0", ",", "1"}], "}"}]}], "}"}], ",", "Locator"}], "}"}], 
-      ",", 
-      RowBox[{"{", 
-       RowBox[{"zoom", ",", "0", ",", "10"}], "}"}], ",", 
+       RowBox[{"t", ",", "0", ",", "1", ",", 
+        RowBox[{"ControlType", "\[Rule]", "Animator"}], ",", 
+        RowBox[{"DefaultDuration", "\[Rule]", "30"}], ",", 
+        RowBox[{"AnimationRunning", "\[Rule]", "False"}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
       RowBox[{"{", 
        RowBox[{"number", ",", "GoldenRatio", ",", 
         RowBox[{"ControlType", "\[Rule]", "InputField"}]}], "}"}]}], 
-     "]"}]}]}], "\[IndentingNewLine]", "]"}]], "Input"]
+     "]"}]}]}], "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGCQAGIQPW/35WlHD71yXLClejqIFnMwnAui+077gulLE88v
+BtFma62WgOhfUV0rQLQ/H/NGEP3DwWgriJ7n+2AniD5xrHMfiPa+vWY/iH6m
+xXQEROdt/H0eRL/dn/IDRNtMyPsNooO21PwH6z96mf0YkM7JyRAC0dm/J4qC
+6PUNilIg2m2+jwyILtu6TRFEB5vrKIHoY1Oi1UH0YVMuDRDt9fi9EYiuyr1i
+BqKLYoxsQXTH81IHEM217pcriLZbF+IBoot/1vuA6F//P/mBaJtZBlkgmmWi
+TB7Y3HkLSkF0574JlWB1wfGNIJrN4lETiNZwPzwBRM+KWjsFRD9wt5kNtv/q
+wrkgOmZtyUIQvSW9fxGIlri4dgWInmjntwpEAwBGLeVd
+  "]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2996,8 +3013,8 @@ Cell[BoxData[
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1115, 630},
-WindowMargins->{{Automatic, 109}, {Automatic, 14}},
+WindowSize->{1115, 670},
+WindowMargins->{{Automatic, 110}, {Automatic, -7}},
 ShowSelection->False,
 Magnification->1.100000023841858,
 FrontEndVersion->"9.0 for Microsoft Windows (32-bit) (January 25, 2013)",
@@ -3117,35 +3134,35 @@ Cell[53089, 1386, 8159, 193, 713, "Input"]
 Cell[CellGroupData[{
 Cell[61285, 1584, 138, 4, 88, "Subtitle"],
 Cell[61426, 1590, 6177, 171, 577, "Input"],
-Cell[67606, 1763, 6600, 161, 549, "Input"]
+Cell[67606, 1763, 7524, 178, 589, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[74243, 1929, 183, 5, 88, "Subtitle"],
-Cell[74429, 1936, 4791, 114, 544, "Input"],
-Cell[79223, 2052, 5882, 129, 612, "Input"],
-Cell[85108, 2183, 3821, 89, 346, "Input"]
+Cell[75167, 1946, 183, 5, 88, "Subtitle"],
+Cell[75353, 1953, 4791, 114, 544, "Input"],
+Cell[80147, 2069, 5882, 129, 612, "Input"],
+Cell[86032, 2200, 3821, 89, 346, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[88966, 2277, 110, 1, 55, "Subtitle"],
-Cell[89079, 2280, 130, 2, 32, "Input"],
-Cell[89212, 2284, 240, 6, 32, "Input"],
-Cell[89455, 2292, 8664, 213, 861, "Input"]
+Cell[89890, 2294, 110, 1, 60, "Subtitle"],
+Cell[90003, 2297, 130, 2, 35, "Input"],
+Cell[90136, 2301, 240, 6, 35, "Input"],
+Cell[90379, 2309, 8664, 213, 947, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[98156, 2510, 159, 5, 88, "Subtitle"],
-Cell[98318, 2517, 146, 3, 32, "Input"],
-Cell[98467, 2522, 2771, 73, 233, "Input"],
-Cell[101241, 2597, 1352, 39, 113, "Input"],
-Cell[102596, 2638, 2246, 60, 193, "Input"],
-Cell[104845, 2700, 907, 24, 113, "Input"],
-Cell[105755, 2726, 643, 18, 32, "Input"],
-Cell[106401, 2746, 596, 17, 53, "Input"],
-Cell[107000, 2765, 2062, 66, 253, "Input"],
-Cell[109065, 2833, 656, 20, 53, "Input"],
-Cell[109724, 2855, 994, 29, 73, "Input"],
-Cell[110721, 2886, 2140, 59, 153, "Input"],
-Cell[112864, 2947, 1592, 42, 193, "Input"],
-Cell[114459, 2991, 147, 3, 32, "Input"]
+Cell[99080, 2527, 159, 5, 96, "Subtitle"],
+Cell[99242, 2534, 146, 3, 35, "Input"],
+Cell[99391, 2539, 2771, 73, 256, "Input"],
+Cell[102165, 2614, 1352, 39, 124, "Input"],
+Cell[103520, 2655, 2246, 60, 212, "Input"],
+Cell[105769, 2717, 907, 24, 124, "Input"],
+Cell[106679, 2743, 643, 18, 35, "Input"],
+Cell[107325, 2763, 596, 17, 58, "Input"],
+Cell[107924, 2782, 2062, 66, 278, "Input"],
+Cell[109989, 2850, 656, 20, 58, "Input"],
+Cell[110648, 2872, 994, 29, 80, "Input"],
+Cell[111645, 2903, 2140, 59, 168, "Input"],
+Cell[113788, 2964, 1592, 42, 212, "Input"],
+Cell[115383, 3008, 147, 3, 35, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
