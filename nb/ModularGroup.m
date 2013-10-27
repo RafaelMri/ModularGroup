@@ -24,6 +24,10 @@ PSL2ZNormalForm::usage = StringJoin[
   "{{a,b},{c,d}} = \[PlusMinus]m of the matrix m \[Element] \!\(\*SubscriptBox[\(PSL\), \(2\)]\)(\[DoubleStruckCapitalZ]) ",
   "such that c > 0 && (c == 0 || a > 0)."
 ];
+PSL2ZGrading::usage = StringJoin[
+  "PSL2ZGrading[m] returns the sum of the squared coefficients ",
+  "of the matrix m \[Element] \!\(\*SubscriptBox[\(PSL\), \(2\)]\)(\[DoubleStruckCapitalZ])."
+];
 RandomPSL2Z::usage = StringJoin[
   "RandomPSL2Z[n,N] returns a list of n random matrices within \!\(\*SubscriptBox[\(PSL\), \(2\)]\)(\[DoubleStruckCapitalZ]) ",
   "with coefficient absolute values <= N."
@@ -402,6 +406,11 @@ PSL2ZNormalForm = Compile[{{m,_Integer,2}},
     a = m[[1,1]]; c = m[[2,1]];
     If[a > 0 || (a == 0 && c > 0), m, -m]
   ], RuntimeAttributes->Listable
+];
+
+PSL2ZGrading = Compile[{{m,_Integer,2}},
+  {1,1}.(m^2).{1,1},
+  RuntimeAttributes -> Listable
 ];
 
 RandomPSL2Z[n_Integer, N_Integer] := Module[{mats, l, firstRows, scndRows, gcds, coprime},
