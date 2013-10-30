@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    101819,       2497]
-NotebookOptionsPosition[    100501,       2450]
-NotebookOutlinePosition[    100866,       2466]
-CellTagsIndexPosition[    100823,       2463]
+NotebookDataLength[    102696,       2520]
+NotebookOptionsPosition[    101337,       2472]
+NotebookOutlinePosition[    101702,       2488]
+CellTagsIndexPosition[    101659,       2485]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -2066,9 +2066,10 @@ Cell[CellGroupData[{
 
 Cell["\<\
 
-Klein J Invariant Invariant Function under modified Cayley Transform\
+Klein J Invariant Function under modified Cayley Transform\
 \>", "Subtitle",
- CellChangeTimes->{{3.5919656126816535`*^9, 3.59196565243046*^9}}],
+ CellChangeTimes->{{3.5919656126816535`*^9, 3.59196565243046*^9}, {
+  3.592158430745759*^9, 3.592158431744159*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -2244,7 +2245,8 @@ Cell[BoxData[{
          RowBox[{"TilingStyle", "\[Rule]", "Gray"}], ",", 
          RowBox[{"BorderStyle", "\[Rule]", "Gray"}]}], "]"}]}], 
       "\[IndentingNewLine]", "}"}], ",", 
-     RowBox[{"PlotRange", "\[Rule]", "1"}]}], "]"}]}], ";"}]}], "Input",
+     RowBox[{"PlotRange", "\[Rule]", "1"}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}]}], ";"}]}], "Input",
  CellChangeTimes->{{3.5919665470906096`*^9, 3.5919665634550123`*^9}, {
    3.5919667684702463`*^9, 3.5919667717306466`*^9}, {3.591967007275086*^9, 
    3.5919670354642906`*^9}, {3.591967248544726*^9, 3.591967248950326*^9}, {
@@ -2278,7 +2280,8 @@ Cell[BoxData[{
    3.5921556410601006`*^9, 3.5921557072499475`*^9}, 3.5921558668674*^9, {
    3.5921560841914635`*^9, 3.592156118421418*^9}, {3.592156212443042*^9, 
    3.592156212839053*^9}, {3.5921565065712476`*^9, 3.592156517333548*^9}, {
-   3.592156871294423*^9, 3.5921569146386323`*^9}}],
+   3.592156871294423*^9, 3.5921569146386323`*^9}, {3.592157887127063*^9, 
+   3.5921578914326634`*^9}}],
 
 Cell[BoxData[
  RowBox[{"ModularPlot", "[", 
@@ -2312,48 +2315,67 @@ Cell[BoxData[{
       RowBox[{"y", ",", "1", ",", 
        RowBox[{"Length", "@", "jdata"}], ",", "2"}], "}"}]}], "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"figure", "=", 
-   RowBox[{"GraphicsGrid", "[", 
+ RowBox[{"figure", "=", 
+  RowBox[{"GraphicsGrid", "[", 
+   RowBox[{"{", "\[IndentingNewLine]", 
     RowBox[{
-     RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{"{", 
       RowBox[{
-       RowBox[{"{", 
+       RowBox[{"ModularPlot", "[", 
         RowBox[{
-         RowBox[{"ModularPlot", "[", 
-          RowBox[{
-           RowBox[{"1", "/", "jdata2"}], ",", "mtList2", ",", "200"}], "]"}], 
-         ",", 
-         RowBox[{"ModularPlot", "[", 
-          RowBox[{
-           RowBox[{"jdata2", "-", "1"}], ",", "mtList2", ",", "200"}], 
-          "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
-       RowBox[{"{", 
+         RowBox[{"1", "/", "jdata2"}], ",", "mtList2", ",", "200"}], "]"}], 
+       ",", 
+       RowBox[{"ModularPlot", "[", 
         RowBox[{
-         RowBox[{"ModularPlot", "[", 
-          RowBox[{
-           SuperscriptBox["jdata2", "2"], ",", "mtList2", ",", "200"}], "]"}],
-          ",", 
-         RowBox[{"ModularPlot", "[", 
-          RowBox[{
-           RowBox[{
-            RowBox[{"Function", "[", 
-             RowBox[{"z", ",", 
+         RowBox[{"jdata2", "-", "1"}], ",", "mtList2", ",", "200"}], "]"}]}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"ModularPlot", "[", 
+        RowBox[{
+         SuperscriptBox["jdata2", "2"], ",", "mtList2", ",", "200"}], "]"}], 
+       ",", 
+       RowBox[{"ModularPlot", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Function", "[", 
+           RowBox[{"z", ",", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"z", "===", "ComplexInfinity"}], ",", "0.", ",", 
               RowBox[{"2", 
                RowBox[{"z", "/", 
                 RowBox[{"(", 
                  RowBox[{"1", "-", "z", "-", 
-                  SuperscriptBox["z", "2"]}], ")"}]}]}], ",", "Listable"}], 
-             "]"}], "@", "jdata2"}], ",", "mtList2", ",", "200"}], "]"}]}], 
-        "}"}]}], "\[IndentingNewLine]", "}"}], ",", 
-     RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}]}], 
-  ";"}], "\[IndentingNewLine]", "figure", "\[IndentingNewLine]"}], "Input"],
+                  SuperscriptBox["z", "2"]}], ")"}]}]}]}], "]"}], ",", 
+            "Listable"}], "]"}], "@", "jdata2"}], ",", "mtList2", ",", 
+         "200"}], "]"}]}], "}"}]}], "\[IndentingNewLine]", "}"}], 
+   "]"}]}]}], "Input",
+ CellChangeTimes->{{3.592158238116927*^9, 3.5921582559789295`*^9}, 
+   3.5921587568981514`*^9, {3.592158880230709*^9, 3.59215888545671*^9}}],
 
 Cell[BoxData[
- RowBox[{"Export", "[", 
-  RowBox[{"\"\<functions-of-j\>\"", ",", "%83", ",", "\"\<EPS\>\""}], 
-  "]"}]], "Input",
- NumberMarks->False]
+ RowBox[{"ModularPlot", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Function", "[", 
+     RowBox[{"z", ",", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"z", "===", "ComplexInfinity"}], ",", "0.", ",", 
+        RowBox[{"2", 
+         RowBox[{"z", "/", 
+          RowBox[{"(", 
+           RowBox[{"1", "-", "z", "-", 
+            SuperscriptBox["z", "2"]}], ")"}]}]}]}], "]"}], ",", "Listable"}],
+      "]"}], "@", "jdata"}], ",", "mtList", ",", "400"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5921593954051943`*^9, 3.592159399024395*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{"%", ",", 
+   RowBox[{"ImageSize", "\[Rule]", "513"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5921594416436024`*^9, 3.592159449396804*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2486,18 +2508,19 @@ Cell[72424, 1737, 140, 4, 77, "Subtitle"],
 Cell[72567, 1743, 12495, 318, 1158, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[85099, 2066, 164, 4, 77, "Subtitle"],
-Cell[85266, 2072, 3514, 91, 327, "Input"],
-Cell[88783, 2165, 1822, 39, 31, "Input"],
-Cell[90608, 2206, 3883, 74, 112, "Input"],
-Cell[94494, 2282, 307, 6, 31, "Input"],
-Cell[94804, 2290, 2057, 59, 180, "Input"],
-Cell[96864, 2351, 149, 4, 31, "Input"]
+Cell[85099, 2066, 203, 5, 77, "Subtitle"],
+Cell[85305, 2073, 3514, 91, 327, "Input"],
+Cell[88822, 2166, 1822, 39, 31, "Input"],
+Cell[90647, 2207, 3987, 76, 112, "Input"],
+Cell[94637, 2285, 307, 6, 31, "Input"],
+Cell[94947, 2293, 2144, 61, 161, "Input"],
+Cell[97094, 2356, 564, 15, 33, "Input"],
+Cell[97661, 2373, 188, 4, 31, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[97050, 2360, 195, 5, 77, "Subtitle"],
-Cell[97248, 2367, 3140, 77, 299, "Input"],
-Cell[100391, 2446, 94, 1, 31, "Input"]
+Cell[97886, 2382, 195, 5, 77, "Subtitle"],
+Cell[98084, 2389, 3140, 77, 299, "Input"],
+Cell[101227, 2468, 94, 1, 31, "Input"]
 }, Open  ]]
 }
 ]
