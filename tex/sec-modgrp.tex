@@ -276,27 +276,26 @@ s(A_k) \Rightarrow M_k := \inv{R}.
 \item Set $A_{k+1} := M_k^{-1} A_k$, increment $k$ by one and continue with step \ref{itm_ModGrpTRAlgLoop}.
 \label{itm_ModGrpTRAlgADfn}
 
-\item If $k = 0$, then $A = 1$, represented by the empty product. Otherwise, the desired product representation is $A = M_0 M_1 \cdots M_{k-1}$.
+\item If $k = 0$, then $A = 1$, which is the empty product. Otherwise, the desired product representation is $A = M_0 M_1 \cdots M_{k-1}$.
 \label{itm_ModGrpTRAlgFin}
 \end{enumerate}
 \end{theorem}
-\begin{proof}
-First we observe, that the described algorithm yields a sequence of equations 
+\begin{proof}Note, that because of Lemma~\ref{lem_trsPartition}, the rule for the definition of the transformations $M_k$ from step \ref{itm_ModGrpTRAlgMDfn} is unambiguous and the described algorithm therefore yields a unique sequence of equations 
 \begin{eqnarray*}
 A_1 &=& M_0^{-1} A_0\\
 A_2 &=& M_1^{-1} A_1\\
 A_3 &=& M_2^{-1} A_2\\
     &\vdots&
 \end{eqnarray*}
-Note, that because of Lemma~\ref{lem_trsPartition}, the rule for the definition of the transformations $M_k$ from step \ref{itm_ModGrpTRAlgMDfn} is unambiguous. The relations (\ref{itm_trsPropA}) and (\ref{itm_trsPropB}) of Lemma~\ref{lem_trsnRelations} guarantee that for every pair of subsequent transformations $M_k$, $M_{k+1}$, one of them is $T$ and the other is either $R$ or $\inv{R}$. Additionally, the relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) imply $n(A_k) > n(A_{k+2})$. Since $n(1) = n(T) = 2$ is a lower bound for $n(A_k)$, the described procedure must terminate after a finite number $m$ of iterations and the product $A = M_0 M_1 \cdots M_{m-1}$ is indeed of the desired form (\ref{eqn_ModGrpTRProd}).
+The relations (\ref{itm_trsPropA}) and (\ref{itm_trsPropB}) of Lemma~\ref{lem_trsnRelations} guarantee that for every pair of subsequent transformations $M_k$, $M_{k+1}$, one of them is $T$ and the other is either $R$ or $\inv{R}$. Additionally, the relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) imply $n(A_k) > n(A_{k+2})$. Since $n(1) = n(T) = 2$ is a lower bound for $n(A_k)$, the described procedure must terminate after a finite number $m$ of iterations and the product $A = M_0 M_1 \cdots M_{m-1}$ is indeed of the desired form (\ref{eqn_ModGrpTRProd}).
 \end{proof}
 
 Now have all tools in hand for the proof of Theorem~\ref{thm_ModGrpTRProd}. Note, that two alternative proofs can be found in \Schoeneberg{}, §4 and in \Klein{}, p.\ 452ff. 
 
 \begin{proof}[Proof of Theorem \ref{thm_ModGrpTRProd}]
-Let $A: z \mapsto \moebius{a}{b}{c}{d}{z}$ be an arbitrary modular transformation. The existence of a product representation of the form (\ref{eqn_ModGrpTRProd}) is ensured by the algorithm of Theorem~\ref{thm_ModGrpTRAlg}. In order to prove also its uniqueness, it is sufficient to show that the identity map has a unique product representation (namely the empty product). 
+Let $A: z \mapsto \moebius{a}{b}{c}{d}{z}$ be an arbitrary modular transformation. The existence of a product representation of the form (\ref{eqn_ModGrpTRProd}) is ensured by the algorithm of Theorem~\ref{thm_ModGrpTRAlg}. 
 
-From the relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) of Lemma~\ref{lem_trsnRelations} we see that any product $P$ of the form (\ref{eqn_ModGrpTRProd}) containing at least one factor $R$ or $\inv{R}$ has a grading $n(P) > n(1) = 2$ and therefore $P \ne 1$. The only products which are free of factors $R$ and $\inv{R}$ are T and the empty product. Since $T \ne 1$, the identity map can indeed only be represented by the empty product. \qedhere
+In order to prove also its uniqueness, it is sufficient to show that the identity map has a unique product representation (namely the empty product). From the relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) of Lemma~\ref{lem_trsnRelations} we see that any product $P$ of the form (\ref{eqn_ModGrpTRProd}) containing at least one factor $R$ or $\inv{R}$ has a grading $n(P) > n(1) = 2$ and therefore $P \ne 1$. The only products which are free of factors $R$ and $\inv{R}$ are T and the empty product. Since $T \ne 1$, the identity map can indeed only be represented by the empty product. \qedhere
 \end{proof}
 
 We conclude this section with the final remark that algorithm~\ref{thm_ModGrpTRAlg} successively reduces a given matrix $A \in \PSL{\Z}$ by multiplication from the left with $T$, $R$ or $\inv{R}$. Of course, by using a dual approach also multiplication from the right can be used. All we have to do in order to adapt algorithm~\ref{thm_ModGrpTRAlg} appropriately is to substitute the predicates $t$, $r$, $s$ by predicates $t^{\prime}$, $r^{\prime}$, $s^{\prime}$ and to change the definition in step \ref{itm_ModGrpTRAlgADfn} from $A_{k+1} := M_k^{-1} A_k$ to $A_{k+1} := A_k M_k^{-1}$. But how do the predicates $t^{\prime}$, $r^{\prime}$ and $s^{\prime}$ have to be defined?
@@ -339,7 +338,14 @@ Note, that also the Lemmas \ref{lem_trsPartition} and \ref{lem_trsnRelations} re
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{figures/j-grid}
+\includegraphics[width=0.8\textwidth]{figures/klein-j}
 \caption{The composition of the Klein modular invariant function and the inverse modified Cayley transform $j \circ \inv{\ModCayley}$.}
-\label{fig_J}
+\label{fig_KleinJ}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/functions-of-j}
+\caption{The composition of the Klein modular invariant function and the inverse modified Cayley transform $j \circ \inv{\ModCayley}$.}
+\label{fig_FunctionsOfJ}
 \end{figure}

@@ -42,7 +42,14 @@ To conclude our considerations, we note that equation (\ref{eqn_GenCircle}) can 
 \begin{equation*}
 \rvec{\conj{z}}{1} \cdot \mat{A}{B}{C}{D} \cdot \cvec{z}{1} = 0.
 \end{equation*}
-The matrix in this equation has a negative determinant, because of the condition $BC - AD > 0$ from above. Moreover, it is a Hermitian matrix, a notion which we will shortly recall:
+Next, we substitute $z = u / v$, with $u,v \in \C$, $v \ne 0$ and scale by $\conj{v} \cdot v = \abs{v}^2 > 0$, which yields the equivalent form
+\begin{equation}
+\label{eqn_GenCircleMatForm}
+\rvec{\conj{u}}{\conj{v}} \cdot \mat{A}{B}{C}{D} \cdot \cvec{u}{v} = 0.
+\end{equation}
+By introducing the convention to identify $\infty \in \EC$ with any formal quotient $u/0$, $u \in \C \setminus \{0\}$, the latter form makes sense for all $z = u/v \in \EC$. 
+
+Finally, we remember that the matrix in equation (\ref{eqn_GenCircleMatForm}) has a negative determinant, because of the condition $BC - AD > 0$ from above. Moreover, it is a Hermitian matrix, a notion which we will shortly recall:
 \begin{definition}
 \label{dfn_HermitianMatrix}
 \index{Hermitian!matrix}
@@ -54,36 +61,49 @@ Let $n > 0$ and $M \in \Mat{\C}{n}{n}$. The matrix
 \end{equation*}
 obtained by complex conjugation and transposition of $M$ is called \emph{Hermitian transpose} or \emph{conjugate transpose} of $M$. If $M$ has the property $\htransp{M} = M$, it is called a \emph{Hermitian} matrix.
 \end{definition}
-Having now the right vocabulary at hand, we can give an exact definition for generalized circles.
+Having now the right properties and vocabulary at hand, we can give an exact definition for generalized circles.
 \begin{definition}
-Let $M = \smallmat{A}{B}{C}{D} \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$. A \emph{generalized circle} is the set of solutions $z \in \C$ to
+\label{dfn_GenCircle}
+Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$. A \emph{generalized circle} is the set of solutions $u/v \in \EC$, with $u,v \in \C$ -- not both zero, to
 \begin{equation}
-\label{eqn_GenCircleMat}
-\rvec{\conj{z}}{1} \cdot M \cdot \cvec{z}{1} = 0
+\label{eqn_GenCircleDfn}
+\rvec{\conj{u}}{\conj{v}} \cdot M \cdot \cvec{u}{v} = 0.
 \end{equation}
-plus eventually the point $\infty$, if and only if $A = 0$, \ie when the generalized circle corresponds to a line on the complex plane.
 \end{definition}
 
 Since there should be no danger of confusion, we will from now on use the same name for a generalized circle and its corresponding Hermitian matrix (which is uniquely determined up to a real scalar factor).
 
 \begin{remark}
-\label{rem_GeneralizedDisk}
-\index{Generalized!disk}
-One could easily do the same consideration as above starting with the equations
-\begin{equation*}
-\abs{z - m} < r \quad \text{or} \quad  
-\abs{z - m} \le r
-\end{equation*}
-instead of $\abs{z - m} = r$, which naturally leads to the notions of open or closed \emph{generalized disks}, determined by
-\begin{equation}
-\rvec{\conj{z}}{1} \cdot M \cdot \cvec{z}{1} < 0 \quad \text{or} \quad
-\rvec{\conj{z}}{1} \cdot M \cdot \cvec{z}{1} \le 0.
-\end{equation}
+Consider a circle on the Riemann sphere going through its north pole (\ie the point $\infty$). The image of this circle under stereographic projection consists of a line on the complex plane $\C$ plus the formal element $\infty \in \EC$. Therefore, exactly the generalized circles which correspond to lines should contain the point $\infty$. Indeed this requirement is satisfied by Definition~\ref{dfn_GenCircle}, as equation (\ref{eqn_GenCircleDfn}) reduces to $A = 0$ for the case $u/v = 1/0 = \infty$.
 \end{remark}
+
+Replacing the equality sign `$=$' in the equation $\abs{z - m} = r$ with `$<$' or `$\le$' and repeating the considerations from above, naturally leads to the notions of generalized open disks and generalized closed disks, which we will define now.
+
+\begin{definition}
+\index{Generalized!open disk}
+\index{Generalized!closed disk}
+\label{dfn_GenDisk}
+Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$. A \emph{generalized open disk} is the set of solutions $u/v \in \EC$, with $u,v \in \C$ -- not both zero, to
+\begin{equation}
+\label{eqn_GenOpenDiskDfn}
+\rvec{\conj{u}}{\conj{v}} \cdot M \cdot \cvec{u}{v} < 0
+\end{equation}
+and a \emph{generalized closed disk} is the set of solutions $u/v \in \EC$ to
+\begin{equation}
+\label{eqn_GenClosedDiskDfn}
+\rvec{\conj{u}}{\conj{v}} \cdot M \cdot \cvec{u}{v} \le 0.
+\end{equation}
+\end{definition}
+
+\begin{remark}
+In contrast to generalized circles, the defining matrix $M$ of a generalized disk is unique up to a \emph{positive} real scalar factor. Switching from $M$ to $-M$ turns the generalized disk inside out.
+\end{remark}
+
+It is now easy to show that generalized circles and generalized disks are preserved under Möbius transformations.
 
 \begin{theorem}
 \label{thm_MoebiusGenCircle}
-Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$ and $P \in \GL{\C}$. The image of the generalized circle $M$ under the Möbius transformation $\phi$ corresponding to the matrix $P \in \GL{\C}$ is the generalized circle  $\htransp{(\inv{P})} \cdot M \cdot \inv{P}$.
+Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$ and $P \in \GL{\C}$. The image of the generalized circle (generalized open/closed disk) $M$ under the Möbius transformation $\phi$ corresponding to the matrix $P \in \GL{\C}$ is the generalized circle (generalized open/closed disk) $\htransp{(\inv{P})} \cdot M \cdot \inv{P}$.
 \end{theorem}
 \begin{proof}
 Let us write $P = \smallmat{a}{b}{c}{d}$, such that the corresponding Möbius transformation $\phi$ has the form
@@ -92,11 +112,13 @@ Let us write $P = \smallmat{a}{b}{c}{d}$, such that the corresponding Möbius tra
 \end{equation*}
 Now we set $w = \phi(z)$ and show that 
 \begin{equation*}
-\rvec{\conj{z}}{1} \cdot M \cdot \cvec{z}{1} = 0
+\rvec{\conj{z}}{1} \cdot M \cdot \cvec{z}{1} 
+\ \left\{\ \begin{matrix} = 0 \\ < 0\\ \le 0 \end{matrix}\right.
 \end{equation*}
 if and only if
 \begin{equation*}
-\rvec{\conj{w}}{1} \cdot \htransp{(\inv{P})} \cdot M \cdot \inv{P} \cdot \cvec{w}{1} = 0.
+\rvec{\conj{w}}{1} \cdot \htransp{(\inv{P})} \cdot M \cdot \inv{P} \cdot \cvec{w}{1} 
+\ \left\{\ \begin{matrix} = 0 \\ < 0\\ \le 0 \end{matrix}\right.
 \end{equation*}
 But this follows immediately from
 \begin{equation*}
