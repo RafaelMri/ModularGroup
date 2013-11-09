@@ -27,8 +27,10 @@ A z \conj{z} + B \conj{z} + C z + D = 0.
 \end{equation}
 Note that $D$ is real and $B = \conj{C}$ are complex conjugates. From an equation of form (\ref{eqn_GenCircle}) we can read off the center and radius of the corresponding circle by
 \begin{IEEEeqnarray}{rCl}
-m &=& -\frac{B}{A}, \IEEEyessubnumber \\
-r &=& \sqrt{m \conj{m} - \frac{D}{A}} = \sqrt{\frac{BC - AD}{A^2}}. \IEEEyessubnumber
+m &=& -\frac{B}{A}, \IEEEyessubnumber 
+\label{eqn_GenCircCenter}\\
+r &=& \sqrt{m \conj{m} - \frac{D}{A}} = \sqrt{\frac{BC - AD}{A^2}}. \IEEEyessubnumber 
+\label{eqn_GenCircRadius}
 \end{IEEEeqnarray}
 Clearly we can only do so, if $A \ne 0$ and $BC - AD > 0$. 
 
@@ -42,12 +44,12 @@ To conclude our considerations, we note that equation (\ref{eqn_GenCircle}) can 
 \begin{equation*}
 \rvec{\conj{z}}{1} \cdot \mat{A}{B}{C}{D} \cdot \cvec{z}{1} = 0.
 \end{equation*}
-Next, we substitute $z = u / v$, with $u,v \in \C$, $v \ne 0$ and scale by $\conj{v} \cdot v = \abs{v}^2 > 0$, which yields the equivalent form
+Next, we substitute $z = u / v$, with $u,v \in \C$, $v \ne 0$ and scale by $\conj{v} \cdot v = \abs{v}^2 > 0$, which yields the equivalent equation
 \begin{equation}
 \label{eqn_GenCircleMatForm}
 \rvec{\conj{u}}{\conj{v}} \cdot \mat{A}{B}{C}{D} \cdot \cvec{u}{v} = 0.
 \end{equation}
-By introducing the convention to identify $\infty \in \EC$ with any formal quotient $u/0$, $u \in \C \setminus \{0\}$, the latter form makes sense for all $z = u/v \in \EC$. 
+By introducing the convention to identify $\infty \in \EC$ with the formal quotient $u/0$, for arbitrary $u \in \C \setminus \{0\}$, equation (\ref{eqn_GenCircleMatForm}) makes sense for all $z = u/v \in \EC$. 
 
 Finally, we remember that the matrix in equation (\ref{eqn_GenCircleMatForm}) has a negative determinant, because of the condition $BC - AD > 0$ from above. Moreover, it is a Hermitian matrix, a notion which we will shortly recall:
 \begin{definition}
@@ -63,65 +65,80 @@ obtained by complex conjugation and transposition of $M$ is called \emph{Hermiti
 \end{definition}
 Having now the right properties and vocabulary at hand, we can give an exact definition for generalized circles.
 \begin{definition}
+\index{G-circle}
 \label{dfn_GenCircle}
-Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$. A \emph{generalized circle} is the set of solutions $u/v \in \EC$, with $u,v \in \C$ -- not both zero, to
+Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$. A \emph{generalized circle}, for short \emph{g-circle}, is the set of solutions $u/v \in \EC$, with $u,v \in \C$ -- not both zero, to
 \begin{equation}
 \label{eqn_GenCircleDfn}
 \rvec{\conj{u}}{\conj{v}} \cdot M \cdot \cvec{u}{v} = 0.
 \end{equation}
 \end{definition}
 
+This definition does not depend on the choice of $u$ and $v$. If $u/v = u^\prime/v^\prime$, \ie $u^\prime = \lambda u$ and $v^\prime = \lambda v$ for some $\lambda \in \C \setminus \{0\}$, then also
+\begin{equation*}
+\rvec{\conj{u^\prime}}{\conj{v^\prime}} \cdot M \cdot \cvec{u^\prime}{v^\prime} = \abs{\lambda}^2 \rvec{\conj{u}}{\conj{v}} \cdot M \cdot \cvec{u}{v} = 0.
+\end{equation*}
+
 Since there should be no danger of confusion, we will from now on use the same name for a generalized circle and its corresponding Hermitian matrix (which is uniquely determined up to a real scalar factor).
 
 \begin{remark}
-Consider a circle on the Riemann sphere going through its north pole (\ie the point $\infty$). The image of this circle under stereographic projection consists of a line on the complex plane $\C$ plus the formal element $\infty \in \EC$. Therefore, exactly the generalized circles which correspond to lines should contain the point $\infty$. Indeed this requirement is satisfied by Definition~\ref{dfn_GenCircle}, as equation (\ref{eqn_GenCircleDfn}) reduces to $A = 0$ for the case $u/v = 1/0 = \infty$.
+From Definition~\ref{dfn_GenCircle} we see that the point $\infty = 1/0$ lies on the g-circle $M = \smallmat{A}{B}{C}{D}$, if and only if its left upper matrix entry $A$ is zero. This is consistent with stereographic projection, because $A = 0$ is exactly the case when $M$ corresponds to a line on the complex plane. The image of this line under reverse stereographic projection is a circle on the Riemann sphere going through the north-pole, which we have identified with the point $\infty$.
 \end{remark}
 
-Replacing the equality sign `$=$' in the equation $\abs{z - m} = r$ with `$<$' or `$\le$' and repeating the considerations from above, naturally leads to the notions of generalized open disks and generalized closed disks, which we will define now.
+Going back to the our starting point, the equation $\abs{z - m} = r$, we can replace the equality sign `$=$' with `$<$' or `$\le$' and repeat the above considerations without any additional changes. This naturally leads to the notions of open and closed generalized disks.
 
 \begin{definition}
-\index{Generalized!open disk}
-\index{Generalized!closed disk}
+\index{Generalized disk}
 \label{dfn_GenDisk}
-Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$. A \emph{generalized open disk} is the set of solutions $u/v \in \EC$, with $u,v \in \C$ -- not both zero, to
+Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$. An \emph{open generalized disk} is the set of solutions $u/v \in \EC$, with $u,v \in \C$ -- not both zero, to
 \begin{equation}
 \label{eqn_GenOpenDiskDfn}
 \rvec{\conj{u}}{\conj{v}} \cdot M \cdot \cvec{u}{v} < 0
 \end{equation}
-and a \emph{generalized closed disk} is the set of solutions $u/v \in \EC$ to
+and a \emph{closed generalized disk} is the set of solutions $u/v \in \EC$ to
 \begin{equation}
 \label{eqn_GenClosedDiskDfn}
 \rvec{\conj{u}}{\conj{v}} \cdot M \cdot \cvec{u}{v} \le 0.
 \end{equation}
+In both cases we will use the term (open/closed) \emph{g-disk} for shortness.
 \end{definition}
 
 \begin{remark}
-In contrast to generalized circles, the defining matrix $M$ of a generalized disk is unique up to a \emph{positive} real scalar factor. Switching from $M$ to $-M$ turns the generalized disk inside out.
+In contrast to generalized circles, the defining matrix $M = \smallmat{A}{B}{C}{D}$ of a generalized disk is unique up to a \emph{positive} real scalar factor. Switching from $M$ to $-M$ turns the g-disk inside out while its border (the g-circle $M$) is left intact. Dependent on the sign of the left upper matrix entry $A$, we can distinguish three types of g-disks:
+\begin{description}
+\item[$A > 0$:] The g-disk corresponds to a disk in the usual sense within $\C$. Its center is given by (\ref{eqn_GenCircCenter}) and its radius by (\ref{eqn_GenCircRadius}).
+\item[$A = 0$:] The g-disk corresponds to a halfplane of $\C$, which is obtained from the left halfplane, $\Re{z} < 0$ (\resp $\le 0$), by translation by $\frac{-D}{2 \abs{C}}$ and rotation by $-\arg(C)$. The point $\infty$ is member of the generalized disk, if and only if it is closed.
+\item[$A < 0$:] The open g-disk $M$ corresponds to the set complement (within $\EC$) of the closed g-disk $-M$. Accordingly, the closed g-disk $M$ is the complement of the open g-disk $-M$. In particular, $\infty$ is a member of the g-disk.
+\end{description}
 \end{remark}
 
 It is now easy to show that generalized circles and generalized disks are preserved under Möbius transformations.
 
 \begin{theorem}
 \label{thm_MoebiusGenCircle}
-Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$ and $P \in \GL{\C}$. The image of the generalized circle (generalized open/closed disk) $M$ under the Möbius transformation $\phi$ corresponding to the matrix $P \in \GL{\C}$ is the generalized circle (generalized open/closed disk) $\htransp{(\inv{P})} \cdot M \cdot \inv{P}$.
+Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$ and $P \in \GL{\C}$. The image of the g-circle (\resp open/closed g-disk) $M$ under the Möbius transformation $\phi$ corresponding to the matrix $P \in \GL{\C}$ is the g-circle (\resp open/closed g-disk)
+\begin{equation}
+\label{eqn_GDiskTransform}
+\htransp{(\inv{P})} \cdot M \cdot \inv{P}.
+\end{equation}
 \end{theorem}
 \begin{proof}
 Let us write $P = \smallmat{a}{b}{c}{d}$, such that the corresponding Möbius transformation $\phi$ has the form
 \begin{equation*}
 \phi(z) = \moebius{a}{b}{c}{d}{z}.
 \end{equation*}
-Now we set $w = \phi(z)$ and show that 
+Now we write $z = u/v$ and $\phi(z) = u^\prime / v^\prime$ with $u^\prime = a u + b v$ and $v^\prime = c u + d v$. We need to show that
 \begin{equation*}
-\rvec{\conj{z}}{1} \cdot M \cdot \cvec{z}{1} 
+\rvec{\conj{u}}{\conj{v}} \cdot M \cdot \cvec{u}{v} 
 \ \left\{\ \begin{matrix} = 0 \\ < 0\\ \le 0 \end{matrix}\right.
 \end{equation*}
 if and only if
 \begin{equation*}
-\rvec{\conj{w}}{1} \cdot \htransp{(\inv{P})} \cdot M \cdot \inv{P} \cdot \cvec{w}{1} 
+\rvec{\conj{u^\prime}}{\conj{v^\prime}} \cdot \htransp{(\inv{P})} \cdot M \cdot \inv{P} \cdot \cvec{u^\prime}{v^\prime} 
 \ \left\{\ \begin{matrix} = 0 \\ < 0\\ \le 0 \end{matrix}\right.
 \end{equation*}
 But this follows immediately from
 \begin{equation*}
-P \cdot \cvec{z}{1} = \cvec{a z + b}{c z + d} = (c z + d) \cvec{w}{1}.\qedhere
+P \cdot \cvec{u}{v} = \cvec{a z + b}{c z + d} = \cvec{u^\prime}{v^\prime}.\qedhere
 \end{equation*}
 \end{proof}

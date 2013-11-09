@@ -49,7 +49,7 @@ By pointwise identifying $\EC$ with $S_1$ using the above two mappings, we obtai
 \begin{figure}
 \centering
 \includegraphics[width=0.9\textwidth]{figures/stereo-proj-1}
-\caption{Inversion $z \mapsto \reci{z}$ can be interpreted as rotation of the Riemann sphere by $180^{\circ}$ around the antipodal points $\pm 1$. It maps the upper to the lower halfplane (left) and the unit circle to the set of numbers $\abs{z} > 1$ (right).}
+\caption{Inversion $z \mapsto \reci{z}$ can be interpreted as rotation of the Riemann sphere by $180^{\circ}$ around the $x_1$ axis. It maps the upper to the lower halfplane (left) and the interior of the unit circle to its exterior (right).}
 \label{fig_StereoProjInversion}
 \end{figure}
 
@@ -73,7 +73,7 @@ One might wonder if this works the same way for every $z \in  \EC$. Indeed, $f: 
 \begin{equation*}
 f = P_{\UnitSphere} \circ V \circ P_{\UnitSphere}^{-1}.
 \end{equation*}
-We show this by a simple calculation, using the fact that $\reci{z} = \frac{\conj{z}}{\abs{z}^2}$ as well as (\ref{eqn_RevStdStereoProj}) and noting that for the case $z = \infty$, limits have to be introduced appropriately:
+We show this by a simple calculation, using the fact that $\reci{z} = \frac{\conj{z}}{\abs{z}^2}$ as well as (\ref{eqn_RevStdStereoProj}) and noting that for the case $z = \infty$ limits have to be introduced appropriately:
 \begin{IEEEeqnarray*}{rCcCl}
 (P_{\UnitSphere}^{-1} \circ f)(z)
 &=& \reci{\reci{\abs{z}^2} + 1} 
