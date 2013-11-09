@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    102696,       2520]
-NotebookOptionsPosition[    101337,       2472]
-NotebookOutlinePosition[    101702,       2488]
-CellTagsIndexPosition[    101659,       2485]
+NotebookDataLength[    104657,       2562]
+NotebookOptionsPosition[    103176,       2511]
+NotebookOutlinePosition[    103541,       2527]
+CellTagsIndexPosition[    103498,       2524]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -52,7 +52,8 @@ Cell[BoxData[
            RowBox[{
             RowBox[{"Export", "[", 
              RowBox[{
-              RowBox[{"path", " ", "<>", "filename"}], ",", "f"}], "]"}], ";", 
+              RowBox[{"path", " ", "<>", "filename"}], ",", "figure", ",", 
+              RowBox[{"ImageSize", "\[Rule]", "size"}]}], "]"}], ";", 
             RowBox[{"MessageDialog", "[", 
              RowBox[{"\"\<Written \>\"", " ", "<>", " ", "filename"}], 
              "]"}]}]}], "]"}]}], "\[IndentingNewLine]", "}"}]}]}]}], 
@@ -63,7 +64,8 @@ Cell[BoxData[
   3.585801812648196*^9}, {3.585802007998431*^9, 3.585802026043915*^9}, {
   3.5858046191544085`*^9, 3.5858046570374236`*^9}, {3.5858047395916357`*^9, 
   3.5858047780636673`*^9}, {3.5888657138217106`*^9, 3.588865737261332*^9}, {
-  3.5888660439644594`*^9, 3.5888660726452193`*^9}}],
+  3.5888660439644594`*^9, 3.5888660726452193`*^9}, {3.5930195747098837`*^9, 
+  3.5930195779799747`*^9}}],
 
 Cell[CellGroupData[{
 
@@ -228,7 +230,7 @@ Cell[BoxData[{
            RowBox[{"Axes", "\[Rule]", "True"}], ",", 
            RowBox[{"AxesLabel", "\[Rule]", 
             RowBox[{"{", 
-             RowBox[{"\"\<Re[z]\>\"", ",", "\"\<Im[z]\>\""}], "}"}]}], ",", 
+             RowBox[{"\"\<Re\>\"", ",", "\"\<Im\>\""}], "}"}]}], ",", 
            RowBox[{"Frame", "\[Rule]", "False"}]}], "]"}]}], ";", 
         "\[IndentingNewLine]", 
         RowBox[{"{", "\[IndentingNewLine]", 
@@ -275,8 +277,7 @@ Cell[BoxData[{
             RowBox[{"Axes", "\[Rule]", "True"}], ",", 
             RowBox[{"AxesLabel", "\[Rule]", 
              RowBox[{"{", 
-              RowBox[{
-              "\"\<Re[z]\>\"", ",", "\"\<Im[z]\>\"", ",", "\"\<\>\""}], 
+              RowBox[{"\"\<Re\>\"", ",", "\"\<Im\>\"", ",", "\"\<\>\""}], 
               "}"}]}], ",", 
             RowBox[{"Ticks", "\[Rule]", 
              RowBox[{"{", 
@@ -345,7 +346,7 @@ Cell[BoxData[{
            RowBox[{"Axes", "\[Rule]", "True"}], ",", 
            RowBox[{"AxesLabel", "\[Rule]", 
             RowBox[{"{", 
-             RowBox[{"\"\<Re[z]\>\"", ",", "\"\<Im[z]\>\""}], "}"}]}], ",", 
+             RowBox[{"\"\<Re\>\"", ",", "\"\<Im\>\""}], "}"}]}], ",", 
            RowBox[{"Frame", "\[Rule]", "False"}]}], "]"}]}], ";", 
         "\[IndentingNewLine]", 
         RowBox[{"{", "\[IndentingNewLine]", 
@@ -392,8 +393,7 @@ Cell[BoxData[{
             RowBox[{"Axes", "\[Rule]", "True"}], ",", 
             RowBox[{"AxesLabel", "\[Rule]", 
              RowBox[{"{", 
-              RowBox[{
-              "\"\<Re[z]\>\"", ",", "\"\<Im[z]\>\"", ",", "\"\<\>\""}], 
+              RowBox[{"\"\<Re\>\"", ",", "\"\<Im\>\"", ",", "\"\<\>\""}], 
               "}"}]}], ",", 
             RowBox[{"Ticks", "\[Rule]", 
              RowBox[{"{", 
@@ -467,7 +467,7 @@ Cell[BoxData[{
      RowBox[{"{", "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{"display", "[", 
-        RowBox[{"figure", ",", "800", ",", "\"\<stereo-proj-1.eps\>\""}], 
+        RowBox[{"figure", ",", "500", ",", "\"\<stereo-proj-1.eps\>\""}], 
         "]"}], ",", "\[IndentingNewLine]", 
        RowBox[{"display", "[", 
         RowBox[{"figure2", ",", "400", ",", "\"\<stereo-proj-2.eps\>\""}], 
@@ -512,7 +512,9 @@ Cell[BoxData[{
    3.5872252613409386`*^9}, {3.5872253288892155`*^9, 3.587225414767567*^9}, 
    3.587225476965022*^9, 3.587225522408008*^9, {3.587225554029338*^9, 
    3.587225567663793*^9}, {3.5872256079899583`*^9, 3.5872256097371655`*^9}, {
-   3.587226013993427*^9, 3.587226028002284*^9}}]
+   3.587226013993427*^9, 3.587226028002284*^9}, {3.5930147648750105`*^9, 
+   3.593014856761026*^9}, {3.59301500091088*^9, 3.59301500208088*^9}, {
+   3.5930153555713396`*^9, 3.5930153556337395`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -829,7 +831,7 @@ Cell[BoxData[{
          "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
     ";", "\[IndentingNewLine]", 
     RowBox[{"display", "[", 
-     RowBox[{"figure1", ",", "600", ",", "\"\<modular-tiling-1.eps\>\""}], 
+     RowBox[{"figure1", ",", "500", ",", "\"\<modular-tiling-1.eps\>\""}], 
      "]"}]}]}], "\[IndentingNewLine]", "]"}]}], "Input",
  CellChangeTimes->{{3.587736980242491*^9, 3.5877370307710977`*^9}, {
    3.58773706796165*^9, 3.587737070098859*^9}, {3.58773712409068*^9, 
@@ -917,7 +919,9 @@ Cell[BoxData[{
    3.5889558206848373`*^9}, {3.5889561018632884`*^9, 
    3.5889561146206264`*^9}, {3.588956223590514*^9, 3.588956235278824*^9}, {
    3.589034735329452*^9, 3.5890347581080556`*^9}, {3.589034806915349*^9, 
-   3.5890348208477182`*^9}, {3.5890350136398273`*^9, 3.5890350360994225`*^9}}]
+   3.5890348208477182`*^9}, {3.5890350136398273`*^9, 
+   3.5890350360994225`*^9}, {3.5930156913425517`*^9, 
+   3.5930156942909517`*^9}, {3.593015829234975*^9, 3.5930158292817745`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2152,16 +2156,16 @@ Cell[BoxData[{
          "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "]"}], ",", 
      "Listable"}], "]"}]}], ";"}]}], "Input",
  CellChangeTimes->CompressedData["
-1:eJwdzGkog3EAx/E1cpQ98sILJG0JyRvJWyVHrtQeD2YrxJ4XWOTIbI7SliMS
-kTtJKEcoConkyDZebNZekGMj5cg1uSby//1ffPu8+4qLKlheKBAIQknwfbKg
-S7x7H5/7baQ6Nzx7IWM/GIQGV/IEVFfNzcCXjcFVuLOkP4axDo9zmBLubod8
-reIG1tiCbuHksfAR5iR4OaEy+TRCQpQlXlJLr/cUMOrknBrIqpVw1qylpjWc
-tEOVxk5lp/a7oeFB2gP9BDEvcDgl8g2O6V0LYUTzj+8i/Bpj48OJo751VJOt
-Q8MSr3RZWuhuFDEcMaL1zx9+XPSkwtcOLhv6/MrksGUoXQEVtc2FsLG6jTp6
-aORheU1TGex3NZug5Nl2CLffRbyaGJcro+6likvg/ApHHbFK5jXERy6DumS2
-uDUSO6WcN4zm5SLYsBbIQEfnR3ATfkxSCBy2VmZDU0VAHjx1iorggKe0GC7I
-j8qgw7Csgk5hXyVUrs9RtepiHf2xmXq4ohvahImhPltQfn9jgeVn9TaY/2m+
-g8z0+BP8B4s+OJo=
+1:eJwdzF1IU2EAh/ExRyp4jnThRZOIzUqRbkSEbgpGa0wLYadjrg1KdEeoDcdK
+NjedIBtaKJEkpiYSYUFtqJCoIYXUpH0EbZNdaM02RbDJ0hZ+tFB8/+/Fw+/u
+kTWaOUEsEonOkeDu+J3Hss8pRf2/ADUzn/sUsokvQ9CfVb2EtvueN3BnfmgW
+fppyR2FV8kQcqkslCShY9RuwNVa8Ccej4jS8eSUvAw2qlTI5Uav8Sb237tPD
+C8txqpSzGeDbsINa07H8CJrsCSr3avEJ9G9p+uFJUeUOHFGX/4Vj7uzEeWL4
+f+EkPBjjFKXE0cI2ajDWa+eIa64bDigJMCxPLOs5KoJ7q/3V8E8vXwcLDrU6
+2D18TQ/11q4G6HzwkDoaCgiwpbXTCAezXUEo346F4MIuI9iIl+u1VF+17C70
+TvPU50tyr52Y5q9Tp8KRHCexT8PnwwpBx8COOSkLk317pzvxY6+egSNLljoY
+NJ+6BVcyTCN8lqtpghO6r0aY9L8zwYx4wAIN7z1Uh63JRX9crRtOu4Y/QOXZ
+go9Ql9qIwJYf7TF4ez/8C7KvX/yGM8y3iyWLKcX3yuZL8BhYCUA8
   "]],
 
 Cell[BoxData[
@@ -2203,7 +2207,9 @@ Cell[BoxData[
    3.5921457795895624`*^9, 3.592145788173802*^9}, {3.592152283095416*^9, 
    3.592152296968803*^9}, {3.592154139694214*^9, 3.5921541412342567`*^9}, {
    3.5921544318943653`*^9, 3.5921544363274894`*^9}, {3.5921567290234537`*^9, 
-   3.592156729104456*^9}, {3.5921569475015492`*^9, 3.592156948749584*^9}}],
+   3.592156729104456*^9}, {3.5921569475015492`*^9, 3.592156948749584*^9}, {
+   3.593016254999075*^9, 3.5930162556074753`*^9}, {3.593018262111311*^9, 
+   3.593018263499711*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -2217,7 +2223,7 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{"ModularPlot", "[", 
-    RowBox[{"data_", ",", "mts_", ",", "imageSize_"}], "]"}], ":=", 
+    RowBox[{"data_", ",", "mts_"}], "]"}], ":=", 
    RowBox[{"Graphics", "[", 
     RowBox[{
      RowBox[{"{", "\[IndentingNewLine]", 
@@ -2245,8 +2251,7 @@ Cell[BoxData[{
          RowBox[{"TilingStyle", "\[Rule]", "Gray"}], ",", 
          RowBox[{"BorderStyle", "\[Rule]", "Gray"}]}], "]"}]}], 
       "\[IndentingNewLine]", "}"}], ",", 
-     RowBox[{"PlotRange", "\[Rule]", "1"}], ",", 
-     RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}]}], ";"}]}], "Input",
+     RowBox[{"PlotRange", "\[Rule]", "1"}]}], "]"}]}], ";"}]}], "Input",
  CellChangeTimes->{{3.5919665470906096`*^9, 3.5919665634550123`*^9}, {
    3.5919667684702463`*^9, 3.5919667717306466`*^9}, {3.591967007275086*^9, 
    3.5919670354642906`*^9}, {3.591967248544726*^9, 3.591967248950326*^9}, {
@@ -2281,15 +2286,19 @@ Cell[BoxData[{
    3.5921560841914635`*^9, 3.592156118421418*^9}, {3.592156212443042*^9, 
    3.592156212839053*^9}, {3.5921565065712476`*^9, 3.592156517333548*^9}, {
    3.592156871294423*^9, 3.5921569146386323`*^9}, {3.592157887127063*^9, 
-   3.5921578914326634`*^9}}],
+   3.5921578914326634`*^9}, 3.5930165671299267`*^9, {3.593016724210353*^9, 
+   3.593016725161954*^9}, {3.5930178979380407`*^9, 3.5930179019160414`*^9}}],
 
 Cell[BoxData[
- RowBox[{"ModularPlot", "[", 
-  RowBox[{"jdata", ",", "mtList", ",", "400"}], "]"}]], "Input",
+ RowBox[{"display", "[", 
+  RowBox[{
+   RowBox[{"ModularPlot", "[", 
+    RowBox[{"jdata", ",", "mtList"}], "]"}], ",", "400", ",", 
+   "\"\<klein-j.eps\>\""}], "]"}]], "Input",
  CellChangeTimes->{
   3.5921567364456606`*^9, {3.592156919120757*^9, 3.592156935843224*^9}, {
    3.5921571004848175`*^9, 3.5921571158722467`*^9}, {3.5921573110221643`*^9, 
-   3.592157311583764*^9}}],
+   3.592157311583764*^9}, {3.5930178580322337`*^9, 3.5930179052544413`*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -2314,68 +2323,98 @@ Cell[BoxData[{
      RowBox[{"{", 
       RowBox[{"y", ",", "1", ",", 
        RowBox[{"Length", "@", "jdata"}], ",", "2"}], "}"}]}], "]"}]}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{"figure", "=", 
-  RowBox[{"GraphicsGrid", "[", 
-   RowBox[{"{", "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"ModularPlot", "[", 
-        RowBox[{
-         RowBox[{"1", "/", "jdata2"}], ",", "mtList2", ",", "200"}], "]"}], 
-       ",", 
-       RowBox[{"ModularPlot", "[", 
-        RowBox[{
-         RowBox[{"jdata2", "-", "1"}], ",", "mtList2", ",", "200"}], "]"}]}], 
-      "}"}], ",", "\[IndentingNewLine]", 
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"ModularPlot", "[", 
-        RowBox[{
-         SuperscriptBox["jdata2", "2"], ",", "mtList2", ",", "200"}], "]"}], 
-       ",", 
-       RowBox[{"ModularPlot", "[", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"Function", "[", 
-           RowBox[{"z", ",", 
-            RowBox[{"If", "[", 
-             RowBox[{
-              RowBox[{"z", "===", "ComplexInfinity"}], ",", "0.", ",", 
-              RowBox[{"2", 
-               RowBox[{"z", "/", 
-                RowBox[{"(", 
-                 RowBox[{"1", "-", "z", "-", 
-                  SuperscriptBox["z", "2"]}], ")"}]}]}]}], "]"}], ",", 
-            "Listable"}], "]"}], "@", "jdata2"}], ",", "mtList2", ",", 
-         "200"}], "]"}]}], "}"}]}], "\[IndentingNewLine]", "}"}], 
-   "]"}]}]}], "Input",
- CellChangeTimes->{{3.592158238116927*^9, 3.5921582559789295`*^9}, 
-   3.5921587568981514`*^9, {3.592158880230709*^9, 3.59215888545671*^9}}],
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.593017966282652*^9, 3.5930179763602533`*^9}}],
 
 Cell[BoxData[
- RowBox[{"ModularPlot", "[", 
+ RowBox[{"Quiet", "[", 
   RowBox[{
-   RowBox[{
-    RowBox[{"Function", "[", 
-     RowBox[{"z", ",", 
-      RowBox[{"If", "[", 
-       RowBox[{
-        RowBox[{"z", "===", "ComplexInfinity"}], ",", "0.", ",", 
-        RowBox[{"2", 
-         RowBox[{"z", "/", 
-          RowBox[{"(", 
-           RowBox[{"1", "-", "z", "-", 
-            SuperscriptBox["z", "2"]}], ")"}]}]}]}], "]"}], ",", "Listable"}],
-      "]"}], "@", "jdata"}], ",", "mtList", ",", "400"}], "]"}]], "Input",
- CellChangeTimes->{{3.5921593954051943`*^9, 3.592159399024395*^9}}],
+   RowBox[{"display", "[", 
+    RowBox[{
+     RowBox[{"ModularPlot", "[", 
+      RowBox[{
+       RowBox[{"1", "/", "jdata2"}], ",", "mtList2"}], "]"}], ",", "200", 
+     ",", "\"\<klein-jinv.eps\>\""}], "]"}], ",", 
+   RowBox[{"Power", "::", "infy"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.593017929637246*^9, 3.593017961056651*^9}, {
+   3.593018621516171*^9, 3.5930186299411726`*^9}, 3.5930186979591837`*^9}],
 
 Cell[BoxData[
- RowBox[{"Show", "[", 
-  RowBox[{"%", ",", 
-   RowBox[{"ImageSize", "\[Rule]", "513"}]}], "]"}]], "Input",
- CellChangeTimes->{{3.5921594416436024`*^9, 3.592159449396804*^9}}]
+ RowBox[{"Quiet", "[", 
+  RowBox[{
+   RowBox[{"display", "[", 
+    RowBox[{
+     RowBox[{"ModularPlot", "[", 
+      RowBox[{
+       RowBox[{"jdata2", "-", "1"}], ",", "mtList2"}], "]"}], ",", "200", 
+     ",", "\"\<klein-jm1.eps\>\""}], "]"}], ",", 
+   RowBox[{"Power", "::", "infy"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5930179471882486`*^9, 3.5930179526326494`*^9}, {
+   3.5930179871398554`*^9, 3.5930180062508583`*^9}, {3.5930186339347734`*^9, 
+   3.5930186447299747`*^9}, 3.5930186923899827`*^9}],
+
+Cell[BoxData[
+ RowBox[{"Quiet", "[", 
+  RowBox[{
+   RowBox[{"display", "[", 
+    RowBox[{
+     RowBox[{"ModularPlot", "[", 
+      RowBox[{
+       SuperscriptBox["jdata2", "2"], ",", "mtList2"}], "]"}], ",", "200", 
+     ",", "\"\<klein-jsqr.eps\>\""}], "]"}], ",", 
+   RowBox[{"Power", "::", "infy"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.593018009433259*^9, 3.5930180362964635`*^9}, {
+   3.5930186484739757`*^9, 3.5930186547295766`*^9}, 3.5930186890037823`*^9}],
+
+Cell[BoxData[
+ RowBox[{"Quiet", "[", 
+  RowBox[{
+   RowBox[{"display", "[", 
+    RowBox[{
+     RowBox[{"ModularPlot", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Function", "[", 
+         RowBox[{"z", ",", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"z", "===", "ComplexInfinity"}], ",", "0.", ",", 
+            RowBox[{"2", 
+             RowBox[{"z", "/", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", "z", "-", 
+                SuperscriptBox["z", "2"]}], ")"}]}]}]}], "]"}], ",", 
+          "Listable"}], "]"}], "@", "jdata2"}], ",", "mtList2"}], "]"}], ",", 
+     "200", ",", "\"\<klein-jfib.eps\>\""}], "]"}], ",", 
+   RowBox[{"Power", "::", "infy"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.593018037419664*^9, 3.593018058699067*^9}, {
+   3.593018656554777*^9, 3.593018664371378*^9}, 3.5930187031851845`*^9}],
+
+Cell[BoxData[
+ RowBox[{"Quiet", "[", 
+  RowBox[{
+   RowBox[{"display", "[", 
+    RowBox[{
+     RowBox[{"ModularPlot", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Function", "[", 
+         RowBox[{"z", ",", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"z", "===", "ComplexInfinity"}], ",", "0.", ",", 
+            RowBox[{"2", 
+             RowBox[{"z", "/", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", "z", "-", 
+                SuperscriptBox["z", "2"]}], ")"}]}]}]}], "]"}], ",", 
+          "Listable"}], "]"}], "@", "jdata"}], ",", "mtList"}], "]"}], ",", 
+     "400", ",", "\"\<klein-jfib-large.eps\>\""}], "]"}], ",", 
+   RowBox[{"Power", "::", "infy"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5921593954051943`*^9, 3.592159399024395*^9}, {
+   3.593018089134672*^9, 3.5930181280576787`*^9}, {3.5930186661965785`*^9, 
+   3.5930186733101797`*^9}, 3.5930187049479847`*^9, {3.593019144753888*^9, 
+   3.5930191461609273`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2489,38 +2528,41 @@ CellTagsIndex->{}
 Notebook[{
 Cell[557, 20, 323, 7, 52, "Input",
  InitializationCell->True],
-Cell[883, 29, 1579, 36, 152, "Input",
+Cell[883, 29, 1699, 38, 152, "Input",
  InitializationCell->True],
 Cell[CellGroupData[{
-Cell[2487, 69, 148, 4, 77, "Subtitle"],
-Cell[2638, 75, 18961, 439, 1172, "Input"]
+Cell[2607, 71, 148, 4, 77, "Subtitle"],
+Cell[2758, 77, 19057, 439, 1172, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21636, 519, 141, 4, 77, "Subtitle"],
-Cell[21780, 525, 18713, 394, 1066, "Input"]
+Cell[21852, 521, 141, 4, 77, "Subtitle"],
+Cell[21996, 527, 18819, 396, 1066, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[40530, 924, 142, 4, 77, "Subtitle"],
-Cell[40675, 930, 31712, 802, 2283, "Input"]
+Cell[40852, 928, 142, 4, 77, "Subtitle"],
+Cell[40997, 934, 31712, 802, 2283, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[72424, 1737, 140, 4, 77, "Subtitle"],
-Cell[72567, 1743, 12495, 318, 1158, "Input"]
+Cell[72746, 1741, 140, 4, 77, "Subtitle"],
+Cell[72889, 1747, 12495, 318, 1158, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[85099, 2066, 203, 5, 77, "Subtitle"],
-Cell[85305, 2073, 3514, 91, 327, "Input"],
-Cell[88822, 2166, 1822, 39, 31, "Input"],
-Cell[90647, 2207, 3987, 76, 112, "Input"],
-Cell[94637, 2285, 307, 6, 31, "Input"],
-Cell[94947, 2293, 2144, 61, 161, "Input"],
-Cell[97094, 2356, 564, 15, 33, "Input"],
-Cell[97661, 2373, 188, 4, 31, "Input"]
+Cell[85421, 2070, 203, 5, 77, "Subtitle"],
+Cell[85627, 2077, 3550, 91, 327, "Input"],
+Cell[89180, 2170, 1924, 41, 31, "Input"],
+Cell[91107, 2213, 4040, 76, 112, "Input"],
+Cell[95150, 2291, 439, 9, 31, "Input"],
+Cell[95592, 2302, 784, 24, 52, "Input"],
+Cell[96379, 2328, 461, 11, 31, "Input"],
+Cell[96843, 2341, 520, 12, 31, "Input"],
+Cell[97366, 2355, 466, 11, 33, "Input"],
+Cell[97835, 2368, 868, 22, 55, "Input"],
+Cell[98706, 2392, 982, 24, 55, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[97886, 2382, 195, 5, 77, "Subtitle"],
-Cell[98084, 2389, 3140, 77, 299, "Input"],
-Cell[101227, 2468, 94, 1, 31, "Input"]
+Cell[99725, 2421, 195, 5, 77, "Subtitle"],
+Cell[99923, 2428, 3140, 77, 299, "Input"],
+Cell[103066, 2507, 94, 1, 31, "Input"]
 }, Open  ]]
 }
 ]

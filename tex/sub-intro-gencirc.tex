@@ -88,7 +88,8 @@ From Definition~\ref{dfn_GenCircle} we see that the point $\infty = 1/0$ lies on
 Going back to the our starting point, the equation $\abs{z - m} = r$, we can replace the equality sign `$=$' with `$<$' or `$\le$' and repeat the above considerations without any additional changes. This naturally leads to the notions of open and closed generalized disks.
 
 \begin{definition}
-\index{Generalized disk}
+\index{Generalized!disk}
+\index{G-disk}
 \label{dfn_GenDisk}
 Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$. An \emph{open generalized disk} is the set of solutions $u/v \in \EC$, with $u,v \in \C$ -- not both zero, to
 \begin{equation}
@@ -106,9 +107,9 @@ In both cases we will use the term (open/closed) \emph{g-disk} for shortness.
 \begin{remark}
 In contrast to generalized circles, the defining matrix $M = \smallmat{A}{B}{C}{D}$ of a generalized disk is unique up to a \emph{positive} real scalar factor. Switching from $M$ to $-M$ turns the g-disk inside out while its border (the g-circle $M$) is left intact. Dependent on the sign of the left upper matrix entry $A$, we can distinguish three types of g-disks:
 \begin{description}
-\item[$A > 0$:] The g-disk corresponds to a disk in the usual sense within $\C$. Its center is given by (\ref{eqn_GenCircCenter}) and its radius by (\ref{eqn_GenCircRadius}).
-\item[$A = 0$:] The g-disk corresponds to a halfplane of $\C$, which is obtained from the left halfplane, $\Re{z} < 0$ (\resp $\le 0$), by translation by $\frac{-D}{2 \abs{C}}$ and rotation by $-\arg(C)$. The point $\infty$ is member of the generalized disk, if and only if it is closed.
-\item[$A < 0$:] The open g-disk $M$ corresponds to the set complement (within $\EC$) of the closed g-disk $-M$. Accordingly, the closed g-disk $M$ is the complement of the open g-disk $-M$. In particular, $\infty$ is a member of the g-disk.
+\item[Case $A > 0$:] The g-disk corresponds to a disk in the usual sense within $\C$. Its center is given by (\ref{eqn_GenCircCenter}) and its radius by (\ref{eqn_GenCircRadius}).
+\item[Case $A = 0$:] The g-disk corresponds to a halfplane of $\C$, which is obtained from the left halfplane, \ie $\Re{z} < 0$ (\resp $\le 0$), by translation by $\frac{-D}{2 \abs{C}}$ and rotation by $-\arg(C)$. The point $\infty$ is member of the generalized disk, if and only if it is closed.
+\item[Case $A < 0$:] The open g-disk $M$ corresponds to the set complement (within $\EC$) of the closed g-disk $-M$. Accordingly, the closed g-disk $M$ is the complement of the open g-disk $-M$. In particular, $\infty$ is a member of the g-disk.
 \end{description}
 \end{remark}
 
@@ -135,10 +136,10 @@ Now we write $z = u/v$ and $\phi(z) = u^\prime / v^\prime$ with $u^\prime = a u 
 if and only if
 \begin{equation*}
 \rvec{\conj{u^\prime}}{\conj{v^\prime}} \cdot \htransp{(\inv{P})} \cdot M \cdot \inv{P} \cdot \cvec{u^\prime}{v^\prime} 
-\ \left\{\ \begin{matrix} = 0 \\ < 0\\ \le 0 \end{matrix}\right.
+\ \left\{\ \begin{matrix} = 0\phantom{.} \\ < 0\phantom{.}\\ \le 0. \end{matrix}\right.
 \end{equation*}
 But this follows immediately from
 \begin{equation*}
-P \cdot \cvec{u}{v} = \cvec{a z + b}{c z + d} = \cvec{u^\prime}{v^\prime}.\qedhere
+P \cdot \cvec{u}{v} = \cvec{a u + b v}{c u + d v} = \cvec{u^\prime}{v^\prime}.\qedhere
 \end{equation*}
 \end{proof}
