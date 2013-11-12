@@ -1,7 +1,7 @@
 \subsection{Generalized circles}
 
 \index{Generalized!circle}
-From the geometric point of view, Möbius transformations have the beautiful property that they preserve generalized circles. \emph{Generalized circles} are either circles (in the usual sense) or lines on the complex plane $\C$. They can also be thought of circles on the Riemann sphere (\ie the extended complex plane $\EC$ projected to the unit sphere $\UnitSphere$, see Remark~\ref{rem_RiemannSphere}), where lines on the complex plane stand in a one-to-one correspondence to circles through the point $\infty$ on the Riemann sphere. In order to give an exact definition, we first make the following considerations:
+From the geometric point of view Möbius transformations have the beautiful property that they preserve generalized circles. \emph{Generalized circles} are either circles (in the usual sense) or lines on the complex plane $\C$. They can also be thought of circles on the Riemann sphere (\ie the extended complex plane $\EC$ projected to the unit sphere $\UnitSphere$, see Remark~\ref{rem_RiemannSphere}), where lines on the complex plane stand in a one-to-one correspondence to circles through the point $\infty$ on the Riemann sphere. In order to give an exact definition, we first make the following considerations:
 
 A circle with center $m \in \C$ and radius $r > 0$ can be described as the set of points $z \in \C$ for which
 \begin{equation*}
@@ -82,7 +82,7 @@ This definition does not depend on the choice of $u$ and $v$. If $u/v = u^\prime
 Since there should be no danger of confusion, we will from now on use the same name for a generalized circle and its corresponding Hermitian matrix (which is uniquely determined up to a real scalar factor).
 
 \begin{remark}
-From Definition~\ref{dfn_GenCircle} we see that the point $\infty = 1/0$ lies on the g-circle $M = \smallmat{A}{B}{C}{D}$, if and only if its left upper matrix entry $A$ is zero. This is consistent with stereographic projection, because $A = 0$ is exactly the case when $M$ corresponds to a line on the complex plane. The image of this line under reverse stereographic projection is a circle on the Riemann sphere going through the north-pole, which we have identified with the point $\infty$.
+From Definition~\ref{dfn_GenCircle} we see that the point $\infty = 1/0$ lies on the g-circle $M = \smallmat{A}{B}{C}{D}$ if and only if its left upper matrix entry $A$ is zero. This is consistent with stereographic projection, because $A = 0$ exactly when $M$ corresponds to a line on the complex plane. The image of this line under reverse stereographic projection is a circle on the Riemann sphere going through the north-pole, which we have identified with the point $\infty$.
 \end{remark}
 
 Going back to the our starting point, the equation $\abs{z - m} = r$, we can replace the equality sign `$=$' with `$<$' or `$\le$' and repeat the above considerations without any additional changes. This naturally leads to the notions of open and closed generalized disks.
@@ -109,11 +109,11 @@ In contrast to generalized circles, the defining matrix $M = \smallmat{A}{B}{C}{
 \begin{description}
 \item[Case $A > 0$:] The g-disk corresponds to a disk in the usual sense within $\C$. Its center is given by (\ref{eqn_GenCircCenter}) and its radius by (\ref{eqn_GenCircRadius}).
 \item[Case $A = 0$:] The g-disk corresponds to a halfplane of $\C$, which is obtained from the left halfplane, \ie $\Re{z} < 0$ (\resp $\le 0$), by translation by $\frac{-D}{2 \abs{C}}$ and rotation by $-\arg(C)$. The point $\infty$ is member of the generalized disk, if and only if it is closed.
-\item[Case $A < 0$:] The open g-disk $M$ corresponds to the set complement (within $\EC$) of the closed g-disk $-M$. Accordingly, the closed g-disk $M$ is the complement of the open g-disk $-M$. In particular, $\infty$ is a member of the g-disk.
+\item[Case $A < 0$:] The open g-disk $M$ corresponds to the set complement (within $\EC$) of the closed g-disk $-M$. Accordingly, the closed g-disk $M$ is the complement of the open g-disk $-M$. In both cases the point $\infty$ is contained in the g-disk.
 \end{description}
 \end{remark}
 
-It is now easy to show that generalized circles and generalized disks are preserved under Möbius transformations.
+It is now easy to show that g-circles and g-disks are preserved under Möbius transformations.
 
 \begin{theorem}
 \label{thm_MoebiusGenCircle}

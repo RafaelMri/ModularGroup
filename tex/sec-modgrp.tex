@@ -139,10 +139,10 @@ A = U^{e_0} TU^{e_1} \cdots TU^{e_{n-1}} TU^{e_n} T U^k.
 
 \begin{remark}
 \label{rem_EuclideanAlgorithmRounding}
-The product representation (\ref{eqn_ModGrpTUAlg}) is not unique. In fact there is quite some freedom of choice for the quotients $q_0, q_1, \ldots, q_n$ in Corollary~\ref{cor_ModGrpTUAlg}. With the convention $r_{-1} := a$ and $r_0 := c$, one usually sets $q_j := \floor{\frac{r_{j-1}}{r_j}}$ for $j \ge 0$. The remainders, which are determined by 
+The product representation (\ref{eqn_ModGrpTUAlg}) is not unique. In fact there is quite some freedom of choice for the quotients $q_0, q_1, \ldots, q_n$ in the algorithm of Corollary~\ref{cor_ModGrpTUAlg}. With the convention $r_{-1} := a$ and $r_0 := c$, one usually sets $q_j := \floor{\frac{r_{j-1}}{r_j}}$ for $j \ge 0$. The remainders, which are determined by 
 \begin{equation}
 \label{eqn_EuclideanAlgorithmLine}
-r_{j-1} = q_j \cdot r_j + r_{j+1} \quad \text{for } j \ge 0,
+r_{j+1} = r_{j-1} - q_j \cdot r_j \quad \text{for } j \ge 0,
 \end{equation}
 are then all nonnegative and form a strictly monotonic decreasing sequence,
 \begin{equation*}
@@ -152,7 +152,7 @@ All quotients, with the possible exception of $q_0$, are positive. In contrast t
 \begin{equation*}
 \abs{r_1} > \abs{r_2} > \ldots > \abs{r_n} > \abs{r_{n+1}} = 0,
 \end{equation*}
-and therefore the Euclidean algorithm terminates and is correct.\footnote{The determined greatest common divisor is possibly negative, which is still admissible, because if $d$ is a greatest common divisor of $n,m \in \Z$, \ie $\forall d^\prime \in \Z: (d^\prime \mid n,m \Rightarrow d^\prime \mid d)$, then also $-d$ is.} Depending on the choice of the rounding directions we will in general obtain different product representations of $A$. Not only this, we can even go one step further and violate the constraint $\abs{r_j} > \abs{r_{j+1}}$ for a finite number of indices $j$ by choosing a completely random $q_j \in \Z$. As long as the remainders are fixed by (\ref{eqn_EuclideanAlgorithmLine}), in this way, still more valid product representations of $A$ can be derived.
+and therefore the Euclidean algorithm terminates and is correct.\footnote{The determined greatest common divisor is possibly negative, which is still admissible, because if $d$ is a greatest common divisor of $n,m \in \Z$, \ie $\forall d^\prime \in \Z: (d^\prime \mid n,m \Rightarrow d^\prime \mid d)$, then also $-d$ is.} Depending on the choice of the rounding directions we will in general obtain different product representations of $A$. Not only this, we can even go one step further and violate the constraint $\abs{r_j} > \abs{r_{j+1}}$ for a finite number of indices $j$ by choosing a completely random $q_j \in \Z$. As long as the remainders are calculated through (\ref{eqn_EuclideanAlgorithmLine}) all product representations obtained in this way are correct.
 \end{remark}
 \begin{example}
 Consider the modular transformation $A$ given by
@@ -173,7 +173,7 @@ A = U^{-2} TU^{-3} TU^{-3} T.
 \end{equation*}
 \end{example}
 
-We have now seen that $T$ and $U$ generate the modular group, and different product representations for a given modular transformation $A$ can be found using algorithm~\ref{cor_ModGrpTUAlg}. Of course the questions arises, which  relations (in the sense of Definition~\ref{dfn_GrpConstructGenRel}) lie behind the inherent ambiguity of these product representations. For example, it is easy to see that $T^2 = 1$ and $(TU)^3 = 1$ are relations which are satisfied by $T$ and $U$. It is the goal of the following paragraphs to show that these two relations are in fact the only ones in the sense that all other relations are derived from these. We will do this by proving the following theorem:
+We have now seen that $T$ and $U$ generate the modular group, and different product representations for a given modular transformation $A$ can be found using algorithm~\ref{cor_ModGrpTUAlg}. Of course the questions arises, which  relations (in the sense of Definition~\ref{dfn_GrpConstructGenRel}) lie behind the obvious ambiguity of these product representations. For example, it is easy to see that $T^2 = 1$ and $(TU)^3 = 1$ are relations which are satisfied by $T$ and $U$. It is the goal of the following paragraphs to show that these two relations are in fact the only ones in the sense that all other relations are derived from these. We will do this by proving the following theorem:
 
 \begin{theorem}
 \label{thm_ModGrpTRProd}
@@ -282,7 +282,7 @@ s(\inv{R}A)
 \end{IEEEeqnarray*}
 \item[ad (\ref{itm_trsPropB}):] It is immediate to see that $t(A) \land t(TA)$ is equivalent to $ac = bd = 0$. Clearly, 1 and $T$ are the only two transformations satisfying this condition.
 \item[ad (\ref{itm_trsPropC}):] $n(A) = n(TA)$ is trivial.
-\item[ad (\ref{itm_trsPropD}):] Note that $ad - bc = 1$ implies that always at least one of the numbers $a$ and $b$ (resp.\ $c$ and $d$) will be nonzero. Moreover, $t(A) \Rightarrow ac \ge 0 \land bd \ge 0$, and thus we have
+\item[ad (\ref{itm_trsPropD}):] Note that $ad - bc = 1$ implies that at least one of the numbers $a$ and $b$ (resp.\ $c$ and $d$) is nonzero. Moreover, $t(A) \Rightarrow ac \ge 0 \land bd \ge 0$, and thus we have
 \begin{IEEEeqnarray*}{+rCl+x*}
 n(RA) - n(A)       &=& c^2 + 2ac + d^2 + 2bd > 0 \quad \text{and}\\
 n(\inv{R}A) - n(A) &=& a^2 + 2ac + b^2 + 2bd > 0.&\qedhere
@@ -323,7 +323,7 @@ A_2 &=& M_1^{-1} A_1\\
 A_3 &=& M_2^{-1} A_2\\
     &\vdots&
 \end{eqnarray*}
-The relations (\ref{itm_trsPropA}) and (\ref{itm_trsPropB}) of Lemma~\ref{lem_trsnRelations} guarantee that for every two subsequent transformations $M_k$, $M_{k+1}$, one is $T$ and the other is either $R$ or $\inv{R}$. Additionally, the relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) imply $n(A_k) > n(A_{k+2})$. Since $n(1) = n(T) = 2$ is a lower bound for $n(A_k)$, the described procedure must terminate after a finite number $m$ of iterations and the product $A = M_0 M_1 \cdots M_{m-1}$ is indeed of the desired form (\ref{eqn_ModGrpTRProd}).
+The relations (\ref{itm_trsPropA}) and (\ref{itm_trsPropB}) of Lemma~\ref{lem_trsnRelations} guarantee that for every pair of subsequent transformations $M_k$, $M_{k+1}$, one of them is $T$ and the other is either $R$ or $\inv{R}$. Additionally, the relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) imply $n(A_k) > n(A_{k+2})$. Since $n(1) = n(T) = 2$ is a lower bound for $n(A_k)$, the described procedure must terminate after a finite number $m$ of iterations and the product $A = M_0 M_1 \cdots M_{m-1}$ is indeed of the desired form (\ref{eqn_ModGrpTRProd}).
 \end{proof}
 
 Now have all tools in hand for the proof of Theorem~\ref{thm_ModGrpTRProd}. Note, that two alternative proofs can be found in \Schoeneberg{}, §4 and in \Klein{}, p.\ 452ff. 
