@@ -155,7 +155,7 @@ All quotients, with the possible exception of $q_0$, are positive. In contrast t
 and therefore the Euclidean algorithm terminates and is correct.\footnote{The determined greatest common divisor is possibly negative, which is still admissible, because if $d$ is a greatest common divisor of $n,m \in \Z$, \ie $\forall d^\prime \in \Z: (d^\prime \mid n,m \Rightarrow d^\prime \mid d)$, then also $-d$ is.} Depending on the choice of the rounding directions we will in general obtain different product representations of $A$. Not only this, we can even go one step further and violate the constraint $\abs{r_j} > \abs{r_{j+1}}$ for a finite number of indices $j$ by choosing a completely random $q_j \in \Z$. As long as the remainders are calculated through (\ref{eqn_EuclideanAlgorithmLine}) all product representations obtained in this way are correct.
 \end{remark}
 \begin{example}
-Consider the modular transformation $A$ given by
+Consider the modular transformation $A \in \PSL{\Z}$ given by
 \begin{equation*}
 A = \mat{13}{5}{-8}{-3}.
 \end{equation*}
@@ -167,13 +167,13 @@ In contrast to that, setting $q_j := \ceil{\frac{r_{j-1}}{r_j}}$ in each step le
 \begin{equation*}
 A = U^{-1} TU^1 TU^{-1} TU^1 TU^{-2} T.
 \end{equation*}
-Last, but not least, always rounding to the nearest integer gives the shortest representation:\footnote{It can be shown in general, that rounding to the nearest integer always leads to a product representation with minimal number of factors $T$ and $U^k$, see [TODO 30]}
+Last, but not least, always rounding to the nearest integer gives the shortest representation:\footnote{It can be shown in general that rounding to the nearest integer always leads to a product representation with minimal number of factors $T$ and $U^k$, see [TODO 30]}
 \begin{equation*}
 A = U^{-2} TU^{-3} TU^{-3} T.
 \end{equation*}
 \end{example}
 
-We have now seen that $T$ and $U$ generate the modular group, and different product representations for a given modular transformation $A$ can be found using algorithm~\ref{cor_ModGrpTUAlg}. Of course the questions arises, which  relations (in the sense of Definition~\ref{dfn_GrpConstructGenRel}) lie behind the obvious ambiguity of these product representations. For example, it is easy to see that $T^2 = 1$ and $(TU)^3 = 1$ are relations which are satisfied by $T$ and $U$. It is the goal of the following paragraphs to show that these two relations are in fact the only ones in the sense that all other relations are derived from these. We will do this by proving the following theorem:
+We have now seen that $T$ and $U$ generate the modular group and different product representations for a given modular transformation $A$ can be found using algorithm~\ref{cor_ModGrpTUAlg}. Of course the questions arises, which  relations (in sense of Definition~\ref{dfn_GrpConstructGenRel}) lie behind the ambiguity of these product representations. For example, it is easy to see that $T^2 = 1$ and $(TU)^3 = 1$ are relations which are satisfied by $T$ and $U$. It is the goal of the following paragraphs to show that these two relations are in fact the only ones in the sense that all other relations are derived from these. We will do this by proving the following theorem:
 
 \begin{theorem}
 \label{thm_ModGrpTRProd}

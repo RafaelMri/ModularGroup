@@ -6,6 +6,8 @@
 % ------------------------------------------------------------------------ Sets
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Irrat}{\mathbb{I}}
 \newcommand{\Rplus}{\R^{+}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -38,7 +40,8 @@
 
 \newcommand{\ModGrp}{\Gamma}
 
-\newcommand{\setdef}[2]{\left\{#1 \mid #2\right\}}
+\newcommand{\setdefsz}[3]{#1\{ #2 \ #1| \ #3 #1\}}
+\newcommand{\setdef}[2]{\setdefsz{}{#1}{#2}}
 
 % ------------------------------------------------------------------ References
 \newcommand{\Schoeneberg}{Schoeneberg~\cite{schoeneberg1974elliptic}}
