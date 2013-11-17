@@ -12,19 +12,27 @@ We call two points $z, w \in \EC$ \emph{equivalent}, if and only if there is a m
 \left[\frac{u}{v}\right]_\sim = 
 \setdefsz{\bigg}{\frac{a u + b v}{c u + d v} \in \EC}{\mat{a}{b}{c}{d} \in \PSL{\Z}} \in \EC / \sim.
 \end{equation*}
+
 We now wish to find a system of representatives for $\EC/\sim$, in other words, we want to define exactly one representative $u_0/v_0$ for each orbit $[u/v]_\sim$. One approach for this could be to fix $u,v \in \C$, not both zero, then to choose from the set
 \begin{equation}
 \label{eqn_FunDomLuv}
 O_{u,v} := \setdefsz{\bigg}{\cvec{a u + b v}{c u + d v} \in \C^2}{\mat{a}{b}{c}{d} \in \SL{\Z}}
 \end{equation}
-one vector $(u_0, v_0)$ with minimal $\eucnorm{\cdot}$-norm and to declare $u_0/v_0$ as the representative for $[u/v]_\sim$. The problem with this is that such a choice may not always be possible, because $L_{u,v}$ may in general contain vectors of arbitrary small $\eucnorm{\cdot}$-norm. However, if $u \conj{v} \notin \R$,  then the set 
+one vector $(u_0, v_0)$ with minimal $\eucnorm{\cdot}$-norm and to declare $u_0/v_0$ as the representative for $[u/v]_\sim$. The problem with this is that such a choice may not always be possible, because $L_{u,v}$ may in general contain vectors of arbitrary small $\eucnorm{\cdot}$-norm. 
+
+However, if $u \conj{v} \notin \R$, then $u$ and $v$ span a non-degenerate parallelogram $P_{u,v} := \setdef{t u + s v}{t,s \in [0,1)} \subseteq \C$. Translation of $P_{u,v}$ by integer multiples of $u$ and $v$ covers every point in $\C$ exactly once and thus the set
 \begin{equation*}
 L_{u,v} := \setdef{a u + b v \in \C}{a,b \in \Z}
 \end{equation*}
-forms a lattice in $\C$.\footnote{The condition $u \conj{v} \notin \R$ is equivalent to $v \ne 0$ and $\Im{u/v} \ne 0$.} For this reason there exists a positive lower bound $m$ satisfying $0 < m \le \abs{z}$ for all $z \in L_{u,v} \setminus \{0\}$. Obviously $O_{u,v} \subseteq (L_{u,v})^2$ and $(0,0) \notin O_{u,v}$, which is why $m$ is also a lower bound for the $\eucnorm{\cdot}$-norm of the elements of $O_{u,v}$:
+consists precisely of the vertices of all of these translated parallelograms.\footnote{$L_{u,v}$ forms a lattice in $\C$.} If we denote by $D_r := \setdef{z \in \C}{\abs{z} \le r}$, then for every $r > 0$ the set $D_r \cap L_{u,v}$ is obviously finite. 
+
+Now, still for the case $u \conj{v} \notin \R$, we show that the set $O_{u,v} \subseteq (L_{u,v})^2$ must contain an element of minimal $\eucnorm{.}$-norm: Denote by $S_r := \setdef{x \in \C^2}{\eucnorm{x} \le r}$ and let $r > 0$ be sufficiently large such that $S_r \cap O_{u,v}$ is nonempty. Because 
 \begin{equation*}
-0 < m \le \eucnorm{x} \quad \forall x \in O_{u,v}.
+S_r \cap O_{u,v} \subseteq (D_r \cap L_{u,v})^2,
 \end{equation*}
+we see that $S_r \cap O_{u,v}$ is finite and $\min \eucnorm{S_r \cap O_{u,v}} = \min \eucnorm{O_{u,v}}$ exists. Since $(0,0) \notin O_{u,v}$ this minimum is not zero.
+
+This encourages us to go on (we will come back to the case $u \conj{v} \in \R$ later) and turn to the question, how we can effectively determine an element of $O_{u,v}$ with minimal $\eucnorm{\cdot}$-norm. The task is the following: Given two complex numbers $u,v \in \C$ with $u \conj{v} \notin \R$, determine a matrix $A \in \SL{\Z}$ such that $\eucnorm{A ({}^u_v)}$ is minimal. The idea is very similar to the one from the proof of Theorem~\ref{thm_ModGrpTUGen}.
 
 \begin{figure}
 \centering
