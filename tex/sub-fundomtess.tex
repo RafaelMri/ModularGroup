@@ -68,14 +68,14 @@ B = U^{-e_n} TU^{-e_{n-1}} \cdots TU^{-e_0}.
 \end{theorem}
 \begin{proof}
 The algorithm gives rise to a sequence of equations
-\begin{eqnarray*}
-      u &=& q_0 \cdot v\phantom{_0} + r_1 \\
-      v &=& q_1 \cdot r_1 + r_2 \\
-    r_1 &=& q_2 \cdot r_2 + r_3 \\
-    r_2 &=& q_3 \cdot r_3 + r_4 \\
-        &\vdots& 
-\end{eqnarray*}
-with $r_j \ne 0$ for all $j \ge -1$, because they are all nontrivial linear combinations of $u = r_{-1}$ and $v = r_0$ with integer coefficients and $u\conj{v} \notin \R$ implies linear independence of $u$, $v$ over $\R$.  Moreover this sequence of equations corresponds to the sequence of vectors
+\begin{IEEEeqnarray*}{rCcCl}
+u &=& r_{-1} &=& q_0 \cdot r_0 + r_1 \\
+v &=&    r_0 &=& q_1 \cdot r_1 + r_2 \\
+&&       r_1 &=& q_2 \cdot r_2 + r_3 \\
+&&       r_2 &=& q_3 \cdot r_3 + r_4 \\
+&& &\vdots& 
+\end{IEEEeqnarray*}
+with $r_j \ne 0$ for all $j \ge -1$, because they are all nontrivial linear combinations of $u$ and $v$ with integer coefficients and $u\conj{v} \notin \R$ implies linear independence of $u$, $v$ over $\R$.  Moreover this sequence of equations corresponds to the sequence of vectors
 \begin{equation*}
 \cvec{u}{v}                           \overset{TU^{-q_0}}{\longmapsto}
 \cvec{\phantom{+}v\phantom{_1}}{-r_1} \overset{TU^{q_1}}{\longmapsto}
@@ -83,20 +83,33 @@ with $r_j \ne 0$ for all $j \ge -1$, because they are all nontrivial linear comb
 \cvec{-r_2}{\phantom{+}r_3}           \overset{TU^{q_3}}{\longmapsto}
 \cvec{r_3}{r_4}                       \mapsto \dots,
 \end{equation*}
-With $s_j := (-1)^{\floor{\half{j+1}}} r_j$, we can write these vectors as $x_j := \cvec{s_{j-1}}{s_j}$ for $j \ge 0$. Now, as in the theorem, let $e_j := (-1)^j q_j$ for $j \ge 0$. In this notation, we can write in general $TU^{-e_j} x_j = x_{j+1}$ for all $j \ge 0$. From the choice of $q_j$ and from Lemma~\ref{lem_FunDomUVMin} it follows that for each pair of subsequent vectors $x_j$, $x_{j+1}$ we have
+With $s_j := (-1)^{\ceil{\half{j}}} r_j$, we can write these vectors as $x_j := \cvec{s_{j-1}}{s_j}$ for $j \ge 0$. Now, as in the theorem, let $e_j := (-1)^j q_j$ for $j \ge 0$. In this notation, we can write in general $TU^{-e_j} x_j = x_{j+1}$ for all $j \ge 0$. From the choice of $q_j$ -- see Lemma~\ref{lem_FunDomUVMin} -- it follows that for each pair of subsequent vectors $x_j$, $x_{j+1}$ we have $\eucnorm{x_j} \ge \eucnorm{x_{j+1}}$. Using $r_{j+1} = r_{j-1} - q_j r_j$ we see that $\eucnorm{x_j} = \eucnorm{x_{j+1}}$ is equivalent to
+\begin{equation*}
+\eucnorm{\cvec{\pm r_{j-1}}{\pm r_{j\phantom{-1}}}} = 
+\eucnorm{\cvec{\pm r_{j\phantom{+1}}}{\pm r_{j+1}}} =
+\eucnorm{\cvec{\pm r_j}{\pm (r_{j-1} - q_j r_j)}}.
+\end{equation*}
+Obviously this is the case if and only if $\abs{r_{j-1}} = \abs{r_{j-1}-q_j r_j}$. If we divide by $r_j$ and define $z_j := \frac{r_{j-1}}{r_j}$, we obtain
+\begin{eqnarray*}
+\abs{z_j} = \abs{z_j - q_j} 
+&\Leftrightarrow& z_j \conj{z_j} = (z_j - q_j)(\conj{z_j} -q_j)\\
+&\Leftrightarrow& q_j \left(q_j - 2\Re{z_j}\right) = 0.
+\end{eqnarray*}
+One obvious solution to this is $q_j = 0$. For the other factor, we substitute $\alpha := \Re{z_j}$ and use $q_j = \nint{\alpha}$ to see that the equation $\nint{\alpha} = 2 \alpha$ has the unique solution $\alpha = 0$ which again leads to $q_j = 0$.\footnote{Here we greatly benefit from our definition of $\operatorname{nint}$, in particular from $\nint{\pm \reci{2}} = 0$.} Summing up, we therefore have for all $j \ge 0$
 \begin{equation}
 \label{eqn_FunDomUVAlgNormDec}
-\eucnorm{x_{j+1}} \le \eucnorm{x_j} 
+\eucnorm{x_j} \ge \eucnorm{x_{j+1}} 
 \quad \text{and} \quad
-\eucnorm{x_{j+1}} = \eucnorm{x_j} \Leftrightarrow q_j = 0.
+\eucnorm{x_j} = \eucnorm{x_{j+1}} \Leftrightarrow q_j = 0.
 \end{equation}
-Let $O_{u,v}$ and $K_r$ be defined as in (\ref{eqn_FunDomOuv}) and (\ref{eqn_FunDomOuvFinite}). Since all the vectors $x_j$ are contained in the finite set $O_{u,v} \cap K_{\eucnorm{({}^u_v)}}$, we cannot have $\eucnorm{x_{j+1}} < \eucnorm{x_j}$ for infinitely many indices $j$. Therefore the algorithm must terminate. In particular $n$ is defined and we have
-\begin{equation*}
-TU^{-e_n} \cdots TU^{-e_1} TU^{-e_0} x_0 = x_n,
-\end{equation*}
-with $x_n$ having minimal $\eucnorm{\cdot}$-norm in $O_{u,v}$. Obviously also the vector $\inv{T}x_n$ has this property and we may therefore define $B$ as in ($\ref{eqn_FunDomUVMinMat}$).
 
-\todo{32}{Why do we reach not just a local, but a global minimum?}
+To see that the algorithm terminates, let $O_{u,v}$ and $K_r$ be defined as in (\ref{eqn_FunDomOuv}) and (\ref{eqn_FunDomOuvFinite}). Since all the vectors $x_j$ are contained in the finite set $O_{u,v} \cap K_{\eucnorm{({}^u_v)}}$, we cannot have $\eucnorm{x_j} > \eucnorm{x_{j+1}}$ for infinitely many indices $j$. In other words, $q_n$ must be zero for some $n \in \N$ and we have
+\begin{equation*}
+TU^{-e_n} \cdots TU^{-e_1} TU^{-e_0} x_0 = x_n.
+\end{equation*}
+The vector $x_n$ has minimal $\eucnorm{\cdot}$-norm in $O_{u,v}$. Obviously also the vector $\inv{T}x_n$ has this property and we may therefore define $B$ as in ($\ref{eqn_FunDomUVMinMat}$).
+
+\todo{32}{Argument for minimality of $x_n$ missing.}
 \end{proof}
 
 \begin{figure}
