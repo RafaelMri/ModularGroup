@@ -126,9 +126,9 @@ Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$ and $P \in \
 \begin{proof}
 Let us write $P = \smallmat{a}{b}{c}{d}$, such that the corresponding Möbius transformation $\phi$ has the form
 \begin{equation*}
-\phi(z) = \moebius{a}{b}{c}{d}{z}.
+\phi\left(\frac{u}{v}\right) = \frac{a u + b v}{c u + d v}.
 \end{equation*}
-Now we write $z = u/v$ and $\phi(z) = u^\prime / v^\prime$ with $u^\prime = a u + b v$ and $v^\prime = c u + d v$. We need to show that
+Define $u^\prime := a u + b v$ and $v^\prime := c u + d v$. We need to show that
 \begin{equation*}
 \rvec{\conj{u}}{\conj{v}} \cdot M \cdot \cvec{u}{v} 
 \ \left\{\ \begin{matrix} = 0 \\ < 0\\ \le 0 \end{matrix}\right.
