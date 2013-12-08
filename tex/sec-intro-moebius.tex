@@ -104,9 +104,14 @@ Now that we have defined the group of Möbius transformations, it is worth to get
 
 \index{Circle inversion}
 \index{Inversion}
-In 2-dimensional geometry, \emph{circle inversion} with respect to a reference circle with center $C$ and a radius $r$ takes each point $P$ on the plane to a point $P^{\prime}$ which is determined by $CP \cdot CP^{\prime} = r^2$. The image of $C$ is defined to be the point at infinity (and vice versa). Roughly speaking, the inversion turns the circle ``inside out'', \ie points inside the reference circle are bijectively mapped to points outside while rays from the circle center are invariant under the circle inversion.
+In 2-dimensional geometry, \emph{circle inversion} with respect to a reference circle with center $C$ and a radius $r$ takes each point $P$ on the plane to a point $Q$ lying on the ray from $C$ through $P$. Its distance from $C$ is determined by $CP \cdot CQ = r^2$. The image of $C$ is defined to be the point at infinity (and vice versa). Roughly speaking, the inversion turns the circle ``inside out'', \ie points inside the reference circle are bijectively mapped to points outside while rays from the circle center are invariant under the circle inversion -- see also Figure~\ref{fig_CircInv}.
 
-\todo{15}{Figure for circle inversion}
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{figures/circ-inv}
+\caption{Circle inversion with respect to the blue reference circle. For a point $P$ within the reference circle the inverse $Q$ is constructed by first drawing a ray from $C$ through $P$ (red). The line normal to this ray through the point $P$ intersects the reference circle in two points. These two points together with $C$ determine a circle (dashed) which intersects the ray in the point $Q$.  The distances $CP$ and $CQ$ satisfy the relation $CP \cdot CQ = r^2$.}
+\label{fig_CircInv}
+\end{figure}
 
 Coming back to the concrete map $z \mapsto \reci{z}$, it can now be interpreted the following way: Circle inversion with regard to the unit circle $\UnitCirc$ maps each $z \in \C$ to $\frac{z}{\abs{z}^2} = \reci{\conj{z}}$. Then, reflection across the real axis (\ie complex conjugation) takes $\reci{\conj{z}}$ to $\reci{z}$. 
 
