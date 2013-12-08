@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    104657,       2562]
-NotebookOptionsPosition[    103176,       2511]
-NotebookOutlinePosition[    103541,       2527]
-CellTagsIndexPosition[    103498,       2524]
+NotebookDataLength[    110074,       2709]
+NotebookOptionsPosition[    108464,       2654]
+NotebookOutlinePosition[    108829,       2670]
+CellTagsIndexPosition[    108786,       2667]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -521,9 +521,152 @@ Cell[CellGroupData[{
 
 Cell["\<\
 
+Minimal region\
+\>", "Subtitle",
+ CellChangeTimes->{{3.595508267242242*^9, 3.595508270618332*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"display", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Graphics", "[", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Lighter", "@", 
+           RowBox[{"Lighter", "@", "Blue"}]}], ",", 
+          RowBox[{"EdgeForm", "@", "Black"}], ",", 
+          RowBox[{"Rectangle", "[", 
+           RowBox[{
+            RowBox[{"Scaled", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", 
+                RowBox[{"-", "1"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"-", "1"}], "/", "2"}], ",", "0"}], "}"}]}], "]"}], 
+            ",", 
+            RowBox[{"Scaled", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "1"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"1", "/", "2"}], ",", "0"}], "}"}]}], "]"}]}], 
+           "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"White", ",", 
+          RowBox[{"EdgeForm", "[", "Black", "]"}], ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Disk", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"#", ",", "0"}], "}"}], ",", "1"}], "]"}], "&"}], "/@", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "1"}], ",", "1"}], "}"}]}]}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"Transparent", ",", 
+          RowBox[{"EdgeForm", "[", 
+           RowBox[{"Directive", "[", 
+            RowBox[{"Dashed", ",", "Black"}], "]"}], "]"}], ",", 
+          RowBox[{"Rectangle", "[", 
+           RowBox[{
+            RowBox[{"Scaled", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", 
+                RowBox[{"-", "1"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"-", "1"}], "/", "2"}], ",", "0"}], "}"}]}], "]"}], 
+            ",", 
+            RowBox[{"Scaled", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "1"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"1", "/", "2"}], ",", "0"}], "}"}]}], "]"}]}], 
+           "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"PointSize", "@", "Medium"}], ",", 
+          RowBox[{
+           RowBox[{"Function", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"phi", ",", "label"}], "}"}], ",", 
+             RowBox[{"Module", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"coords", "=", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"Cos", "@", "phi"}], ",", 
+                   RowBox[{"Sin", "@", "phi"}]}], "}"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Point", "[", "coords", "]"}], ",", 
+                 RowBox[{"Text", "[", 
+                  RowBox[{"label", ",", "coords", ",", 
+                   RowBox[{
+                    RowBox[{"-", "2"}], "coords"}]}], "]"}]}], "}"}]}], 
+              "]"}]}], "]"}], "@@@", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"Pi", "/", "3"}], ",", "\"\<T\[Rho]\>\""}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"2", 
+                RowBox[{"Pi", "/", "3"}]}], ",", "\"\<\[Rho]\>\""}], "}"}], 
+             ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"4", 
+                RowBox[{"Pi", "/", "3"}]}], ",", "\"\<-T\[Rho]\>\""}], "}"}], 
+             ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"5", 
+                RowBox[{"Pi", "/", "3"}]}], ",", "\"\<-\[Rho]\>\""}], "}"}]}],
+             "}"}]}]}], "\[IndentingNewLine]", "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"Dashed", ",", 
+          RowBox[{"Circle", "[", "]"}]}], "}"}]}], "\[IndentingNewLine]", 
+       "}"}], ",", 
+      RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+      RowBox[{"PlotRange", "\[Rule]", "GoldenRatio"}]}], "]"}], ",", "300", 
+    ",", "\"\<minimal-region.eps\>\""}], "]"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.5955063663262987`*^9, 3.59550650632305*^9}, {
+  3.595506538193904*^9, 3.595506573401848*^9}, {3.5955066477378397`*^9, 
+  3.5955066734605293`*^9}, {3.595506720993803*^9, 3.5955069284323626`*^9}, {
+  3.595506989644003*^9, 3.595506993098095*^9}, {3.595507039407336*^9, 
+  3.595507419054511*^9}, {3.595507750454392*^9, 3.5955077505703955`*^9}, {
+  3.5955082852687244`*^9, 3.5955083882814856`*^9}, {3.595509317332383*^9, 
+  3.595509340845013*^9}, {3.595509400703617*^9, 3.595509432781477*^9}, {
+  3.5955094951841497`*^9, 3.595509498880248*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+
 Modified Cayley Transform and Modular Tiling\
 \>", "Subtitle",
- CellChangeTimes->{{3.5898634289779954`*^9, 3.589863453641676*^9}}],
+ CellChangeTimes->{{3.5898634289779954`*^9, 3.589863453641676*^9}, {
+  3.595506837003912*^9, 3.595506838227945*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -2535,34 +2678,38 @@ Cell[2607, 71, 148, 4, 77, "Subtitle"],
 Cell[2758, 77, 19057, 439, 1172, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21852, 521, 141, 4, 77, "Subtitle"],
-Cell[21996, 527, 18819, 396, 1066, "Input"]
+Cell[21852, 521, 109, 4, 77, "Subtitle"],
+Cell[21964, 527, 5090, 131, 252, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[40852, 928, 142, 4, 77, "Subtitle"],
-Cell[40997, 934, 31712, 802, 2283, "Input"]
+Cell[27091, 663, 190, 5, 77, "Subtitle"],
+Cell[27284, 670, 18819, 396, 1066, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[72746, 1741, 140, 4, 77, "Subtitle"],
-Cell[72889, 1747, 12495, 318, 1158, "Input"]
+Cell[46140, 1071, 142, 4, 77, "Subtitle"],
+Cell[46285, 1077, 31712, 802, 2283, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[85421, 2070, 203, 5, 77, "Subtitle"],
-Cell[85627, 2077, 3550, 91, 327, "Input"],
-Cell[89180, 2170, 1924, 41, 31, "Input"],
-Cell[91107, 2213, 4040, 76, 112, "Input"],
-Cell[95150, 2291, 439, 9, 31, "Input"],
-Cell[95592, 2302, 784, 24, 52, "Input"],
-Cell[96379, 2328, 461, 11, 31, "Input"],
-Cell[96843, 2341, 520, 12, 31, "Input"],
-Cell[97366, 2355, 466, 11, 33, "Input"],
-Cell[97835, 2368, 868, 22, 55, "Input"],
-Cell[98706, 2392, 982, 24, 55, "Input"]
+Cell[78034, 1884, 140, 4, 77, "Subtitle"],
+Cell[78177, 1890, 12495, 318, 1158, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[99725, 2421, 195, 5, 77, "Subtitle"],
-Cell[99923, 2428, 3140, 77, 299, "Input"],
-Cell[103066, 2507, 94, 1, 31, "Input"]
+Cell[90709, 2213, 203, 5, 77, "Subtitle"],
+Cell[90915, 2220, 3550, 91, 327, "Input"],
+Cell[94468, 2313, 1924, 41, 31, "Input"],
+Cell[96395, 2356, 4040, 76, 112, "Input"],
+Cell[100438, 2434, 439, 9, 31, "Input"],
+Cell[100880, 2445, 784, 24, 52, "Input"],
+Cell[101667, 2471, 461, 11, 31, "Input"],
+Cell[102131, 2484, 520, 12, 31, "Input"],
+Cell[102654, 2498, 466, 11, 33, "Input"],
+Cell[103123, 2511, 868, 22, 55, "Input"],
+Cell[103994, 2535, 982, 24, 55, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[105013, 2564, 195, 5, 77, "Subtitle"],
+Cell[105211, 2571, 3140, 77, 299, "Input"],
+Cell[108354, 2650, 94, 1, 31, "Input"]
 }, Open  ]]
 }
 ]
