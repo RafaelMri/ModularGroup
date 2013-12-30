@@ -2,6 +2,22 @@
 
 In this section, we will recapitulate some basic algebraic concepts, most important the notions of \emph{free groups} and \emph{free products}, and the construction of a group in terms of \emph{generators} and \emph{relations}. Additionally, we give the definitions of the \emph{(projective) general} and \emph{special linear groups}. Lastly, \emph{group actions} on sets will be introduced. A reader familiar to this concepts may readily skip this section. Moreover, we will give no rigorous proofs here, as they may be found in many algebra books, as for example in \Hungerford.
 
+\subsection{Groups and homomorphisms}
+
+\index{Binary!operation}
+If $G$ is a nonempty set, a \emph{binary operation} on $G$ is a function $G \times G \to G$. Commonly used notations for the image of $(a,b) \in G \times G$ under a binary operation are $ab$ (product notation), $a + b$ (additive notation), $a \cdot b$, $a \ast b$, etc. In this chapter and also later on we will use the \emph{product notation}, $(a,b) \mapsto ab$, most frequently and we refer to $ab$ as the \emph{product} of $a$ and $b$.
+
+\begin{definition}
+\label{dfn_GroupMonoid}
+Let $G$ be a nonempty set together with a binary operation on $G$. If the binary operation satisfies the following three axioms,
+\begin{enumerate}[(i)]
+\item \label{itm_Associativity} \emph{Associativity:} $\forall a,b,c \in G: a(bc) = (ab)c$,
+\item \label{itm_IdentityExists} \emph{Existence of an identity element:} $\exists e \in G\ \forall a \in G: ea = ae = a$,
+\item \emph{Existence of inverse elements:} $\forall a \in G\ \exists \inv{a} \in G: a \inv{a} = \inv{a} a = e$,
+\end{enumerate}
+then $G$ is called a \emph{group}. If only axioms (\ref{itm_Associativity}) and (\ref{itm_IdentityExists}) are satisfied, then $G$ is called a \emph{monoid}. In both cases, the notation $\langle G,e,\cdot \rangle$ will be used for making the identity element and the involved binary operation explicit.
+\end{definition}
+
 \subsection{Free monoids}
 \index{Free!monoid}
 Let $\Syms$ be a set of formal symbols, for example $\Syms = \{a, b, c, \dots\}$. For $n \in \N$, $n \ge 0$, we denote by $\Syms^n$ the set of tuples of length $n$ over $\Syms$ and we will call these tuples \emph{words of length $n$ over the alphabet $\Syms$}. For simplicity, we will omit parentheses and commas when notating such a word, for example $(a,b,b,a) =: abba \in \Sigma^4$ is a word of length 4. Note the special case for $n = 0$. By definition, $\Syms^0$ contains all words of length $0$. Obviously, there is only one such word, the so-called \emph{empty word}, which we denote by $\epsilon$. A second special case occurs for $\Syms = \emptyset$, where $\Syms^n = \emptyset$ for all $n > 0$ and $\Syms^0 = \{\epsilon\}$, because there are no words over the empty alphabet except the empty word. Next, we define 
