@@ -55,6 +55,43 @@ a binary operation by $aNbN := abNN = abN$ for $a,b \in G$. It is easy to see th
 Let $N$ be a normal subgroup of a group $G$. The set $G / N$ defined in (\ref{eqn_FactorGroup}) together with the binary operation $(aN,bN) \mapsto abN$ is called the \emph{quotient group} (also \emph{factor group}) of $G$ by $N$.
 \end{definition}
 
+\begin{definition}
+\label{dfn_Homomorphism}
+\index{Homomorphism}
+\index{Monomorphism}
+\index{Epimorphism}
+\index{Isomorphism}
+\index{Endomorphism}
+\index{Automorphism}
+Let $G$ and $H$ be groups (or monoids). A function $f : G \to H$ is a \emph{homomorphism} from $G$ to $H$, if and only if
+\begin{equation*}
+f(ab) = f(a) f(b) \quad \text{for all } a,b \in G.
+\end{equation*}
+Depending on $f$ being injective and/or surjective, one distinguishes \emph{monomorphisms} ($f$ is injective), \emph{epimorphisms} ($f$ is surjective) and \emph{isomorphisms} ($f$ is bijective). We call the groups $G$ and $H$ \emph{isomorphic}, in symbols $G \cong H$, if and only if there exists and isomorphism $f : G \to H$.
+
+Finally, a homomorphism $f : G \to G$ of $G$ to itself is called \emph{endomorphism}. A bijective endomorphism is called \emph{automorphism}.
+\end{definition}
+
+\begin{definition}
+\label{dfn_Kernel}
+Let $\langle G, \cdot, e_G \rangle$ and $\langle H, \cdot, e_H \rangle$ be groups and $f: G \to H$ be a homomorphism. The set
+\begin{equation}
+\ker f := \setdef{g \in G}{f(g) = e_H}
+\end{equation}
+is called the \emph{kernel} of f.
+\end{definition}
+It is easy to see that $\ker f$ is a normal subgroup of $G$ and the image $f(G)$ is a subgroup of $H$:
+\begin{equation*}
+\ker f \unlhd G \quad \text{and} \quad f(G) \le H.
+\end{equation*}
+\begin{theorem}[First isomorphism theorem]
+\label{thm_FirstIsoThm}
+Let $G$ and $H$ be groups and $f: G \to H$ be a homomorphism. Then the quotient group $G / \ker f$ is isomorphic to $f(G)$:
+\begin{equation*}
+G / \ker f \cong f(G).
+\end{equation*}
+\end{theorem}
+
 \subsection{Free monoids}
 \index{Free!monoid}
 Let $\Syms$ be a set of formal symbols, for example $\Syms = \{a, b, c, \dots\}$. For $n \in \N$, $n \ge 0$, we denote by $\Syms^n$ the set of tuples of length $n$ over $\Syms$ and we will call these tuples \emph{words of length $n$ over the alphabet $\Syms$}. For simplicity, we will omit parentheses and commas when notating such a word, for example $(a,b,b,a) =: abba \in \Sigma^4$ is a word of length 4. Note the special case for $n = 0$. By definition, $\Syms^0$ contains all words of length $0$. Obviously, there is only one such word, the so-called \emph{empty word}, which we denote by $\epsilon$. A second special case occurs for $\Syms = \emptyset$, where $\Syms^n = \emptyset$ for all $n > 0$ and $\Syms^0 = \{\epsilon\}$, because there are no words over the empty alphabet except the empty word. Next, we define 
