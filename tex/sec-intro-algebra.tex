@@ -5,17 +5,54 @@ In this section, we will recapitulate some basic algebraic concepts, most import
 \subsection{Groups and homomorphisms}
 
 \index{Binary!operation}
-If $G$ is a nonempty set, a \emph{binary operation} on $G$ is a function $G \times G \to G$. Commonly used notations for the image of $(a,b) \in G \times G$ under a binary operation are $ab$ (product notation), $a + b$ (additive notation), $a \cdot b$, $a \ast b$, etc. In this chapter and also later on we will use the \emph{product notation}, $(a,b) \mapsto ab$, most frequently and we refer to $ab$ as the \emph{product} of $a$ and $b$.
+If $G$ is a nonempty set, a \emph{binary operation} on $G$ is a function $G \times G \to G$. Commonly used notations for the image of $(a,b) \in G \times G$ under a binary operation are $a \cdot b$ or $ab$ (product notation), $a + b$ (additive notation), $a \circ b$, $a \ast b$, etc. In this chapter and also later on we will use the \emph{product notation}, $(a,b) \mapsto a \cdot b =  ab$, most frequently and we refer to $ab$ as the \emph{product} of $a$ and $b$.
 
 \begin{definition}
 \label{dfn_GroupMonoid}
+\index{Group}
+\index{Monoid}
 Let $G$ be a nonempty set together with a binary operation on $G$. If the binary operation satisfies the following three axioms,
+\index{Associativity}
 \begin{enumerate}[(i)]
 \item \label{itm_Associativity} \emph{Associativity:} $\forall a,b,c \in G: a(bc) = (ab)c$,
 \item \label{itm_IdentityExists} \emph{Existence of an identity element:} $\exists e \in G\ \forall a \in G: ea = ae = a$,
 \item \emph{Existence of inverse elements:} $\forall a \in G\ \exists \inv{a} \in G: a \inv{a} = \inv{a} a = e$,
 \end{enumerate}
-then $G$ is called a \emph{group}. If only axioms (\ref{itm_Associativity}) and (\ref{itm_IdentityExists}) are satisfied, then $G$ is called a \emph{monoid}. In both cases, the notation $\langle G,e,\cdot \rangle$ will be used for making the identity element and the involved binary operation explicit.
+then $G$ is called a \emph{group}. If only axioms (\ref{itm_Associativity}) and (\ref{itm_IdentityExists}) are satisfied, then $G$ is called a \emph{monoid}. The notation $\langle G,\cdot,e \rangle$ will be used for making the identity element and the involved binary operation explicit.
+\end{definition}
+
+It is convenient to introduce the following notations operating on subsets of a group $G$. For $g \in G$ and $A,B \subseteq G$ define
+\begin{eqnarray*}
+\inv{A} &:=& \setdef{\inv{a}}{a \in A} \subseteq G, \\
+AB &:=& \setdef{a b}{a \in A, b \in B} \subseteq G,\\
+gA &:=& \{g\}A = \setdef{g a}{a \in A} \subseteq G,\\
+Ag &:=& A\{g\} = \setdef{a g}{a \in A} \subseteq G.
+\end{eqnarray*}
+
+\begin{definition}
+\label{dfn_Subgroup}
+\index{Subgroup}
+Let $\langle G,\cdot,e \rangle$ be a group. A nonempty subset $H \subseteq G$ which is closed under the product $\cdot$ and inversion, \ie $H\inv{H} = H$, is called a \emph{subgroup} of $G$, in symbols $H \le G$. In particular, $\langle H,\cdot,e \rangle$ is itself a group.
+\end{definition}
+
+\index{Conjuagtion}
+Clearly, if $H$ is a subgroup of $G$, then for every $g \in G$, also $gH\inv{g}$ is a subgroup of $G$. For $h \in H$, $g \in G$, we call the operation $h \mapsto g h \inv{g}$ \emph{conjugation} of $h$ by $g$.
+
+\begin{definition}
+\label{dfn_NormalSubgroup}
+A subgroup $N$ of a group $G$ which is closed under conjugation by elements of $G$, \ie $g N \inv{g} = N$ for all $g \in G$, is called a \emph{normal subgroup} of $G$, in symbols $N \unlhd G$.
+\end{definition}
+
+If $N$ is a normal subgroup of $G$, then we have $gN = Ng$ for every $g \in G$, which is why we can define on the set
+\begin{equation}
+\label{eqn_FactorGroup}
+G / N := \setdef{gN}{g \in G}
+\end{equation}
+a binary operation by $aNbN := abNN = abN$ for $a,b \in G$. It is easy to see that $G / N$ together with this operation forms a group.
+
+\begin{definition}
+\label{dfn_FactorGroup}
+Let $N$ be a normal subgroup of a group $G$. The set $G / N$ defined in (\ref{eqn_FactorGroup}) together with the binary operation $(aN,bN) \mapsto abN$ is called the \emph{quotient group} (also \emph{factor group}) of $G$ by $N$.
 \end{definition}
 
 \subsection{Free monoids}
