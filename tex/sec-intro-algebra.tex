@@ -7,7 +7,7 @@ In this section, we will recapitulate some basic algebraic concepts, most import
 \index{Binary!operation}
 If $G$ is a nonempty set, a \emph{binary operation} on $G$ is a function $G \times G \to G$. Commonly used notations for the image of $(a,b) \in G \times G$ under a binary operation are $a \cdot b$ or $ab$ (product notation), $a + b$ (additive notation), $a \circ b$, $a \ast b$, etc. In this chapter and also later on we will use the \emph{product notation}, $(a,b) \mapsto a \cdot b =  ab$, most frequently and we refer to $ab$ as the \emph{product} of $a$ and $b$.
 
-\begin{definition}
+\begin{definition}[Groups and monoids]
 \label{dfn_GroupMonoid}
 \index{Group}
 \index{Monoid}
@@ -18,7 +18,7 @@ Let $G$ be a nonempty set together with a binary operation on $G$. If the binary
 \item \label{itm_IdentityExists} \emph{Existence of an identity element:} $\exists e \in G\ \forall a \in G: ea = ae = a$,
 \item \emph{Existence of inverse elements:} $\forall a \in G\ \exists \inv{a} \in G: a \inv{a} = \inv{a} a = e$,
 \end{enumerate}
-then $G$ is called a \emph{group}. If only axioms (\ref{itm_Associativity}) and (\ref{itm_IdentityExists}) are satisfied, then $G$ is called a \emph{monoid}. The notation $\langle G,\cdot,e \rangle$ will be used for making the identity element and the involved binary operation explicit.
+then $G$ is called a \emph{group}. If the axioms (\ref{itm_Associativity}) and (\ref{itm_IdentityExists}) are satisfied (a weaker requirement), then $G$ is called a \emph{monoid}. The notation $\langle G,\cdot,e \rangle$ will be used for making the identity element and the involved binary operation explicit.
 \end{definition}
 
 It is convenient to introduce the following notations operating on subsets of a group $G$. For $g \in G$ and $A,B \subseteq G$ define
@@ -29,16 +29,16 @@ gA &:=& \{g\}A = \setdef{g a}{a \in A} \subseteq G,\\
 Ag &:=& A\{g\} = \setdef{a g}{a \in A} \subseteq G.
 \end{eqnarray*}
 
-\begin{definition}
+\begin{definition}[Subgroups]
 \label{dfn_Subgroup}
 \index{Subgroup}
-Let $\langle G,\cdot,e \rangle$ be a group. A nonempty subset $H \subseteq G$ which is closed under the product $\cdot$ and inversion, \ie $H\inv{H} = H$, is called a \emph{subgroup} of $G$, in symbols $H \le G$. In particular, $\langle H,\cdot,e \rangle$ is itself a group.
+Let $\langle G,\cdot,e \rangle$ be a group. A nonempty subset $H \subseteq G$ which is closed under the product $\cdot$ and inversion, \ie $H\inv{H} = H$, is called a \emph{subgroup} of $G$, in symbols $H \le G$. In particular, $\langle H,\cdot,e \rangle$ is itself a group. If $H \le G$ and $H \ne G$, $H$ is called a \emph{proper subgroup} of $G$, and we write $H \lneq G$. The subgroup $\{e\} \le G$ is called the \emph{trivial subgroup}.
 \end{definition}
 
 \index{Conjuagtion}
 Clearly, if $H$ is a subgroup of $G$, then for every $g \in G$, also $gH\inv{g}$ is a subgroup of $G$. For $h \in H$, $g \in G$, we call the operation $h \mapsto g h \inv{g}$ \emph{conjugation} of $h$ by $g$.
 
-\begin{definition}
+\begin{definition}[Normal subgroups]
 \label{dfn_NormalSubgroup}
 A subgroup $N$ of a group $G$ which is closed under conjugation by elements of $G$, \ie $g N \inv{g} = N$ for all $g \in G$, is called a \emph{normal subgroup} of $G$, in symbols $N \unlhd G$.
 \end{definition}
@@ -50,12 +50,12 @@ G / N := \setdef{gN}{g \in G}
 \end{equation}
 a binary operation by $aNbN := abNN = abN$ for $a,b \in G$. It is easy to see that $G / N$ together with this operation forms a group.
 
-\begin{definition}
+\begin{definition}[Factor groups]
 \label{dfn_FactorGroup}
-Let $N$ be a normal subgroup of a group $G$. The set $G / N$ defined in (\ref{eqn_FactorGroup}) together with the binary operation $(aN,bN) \mapsto abN$ is called the \emph{quotient group} (also \emph{factor group}) of $G$ by $N$.
+Let $N$ be a normal subgroup of a group $G$. The set $G / N$ defined in (\ref{eqn_FactorGroup}) together with the binary operation $(aN,bN) \mapsto abN$ is called the \emph{factor group} (or \emph{quotient group}) of $G$ by $N$.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Homomorphisms]
 \label{dfn_Homomorphism}
 \index{Homomorphism}
 \index{Monomorphism}
@@ -80,10 +80,24 @@ Let $\langle G, \cdot, e_G \rangle$ and $\langle H, \cdot, e_H \rangle$ be group
 \end{equation}
 is called the \emph{kernel} of f.
 \end{definition}
-It is easy to see that $\ker f$ is a normal subgroup of $G$ and the image $f(G)$ is a subgroup of $H$:
+\begin{lemma}
+Let $G$ and $H$ be groups and $f : G \to H$ be a homomorphism. The kernel of $f$ is a normal subgroup of $G$ and the image $f(G)$ is a subgroup of $H$:
 \begin{equation*}
 \ker f \unlhd G \quad \text{and} \quad f(G) \le H.
 \end{equation*}
+\end{lemma}
+\begin{proof}
+Denote the identity elements of $G$ and $H$ by $e_G$ and $e_H$ respectively. Because $f$ is a homomorphism, we have $f(e_G) = f(e_G e_G) = f(e_G) f(e_G)$. Multiplying this by $\inv{f(e_G)}$ yields $e_H = f(e_G)$. In other words $e_G \in \ker f$ and $\ker f$ is nonempty. To see that $\ker f \le G$, we need to show that for all $a, b \in \ker f$ also $a \inv{b} \in \ker f$ -- but this is easy:
+\begin{equation*}
+f(a \inv{b}) = f(a) f(\inv{b}) = f(a) \inv{f(b)} = e_H \inv{e_H} = e_H.
+\end{equation*}
+To see that $\ker f$ is a normal subgroup of $G$, let $a \in \ker f$, $g \in G$ and observe
+\begin{equation*}
+f(g a \inv{g}) = f(g) f(a) f(\inv{g}) = f(g) e_H \inv{f(g)} = e_H.
+\end{equation*}
+For this reason $g a \inv{g} \in \ker f$ and $\ker f$ is closed under conjugation by elements of $G$. For the second part of the prove, let $f(a), f(b) \in f(G)$ with $a,b \in G$. Clearly $f(a) \inv{f(b)} = f(a) f(\inv{b}) = f(a \inv{b}) \in f(G)$ and therefore $f(G) \le H$.
+\end{proof}
+
 \begin{theorem}[First isomorphism theorem]
 \label{thm_FirstIsoThm}
 Let $G$ and $H$ be groups and $f: G \to H$ be a homomorphism. Then the quotient group $G / \ker f$ is isomorphic to $f(G)$:
@@ -91,6 +105,20 @@ Let $G$ and $H$ be groups and $f: G \to H$ be a homomorphism. Then the quotient 
 G / \ker f \cong f(G).
 \end{equation*}
 \end{theorem}
+\begin{proof}
+Let us again denote the identity element of $H$ by $e_H$. Define $N := \ker f$ and a map $\phi : G/N \to f(G)$ by $aN \mapsto f(a)$. Now, for arbitrary $a,b \in G$, observe
+\begin{equation*}
+aN = bN \Leftrightarrow
+a \inv{b} \in N \Leftrightarrow
+e_H = f(a \inv{b}) = f(a) \inv{f(b)} \Leftrightarrow
+f(a) = f(b).
+\end{equation*}
+This shows two things: First ($\Rightarrow$), $\phi$ is well defined and second ($\Leftarrow$), $\phi$ is injective. Clearly, $\phi$ is also surjective and by definition we have
+\begin{equation*}
+\phi(aN) \phi(bN) = f(a) f(b) = f(ab) = \phi(abN) \quad \text{for all } a,b \in G,
+\end{equation*}
+which is why $\phi$ is indeed an isomorphism from $G/N$ to $f(G)$.
+\end{proof}
 
 \subsection{Free monoids}
 \index{Free!monoid}
@@ -219,7 +247,7 @@ with $\sigma_j, \tau_j \in \Syms$ and $k_j, \ell_j \in \Z$. This immediately giv
 \sigma_1^{k_1} \sigma_2^{k_e} \dots \sigma_n^{k_n} \cdot
 \tau_m^{-\ell_m} \tau_{m-1}^{-\ell_{m-1}} \dots \tau_1^{-\ell_1} = 1.
 \end{equation}
-We call the group word occurring on the left hand side of (\ref{eqn_GrpRelation}) a \emph{relation} on $G$. The set of all such possible relations on $G$ forms a normal subgroup of $\FreeGrp{\Syms}$. To see this, let $\phi : \Sigma \to G$ be the canonical embedding. According to Theorem~\ref{thm_FreeGrpUniqueHom} there exists a unique extension of $\phi$ to a homomorphism $\overline{\phi}: \FreeGrp{\Syms} \to G$. In fact, this homomorphism just evaluates group words over $\Sigma$ to concrete group elements in $G$. By definition, the set of all relations on $G$ is now given by $N := \ker(\overline{\phi})$, which is a normal subgroup of $\FreeGrp{\Syms}$. Moreover, it follows from the first isomorphism theorem that $G \cong \FreeGrp{\Syms} / N$. In the case, when the product representation in (\ref{eqn_GrpGenerators}) is unique for all $g \in G$, then $N$ just consists of the identity element, $G \cong \FreeGrp{\Syms}$ and $G$ is said to be \emph{relation-free} (this is where the terminology ``free group'' actually comes from). 
+We call the group word occurring on the left hand side of (\ref{eqn_GrpRelation}) a \emph{relation} on $G$. The set of all such possible relations on $G$ forms a normal subgroup of $\FreeGrp{\Syms}$. To see this, let $\phi : \Sigma \to G$ be the canonical embedding. According to Theorem~\ref{thm_FreeGrpUniqueHom} there exists a unique extension of $\phi$ to a homomorphism $\overline{\phi}: \FreeGrp{\Syms} \to G$. In fact, this homomorphism just evaluates group words over $\Sigma$ to concrete group elements in $G$. By definition, the set of all relations on $G$ is now given by $N := \ker(\overline{\phi})$, which is a normal subgroup of $\FreeGrp{\Syms}$. Moreover, it follows from the first isomorphism theorem (Theorem~\ref{thm_FirstIsoThm}) that $G \cong \FreeGrp{\Syms} / N$. In the case, when the product representation in (\ref{eqn_GrpGenerators}) is unique for all $g \in G$, then $N$ just consists of the identity element, $G \cong \FreeGrp{\Syms}$ and $G$ is said to be \emph{relation-free} (this is where the terminology ``free group'' actually comes from). 
 
 Summing up, we see that every group can be described by supplying a set of generators $\Syms$ and a the set of relations $N \unlhd \FreeGrp{\Syms}$. Of course, it is also sufficient to just supply a subset $R$ of relations from which the other relations can be derived. This leads to the following definition:
 
