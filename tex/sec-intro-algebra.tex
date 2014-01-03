@@ -21,7 +21,7 @@ Let $G$ be a nonempty set together with a binary operation on $G$. If the binary
 then $G$ is called a \emph{group}. If the axioms (\ref{itm_Associativity}) and (\ref{itm_IdentityExists}) are satisfied (a weaker requirement), then $G$ is called a \emph{monoid}. The notation $\langle G,\cdot,e \rangle$ will be used for making the identity element and the involved binary operation explicit.
 \end{definition}
 
-It is convenient to introduce the following notations operating on subsets of a group $G$. For $g \in G$ and $A,B \subseteq G$ define
+It is convenient to introduce the following notations operating on subsets of a group $G$. For $g \in G$ and $A,B \subseteq G$ we define
 \begin{eqnarray*}
 \inv{A} &:=& \setdef{\inv{a}}{a \in A} \subseteq G, \\
 AB &:=& \setdef{a b}{a \in A, b \in B} \subseteq G,\\
@@ -32,11 +32,11 @@ Ag &:=& A\{g\} = \setdef{a g}{a \in A} \subseteq G.
 \begin{definition}[Subgroups]
 \label{dfn_Subgroup}
 \index{Subgroup}
-Let $\langle G,\cdot,e \rangle$ be a group. A nonempty subset $H \subseteq G$ which is closed under the product $\cdot$ and inversion, \ie $H\inv{H} = H$, is called a \emph{subgroup} of $G$, in symbols $H \le G$. In particular, $\langle H,\cdot,e \rangle$ is itself a group. If $H \le G$ and $H \ne G$, $H$ is called a \emph{proper subgroup} of $G$, and we write $H \lneq G$. The subgroup $\{e\} \le G$ is called the \emph{trivial subgroup}.
+Let $\langle G,\cdot,e \rangle$ be a group. A nonempty subset $H \subseteq G$ which is closed under the binary operation $\cdot$ and inversion, \ie $H\inv{H} = H$, is called a \emph{subgroup} of $G$, in symbols $H \le G$. In particular, $\langle H,\cdot,e \rangle$ is itself a group. If $H \le G$ and $H \ne G$, $H$ is called a \emph{proper subgroup} of $G$, and we write $H \lneq G$. The subgroup $\{e\} \le G$ is called the \emph{trivial subgroup}.
 \end{definition}
 
 \index{Conjuagtion}
-Clearly, if $H$ is a subgroup of $G$, then for every $g \in G$, also $gH\inv{g}$ is a subgroup of $G$. For $h \in H$, $g \in G$, we call the operation $h \mapsto g h \inv{g}$ \emph{conjugation} of $h$ by $g$.
+If $H$ is a subgroup of $G$, then for every $g \in G$ also $gH\inv{g}$ is a subgroup of $G$. For $h \in H$, $g \in G$, we call the operation $h \mapsto g h \inv{g}$ \emph{conjugation} of $h$ by $g$.
 
 \begin{definition}[Normal subgroups]
 \label{dfn_NormalSubgroup}
@@ -67,14 +67,12 @@ Let $G$ and $H$ be groups (or monoids). A function $f : G \to H$ is a \emph{homo
 \begin{equation*}
 f(ab) = f(a) f(b) \quad \text{for all } a,b \in G.
 \end{equation*}
-Depending on $f$ being injective and/or surjective, one distinguishes \emph{monomorphisms} ($f$ is injective), \emph{epimorphisms} ($f$ is surjective) and \emph{isomorphisms} ($f$ is bijective). We call the groups $G$ and $H$ \emph{isomorphic}, in symbols $G \cong H$, if and only if there exists and isomorphism $f : G \to H$.
-
-Finally, a homomorphism $f : G \to G$ of $G$ to itself is called \emph{endomorphism}. A bijective endomorphism is called \emph{automorphism}.
+Depending on $f$ being injective and/or surjective, one distinguishes \emph{monomorphisms} ($f$ is injective), \emph{epimorphisms} ($f$ is surjective) and \emph{isomorphisms} ($f$ is bijective). We call the groups $G$ and $H$ \emph{isomorphic}, in symbols $G \cong H$, if and only if there exists and isomorphism $f : G \to H$. Finally, a homomorphism $f : G \to G$ of $G$ to itself is called \emph{endomorphism}. A bijective endomorphism is called \emph{automorphism}.
 \end{definition}
 
 \begin{definition}
 \label{dfn_Kernel}
-Let $\langle G, \cdot, e_G \rangle$ and $\langle H, \cdot, e_H \rangle$ be groups and $f: G \to H$ be a homomorphism. The set
+Let $G$ and $H$ be groups and denote the identity element of $H$ by $e_H$. For a homomorphism $f: G \to H$, the set
 \begin{equation}
 \ker f := \setdef{g \in G}{f(g) = e_H}
 \end{equation}
@@ -106,7 +104,7 @@ G / \ker f \cong f(G).
 \end{equation*}
 \end{theorem}
 \begin{proof}
-Let us again denote the identity element of $H$ by $e_H$. Define $N := \ker f$ and a map $\phi : G/N \to f(G)$ by $aN \mapsto f(a)$. Now, for arbitrary $a,b \in G$, observe
+Let us again denote the identity element of $H$ by $e_H$. Define $N := \ker f$ and a map $\phi : G/N \to f(G)$ by $aN \mapsto f(a)$. Now, for arbitrary $a,b \in G$ observe
 \begin{equation*}
 aN = bN \Leftrightarrow
 a \inv{b} \in N \Leftrightarrow
@@ -115,9 +113,9 @@ f(a) = f(b).
 \end{equation*}
 This shows two things: First ($\Rightarrow$), $\phi$ is well defined and second ($\Leftarrow$), $\phi$ is injective. Clearly, $\phi$ is also surjective and by definition we have
 \begin{equation*}
-\phi(aN) \phi(bN) = f(a) f(b) = f(ab) = \phi(abN) \quad \text{for all } a,b \in G,
+\phi(aN) \phi(bN) = f(a) f(b) = f(ab) = \phi(abN) \quad \text{for all } a,b \in G.
 \end{equation*}
-which is why $\phi$ is indeed an isomorphism from $G/N$ to $f(G)$.
+Therefore $\phi$ is indeed an isomorphism from $G/N$ to $f(G)$.
 \end{proof}
 
 \subsection{Free monoids}
@@ -263,7 +261,7 @@ N := \bigcap_{R \subseteq N^{\prime} \unlhd \FreeGrp{\Syms}} N^{\prime}.
 \end{enumerate}
 Finally, $\presentation{\Syms}{R}$ is called a \emph{presentation} of $G$.
 
-For easier notation, we may omit braces, when listing $\Syms$ and $R$ in a presentation of $G$. Moreover, we may write out relations more explicitly, for example instead of $G = \presentation{\{a\}}{\{a^2\}}$ we may write $G = \presentation{a}{a^2 = 1}$.
+For easier notation, we may omit braces when listing $\Syms$ and $R$ in a presentation of $G$. Moreover, we may write out relations more explicitly, for example instead of $G = \presentation{\{a\}}{\{a^2\}}$ we may write $G = \presentation{a}{a^2 = 1}$.
 \end{definition}
 
 \begin{remark}
