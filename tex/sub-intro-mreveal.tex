@@ -69,7 +69,7 @@ V: x \mapsto
 \end{equation}
 The first row of Figure~\ref{fig_StereoProjInversion} shows the upper halfplane $U$ on the left and the unit disk $D$ on the right together with their images under reverse stereographic projection. We see that both, $U$ and $D$, correspond to a certain ``halfsphere'' of the Riemann sphere. If we rotate these halfspheres around the $x_1$ axis (leaving the points $\{\pm 1\}$ fixed) and continuously perform stereographic projection, we see that after a half turn (in the last row of Figure~\ref{fig_StereoProjInversion}) we end up with $f(U)$, the lower halfplane and $f(D)$, the set of points $z$ with $\abs{z} > 1$. 
 
-One might wonder if this works the same way for every $z \in  \EC$. Indeed, $f: z \mapsto \reci{z}$ can be interpreted as rotation of the Riemann sphere around the $x_1$ axis by $180^{\circ}$ in the following sense:
+It is worth noting that this correspondence between rotation of the Riemann sphere by $180^\circ$ and the map $f : z \mapsto \reci{z}$ does not just hold for the specially chosen sets $U$ and $D$, but indeed pointwise for every $z \in \EC$. In other words, we have
 \begin{equation*}
 f = P_{\UnitSphere} \circ V \circ P_{\UnitSphere}^{-1}.
 \end{equation*}
@@ -118,7 +118,7 @@ In Figure~\ref{fig_StereoProjModCayley}, the action of yet another interesting t
 and can be either considered as a quarter turn of the Riemann sphere around the $x_1$ axis or as ``half of an inversion'', since indeed $\ModCayley^2(z) = \ModCayley(\ModCayley(z)) = \reci{z}$ (compare with left column of Figure~\ref{fig_StereoProjInversion}). In contrast to its better known brother, the \emph{Cayley transform} given by
 \begin{equation}
 \label{eqn_CayleyTransform}
-\Cayley(z) = -\ii \ModCayley(z) = \frac{z - \ii}{z + \ii},
+\Cayley(z) = \frac{z - \ii}{z + \ii} = -\ii \ModCayley(z),
 \end{equation}
 $\ModCayley$ leaves the points $\{\pm 1\}$ fixed, which often beneficial for visualization purposes. We will call $\ModCayley$ the \emph{modified Cayley transform}.
 \end{example}
