@@ -378,9 +378,11 @@ A = R^2 T R^1 T R^2 T R^1 T R^2 T R^2.
 Alternatively we could also start with one of the $T$-$U$ product representations of Example~\ref{ex_TUWordRounding} and substitute $U = TR$ and $\inv{U} = R^2 T$. Cancellation of terms $T^2 = 1$ and $R^3 = 1$ then leads to the same $T$-$R$ product representation as in (\ref{eqn_ex_TRWord}).
 \end{example}
 
+\begin{remark}
+\label{rem_ModGrpTRAlg}
 We conclude this section with the final remark that algorithm~\ref{thm_ModGrpTRAlg} successively reduces a given matrix $A \in \PSL{\Z}$ by multiplication from the left with $T$, $R$ or $\inv{R}$. Of course, by using a dual approach also multiplication from the right can be used. All we have to do in order to adapt algorithm~\ref{thm_ModGrpTRAlg} appropriately is to substitute the predicates $t$, $r$, $s$ by predicates $t^{\prime}$, $r^{\prime}$, $s^{\prime}$ and to change the definition in step \ref{itm_ModGrpTRAlgADfn} from $A_{k+1} := M_k^{-1} A_k$ to $A_{k+1} := A_k M_k^{-1}$. But how do the predicates $t^{\prime}$, $r^{\prime}$ and $s^{\prime}$ have to be defined?
 
-For this consideration we denote the leftmost symbol in the $R$-$T$ product representation (\ref{eqn_ModGrpTRProd}) of $A$ by $\alpha(A)$ and the rightmost symbol by $\omega(A)$. In the case of the empty product, we define $\alpha(1) := \omega(1) := T$. We have already seen, that $t(A) \Leftrightarrow \alpha(A) = T$, $r(A) \Leftrightarrow \alpha(A) = R$ and $s(A) \Leftrightarrow \alpha(A) = \inv{R}$. In correspondence to that, we see that we have to define 
+For this consideration we denote the leftmost symbol in the $R$-$T$ product representation (\ref{eqn_ModGrpTRProd}) of $A$ by $\alpha(A)$ and the rightmost symbol by $\omega(A)$. In the case of the empty product, we define $\alpha(1) := \omega(1) := T$. We have already seen that $t(A) \Leftrightarrow \alpha(A) = T$, $r(A) \Leftrightarrow \alpha(A) = R$ and $s(A) \Leftrightarrow \alpha(A) = \inv{R}$. In correspondence to that, we see that we have to define 
 \begin{IEEEeqnarray*}{RrClCrClCc}
 t^{\prime}(A):\quad& \omega(A) &=& T 
               &\quad\Leftrightarrow\quad& \alpha(\inv{A}) &=& T
@@ -402,6 +404,7 @@ r^{\prime}(A) &:\quad& a^2 - ab \le 0 &\quad\land\quad& c^2 - cd \le 0 \\
 s^{\prime}(A) &:\quad& b^2 - ab \le 0 &\quad\land\quad& d^2 - cd \le 0
 \end{IEEEeqnarray}
 Note, that also the Lemmas \ref{lem_trsPartition} and \ref{lem_trsnRelations} remain valid, if the predicates $t$, $r$, $s$ are substitued by $t^{\prime}$, $r^{\prime}$, $s^{\prime}$ and the order of matrix multiplication is reversed (\ie $RA$, $TA$, \dots\ have to be replaced by $AR$, $AT$, \dots).
+\end{remark}
 
 % ------------------------------- Subsection: Fundamental domains, tessellation
 \input{sub-fundomtess.tex}
