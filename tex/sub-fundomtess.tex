@@ -2,7 +2,7 @@
 
 We have seen in Remark~\ref{rem_NatureMoebius} that considering Möbius transformations as meromorphic functions $\EC \to \EC$ very naturally induces a group action of $\PGL{\C}$ on $\EC$. Clearly this group action is also given for any subgroup of $\PGL{\C}$ and in particular for the modular group. 
 
-For the following it will be convenient to write modular transformations in matrix form and the elements $z \in \EC$ as quotients $z = u/v$ for suitable $u,v \in \C$, not both zero. A formal quotient $u/0$ will be identified with $\infty$. In this notation, for a modular transformation $A = \smallmat{a}{b}{c}{d} \in \PSL{\Z}$ and $u/v \in \EC$ the mentioned group action is given by
+For the following it will turn out useful to write modular transformations in matrix form and the elements $z \in \EC$ as quotients $z = u/v$ for suitable $u,v \in \C$, not both zero. A formal quotient $u/0$ will be identified with $\infty$. In this notation, for a modular transformation $A = \smallmat{a}{b}{c}{d} \in \PSL{\Z}$ and $u/v \in \EC$ the mentioned group action is given by
 \begin{equation}
 \label{eqn_ModGrpAction}
 A \ \frac{u}{v} := \frac{a u + b v}{c u + d v}
@@ -24,7 +24,7 @@ However, if $u \conj{v} \notin \R$, then $u$ and $v$ are linear independent over
 \begin{equation*}
 L_{u,v} := \setdef{a u + b v \in \C}{a,b \in \Z}
 \end{equation*}
-consists precisely of the vertices of all of these translated parallelograms. If we denote by $D_r := \setdef{z \in \C}{\abs{z} \le r}$ a disk of radius $r$ centered at the origin, then for every $r > 0$ the set $D_r \cap L_{u,v}$ is obviously finite. It follows that also the set $O_{u,v} \subseteq (L_{u,v})^2$ must contain an element of minimal $\eucnorm{.}$-norm: Define $K_r := \setdef{x \in \C^2}{\eucnorm{x} \le r}$ and let $r > 0$ be sufficiently large such that $K_r \cap O_{u,v}$ is nonempty. Because 
+consists precisely of the vertices of all of these translated parallelograms. If we denote by $D_r := \setdef{z \in \C}{\abs{z} \le r}$ a disk of radius $r$ centered at the origin, then for every $r > 0$ the set $D_r \cap L_{u,v}$ is obviously finite. It follows that the set $O_{u,v} \subseteq (L_{u,v})^2$ must contain an element of minimal $\eucnorm{.}$-norm: Define $K_r := \setdef{x \in \C^2}{\eucnorm{x} \le r}$ and let $r > 0$ be sufficiently large such that $K_r \cap O_{u,v}$ is nonempty. Because 
 \begin{equation}
 \label{eqn_FunDomOuvFinite}
 K_r \cap O_{u,v} \subseteq (D_r \cap L_{u,v})^2,
@@ -59,22 +59,51 @@ Using similar arguments as in Lemma~\ref{lem_FunDomUVMin}, we see that (\ref{eqn
 \begin{equation*}
 \abs{\Re{\frac{u_0}{v_0}}} \le \reci{2} \text{\quad and \quad} \abs{\Re{\frac{v_0}{u_0}}} \le \reci{2}.
 \end{equation*}
-Note, that by applying some elementary conversions this can be rewritten to
+Note that this can easily be rewritten to
 \begin{equation*}
 u_0 \conj{v_0} + \conj{u_0} v_0 \le \min\{\abs{u_0}^2, \abs{v_0}^2\}.
 \end{equation*}
-The question arises if $x = ({}^{u_0}_{v_0})$ is just a local minimum in the sense (\ref{eqn_FunDomWeakUVMinCond}) or if the above conditions are already sufficient for the global minimality of $x$, \ie $\eucnorm{x} \le \eucnorm{Ax}$ for all $A \in \SL{\Z}$. The following Lemma will give us an answer on this.
+The question arises, if $x = ({}^{u_0}_{v_0})$ is just a ``local minimum'' in the sense (\ref{eqn_FunDomWeakUVMinCond}) or if the above conditions are already sufficient for the global minimality of $x$, \ie $\eucnorm{x} = \min \eucnorm{O_{u,v}}$. The following Lemma will give us an answer on this.
 
 \begin{lemma}
 \label{lem_FunDomUVGlobMin}
-Let $x = ({}^u_v) \in \C^2$ be a vector with $u, v \ne 0$ and $A \in \SL{\Z}$ be an arbitrary modular transformation.
+Let $x = ({}^u_v) \in \C^2$ be a vector with $u, v \ne 0$, $A \in \SL{\Z}$ arbitrary and let the \emph{grading} $n(A)$ be defined as in (\ref{eqn_grading}). Then the following statements hold:
 \begin{enumerate}[(i)]
 \item \label{itm_FunDomUVGlobMinWeak}
-If $u \conj{v} + \conj{u} v \le \min\{\abs{u}^2,\abs{v}^2\}$, then $\eucnorm{x} \le \eucnorm{Ax}$ and equality is only possible if $n(A) \le 3$.
+If $\abs{u\conj{v} + \conj{u}v} \le \min\{\abs{u}^2,\abs{v}^2\}$, then $\eucnorm{x} \le \eucnorm{Ax}$ and equality is only possible if $n(A) \le 3$.
 \item \label{itm_FunDomUVGlobMinStrong} 
-If $u \conj{v} + \conj{u} v < \min\{\abs{u}^2,\abs{v}^2\}$ and $n(A) > 2$, then $\eucnorm{x} < \eucnorm{Ax}$.
+If $\abs{u\conj{v} + \conj{u}v} < \min\{\abs{u}^2,\abs{v}^2\}$ and $n(A) > 2$, then $\eucnorm{x} < \eucnorm{Ax}$.
 \end{enumerate}
 \end{lemma}
+\begin{proof}
+Denoting the coefficients of $A$ as usual, $A = \smallmat{a}{b}{c}{d}$, we need to show $\eucnorm{x} \le \eucnorm{Ax}$, that is
+\begin{eqnarray*}
+\abs{u}^2 + \abs{v}^2 
+&\le& \abs{au + bv}^2 + \abs{cu + dv}^2 =\\
+&& (au + bv)(a\conj{u} + b\conj{v}) + (cu + dv)(c\conj{u} + d\conj{v}) =\\
+&& (a^2 + c^2)\abs{u}^2 + (b^2 + d^2)\abs{v}^2 + (ab + cd)(u\conj{v} + \conj{v}u),
+\end{eqnarray*}
+which is equivalent to
+\begin{eqnarray*}
+(a^2 + c^2 - 1)\abs{u}^2 + (b^2 + d^2 - 1)\abs{v}^2 \ge -(ab + cd)(u\conj{v} + \conj{v}u).
+\end{eqnarray*}
+Now we find an upper bound of the right hand side by taking its absolute value and using $\abs{u\conj{v} + \conj{u}v} \le \min\{\abs{u}^2, \abs{v}^2\} =: m$. The same time, $m$ also helps us with a lower bound of the left hand side:
+\begin{equation*}
+(a^2 + b^2 + c^2 + d^2 - 2) \cdot m \ge \abs{ab + cd} \cdot m.
+\end{equation*}
+Since $m$ is nonzero ($u,v \ne 0$), it can be canceled. Moreover, $ad - bc = 1$ implies that the terms $ad$ and $bc$ cannot have opposite signs. In other words we must always have $(ad)(bc) \ge 0$. Obviously also $(ab)(cd) \ge 0$, \ie also the terms $ad$ and $bc$ have non-opposite signs, which is why $\abs{ab + cd} = \abs{ab} + \abs{bd}$. Therefore we can transform the last inequality to
+\begin{equation}
+\label{eqn_FunDomUVIneq}
+\underbrace{(a^2 - \abs{ab} + b^2)}_{\ge(\abs{a}-\abs{b})^2} + 
+\underbrace{(c^2 - \abs{cd} + d^2)}_{\ge(\abs{c}-\abs{d})^2} \ge 2.
+\end{equation}
+For the following considerations, we will only look at the first summand on the left side of this inequality. Of course all arguments hold symmetrically also for the second summand. 
+\begin{itemize}
+\item Because $a,b$ are coprime, the lower bound $(\abs{a} - \abs{b})^2$ is positive, except when $\abs{a} = \abs{b} = 1$, but in this case $(a^2 - \abs{ab} + b^2) = 1$. Therefore the inequality (\ref{eqn_FunDomUVIneq}) is always fulfilled. This proves the first part of (\ref{itm_FunDomUVGlobMinWeak}).
+\item If $n(A) > 3$, then all coefficients $a,b,c,d$ are nonzero. This excludes the case $\abs{a} = \abs{b} = 1$. The lower bound $(\abs{a} - \abs{b})^2$ then is a \emph{strict and positive} lower bound. This shows the second assertion of (\ref{itm_FunDomUVGlobMinWeak}).
+\end{itemize}
+For proving (\ref{itm_FunDomUVGlobMinStrong}), we transform the inequality $\eucnorm{x} < \eucnorm{Ax}$ as before, \dots
+\end{proof}
 
 In the following theorem we summarize the described algorithm and prove its correctness:
 

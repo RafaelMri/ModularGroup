@@ -201,7 +201,7 @@ If we now introduce the notation
 \end{equation*}
 we have $a^n \cdot a^m = a^{n+m}$ for all $n,m \in \Z$ and it is thus evident, that the free group over any one-element alphabet is isomorphic to the group $\langle \Z, +, 0 \rangle$. 
 
-Note, that this is the only case (besides the trivial one, when $\Syms = \emptyset$), where the free group is commutative. In fact, the free group construction always yields a group with ``richest possible'' structure in the following sense:
+Note that this is the only case (besides the trivial one, when $\Syms = \emptyset$), where the free group is commutative. In fact, the free group construction always yields a group with ``richest possible'' structure in the following sense:
 
 \begin{theorem}
 \label{thm_FreeGrpUniqueHom}
@@ -286,7 +286,7 @@ Let $\presentation{\Syms}{R}$ be a presentation of the group $G$. If $H$ is any 
 \subsection{Free products}
 
 \index{Free!product}
-Let $\langle G_i, \cdot, e_i \rangle_{i \in I}$ a family of pairwise disjoint groups, \ie $G_i \cap G_j = \emptyset$ for $i \ne j$. We define the \emph{free product} of the family of groups $(G_i)_{i \in I}$ by a construction in terms of generators and relations (see Definition~\ref{dfn_GrpConstructGenRel}) as follows. As the set of generators we choose the alphabet $\Syms = \bigcup_{i \in I} G_i$ and as the set of relations we take all the relations coming from any of the groups $G_i$. Note, that a priori the neutral elements $e_i \in G_i$ are all different symbols, but the final factorization by the normal subgroup $N$ automatically identifies them with each other, as $N$ includes all the $e_i$ as trivial relations.
+Let $\langle G_i, \cdot, e_i \rangle_{i \in I}$ a family of pairwise disjoint groups, \ie $G_i \cap G_j = \emptyset$ for $i \ne j$. We define the \emph{free product} of the family of groups $(G_i)_{i \in I}$ by a construction in terms of generators and relations (see Definition~\ref{dfn_GrpConstructGenRel}) as follows. As the set of generators we choose the alphabet $\Syms = \bigcup_{i \in I} G_i$ and as the set of relations we take all the relations coming from any of the groups $G_i$. Note that a priori the neutral elements $e_i \in G_i$ are all different symbols, but the final factorization by the normal subgroup $N$ automatically identifies them with each other, as $N$ includes all the $e_i$ as trivial relations.
 
 \begin{definition}
 Let $(G_i)_{i \in I}$ be a family of disjoint groups. For every $i \in I$, let $\overline{\phi}_i$ be the unique extension of the identity map on $G_i$ to a homomorphism $\FreeGrp{G_i} \to G_i$ according to Theorem~\ref{thm_FreeGrpUniqueHom}.\footnote{In other words, $\overline{\phi}_i$ is the map which evaluates group words over the alphabet $G_i$ to concrete elements of $G_i$ in the obvious way.} The \emph{free product} of the family $(G_i)_{i \in I}$ is defined as

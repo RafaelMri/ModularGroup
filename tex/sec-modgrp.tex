@@ -101,7 +101,7 @@ In the more general case, when $a$ and $c$ are both nonzero, $ad - bc = 1$ impli
 r_{n-1} &=& q_n \cdot r_n + r_{n+1}\\
         &=& q_n \cdot 1\phantom{_n} + 0.
 \end{eqnarray*}
-We can use this to reduce the Matrix $A$ by successively multiplying powers of $U$ and $T$ from the left. Just note, that multiplication with $U^k$ adds $k$ times the second row to the first row, whereas $T$ swaps the rows and changes the sign of one arbitrary row.\footnote{This freedom of choice is again due to the fact that the matrices $M$ and $-M$ represent the same element in $\PSL{\Z}$.} If we concentrate only on the first column of $A$ and apply the first few transformations
+We can use this to reduce the Matrix $A$ by successively multiplying powers of $U$ and $T$ from the left. Just note that multiplication with $U^k$ adds $k$ times the second row to the first row, whereas $T$ swaps the rows and changes the sign of one arbitrary row.\footnote{This freedom of choice is again due to the fact that the matrices $M$ and $-M$ represent the same element in $\PSL{\Z}$.} If we concentrate only on the first column of $A$ and apply the first few transformations
 \begin{equation*}
 \cvec{a}{c}                           \overset{U^{-q_0}}{\longmapsto}
 \cvec{r_1}{c\phantom{_1}}             \overset{T}{\mapsto} 
@@ -250,11 +250,12 @@ r(A) &:\quad& a^2 + ac \le 0 &\quad\land\quad& b^2 + bd \le 0 \\
 s(A) &:\quad& c^2 + ac \le 0 &\quad\land\quad& d^2 + bd \le 0
 \end{IEEEeqnarray}
 \begin{equation}
+\label{eqn_grading}
 n(A) := a^2 + b^2 + c^2 + d^2.
 \end{equation}
 \end{definition}
 
-Note, that $t$, $r$, $s$ and $n$ are well-defined, since they do not change their value if we switch from the matrix $A \in \PSL{\Z}$ to the equivalent matrix $-A$, \eg $t(A) \Leftrightarrow t(-A)$ and $n(A) = n(-A)$. Moreover, the predicates $t$, $r$, and $s$ partition the elements of the modular group into three classes:
+Note that $t$, $r$, $s$ and $n$ are well-defined, since they do not change their value if we switch from the matrix $A \in \PSL{\Z}$ to the equivalent matrix $-A$, \eg $t(A) \Leftrightarrow t(-A)$ and $n(A) = n(-A)$. Moreover, the predicates $t$, $r$, and $s$ partition the elements of the modular group into three classes:
 
 \begin{lemma}
 \label{lem_trsPartition}
@@ -267,7 +268,7 @@ For all other cases, we note that at least three of the coefficients $a,b,c,d$ a
 \begin{equation*}
 \lnot t(A) \Rightarrow r(A) \lxor s(A),
 \end{equation*}
-for all transformations with at least three nonzero coefficients (here, $\lxor$ denotes logical exclusive or). If $t(A)$ is false, we have $ac < 0$ or $bd < 0$. Since both cases are completely symmetric, we may assume without restriction that $ac < 0$. Note, that $ac < 0$ and $ad - bc = 1$ implies $bd \le 0$ because otherwise if $bd > 0$, both nonzero terms $ad$ and $bc$ would have different  signs and their difference could not be 1. We conclude the proof by distinguishing three cases:
+for all transformations with at least three nonzero coefficients (here, $\lxor$ denotes logical exclusive or). If $t(A)$ is false, we have $ac < 0$ or $bd < 0$. Since both cases are completely symmetric, we may assume without restriction that $ac < 0$. Note that $ac < 0$ and $ad - bc = 1$ implies $bd \le 0$ because otherwise if $bd > 0$, both nonzero terms $ad$ and $bc$ would have different  signs and their difference could not be 1. We conclude the proof by distinguishing three cases:
 \begin{description}
 \item[Case $a^2 < c^2$:] From $ac < 0$ it follows that $a^2 + ac < 0\ (i)$ and $c^2 + ac > 0\ (ii)$. Additionally, from $ad - bc = 1$ we can conclude that $b^2 \le d^2$, because otherwise $\abs{ad}$ would differ from $\abs{bc}$ by more than 1. Therefore we also have $b^2 + bd \le 0\ (iii)$. Taking these pieces together, we have $(ii) \Rightarrow \lnot s(A)$ and $(i) \land (iii) \Rightarrow r(A)$.
 \item[Case $a^2 > c^2$:] This case is complementary to the first one: Because of $ac < 0$ we have $a^2 + ac > 0\ (i)$ and $c^2 + ac < 0\ (ii)$. The equation $ad - bc = 1$ here implies $b^2 \ge d^2$ and $d^2 + bd \le 0\ (iii)$. Thus we have $(i) \Rightarrow \lnot r(A)$ and $(ii) \land (iii) \Rightarrow s(A)$.
@@ -347,7 +348,7 @@ s(A_k) \Rightarrow M_k := \inv{R}.
 \label{itm_ModGrpTRAlgFin}
 \end{enumerate}
 \end{theorem}
-\begin{proof}Note, that because of Lemma~\ref{lem_trsPartition}, the rule for the definition of the transformations $M_k$ from step \ref{itm_ModGrpTRAlgMDfn} is unambiguous and the described algorithm therefore yields a unique sequence of equations 
+\begin{proof}Note that because of Lemma~\ref{lem_trsPartition}, the rule for the definition of the transformations $M_k$ from step \ref{itm_ModGrpTRAlgMDfn} is unambiguous and the described algorithm therefore yields a unique sequence of equations 
 \begin{eqnarray*}
 A_1 &=& M_0^{-1} A_0\\
 A_2 &=& M_1^{-1} A_1\\
@@ -357,7 +358,7 @@ A_3 &=& M_2^{-1} A_2\\
 The relations (\ref{itm_trsPropA}) and (\ref{itm_trsPropB}) of Lemma~\ref{lem_trsnRelations} guarantee that for every pair of subsequent transformations $M_k$, $M_{k+1}$, one of them is $T$ and the other is either $R$ or $\inv{R}$. Additionally, the relations (\ref{itm_trsPropC}) and (\ref{itm_trsPropD}) imply $n(A_k) > n(A_{k+2})$. Since $n(1) = n(T) = 2$ is a lower bound for $n(A_k)$, the described procedure must terminate after a finite number $m$ of iterations and the product $A = M_0 M_1 \cdots M_{m-1}$ is indeed of the desired form (\ref{eqn_ModGrpTRProd}).
 \end{proof}
 
-Now have all tools in hand for the proof of Theorem~\ref{thm_ModGrpTRProd}. Note, that two alternative proofs can be found in \Schoeneberg{}, §4 and in \Klein{}, p.\ 452ff. 
+Now have all tools in hand for the proof of Theorem~\ref{thm_ModGrpTRProd}. Note that two alternative proofs can be found in \Schoeneberg{}, §4 and in \Klein{}, p.\ 452ff. 
 
 \begin{proof}[Proof of Theorem \ref{thm_ModGrpTRProd}]
 Let $A: z \mapsto \moebius{a}{b}{c}{d}{z}$ be an arbitrary modular transformation. The existence of a product representation of the form (\ref{eqn_ModGrpTRProd}) is ensured by the algorithm of Theorem~\ref{thm_ModGrpTRAlg}. 
@@ -366,16 +367,15 @@ In order to prove also its uniqueness, it is sufficient to show that the identit
 \end{proof}
 
 \begin{example}
-If we apply the algorithm of Theorem~\ref{thm_ModGrpTRAlg} to the modular transformation
+We apply the algorithm of Theorem~\ref{thm_ModGrpTRAlg} to the modular transformation
 \begin{equation*}
 A = \mat{13}{5}{-8}{-3}
 \end{equation*}
-from Example~\ref{ex_TUWordRounding} (and substitute $\inv{R} = R^2$), we end up with the $R$-$T$ product representation
-\begin{equation}
-\label{eqn_ex_TRWord}
+from Example~\ref{ex_TUWordRounding}. After substitution of $\inv{R} = R^2$), we end up with the $R$-$T$ product representation
+\begin{equation*}
 A = R^2 T R^1 T R^2 T R^1 T R^2 T R^2.
-\end{equation}
-Alternatively we could also start with one of the $T$-$U$ product representations of Example~\ref{ex_TUWordRounding} and substitute $U = TR$ and $\inv{U} = R^2 T$. Cancellation of terms $T^2 = 1$ and $R^3 = 1$ then leads to the same $T$-$R$ product representation as in (\ref{eqn_ex_TRWord}).
+\end{equation*}
+Note that alternatively we could have also started with one of the $T$-$U$ product representations of Example~\ref{ex_TUWordRounding} and substitute $U = TR$ and $\inv{U} = R^2 T$. Cancellation of terms $T^2 = 1$ and $R^3 = 1$ then would, by Theorem~\ref{thm_ModGrpTRProd}, necessarily lead to the same $T$-$R$ product representation.
 \end{example}
 
 \begin{remark}
@@ -403,7 +403,7 @@ r^{\prime}(A) &:\quad& a^2 - ab \le 0 &\quad\land\quad& c^2 - cd \le 0 \\
 \label{eqn_srpred}
 s^{\prime}(A) &:\quad& b^2 - ab \le 0 &\quad\land\quad& d^2 - cd \le 0
 \end{IEEEeqnarray}
-Note, that also the Lemmas \ref{lem_trsPartition} and \ref{lem_trsnRelations} remain valid, if the predicates $t$, $r$, $s$ are substitued by $t^{\prime}$, $r^{\prime}$, $s^{\prime}$ and the order of matrix multiplication is reversed (\ie $RA$, $TA$, \dots\ have to be replaced by $AR$, $AT$, \dots).
+Note that also the Lemmas \ref{lem_trsPartition} and \ref{lem_trsnRelations} remain valid, if the predicates $t$, $r$, $s$ are substitued by $t^{\prime}$, $r^{\prime}$, $s^{\prime}$ and the order of matrix multiplication is reversed (\ie $RA$, $TA$, \dots\ have to be replaced by $AR$, $AT$, \dots).
 \end{remark}
 
 % ------------------------------- Subsection: Fundamental domains, tessellation
