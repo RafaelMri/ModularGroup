@@ -69,10 +69,13 @@ The question arises, if $x = ({}^{u_0}_{v_0})$ is just a ``local minimum'' in th
 \label{lem_FunDomUVGlobMin}
 Let $x = ({}^u_v) \in \C^2$ be a vector with $u, v \ne 0$, $A \in \SL{\Z}$ arbitrary and let the \emph{grading} $n(A)$ be defined as in (\ref{eqn_grading}). Then the following statements hold:
 \begin{enumerate}[(i)]
-\item \label{itm_FunDomUVGlobMinWeak}
-If $\abs{u\conj{v} + \conj{u}v} \le \min\{\abs{u}^2,\abs{v}^2\}$, then $\eucnorm{x} \le \eucnorm{Ax}$ and equality is only possible if $n(A) \le 3$.
-\item \label{itm_FunDomUVGlobMinStrong} 
-If $\abs{u\conj{v} + \conj{u}v} < \min\{\abs{u}^2,\abs{v}^2\}$ and $n(A) > 2$, then $\eucnorm{x} < \eucnorm{Ax}$.
+\item \label{itm_FunDomUVGlobMinA}
+If $\abs{u\conj{v} + \conj{u}v} \le \min\{\abs{u}^2,\abs{v}^2\}$, then $\eucnorm{x} \le \eucnorm{Ax}$.
+\item \label{itm_FunDomUVGlobMinB}
+If $\abs{u\conj{v} + \conj{u}v} \le \min\{\abs{u}^2,\abs{v}^2\}$ and $n(A) > 3$, then $\eucnorm{x} < \eucnorm{Ax}$.
+\item \label{itm_FunDomUFGlobMinC}
+If $\abs{u\conj{v} + \conj{u}v} < \min\{\abs{u}^2,\abs{v}^2\}$ and $n(A) > 2$, 
+then $\eucnorm{x} < \eucnorm{Ax}$.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -91,18 +94,27 @@ Now we find an upper bound of the right hand side by taking its absolute value a
 \begin{equation*}
 (a^2 + b^2 + c^2 + d^2 - 2) \cdot m \ge \abs{ab + cd} \cdot m.
 \end{equation*}
-Since $m$ is nonzero ($u,v \ne 0$), it can be canceled. Moreover, $ad - bc = 1$ implies that the terms $ad$ and $bc$ cannot have opposite signs. In other words we must always have $(ad)(bc) \ge 0$. Obviously also $(ab)(cd) \ge 0$, \ie also the terms $ad$ and $bc$ have non-opposite signs, which is why $\abs{ab + cd} = \abs{ab} + \abs{bd}$. Therefore we can transform the last inequality to
+Since $m$ is nonzero ($u,v \ne 0$), it can be canceled. Moreover, $ad - bc = 1$ implies that the terms $ad$ and $bc$ can never have opposite signs. In other words we always have $(ad)(bc) \ge 0$. Obviously also $(ab)(cd) \ge 0$, \ie also the terms $ad$ and $bc$ have non-opposite signs, which is why $\abs{ab + cd} = \abs{ab} + \abs{bd}$. Therefore we can transform the last inequality to
 \begin{equation}
 \label{eqn_FunDomUVIneq}
-\underbrace{(a^2 - \abs{ab} + b^2)}_{\ge(\abs{a}-\abs{b})^2} + 
-\underbrace{(c^2 - \abs{cd} + d^2)}_{\ge(\abs{c}-\abs{d})^2} \ge 2.
+\underbrace{(a^2 - \abs{ab} + b^2)}_{\ge(\abs{a}-\abs{b})^2 =: \ell} + 
+\underbrace{(c^2 - \abs{cd} + d^2)}_{\ge(\abs{c}-\abs{d})^2 =: r} \ge 2.
 \end{equation}
-For the following considerations, we will only look at the first summand on the left side of this inequality. Of course all arguments hold symmetrically also for the second summand. 
-\begin{itemize}
-\item Because $a,b$ are coprime, the lower bound $(\abs{a} - \abs{b})^2$ is positive, except when $\abs{a} = \abs{b} = 1$, but in this case $(a^2 - \abs{ab} + b^2) = 1$. Therefore the inequality (\ref{eqn_FunDomUVIneq}) is always fulfilled. This proves the first part of (\ref{itm_FunDomUVGlobMinWeak}).
-\item If $n(A) > 3$, then all coefficients $a,b,c,d$ are nonzero. This excludes the case $\abs{a} = \abs{b} = 1$. The lower bound $(\abs{a} - \abs{b})^2$ then is a \emph{strict and positive} lower bound. This shows the second assertion of (\ref{itm_FunDomUVGlobMinWeak}).
-\end{itemize}
-For proving (\ref{itm_FunDomUVGlobMinStrong}), we transform the inequality $\eucnorm{x} < \eucnorm{Ax}$ as before, \dots
+Because of $ad - bc = 1$ we see:
+\begin{enumerate}[\quad(a)]
+\item 
+\label{itm_FunDomUVObsA}
+$\abs{a} = \abs{b}$ implies $\abs{c} \ne \abs{d}$ (and vice versa). Therefore at least one of the lower bounds $\ell$ and $r$ is nonzero.
+\item 
+\label{itm_FunDomUVObsB}
+$\abs{ab} = 0$ implies $\abs{bc} \ne 0$ (and vice versa). Therefore at least one of the lower bounds $\ell$ and $r$ is in fact a \emph{strict} lower bound.
+\end{enumerate}
+These two observations prove (\ref{eqn_FunDomUVIneq}) and consequently assertion (\ref{itm_FunDomUVGlobMinA}). If additionally $n(A) > 3$, we distinguish two cases:
+\begin{description}
+\item[Case $0 \in \{a,b,c,d\}$:] Assume without restriction that $0 \in \{a,b\}$, (the case $0 \in \{c,d\}$ is completely symmetric). It follows $\{\abs{a},\abs{b}\} = \{0,1\}$ and $\{\abs{c},\abs{d}\} = \{1,N\}$ with $N > 1$, since $n(A) > 3$. Therefore, in addition to observation (\ref{itm_FunDomUVObsB}), both lower bounds $\ell$ and $r$ are positive. 
+\item[Case $0 \notin \{a,b,c,d\}$:] In addition to observation (\ref{itm_FunDomUVObsA}) from above, $\abs{ab}$ and $\abs{cd}$ are nonzero and therefore $\ell$ and $r$ both are strict lower bounds.
+\end{description}
+In both cases (\ref{eqn_FunDomUVIneq}) is strictly fulfilled, which proves (\ref{itm_FunDomUVGlobMinB}).
 \end{proof}
 
 In the following theorem we summarize the described algorithm and prove its correctness:
