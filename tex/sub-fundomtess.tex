@@ -52,10 +52,10 @@ The equivalence of statements (\ref{itm_uvMini}), (\ref{itm_uvMinii}) and (\ref{
 
 Let us now suppose that the described procedure comes to an end, \ie $k_n = 0$ for some $n > 0$. Set $B  := TU^{k_{n-1}} \cdots TU^{k_0}$ and $x := ({}^{u_0}_{v_0}) := B ({}^u_v)$. It follows from $k_n = 0$ and from the choice of $k_{n-1}$ that we have 
 \begin{equation}
-\label{eqn_FunDomWeakUVMinCond}
+\label{eqn_FunDomUVLokMin}
 \eucnorm{x} \le \eucnorm{U^k x} \text{\quad and \quad} \eucnorm{x} \le \eucnorm{U^k \inv{T} x} \text{\quad for all } k \in \Z.
 \end{equation}
-Using similar arguments as in Lemma~\ref{lem_FunDomUVMin}, we see that (\ref{eqn_FunDomWeakUVMinCond}) is equivalent to
+Using similar arguments as in Lemma~\ref{lem_FunDomUVMin}, we see that (\ref{eqn_FunDomUVLokMin}) is equivalent to
 \begin{equation*}
 \abs{\Re{\frac{u_0}{v_0}}} \le \reci{2} \text{\quad and \quad} \abs{\Re{\frac{v_0}{u_0}}} \le \reci{2}.
 \end{equation*}
@@ -63,33 +63,33 @@ Note that this can easily be rewritten to
 \begin{equation*}
 u_0 \conj{v_0} + \conj{u_0} v_0 \le \min\{\abs{u_0}^2, \abs{v_0}^2\}.
 \end{equation*}
-The question arises, if $x = ({}^{u_0}_{v_0})$ is just a ``local minimum'' in the sense (\ref{eqn_FunDomWeakUVMinCond}) or if the above conditions are already sufficient for the global minimality of $x$, \ie $\eucnorm{x} = \min \eucnorm{O_{u,v}}$. The following Lemma will give us an answer on this.
+The question arises, if $x = ({}^{u_0}_{v_0})$ is just a ``local minimum'' in the sense (\ref{eqn_FunDomUVLokMin}) or if the above conditions are already sufficient for the global minimality of $x$, \ie $\eucnorm{x} = \min \eucnorm{O_{u,v}}$. The following Lemma will give us an answer on this.
 
 \begin{lemma}
 \label{lem_FunDomUVGlobMin}
-Let $x = ({}^u_v) \in \C^2$ be a vector with $u, v \ne 0$, $A \in \SL{\Z}$ arbitrary and let the \emph{grading} $n(A)$ be defined as in (\ref{eqn_grading}). Then the following statements hold:
+Let $A \in \SL{\Z}$ and the \emph{grading} $n(A)$ be defined as in (\ref{eqn_grading}). Let $x = ({}^u_v) \in \C^2$ be a vector with $0 \notin \{u,v\}$. Then the following statements hold:
 \begin{enumerate}[(i)]
 \item \label{itm_FunDomUVGlobMinA}
 If $\abs{u\conj{v} + \conj{u}v} \le \min\{\abs{u}^2,\abs{v}^2\}$, then $\eucnorm{x} \le \eucnorm{Ax}$.
 \item \label{itm_FunDomUVGlobMinB}
 If $\abs{u\conj{v} + \conj{u}v} \le \min\{\abs{u}^2,\abs{v}^2\}$ and $n(A) > 3$, then $\eucnorm{x} < \eucnorm{Ax}$.
-\item \label{itm_FunDomUFGlobMinC}
+\item \label{itm_FunDomUVGlobMinC}
 If $\abs{u\conj{v} + \conj{u}v} < \min\{\abs{u}^2,\abs{v}^2\}$ and $n(A) > 2$, 
 then $\eucnorm{x} < \eucnorm{Ax}$.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-Denoting the coefficients of $A$ as usual, $A = \smallmat{a}{b}{c}{d}$, we need to show $\eucnorm{x} \le \eucnorm{Ax}$, that is
+Let us denote $A = \smallmat{a}{b}{c}{d}$. We need to show $\eucnorm{x} \le \eucnorm{Ax}$, that is
 \begin{eqnarray*}
 \abs{u}^2 + \abs{v}^2 
 &\le& \abs{au + bv}^2 + \abs{cu + dv}^2 =\\
 && (au + bv)(a\conj{u} + b\conj{v}) + (cu + dv)(c\conj{u} + d\conj{v}) =\\
-&& (a^2 + c^2)\abs{u}^2 + (b^2 + d^2)\abs{v}^2 + (ab + cd)(u\conj{v} + \conj{v}u),
+&& (a^2 + c^2)\abs{u}^2 + (b^2 + d^2)\abs{v}^2 + (ab + cd)(u\conj{v} + \conj{u}v),
 \end{eqnarray*}
 which is equivalent to
-\begin{eqnarray*}
-(a^2 + c^2 - 1)\abs{u}^2 + (b^2 + d^2 - 1)\abs{v}^2 \ge -(ab + cd)(u\conj{v} + \conj{v}u).
-\end{eqnarray*}
+\begin{equation*}
+(a^2 + c^2 - 1)\abs{u}^2 + (b^2 + d^2 - 1)\abs{v}^2 \ge -(ab + cd)(u\conj{v} + \conj{u}v).
+\end{equation*}
 Now we find an upper bound of the right hand side by taking its absolute value and using $\abs{u\conj{v} + \conj{u}v} \le \min\{\abs{u}^2, \abs{v}^2\} =: m$. The same time, $m$ also helps us with a lower bound of the left hand side:
 \begin{equation*}
 (a^2 + b^2 + c^2 + d^2 - 2) \cdot m \ge \abs{ab + cd} \cdot m.
@@ -100,7 +100,7 @@ Since $m$ is nonzero ($u,v \ne 0$), it can be canceled. Moreover, $ad - bc = 1$ 
 \underbrace{(a^2 - \abs{ab} + b^2)}_{\ge(\abs{a}-\abs{b})^2 =: \ell} + 
 \underbrace{(c^2 - \abs{cd} + d^2)}_{\ge(\abs{c}-\abs{d})^2 =: r} \ge 2.
 \end{equation}
-Because of $ad - bc = 1$ we see:
+This obviously holds for the case $n(A) = 2$. For the case $n(A) > 2$, because of $ad - bc = 1$, we see:
 \begin{enumerate}[\quad(a)]
 \item 
 \label{itm_FunDomUVObsA}
@@ -112,9 +112,14 @@ $\abs{ab} = 0$ implies $\abs{bc} \ne 0$ (and vice versa). Therefore at least one
 These two observations prove (\ref{eqn_FunDomUVIneq}) and consequently assertion (\ref{itm_FunDomUVGlobMinA}). If additionally $n(A) > 3$, we distinguish two cases:
 \begin{description}
 \item[Case $0 \in \{a,b,c,d\}$:] Assume without restriction that $0 \in \{a,b\}$, (the case $0 \in \{c,d\}$ is completely symmetric). It follows $\{\abs{a},\abs{b}\} = \{0,1\}$ and $\{\abs{c},\abs{d}\} = \{1,N\}$ with $N > 1$, since $n(A) > 3$. Therefore, in addition to observation (\ref{itm_FunDomUVObsB}), both lower bounds $\ell$ and $r$ are positive. 
-\item[Case $0 \notin \{a,b,c,d\}$:] In addition to observation (\ref{itm_FunDomUVObsA}) from above, $\abs{ab}$ and $\abs{cd}$ are nonzero and therefore $\ell$ and $r$ both are strict lower bounds.
+\item[Case $0 \notin \{a,b,c,d\}$:] In addition to observation (\ref{itm_FunDomUVObsA}), $\abs{ab}$ and $\abs{cd}$ are nonzero. Therefore $\ell$ and $r$ are both strict lower bounds.
 \end{description}
-In both cases (\ref{eqn_FunDomUVIneq}) is strictly fulfilled, which proves (\ref{itm_FunDomUVGlobMinB}).
+In both cases (\ref{eqn_FunDomUVIneq}) is strictly fulfilled, which proves (\ref{itm_FunDomUVGlobMinB}). For proving (\ref{itm_FunDomUVGlobMinC}) it is sufficient to consider the special case $n(A) = 3$, as the assumption for the case $n(A) > 3$ is already implied by (\ref{itm_FunDomUVGlobMinB}). By the same arguments as above, $\eucnorm{x} < \eucnorm{Ax}$ is equivalent to
+\begin{equation}
+\label{eqn_FunDomUVIneqB}
+(a^2 + c^2 - 1)\abs{u}^2 + (b^2 + d^2 - 1)\abs{v}^2 > -(ab + cd)(u\conj{v} + \conj{u}v).
+\end{equation}
+For $n(A) = 3$ we have $\{(a^2 + c^2 - 1),(b^2 + d^2 - 1)\} = \{0,1\}$, which means that the left hand side simplifies to either $\abs{u}^2$ or $\abs{v}^2$, whereas on the right hand side we have $\abs{u\conj{v} + \conj{u}v}$ as upper bound, because of $(ab + cd) = \pm 1$. Since $\abs{u\conj{v} + \conj{u}v} < \min\{\abs{u}^2,\abs{v}^2\}$, inequality (\ref{eqn_FunDomUVIneqB}) is thus satisfied.
 \end{proof}
 
 In the following theorem we summarize the described algorithm and prove its correctness:
@@ -175,7 +180,8 @@ To see that the algorithm terminates, let $O_{u,v}$ and $K_r$ be defined as in (
 \begin{equation*}
 TU^{-e_n} \cdots TU^{-e_1} TU^{-e_0} x_0 = x_n.
 \end{equation*}
-The vector $x_n$ has minimal $\eucnorm{\cdot}$-norm in $O_{u,v}$. Obviously also the vector $\inv{T}x_n$ has this property and we may therefore define $B$ as in ($\ref{eqn_FunDomUVMinMat}$).
+Since the vector $x_n$ satisfies (\ref{eqn_FunDomUVLokMin}), we can apply Lemma~\ref{lem_FunDomUVGlobMin} to see that $x_n$ has minimal $\eucnorm{\cdot}$-norm in $O_{u,v}$. Obviously also the vector $\inv{T}x_n$ has this property and we may therefore define $B$ as in ($\ref{eqn_FunDomUVMinMat}$).
+\end{proof}
 
 \begin{figure}
 \centering
@@ -183,9 +189,6 @@ The vector $x_n$ has minimal $\eucnorm{\cdot}$-norm in $O_{u,v}$. Obviously also
 \caption{The region of numbers $z \in \EC$, where $\Re{z}$ and $\Re{\reci{z}}$ are both contained in the interval $\left[-\half{1},\half{1}\right]$ is obtained by taking the strip $\Re{z} \in \left[-\half{1},\half{1}\right]$ and cutting out two disks of unit radius centered about the real points $\pm 1$. The arising vertices are labeled. As usual, $T$ is the transformation $z \mapsto -\reci{z}$ and $\rho = \exp(2 \pi \ii / 3)$ is a third root of unity.}
 \label{fig_MinimalRegion}
 \end{figure}
-
-\todo{32}{Argument for minimality of $x_n$ missing.}
-\end{proof}
 
 \begin{figure}
 \centering
