@@ -64,11 +64,11 @@ which can easily be rewritten to
 \label{eqn_FunDomUVMinRegion}
 \abs{u_0 \conj{v_0} + \conj{u_0} v_0} \le \min\{\abs{u_0}^2, \abs{v_0}^2\}.
 \end{equation}
-The question arises, if $x = ({}^{u_0}_{v_0})$ is just a ``local minimum'' in the sense (\ref{eqn_FunDomUVLokMin}) or if this already implies the global minimality of $x$, \ie $\eucnorm{x} = \min \eucnorm{O_{u,v}}$. The following Theorem will give us an answer on this.
+The question arises, if $x = ({}^{u_0}_{v_0})$ is just a ``local minimum'' in the sense (\ref{eqn_FunDomUVLokMin}) or if this already implies the global minimality of $x$, \ie $\eucnorm{x} = \min \eucnorm{O_{u,v}}$. The following theorem will give us an answer on this.
 
 \begin{theorem}
 \label{thm_FunDomUVGlobMin}
-Let $A \in \SL{\Z}$ and the \emph{grading} $n(A)$ be defined as in (\ref{eqn_grading}). Let $x = ({}^u_v) \in \C^2$ be a vector with $uv \ne 0$. Then the following statements hold:
+Let $A \in \SL{\Z}$ and the \emph{grading} $n(A)$ be defined as in (\ref{eqn_grading}). Let $u,v \in \C$ with $uv \ne 0$ and set $x := ({}^u_v)$. Then the following statements hold:
 \begin{enumerate}[(i)]
 \item \label{itm_FunDomUVGlobMinA}
 If $\abs{u\conj{v} + \conj{u}v} \le \min\{\abs{u}^2,\abs{v}^2\}$, then $\eucnorm{x} \le \eucnorm{Ax}$.
@@ -184,7 +184,13 @@ TU^{-e_n} \cdots TU^{-e_1} TU^{-e_0} x_0 = x_n.
 Since the vector $x_n$ satisfies (\ref{eqn_FunDomUVLokMin}), we can apply Theorem~\ref{thm_FunDomUVGlobMin} to see that $x_n$ has in fact minimal $\eucnorm{\cdot}$-norm in $O_{u,v}$. Obviously also the vector $\inv{T}x_n$ has this property and we may therefore define $B$ as in ($\ref{eqn_FunDomUVMinMat}$).
 \end{proof}
 
-Summing up, the above algorithm allows us to find for a given $z \in \C \setminus \R$ a point $Bz$ which is (under the action of modular group) equivalent to $z$  and which lies in the region $\mathcal{R}$ depicted in Figure~{\ref{fig_FunDomUVMinRegion}}. By Theorem~\ref{thm_FunDomUVGlobMin}, statement (\ref{itm_FunDomUVGlobMinC}), the interior of $\mathcal{R}$ is mapped to itself exactly by transformations $A \in \PSL{\Z}$ with $n(A) = 2$, \ie the identity transformation $1$ or $T$. The equivalence of boundary points of $\mathcal{R}$ however may be also be established by transformations with $n(A) = 3$, by statement (\ref{itm_FunDomUVGlobMinB}). It is easy to see that this is indeed the case, as the straight line segments of the boundary of $\mathcal{R}$ are mapped to each other by either $U$ or $\inv{U}$. The two circular arcs are equivalent by $TUT$ or $T\inv{U}T$. Having this said, we can now define a unique representative $z_0 \in \mathcal{R}$ for each equivalence class $[z]_\sim$.
+Summing up, the above algorithm allows us to find for a given $z \in \C \setminus \R$ a point $Bz$ which is (under the action of modular group) equivalent to $z$  and which lies in the region $\mathcal{R}$ depicted in Figure~{\ref{fig_FunDomUVMinRegion}}. By Theorem~\ref{thm_FunDomUVGlobMin}, statement (\ref{itm_FunDomUVGlobMinC}), the interior of $\mathcal{R}$ is mapped to itself exactly by transformations $A \in \PSL{\Z}$ with $n(A) = 2$, \ie the identity transformation or $T$. The equivalence of boundary points of $\mathcal{R}$ may be also be established by transformations with $n(A) = 3$, by statement (\ref{itm_FunDomUVGlobMinB}). It is easy to see that this is indeed the case: The straight line segments of the boundary of $\mathcal{R}$ are equivalent under $U$ or $\inv{U}$ and the two circular arcs bounding $\mathcal{R}$ are equivalent under $TUT$ or $T\inv{U}T$. With these observations, we have nearly reached our goal, a unique representative $z_0 \in \mathcal{R}$ for each equivalence class $[z]_\sim \in \EC/\sim$. But before we define such a system of representatives, we need to make some more definitions.
+
+\index{Extended upper halfplane}
+First of all, it is clear that the modular group preserves the upper and lower halfplane and acts symmetrically on them, \ie $A\conj{z} = \conj{Az}$ for all $A \in \PSL{\Z}$ and $z \in \EC$. It is therefore sufficient to consider just one of the two halfplanes, say, the upper halfplane $\mathcal{H} := \setdef{z \in \C}{\Im{z} > 0}$. However, we also want to consider the group action on rational numbers and we therefore define the \emph{extended upper halfplane} $\EU$ as
+\begin{equation}
+\EU := \setdef{z \in \C}{\Im{z} > 0} \cup \Q \cup \{\infty\}.
+\end{equation}
 
 \begin{figure}
 \centering

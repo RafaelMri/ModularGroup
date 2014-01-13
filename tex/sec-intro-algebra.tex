@@ -385,37 +385,46 @@ More generally, for an arbitrary field $F$ the groups $\PSLn{n}{F}$ and $\PGLn{n
 \begin{definition}
 \label{dfn_GroupAction}
 \index{Group!action}
-Let $\langle G, \cdot, 1 \rangle$ be a group and $S$ be an arbitrary set. A function $G \times S \to S$, $(g, x) \mapsto g x$ is called a \emph{group action} of $G$ on the set $S$ (alternatively we say $G$ \emph{acts on the set} $S$), if and only if
+Let $\langle G, \cdot, 1 \rangle$ be a group and $\mathcal{S}$ be an arbitray sset. A function $G \times \mathcal{S} \to \mathcal{S}$, $(g, x) \mapsto g x$ is called a \emph{group action} of $G$ on the set $\mathcal{S}$ (alternatively we say $G$ \emph{acts on the set} $\mathcal{S}$), if and only if
 \begin{equation*}
-\forall x \in S,\ g_1, g_2 \in G:\quad 1 x = x \quad \text{and} \quad (g_1 g_2) x = g_1 (g_2 x).
+\forall x \in \mathcal{S},\ g_1, g_2 \in G:\quad 1 x = x \quad \text{and} \quad (g_1 g_2) x = g_1 (g_2 x).
 \end{equation*}
 \end{definition}
 
 \begin{theorem}
-Let $G$ be a group acting on the set $S$.
+Let $G$ be a group acting on the set $\mathcal{S}$.
 \begin{enumerate}[(i)]
-\item The relation $\sim$ on $S$ defined by
+\item The relation $\sim$ on $\mathcal{S}$ defined by
 \begin{equation}
 \label{eqn_GroupActionEquivalence}
 x_1 \sim x_2 \quad:\Leftrightarrow\quad \exists g \in G: x_1 = g x_2
 \end{equation}
 is an equivalence relation.
-\item For all $x \in S$ the set $G_x := \setdef{g \in G}{gx = x}$ forms a subgroup of $G$.
+\item For all $x \in \mathcal{S}$ the set $G_x := \setdef{g \in G}{gx = x}$ forms a subgroup of $G$.
 \end{enumerate}
 \end{theorem}
 
+\begin{definition}
+\label{dfn_OrbitStabilizer}
 \index{Group!orbit}
 \index{Orbit}
 \index{Group!stabilizer}
 \index{Stabilizer}
-\begin{definition}
-\label{dfn_OrbitStabilizer}
-The equivalence classes of the relation $\sim$ defined in (\ref{eqn_GroupActionEquivalence}) are called \emph{orbits} of $G$ on $S$ and the group $G_x := \setdef{g \in G}{gx = x} \le G$ is called the \emph{stabilizer} of $x$.
+The equivalence classes $[x]_\sim \in \mathcal{S}/\sim$ of the relation $\sim$ defined in (\ref{eqn_GroupActionEquivalence}) are called \emph{orbits} of $G$ on $\mathcal{S}$ and the group $G_x := \setdef{g \in G}{gx = x} \le G$ is called the \emph{stabilizer} of $x$.
 \end{definition}
+
+\begin{definition}
+\label{dfn_FundamentalSet}
+A subset $\mathcal{F} \subseteq \mathcal{S}$ is called a \emph{fundamental set} with respect to the group action of $G$ on $\mathcal{S}$, if $\mathcal{F}$ contains exactly one point from each orbit, \ie the map $\mathcal{F} \to \mathcal{S}/\sim$, $x \mapsto [x]_\sim$ is bijective.
+\end{definition}
+
+\begin{remark}
+Fundamental sets are not unique in any way. For every subset $X \subseteq \mathcal{F}$ and for every $g \in G$, also the set $(\mathcal{F} \setminus X) \cup gX$ is a fundamental.
+\end{remark}
 
 \begin{theorem}
 \label{thm_GroupActionHom}
-The action of a group $G$ on a set $S$ induces a homomorphism from $G$ to the group of permutations on $S$ which is given by $g \mapsto (x \mapsto gx)$.
+The action of a group $G$ on a set $\mathcal{S}$ induces a homomorphism from $G$ to the group of permutations on $\mathcal{S}$ which is given by $g \mapsto (x \mapsto gx)$.
 \end{theorem}
 
 \begin{corollary}[Cayley]
