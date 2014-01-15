@@ -1,5 +1,29 @@
 \section{Fundamental domains}
 
+We have seen in Remark~\ref{rem_NatureMoebius} that considering Möbius transformations as meromorphic functions $\EC \to \EC$ very naturally induces a group action of $\PGL{\C}$ on $\EC$. Clearly this group action is also given for any subgroup of $\PGL{\C}$ and in particular for the modular group: For $A = \smallmat{a}{b}{c}{d} \in \PSL{\Z}$ the group action is
+\begin{equation}
+\label{eqn_ModGrpAction}
+Az := \moebius{a}{b}{c}{d}{z}.
+\end{equation}
+
+We are now interested in subsets of $\EC$ which contain exactly on point $z_0$ of each orbit $[z]_\sim \in \EC/\sim$:
+
+\begin{definition}[Fundamental set]
+\label{dfn_FundamentalSet}
+\index{Fundamental!set}
+Let $G$ be a group acting on the set $\mathcal{S}$. As in (\ref{eqn_GroupActionEquivalence}), denote equivalence of points in $\mathcal{S}$ under $G$ by $\sim$. A subset $\mathcal{F} \subseteq \mathcal{S}$ is called a \emph{fundamental set} with respect to the group action of $G$ on $\mathcal{S}$, if $\mathcal{F}$ contains exactly one point from each orbit, \ie the map $\mathcal{F} \to \mathcal{S}/\sim$, $x \mapsto [x]_\sim$ is bijective.
+\end{definition}
+
+\begin{remark}
+Fundamental sets always exist, but they are not unique in any way. If $\mathcal{F}$ is a fundamental set, then for every subset $X \subseteq \mathcal{F}$ and for every $g \in G$, also the set $(\mathcal{F} \setminus X) \cup gX$ is fundamental.
+\end{remark}
+
+If -- like in the case of $\EC$ -- the set $\mathcal{S}$ comes with a topology defined on it, it is often advantageous to use a concept slightly different to fundamental sets:
+
+\begin{definition}[Fundamental region]
+Let $G$ be a group acting on a set $\mathcal{S}$, which is (a subset of) a topological space. A nonempty open subset $\mathcal{F} \subseteq \mathcal{S}$ is called \emph{fundamental region} with respect to the group action of $G$ on $\mathcal{S}$, if it contains no distinct points equivalent under $G$ and if the neighborhood of every boundary point of a boundary point of $\mathcal{F}$ contains a point of $\mathcal{S} \setminus \mathcal{F}$, which is equivalent to a point of $\mathcal{F}$.
+\end{definition}
+
 % ------------------------------- Subsection: Fundamental domains, tessellation
 \input{sub-sl2action.tex}
 

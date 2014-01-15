@@ -15,13 +15,13 @@ which means that we identify the complex plane with the plane $x_3 = 0$ in $\R^3
 \eucnorm{x} := \sqrt{x_1^2 + x_2^2 + x_3^2}, \quad x \in \R^3.
 \end{equation}
 
+\begin{definition}[Admissible sphere]
 \index{Admissible sphere}
-\begin{definition}
 A \emph{sphere} with center $c \in \R^3$ and radius $r > 0$ is the set $S := \setdef{x \in \R^3}{\eucnorm{x - c} = r}$. Its \emph{north-pole} is the unique point $n \in S$ with maximal $x_3$-coordinate. A sphere whose north pole lies in the upper half-space $H := \setdef{x \in \R^3}{x_3 > 0}$ is called an \emph{admissible sphere}.
 \end{definition}
 
+\begin{definition}[Stereographic projection]
 \index{Stereographic projection}
-\begin{definition}
 \label{dfn_StereoProject}
 Let $S$ be an admissible sphere and $n \in S$ be its north pole. If $x \in S \setminus \{n\}$, then denote by $L_{x,n}$ the unique line joining $x$ with $n$ and let $y$ be the intersection point of $L_{x,n}$ with the plane $\iota(\C)$. Now, \emph{stereographic projection} with regard to $S$ is the map $P_S : S \to \EC$ defined as $P_S(x) := \inv{\iota}(y)$ for $x \ne n$ and $P_S(n) := \infty$.
 \end{definition}
@@ -106,7 +106,7 @@ Other examples for transformations corresponding to a half-turn of the Riemann s
 \label{fig_StereoProjModCayley}
 \end{figure}
 
-\begin{example}
+\begin{example}[Modified Cayley transform]
 \index{Modified Cayley transform}
 \index{Cayley transform}
 \label{ex_StereoProjCayleyMap}
@@ -130,7 +130,7 @@ We have now seen exemplarily that rotation of the Riemann sphere induces quite a
 A \emph{rigid motion} of $\R^3$ is an affine transformation of $\R^3$ which is obtained purely by composition of rotations and translations.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}[Möbius transformations revealed]
 \label{thm_MoebiusRevealed}
 A function $\phi : \EC \to \EC$ is a Möbius transformation, if and only if it can be obtained by reverse stereographic projection of $\EC$ to an admissible sphere $S \subseteq \R^3$, followed by a rigid motion T of $\R^3$ which maps $S$ to another admissible sphere $TS$, followed by stereographic projection from $TS$ back to $\EC$:
 \begin{equation}

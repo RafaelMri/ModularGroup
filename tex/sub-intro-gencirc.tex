@@ -52,7 +52,7 @@ Next, we substitute $z = u / v$, with $u,v \in \C$, $v \ne 0$ and scale by $\con
 By introducing the convention to identify $\infty \in \EC$ with the formal quotient $u/0$, for arbitrary $u \in \C \setminus \{0\}$, equation (\ref{eqn_GenCircleMatForm}) makes sense for all $z = u/v \in \EC$. 
 
 Finally, we remember that the matrix in equation (\ref{eqn_GenCircleMatForm}) has a negative determinant, because of the condition $BC - AD > 0$ from above. Moreover, it is a Hermitian matrix, a notion which we will shortly recall:
-\begin{definition}
+\begin{definition}[Hermitian matrix]
 \label{dfn_HermitianMatrix}
 \index{Hermitian!matrix}
 \index{Hermitian!transpose}
@@ -61,10 +61,10 @@ Let $n > 0$ and $M \in \Mat{\C}{n}{n}$. The matrix
 \begin{equation*}
 \htransp{M} := \transp{\overline{M}}
 \end{equation*}
-obtained by complex conjugation and transposition of $M$ is called \emph{Hermitian transpose} or \emph{conjugate transpose} of $M$. If $M$ has the property $\htransp{M} = M$, it is called a \emph{Hermitian} matrix.
+obtained by complex conjugation and transposition of $M$ is called \emph{Hermitian transpose} or \emph{conjugate transpose} of $M$. If $M$ has the property $\htransp{M} = M$, it is called a \emph{Hermitian matrix}.
 \end{definition}
 Having now the right properties and vocabulary at hand, we can give an exact definition for generalized circles.
-\begin{definition}
+\begin{definition}[Generalized circle]
 \index{G-circle}
 \label{dfn_GenCircle}
 Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$. A \emph{generalized circle}, for short \emph{g-circle}, is the set of solutions $u/v \in \EC$, with $u,v \in \C$, not both zero, to
@@ -87,7 +87,7 @@ From Definition~\ref{dfn_GenCircle} we see that the point $\infty = 1/0$ lies on
 
 Going back to the our starting point, the equation $\abs{z - m} = r$, we can replace the equality sign `$=$' with `$<$' or `$\le$' and repeat the above considerations without any additional changes. This naturally leads to the notions of open and closed generalized disks.
 
-\begin{definition}
+\begin{definition}[Generalized disk]
 \index{Generalized!disk}
 \index{G-disk}
 \label{dfn_GenDisk}
@@ -117,7 +117,7 @@ It is now easy to show that g-circles and g-disks are preserved under Möbius tra
 
 \begin{theorem}
 \label{thm_MoebiusGenCircle}
-Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$ and $P \in \GL{\C}$. The image of the g-circle (\resp open/closed g-disk) $M$ under the Möbius transformation $\phi$ corresponding to the matrix $P \in \GL{\C}$ is the g-circle (\resp open/closed g-disk)
+Let $\phi$ be a Möbius transformation and $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$. The image of the g-circle (\resp open/closed g-disk) $M$ under the Möbius transformation $\phi$ corresponding to the matrix $P \in \GL{\C}$ is the g-circle (\resp open/closed g-disk)
 \begin{equation}
 \label{eqn_GDiskTransform}
 \htransp{(\inv{P})} \cdot M \cdot \inv{P}.
