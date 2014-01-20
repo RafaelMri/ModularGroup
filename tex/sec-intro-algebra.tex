@@ -79,6 +79,7 @@ Let $G$ and $H$ be groups and denote the identity element of $H$ by $e_H$. For a
 is called the \emph{kernel} of f.
 \end{definition}
 \begin{lemma}
+\label{lem_KernelAndImage}
 Let $G$ and $H$ be groups and $f : G \to H$ be a homomorphism. The kernel of $f$ is a normal subgroup of $G$ and the image $f(G)$ is a subgroup of $H$:
 \begin{equation*}
 \ker f \unlhd G \quad \text{and} \quad f(G) \le H.
@@ -120,7 +121,7 @@ Therefore $\phi$ is indeed an isomorphism from $G/N$ to $f(G)$.
 
 \subsection{Free monoids}
 \index{Free!monoid}
-Let $\Syms$ be a set of formal symbols, for example $\Syms = \{a, b, c, \dots\}$. For $n \in \N$, $n \ge 0$, we denote by $\Syms^n$ the set of tuples of length $n$ over $\Syms$ and we will call these tuples \emph{words of length $n$ over the alphabet $\Syms$}. For simplicity, we will omit parentheses and commas when notating such a word, for example $(a,b,b,a) =: abba \in \Sigma^4$ is a word of length 4. Note the special case for $n = 0$. By definition, $\Syms^0$ contains all words of length $0$. Obviously, there is only one such word, the so-called \emph{empty word}, which we denote by $\epsilon$. A second special case occurs for $\Syms = \emptyset$, where $\Syms^n = \emptyset$ for all $n > 0$ and $\Syms^0 = \{\epsilon\}$, because there are no words over the empty alphabet except the empty word. Next, we define 
+Let $\Syms$ be a set of formal symbols, for example $\Syms = \{a, b, c, \dots\}$. For $n \in \N$, $n \ge 0$, we denote by $\Syms^n$ the set of tuples of length $n$ over $\Syms$ and we will call these tuples \emph{words of length $n$ over the alphabet $\Syms$}. For simplicity, we will omit parentheses and commas when notating such a word, for example $(a,b,b,a) =: abba \in \Syms^4$ is a word of length 4. Note the special case for $n = 0$. By definition, $\Syms^0$ contains all words of length $0$. Obviously, there is only one such word, the so-called \emph{empty word}, which we denote by $\epsilon$. A second special case occurs for $\Syms = \emptyset$, where $\Syms^n = \emptyset$ for all $n > 0$ and $\Syms^0 = \{\epsilon\}$, because there are no words over the empty alphabet except the empty word. Next, we define 
 \begin{equation}
 \label{eqn_SigmaStarDef}
 \Words{\Syms} := \bigcup_{n \ge 0} \Syms^n.
@@ -159,7 +160,7 @@ Now we introduce the notation $\overline{f}(a) =: \inv{a}$ for all $a \in \overl
 
 \index{Reduced form}
 \index{Group!word}
-Having now defined a formal inverse for each of our symbols in the given alphabet, we can go on and construct the free monoid $\Words{\overline{\Syms}}$. If $\sigma_1, \sigma_2, \dots, \sigma_n$ are symbols of $\overline{\Syms}$, then we say the word $\sigma_1 \sigma_2 \dots \sigma_n$ is \emph{reduced}, if and only if no two subsequent symbols of the word are inverse to each other, that is
+Having now defined a formal inverse for each of our symbols in the given alphabet, we can go on and consider the free monoid $\Words{\overline{\Syms}}$. If $\sigma_1, \sigma_2, \dots, \sigma_n$ are symbols of $\overline{\Syms}$, then we say the word $\sigma_1 \sigma_2 \dots \sigma_n$ is \emph{reduced}, if and only if no two subsequent symbols of the word are inverse to each other, that is
 \begin{equation}
 \label{eqn_GrpWordReducedForm}
  \sigma_j \ne \sigma_{j+1}^{-1} \quad \text{for all } 1 \le j < n.
@@ -199,7 +200,7 @@ If we now introduce the notation
 \underbrace{a a \dots a}_{k \text{ times}} =: a^k, \quad
 \underbrace{\inv{a} \inv{a} \dots \inv{a}}_{k \text{ times}} =: a^{-k},
 \end{equation*}
-we have $a^n \cdot a^m = a^{n+m}$ for all $n,m \in \Z$ and it is thus evident, that the free group over any one-element alphabet is isomorphic to the group $\langle \Z, +, 0 \rangle$. 
+we have $a^n \cdot a^m = a^{n+m}$ for all $n,m \in \Z$ and it is thus evident that the free group over any one-element alphabet is isomorphic to the group $\langle \Z, +, 0 \rangle$. 
 
 Note that this is the only case (besides the trivial one, when $\Syms = \emptyset$), where the free group is commutative. In fact, the free group construction always yields a group with ``richest possible'' structure in the following sense:
 
@@ -212,7 +213,7 @@ In fact, the property described in Theorem \ref{thm_FreeGrpUniqueHom} completely
 
 \begin{theorem}[Universal mapping property]
 \label{thm_FreeGrpUnivMapProp}
-Let $\Syms$ be an arbitrary set and $F$ be a group together with an injective map $\iota : \Syms \to F$. If $F$ has the property, that for any map $\phi : \Syms \to G$, where $G$ is an arbitrary group, there is a homomorphism $\overline{\phi} : F \to G$ such that $\phi = \overline{\phi} \circ \iota$,
+Let $\Syms$ be an arbitrary set and $F$ be a group together with an injective map $\iota : \Syms \to F$. If $F$ has the property that for any map $\phi : \Syms \to G$, where $G$ is an arbitrary group, there is a homomorphism $\overline{\phi} : F \to G$ such that $\phi = \overline{\phi} \circ \iota$,
 then $F$ is (isomorphic to) the free group over the alphabet $\Syms$.
 \end{theorem}
 
@@ -244,9 +245,9 @@ with $\sigma_j, \tau_j \in \Syms$ and $k_j, \ell_j \in \Z$. This immediately giv
 \sigma_1^{k_1} \sigma_2^{k_e} \dots \sigma_n^{k_n} \cdot
 \tau_m^{-\ell_m} \tau_{m-1}^{-\ell_{m-1}} \dots \tau_1^{-\ell_1} = 1.
 \end{equation}
-We call the group word occurring on the left hand side of (\ref{eqn_GrpRelation}) a \emph{relation} on $G$. The set of all such possible relations on $G$ forms a normal subgroup of $\FreeGrp{\Syms}$. To see this, let $\phi : \Sigma \to G$ be the canonical embedding. According to Theorem~\ref{thm_FreeGrpUniqueHom} there exists a unique extension of $\phi$ to a homomorphism $\overline{\phi}: \FreeGrp{\Syms} \to G$. In fact, this homomorphism just evaluates group words over $\Sigma$ to concrete group elements in $G$. By definition, the set of all relations on $G$ is now given by $N := \ker(\overline{\phi})$, which is a normal subgroup of $\FreeGrp{\Syms}$. Moreover, it follows from the first isomorphism theorem (Theorem~\ref{thm_FirstIsoThm}) that $G \cong \FreeGrp{\Syms} / N$. In the case, when the product representation in (\ref{eqn_GrpGenerators}) is unique for all $g \in G$, then $N$ just consists of the identity element, $G \cong \FreeGrp{\Syms}$ and $G$ is said to be \emph{relation-free} (this is where the terminology ``free group'' actually comes from). 
+We call the group word occurring on the left hand side of (\ref{eqn_GrpRelation}) a \emph{relation} on $G$. The set of all such possible relations on $G$ forms a normal subgroup of $\FreeGrp{\Syms}$. To see this, let $\phi : \Syms \to G$ be the canonical embedding. According to Theorem~\ref{thm_FreeGrpUniqueHom} there exists a unique extension of $\phi$ to a homomorphism $\overline{\phi}: \FreeGrp{\Syms} \to G$. In fact, this homomorphism just evaluates group words over $\Syms$ in the obvious way to concrete group elements in $G$. By definition, the set of all relations on $G$ is now given by $N := \ker(\overline{\phi})$ which is, by Lemma~\ref{lem_KernelAndImage}, a normal subgroup of $\FreeGrp{\Syms}$. It now follows from the first isomorphism theorem (Theorem~\ref{thm_FirstIsoThm}) that $G \cong \FreeGrp{\Syms} / N$. In the case, when the product representation in (\ref{eqn_GrpGenerators}) is unique for all $g \in G$, then $N$ just consists of the identity element and $G$ is isomorphic to $\FreeGrp{\Syms}$. In this case, $G$ is said to be \emph{relation-free}, which is where the terminology ``free group'' actually comes from. 
 
-Summing up, we see that every group can be described by supplying a set of generators $\Syms$ and a the set of relations $N \unlhd \FreeGrp{\Syms}$. Of course, it is also sufficient to just supply a subset $R$ of relations from which the other relations can be derived. This leads to the following definition:
+Summing up, we see that every group can be described by supplying a set of generators $\Syms$ and a the set of relations $N \unlhd \FreeGrp{\Syms}$. Of course, it is also sufficient to supply just a subset $R$ of relations from which the other relations can be derived. This leads to the following definition:
 
 \begin{definition}[Presentation of a group]
 \label{dfn_GrpConstructGenRel}

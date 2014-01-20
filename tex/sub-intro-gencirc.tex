@@ -38,7 +38,7 @@ In the case when $A = 0$, equation (\ref{eqn_GenCircle}) can be written as
 \begin{equation*}
 \Re{\frac{C}{\abs{C}} z} = -\frac{D}{2 \abs{C}},
 \end{equation*}
-which defines a line on the complex plane. We see this by considering the simpler equation $\Re{z} = -\frac{D}{2 \abs{C}}$ first (we omit the factor $\frac{C}{\abs{C}}$), which obviously defines a line parallel to the imaginary axis through the real point $-\frac{D}{2 \abs{C}}$. Then we observe that the multiplication with $\frac{C}{\abs{C}}$ just rotates this line clockwise around the origin by an angle which is given by $\arg(C)$.
+which defines a line on the complex plane. We see this by considering the simpler equation $\Re{z} = -\frac{D}{2 \abs{C}}$ first (we omit the factor $\frac{C}{\abs{C}}$), which obviously defines a line parallel to the imaginary axis through the real point $-\frac{D}{2 \abs{C}}$. Then we observe that the multiplication with $\frac{C}{\abs{C}}$ just rotates this line around the origin by an angle which is given by $-\arg(C)$.
 
 To conclude our considerations, we note that equation (\ref{eqn_GenCircle}) can also be written in matrix form:
 \begin{equation*}
@@ -51,7 +51,7 @@ Next, we substitute $z = u / v$, with $u,v \in \C$, $v \ne 0$ and scale by $\con
 \end{equation}
 By introducing the convention to identify $\infty \in \EC$ with the formal quotient $u/0$, for arbitrary $u \in \C \setminus \{0\}$, equation (\ref{eqn_GenCircleMatForm}) makes sense for all $z = u/v \in \EC$. 
 
-Finally, we remember that the matrix in equation (\ref{eqn_GenCircleMatForm}) has a negative determinant, because of the condition $BC - AD > 0$ from above. Moreover, it is a Hermitian matrix, a notion which we will shortly recall:
+Finally, we emphasize that the matrix in equation (\ref{eqn_GenCircleMatForm}) has a negative determinant, because of the condition $BC - AD > 0$ from above. Moreover, it is a Hermitian matrix, a notion which we will shortly recall:
 \begin{definition}[Hermitian matrix]
 \label{dfn_HermitianMatrix}
 \index{Hermitian!matrix}
@@ -63,7 +63,7 @@ Let $n > 0$ and $M \in \Mat{\C}{n}{n}$. The matrix
 \end{equation*}
 obtained by complex conjugation and transposition of $M$ is called \emph{Hermitian transpose} or \emph{conjugate transpose} of $M$. If $M$ has the property $\htransp{M} = M$, it is called a \emph{Hermitian matrix}.
 \end{definition}
-Having now the right properties and vocabulary at hand, we can give an exact definition for generalized circles.
+Having now the right vocabulary and properties at hand, we can give an exact definition for generalized circles.
 \begin{definition}[Generalized circle]
 \index{G-circle}
 \label{dfn_GenCircle}
@@ -109,7 +109,7 @@ In contrast to generalized circles, the defining matrix $M = \smallmat{A}{B}{C}{
 \begin{description}
 \item[Case $A > 0$:] The g-disk corresponds to a disk in the usual sense within $\C$. Its center is given by (\ref{eqn_GenCircCenter}) and its radius by (\ref{eqn_GenCircRadius}).
 \item[Case $A = 0$:] The g-disk corresponds to a halfplane of $\C$, which is obtained from the left halfplane, \ie $\Re{z} < 0$ (\resp $\le 0$), by translation by $\frac{-D}{2 \abs{C}}$ and rotation by $-\arg(C)$. The point $\infty$ is member of the generalized disk, if and only if it is closed.
-\item[Case $A < 0$:] The open g-disk $M$ corresponds to the set complement (within $\EC$) of the closed g-disk $-M$. Accordingly, the closed g-disk $M$ is the complement of the open g-disk $-M$. Open and closed g-disks with $A < 0$ contain the point  $\infty$.
+\item[Case $A < 0$:] The open g-disk $M$ corresponds to the set complement (within $\EC$) of the closed g-disk $-M$ (discussed in the first case, $A > 0$). Accordingly, the closed g-disk $M$ is the complement of the open g-disk $-M$. Open and closed g-disks with $A < 0$ contain the point  $\infty$.
 \end{description}
 \end{remark}
 

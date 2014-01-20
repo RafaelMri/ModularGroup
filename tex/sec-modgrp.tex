@@ -168,7 +168,7 @@ A = U^{e_0} TU^{e_1} \cdots TU^{e_{n-1}} TU^{e_n} T U^k.
 
 \begin{remark}
 \label{rem_EuclideanAlgorithmRounding}
-The product representation (\ref{eqn_ModGrpTUAlg}) is not unique. In fact there is quite some freedom of choice for the quotients $q_0, q_1, \ldots, q_n$ in the algorithm of Corollary~\ref{cor_ModGrpTUAlg}. With the convention $r_{-1} := a$ and $r_0 := c$, one usually sets $q_j := \floor{\frac{r_{j-1}}{r_j}}$ for $j \ge 0$. The remainders, which are determined by 
+The product representation (\ref{eqn_ModGrpTUAlg}) is not unique. In fact there is quite some freedom of choice for the quotients $q_0, q_1, \ldots, q_n$ in the above $T$-$U$ algorithm. With the convention $r_{-1} := a$ and $r_0 := c$, one usually sets $q_j := \floor{\frac{r_{j-1}}{r_j}}$ for $j \ge 0$. The remainders, which are determined by 
 \begin{equation}
 \label{eqn_EuclideanAlgorithmLine}
 r_{j+1} = r_{j-1} - q_j \cdot r_j \quad \text{for } j \ge 0,
