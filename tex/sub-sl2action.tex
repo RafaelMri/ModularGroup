@@ -16,10 +16,10 @@ We now wish to find a fundamental set (or at least a fundamental region) with re
 
 \begin{lemma}
 \label{lem_SL2FunDomMinExists}
-Let $x = ({}^u_v) \in \C^2$ be a vector with $u \conj{v} \notin \R$. For every $r > 0$, there are only finitely many points $y \in O_x$ with $\eucnorm{y} \le r$. In particular, $m := \min{\eucnorm{O_x}}$ exists and $m > 0$.
+Let $x = ({}^u_v) \in \C^2$ be a vector such that $u,v$ are linear independent over $\R$. For every $r > 0$, there are only finitely many points $y \in O_x$ with $\eucnorm{y} \le r$. In particular, $m := \min{\eucnorm{O_x}}$ exists and $m > 0$.
 \end{lemma}
 \begin{proof}
-Because of $u \conj{v} \notin \R$, the complex numbers $u$ and $v$ are linear independent over $\R$. Therefore they span a non-degenerate parallelogram $P_x := \setdef{t u + s v}{t,s \in [0,1)}$ on the complex plane. Translation of $P_x$ by integer multiples of $u$ and $v$ covers every point in $\C$ exactly once. The set
+Since the complex numbers $u$ and $v$ are linear independent over $\R$, they span a non-degenerate parallelogram $P_x := \setdef{t u + s v}{t,s \in [0,1)}$ on the complex plane. Translation of $P_x$ by integer multiples of $u$ and $v$ covers every point in $\C$ exactly once. The set
 \begin{equation}
 L_x := \setdef{a u + b v \in \C}{a,b \in \Z}
 \end{equation}
@@ -28,7 +28,7 @@ consists precisely of the vertices of all of these translated parallelograms. Fo
 D_r &:=& \setdefsz{\big}{z \in \C}{\abs{z} \le r},\\
 B_r &:=& \setdefsz{\big}{y \in \C^2}{\eucnorm{y} \le r}.
 \end{eqnarray}
-Let $r > 0$ be sufficiently large such that the set $O_x \cap B_r$ is not empty (e.g.\ $r = \eucnorm{x}$). We now observe
+Let $r > 0$ be sufficiently large such that the set $O_x \cap B_r$ is not empty (e.g.\ $r = \eucnorm{x}$) and observe
 \begin{equation*}
 O_x \cap B_r \subseteq (L_x \cap D_r)^2.
 \end{equation*}
@@ -127,11 +127,11 @@ In both cases (\ref{eqn_SL2FunDomIneq}) is strictly fulfilled, which proves (\re
 For $n(A) = 3$ we have $\{(a^2 + c^2 - 1),(b^2 + d^2 - 1)\} = \{0,1\}$, which means that the left hand side simplifies to either $\abs{u}^2$ or $\abs{v}^2$, whereas on the right hand side we have $\abs{u\conj{v} + \conj{u}v}$ as upper bound, because of $(ab + cd) = \pm 1$. Since $\abs{u\conj{v} + \conj{u}v} < \min\{\abs{u}^2,\abs{v}^2\}$, inequality (\ref{eqn_SL2FunDomIneqB}) is thus satisfied.
 \end{proof}
 
-We can now summarize the algorithm and prove its correctness. Note, that the requirement on $x$, that its coordinates $u$ and $v$ are linear independent over $\R$, can be somewhat relaxed: If $u$ and $v$ are linear dependent over $\Q$, \ie $x$ can be written as $x = \lambda ({}^p_q)$ with $\lambda \in \C$ and $p,q \in \Z$, then the requirement $u\conj{v} = \notin \R$ is violated, however the algorithm also works for this case, as we will see:
+We can now summarize the algorithm and prove its correctness. Note that we can slightly relax the requirement on the coordinates of $x = ({}^u_v)$ being linear independent over $\R$. We will see that the algorithm works as well in the case when $u$ and $v$ are linear dependent over $\Q$.
 
 \begin{theorem}
 \label{thm_SL2FunDomAlg}
-Let $x = ({}^u_v) \in \C^2$ with $u \conj{v} \notin \Irrat$. A matrix $B \in \SL{\Z}$ minimizing $\eucnorm{Bx}$ can be found by performing the following steps:
+Let $x = ({}^u_v) \in \C^2$ with $u,v$ being either linear independent over $\R$ or linear dependent over $\Q$. A matrix $B \in \SL{\Z}$ minimizing $\eucnorm{Bx}$ can be found by performing the following steps:
 \begin{enumerate}
 \item Set $(r_{-1},r_0) := (u,v)$ and $j := 0$.
 \item \label{itm_SL2FunDomAlgLoop}
@@ -147,7 +147,7 @@ Note that in the case $n < 0$ this product is empty and $B$ is the identity matr
 \end{enumerate}
 \end{theorem}
 \begin{proof}
-We will first consider the case $u\conj{v} \notin \R$ and investigate the case $u\conj{v} \in \Q$ afterward. The algorithm gives rise to a sequence of equations
+The algorithm gives rise to the following sequence of equations:
 \begin{IEEEeqnarray*}{rCcCl}
 u &=& r_{-1} &=& q_0 \cdot r_0 + r_1 \\
 v &=&    r_0 &=& q_1 \cdot r_1 + r_2 \\
@@ -155,7 +155,7 @@ v &=&    r_0 &=& q_1 \cdot r_1 + r_2 \\
 &&       r_2 &=& q_3 \cdot r_3 + r_4 \\
 && &\vdots& 
 \end{IEEEeqnarray*}
-with $r_j \ne 0$ for all $j \ge -1$, because they are all nontrivial linear combinations of $u$ and $v$ with integer coefficients and $u\conj{v} \notin \R$ implies linear independence of $u$, $v$ over $\R$.  Moreover this sequence of equations corresponds to the sequence of vectors
+Moreover this sequence of equations corresponds to the sequence of vectors
 \begin{equation*}
 \cvec{u}{v}                           \overset{TU^{-q_0}}{\longmapsto}
 \cvec{\phantom{+}v\phantom{_1}}{-r_1} \overset{TU^{q_1}}{\longmapsto}
@@ -163,7 +163,15 @@ with $r_j \ne 0$ for all $j \ge -1$, because they are all nontrivial linear comb
 \cvec{-r_2}{\phantom{+}r_3}           \overset{TU^{q_3}}{\longmapsto}
 \cvec{r_3}{r_4}                       \mapsto \dots
 \end{equation*}
-With $s_j := (-1)^{\ceil{\half{j}}} r_j$, we can write these vectors as $x_j := \cvec{s_{j-1}}{s_j}$ for $j \ge 0$, in particular we have $x_0 = x$. Now, as in the theorem, let $e_j := (-1)^j q_j$ for $j \ge 0$. In this notation, we can write in general $TU^{-e_j} x_j = x_{j+1}$ for all $j \ge 0$. From the choice of $q_j$ -- see Lemma~\ref{lem_SL2FunDomMin} -- it follows that for each pair of subsequent vectors $x_j$, $x_{j+1}$ we have $\eucnorm{x_j} \ge \eucnorm{x_{j+1}}$. Using $r_{j+1} = r_{j-1} - q_j r_j$ we see that $\eucnorm{x_j} = \eucnorm{x_{j+1}}$ is equivalent to
+With $s_j := (-1)^{\ceil{\half{j}}} r_j$, we can write these vectors as $x_j := \cvec{s_{j-1}}{s_j}$ for $j \ge 0$, in particular we have $x_0 = x$. Now, as in the theorem, let $e_j := (-1)^j q_j$ for $j \ge 0$. In this notation, we can write in general $TU^{-e_j} x_j = x_{j+1}$ for all $j \ge 0$. 
+
+In the case when $u$ and $v$ are linear dependent over $\Q$, the vector $x$ can be written as $x = \lambda ({}^p_q)$ with $\lambda \in \C$ and $p,q \in \Z$. We observe the striking similarity between the above and the Euclidean algorithm: If we apply the Euclidean algorithm to $p$ and $q$ while rounding all quotients to the nearest integer (compare Remark~\ref{rem_EuclideanAlgorithmRounding}), we obtain a sequence of quotients $\tilde{q}_0, \tilde{q}_1, \dots, \tilde{q}_n$ and a sequence of remainders $\tilde{r}_0, \tilde{r}_1, \dots, \tilde{r}_n, \tilde{r}_{n+1}$ with $\tilde{r}_{n+1} = 0$. It is immediate to see that $q_j = \tilde{q}_j$ and $r_j = \lambda \tilde{r}_j$ for all $j \ge 0$. In particular, our algorithm terminates and we end up with the vector
+\begin{equation*}
+y := x_n = TU^{-e_n} TU^{-e_{n-1}} \cdots TU^{-e_0} = \lambda \cvec{\pm \gcd(p,q)}{0}
+\end{equation*}
+having minimal $\eucnorm{\cdot}$-norm in $O_x$.
+
+In the case when $u$ and $v$ are linear independent over $\R$, it follows from the choice of $q_j$ -- see Lemma~\ref{lem_SL2FunDomMin} -- that for each pair of subsequent vectors $x_j$, $x_{j+1}$ we have $\eucnorm{x_j} \ge \eucnorm{x_{j+1}}$. Using $r_{j+1} = r_{j-1} - q_j r_j$ we see that $\eucnorm{x_j} = \eucnorm{x_{j+1}}$ is equivalent to
 \begin{equation*}
 \eucnorm{\cvec{\pm r_{j-1}}{\pm r_{j\phantom{-1}}}} = 
 \eucnorm{\cvec{\pm r_{j\phantom{+1}}}{\pm r_{j+1}}} =
@@ -182,12 +190,13 @@ One obvious solution to this is $q_j = 0$. For the other factor, we substitute $
 \quad \text{and} \quad
 \eucnorm{x_j} = \eucnorm{x_{j+1}} \Leftrightarrow q_j = 0.
 \end{equation}
-
 According to Lemma~{\ref{lem_SL2FunDomMinExists}}, the set $O_x \cap K_{\eucnorm{x}}$ is finite and thus we cannot have $\eucnorm{x_j} > \eucnorm{x_{j+1}}$ for infinitely many indices $j$. In other words, $q_n$ must be zero for some $n \in \N$ and we have
 \begin{equation*}
 TU^{-e_n} \cdots TU^{-e_1} TU^{-e_0} x_0 = x_n.
 \end{equation*}
-Since the vector $y := x_n$ satisfies (\ref{eqn_SL2FunDomLokMin}) and consequently ({\ref{eqn_SL2MinRegion}}), we conclude from  Theorem~\ref{thm_SL2FunDomGlobMin} that $\eucnorm{y} = \min{\eucnorm{O_x}}$. Obviously $\eucnorm{y} = \eucnorm{\inv{T}y}$ which is why we may define $B$ as in ($\ref{eqn_SL2FunDomMinMat}$).
+Since the vector $y := x_n$ satisfies (\ref{eqn_SL2FunDomLokMin}) and consequently ({\ref{eqn_SL2MinRegion}}), we conclude from  Theorem~\ref{thm_SL2FunDomGlobMin} that $\eucnorm{y} = \min{\eucnorm{O_x}}$. 
+
+In both cases (linear dependence of $u,v$ over $\Q$ or linear independence over $\R$), we trivially have $\eucnorm{y} = \eucnorm{\inv{T}y}$ and we therefore can define $B$ as in ($\ref{eqn_SL2FunDomMinMat}$).
 \end{proof}
 
 Summing up, the above algorithm allows us to find for a given $z \in \C \setminus \R$ a point $Bz$ which is (under the action of modular group) equivalent to $z$  and which lies in the region $\mathcal{R}$ depicted in Figure~{\ref{fig_SL2FunDomMinRegion}}. By Theorem~\ref{thm_SL2FunDomGlobMin}, statement (\ref{itm_SL2FunDomGlobMinC}), the interior of $\mathcal{R}$ is mapped to itself exactly by transformations $A \in \PSL{\Z}$ with $n(A) = 2$, \ie the identity transformation or $T$. The equivalence of boundary points of $\mathcal{R}$ may be also be established by transformations with $n(A) = 3$, by statement (\ref{itm_SL2FunDomGlobMinB}). It is easy to see that this is indeed the case: The straight line segments of the boundary of $\mathcal{R}$ are equivalent under $U$ or $\inv{U}$ and the two circular arcs bounding $\mathcal{R}$ are equivalent under $TUT$ or $T\inv{U}T$. With these observations, we have nearly reached our goal, a unique representative $z_0 \in \mathcal{R}$ for each equivalence class $[z]_\sim \in \EC/\sim$. But before we define such a system of representatives, we need to make some more definitions.
