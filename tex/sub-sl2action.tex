@@ -1,29 +1,42 @@
 \subsection{The action of $\SL{\Z}$ on $\C^2$}
 
-The homogeneous modular group $\SL{\Z}$ acts on the vector space $\C^2$ by simple matrix multiplication. For $A \in \SL{\Z}$ and $x = ({}^u_v) \in \C^2$, this group action is given by
+The homogeneous modular group $\SL{\Z}$ naturally acts on the vector space $\C^2$ by matrix-vector multiplication. Written out explicitly, for $A \in \SL{\Z}$ and $x \in \C^2$, this group action is given by
 \begin{equation*}
-A x = \mat{a}{b}{c}{d} \cvec{u}{v} = \cvec{a u + b v}{c u + d v}.
+A x = \mat{a}{b}{c}{d} \cvec{x_1}{x_2} = \cvec{a x_1 + b x_2}{c x_1 + d x_2}.
 \end{equation*}
-
-For the following it will turn out useful to write modular transformations in matrix form and the elements $z \in \EC$ as quotients $z = u/v$ for suitable $u,v \in \C$, not both zero. A formal quotient $u/0$ will be identified with $\infty$. In this notation, for a modular transformation $A = \smallmat{a}{b}{c}{d} \in \PSL{\Z}$ and $u/v \in \EC$ the mentioned group action is given by
-\begin{equation}
-\label{eqn_ModGrpAction}
-A \ \frac{u}{v} := \frac{a u + b v}{c u + d v}
-\end{equation}
-We call two points $z, w \in \EC$ \emph{equivalent}, if and only if there is a modular transformation $A \in \PSL{\Z}$ with $A z = w$ and we write  $z \sim w$. The equivalence class (\emph{orbit}) of a point $u/v \in \EC$ is given by 
+We equip $\C^2$ with the standard Euclidean norm: 
 \begin{equation*}
-\left[\frac{u}{v}\right]_\sim = 
-\setdefsz{\bigg}{\frac{a u + b v}{c u + d v} \in \EC}{\mat{a}{b}{c}{d} \in \PSL{\Z}} \in \EC / \sim.
+\eucnorm{x} := \sqrt{\abs{x_1}^2 + \abs{x_2}^2}.
 \end{equation*}
-
-We now wish to find a system of representatives for $\EC/\sim$, in other words, we want to define exactly one representative $u_0/v_0$ for each orbit $[u/v]_\sim$. One approach for this could be to fix $u,v \in \C$, not both zero, then to choose from the set
+Let us denote the orbit of $x$ under $\PSL{\Z}$ by 
 \begin{equation}
-\label{eqn_FunDomOuv}
-O_{u,v} := \SL{\Z} \cvec{u}{v} = \setdefsz{\bigg}{\cvec{a u + b v}{c u + d v} \in \C^2}{\mat{a}{b}{c}{d} \in \SL{\Z}}
+O_x := \PSL{\Z} x = \setdef{Ax}{A \in \SL{\Z}} \subseteq \C^2.
 \end{equation}
-one vector $(u_0, v_0)$ with minimal $\eucnorm{\cdot}$-norm\footnote{We equip $\C^2$ with the standard Euclidean norm: $\eucnorm{\cvec{u}{v}} := \sqrt{\abs{u}^2 + \abs{v}^2}$.} and to declare $u_0/v_0$ as the representative for $[u/v]_\sim$. The problem with this is that such a choice may not always be possible, because $O_{u,v}$ may in general contain vectors of arbitrary small $\eucnorm{\cdot}$-norm. 
+We now wish to find a fundamental set (or at least a fundamental region) with respect to action of $\SL{\Z}$ on $\C^2$. For this purpose, we need to choose exactly one vector $\tilde{x}$ from each of the orbits $O_x$, $x \in \C^2$. In order to restrict the number of candidate vectors to an easily manageable number, we could try to first look just at vectors with minimal $\eucnorm{\cdot}$-norm in $O_x$. The problem with this is that in general the orbit $O_x$ might contain vectors of arbitrary small $\eucnorm{\cdot}$-norm -- in other words $\min{\eucnorm{O_x}}$ might in general not necessarily exist. However, in many cases it does:
 
-However, if $u \conj{v} \notin \R$, then $u$ and $v$ are linear independent over $\R$ and therefore span a non-degenerate parallelogram $P_{u,v} := \setdef{t u + s v}{t,s \in [0,1)} \subseteq \C$. Translation of $P_{u,v}$ by integer multiples of $u$ and $v$ covers every point in $\C$ exactly once. The set
+\begin{lemma}
+\label{lem_SL2FunDomMinExists}
+Let $x \in \C^2$ be a vector with $x_1 \conj{x_2} \notin \R$. For every $r > 0$, there are only finitely many points $\tilde x \in O_x$ with $\eucnorm{\tilde x} \le r$. In particular, $m := \min{\eucnorm{O_x}}$ exists and $m > 0$.
+\end{lemma}
+\begin{proof}
+Because of $x_1 \conj{x_2} \notin \R$, the complex numbers $x_1$ and $x_2$ are linear independent over $\R$. Therefore they span a non-degenerate parallelogram $P_x := \setdef{t x_1 + s x_2}{t,s \in [0,1)}$ on the complex plane. Translation of $P_x$ by integer multiples of $x_1$ and $x_2$ covers every point in $\C$ exactly once. The set
+\begin{equation}
+\label{eqn_SL2FunDomLx}
+L_x := \setdef{a x_1 + b x_2 \in \C}{a,b \in \Z}
+\end{equation}
+consists precisely of the vertices of all of these translated parallelograms. For $r > 0$, denote by $D_r$ a disk of raduis $r$ in $\C$ and by $B_r$ a ball of radius $r$ in $\C^2$ (both centered about the origin):
+\begin{eqnarray}
+D_r &:=& \setdefsz{\big}{z \in \C}{\abs{z} \le r},\\
+B_r &:=& \setdefsz{\big}{y \in \C^2}{\eucnorm{y} \le r}.
+\end{eqnarray}
+Let $r > 0$ be sufficiently large, such that the set $O_x \cap B_r$ is not empty. We now observe
+\begin{equation*}
+O_x \cap B_r \subseteq (L_x \cap D_r)^2.
+\end{equation*}
+After what has been said above, the set $L_x \cap D_r$ is obviously finite. Thus also the set $O_x \cap B_r$ is finite and $m = \min{\eucnorm{O_x}} = \min{\eucnorm{O_x \cap B_r}}$ exists. Since $x_1$ and $x_2$ are linear independent over $\R$ (and in particular over $\Z$), $0 \notin L_x$ and consequently $0 \notin O_x$, which is why $m > 0$.
+\end{proof}
+
+However, if $u \conj{v} \notin \R$, then $u$ and $v$ are linear independent over $\R$ and therefore . Translation of $P_{u,v}$ by integer multiples of $u$ and $v$ covers every point in $\C$ exactly once. The set
 \begin{equation*}
 L_{u,v} := \setdef{a u + b v \in \C}{a,b \in \Z}
 \end{equation*}
