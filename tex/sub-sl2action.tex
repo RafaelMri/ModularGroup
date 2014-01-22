@@ -32,7 +32,7 @@ Let $r > 0$ be sufficiently large such that the set $O_x \cap B_r$ is not empty 
 \begin{equation*}
 O_x \cap B_r \subseteq (L_x \cap D_r)^2.
 \end{equation*}
-After what has been said above, the set $L_x \cap D_r$ is obviously finite. Thus also the set $O_x \cap B_r$ is finite and $m = \min{\eucnorm{O_x}} = \min{\eucnorm{O_x \cap B_r}}$ exists. Since $u$ and $v$ are linear independent over $\R$ (and in particular over $\Z$), $0 \notin L_x$ and consequently $0 \notin O_x$, which is why $m > 0$.
+After what has been said above, the set $L_x \cap D_r$ is finite. Thus also the set $O_x \cap B_r$ is finite and $m = \min{\eucnorm{O_x}} = \min{\eucnorm{O_x \cap B_r}}$ exists. Since $u$ and $v$ are linear independent over $\R$ (and in particular over $\Z$), $0 \notin L_x$ and consequently $0 \notin O_x$, which is why $m > 0$.
 \end{proof}
 
 We now turn to the question, how we can effectively determine an element of $O_x$ with minimal $\eucnorm{\cdot}$-norm. The task is the following: Given a vector $x = ({}^u_v) \in \C^2$ with $u,v$ linear independent over $\R$, find a matrix $B \in \SL{\Z}$ such that $\eucnorm{Bx}$ is minimal. 
@@ -59,7 +59,7 @@ Let us now suppose that the described procedure comes to an end, \ie $k_n = 0$ f
 \label{eqn_SL2FunDomLokMin}
 \eucnorm{y} \le \eucnorm{U^k y} \text{\quad and \quad} \eucnorm{y} \le \eucnorm{U^k \inv{T} y} \text{\quad for all } k \in \Z.
 \end{equation}
-Using similar arguments as in Lemma~\ref{lem_SL2FunDomMin}, we see that (\ref{eqn_SL2FunDomLokMin}) is equivalent to
+Using similar arguments as in Lemma~\ref{lem_SL2FunDomMin} -- in particular item (\ref{itm_xMinD}) -- we see that (\ref{eqn_SL2FunDomLokMin}) is equivalent to
 \begin{equation*}
 \abs{\Re{\frac{y_1}{y_2}}} \le \reci{2} \text{\quad and \quad} \abs{\Re{\frac{y_2}{y_1}}} \le \reci{2},
 \end{equation*}
@@ -72,7 +72,7 @@ The question arises, if $y$ is just a ``local minimum'' in the sense (\ref{eqn_S
 
 \begin{theorem}
 \label{thm_SL2FunDomGlobMin}
-Let $A \in \SL{\Z}$ and the \emph{grading} $n(A)$ be defined as in (\ref{eqn_grading}). Let $x = ({}^u_v) \in \C^2$ with $uv \ne 0$. Then the following statements hold:
+Let $A \in \SL{\Z}$ be an arbitrary homogeneous modular transformation and let the \emph{grading} $n(A)$ be defined as in (\ref{eqn_grading}). Let $x = ({}^u_v) \in \C^2$ with $uv \ne 0$. Then the following statements hold:
 \begin{enumerate}[(i)]
 \item \label{itm_SL2FunDomGlobMinA}
 If $\abs{u\conj{v} + \conj{u}v} \le \min\{\abs{u}^2,\abs{v}^2\}$, then $\eucnorm{x} \le \eucnorm{Ax}$.
@@ -199,13 +199,12 @@ Since the vector $y := x_n$ satisfies (\ref{eqn_SL2FunDomLokMin}) and consequent
 In both cases (linear dependence of $u,v$ over $\Q$ or linear independence over $\R$), we trivially have $\eucnorm{y} = \eucnorm{\inv{T}y}$ and we therefore can define $B$ as in ($\ref{eqn_SL2FunDomMinMat}$).
 \end{proof}
 
-Let us now denote by $\mathcal{S}$ the set of all vectors $x = ({}^u_v) \in \C^2$ satisfying the precondition of Theorem~\ref{thm_SL2FunDomAlg}, that is $u$ and $v$ are linear independent over $\R$ or linear dependent over $\Q$. It is clear that $\mathcal{S}$ is invariant under the action of $\SL{\Z}$, \ie $\SL{\Z}\mathcal{S} = \mathcal{S}$, and we can therefore consider the (restricted) group action of $\SL{\Z}$ on $\mathcal{S} \subseteq \C^2$:
-
-We have seen in Theorem~\ref{thm_SL2FunDomGlobMin} that within the region
+Let us now denote by $\hat{\mathcal{S}}$ the set of all vectors $x = ({}^u_v) \in \C^2$ satisfying the precondition of Theorem~\ref{thm_SL2FunDomAlg}, that is the set of all vectors whose coordinates $u$ and $v$ are linear independent over $\R$ or linear dependent over $\Q$. It is clear that $\hat{\mathcal{S}}$ is invariant under the action of $\SL{\Z}$, \ie $\SL{\Z}\hat{\mathcal{S}} = \hat{\mathcal{S}}$, and we can therefore consider the group action of $\SL{\Z}$ on the restricted set $\hat{\mathcal{S}} \subseteq \C^2$. We have seen in Theorem~\ref{thm_SL2FunDomGlobMin} that within the region
 \begin{equation}
-\mathcal{R} := \setdefsz{\bigg}{\cvec{u}{v} \in \C^2}{\abs{u\conj{v} + \conj{u}v} < \min \{\abs{u}^2, \abs{v}^2\}} \subseteq \mathcal{S}
+\label{eqn_SL2MinRegionDef}
+\hat{\mathcal{R}} := \setdefsz{\bigg}{\cvec{u}{v} \in \C^2}{\abs{u\conj{v} + \conj{u}v} < \min \{\abs{u}^2, \abs{v}^2\}} \subseteq \hat{\mathcal{S}}
 \end{equation}
-equivalence of points can only be established by transformations $A \in \SL{\Z}$ with $n(A) = 2$. Clearly these transformations are exactly given by $1, T, T^2$ and $T^3$. On the other hand, by Theorem~\ref{thm_SL2FunDomAlg}, every vector $x \in \mathcal{S}$ is equivalent to a point in $\overline{\mathcal{R}}$ (the topological closure of $\mathcal{R}$). Hence we can obtain a fundamental region for the group action of $\SL{\Z}$ on $\mathcal{S}$ by choosing for each $x \in \mathcal{R}$ exactly one of the equivalent vectors 
+equivalence of points can only be established by transformations $A \in \SL{\Z}$ with $n(A) = 2$. Clearly these transformations are exactly given by $1, T, T^2$ and $T^3$. On the other hand, by Theorem~\ref{thm_SL2FunDomAlg}, every vector $x \in \hat{\mathcal{S}}$ is equivalent to a point in the topological closure of $\hat{\mathcal{R}}$. Hence we can obtain a fundamental region for the group action of $\SL{\Z}$ on $\hat{\mathcal{S}}$ by choosing for each $x \in \hat{\mathcal{R}}$ exactly one of the equivalent vectors 
 \begin{equation*}
 x = \cvec{u}{v},\quad 
 Tx = \cvec{-v}{\phantom{+}u},\quad
@@ -217,7 +216,7 @@ This choice can be done quite arbitrarily -- for example we can arrange the fund
 \label{cor_SL2FunDom}
 The set
 \begin{equation}
-\mathcal{F} := \mathcal{R} \cap \setdefsz{\bigg}{\cvec{u}{v} \in \C^2}{\Re{u}, \Re{v} > 0}
+\hat{\mathcal{F}} := \hat{\mathcal{R}} \cap \setdefsz{\bigg}{\cvec{u}{v} \in \C^2}{\Re{u}, \Re{v} > 0},
 \end{equation}
-is a fundamental region for the action of the homogeneous modular group $\SL{\Z}$ on the set $\mathcal{S}$.
+where $\hat{\mathcal{R}}$ is defined as in (\ref{eqn_SL2MinRegionDef}), is a fundamental region for the action of the homogeneous modular group $\SL{\Z}$ on the set $\hat{\mathcal{S}}$.
 \end{corollary}
