@@ -10,32 +10,60 @@ Let us first consider image of $\hat{\mathcal{S}}$ under $\pi$. If $({}^u_v) \in
 \end{equation*}
 Projection of the set $\hat{\mathcal{R}} \subseteq \C^2$ leads to the region $\mathcal{R} \subseteq \EC$ (see also Figure~\ref{fig_PSL2MinRegion}),
 \begin{equation}
+\label{eqn_PSL2MinRegion}
 \mathcal{R} := \pi\left(\hat{\mathcal{R}}\right) = 
 \setdefsz{\Big}{\frac{u}{v} \in \EC}{\abs{u\conj{v} + \conj{u}v} < \min\{\abs{u}^2, \abs{v}^2\}}.
 \end{equation}
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{figures/minimal-region}
-\caption{The region $\mathcal{R}$ of numbers $z = u/v \in \EC$ with $\abs{u\conj{v} + \conj{u}v} < \min\{\abs{u}^2,\abs{v}^2\}$. It is obtained by taking the strip $\setdef{z \in \C}{\Re{z} \in \left(-\reci{2},\reci{2}\right)}$  and cutting out two closed disks of unit radius centered about the real points $\pm 1$. The arising vertices are labeled. As usual, $T$ is the transformation $z \mapsto -\reci{z}$ and $\rho = \exp(2 \pi \ii / 3)$ is a third root of unity.}
+\caption{The region $\mathcal{R}$ of numbers $z = u/v \in \EC$ with $\abs{u\conj{v} + \conj{u}v} < \min\{\abs{u}^2,\abs{v}^2\}$. It is obtained by taking the strip $\setdefsz{\big}{z \in \C}{\abs{\Re{z}} < \reci{2}}$  and cutting out two closed disks of unit radius centered about the real points $\pm 1$. The arising vertices are labeled. As usual, $T$ is the transformation $z \mapsto -\reci{z}$ and $\rho = \exp(2 \pi \ii / 3)$ is a third root of unity.}
 \label{fig_PSL2MinRegion}
 \end{figure}
-It follows that $\mathcal{R}$ contains a fundamental region $\mathcal{F}$ for the action of $\PSL{\Z}$ on $\EC \setminus \Irrat$. As in the homogeneous case, we see from Theorem~\ref{thm_SL2FunDomGlobMin} that equivalence of points within $\mathcal{R}$ can be established only by powers of the transformation $T \in \PSL{\Z}$. Since $T^2 = 1$, this means that in order to obtain a fundamental region we just need to choose for each $z \in \mathcal{R}$ only between one of the equivalent points $z$ and $Tz$. This can for example be done such that $\abs{z} > 1$.
-\begin{corollary}
-The set
-\begin{equation}
-\mathcal{F} := \setdefsz{\bigg}{z \in \C}{\abs{\Re{z}} < \reci{2} \text{ and } \abs{z} > 1}
-\end{equation}
-is a fundamental region for the action of the inhomogeneous modular group $\PSL{\Z}$ on $\EC \setminus \Irrat$.
-\end{corollary}
-\begin{proof}
-First observe that $\mathcal{F}$ is exactly the set
-\begin{equation*}
-\mathcal{F} = \mathcal{R} \cap \setdef{z \in \C}{\abs{z} > 1},
-\end{equation*}
-compare also Figure~\ref{fig_PSL2MinRegion}. Obviously $\mathcal{F}$ is a nonempty subset of $\mathcal{R}$, which is why two distinct points of $\mathcal{F}$ can be equivalent only by the transformation $T$. However, since $\abs{z} > 1$ implies $\abs{Tz} = \abs{-1/z} < 1$, this cannot be the case. Hence $\mathcal{F}$ contains no equivalent distinct points.
+It follows that $\mathcal{R}$ contains a fundamental region for the action of $\PSL{\Z}$ on $\EC \setminus \Irrat$. As in the homogeneous case, we see from Theorem~\ref{thm_SL2FunDomGlobMin} that equivalence of points within $\mathcal{R}$ can be established only by powers of the transformation $T \in \PSL{\Z}$. Since $T^2 = 1$, in order to obtain a fundamental region we now need to choose for each $z \in \mathcal{R}$ just exactly one of the equivalent points $z$ and $Tz$. This can for example be done such that $\abs{z} > 1$.
 
-It remains to show that every $z = \frac{u}{v} \in \mathcal{S}$ is equivalent to a point of the topological closure $\topcl{\mathcal{F}}$. For this purpose apply the algorithm of Theorem~\ref{thm_SL2FunDomAlg} to the vector $({}^u_v)$ in order to obtain a transformation $B \in \PSL{\Z}$ which maps $z$ to a point of $\topcl{\mathcal{R}}$. It then follows that at least one of the points $Bz$ or $TBz$ lies in $\topcl{\mathcal{F}}$.
+\index{Extended upper halfplane}
+Note that for understanding the group action of $\PSL{\Z}$ on $\EC \setminus \Irrat$ it is sufficient to look at either the upper or lower halfplane of $\C$, since the group action one halfplane can be easily understood from the group action on the other halfplane, as we trivially have $Az = \conj{A\conj{z}}$. Let us therefore denote by $\mathcal{H}$ the upper halfplane and by $\EU$ the \emph{extended upper halfplane}:
+\begin{eqnarray}
+\label{eqn_UpperHalfplane}\mathcal{H} &:=& \setdefsz{\big}{z \in \C}{\Im{z} > 0} \\
+\label{eqn_ExtUpperHalfplane}
+\EU &:=& \mathcal{H} \cup \Q \cup \{\infty\}.
+\end{eqnarray}
+Clearly $\EU$ is invariant under $\PSL{\Z}$, \ie $\PSL{\Z} \EU = \EU$ and we can also consider $\PSL{\Z}$ acting on $\EU$.
+
+\begin{theorem}
+Let $\mathcal{H}$ and $\EU$ be defined as in (\ref{eqn_UpperHalfplane}) and (\ref{eqn_ExtUpperHalfplane}). The set
+\begin{equation}
+\tilde{\mathcal{F}} := \setdefsz{\bigg}{z \in \C}{\abs{\Re{z}} < \reci{2} \text{ and } \abs{z} > 1}
+\end{equation}
+is a fundamental region for the action of $\PSL{\Z}$ on $\EC \setminus \Irrat$. The part of $\tilde{\mathcal{F}}$ lying in the upper halfplane $\mathcal{H}$, \ie the set
+\begin{equation}
+\mathcal{F} := \tilde{\mathcal{F}} \cap \mathcal{H}
+\end{equation}
+is fundamental with respect to the action of $\PSL{\Z}$ on $\EU$.
+\end{theorem}
+\begin{proof}
+The second statement that $\mathcal{F} = \tilde{\mathcal{F}} \cap \mathcal{H}$ is fundamental region for $\PSL{\Z}$ acting on $\EU$ is a simple consequence of the first statement. For proving that $\tilde{\mathcal{F}}$ is fundamental,  observe that $\tilde{\mathcal{F}}$ is exactly the set
+\begin{equation*}
+\tilde{\mathcal{F}} = \mathcal{R} \cap \setdef{z \in \C}{\abs{z} > 1},
+\end{equation*}
+with $\mathcal{R}$ as in (\ref{eqn_PSL2MinRegion}) -- compare also Figure~\ref{fig_PSL2MinRegion}. Obviously $\tilde{\mathcal{F}}$ is a nonempty open subset of $\mathcal{R}$, which is why two distinct points of $\tilde{\mathcal{F}}$ can be equivalent only by the transformation $T$. However, since $\abs{z} > 1$ implies $\abs{Tz} = \abs{-1/z} < 1$, this is impossible. Therefore $\tilde{\mathcal{F}}$ contains no equivalent distinct points.
+
+It remains to show that every $z = \frac{u}{v} \in \mathcal{S}$ is equivalent to a point of the topological closure $\topcl{\tilde{\mathcal{F}}}$ of $\tilde{\mathcal{F}}$. For this purpose apply the algorithm of Theorem~\ref{thm_SL2FunDomAlg} to the vector $({}^u_v) \in \hat{\mathcal{S}}$ in order to obtain a transformation $B \in \PSL{\Z}$ which maps $z$ to a point of $\topcl{\mathcal{R}}$. It then follows that at least one of the points $Bz$ or $TBz$ lies in $\topcl{\tilde{\mathcal{F}}}$.
 \end{proof}
+
+We now wish to obtain a \emph{fundamental set} for the action of $\PSL{\Z}$ on $\EU$. For this purpose we need to consider the boundary of $\mathcal{F}$ which we segment into the following four ``boundary arcs'':
+\begin{eqnarray*}
+a &:=& \setdefsz{\bigg}{-\reci{2} + y \ii}{y \ge \frac{\sqrt{3}}{2}} \cup \{\infty\},\\
+b &:=& \setdefsz{\bigg}{+\reci{2} + y \ii}{y \ge \frac{\sqrt{3}}{2}} \cup \{\infty\},\\
+c &:=& \setdefsz{\Big}{\ii \epo{+\ii \phi}}{0 \le \phi \le \frac{\pi}{6}},\\
+d &:=& \setdefsz{\Big}{\ii \epo{-\ii \phi}}{0 \le \phi \le \frac{\pi}{6}}.
+\end{eqnarray*}
+Clearly these boundary arcs are mapped onto each other by
+\begin{equation*}
+Ua = b \quad \text{and} \quad Tc = d.
+\end{equation*}
+To see that no additional transformations other than $U$, $\inv{U}$ and $T$ can establish equivalence of boundary points of $\mathcal{F}$, we just need to consider a finite number of transformations: It follows from Theorem~\ref{thm_SL2FunDomGlobMin}, that it is sufficient to look at transformations $A \in \PSL{\Z}$ with $n(A) \le 3$. 
 
 \begin{figure}
 \centering
