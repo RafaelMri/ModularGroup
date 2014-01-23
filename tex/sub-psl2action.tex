@@ -17,7 +17,7 @@ Projection of the set $\hat{\mathcal{R}} \subseteq \C^2$ leads to the region $\m
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{figures/minimal-region}
-\caption{The region $\mathcal{R}$ of numbers $z = u/v \in \EC$ with $\abs{u\conj{v} + \conj{u}v} < \min\{\abs{u}^2,\abs{v}^2\}$. It is obtained by taking the strip $\setdefsz{\big}{z \in \C}{\abs{\Re{z}} < \reci{2}}$  and cutting out two closed disks of unit radius centered about the real points $\pm 1$. The arising vertices are labeled. As usual, $T$ is the transformation $z \mapsto -\reci{z}$ and $\rho = \exp(2 \pi \ii / 3)$ is a third root of unity.}
+\caption{The region $\mathcal{R} \subseteq \EC$ of numbers $z = u/v \in \EC$ with $\abs{u\conj{v} + \conj{u}v} < \min\{\abs{u}^2,\abs{v}^2\}$. It is obtained by taking the strip $\setdefsz{\big}{z \in \C}{\abs{\Re{z}} < \reci{2}}$  and cutting out two closed disks of unit radius centered about the real points $\pm 1$. The arising vertices are labeled. As usual, $T$ is the transformation $z \mapsto -\reci{z}$ and $\rho = \exp(2 \pi \ii / 3)$ is a third root of unity.}
 \label{fig_PSL2MinRegion}
 \end{figure}
 It follows that $\mathcal{R}$ contains a fundamental region for the action of $\PSL{\Z}$ on $\EC \setminus \Irrat$. As in the homogeneous case, we see from Theorem~\ref{thm_SL2FunDomGlobMin} that equivalence of points within $\mathcal{R}$ can be established only by powers of the transformation $T \in \PSL{\Z}$. Since $T^2 = 1$, in order to obtain a fundamental region we now need to choose for each $z \in \mathcal{R}$ just exactly one of the equivalent points $z$ and $Tz$. This can for example be done such that $\abs{z} > 1$.
@@ -56,7 +56,6 @@ It remains to show that every $z = \frac{u}{v} \in \mathcal{S}$ is equivalent to
 
 We now wish to obtain a \emph{fundamental set} for the action of $\PSL{\Z}$ on $\EU$. For this purpose we need to consider the boundary of $\FunDom$ and to investigate equivalent boundary points and their associated transformations. It turns out that we can define a fundamental set for the action of $\PSL{Z}$ on $\EU$ the following way:
 
-% We therefore can define a fundamental set for the action of $\PSL{Z}$ on $\EU$ the following way:
 \begin{theorem}[The fundamental set $\FunSet$]
 \label{thm_PSL2FunSet}
 Denote by $\FunDom$ the fundamental region from (\ref{eqn_PSL2FunDom}). The boundary of $\FunDom$ shall be segmented into the four ``boundary arcs'',
@@ -66,7 +65,7 @@ b &:=& \setdefsz{\bigg}{+\reci{2} + y \ii}{y \ge \frac{\sqrt{3}}{2}} \cup \{\inf
 c &:=& \setdefsz{\Big}{\ii \epo{+\ii \phi}}{0 \le \phi \le \frac{\pi}{6}},\\
 d &:=& \setdefsz{\Big}{\ii \epo{-\ii \phi}}{0 \le \phi \le \frac{\pi}{6}}.
 \end{eqnarray*}
-This boundary arcs are mapped onto each other by $Ua = b$ and $Tc = d$. The set
+These boundary arcs are mapped onto each other by $Ua = b$ and $Tc = d$. The set
 \begin{equation}
 \label{eqn_PSL2FunSet}
 \FunSet := \FunDom \cup a \cup c
@@ -76,6 +75,29 @@ is a fundamental set for the action of $\PSL{\Z}$ on the extended upper halfplan
 \begin{proof}
 It follows from Theorem~\ref{thm_SL2FunDomGlobMin} that equivalence of boundary points of $\FunDom$ can only be established by transformations $A \in \PSL{Z}$ with $n(A) \le 3$. The full list of candidate transformations therefore comprises of 9 transformations: $T$, $U$, $TU$, $UT$, $TUT$ and the respective inverse transformations (note that $T$ is self-inverse). After looking at these transformations individually, it turns out that in fact only $T$ and $U$ (and $\inv{U}$) map boundary points to boundary points. Indeed $Ua = b$ and $Tc = d$ can readily be seen.
 \end{proof}
+
+\begin{remark}
+\label{rem_PSL2FunDomGenDisks}
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{figures/fundom}
+\caption{The fundamental domain $\FunDom$ for the action of the modular group $\PSL{\Z}$ on the extended upper halfplane $\EU$. It is bounded by ``generalized arcs'' $a$, $b$, $c$ and $d$ which correspond to the generalized disks $\mathbb{A}$, $\mathbb{B}$ and the unit disk $\mathbb{D}$. There is a unique disk $\mathcal{I}$ which is tangent $\mathbb{A}$, $\mathbb{B}$ and $\mathbb{D}$.}
+\label{fig_PSL2FunDom}
+\end{figure}
+In Figure~\ref{fig_PSL2FunDom}, we see that the fundamental region $\FunDom$ can also be described in terms of generalized disks (see Definition~\ref{dfn_GenDisk}): With the terminology of Theorem~\ref{thm_PSL2FunSet}, the boundary arcs $a$ and $b$ are indeed ``generalized arcs'' of the closed generalized disks
+\begin{equation*}
+\mathbb{A} := \mat{0}{1}{1}{1} \quad \text{and} \quad \mathbb{B} := \mat{\phantom{+}0}{-1}{-1}{\phantom{+}1}
+\end{equation*}
+respectively. The boundary arcs $c$ and $d$ are part of the boundary of the closed unit disk
+\begin{equation*}
+\mathbb{D} := \mat{1}{\phantom{+}0}{0}{-1}.
+\end{equation*}
+We see that the fundamental region $\FunDom$ can be characterized as set complement of the union of these three closed g-disks:
+\begin{equation*}
+\FunDom = \EU \setminus \left(\mathbb{A} \cup \mathbb{B} \cup \mathbb{D}\right).
+\end{equation*}
+Moreover there exists a unique (open) disk $\mathcal{I} \subseteq \FunDom$, which is tangent to $\mathbb{A}$, $\mathbb{B}$ and $\mathbb{D}$ which we may the \emph{indisk} $\mathcal{I}$ of $\FunDom$.
+\end{remark}
 
 The fact that $\FunSet$ is a fundamental set for the action of $\PSL{\Z}$ on $\EU$ can be reformulated as follows: For every point $z \in \EU$ there exists a unique transformation $A \in \PSL{\Z}$ such that $z \in A \FunSet$. In order to determine this transformation, we can adopt the algorithm of Theorem~\ref{thm_SL2FunDomAlg}:
 
@@ -88,7 +110,7 @@ Increment $j$ by one and set $z_j := B_j z$. If $z_j \in \FunSet$, then goto ste
 \item \label{itm_PSL2FunSetAlgEjDef}
 Set $e_j := \floor{\Re{z_j} + \reci{2}}$. 
 \item \label{itm_PSL2FunSetAlgNext}
-If $U^{-e_j} z_j \in \FunSet$, set $B_{j+1} := U^{-e_j}B_j$ -- else set $B_{j+1} := TU^{-e_j}B_j$.
+If $z_j - e_j \in \FunSet$, set $B_{j+1} := U^{-e_j}B_j$ -- else set $B_{j+1} := TU^{-e_j}B_j$.
 \item Continue with step \ref{itm_PSL2FunSetAlgLoop}.
 \item \label{itm_PSL2FunSetAlgDone} 
 The desired matrix $A$ is given by $A = \inv{B_j}$.
@@ -99,8 +121,8 @@ Note that the above is essentially a reformulation of the algorithm of Theorem~\
 \begin{enumerate}[\quad (a)]
 \item The algorithm is reformulated for the inhomogeneous case. The numbers $z_j$ from above and the vectors $x_j$ from the proof of Theorem~\ref{thm_SL2FunDomAlg} correspond by $z_j = \pi(x_j)$.
 \item \label{itm_PSL2FunDomAlgModNint}
-Instead of using the $\nint{}$ function, we use the above definition  for determining the coefficients $e_j$ -- see step \ref{itm_PSL2FunSetAlgEjDef}. This is to ensure that $U^{-e_j} z_j \in [-\reci{2}, \reci{2})$ -- otherwise we would have problems with the termination of the algorithm for the case $\Re{z_j} = \reci{2}$.
-\item Theorem~\ref{thm_SL2FunDomAlg} yields a final vector $x_n$ such that $z_n = \pi(x_n) \in \mathcal{R}$, where $\mathcal{R}$ is defined as in (\ref{eqn_SL2MinRegionDef}). In order to obtain a point in $\FunSet \subseteq \mathcal{R}$, we need to apply to it possibly $T$ and -- if this point lies on the boundary arc $b$ (as defined in Theorem~\ref{thm_PSL2FunSet}) -- possibly $U^{-1}$. We take this into account by explicitly checking whether the application of $T$ in the last iteration of the algorithm is necessary or not (see step \ref{itm_PSL2FunSetAlgNext}) and by the modification discussed in (\ref{itm_PSL2FunDomAlgModNint}).\qedhere
+Instead of using the $\nint{}$ function, we use the above definition  for determining the coefficients $e_j$ -- see step \ref{itm_PSL2FunSetAlgEjDef}. This is to ensure that $z_j - e_j \in [-\reci{2}, \reci{2})$ -- otherwise we would have problems with the termination of the algorithm for the case when some $z_j$ lies on the boundary arc $b$ (as defined in Theorem~\ref{thm_PSL2FunSet}).
+\item Theorem~\ref{thm_SL2FunDomAlg} yields a final vector $x_n$ such that $w := \pi(x_n) \in \topcl{\mathcal{R}}$, where $\mathcal{R}$ is defined as in (\ref{eqn_SL2MinRegionDef}). In order to obtain a point in $\FunSet \subseteq \topcl{\mathcal{R}}$, we need to apply to $w$ possibly $T$ and -- if this point lies on the boundary arc $b$ -- possibly $U^{-1}$. We take this into account by explicitly checking whether the application of $T$ in the last iteration of the algorithm is necessary or not (see step \ref{itm_PSL2FunSetAlgNext}) and by the modification discussed in (\ref{itm_PSL2FunDomAlgModNint}).\qedhere
 \end{enumerate}
 \end{proof}
 
