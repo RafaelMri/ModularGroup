@@ -54,40 +54,57 @@ with $\mathcal{R}$ as in (\ref{eqn_PSL2MinRegion}) -- compare also Figure~\ref{f
 It remains to show that every $z = \frac{u}{v} \in \mathcal{S}$ is equivalent to a point of the topological closure $\topcl{\tilde{\FunDom}}$ of $\tilde{\FunDom}$. For this purpose apply the algorithm of Theorem~\ref{thm_SL2FunDomAlg} to the vector $({}^u_v) \in \hat{\mathcal{S}}$ in order to obtain a transformation $B \in \PSL{\Z}$ which maps $z$ to a point of $\topcl{\mathcal{R}}$. It then follows that at least one of the points $Bz$ or $TBz$ lies in $\topcl{\tilde{\FunDom}}$.
 \end{proof}
 
-We now wish to obtain a \emph{fundamental set} for the action of $\PSL{\Z}$ on $\EU$. For this purpose we need to consider the boundary of $\FunDom$ and to investigate equivalent boundary points and their associated transformations. It follows from Theorem~\ref{thm_SL2FunDomGlobMin}, that equivalence of boundary points of $\FunDom$ can only be established by transformations $A \in \PSL{Z}$ with $n(A) \le 3$. The full list of candidate transformations therefore comprises of 9 transformations: $T$, $U$, $TU$, $UT$, $TUT$ and the respective inverse transformations (note that $T$ is self-inverse). After looking at these transformations individually, it turns out that in fact only $T$ and $U$ (and $\inv{U}$) map boundary points to boundary points. If we segment the boundary of $\FunDom$ into four ``boundary arcs'',
+We now wish to obtain a \emph{fundamental set} for the action of $\PSL{\Z}$ on $\EU$. For this purpose we need to consider the boundary of $\FunDom$ and to investigate equivalent boundary points and their associated transformations. It turns out that we can define a fundamental set for the action of $\PSL{Z}$ on $\EU$ the following way:
+
+% We therefore can define a fundamental set for the action of $\PSL{Z}$ on $\EU$ the following way:
+\begin{theorem}[The fundamental set $\FunSet$]
+\label{thm_PSL2FunSet}
+Denote by $\FunDom$ the fundamental region from (\ref{eqn_PSL2FunDom}). The boundary of $\FunDom$ shall be segmented into the four ``boundary arcs'',
 \begin{eqnarray*}
 a &:=& \setdefsz{\bigg}{-\reci{2} + y \ii}{y \ge \frac{\sqrt{3}}{2}} \cup \{\infty\},\\
 b &:=& \setdefsz{\bigg}{+\reci{2} + y \ii}{y \ge \frac{\sqrt{3}}{2}} \cup \{\infty\},\\
 c &:=& \setdefsz{\Big}{\ii \epo{+\ii \phi}}{0 \le \phi \le \frac{\pi}{6}},\\
-d &:=& \setdefsz{\Big}{\ii \epo{-\ii \phi}}{0 \le \phi \le \frac{\pi}{6}},
+d &:=& \setdefsz{\Big}{\ii \epo{-\ii \phi}}{0 \le \phi \le \frac{\pi}{6}}.
 \end{eqnarray*}
-we see that they are mapped onto each other by $Ua = b$ and $Tc = d$. We thus can define a fundamental set for the action of $\PSL{Z}$ on $\EU$ the following way:
-\begin{corollary}
-\label{cor_PSL2FunSet}
-Let the sets $a$ and $b$ be defined as above and denote by $\FunDom$ the fundamental region from (\ref{eqn_PSL2FunDom}). The set
+This boundary arcs are mapped onto each other by $Ua = b$ and $Tc = d$. The set
 \begin{equation}
 \label{eqn_PSL2FunSet}
 \FunSet := \FunDom \cup a \cup c
 \end{equation}
 is a fundamental set for the action of $\PSL{\Z}$ on the extended upper halfplane $\EU$.
-\end{corollary}
+\end{theorem}
+\begin{proof}
+It follows from Theorem~\ref{thm_SL2FunDomGlobMin} that equivalence of boundary points of $\FunDom$ can only be established by transformations $A \in \PSL{Z}$ with $n(A) \le 3$. The full list of candidate transformations therefore comprises of 9 transformations: $T$, $U$, $TU$, $UT$, $TUT$ and the respective inverse transformations (note that $T$ is self-inverse). After looking at these transformations individually, it turns out that in fact only $T$ and $U$ (and $\inv{U}$) map boundary points to boundary points. Indeed $Ua = b$ and $Tc = d$ can readily be seen.
+\end{proof}
 
 The fact that $\FunSet$ is a fundamental set for the action of $\PSL{\Z}$ on $\EU$ can be reformulated as follows: For every point $z \in \EU$ there exists a unique transformation $A \in \PSL{\Z}$ such that $z \in A \FunSet$. In order to determine this transformation, we can adopt the algorithm of Theorem~\ref{thm_SL2FunDomAlg}:
 
-\begin{theorem}
-Let $z \in \EU$ be a point of the extended upper halfplane. The unique transformation $A$ satisfying $z \in A \FunSet$ can be found by performing the following steps:
+\begin{theorem}[The fundamental set algorithm]
+Let $z \in \EU$ be a point of the extended upper halfplane and the fundamental set $\FunSet$ be defined as above. The unique transformation $A$ satisfying $z \in A \FunSet$ can be found by performing the following steps:
 \begin{enumerate}
 \item Set $j := -1$ and $B_0 := 1$.
 \item \label{itm_PSL2FunSetAlgLoop}
-Increment $j$ by one. If $B_j z \in \FunSet$, then goto step \ref{itm_PSL2FunSetAlgDone}.
-\item Set $e_j := \nint{\Re{z}}$. 
-\item If $U^{-e_j}B_j z \in \FunSet$, set $B_{j+1} := U^{-e_j}B_j$ -- else set $B_{j+1} := TU^{-e_j}B_j$.
+Increment $j$ by one and set $z_j := B_j z$. If $z_j \in \FunSet$, then goto step \ref{itm_PSL2FunSetAlgDone}.
+\item \label{itm_PSL2FunSetAlgEjDef}
+Set $e_j := \floor{\Re{z_j} + \reci{2}}$. 
+\item \label{itm_PSL2FunSetAlgNext}
+If $U^{-e_j} z_j \in \FunSet$, set $B_{j+1} := U^{-e_j}B_j$ -- else set $B_{j+1} := TU^{-e_j}B_j$.
 \item Continue with step \ref{itm_PSL2FunSetAlgLoop}.
-\item \label{itm_PSL2FunSetAlgDone} The desired matrix $A$ is given by $A = \inv{B_j}$.
+\item \label{itm_PSL2FunSetAlgDone} 
+The desired matrix $A$ is given by $A = \inv{B_j}$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+Note that the above is essentially a reformulation of the algorithm of Theorem~\ref{thm_SL2FunDomAlg} with the following modifications:
+\begin{enumerate}[\quad (a)]
+\item The algorithm is reformulated for the inhomogeneous case. The numbers $z_j$ from above and the vectors $x_j$ from the proof of Theorem~\ref{thm_SL2FunDomAlg} correspond by $z_j = \pi(x_j)$.
+\item \label{itm_PSL2FunDomAlgModNint}
+Instead of using the $\nint{}$ function, we use the above definition  for determining the coefficients $e_j$ -- see step \ref{itm_PSL2FunSetAlgEjDef}. This is to ensure that $U^{-e_j} z_j \in [-\reci{2}, \reci{2})$ -- otherwise we would have problems with the termination of the algorithm for the case $\Re{z_j} = \reci{2}$.
+\item Theorem~\ref{thm_SL2FunDomAlg} yields a final vector $x_n$ such that $z_n = \pi(x_n) \in \mathcal{R}$, where $\mathcal{R}$ is defined as in (\ref{eqn_SL2MinRegionDef}). In order to obtain a point in $\FunSet \subseteq \mathcal{R}$, we need to apply to it possibly $T$ and -- if this point lies on the boundary arc $b$ (as defined in Theorem~\ref{thm_PSL2FunSet}) -- possibly $U^{-1}$. We take this into account by explicitly checking whether the application of $T$ in the last iteration of the algorithm is necessary or not (see step \ref{itm_PSL2FunSetAlgNext}) and by the modification discussed in (\ref{itm_PSL2FunDomAlgModNint}).\qedhere
+\end{enumerate}
+\end{proof}
 
-Now that we have found a fundamental region and fundamental set, we will investigate how they are mapped by modular transformations. Here it is beneficial to use an alternative description of the fundamental region $\FunDom$ in terms of generalized disks (see Definition~{\ref{dfn_GenDisk}}).  
+%Now that we have found a fundamental region and fundamental set, we will investigate how they are mapped by modular transformations. Here it is beneficial to use an alternative description of the fundamental region $\FunDom$ in terms of generalized disks (see Definition~{\ref{dfn_GenDisk}}).  
 
 \begin{figure}
 \centering

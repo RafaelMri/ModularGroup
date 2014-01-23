@@ -14,7 +14,7 @@ O_x := \PSL{\Z} x = \setdef{Ax}{A \in \SL{\Z}} \subseteq \C^2.
 \end{equation}
 We now wish to find a fundamental set (or at least a fundamental region) with respect to action of $\SL{\Z}$ on $\C^2$. For this purpose, we need to choose exactly one vector $\tilde{x}$ from each of the orbits $O_x$, $x \in \C^2$. In order to restrict the number of candidate vectors to an easily manageable number, we could try to first look just at vectors with minimal $\eucnorm{\cdot}$-norm in $O_x$. The problem with this is that in general the orbit $O_x$ might contain vectors of arbitrary small $\eucnorm{\cdot}$-norm -- in other words $\min{\eucnorm{O_x}}$ might in general not necessarily exist. However, in many cases it does:
 
-\begin{lemma}
+\begin{lemma}[Existence of $\min{\eucnorm{O-x}}$]
 \label{lem_SL2FunDomMinExists}
 Let $x = ({}^u_v) \in \C^2$ be a vector with $u,v$ being linear independent over $\R$. For every $r > 0$, there are only finitely many points $y \in O_x$ with $\eucnorm{y} \le r$. In particular, $m := \min{\eucnorm{O_x}}$ exists and $m > 0$.
 \end{lemma}
@@ -65,10 +65,10 @@ Using similar arguments as in Lemma~\ref{lem_SL2FunDomMin} -- in particular item
 \end{equation*}
 which can easily be rewritten to
 \begin{equation}
-\label{eqn_SL2MinRegion}
+\label{eqn_SL2MinRegionCond}
 \abs{y_1 \conj{y_2} + \conj{y_1} y_2} \le \min\{\abs{y_1}^2, \abs{y_2}^2\}.
 \end{equation}
-The question arises, if $y$ is just a ``local minimum'' in the sense (\ref{eqn_SL2FunDomLokMin}) or if (\ref{eqn_SL2MinRegion}) already implies the global minimality of $y$, \ie $\eucnorm{y} = \min \eucnorm{O_x}$. The following theorem will give us insight on this.
+The question arises, if $y$ is just a ``local minimum'' in the sense (\ref{eqn_SL2FunDomLokMin}) or if (\ref{eqn_SL2MinRegionCond}) already implies the global minimality of $y$, \ie $\eucnorm{y} = \min \eucnorm{O_x}$. The following theorem will give us insight on this.
 
 \begin{theorem}
 \label{thm_SL2FunDomGlobMin}
@@ -127,7 +127,7 @@ In both cases (\ref{eqn_SL2FunDomIneq}) is strictly fulfilled, which proves (\re
 For $n(A) = 3$ we have $\{(a^2 + c^2 - 1),(b^2 + d^2 - 1)\} = \{0,1\}$, which means that the left hand side simplifies to either $\abs{u}^2$ or $\abs{v}^2$, whereas on the right hand side we have $\abs{u\conj{v} + \conj{u}v}$ as upper bound, because of $(ab + cd) = \pm 1$. Since $\abs{u\conj{v} + \conj{u}v} < \min\{\abs{u}^2,\abs{v}^2\}$, inequality (\ref{eqn_SL2FunDomIneqB}) is thus satisfied.
 \end{proof}
 
-We can now summarize the algorithm and prove its correctness. Note that we can slightly relax the requirement on the coordinates of $x = ({}^u_v)$ being linear independent over $\R$. We will see that the algorithm works as well in the case when $u$ and $v$ are linear dependent over $\Q$.
+We can now summarize the algorithm and prove its correctness. Note that we can slightly relax the requirement on the coordinates of $x = ({}^u_v)$ being linear independent over $\R$. We will see that with a minor adaption the algorithm works as well in the case when $u$ and $v$ are linear dependent over $\Q$.
 
 \begin{theorem}
 \label{thm_SL2FunDomAlg}
@@ -194,7 +194,7 @@ According to Lemma~{\ref{lem_SL2FunDomMinExists}}, the set $O_x \cap K_{\eucnorm
 \begin{equation*}
 TU^{-e_n} \cdots TU^{-e_1} TU^{-e_0} x_0 = x_n.
 \end{equation*}
-Since the vector $y := x_n$ satisfies (\ref{eqn_SL2FunDomLokMin}) and consequently ({\ref{eqn_SL2MinRegion}}), we conclude from  Theorem~\ref{thm_SL2FunDomGlobMin} that $\eucnorm{y} = \min{\eucnorm{O_x}}$. 
+Since the vector $y := x_n$ satisfies (\ref{eqn_SL2FunDomLokMin}) and consequently ({\ref{eqn_SL2MinRegionCond}}), we conclude from  Theorem~\ref{thm_SL2FunDomGlobMin} that $\eucnorm{y} = \min{\eucnorm{O_x}}$. 
 
 In both cases (linear dependence of $u,v$ over $\Q$ or linear independence over $\R$), we trivially have $\eucnorm{y} = \eucnorm{\inv{T}y}$ and we therefore can define $B$ as in ($\ref{eqn_SL2FunDomMinMat}$).
 \end{proof}
