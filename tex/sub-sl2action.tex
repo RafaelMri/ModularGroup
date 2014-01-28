@@ -4,15 +4,15 @@ The homogeneous modular group $\SL{\Z}$ naturally acts on the vector space $\C^2
 \begin{equation*}
 A x = \mat{a}{b}{c}{d} \cvec{u}{v} = \cvec{a u + b v}{c u + d v}.
 \end{equation*}
-We equip $\C^2$ with the standard Euclidean norm: 
+We equip $\C^2$ with the standard Euclidean norm
 \begin{equation*}
-\eucnorm{x} := \sqrt{\abs{u}^2 + \abs{v}^2}.
+\eucnorm{x} := \sqrt{\abs{u}^2 + \abs{v}^2}
 \end{equation*}
-Let us denote the orbit of $x$ under $\PSL{\Z}$ by 
+and its induced topology. Let us denote the orbit of $x$ under $\PSL{\Z}$ by 
 \begin{equation}
 O_x := \PSL{\Z} x = \setdef{Ax}{A \in \SL{\Z}} \subseteq \C^2.
 \end{equation}
-We now wish to find a fundamental set (or at least a fundamental region) with respect to action of $\SL{\Z}$ on $\C^2$. For this purpose, we need to choose exactly one vector $\tilde{x}$ from each of the orbits $O_x$, $x \in \C^2$. In order to restrict the number of candidate vectors to an easily manageable number, we could try to first look just at vectors with minimal $\eucnorm{\cdot}$-norm in $O_x$. The problem with this is that in general the orbit $O_x$ might contain vectors of arbitrary small $\eucnorm{\cdot}$-norm -- in other words $\min{\eucnorm{O_x}}$ might in general not necessarily exist. However, in many cases it does:
+We now wish to find a fundamental set (or at least a fundamental region) with respect to action of $\SL{\Z}$ on $\C^2$. For this purpose, we need to choose exactly one vector $\tilde{x}$ from each of the orbits $O_x$, $x \in \C^2$. In order to restrict the number of candidate vectors to an easily manageable number, we could try to first look just at vectors with minimal $\eucnorm{\cdot}$-norm in $O_x$. The problem with this idea is that in general the orbit $O_x$ might contain vectors of arbitrary small $\eucnorm{\cdot}$-norm -- in other words $\min{\eucnorm{O_x}}$ might in general not necessarily exist. However, in many cases it does:
 
 \begin{lemma}[Existence of $\min{\eucnorm{O-x}}$]
 \label{lem_SL2FunDomMinExists}

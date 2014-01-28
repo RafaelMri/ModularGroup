@@ -23,7 +23,7 @@ Projection of the set $\hat{\mathcal{R}} \subseteq \C^2$ leads to the region $\m
 It follows that $\mathcal{R}$ contains a fundamental region for the action of $\PSL{\Z}$ on $\EC \setminus \Irrat$. As in the homogeneous case, we see from Theorem~\ref{thm_SL2FunDomGlobMin} that equivalence of points within $\mathcal{R}$ can be established only by powers of the transformation $T \in \PSL{\Z}$. Since $T^2 = 1$, in order to obtain a fundamental region we now need to choose for each $z \in \mathcal{R}$ just exactly one of the equivalent points $z$ and $Tz$. This can for example be done such that $\abs{z} > 1$.
 
 \index{Extended upper halfplane}
-Note that for understanding the group action of $\PSL{\Z}$ on $\EC \setminus \Irrat$ it is sufficient to look at either the upper or lower halfplane of $\C$, since the group action one halfplane can be easily understood from the group action on the other halfplane, as we trivially have $Az = \conj{A\conj{z}}$. Let us therefore denote by $\mathcal{H}$ the upper halfplane and by $\EU$ the \emph{extended upper halfplane}:
+Note that for understanding the group action of $\PSL{\Z}$ on $\EC \setminus \Irrat$ it is sufficient to look at either the upper or lower halfplane of $\C$, since the group action on one halfplane can be easily understood from the group action on the other halfplane, as we trivially have $Az = \conj{A\conj{z}}$. Let us therefore denote by $\mathcal{H}$ the upper halfplane and by $\EU$ the \emph{extended upper halfplane}:
 \begin{eqnarray}
 \label{eqn_UpperHalfplane}\mathcal{H} &:=& \setdefsz{\big}{z \in \C}{\Im{z} > 0} \\
 \label{eqn_ExtUpperHalfplane}
@@ -49,7 +49,7 @@ The second statement that $\FunDom = \tilde{\FunDom} \cap \mathcal{H}$ is fundam
 \begin{equation*}
 \tilde{\FunDom} = \mathcal{R} \cap \setdef{z \in \C}{\abs{z} > 1},
 \end{equation*}
-with $\mathcal{R}$ as in (\ref{eqn_PSL2MinRegion}) -- compare also Figure~\ref{fig_PSL2MinRegion}. Obviously $\tilde{\FunDom}$ is a nonempty open subset of $\mathcal{R}$, which is why two distinct points of $\tilde{\FunDom}$ can be equivalent only by the transformation $T$. However, since $\abs{z} > 1$ implies $\abs{Tz} = \abs{-1/z} < 1$, this is impossible. Therefore $\tilde{\FunDom}$ contains no equivalent distinct points.
+with $\mathcal{R}$ defined as in (\ref{eqn_PSL2MinRegion}) -- compare also Figure~\ref{fig_PSL2MinRegion}. Obviously $\tilde{\FunDom}$ is a nonempty open subset of $\mathcal{R}$, which is why two distinct points of $\tilde{\FunDom}$ can be equivalent only by the transformation $T$. However, since $\abs{z} > 1$ implies $\abs{Tz} = \abs{-1/z} < 1$, this is impossible. Therefore $\tilde{\FunDom}$ contains no equivalent distinct points.
 
 It remains to show that every $z = \frac{u}{v} \in \mathcal{S}$ is equivalent to a point of the topological closure $\topcl{\tilde{\FunDom}}$ of $\tilde{\FunDom}$. For this purpose apply the algorithm of Theorem~\ref{thm_SL2FunDomAlg} to the vector $({}^u_v) \in \hat{\mathcal{S}}$ in order to obtain a transformation $B \in \PSL{\Z}$ which maps $z$ to a point of $\topcl{\mathcal{R}}$. It then follows that at least one of the points $Bz$ or $TBz$ lies in $\topcl{\tilde{\FunDom}}$.
 \end{proof}
