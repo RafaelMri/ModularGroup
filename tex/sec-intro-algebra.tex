@@ -105,14 +105,14 @@ G / \ker f \cong f(G).
 \end{equation*}
 \end{theorem}
 \begin{proof}
-Let us again denote the identity element of $H$ by $e_H$. Define $N := \ker f$ and a map $\phi : G/N \to f(G)$ by $aN \mapsto f(a)$. Now, for arbitrary $a,b \in G$ observe
+Let us again denote the identity element of $H$ by $e_H$. Define $N := \ker f$ and a map $\phi : G/N \to f(G)$ by $aN \mapsto f(a)$. Now for arbitrary $a,b \in G$ observe
 \begin{equation*}
 aN = bN \Leftrightarrow
 a \inv{b} \in N \Leftrightarrow
 e_H = f(a \inv{b}) = f(a) \inv{f(b)} \Leftrightarrow
 f(a) = f(b).
 \end{equation*}
-This shows two things: First ($\Rightarrow$), $\phi$ is well defined and second ($\Leftarrow$), $\phi$ is injective. Clearly, $\phi$ is also surjective and by definition we have
+This shows two things: First ($\Rightarrow$), $\phi$ is well defined and second ($\Leftarrow$), $\phi$ is injective. Clearly $\phi$ is also surjective and by definition we have
 \begin{equation*}
 \phi(aN) \phi(bN) = f(a) f(b) = f(ab) = \phi(abN) \quad \text{for all } a,b \in G.
 \end{equation*}
@@ -165,15 +165,15 @@ Having now defined a formal inverse for each of our symbols in the given alphabe
 \label{eqn_GrpWordReducedForm}
  \sigma_j \ne \sigma_{j+1}^{-1} \quad \text{for all } 1 \le j < n.
 \end{equation}
-Clearly, every word $w \in \Words{\overline{\Syms}}$ can be brought into reduced form by successively ``canceling out'' adjacent inverse symbols until finally a word is obtained, which satisfies (\ref{eqn_GrpWordReducedForm}). We call the result of this procedure the \emph{reduced form of $w$}. Additionally, we define two words $w_1, w_2 \in \Words{\overline{\Syms}}$ to be \emph{equivalent}, if and only if they have the same reduced form and we write $w_1 \sim w_2$ in this case. If we denote the reduced form of $w$ by $\phi(w)$, we can write
+Clearly every word $w \in \Words{\overline{\Syms}}$ can be brought into reduced form by successively ``canceling out'' adjacent inverse symbols until finally a word is obtained, which satisfies (\ref{eqn_GrpWordReducedForm}). We call the result of this procedure the \emph{reduced form of $w$}. Additionally we define two words $w_1, w_2 \in \Words{\overline{\Syms}}$ to be \emph{equivalent} if and only if they have the same reduced form and we write $w_1 \sim w_2$ in this case. If we denote the reduced form of $w$ by $\phi(w)$, we can write
 \begin{equation*}
 w_1 \sim w_2 \Leftrightarrow \phi(w_1) = \phi(w_2).
 \end{equation*}
-Moreover, we observe that if $w_1 \sim w_2$ and $v_1 \sim v_2$, then we also have $w_1 v_1 \sim w_2 v_2$ because $\phi(w_1) = \phi(w_2) =: w$ and $\phi(v_1) = \phi(v_2) =: v$ implies 
+Moreover we observe that if $w_1 \sim w_2$ and $v_1 \sim v_2$, then we also have $w_1 v_1 \sim w_2 v_2$ because $\phi(w_1) = \phi(w_2) =: w$ and $\phi(v_1) = \phi(v_2) =: v$ implies 
 \begin{equation*}
 \phi(w_1 v_1) = \phi(w v) = \phi(w_2 v_2).
 \end{equation*}
-Thus we see that the equivalence relation $\sim$ is compatible with the operation of word-concatenation. Therefore we can consider also the set of equivalence classes $\Words{\overline{\Syms}}/{\sim}$ as a monoid under the operation of word-concatenation. Obviously the set of reduced words is a system of representatives for $\Words{\overline{\Syms}}/{\sim}$ and we agree to denote an equivalence class $[w]_{\sim}$ simply by the reduced word $w$. $\Words{\overline{\Syms}}/{\sim}$ is not just a monoid, but in fact a group, as the inverse of a word $\sigma_1 \sigma_2 \dots \sigma_{n-1} \sigma_n$ is trivially given by $\sigma_n^{-1} \sigma_{n-1}^{-1} \dots \sigma_2^{-1} \sigma_1^{-1}$. We call a reduced word of $\Words{\overline{\Syms}}$ (resp. its corresponding equivalence class in $\Words{\overline{\Syms}}/{\sim}$) a \emph{group word over the alphabet $\Syms$}.
+Thus we see that the equivalence relation $\sim$ is compatible with the operation of word concatenation. Therefore we can consider also the set of equivalence classes $\Words{\overline{\Syms}}/{\sim}$ as a monoid under the operation of word concatenation. Obviously the set of reduced words is a system of representatives for $\Words{\overline{\Syms}}/{\sim}$ and we agree to denote an equivalence class $[w]_{\sim}$ simply by the reduced word $w$. $\Words{\overline{\Syms}}/{\sim}$ is not just a monoid, but in fact a group, as the inverse of a word $\sigma_1 \sigma_2 \dots \sigma_{n-1} \sigma_n$ is trivially given by $\sigma_n^{-1} \sigma_{n-1}^{-1} \dots \sigma_2^{-1} \sigma_1^{-1}$. We call a reduced word of $\Words{\overline{\Syms}}$ (resp. its corresponding equivalence class in $\Words{\overline{\Syms}}/{\sim}$) a \emph{group word over the alphabet $\Syms$}.
 
 \begin{definition}[Free group]
 \label{dfn_FreeGroup}
@@ -186,11 +186,11 @@ is called the \emph{free group over the alphabet $\Syms$}.
 \end{definition}
 
 \begin{remark}
-In the exceptional case, when $\Syms = \emptyset$,  we obtain the trivial group by this construction: Namely, if $\Syms = \emptyset$ then we can also choose $\inv{\Syms} = \emptyset$ ($\Syms$ and $\inv{\Syms}$ are then disjoint as required). It follows that also $\overline{\Syms}$ is empty and we end up with the trivial monoid $\Words{\overline{\Syms}} = \{\epsilon\}$, which corresponds to the trivial group.
+In the exceptional case when $\Syms = \emptyset$,  we obtain the trivial group by this construction: If $\Syms = \emptyset$ then we can also choose $\inv{\Syms} = \emptyset$ ($\Syms$ and $\inv{\Syms}$ are then disjoint as required). It follows that also $\overline{\Syms}$ is empty and we end up with the trivial monoid $\Words{\overline{\Syms}} = \{\epsilon\}$, which corresponds to the trivial group.
 \end{remark}
 
 \begin{example}
-Let $\Syms$ be the singleton set $\{a\}$. Now, the free group over $\Syms$ consists precisely of the following group words:
+Let $\Syms$ be the singleton set $\{a\}$. Now the free group over $\Syms$ consists precisely of the following group words:
 \begin{equation*}
 \FreeGrp{\Syms} = \{\epsilon, a, aa, aaa, \dots, \inv{a}, \inv{a}\inv{a},\dots\}.
 \end{equation*}
@@ -230,11 +230,11 @@ Let $\langle G, \cdot, 1 \rangle$ be a group and $\Syms \subseteq G$ a subset. W
 \forall g \in G\ \exists n \in \N,\ (\sigma_j) \in \Syms^n,\ (k_j) \in \Z^n:\quad 
 g = \sigma_1^{k_1} \sigma_2^{k_2} \dots \sigma_n^{k_n}.
 \end{equation}
-Moreover, in this case we call the elements of $\Syms$ \emph{generators} of $G$. 
+Moreover in this case we call the elements of $\Syms$ \emph{generators} of $G$. 
 \end{definition}
 
 \index{Group!relation}
-Let us first consider the case, when some $g \in G$ can be generated in two  different ways, for example
+Let us first consider the case when some $g \in G$ can be generated in two  different ways, for example
 \begin{equation*}
 g = \sigma_1^{k_1} \sigma_2^{k_2} \dots \sigma_n^{k_n} 
   = \tau_1^{\ell_1} \tau_2^{\ell_2} \dots \tau_m^{\ell_m}
@@ -245,9 +245,9 @@ with $\sigma_j, \tau_j \in \Syms$ and $k_j, \ell_j \in \Z$. This immediately giv
 \sigma_1^{k_1} \sigma_2^{k_e} \dots \sigma_n^{k_n} \cdot
 \tau_m^{-\ell_m} \tau_{m-1}^{-\ell_{m-1}} \dots \tau_1^{-\ell_1} = 1.
 \end{equation}
-We call the group word occurring on the left hand side of (\ref{eqn_GrpRelation}) a \emph{relation} on $G$. The set of all such possible relations on $G$ forms a normal subgroup of $\FreeGrp{\Syms}$. To see this, let $\phi : \Syms \to G$ be the canonical embedding. According to Theorem~\ref{thm_FreeGrpUniqueHom} there exists a unique extension of $\phi$ to a homomorphism $\overline{\phi}: \FreeGrp{\Syms} \to G$. In fact, this homomorphism just evaluates group words over $\Syms$ in the obvious way to concrete group elements in $G$. By definition, the set of all relations on $G$ is now given by $N := \ker(\overline{\phi})$ which is, by Lemma~\ref{lem_KernelAndImage}, a normal subgroup of $\FreeGrp{\Syms}$. It now follows from the first isomorphism theorem (Theorem~\ref{thm_FirstIsoThm}) that $G \cong \FreeGrp{\Syms} / N$. In the case, when the product representation in (\ref{eqn_GrpGenerators}) is unique for all $g \in G$, then $N$ just consists of the identity element and $G$ is isomorphic to $\FreeGrp{\Syms}$. In this case, $G$ is said to be \emph{relation-free}, which is where the terminology ``free group'' actually comes from. 
+We call the group word occurring on the left hand side of (\ref{eqn_GrpRelation}) a \emph{relation} on $G$. The set of all such possible relations on $G$ forms a normal subgroup of $\FreeGrp{\Syms}$. To see this, let $\phi : \Syms \to G$ be the canonical embedding. According to Theorem~\ref{thm_FreeGrpUniqueHom} there exists a unique extension of $\phi$ to a homomorphism $\overline{\phi}: \FreeGrp{\Syms} \to G$. In fact this homomorphism just evaluates group words over $\Syms$ in the obvious way to concrete group elements in $G$. By definition, the set of all relations on $G$ is now given by $N := \ker(\overline{\phi})$ which is, by Lemma~\ref{lem_KernelAndImage}, a normal subgroup of $\FreeGrp{\Syms}$. It now follows from the first isomorphism theorem (Theorem~\ref{thm_FirstIsoThm}) that $G \cong \FreeGrp{\Syms} / N$. In the case when the product representation in (\ref{eqn_GrpGenerators}) is unique for all $g \in G$, then $N$ just consists of the identity element and $G$ is isomorphic to $\FreeGrp{\Syms}$. In this case $G$ is said to be \emph{relation-free}, which is where the terminology ``free group'' actually comes from. 
 
-Summing up, we see that every group can be described by supplying a set of generators $\Syms$ and a the set of relations $N \unlhd \FreeGrp{\Syms}$. Of course, it is also sufficient to supply just a subset $R$ of relations from which the other relations can be derived. This leads to the following definition:
+Summing up, we see that every group can be described by supplying a set of generators $\Syms$ and a the set of relations $N \unlhd \FreeGrp{\Syms}$. Of course it is also sufficient to supply just a subset $R$ of relations from which the other relations can be derived. This leads to the following definition:
 
 \begin{definition}[Presentation of a group]
 \label{dfn_GrpConstructGenRel}
@@ -259,10 +259,10 @@ N := \bigcap_{R \subseteq N^{\prime} \unlhd \FreeGrp{\Syms}} N^{\prime}.
 \end{equation*}
 \item Define $G := \presentation{\Syms}{R} := \FreeGrp{\Syms}/N$.
 \end{enumerate}
-Finally, $\presentation{\Syms}{R}$ is called a \emph{presentation} of $G$.
+Finally $\presentation{\Syms}{R}$ is called a \emph{presentation} of $G$.
 \end{definition}
 
-For easier notation, we may omit braces when listing $\Syms$ and $R$ in a presentation of $G$. Moreover, we may write out relations more explicitly, for example instead of $G = \presentation{\{a\}}{\{a^2\}}$ we may write $G = \presentation{a}{a^2 = 1}$.
+For easier notation we may omit braces when listing $\Syms$ and $R$ in a presentation of $G$. Moreover we may write out relations more explicitly, for example instead of $G = \presentation{\{a\}}{\{a^2\}}$ we may write $G = \presentation{a}{a^2 = 1}$.
 
 \begin{remark}
 \index{Word problem}
@@ -286,7 +286,7 @@ Let $\presentation{\Syms}{R}$ be a presentation of the group $G$. If $H$ is any 
 \subsection{Free products}
 
 \index{Free!product}
-Let $\langle G_i, \cdot, e_i \rangle_{i \in I}$ a family of pairwise disjoint groups, \ie $G_i \cap G_j = \emptyset$ for $i \ne j$. We define the \emph{free product} of the family of groups $(G_i)_{i \in I}$ by a construction in terms of generators and relations (see Definition~\ref{dfn_GrpConstructGenRel}) as follows. As the set of generators we choose the alphabet $\Syms = \bigcup_{i \in I} G_i$ and as the set of relations we take all the relations coming from any of the groups $G_i$. Note that a priori the neutral elements $e_i \in G_i$ are all different symbols, but the final factorization by the normal subgroup $N$ automatically identifies them with each other, as $N$ includes all the $e_i$ as trivial relations.
+Let $\langle G_i, \cdot, e_i \rangle_{i \in I}$ a family of pairwise disjoint groups, \ie $G_i \cap G_j = \emptyset$ for $i \ne j$. We define the \emph{free product} of the family of groups $(G_i)_{i \in I}$ by a construction in terms of generators and relations (see Definition~\ref{dfn_GrpConstructGenRel}) as follows: As the set of generators we choose the alphabet $\Syms = \bigcup_{i \in I} G_i$ and as the set of relations we take all the relations coming from any of the groups $G_i$. Note that a priori the neutral elements $e_i \in G_i$ are all different symbols, but the final factorization by the normal subgroup $N$ automatically identifies them with each other, as $N$ includes all the $e_i$ as trivial relations.
 
 \begin{definition}[Free product]
 Let $(G_i)_{i \in I}$ be a family of disjoint groups. For every $i \in I$, let $\overline{\phi}_i$ be the unique extension of the identity map on $G_i$ to a homomorphism $\FreeGrp{G_i} \to G_i$ according to Theorem~\ref{thm_FreeGrpUniqueHom}.\footnote{In other words, $\overline{\phi}_i$ is the map which evaluates group words over the alphabet $G_i$ to concrete elements of $G_i$ in the obvious way.} The \emph{free product} of the family $(G_i)_{i \in I}$ is defined as
@@ -308,7 +308,7 @@ Let $F_n$ and $F_m$ be the free groups generated by $n$ and $m$ elements respect
 \end{example}
 
 \subsection{Basic linear groups}
-In this section, we give the definitions of some important basic groups, which will be needed throughout this document. We start with the general and special linear group.
+In this section we give the definitions of some important basic groups which will be needed throughout this document. We start with the general and special linear group.
 
 \begin{definition}[General linear group]
 \label{dfn_GenLinGrp}
@@ -334,7 +334,7 @@ Of course in the case, when $R$ is contained in the field $F$, then the special 
 \end{definition}
 
 \index{Group!center}
-For both, the general and special linear group, one can construct the \emph{projective groups} by identifying matrices which differ by a scalar multiple. For this purpose, we define the \emph{center} of a group $G$ in the usual way:
+For both, the general and special linear group, one can construct the \emph{projective groups} by identifying matrices which differ by a scalar multiple. For this purpose we define the \emph{center} of a group $G$ in the usual way:
 \begin{equation}
 \Center{G} := \setdef{z \in G}{zg = gz \quad \forall g \in G}.
 \end{equation}
@@ -357,12 +357,12 @@ As above, let $F$ be a field, $R$ a ring with 1 and $n > 0$. The \emph{projectiv
 
 \begin{example}
 \label{ex_ProjAndGenLinGrp}
-Consider a matrix $M \in \SL{\R}$. The equivalence class $[M]_{\sim} \in \PSL{\R}$ consists precisely of the two matrices $M$ and $-M$, whereas the equivalence class $[M]_{\sim} \in \PGL{\R}$ is just the set $\setdef{\lambda M}{\lambda \in \R \setminus \{0\}}$. For a clearer distinction of these equivalence classes, let us introduce the notation 
+Consider a matrix $M \in \SL{\R}$. The equivalence class $[M]_{\sim} \in \PSL{\R}$ consists precisely of the two matrices $M$ and $-M$, whereas the equivalence class $[M]_{\sim} \in \PGL{\R}$ is just the set $\setdef{\lambda M}{\lambda \in \R \setminus \{0\}}$. For a clearer distinction of these equivalence classes let us introduce the notation 
 \begin{eqnarray*}
 {}_{\pm}M     &:=& [M]_{\sim} \in \PSL{\R} \quad \text{and} \\
 {}_{\lambda}M &:=& [M]_{\sim} \in \PGL{\R}.
 \end{eqnarray*}
-Clearly, ${}_{\lambda}M = {}_{\lambda}(-M)$ which allows us to define an injective homomorphism $\iota$ which embeds $\PSL{\R}$ into $\PGL{\R}$:
+Clearly ${}_{\lambda}M = {}_{\lambda}(-M)$, which allows us to define an injective homomorphism $\iota$ which embeds $\PSL{\R}$ into $\PGL{\R}$:
 \begin{equation*}
 \iota : \left\{\begin{array}{rcl}
 \PSL{\R}  &\to&     \PGL{\R} \\

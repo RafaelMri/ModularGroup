@@ -29,7 +29,7 @@ Let $S$ be an admissible sphere and $n \in S$ be its north pole. If $x \in S \se
 \begin{remark}
 \label{rem_RiemannSphere}
 \index{Riemann sphere}
-Stereographic projection with regard to any admissible sphere $S \subseteq \R^3$ maps $S$ bijectively to $\EC$. Of course the most natural choice for $S$ in this context is the unit sphere $\UnitSphere := \setdef{x \in \R^3}{\eucnorm{x} = 1}$ having the advantage, that stereographic projection follows the simple formula
+Stereographic projection with regard to any admissible sphere $S \subseteq \R^3$ maps $S$ bijectively to $\EC$. Of course the most natural choice for $S$ in this context is the unit sphere $\UnitSphere := \setdef{x \in \R^3}{\eucnorm{x} = 1}$, having the advantage that stereographic projection follows the simple formula
 \begin{equation}
 \label{eqn_StdStereoProj}
 P_{\UnitSphere}:
@@ -43,7 +43,7 @@ P_{\UnitSphere}^{-1}: z \mapsto
 \reci{\abs{z}^2 + 1} 
 \begin{pmatrix}2 \Re{z} \\ 2 \Im{z} \\ \abs{z}^2 - 1\end{pmatrix}.
 \end{equation}
-By pointwise identifying $\EC$ with $S_1$ using the above two mappings, we obtain the $\emph{Riemann sphere}$ model of the extended complex plane. One of its benefits is, that certain functions $\EC \to \EC$ can be interpreted nicely as simple rotations of the Riemann sphere.
+By pointwise identifying $\EC$ with $S_1$ using the above two mappings, we obtain the $\emph{Riemann sphere}$ model of the extended complex plane. One of its benefits is that certain functions $\EC \to \EC$ can be interpreted nicely as simple rotations of the Riemann sphere.
 \end{remark}
 
 \begin{figure}
@@ -67,7 +67,7 @@ V: x \mapsto
 \cdot
 \begin{pmatrix}x_1 \\ x_2 \\ x_3 \end{pmatrix}.
 \end{equation}
-The first row of Figure~\ref{fig_StereoProjInversion} shows the upper halfplane $U$ on the left and the unit disk $D$ on the right together with their images under reverse stereographic projection. We see that both, $U$ and $D$, correspond to a certain ``halfsphere'' of the Riemann sphere. If we rotate these halfspheres around the $x_1$ axis (leaving the points $\{\pm 1\}$ fixed) and continuously perform stereographic projection, we see that after a half turn (in the last row of Figure~\ref{fig_StereoProjInversion}) we end up with $f(U)$, the lower halfplane and $f(D)$, the set of points $z$ with $\abs{z} > 1$. 
+The first row of Figure~\ref{fig_StereoProjInversion} shows the upper halfplane $U$ on the left and the unit disk $D$ on the right together with their images under reverse stereographic projection. We see that both, $U$ and $D$, correspond to a certain ``halfsphere'' of the Riemann sphere. If we rotate these halfspheres around the $x_1$ axis (leaving the points $\{\pm 1\}$ fixed) and continuously perform stereographic projection, we see that after a half turn (in the last row of Figure~\ref{fig_StereoProjInversion}) we end up with the lower halfplane $f(U)$ and the set of points $z$ with $\abs{z} > 1$, $f(D)$. 
 
 It is worth noting that this correspondence between rotation of the Riemann sphere by $180^\circ$ and the map $f : z \mapsto \reci{z}$ does not just hold for the specially chosen sets $U$ and $D$, but indeed pointwise for every $z \in \EC$. In other words, we have
 \begin{equation*}
@@ -148,7 +148,7 @@ It remains to show that every given transformation can indeed be realized in the
 \begin{description}
 \item[Translation:] The map $z \mapsto z + \alpha,\ \alpha \in \C$ can be realized by choosing an arbitrary admissible sphere $S$ and setting $T = T_{\alpha}: x \mapsto x + \iota(\alpha)$, which simply translates $S$ in a direction parallel to the $x_3 = 0$ plane by $\iota(\alpha)$.
 \item[Dilation:] The map $z \mapsto \rho z,\ \rho > 0$ can be obtained by choosing an arbitrary admissible sphere with north pole $n$ and setting $T = D_{\rho}: x \mapsto x + \left(0, 0, (\rho-1) n_3\right)$, which moves $S$ up- ($\rho > 1$)  or downwards ($\rho < 1$) in $x_3$ direction.
-\item[Rotation:] The map $z \mapsto \epo{\ii \theta} z,\ \theta \in (-\pi, \pi]$ can be realized by choosing an arbitrary admissible sphere with center and setting 
+\item[Rotation:] The map $z \mapsto \epo{\ii \theta} z,\ \theta \in (-\pi, \pi]$ can be realized by choosing an arbitrary admissible sphere and setting 
 \begin{equation*}
 T = R_{\theta}: x \mapsto 
 \begin{pmatrix}
@@ -162,7 +162,7 @@ T = R_{\theta}: x \mapsto
 which rotates $S$ around the $x_3$ axis by an angle of $\theta$.
 \item[Inversion:] We have seen in Example~\ref{ex_StereoProjInversion} that the map $z \mapsto \reci{z}$ can be realized by choosing $S$ as the unit sphere $\UnitSphere$ and setting $T = V$ -- as defined in (\ref{eqn_RiemannX1Rotation}) -- which is a rotation of $\UnitSphere$ around the $x_1$ axis by an angle of $180^{\circ}$.
 \end{description}
-Now, let $\phi(z) = \moebius{a}{b}{c}{d}{z}$ be an arbitrary Möbius transformation. As in the proof of Lemma~\ref{lem_MoebiusGenerators}, if $c = 0$ we may assume without restriction that $d = 1$ and therefore $\phi(z) = az + b$. Clearly this map can be realized in the form (\ref{eqn_MoebiusRevealedForm}) by starting with an arbitrary admissible sphere $S$ and taking $T$ as the composition of rotation by $\arg(a)$, dilation by $\abs{a}$ (in either order), followed by translation by $b$:
+Now let $\phi(z) = \moebius{a}{b}{c}{d}{z}$ be an arbitrary Möbius transformation. As in the proof of Lemma~\ref{lem_MoebiusGenerators}, if $c = 0$ we may assume without restriction that $d = 1$ and therefore $\phi(z) = az + b$. Clearly this map can be realized in the form (\ref{eqn_MoebiusRevealedForm}) by starting with an arbitrary admissible sphere $S$ and taking $T$ as the composition of rotation by $\arg(a)$, dilation by $\abs{a}$ (in either order), followed by translation by $b$:
 \begin{equation*}
 T := T_b \circ D_{\abs{a}} \circ R_{\arg(a)}.
 \end{equation*}

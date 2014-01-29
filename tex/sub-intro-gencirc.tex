@@ -38,20 +38,20 @@ In the case when $A = 0$, equation (\ref{eqn_GenCircle}) can be written as
 \begin{equation*}
 \Re{\frac{C}{\abs{C}} z} = -\frac{D}{2 \abs{C}},
 \end{equation*}
-which defines a line on the complex plane. We see this by considering the simpler equation $\Re{z} = -\frac{D}{2 \abs{C}}$ first (we omit the factor $\frac{C}{\abs{C}}$), which obviously defines a line parallel to the imaginary axis through the real point $-\frac{D}{2 \abs{C}}$. Then we observe that the multiplication with $\frac{C}{\abs{C}}$ just rotates this line around the origin by an angle which is given by $-\arg(C)$.
+which defines a line on the complex plane. We see this by considering the simpler equation $\Re{z} = -\frac{D}{2 \abs{C}}$ first (we omit the factor $\frac{C}{\abs{C}}$), which obviously defines a line parallel to the imaginary axis through the real point $-\frac{D}{2 \abs{C}}$. Then we observe that the multiplication with $\frac{C}{\abs{C}}$ just rotates this line around the origin by an angle which is given by $-\arg(C)$. 
 
-To conclude our considerations, we note that equation (\ref{eqn_GenCircle}) can also be written in matrix form:
+Note that equation (\ref{eqn_GenCircle}) can also be written in matrix form:
 \begin{equation*}
 \rvec{\conj{z}}{1} \cdot \mat{A}{B}{C}{D} \cdot \cvec{z}{1} = 0.
 \end{equation*}
-Next, we substitute $z = u / v$, with $u,v \in \C$, $v \ne 0$ and scale by $\conj{v} \cdot v = \abs{v}^2 > 0$, which yields the equivalent equation
+If we substitute $z = u / v$, with $u,v \in \C$, $v \ne 0$ and scale by $\conj{v} \cdot v = \abs{v}^2 > 0$, we obtain the equivalent equation
 \begin{equation}
 \label{eqn_GenCircleMatForm}
 \rvec{\conj{u}}{\conj{v}} \cdot \mat{A}{B}{C}{D} \cdot \cvec{u}{v} = 0.
 \end{equation}
 By introducing the convention to identify $\infty \in \EC$ with the formal quotient $u/0$, for arbitrary $u \in \C \setminus \{0\}$, equation (\ref{eqn_GenCircleMatForm}) makes sense for all $z = u/v \in \EC$. 
 
-Finally, we emphasize that the matrix in equation (\ref{eqn_GenCircleMatForm}) has a negative determinant, because of the condition $BC - AD > 0$ from above. Moreover, it is a Hermitian matrix, a notion which we will shortly recall:
+Finally we emphasize that the matrix in equation (\ref{eqn_GenCircleMatForm}) has a negative determinant, because of the condition $BC - AD > 0$ from above. Moreover it is a Hermitian matrix -- a notion which we will shortly recall:
 \begin{definition}[Hermitian matrix]
 \label{dfn_HermitianMatrix}
 \index{Hermitian!matrix}
@@ -67,22 +67,22 @@ Having now the right vocabulary and properties at hand, we can give an exact def
 \begin{definition}[Generalized circle]
 \index{G-circle}
 \label{dfn_GenCircle}
-Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$. A \emph{generalized circle}, for short \emph{g-circle}, is the set of solutions $u/v \in \EC$, with $u,v \in \C$, not both zero, to
+Let $M \in \Mat{\C}{2}{2}$ be a Hermitian matrix with $\det(M) < 0$. A \emph{generalized circle}, for short \emph{g-circle}, is the set of solutions $u/v \in \EC$ with $u,v \in \C$, not both zero, to
 \begin{equation}
 \label{eqn_GenCircleDfn}
 \rvec{\conj{u}}{\conj{v}} \cdot M \cdot \cvec{u}{v} = 0.
 \end{equation}
 \end{definition}
 
-This definition does not depend on the choice of $u$ and $v$. If $u/v$ is a solution to (\ref{eqn_GenCircleDfn}) and $u^\prime/v^\prime = u/v$, \ie $u^\prime = \lambda u$ and $v^\prime = \lambda v$ for some $\lambda \in \C \setminus \{0\}$, then also
+Since there should be no danger of confusion, we will from now on use the same name for a generalized circle and its corresponding Hermitian matrix (which is uniquely determined up to a real scalar factor).
+
+\begin{remark}
+Definition~\ref{dfn_GenCircle} does not depend on the choice of $u$ and $v$. If $u/v$ is a solution to (\ref{eqn_GenCircleDfn}) and $u^\prime/v^\prime = u/v$, \ie $u^\prime = \lambda u$ and $v^\prime = \lambda v$ for some $\lambda \in \C \setminus \{0\}$, then also
 \begin{equation*}
 \rvec{\conj{u^\prime}}{\conj{v^\prime}} \cdot M \cdot \cvec{u^\prime}{v^\prime} = \abs{\lambda}^2 \rvec{\conj{u}}{\conj{v}} \cdot M \cdot \cvec{u}{v} = 0.
 \end{equation*}
 
-Since there should be no danger of confusion, we will from now on use the same name for a generalized circle and its corresponding Hermitian matrix (which is uniquely determined up to a real scalar factor).
-
-\begin{remark}
-From Definition~\ref{dfn_GenCircle} we see that the point $\infty = 1/0$ lies on the g-circle $M = \smallmat{A}{B}{C}{D}$ exactly when its left upper matrix entry $A$ is zero. This is consistent with stereographic projection, because $A$ is zero if and only if $M$ corresponds to a line on the complex plane. The image of this line under reverse stereographic projection is a circle on the Riemann sphere going through the north-pole, which we have identified with the point $\infty$.
+Moreover we see that the point $\infty = 1/0$ lies on the g-circle $M = \smallmat{A}{B}{C}{D}$ exactly when its left upper matrix entry $A$ is zero. This is consistent with stereographic projection, because $A$ is zero if and only if $M$ corresponds to a line on the complex plane. The image of this line under reverse stereographic projection is a circle on the Riemann sphere going through the north-pole, which we have identified with the point $\infty$.
 \end{remark}
 
 Going back to the our starting point, the equation $\abs{z - m} = r$, we can replace the equality sign `$=$' with `$<$' or `$\le$' and repeat the above considerations without any additional changes. This naturally leads to the notions of open and closed generalized disks.

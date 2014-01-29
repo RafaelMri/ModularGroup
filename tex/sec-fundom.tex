@@ -20,7 +20,7 @@ Fundamental sets always exist, but they are not unique in any way. If $\mathcal{
 
 \begin{remark}
 \label{rem_FunSetUniqueElement}
-If $\mathcal{F}$ is a fundamental set for the group action of $\langle G, \cdot, e \rangle$ on $\mathcal{S}$, then by definition for every $x \in \mathcal{S}$ there is a $g \in G$ such that $gx \in \mathcal{F}$. Clearly this element $g$ is unique if and only if the stabilizer $\Stabilizer{G}{gx} = \setdef{h \in G}{hgx = gx}$ is trivial. Since the groups $\Stabilizer{G}{gx}$ and $\Stabilizer{G}{x} = \setdef{h \in G}{hx = x}$ are conjugate, \ie
+If $\mathcal{F}$ is a fundamental set for the group action of $\langle G, \cdot, 1 \rangle$ on $\mathcal{S}$, then by definition for every $x \in \mathcal{S}$ there is a $g \in G$ such that $gx \in \mathcal{F}$. Clearly this element $g$ is unique if and only if the stabilizer $\Stabilizer{G}{gx} = \setdef{h \in G}{hgx = gx}$ is trivial. Since the groups $\Stabilizer{G}{gx}$ and $\Stabilizer{G}{x} = \setdef{h \in G}{hx = x}$ are conjugate, \ie
 \begin{equation*}
 \Stabilizer{G}{x} = \inv{g} \cdot \Stabilizer{G}{gx} \cdot g,
 \end{equation*}
@@ -28,7 +28,7 @@ we conclude that the element $g \in G$ with $gx \in \mathcal{F}$ is unique if an
 \begin{equation*}
 \mathcal{S} = \bigcup_{g \in G} g\mathcal{F}.
 \end{equation*}
-A point $x \in \mathcal{S}$ is covered once, \ie there is a unique $g \in G$ with $x \in g\mathcal{F}$, if and only if $\Stabilizer{G}{x} = \{e\}$.
+A point $x \in \mathcal{S}$ is covered once, \ie there is a unique $g \in G$ with $x \in g\mathcal{F}$, if and only if $\Stabilizer{G}{x} = \{1\}$.
 \end{remark}
 
 If -- like in the case of $\EC$ -- the set $\mathcal{S}$ comes together with a topology defined on it, it is often advantageous to use a concept slightly different to fundamental sets:

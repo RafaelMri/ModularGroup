@@ -26,7 +26,7 @@ Let $\phi$ and $\psi$ be Möbius transformations with
 \phi(z) = \moebius{a}{b}{c}{d}{z},\quad \psi(z) = \moebius{e}{f}{g}{h}{z}.
 \end{equation*}
 
-First, we make the trivial observation that composing those two transformations again yields a rational function of the desired form:
+First we make the trivial observation that composing those two transformations again yields a rational function of the desired form:
 \begin{equation}
 \label{eqn_MoebiusComposition}
 \phi \circ \psi(z) 
@@ -47,9 +47,9 @@ This motivates the definition of a mapping $\pi$ between matrices in $\GL{\C}$ a
 \label{eqn_homPi}
 \pi: \mat{a}{b}{c}{d} \mapsto \moebius{a}{b}{c}{d}{z}
 \end{equation}
-Note that the domain of $\pi$ is $\GL{\C}$, \ie the set of 2-by-2 matrices with nonzero determinant. This is perfectly consistent with the condition $ad - bc \ne 0$ we have for Möbius transformations. For this reason, $\pi$ is a well-defined function from $\GL{\C}$ to the set of Möbius transformations.
+Note that the domain of $\pi$ is $\GL{\C}$, \ie the set of 2-by-2 matrices with nonzero determinant. This is perfectly consistent with the condition $ad - bc \ne 0$ we have for Möbius transformations. For this reason $\pi$ is a well-defined function from $\GL{\C}$ to the set of Möbius transformations.
 
-But $\pi$ is not just a function, it is in fact a homomorphism, as we have seen in (\ref{eqn_MoebiusComposition}) and (\ref{eqn_MatrixProduct}). Trivially, $\pi$ is also surjective, which carries over the group structure of $\GL{\C}$ to the set of Möbius transformations. The kernel of $\pi$ comprises of all multiples of the identity matrix. Therefore, by the first isomorphism theorem (Theorem~\ref{thm_FirstIsoThm}), the group of Möbius transformations is isomorphic to $\GL{\C}/\ker{\pi} \cong \PGL{\C}$ and we have seen in Example \ref{ex_ProjAndGenLinGrp} that $\PGL{\C} \cong \PSL{\C}$.
+But $\pi$ is not just a function, it is in fact a homomorphism as we have seen in (\ref{eqn_MoebiusComposition}) and (\ref{eqn_MatrixProduct}). Trivially $\pi$ is also surjective, which carries over the group structure of $\GL{\C}$ to the set of Möbius transformations. The kernel of $\pi$ comprises of all multiples of the identity matrix. Therefore, by the first isomorphism theorem (Theorem~\ref{thm_FirstIsoThm}), the group of Möbius transformations is isomorphic to $\GL{\C}/\ker{\pi} \cong \PGL{\C}$ and we have seen in Example \ref{ex_ProjAndGenLinGrp} that $\PGL{\C} \cong \PSL{\C}$.
 \end{proof}
 
 \begin{remark}
@@ -58,7 +58,7 @@ We note that the nature of Möbius transformations is threefold: Firstly, as in D
 \begin{equation*}
 \phi_{\text{alg}} = \moebius{a}{b}{c}{d}{z} \in \C(z).
 \end{equation*} 
-Secondly, $\phi$ has a natural interpretation as meromorphic function on the extended complex plane $\EC = \C \cup \{\infty\}$ in the sense of complex analysis:
+Secondly $\phi$ has a natural interpretation as meromorphic function on the extended complex plane $\EC = \C \cup \{\infty\}$ in the sense of complex analysis:
 \begin{equation*}
 \phi_{\text{fun}}: \left\{ 
 \begin{array}{ccc}
@@ -68,7 +68,7 @@ z  &\mapsto& \moebius{a}{b}{c}{d}{z}
 \right.
 \end{equation*}
 In a more formal context, this correspondence can also be seen the following light: The group of Möbius transformations acts on the set $\EC$ in the sense of Defintion~\ref{dfn_GroupAction} by $\phi_{\text{alg}} z := \phi_{\text{fun}}(z)$. Now, the homomorphism of Theorem~{\ref{thm_GroupActionHom}} is in fact an isomorphism which assigns each Möbius transformation $\phi_{\text{alg}}$ a permutation of the set $\EC$ which is exactly the meromorphic function $\phi_{\text{fun}}$.
-Last but not least, we have seen in Theorem~\ref{thm_MoebiusGroup} that we can also regard $\phi$ as equivalence class of matrices:
+Last but not least we have seen in Theorem~\ref{thm_MoebiusGroup} that we can also regard $\phi$ as equivalence class of matrices:
 \begin{equation*}
 \phi_{\text{lin}} = \mat{a}{b}{c}{d}_{\sim} \in \PGL{\C}.
 \end{equation*}
@@ -113,7 +113,7 @@ In 2-dimensional geometry, \emph{circle inversion} with respect to a reference c
 \label{fig_CircInv}
 \end{figure}
 
-Coming back to the concrete map $z \mapsto \reci{z}$, it can now be interpreted the following way: Circle inversion with regard to the unit circle maps each $z \in \C$ to $\frac{z}{\abs{z}^2} = \reci{\conj{z}}$. Then, reflection across the real axis (\ie complex conjugation) takes $\reci{\conj{z}}$ to $\reci{z}$. 
+Coming back to the concrete map $z \mapsto \reci{z}$, it can now be interpreted the following way: Circle inversion with regard to the unit circle maps each $z \in \C$ to $\frac{z}{\abs{z}^2} = \reci{\conj{z}}$. Then reflection across the real axis (\ie complex conjugation) takes $\reci{\conj{z}}$ to $\reci{z}$. 
 
 Summing up, all the basic types of Möbius transformations mentioned in Lemma \ref{lem_MoebiusGenerators} have a very direct geometric interpretation. Still, arbitrary Möbius transformations (especially those involving at least one inversion) are hard to describe in a similar geometric and intuitive way. Fortunately there is another characterization of Möbius transformations which is both, elegant and visually accessible.
 
