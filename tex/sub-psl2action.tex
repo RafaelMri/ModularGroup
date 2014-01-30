@@ -23,7 +23,7 @@ Projection of the set $\hat{\mathcal{R}} \subseteq \C^2$ leads to the region $\m
 It follows that $\mathcal{R}$ contains a fundamental region for the action of $\PSL{\Z}$ on $\EC \setminus \Irrat$. As in the homogeneous case, we see from Theorem~\ref{thm_SL2FunDomGlobMin} that equivalence of points within $\mathcal{R}$ can be established only by powers of the transformation $T \in \PSL{\Z}$. Since $T^2 = 1$, in order to obtain a fundamental region we now need to choose for each $z \in \mathcal{R}$ just exactly one of the equivalent points $z$ and $Tz$. This can for example be done such that $\abs{z} > 1$.
 
 \index{Extended upper halfplane}
-Note that for understanding the group action of $\PSL{\Z}$ on $\EC \setminus \Irrat$ it is sufficient to look at either the upper or lower halfplane of $\C$, since the group action on one halfplane can be easily understood from the group action on the other halfplane, as we trivially have $Az = \conj{A\conj{z}}$. Let us therefore denote by $\mathcal{H}$ the upper halfplane and by $\EU$ the \emph{extended upper halfplane}:
+Note that for understanding the group action of $\PSL{\Z}$ on $\EC \setminus \Irrat$ it is sufficient to look at either the upper or lower halfplane of $\C$, since the group action on one halfplane can be easily understood from the group action on the other halfplane, as we trivially have $A\conj{z} = \conj{Az}$. Let us therefore denote by $\mathcal{H}$ the upper halfplane and by $\EU$ the \emph{extended upper halfplane}:
 \begin{eqnarray}
 \label{eqn_UpperHalfplane}\mathcal{H} &:=& \setdefsz{\big}{z \in \C}{\Im{z} > 0} \\
 \label{eqn_ExtUpperHalfplane}
@@ -97,7 +97,8 @@ We see that the fundamental region $\FunDom$ can be characterized as set complem
 \FunDom = \EU \setminus \left(\mathbb{A} \cup \mathbb{B} \cup \mathbb{D}\right).
 \end{equation*}
 Moreover there exists a unique (open) g-disk $\Indisk \subseteq \FunDom$, which is tangent to $\mathbb{A}$, $\mathbb{B}$ and $\mathbb{D}$ which we call the \emph{indisk} $\Indisk$ of $\FunDom$. Its defining matrix is given by
-\begin{equation*}
+\begin{equation}
+\label{eqn_PSL2Indisk}
 \Indisk = \mat{2}{-3\ii}{3\ii}{4}.
-\end{equation*}
+\end{equation}
 \end{remark}

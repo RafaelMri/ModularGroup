@@ -22,6 +22,23 @@ In the case when all $a_j = 1$, we adhere to the standard sequence notation for 
 \begin{equation*}
 b_0 + \reci{b_1 + \reci{b_2 + \dots}} =: [b_0,b_1,b_2,\dots].
 \end{equation*}
+\index{Convergent}
+For determining a continued fraction representation for a real number $\alpha$ such that all $a_j = 1$, one usually sets $\alpha_0 := \alpha$ as well as $b_j := \floor{\alpha_j}$ and $\alpha_{j+1} := \reci{\alpha_j - b_j}$ for $j \ge 0$. If $\alpha \in \Q$, then for some $j \ge 0$ we will have $\alpha_j = 0$ and the procedure will end. In any way we obtain a finite or infinite ($\alpha \in \R \setminus \Q$) sequence of equations 
+\begin{equation*}
+\alpha = \alpha_0 = b_0 + \reci{\alpha_1}, \quad
+\alpha_1 = b_1 + \reci{\alpha_2}, \quad
+\alpha_2 = b_2 + \reci{\alpha_3}, \quad \dots
+\end{equation*}
+giving rise to the continued fraction representation $\alpha = [b_0, b_1, b_2, \dots]$. The rational number $C_n := [b_0,b_1,\dots,b_n]$ obtained by truncating the continued fraction representation after the coefficient $b_n$, is called the $n$-th \emph{convergent} of the continued fraction. If the continued fraction is infinte, \ie $\alpha \in \R \setminus \Q$, then we have $\lim_{n \to \infty} C_n = \alpha$.
+
+\begin{remark}
+\label{rem_ConFracKinds}
+\index{Regular continued fraction}
+\index{Semi-regular continued fraction}
+\index{Canonical continued fraction}
+Note that by the above construction all the coefficients $b_j$, with the possible exception of $b_0$ (if $\alpha < 0$), are positive. A representation of $\alpha$ of this form is called a \emph{regular continued fraction} -- see also \Lehner{}, §9. In contrast to that, if we set $b_j := \ceil{\alpha_j}$ for some or all of the indices $j$, then also negative coefficients $b_j$, $j > 0$, may occur and we obtain in this way a so called \emph{semi-regular continued fraction} representation of $\alpha$.\footnote{This is in strong analogy to Remark~\ref{rem_EuclideanAlgorithmRounding} that within the Euclidean algorithm the quotients $q_j$ can be determined by rounding $r_{j-1} / r_j$ either up- or downward. Note that in \Lehner{}, §36, semi-regular continued fractions are defined such that for all $j > 0$ the coefficients $b_j$ are positive, but allowing $a_j \in \{\pm 1\}$. However this makes no essential difference.} If we use the nearest integer function in each step, \ie $b_j := \nint{\alpha_j}$ for all $j$, then we have $\abs{b_j} \ge 2$ for all $j > 0$. If additionally $\alpha \in \Q$, then it can be shown that the resulting continued fraction representation is one of minimal length -- according to \Lehner{}, §39, finite continued fractions having this minimality property are called \emph{canonical continued fractions}.
+\end{remark}
+
 We can now reformulate Corollary \ref{cor_ModGrpTUAlg} in order to construct a continued fraction representation of any given modular transformation.
 
 \begin{corollary}
@@ -33,7 +50,7 @@ A(z) = [q_0,q_1,\dots,q_n,(-1)^{n+1}(k+z)]
 where the integers $n$, $q_0,q_1,\dots,q_n$ and $k$ are determined by the algorithm described in Corollary \ref{cor_ModGrpTUAlg}.
 \end{corollary}
 \begin{proof}
-By using the continued fraction representation of $A$ given in (\ref{eqn_ALongConFrac}) and by applying the definition $e_j$ := $(-1)^j q_j$ we see
+By using the continued fraction representation of $A$ given in (\ref{eqn_ALongConFrac}) and by applying the definition $e_j$ := $(-1)^j q_j$, we see
 \begin{IEEEeqnarray}{rCcCcCcCcCcCc}
 A(z) &=& e_0 &+& \cfr{-1}{e_1} 
           &+& \cfr{-1}{e_2} 
@@ -52,6 +69,8 @@ Now for every odd $j \le n$ we can rewrite
 \end{equation*}
 Thus if $n$ is odd, every numerator $-1$ in (\ref{eqn_ModTransConFracInterim}) can be turned into $+1$. In the other case, when $n$ is even, only one negative numerator at the end, $\frac{-1}{k+z}$, remains, but this can easily be rewritten to $\frac{1}{-(k+z)}$. Taking both cases together, we obtain (\ref{eqn_ModTransConFrac}).
 \end{proof}
+
+
 
 \begin{figure}
 \centering
