@@ -1,6 +1,6 @@
 \section{The modular group and continued fractions}
 
-For an arbitrary modular transformation $A$, a representation as product of shifts $U^j: z \mapsto z+j$ and inversions $T: z \mapsto -\reci{z}$ can be found by the algorithm described in Corollary \ref{cor_ModGrpTUAlg}. By writing out this product, for example in the case when $n=2$, we have
+For an arbitrary modular transformation $A$, a representation as product of shifts $U^j: z \mapsto z+j$ and inversions $T: z \mapsto -\reci{z}$ can be found by the $T$-$U$ algorithm of Corollary \ref{cor_ModGrpTUAlg}. By writing out this product, for example in the case when $n=2$, we have
 \begin{equation*}
 A = U^{e_0}T U^{e_1}T U^{e_2}T U^k,
 \end{equation*}
@@ -23,7 +23,7 @@ In the case when all $a_j = 1$, we adhere to the standard sequence notation for 
 b_0 + \reci{b_1 + \reci{b_2 + \dots}} =: [b_0,b_1,b_2,\dots].
 \end{equation*}
 \index{Convergent}
-For determining a continued fraction representation for a real number $\alpha$ such that all $a_j = 1$, one usually sets $\alpha_0 := \alpha$ as well as $b_j := \floor{\alpha_j}$ and $\alpha_{j+1} := \reci{\alpha_j - b_j}$ for $j \ge 0$. If $\alpha \in \Q$, then for some $j \ge 0$ we will have $\alpha_j = 0$ and the procedure will end. In any way we obtain a finite or infinite ($\alpha \in \R \setminus \Q$) sequence of equations 
+For determining a continued fraction representation for a real number $\alpha$ such that all $a_j = 1$, one usually sets $\alpha_0 := \alpha$ as well as $b_j := \floor{\alpha_j}$ and $\alpha_{j+1} := \reci{\alpha_j - b_j}$ for $j \ge 0$ until some $\alpha_j$ is zero (which is the case if and only if $\alpha \in \Q$). In any way we obtain a finite or infinite sequence of equations 
 \begin{equation}
 \label{eqn_ConFracEqnSeq}
 \alpha = \alpha_0 = b_0 + \reci{\alpha_1}, \quad
@@ -35,9 +35,13 @@ giving rise to the continued fraction representation $\alpha = [b_0, b_1, b_2, \
 \begin{remark}
 \label{rem_ConFracKinds}
 \index{Regular continued fraction}
+Note that by using the method above, all the coefficients $b_j$ with $j > 0$ are positive. A representation for $\alpha$ of this form is called a \emph{regular continued fraction} -- see also \Lehner{}, §9. 
+
 \index{Semi-regular continued fraction}
+In contrast to that, if we set $b_j := \ceil{\alpha_j}$ for some or all of the indices $j$, then also negative coefficients $b_j$, $j > 0$, may occur and we obtain in this way a so called \emph{semi-regular continued fraction} representation of $\alpha$. This is in strong analogy to Remark~\ref{rem_EuclideanAlgorithmRounding} that within the Euclidean algorithm the quotients $q_j$ can be determined by rounding $r_{j-1} / r_j$ either up- or downward. Note that in \Lehner{}, §36, semi-regular continued fractions are defined such that for all $j > 0$ the coefficients $b_j$ are positive, but allowing for $a_j \in \{\pm 1\}$. However this makes no essential difference. 
+
 \index{Canonical continued fraction}
-Note that by the above construction all the coefficients $b_j$ with $j > 0$ are positive. A representation for $\alpha$ of this form is called a \emph{regular continued fraction} -- see also \Lehner{}, §9. In contrast to that, if we set $b_j := \ceil{\alpha_j}$ for some or all of the indices $j$, then also negative coefficients $b_j$, $j > 0$, may occur and we obtain in this way a so called \emph{semi-regular continued fraction} representation of $\alpha$.\footnote{This is in strong analogy to Remark~\ref{rem_EuclideanAlgorithmRounding} that within the Euclidean algorithm the quotients $q_j$ can be determined by rounding $r_{j-1} / r_j$ either up- or downward. Note that in \Lehner{}, §36, semi-regular continued fractions are defined such that for all $j > 0$ the coefficients $b_j$ are positive, but allowing for $a_j \in \{\pm 1\}$. However this makes no essential difference.} If we use the nearest integer function in each step, \ie $b_j := \nint{\alpha_j}$ for all $j$, then we have $\abs{b_j} \ge 2$ for all $j > 0$. If additionally $\alpha \in \Q$, then it can be shown that the resulting continued fraction representation is one of minimal length -- according to \Lehner{}, §39, we call finite continued fractions with this minimality property \emph{canonical continued fractions}.
+If we use the nearest integer function in each step, \ie $b_j := \nint{\alpha_j}$ for all $j$, then we have $\abs{b_j} \ge 2$ for all $j > 0$. If additionally $\alpha \in \Q$, then it can be shown that the resulting continued fraction representation is one of minimal length -- according to \Lehner{}, §39, we call finite continued fractions with this minimality property \emph{canonical continued fractions}.
 \end{remark}
 
 We can now reformulate Corollary \ref{cor_ModGrpTUAlg} in order to construct a continued fraction representation of any given modular transformation.
@@ -86,7 +90,8 @@ It is worth noting that determining a continued fraction representation for a ra
 \end{IEEEeqnarray*}
 In other words, the coefficients $b_j$ of the desired continued fraction representation are nothing else but the quotients of the Euclidean algorithm which we used to denote by $q_j$.
 
-This observation also allows it to see the $T$-$U$ algorithm of Corollary~\ref{cor_ModGrpTUAlg} in a different light: For a given modular transformation $A(z) = \moebius{a}{b}{c}{d}{z}$, by applying the Euclidean algorithm to $a$ and $c$, we effectively determine a continued fraction representation for the rational number $A(\infty) = \frac{a}{c} = [q_0,q_1,\dots,q_n]$. If we set again $e_j := (-1)^j q_j$, it follows that also the modular transformation $P := U^{e_0} TU^{e_1}T\dots TU^{e_n}T$ maps $\infty$ to $\frac{a}{c}$. Since the stabilizer of $\infty$ is generated by the transformation $U$, all transformations with this property can be written as $PU^k$ for some $k \in \Z$ and it remains to find the appropriate $k$ such that $A = PU^k$ or equivalently $\inv{P}A = U^k$. 
+This observation also allows it to see the $T$-$U$ algorithm of Corollary~\ref{cor_ModGrpTUAlg} in a different light: For a given modular transformation $A(z) = \moebius{a}{b}{c}{d}{z}$, by applying the Euclidean algorithm to $a$ and $c$, we effectively determine a continued fraction representation for the rational number $A(\infty) = \frac{a}{c} = [q_0,q_1,\dots,q_n]$. If we set again $e_j := (-1)^j q_j$, it follows that also the modular transformation $P := U^{e_0} TU^{e_1}T\dots TU^{e_n}T$ maps $\infty$ to $\frac{a}{c}$. Since the stabilizer of $\infty$ is generated by the transformation $U$, all transformations with this property can be written as $PU^k$ for some $k \in \Z$.
+In particular, if we determine the quotients $q_j$ by rounding to the nearest integer, we obtain a \emph{canonical continued fraction}, \ie a continued fraction representation of minimal length -- compare Remark~\ref{rem_ConFracKinds}. Consequently in this case also the product representation returned by the $T$-$U$ algorithm is of minimal length.
 \end{remark}
 
 In the previous remark we have seen that there is a natural correspondence between rational numbers, continued fractions and the $T$-$U$ word representations of modular transformations. In order to formalize this correspondence, let us denote by $\Words{\Z} := \bigcup_{n \le 0} \Z^n$ the set of finite integer sequences (or words over the alphabet $\Z$). Furthermore we set $\EQ := \Q \cup \{\infty\}$ and define a map $f: \Words{\Z} \to \EQ$ by
@@ -100,12 +105,12 @@ Note that evaluation of continued fractions shall take place in $\EQ$ with the n
 \end{equation*}
 Moreover the empty continued fraction shall evaluate to $\infty$, \ie $f(\epsilon) = \infty$, where $\epsilon \in \Words{\Z}$ denotes the empty sequence. We call the sequence $\beta \in \Words{\Z}$ a \emph{continued fraction representation} for $f(\beta) \in \EQ$. %Two sequences $\beta, \gamma \in \Words{\Z}$ are defined to be \emph{equivalent}, in symbols $\beta \sim \gamma$, if and only if $f(\beta) = f(\gamma)$. 
 
-Next we set $\Syms := \{T,U\} \subseteq \PSL{\Z}$ and let $\FreeGrp{\Syms}$ be the free group generated by the transformations $T$ and $U$. Moreover we denote by $\langle U \rangle$ the subgroup of $\FreeGrp{\Syms}$ \resp $\PSL{\Z}$ which is generated by the transformation $U$. We now consider left cosets of $\langle U \rangle$ in  $\FreeGrp{\Syms}$ and $\PSL{\Z}$:
+Next we set $\Syms := \{T,U\} \subseteq \PSL{\Z}$ and let $\FreeGrp{\Syms}$ be the free group generated by the symbols $T$ and $U$. Moreover we denote by $\langle U \rangle$ the subgroup of $\FreeGrp{\Syms}$ which is generated by the symbol $U$ and the subgroup of $\PSL{\Z}$ generated by the transformation $U$. We now consider left cosets of $\langle U \rangle$ in  $\FreeGrp{\Syms}$ and $\PSL{\Z}$:
 \begin{eqnarray*}
 \FreeGrp{\Syms} / \langle U \rangle &:=& \setdef{\sigma \langle U \rangle}{\sigma \in \FreeGrp{\Syms}},\\
 \PSL{\Z} / \langle U \rangle &:=& \setdef{A \langle U \rangle}{A \in \PSL{\Z}}.
 \end{eqnarray*}
-It is important to note these are \emph{not} factor groups, as $\langle U \rangle$ is not a normal subgroup of $\PSL{\Z}$ or $\FreeGrp{\Syms}$. In particular, neither $\PSL{\Z} / \langle U \rangle$ nor $\FreeGrp{\Syms}$ carry a ``natural'' group structure -- we will regard them just as sets. 
+It is important to note these are \emph{not} factor groups, as $\langle U \rangle$ is not a normal subgroup of $\PSL{\Z}$ or $\FreeGrp{\Syms}$. In particular, neither $\PSL{\Z} / \langle U \rangle$ nor $\FreeGrp{\Syms} / \langle U \rangle$ carry a ``natural'' group structure -- we will regard them just as sets. 
 
 We now have defined all domains needed for writing $f : \Words{\Z} \to \EQ$ as composition of three other functions, namely $f = g_3 \circ g_2 \circ g_1$, where
 \begin{IEEEeqnarray*}{rCcCc}
@@ -119,14 +124,14 @@ Let us first turn to the definition of $g_1$, which maps a continued fraction re
 \fundef{g_1}{\Words{\Z}}{\FreeGrp{\Syms} / \langle U \rangle}{(b_0,b_2,\dots,b_n)}{U^{e_0}T U^{e_1}\dots T U^{e_n} T \langle U \rangle} \quad \text{where } e_j := (-1)^j b_j.
 %\fundef{g_1}{\Words{\Z}}{\FreeGrp{\Syms} / \langle U \rangle}{(b_0,b_2,\dots,b_n)}{\left( \prod_{j=0}^n (U^{e_j}T) \right) \langle U \rangle} \quad \text{where } e_j := (-1)^j b_j.
 \end{equation}
-Note that in the case of the empty sequence $\epsilon \in \Words{\Z}$ the $T$-$U$ group word on the right hand side is empty, \ie $g_1(\epsilon) = \langle U \rangle$.
+Note that in the case of the empty sequence $\epsilon \in \Words{\Z}$ we have $g_1(\epsilon) = \langle U \rangle$.
 
 In order to define $g_2$, let $\phi: \Sigma \to \PSL{\Z}$ be the canonical embedding, \ie $\phi(T) = T$ and $\phi(U) = U$. Let $\overline{\phi}$ be the unique extension of $\phi$ to a homomorphism $\FreeGrp{\Syms} \to \PSL{\Z}$, according to Theorem~\ref{thm_FreeGrpUniqueHom}. Note that $\overline{\phi}$ is just the map which evaluates $T$-$U$ group words to concrete elements of $\PSL{\Z}$ in the obvious way. The function $g_2$ now takes  a left coset in $\FreeGrp{\Syms}$ to a left coset in $\PSL{\Z}$ by
 \begin{equation}
 \label{eqn_MapPathToCoset}
 \fundef{g_2}{\FreeGrp{\Syms} / \langle U \rangle}{\PSL{\Z} / \langle U \rangle}{\sigma \langle U \rangle}{\overline{\phi}(\sigma) \langle U \rangle.}
 \end{equation}
-Last but not least we define $g_3$ as the map which evaluates the transformations of a left coset $A \langle U \rangle \in \PSL{\Z} / \langle U \rangle$ at the point $\infty$. Note that the result is the same for all transformations within one coset because $\langle U \rangle$ is exactly the stabilizer of $\infty$, \ie $\langle U \rangle = \setdef{B \in \PSL{\Z}}{B(\infty) = \infty}$. Therefore the following definition is independent on the choice of the coset representative $A$ and thus admissible:
+Last but not least we define $g_3$ as the map which evaluates the transformations of a left coset $A \langle U \rangle \in \PSL{\Z} / \langle U \rangle$ at the point $\infty$. Note that the result is the same for all transformations within one coset because $\langle U \rangle$ is exactly the stabilizer of $\infty$, \ie $\langle U \rangle = \setdef{B \in \PSL{\Z}}{B(\infty) = \infty}$. This allows us to define
 \begin{equation}
 \label{eqn_MapCosetToEQ}
 \fundef{g_3}{\PSL{\Z} / \langle U \rangle}{\EQ}{A \langle U \rangle}{A(\infty).}
@@ -160,11 +165,11 @@ The fact that $g_1$ is injective is obvious. It is also clear that the word
 \label{eqn_MapConFracToPathImageWord}
 U^{e_0}T U^{e_1}\dots T U^{e_n} T
 \end{equation}
-occurring in the definition of $g_1$ is already reduced and satisfies (\ref{itm_NotContainsTInv}) and (\ref{itm_RightmostIsT}). Conversely, every reduced word $w$ satisfying (\ref{itm_NotContainsTInv}) and (\ref{itm_RightmostIsT}) has necessarily the form
+with $n \ge 0$, $e_j \in \Z$ occurring in the definition of $g_1$ is already reduced and satisfies (\ref{itm_NotContainsTInv}) and (\ref{itm_RightmostIsT}). Conversely, every reduced word $w$ satisfying (\ref{itm_NotContainsTInv}) and (\ref{itm_RightmostIsT}) has necessarily the form
 \begin{equation*}
 w = U^{k_1} T^{\ell_1} U^{k_2} T^{\ell_2} \dots U^{k_m} T^{\ell_m},
 \end{equation*}
-with $m \ge 0$, $k_j, \ell_j \in \Z$ and $\ell_j \ge 1$ for $j \in \{1,\dots,m\}$ (if $m = 0$, then $w$ is empty). Because $T^k$ and $(TU^0)^{k-1}T$ are identical as words, we can for sure notate $w$ in the alternative form (\ref{eqn_MapConFracToPathImageWord}).
+with $m >= 0$, $k_j \in \Z$ and $\ell_j \ge 1$. Because for $k \ge 1$, $T^k$ and $(TU^0)^{k-1}T$ are \emph{identical} as words, we can for sure notate $w$ alternatively in the form (\ref{eqn_MapConFracToPathImageWord}).
 \end{proof}
 
 \begin{lemma}
@@ -179,7 +184,7 @@ Looking at the modular tessellation (see Figure~\ref{fig_ModularTiling}), we not
 have a natural one-to-one correspondence to modular transformations, \ie the disk $A\Indisk$ can be considered as a graphical representative for the modular transformation $A$. The question arises, if there is such a visual and clear representation also for left cosets of $\langle U \rangle$ in $\PSL{\Z}$. Indeed, we see that the disks $U^k\Indisk$, $k \in \Z$, which represent the transformations of $\langle U \rangle$, form a ``generalized ring'' which asymptotically approaches the point $\infty$ (this can be seen particularly well in ...). We can enclose this ring in a generalized disk: 
 \begin{definition}
 \label{dfn_FordDisk}
-The unique (open) g-disk $\Forddisk$ containing all the disks $U^k\Indisk$, $k \in \Z$, in its interior and being tangent to each of them is called the \emph{Ford disk at $\infty$}. It contains all points $z \in \C$ with $\Im{z} \ge 1$. Its defining matrix is given by
+The unique (open) g-disk $\Forddisk$ containing all the disks $U^k\Indisk$, $k \in \Z$, in its interior and being tangent to each of them is called the \emph{Ford disk at $\infty$}. It contains all points $z \in \C$ with $\Im{z} > 1$. Its defining matrix is given by
 \begin{equation}
 \label{eqn_FordDisk}
 \Forddisk = \mat{0}{-\ii}{\ii}{2}.
