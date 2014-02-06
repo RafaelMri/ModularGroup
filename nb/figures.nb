@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    126473,       3130]
-NotebookOptionsPosition[    124623,       3067]
-NotebookOutlinePosition[    124988,       3083]
-CellTagsIndexPosition[    124945,       3080]
+NotebookDataLength[    132997,       3280]
+NotebookOptionsPosition[    131062,       3215]
+NotebookOutlinePosition[    131427,       3231]
+CellTagsIndexPosition[    131384,       3228]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -2301,6 +2301,152 @@ The Modular Group and Continued Fractions\
 \>", "Subtitle",
  CellChangeTimes->{{3.5918806407576427`*^9, 3.5918806557336454`*^9}}],
 
+Cell[BoxData[
+ RowBox[{"Module", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "modCayley", ",", "mtList", ",", "mtSublist", ",", "pt", ",", "zs"}], 
+    "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"modCayley", "=", 
+     RowBox[{"New", "[", 
+      RowBox[{"MoebiusTransformation", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"I", ",", "1"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "I"}], "}"}]}], "}"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"mtList", "=", 
+     RowBox[{"ModularGroupList", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"PSL2ZGrading", "@", 
+         RowBox[{"Mat", "@", "#"}]}], "<", "150"}], "&"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"mtSublist", "=", 
+     RowBox[{"Select", "[", 
+      RowBox[{"mtList", ",", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"GDiskMatRadius", "[", 
+            RowBox[{"GDiskMatMap", "[", 
+             RowBox[{
+              RowBox[{"Mat", "@", "gdFord0"}], ",", 
+              RowBox[{
+               RowBox[{"Mat", "@", "modCayley"}], " ", ".", " ", 
+               RowBox[{"Mat", "@", "#"}]}]}], "]"}], "]"}], ">", 
+           RowBox[{"1", "/", "30"}]}], "&&", 
+          RowBox[{"ModularGroup`Private`fordCriteria", "@", 
+           RowBox[{"Mat", "@", "#"}]}]}], ")"}], "&"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"zs", "=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"#", "[", "ComplexInfinity", "]"}], "&"}], "/@", 
+      "mtSublist"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"figure", "=", 
+     RowBox[{"Graphics", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"ModularTiling", "[", 
+          RowBox[{"mtList", ",", "modCayley", ",", "\[IndentingNewLine]", 
+           RowBox[{"InteriorMode", "\[Rule]", "GDisk"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"TilingMode", "\[Rule]", "GCircle"}], ",", 
+           RowBox[{"TilingStyle", "\[Rule]", "White"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"FordDiskMode", "\[Rule]", "GDisk"}], ",", 
+           RowBox[{"FordDiskStyle", "\[Rule]", 
+            RowBox[{"Directive", "[", 
+             RowBox[{
+              RowBox[{"EdgeForm", "[", "Black", "]"}], ",", "LightGray"}], 
+             "]"}]}], ",", 
+           RowBox[{"FordLabelMode", "->", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Inhom", "[", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"Mat", "@", "#"}], ")"}], ".", 
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", "0"}], "}"}]}], "]"}], "/.", 
+               RowBox[{"ComplexInfinity", "\[Rule]", "\[Infinity]"}]}], "&"}],
+              ")"}]}], ",", 
+           RowBox[{"FordLabelThreshold", "\[Rule]", 
+            RowBox[{"1", "/", "20"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{"IncircleMode", "\[Rule]", "GDisk"}], ",", 
+           RowBox[{"IncircleStyle", "\[Rule]", 
+            RowBox[{"Directive", "[", 
+             RowBox[{
+              RowBox[{"EdgeForm", "[", "Gray", "]"}], ",", "White"}], "]"}]}],
+            ",", "\[IndentingNewLine]", 
+           RowBox[{"LabelMode", "\[Rule]", "TUWord"}], ",", 
+           RowBox[{"LabelThreshold", "\[Rule]", 
+            RowBox[{"1", "/", "12"}]}], ",", 
+           RowBox[{"Magnification", "\[Rule]", "8"}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"PointSize", "[", "Medium", "]"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Function", "[", 
+             RowBox[{
+              RowBox[{"{", "z", "}"}], ",", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"pt", "=", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"Re", "@", "#"}], ",", 
+                    RowBox[{"Im", "@", "#"}]}], "}"}], "&"}], "@", 
+                 RowBox[{"modCayley", "[", "z", "]"}]}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Point", "[", "pt", "]"}], ",", 
+                 RowBox[{"Text", "[", 
+                  RowBox[{
+                   RowBox[{"z", "/.", 
+                    RowBox[{"ComplexInfinity", "\[Rule]", "\[Infinity]"}]}], 
+                   ",", "pt", ",", 
+                   RowBox[{
+                    RowBox[{"-", "2"}], "*", "pt"}]}], "]"}]}], "}"}]}]}], 
+             "\[IndentingNewLine]", "]"}], "/@", "zs"}]}], 
+          "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]", "}"}], ",", 
+       RowBox[{"PlotRange", "\[Rule]", "1.15"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"display", "[", 
+     RowBox[{"figure", ",", "400", ",", "\"\<ford-disks.eps\>\""}], "]"}]}]}],
+   "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.6006897155665793`*^9, 3.6006899802060633`*^9}, {
+   3.600690010376587*^9, 3.6006901133994093`*^9}, {3.6006902039109793`*^9, 
+   3.600690357524809*^9}, {3.6006903969149704`*^9, 3.6006904132326374`*^9}, {
+   3.6006905992789993`*^9, 3.600690599778201*^9}, {3.6006906553924294`*^9, 
+   3.6006906681220813`*^9}, {3.600690715655476*^9, 3.6006907304911366`*^9}, {
+   3.6006907825953503`*^9, 3.60069087777134*^9}, {3.6006910109334855`*^9, 
+   3.6006910112610865`*^9}, {3.6006910506980486`*^9, 
+   3.6006910764381533`*^9}, {3.6006911203835335`*^9, 3.600691372761368*^9}, {
+   3.6006914418072505`*^9, 3.6006914726173763`*^9}, {3.600691513770345*^9, 
+   3.600691590505062*^9}, {3.600691687116258*^9, 3.6006916874438596`*^9}, {
+   3.600691830808447*^9, 3.600691843366498*^9}, {3.600692001051944*^9, 
+   3.600692396716365*^9}, {3.600692457868615*^9, 3.60069274462899*^9}, {
+   3.600692853221035*^9, 3.600692919490106*^9}, {3.6006929773039427`*^9, 
+   3.600693046084625*^9}, {3.6006931537406654`*^9, 3.6006932247521563`*^9}, {
+   3.600693564027565*^9, 3.6006935744640083`*^9}, {3.60069364812751*^9, 
+   3.6006938363578806`*^9}, 3.600693902751753*^9}],
+
+Cell[BoxData["'"], "Input",
+ CellChangeTimes->{3.6006929802211547`*^9}],
+
 Cell[BoxData[{
  RowBox[{
   RowBox[{
@@ -2607,8 +2753,8 @@ Cell[BoxData[{
          RowBox[{"{", 
           RowBox[{
            RowBox[{"convergents", "[", 
-            RowBox[{"[", "4", "]"}], "]"}], ",", "Pi", ",", 
-           RowBox[{"1", "/", "500000"}]}], "}"}]}], "\[IndentingNewLine]", 
+            RowBox[{"[", "3", "]"}], "]"}], ",", "Pi", ",", 
+           RowBox[{"1", "/", "25000"}]}], "}"}]}], "\[IndentingNewLine]", 
         "}"}]}], "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
     RowBox[{"display", "[", 
      RowBox[{"figure", ",", "400", ",", "\"\<cont-frac-pi.eps\>\""}], 
@@ -2619,7 +2765,9 @@ Cell[BoxData[{
   3.591881660498613*^9, 3.5918818268726406`*^9}, {3.591882011597473*^9, 
   3.5918820116910725`*^9}, {3.5918820910680876`*^9, 3.5918821011144896`*^9}, {
   3.5918897082636147`*^9, 3.591889733551219*^9}, {3.591978222701461*^9, 
-  3.5919782270850616`*^9}}]
+  3.5919782270850616`*^9}, {3.6006904942281685`*^9, 3.6006905492651944`*^9}, {
+  3.600691851806133*^9, 3.600691864863386*^9}, {3.6006919026311407`*^9, 
+  3.600691903161543*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3112,25 +3260,27 @@ Cell[62444, 1490, 31712, 802, 2343, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[94193, 2297, 140, 4, 77, "Subtitle"],
-Cell[94336, 2303, 12495, 318, 1158, "Input"]
+Cell[94336, 2303, 6213, 141, 512, "Input"],
+Cell[100552, 2446, 71, 1, 31, "Input"],
+Cell[100626, 2449, 12644, 320, 1158, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[106868, 2626, 203, 5, 77, "Subtitle"],
-Cell[107074, 2633, 3550, 91, 327, "Input"],
-Cell[110627, 2726, 1924, 41, 30, "Input"],
-Cell[112554, 2769, 4040, 76, 112, "Input"],
-Cell[116597, 2847, 439, 9, 30, "Input"],
-Cell[117039, 2858, 784, 24, 52, "Input"],
-Cell[117826, 2884, 461, 11, 30, "Input"],
-Cell[118290, 2897, 520, 12, 30, "Input"],
-Cell[118813, 2911, 466, 11, 33, "Input"],
-Cell[119282, 2924, 868, 22, 55, "Input"],
-Cell[120153, 2948, 982, 24, 55, "Input"]
+Cell[113307, 2774, 203, 5, 77, "Subtitle"],
+Cell[113513, 2781, 3550, 91, 327, "Input"],
+Cell[117066, 2874, 1924, 41, 31, "Input"],
+Cell[118993, 2917, 4040, 76, 112, "Input"],
+Cell[123036, 2995, 439, 9, 31, "Input"],
+Cell[123478, 3006, 784, 24, 52, "Input"],
+Cell[124265, 3032, 461, 11, 31, "Input"],
+Cell[124729, 3045, 520, 12, 31, "Input"],
+Cell[125252, 3059, 466, 11, 33, "Input"],
+Cell[125721, 3072, 868, 22, 55, "Input"],
+Cell[126592, 3096, 982, 24, 55, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[121172, 2977, 195, 5, 77, "Subtitle"],
-Cell[121370, 2984, 3140, 77, 299, "Input"],
-Cell[124513, 3063, 94, 1, 30, "Input"]
+Cell[127611, 3125, 195, 5, 77, "Subtitle"],
+Cell[127809, 3132, 3140, 77, 299, "Input"],
+Cell[130952, 3211, 94, 1, 30, "Input"]
 }, Open  ]]
 }
 ]
