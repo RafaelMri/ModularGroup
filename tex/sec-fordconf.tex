@@ -94,7 +94,12 @@ This observation also allows it to see the $T$-$U$ algorithm of Corollary~\ref{c
 In particular, if we determine the quotients $q_j$ by rounding to the nearest integer, we obtain a \emph{canonical continued fraction}, \ie a continued fraction representation of minimal length -- compare Remark~\ref{rem_ConFracKinds}. Consequently in this case also the product representation returned by the $T$-$U$ algorithm is of minimal length.
 \end{remark}
 
-In the previous remark we have seen that there is a natural correspondence between rational numbers, continued fractions and the $T$-$U$ word representations of modular transformations. In order to formalize this correspondence, let us denote by $\Words{\Z} := \bigcup_{n \le 0} \Z^n$ the set of finite integer sequences (or words over the alphabet $\Z$). Furthermore we set $\EQ := \Q \cup \{\infty\}$ and define a map $f: \Words{\Z} \to \EQ$ by
+\begin{corollary}
+\label{cor_ConFracModTrans}
+Given $r \in \EQ$, a transformation $A \in \PSL{\Z}$ satisfying $A(\infty) = r$ can be found by determining a continued fraction representation of $r$, that is $r = [b_0,b_1,\dots,b_n]$, and setting $A := U^{e_0} TU^{e_1} \dots TU^{e_n}$ where $e_j := (-1)^j b_j$. In particular, the $k$-th convergent $C_k$, $k \le n$, of this continued fraction representation can be written as $C_k = U^{e_0} TU^{e_1} \dots TU^{e_k}(\infty)$.
+\end{corollary}
+
+We have now seen that there is a natural correspondence between rational numbers, continued fractions and the $T$-$U$ word representations of modular transformations. In order to formalize this correspondence, let us denote by $\Words{\Z} := \bigcup_{n \le 0} \Z^n$ the set of finite integer sequences (or words over the alphabet $\Z$). Furthermore we set $\EQ := \Q \cup \{\infty\}$ and define a map $f: \Words{\Z} \to \EQ$ by
 \begin{equation}
 \label{eqn_ConFracEvalMap}
 \fundef{f}{\Words{\Z}}{\EQ}{(b_0,b_1,\dots,b_n)}{[b_0,b_1,\dots,b_n].}
@@ -186,16 +191,26 @@ If $g_3(A \langle U \rangle) = g_3(B \langle U \rangle)$, then $A(\infty) = B (\
 \caption{Todo.}
 \label{fig_FordDisks}
 \end{figure}
-Looking at the modular tessellation (see Figure~\ref{fig_ModularTiling}), we note that the images of the indisk $\Indisk$ of the fundamental region $\FunDom$ 
-have a natural one-to-one correspondence to modular transformations, \ie the disk $A\Indisk$ can be considered as a graphical representative for the modular transformation $A$. The question arises, if there is such a visual and clear representation also for left cosets of $\langle U \rangle$ in $\PSL{\Z}$. Indeed, we see that the disks $U^k\Indisk$, $k \in \Z$, which represent the transformations of $\langle U \rangle$, form a ``generalized ring'' which asymptotically approaches the point $\infty$ (this can be seen particularly well in ...). We can enclose this ring in a generalized disk: 
+Looking at the modular tessellation, Figure~\ref{fig_ModularTiling}, we see that the images of the indisk $\Indisk$ of the fundamental region $\FunDom$ 
+have a natural one-to-one correspondence to modular transformations, \ie the disk $A\Indisk$ can be considered as a graphical representative for the modular transformation $A$. 
+
+The question arises, if there is such a visual and clear representation also for left cosets of $\langle U \rangle$ in $\PSL{\Z}$. Indeed, we can see in Figure~\ref{fig_FordDisks}, depicting the modular tessellation under the modified Cayley transform, that the disks $U^k\Indisk$, $k \in \Z$ form a ``generalized ring'' which asymptotically approaches the point $\infty$. We can enclose this ring in a generalized disk -- in Figure~\ref{fig_FordDisks}, this enclosing disk is shown in light gray and is labeled with ``$\infty$''.
 \begin{definition}
 \label{dfn_FordDisk}
-The unique (open) g-disk $\Forddisk$ containing all the disks $U^k\Indisk$, $k \in \Z$, in its interior and being tangent to each of them is called the \emph{Ford disk at $\infty$}. It contains all points $z \in \C$ with $\Im{z} > 1$. Its defining matrix is given by
+\index{Ford disk}
+The unique (open) g-disk $\Forddisk_\infty$ containing all the disks $U^k\Indisk$, $k \in \Z$, in its interior and being tangent to each of them is called the \emph{Ford disk at $\infty$}. It contains all points $z \in \C$ with $\Im{z} > 1$. Its defining matrix is given by
 \begin{equation}
 \label{eqn_FordDisk}
 \Forddisk = \mat{0}{-\ii}{\ii}{2}.
 \end{equation}
+For a modular transformation $A = \smallmat{a}{b}{c}{d} \in \PSL{\Z}$, the image of $\Forddisk_\infty$ under $A$ is called the \emph{Ford disk at $\frac{a}{c}$}, $\Forddisk_{\frac{a}{c}} := A\Forddisk_\infty$.
 \end{definition}
+
+The above definition as well as the bijective correspondence between left cosets of $\langle U \rangle$ in $\PSL{\Z}$ and the extended rational numbers $\EQ$ (Lemma~\ref{lem_MapCosetToEQBijective}) will get much clearer if we again look at Figure~\ref{fig_FordDisks}: We can see that every Ford disk $\Forddisk_r$ (the disk in light gray labeled with $r$), ``touches'' the extended real axis $\R_\infty := \R \cup \{\infty\}$ (appearing as unit circle under the modified Cayley transform) exactly in the point $r$, that is
+\begin{equation*}
+\topcl{\Forddisk_r} \cap \R_\infty = \{r\} \quad \text{for all } r \in \EQ.
+\end{equation*}
+For the seeing the relation of Ford disks to left costets of $\langle U \rangle$ in $\PSL{\Z}$, first observe that the Ford disk $\Forddisk_\infty$ contains all the indisks $U^k \Indisk$, $k \in \Z$. We may notate this fact concisely as $\langle U \rangle \Indisk \subseteq \Forddisk_\infty$. In this sense, we can consider $\Forddisk_\infty$ as a graphical representative for the subgroup $\langle U \rangle$ of $\PSL{\Z}$. Clearly every Ford disk $\Forddisk_r$ is the image of $\Forddisk_\infty$ under some transformation $A \in \PSL{\Z}$ (which can be found using Corollary~\ref{cor_ConFracModTrans}), \ie $A\Forddisk_\infty = \Forddisk_r$. Consequently $A \langle U \rangle \Indisk \subseteq \Forddisk_r$ and we can therefore consider $\Forddisk_r$ as graphical representative for the coset $A \langle U \rangle$.
 
 \begin{figure}
 \centering
@@ -203,6 +218,5 @@ The unique (open) g-disk $\Forddisk$ containing all the disks $U^k\Indisk$, $k \
 \caption{$\pi = \frac{355}{113}$ -- well, almost.}
 \label{fig_ContFracPi}
 \end{figure}
-
 
 \todo{19}{The modular group and ford circles}
