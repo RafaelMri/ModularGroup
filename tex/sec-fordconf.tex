@@ -30,7 +30,7 @@ For determining a continued fraction representation for a real number $\alpha$ s
 \alpha_1 = b_1 + \reci{\alpha_2}, \quad
 \alpha_2 = b_2 + \reci{\alpha_3}, \quad \dots
 \end{equation}
-giving rise to the continued fraction representation $\alpha = [b_0, b_1, b_2, \dots]$. The rational number $C_n := [b_0,b_1,\dots,b_n]$ obtained by truncating the continued fraction representation after the coefficient $b_n$, is called the $n$-th \emph{convergent} of the continued fraction. If the continued fraction is infinte, \ie $\alpha \in \R \setminus \Q$, then we have $\lim_{n \to \infty} C_n = \alpha$.
+giving rise to the continued fraction representation $\alpha = [b_0, b_1, b_2, \dots]$. The rational number $c_n := [b_0,b_1,\dots,b_n]$ obtained by truncating the continued fraction representation after the coefficient $b_n$, is called the $n$-th \emph{convergent} of the continued fraction. If the continued fraction is infinte, \ie $\alpha \in \R \setminus \Q$, then we have $\lim_{n \to \infty} c_n = \alpha$.
 
 \begin{remark}
 \label{rem_ConFracKinds}
@@ -224,7 +224,7 @@ Consider the (semi-regular) continued fraction expansion of the irrational numbe
 \begin{equation*}
 \pi = [3, 7, 16, -294, 3, -4, 5, -15, -3, 2, 2, 2, 2, 3, -85, -3, 2, 15, 3, 14,\dots]
 \end{equation*}
-More coefficients can be found when looking up the sequence A133593 at the \emph{On-Line Encyclopedia of Integer Sequences (OEIS)}\footnote{https://oeis.org}. The convergents of this continued fraction give, by Corollary~\ref{cor_ConFracModTrans}, rise to a sequence of Modular transformations:
+More coefficients can be found by looking up the sequence A133593 at the \emph{On-Line Encyclopedia of Integer Sequences (OEIS)}\footnote{https://oeis.org}. By Corollary~\ref{cor_ConFracModTrans}, the convergents of this continued fraction give rise to a sequence of Modular transformations:
 \begin{IEEEeqnarray*}{rCcCl}
 \lbrack 3 \rbrack &=& 3
   &=& U^3 T (\infty),\\
@@ -237,6 +237,14 @@ More coefficients can be found when looking up the sequence A133593 at the \emph
 &\vdots& &\vdots&
 \end{IEEEeqnarray*}
 \end{example}
+The $T$-$U$ words occurring in this sequence can now be interpreted as ``path'' through the set of indisks $A\Indisk$, $A \in \PSL{\Z}$, which can be described as follows:
+\begin{enumerate}
+\item Start with the Ford disk $\Forddisk_\infty$. Label each indisk $U^k\Indisk$ (contained in $\Forddisk_\infty$) with the corresponding integer $k \in \Z$. The Ford disk $U^3 T \Forddisk_\infty = \Forddisk_3$, corresponding to the convergent $c_0 = 3$, can be approached by starting at the indisk $\Indisk$ (carrying the label 0), going 3 steps right to the indisk with label 3, $U^3 \Indisk$ (marked red in first row of Figure~\ref{fig_ConFracPi}) and finally applying $T$, that is going from there to the tangent indisk $U^3 T \Indisk$, lying within the Ford disk $\Forddisk_3$.
+\item For convenience, set $A_1 := U^3 T$. Within the Ford disk $\Forddisk_3$, label each indisk $A_1 U^k \Indisk$ with the \emph{negated}\footnote{The negation of the sign comes from the fact that we want the indisk labels to correspond to the coefficients $b_j$ of the continued fraction rather than to the exponents $e_j = (-1)^j b_j$ of the $T$-$U$ word.} integer $-k$. Go from indisk $A_1 \Indisk$ (labeled 0) seven steps to the indisk with label 7, $A_1 U^{-7}\Indisk$ -- see second row of Figure~\ref{fig_ConFracPi}. Applying $T$ again takes us to the indisk $A_1 U^{-7} T \Indisk$ within the Ford disk corresponding to the next convergent of the continued fraction: $\Forddisk_{c_1}$, $c_1 = \frac{22}{7}$.
+\item Set $A_2 := U^3 T U^{-7} T$. As above, label all indisks $A_2 U^k \Indisk$ within $\Forddisk_{c_1}$ with $k$ and go from $A_2 \Indisk$ with label 0 sixteen steps to $A_2 U^{16} \Indisk$ with label 16 (Figure~\ref{fig_ConFracPi}, 3rd row) and from there to $A_2 U^{16} T \Indisk$ within $\Forddisk_{c_2}$, $c_2 = \frac{355}{113}$.
+
+\dots
+\end{enumerate}
 
 
 \todo{19}{The modular group and ford circles}
