@@ -38,7 +38,7 @@ giving rise to the continued fraction representation $\alpha = [b_0, b_1, b_2, \
 Note that by using the method above, all the coefficients $b_j$ with $j > 0$ are positive. A representation for $\alpha$ of this form is called a \emph{regular continued fraction} -- see also \Lehner{}, §9. 
 
 \index{Semi-regular continued fraction}
-In contrast to that, if we set $b_j := \ceil{\alpha_j}$ for some or all of the indices $j$, then also negative coefficients $b_j$, $j > 0$, may occur and we obtain in this way a so called \emph{semi-regular continued fraction} representation of $\alpha$. This is in strong analogy to Remark~\ref{rem_EuclideanAlgorithmRounding} that within the Euclidean algorithm the quotients $q_j$ can be determined by rounding $r_{j-1} / r_j$ either up- or downward. Note that in \Lehner{}, §36, semi-regular continued fractions are defined such that for all $j > 0$ the coefficients $b_j$ are positive, but allowing for $a_j \in \{\pm 1\}$. However this makes no essential difference. 
+In contrast to that, if we set $b_j := \ceil{\alpha_j}$ for some or all of the indices $j$, then also negative coefficients $b_j$, $j > 0$, will occur and we obtain in this way a so called \emph{semi-regular continued fraction} representation of $\alpha$. This is in strong analogy to Remark~\ref{rem_EuclideanAlgorithmRounding} that within the Euclidean algorithm the quotients $q_j$ can be determined by rounding $r_{j-1} / r_j$ either up- or downward. Note that in \Lehner{}, §36, semi-regular continued fractions are defined such that for all $j > 0$ the coefficients $b_j$ are positive, but allowing for $a_j \in \{\pm 1\}$. However this makes no essential difference. 
 
 \index{Canonical continued fraction}
 If we use the nearest integer function in each step, \ie $b_j := \nint{\alpha_j}$ for all $j$, then we have $\abs{b_j} \ge 2$ for all $j > 0$. If additionally $\alpha \in \Q$, then it can be shown that the resulting continued fraction representation is one of minimal length -- according to \Lehner{}, §39, we call finite continued fractions with this minimality property \emph{canonical continued fractions}.
@@ -150,7 +150,7 @@ f = g_3 \circ g_2 \circ g_1.
 \end{equation*}
 \end{lemma}
 \begin{proof}
-It follows from Corollary~\ref{cor_ModTransConFrac} and Remark~\ref{rem_TUAlgConFrac} that the composed map $g_2 \circ g_1: \Words{\Z} \to \PSL{\Z} / \langle U \rangle$ takes a continued fraction representation $(b_0,b_1,\dots,b_n)$ to the set of all modular transformations of the form $A(z) = [b_0,b_1,\dots,b_n,(-1)^{n+1}(k + z)]$, $k \in \Z$. Evaluating these transformations at the point $\infty$ obviously yields the rational number $[b_0,b_1,\dots,b_n]$ and we have indeed $f = g_3 \circ g_2 \circ g_1$.
+It follows from Corollary~\ref{cor_ConFracModTrans} that the composed map $g_2 \circ g_1: \Words{\Z} \to \PSL{\Z} / \langle U \rangle$ takes a continued fraction representation $(b_0,b_1,\dots,b_n)$ to a left coset $A \langle U \rangle$, such that $g_3(A \langle U \rangle) = A(\infty) = [b_0,b_1,\dots,b_n]$. Therefore we have indeed $f = g_3 \circ g_2 \circ g_1$.
 \end{proof}
 
 \begin{lemma}
@@ -170,7 +170,7 @@ The fact that $g_1$ is injective is obvious. It is also clear that the word
 \label{eqn_MapConFracToPathImageWord}
 U^{e_0}T U^{e_1}T \dots U^{e_n} T
 \end{equation}
-with $n \ge 0$, $e_j \in \Z$ occurring in the definition of $g_1$ is already reduced and satisfies (\ref{itm_NotContainsTInv}) and (\ref{itm_RightmostIsT}). Conversely, every reduced word $w$ satisfying (\ref{itm_NotContainsTInv}) and (\ref{itm_RightmostIsT}) has necessarily the form
+with $n \ge 0$, $e_j \in \Z$ occurring in the definition of $g_1$ already is in  reduced form and satisfies the conditions (\ref{itm_NotContainsTInv}) and (\ref{itm_RightmostIsT}). Conversely, every reduced word $w$ satisfying (\ref{itm_NotContainsTInv}) and (\ref{itm_RightmostIsT}) has necessarily the form
 \begin{equation*}
 w = U^{k_1} T^{\ell_1} U^{k_2} T^{\ell_2} \dots U^{k_m} T^{\ell_m},
 \end{equation*}
@@ -188,13 +188,11 @@ If $g_3(A \langle U \rangle) = g_3(B \langle U \rangle)$, then $A(\infty) = B (\
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{figures/ford-disks}
-\caption{Todo.}
+\caption{The modular tessellation under the modified Cayley transform $\ModCayley$. The Ford disk $\Forddisk_\infty$ (light gray, labeled with ``$\infty$'') encloses precisely the indisks $B\Indisk$, $B \in \langle U \rangle$, in its interior. It can thus be considered as representative for the subgroup $\langle U \rangle$ in $\PSL{\Z}$. The images of $\Forddisk_\infty$ under the modular group are all Ford disks $\Forddisk_r$ with $r \in \EQ$. For $A \in \PSL{\Z}$, we have $A\Forddisk_\infty = \Forddisk_r$ exactly when $A(\infty) = r$. Therefore $\Forddisk_r$ corresponds directly to both, the  number $r$ (the point, where $\Forddisk_r$ touches the extended real axis) and the left coset $A\langle U \rangle$ ($\Forddisk_r$ encloses precisely the indisks $B\Indisk$, $B \in A \langle U \rangle$).}
 \label{fig_FordDisks}
 \end{figure}
 Looking at the modular tessellation, Figure~\ref{fig_ModularTiling}, we see that the images of the indisk $\Indisk$ of the fundamental region $\FunDom$ 
-have a natural one-to-one correspondence to modular transformations, \ie the disk $A\Indisk$ can be considered as a graphical representative for the modular transformation $A$. 
-
-The question arises, if there is such a visual and clear representation also for left cosets of $\langle U \rangle$ in $\PSL{\Z}$. Indeed, we can see in Figure~\ref{fig_FordDisks}, depicting the modular tessellation under the modified Cayley transform, that the disks $U^k\Indisk$, $k \in \Z$ form a ``generalized ring'' which asymptotically approaches the point $\infty$. We can enclose this ring in a generalized disk -- in Figure~\ref{fig_FordDisks}, this enclosing disk is shown in light gray and is labeled with ``$\infty$''.
+have a natural one-to-one correspondence to modular transformations, \ie the disk $A\Indisk$ can be considered as a graphical representative for the modular transformation $A$. The question arises, if there is such a visual and clear representation also for left cosets of $\langle U \rangle$ in $\PSL{\Z}$. Indeed, we can see in Figure~\ref{fig_FordDisks} -- depicting the modular tessellation under the modified Cayley transform $\ModCayley$ -- that the disks $U^k\Indisk$, $k \in \Z$ form a ``generalized ring'' which asymptotically approaches the point $\infty$. We can enclose this ring in a generalized disk -- in Figure~\ref{fig_FordDisks}, this enclosing disk is shown in light gray and is labeled with ``$\infty$''.
 \begin{definition}
 \label{dfn_FordDisk}
 \index{Ford disk}
@@ -206,13 +204,13 @@ The unique (open) g-disk $\Forddisk_\infty$ containing all the disks $U^k\Indisk
 For a modular transformation $A = \smallmat{a}{b}{c}{d} \in \PSL{\Z}$, the image of $\Forddisk_\infty$ under $A$ is called the \emph{Ford disk at $\frac{a}{c}$}, $\Forddisk_{\frac{a}{c}} := A\Forddisk_\infty$.
 \end{definition}
 
-The above definition as well as the bijective correspondence between left cosets of $\langle U \rangle$ in $\PSL{\Z}$ and the extended rational numbers $\EQ$ (Lemma~\ref{lem_MapCosetToEQBijective}) will get much clearer in view of Figure~\ref{fig_FordDisks}: We can see that every Ford disk $\Forddisk_r$ (the disk in light gray labeled with $r$), ``touches'' the extended real axis $\R_\infty := \R \cup \{\infty\}$ (appearing as unit circle under the modified Cayley transform) exactly in the point $r$, that is
+The above definition as well as the bijective correspondence between left cosets of $\langle U \rangle$ in $\PSL{\Z}$ and the extended rational numbers $\EQ$ (Lemma~\ref{lem_MapCosetToEQBijective}) can also be explained in view of Figure~\ref{fig_FordDisks}: We can see that every Ford disk $\Forddisk_r$ (the disk in light gray labeled with $r$), ``touches'' the extended real axis $\R_\infty := \R \cup \{\infty\}$ (appearing as unit circle under the modified Cayley transform) exactly in the point $r$, that is
 \begin{equation*}
 \topcl{\Forddisk_r} \cap \R_\infty = \{r\} \quad \text{for all } r \in \EQ.
 \end{equation*}
-For the seeing the relation of Ford disks to left costets of $\langle U \rangle$ in $\PSL{\Z}$, first observe that the Ford disk $\Forddisk_\infty$ contains all the indisks $U^k \Indisk$, $k \in \Z$. We may notate this fact concisely as $\langle U \rangle \Indisk \subseteq \Forddisk_\infty$. In this sense, we can consider $\Forddisk_\infty$ as a graphical representative for the subgroup $\langle U \rangle$ of $\PSL{\Z}$. Clearly every Ford disk $\Forddisk_r$ is the image of $\Forddisk_\infty$ under some transformation $A \in \PSL{\Z}$ (which can be found using Corollary~\ref{cor_ConFracModTrans}), \ie $A\Forddisk_\infty = \Forddisk_r$. Consequently $A \langle U \rangle \Indisk \subseteq \Forddisk_r$ and we can therefore consider $\Forddisk_r$ as graphical representative for the coset $A \langle U \rangle$.
+For the seeing the relation of Ford disks to left costets of $\langle U \rangle$ in $\PSL{\Z}$, first observe that the Ford disk $\Forddisk_\infty$ encloses precisely all indisks $B \Indisk$, $B \in \langle U \rangle$. In this sense, we can consider $\Forddisk_\infty$ as a graphical representative for the subgroup $\langle U \rangle$ of $\PSL{\Z}$. Clearly every Ford disk $\Forddisk_r$, $r \in \EQ$, is the image of $\Forddisk_\infty$ under some transformation $A \in \PSL{\Z}$, \ie $A\Forddisk_\infty = \Forddisk_r$, which is the case if and only if $A(\infty) = r$. Consequently $\Forddisk_r$ encloses all indisks $B\Indisk$, $B \in A \langle U \rangle$ and thus can be considered as graphical representative for the coset $A \langle U \rangle$.
 
-Also Lemma~\ref{lem_MapConFracToPathInjective}, establishing a one-to-one correspondence between continued fraction representations and certain $T$-$U$ words, has a nice visual interpretation, as we will illustrate in the following example.
+Also the statement of Lemma~\ref{lem_MapConFracToPathInjective}, the one-to-one correspondence between continued fraction representations and $T$-$U$ words of a certain form, has a nice visual interpretation, as we will illustrate in the following example.
 
 \begin{figure}
 \centering
@@ -226,7 +224,7 @@ Consider the (semi-regular) continued fraction expansion of the irrational numbe
 \begin{equation*}
 \pi = [3, 7, 16, -294, 3, -4, 5, -15, -3, 2, 2, 2, 2, 3, -85, -3, 2, 15, 3, 14,\dots]
 \end{equation*}
-More coefficients can be found when looking up the sequence A133593 on the \emph{On-Line Encyclopedia of Integer Sequences (OEIS)}\footnote{https://oeis.org}. The convergents of this continued fraction give (by Corollary~\ref{cor_ConFracModTrans}) rise to a sequence of Modular transformations:
+More coefficients can be found when looking up the sequence A133593 at the \emph{On-Line Encyclopedia of Integer Sequences (OEIS)}\footnote{https://oeis.org}. The convergents of this continued fraction give, by Corollary~\ref{cor_ConFracModTrans}, rise to a sequence of Modular transformations:
 \begin{IEEEeqnarray*}{rCcCl}
 \lbrack 3 \rbrack &=& 3
   &=& U^3 T (\infty),\\
