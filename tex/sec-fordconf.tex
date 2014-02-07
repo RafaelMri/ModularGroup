@@ -167,14 +167,14 @@ In particular there is a one-to-one correspondence between all continued fractio
 \begin{proof}
 The fact that $g_1$ is injective is obvious. It is also clear that the word
 \begin{equation}
-\label{eqn_MapConFracToPathImageWord}
+\label{eqn_ConFracTUWord}
 U^{e_0}T U^{e_1}T \dots U^{e_n} T
 \end{equation}
 with $n \ge 0$, $e_j \in \Z$ occurring in the definition of $g_1$ already is in  reduced form and satisfies the conditions (\ref{itm_NotContainsTInv}) and (\ref{itm_RightmostIsT}). Conversely, every reduced word $w$ satisfying (\ref{itm_NotContainsTInv}) and (\ref{itm_RightmostIsT}) has necessarily the form
 \begin{equation*}
 w = U^{k_1} T^{\ell_1} U^{k_2} T^{\ell_2} \dots U^{k_m} T^{\ell_m},
 \end{equation*}
-with $m >= 0$, $k_j \in \Z$ and $\ell_j \ge 1$. Because for $k \ge 1$, $T^k$ and $(TU^0)^{k-1}T$ are \emph{identical} as words, we can for sure notate $w$ alternatively in the form (\ref{eqn_MapConFracToPathImageWord}).
+with $m >= 0$, $k_j \in \Z$ and $\ell_j \ge 1$. Because for $k \ge 1$, $T^k$ and $(TU^0)^{k-1}T$ are \emph{identical} as words, we can for sure notate $w$ alternatively in the form (\ref{eqn_ConFracTUWord}).
 \end{proof}
 
 \begin{lemma}
@@ -236,8 +236,7 @@ More coefficients can be found by looking up the sequence A133593 at the \emph{O
   &=& U^3 T U^{-7} T U^{16} T U^{294} T (\infty),\\
 &\vdots& &\vdots&
 \end{IEEEeqnarray*}
-\end{example}
-The $T$-$U$ words occurring in this sequence can now be interpreted as ``path'' through the set of indisks $A\Indisk$, $A \in \PSL{\Z}$, which can be described as follows:
+The $T$-$U$ words occurring in this sequence can now be interpreted as ``path'' through the set of indisks $A\Indisk$, $A \in \PSL{\Z}$ as follows:
 \begin{enumerate}
 \item Start with the Ford disk $\Forddisk_\infty$. Label each indisk $U^k\Indisk$ (contained in $\Forddisk_\infty$) with the corresponding integer $k \in \Z$. The Ford disk $U^3 T \Forddisk_\infty = \Forddisk_3$, corresponding to the convergent $c_0 = 3$, can be approached by starting at the indisk $\Indisk$ (carrying the label 0), going 3 steps right to the indisk with label 3, $U^3 \Indisk$ (marked red in first row of Figure~\ref{fig_ConFracPi}) and finally applying $T$, that is going from there to the tangent indisk $U^3 T \Indisk$, lying within the Ford disk $\Forddisk_3$.
 \item For convenience, set $A_1 := U^3 T$. Within the Ford disk $\Forddisk_3$, label each indisk $A_1 U^k \Indisk$ with the \emph{negated}\footnote{The negation of the sign comes from the fact that we want the indisk labels to correspond to the coefficients $b_j$ of the continued fraction rather than to the exponents $e_j = (-1)^j b_j$ of the $T$-$U$ word.} integer $-k$. Go from indisk $A_1 \Indisk$ (labeled 0) seven steps to the indisk with label 7, $A_1 U^{-7}\Indisk$ -- see second row of Figure~\ref{fig_ConFracPi}. Applying $T$ again takes us to the indisk $A_1 U^{-7} T \Indisk$ within the Ford disk corresponding to the next convergent of the continued fraction: $\Forddisk_{c_1}$, $c_1 = \frac{22}{7}$.
@@ -245,6 +244,10 @@ The $T$-$U$ words occurring in this sequence can now be interpreted as ``path'' 
 
 \dots
 \end{enumerate}
+\end{example}
 
+Without explicating further steps of the above example, we can easily imagine how this generalizes to different continued fraction representations of arbitrary real numbers: Given a continued fraction $\alpha = [b_0,b_1,\dots]$, we start with the indisk $\Indisk^{(0)} := \Indisk$ contained in the Ford disk $\Forddisk^{(0)} := \Forddisk_\infty$. For every $j \ge 0$, we label the indisks contained in $\Forddisk^{(j)}$ with successive integers in counter-clockwise direction (if $j$ is even) or in clockwise direction (if $j$ is odd) in such a way that the disk $\Indisk^{(j)}$ carries the label 0. Now we choose $\Indisk^{(j+1)}$ as the unique indisk which is exterior to $\Forddisk^{(j)}$ and tangent to the disk with label $b_j$ (within $\Forddisk^{(j)}$). Moreover we choose as $\Forddisk^{(j+1)}$ the unique Ford disk containing $\Indisk^{(j+1)}$. 
+
+Considering also the ``intermediate'' indisks (those with labels between 0 and $b_j$), we describe in this way an \emph{indisk-path}, or in other words a chain of successively tangent disks, through the set of all indisks $A\Indisk$, $A \in \PSL{\Z}$. Such a path always starts at $\Indisk$ and ends at some $U^{e_0}T U^{e_1}T \dots U^{e_n}T\Indisk$, adding exactly one symbol $U$, $\inv{U}$ or $T$ to the group when moving from one indisk to the next. Obviously these paths can be considered as a visual representation of $T$-$U$ words of the form (\ref{eqn_ConFracTUWord}). This makes the ambiguity of continued fractions representations immediately apparent: All different indisk-paths ending in a given Ford disk $\Forddisk_r$ give rise to a different continued fraction representation for $r \in \EQ$.
 
 \todo{19}{The modular group and ford circles}
