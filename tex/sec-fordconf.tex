@@ -249,9 +249,25 @@ The $T$-$U$ words occurring in this sequence can now be interpreted as ``path'' 
 Without explicating further steps of the above example, we can easily imagine how this generalizes to different continued fraction representations of arbitrary real numbers: Given a continued fraction $\alpha = [b_0,b_1,\dots]$, we start with the indisk $\Indisk^{(0)} := \Indisk$ contained in the Ford disk $\Forddisk^{(0)} := \Forddisk_\infty$. For every $j \ge 0$, we label the indisks contained in $\Forddisk^{(j)}$ with successive integers in counter-clockwise direction (if $j$ is even) or in clockwise direction (if $j$ is odd) in such a way that the disk $\Indisk^{(j)}$ carries the label 0. Now we choose $\Indisk^{(j+1)}$ as the unique indisk which is exterior to $\Forddisk^{(j)}$ and tangent to the disk with label $b_j$ (within $\Forddisk^{(j)}$). Moreover we choose as $\Forddisk^{(j+1)}$ the unique Ford disk containing $\Indisk^{(j+1)}$. 
 
 \index{Indisk!path}
-Considering also ``intermediate'' indisks (those with labels between 0 and $b_j$ within $\Forddisk^{(j)}$), we describe in this way an \emph{indisk-path}, or in other words a chain of successively tangent disks, through the set of all indisks $A\Indisk$, $A \in \PSL{\Z}$. Such a path always starts at $\Indisk$ and ends at some $U^{e_0}T U^{e_1}T \dots U^{e_n}T\Indisk$, appending exactly one symbol $U$, $\inv{U}$ or $T$ to the previous group word when moving one step forward along the path. Obviously these paths can be considered as a visual representation of $T$-$U$ words of the form (\ref{eqn_ConFracTUWord}) and we can draw the following conclusions:
+Considering also ``intermediate'' indisks (those with labels between 0 and $b_j$ within $\Forddisk^{(j)}$), we describe in this way an \emph{indisk path}, or in other words a chain of successively tangent disks, through the set of all indisks $A\Indisk$, $A \in \PSL{\Z}$. Such a path always starts at $\Indisk$ and ends at some $U^{e_0}T U^{e_1}T \dots U^{e_n}T\Indisk$, appending exactly one symbol $U$, $\inv{U}$ or $T$ to the previous group word when moving one step forward along the path. Obviously these paths can be considered as a visual representation of $T$-$U$ words of the form (\ref{eqn_ConFracTUWord}) and we can draw the following conclusions:
 \begin{itemize}
-\item All different paths starting at $\Indisk$ and ending within a given Ford disk $\Forddisk_r$ give rise to different continued fraction representations of the same rational number $r \in \EQ$. In particular continued fraction representations are not unique in any way (unless we impose certain conditions on its coefficients $b_j$, as for example regularity -- compare \Lehner{}, §9).
+\item All different indisk paths starting at $\Indisk$ and ending within a given Ford disk $\Forddisk_r$ give rise to different continued fraction representations for the same rational number $r \in \EQ$. In particular continued fraction representations are not unique in any way (unless we impose certain conditions on its coefficients $b_j$, as for example regularity -- compare \Lehner{}, §9).
+\item Considering a continued fraction representation $r = [b_0,b_1,\dots,b_n]$ of a rational number $r \in \EQ$, its length $n$ is exactly the number of hops between tangent Ford disks in the corresponding indisk path (or the number of symbols $T$ in the corresponding $T$-$U$ word). Let us call $n$ the \emph{length} of the indisk path. Note that Ford disks may possibly be visited more than once while walking along indisk paths. Clearly this is not the case if the path is one of minimal length from $\Forddisk_\infty$ to $\Forddisk_r$. Still, minimality with regard to path length does not imply uniqueness:  Consider for example $r = \frac{2}{5}$. In Figure~\ref{fig_FordDisks}, we can see $\Forddisk_{2/5}$ as the smaller of the two Ford disks being tangent to $\Forddisk_{1/3}$ and $\Forddisk_{1/2}$. We can see that there are three paths of length 3 from $\Forddisk_\infty$ to $\Forddisk_{2/5}$, namely
+\begin{equation*}
+\infty \to 0 \to \reci{2} \to \frac{2}{5},\quad
+\infty \to 0 \to \reci{3} \to \frac{2}{5},\quad
+\infty \to 1 \to \reci{2} \to \frac{2}{5}.
+\end{equation*}
+Since no shorter paths are possible, these paths give rise to three different \emph{canonical} continued fraction representations of $r$:
+\begin{equation*}
+r = \frac{2}{5} = [0,2,2] = [0,3,-2] = [1,-2,3].
+\end{equation*}
+Canonical continued fractions are therefore generally not unique.
+%\item Considering indisk paths, we can also give an alternative proof for the fact that all relations within $\PSL{\Z}$ are derived from $T^2 = 1$ and $(TU)^3 = 1$: Every relation satisfied by $T$ and $U$ within $\PSL{\Z}$ corresponds exactly to one closed indisk path -- a path starting and ending at $\Indisk$. In particular, looking at Figure~\ref{fig_FordDisks} and using its indisk labeling, the relation $T^2 = 1$ is represented by the path $L_i:  1 \to T \to 1$ and $(TU)^3 = 1$ by the path
+%\begin{equation*}
+%L_\rho: 1 \to T \to TU \to \inv{U}T\inv{U} \to \inv{U}T \to \inv{U} \to 1.
+%\end{equation*}
+%We see in Figure~\ref{fig_FordDisks} that the path $L_\rho$ goes around the point $\rho := \exp(2 \pi \ii / 3)$ once (the letter $L$ shall indicate ``loop''). We therefore say that the point $\rho$ has a \emph{winding number} of 1 with respect to the path $P_\rho$.
 \end{itemize}
 
 \todo{19}{The modular group and ford circles}
