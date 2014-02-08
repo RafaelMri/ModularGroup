@@ -4,7 +4,7 @@ In this section, we will recapitulate some basic algebraic concepts, most import
 
 \subsection{Groups and homomorphisms}
 
-\index{Binary!operation}
+\index{Binary operation}
 If $G$ is a nonempty set, a \emph{binary operation} on $G$ is a function $G \times G \to G$. Commonly used notations for the image of $(a,b) \in G \times G$ under a binary operation are $a \cdot b$ or $ab$ (product notation), $a + b$ (additive notation), $a \circ b$, $a \ast b$, etc. In this chapter and also later on we will use the \emph{product notation}, $(a,b) \mapsto a \cdot b =  ab$, most frequently and we refer to $ab$ as the \emph{product} of $a$ and $b$.
 
 \begin{definition}[Groups and monoids]
@@ -137,16 +137,7 @@ as the set of all \emph{words over the alphabet $\Syms$}. It is now just natural
 \begin{equation*}
 w_1 \cdot w_2 := w_1 w_2, \quad w_1, w_2 \in \Words{\Syms}.
 \end{equation*}
-\index{Monoid}
-Since $\Words{\Syms}$ together with the operation $\cdot$ satisfies the axioms of \emph{associativity},
-\begin{equation*}
-\forall w_1,w_2,w_3 \in \Words{\Syms}:\quad (w_1 \cdot w_2) \cdot w_3 = w_1 \cdot (w_2 \cdot w_3)
-\end{equation*}
-and \emph{existence of an identity element},
-\begin{equation*}
-\forall w \in \Words{\Syms}:\quad w \cdot  \epsilon = \epsilon \cdot w = w,
-\end{equation*}
-the algebraic structure $\langle \Words{\Syms}, \cdot, \epsilon \rangle$ forms a \emph{monoid}.
+It is obvious that this operation on $\Words{\Syms}$ is associative and has the empty word $\epsilon$ as identity element. Therefore, according to Definition~\ref{dfn_GroupMonoid}, the algebraic structure $\langle \Words{\Syms}, \cdot, \epsilon \rangle$ forms a monoid.
 
 \begin{definition}[Free monoid]
 \label{dfn_FreeMonoid}
@@ -155,7 +146,7 @@ Let $\Syms$ be an arbitrary set of symbols (called the alphabet), and $\Words{\S
 
 \subsection{Free groups}
 \index{Free!group}
-\index{Formal!inverse}
+\index{Formal inverse}
 In a similar fashion, we can construct also a group from any given formal alphabet $\Syms$. For this purpose we first choose a ``disjoint copy'' of $\Syms$ which we denote by $\inv{\Syms}$. To be precise, $\inv{\Syms}$ may be any arbitrary set satisfying $\Syms \cap \inv{\Syms} = \emptyset$ and having same cardinality as $\Syms$. In particular we could for example set $\inv{\Syms} := \Syms \times \{1\}$. Next, we choose a bijection $f : \Syms \to \inv{\Syms}$. We can extend this bijection between the sets $\Syms$ and $\inv{\Syms}$ to an involution $\overline{f}$ living on the union $\overline{\Syms} := \Syms \cup \inv{\Syms}$ by defining $\overline{f} := f \cup \inv{f}$ or more verbose:
 \begin{equation*}
 \overline{f}(a) := \begin{cases}
