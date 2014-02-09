@@ -282,24 +282,25 @@ As above, in the definition of the map $g_2$ in (\ref{eqn_MapPathToCoset}), let 
 \begin{equation*}
 \sigma = \prod_{j=1}^n (\tau_j R_j \inv{\tau_j}),
 \end{equation*}
-with $\tau_j \in \FreeGrp{\Syms}$ and $R_j$ being either the word $T^2$ or $(TU)^3$. %Clearly the relation $T^2 = 1$ immediately allows us to reduce every occurrence of $T^k$ in $\sigma$ to either T or $\epsilon$ and it is therefore sufficient to consider words $\sigma$ of the form
-%\begin{equation*}
-%\sigma = U^{k_0} TU^{k_1} \dots TU^{k_{n-1}} TU^{k_n}
-%\end{equation*}
-%where $k_0,\dots,k_n \in \Z$ and $k_1,\dots,k_{n-1} \ne 0$. 
-From $\overline{\phi}(\sigma) = 1$ we see that the indisk path corresponding to $\sigma$ is closed, \ie it starts and ends at the indisk $\Indisk$. Let us call such an indisk path a \emph{loop}. Looking at Figure~\ref{fig_FordDisks} and using its indisk labeling, the relation $(TU)^3 = 1$ corresponds to the loop
-\begin{equation*}
-L_\rho^\prime: 1 \to T \to TU \to \inv{U}T\inv{U} \to \inv{U}T \to \inv{U} \to 1.
-\end{equation*}
-We see that $L_\rho^\prime$ goes once around the point $\rho := \exp(2 \pi \ii / 3)$ in clockwise (negative) direction. We therefore define the \emph{winding number} $\nu_\rho(L_\rho^\prime)$ of $\rho$ with respect to the closed path $L_\rho$ as $-1$. More general, the winding number $\nu_z(L)$ of points $z \in \C$ equivalent\footnote{That is $z = A \rho$ for some $A \in \PSL{\Z}$.} to $\rho$ with respect to a loop $L$ shall count the number of times the loop $L$ turns around the point $z$ -- every full turn around $z$ in positive (\resp negative) direction shall give a contribution of +1 (\resp -1) to $\nu_z(L) \in \Z$. We call a loop $L$ a \emph{degenerate loop}, if for all $z \in \C$ equivalent to $\rho$ the winding number $\nu_z(L)$ is zero. In this case $L$ consists enirely of subpaths of the form 
+with $\tau_j \in \FreeGrp{\Syms}$ and $R_j$ being either the word $T^2$ or $(TU)^3$. From $\overline{\phi}(\sigma) = 1$ we see that the indisk path corresponding to $\sigma$ is closed, \ie it starts and ends at the indisk $\Indisk$. Let us call such an indisk path a \emph{loop}. Next, set $\rho := \exp(2 \pi \ii / 3)$ and denote by $[\rho]_\sim$ the orbit of $\rho$ under $\PSL{\Z}$. We define the number of times a loop $L$ turns around a point $z \in [\rho]_\sim$ the \emph{winding number} $\nu_z(L)$. Every full turn around $z$ in positive (\resp negative) direction shall give a contribution of +1 (\resp -1) to $\nu_z(L) \in \Z$. If the winding number $\nu_z(L)$ is zero for all $z \in [\rho]_\sim$, we call $L$ a \emph{degenerate loop}. In this case $L$ consists enirely of subpaths of the form 
 \begin{equation*}
 \Indisk \to \Indisk_1 \to \dots \to \Indisk_{n-1} \to \Indisk_n \to \Indisk_{n-1} \to \dots \to \Indisk_1 \to \Indisk
 \end{equation*}
-and the corresponding $T$-$U$ word can be reduced to the empty word just by repeated application of the relation $T^2 = 1$.
+and the corresponding $T$-$U$ word can be reduced to the empty word just by repeated application of the relation $T^2 = 1$. \index{Kronecker delta} Finally, using the \emph{Kronecker delta} notation,
+\begin{equation*}
+\delta_{z,w} := 
+\begin{cases}
+1 & \text{if } z = w,\\
+0 & \text{otherwise,}
+\end{cases}
+\end{equation*}
+we call a loop $L$ a \emph{primitive loop} for the point $z \in [\rho]_\sim$, if $\nu_w(L) = \delta_{w,z}$ for all $w \in [\rho]_\sim$.
 
-
-
-%We can now define for every $z \in \C$ equivalent to $\rho$ a closed indisk path. 
+Looking at Figure~\ref{fig_FordDisks} and using its indisk labeling, the relation $(TU)^3 = 1$ corresponds to the loop
+\begin{equation*}
+L_\rho^\prime: 1 \to T \to TU \to \inv{U}T\inv{U} \to \inv{U}T \to \inv{U} \to 1.
+\end{equation*}
+We see that $L_\rho^\prime$ goes once around the point $\rho$ in clockwise (negative) direction. Going the loop in reverse direction yields a primitive loop for the point $\rho$, $L_\rho := \inv{(L_\rho^\prime)}$, corresponding to the relation $(TU)^{-3} = 1$. Next we choose for every $z \in [\rho]_\sim$ such  a primitive loop $L_z$. We do so by going from $\Indisk$ to any indisk in the ``neighbourhood'' of $z$ along a path $P_z$, then going around $z$ once in positive direction and finally returning to $\Indisk$ by going back the reverse path $\inv{P_z}$. Every primitive loop $L_z$ now corresponds to a relation of the form $\tau (TU)^{-3} \inv{\tau} = 1$.
 \end{proof}
 
 
