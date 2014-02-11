@@ -283,7 +283,7 @@ As above, in the definition of the map $g_2$ in (\ref{eqn_MapPathToCoset}), let 
 \label{eqn_RelationReduction}
 \sigma = \prod_{j=1}^n (\tau_j R_j \inv{\tau_j})^{k_j},
 \end{equation}
-with $k_j \in \Z$, $\tau_j \in \FreeGrp{\Syms}$ and $R_j$ being either the word $T^2$ or $(TU)^3$. From $\overline{\phi}(\sigma) = 1$ we see that the indisk path corresponding to $\sigma$ is closed, \ie it starts and ends at the indisk $\Indisk$. Let us call such an indisk path a \emph{loop}. Next, set $\rho := \exp(2 \pi \ii / 3)$ and denote by $[\rho]_\sim$ the orbit of $\rho$ under $\PSL{\Z}$. We define the number of times a loop $L$ turns around a point $z \in [\rho]_\sim$ the \emph{winding number} $\nu_z(L)$. Every full turn around $z$ in positive (\resp negative) direction shall give a contribution of +1 (\resp -1) to $\nu_z(L) \in \Z$. If the winding number $\nu_z(L)$ is zero for all $z \in [\rho]_\sim$, we call $L$ a \emph{degenerate loop}. In this case $L$ consists enirely of subpaths of the form 
+with $k_j \in \Z$, $\tau_j \in \FreeGrp{\Syms}$ and $R_j$ being either the word $T^2$ or $(TU)^3$. From $\overline{\phi}(\sigma) = 1$ we see that the indisk path corresponding to $\sigma$ is closed, \ie it starts and ends at the indisk $\Indisk$. \index{Loop@Loop (closed indisk path)} Let us call such an indisk path a \emph{loop}. Next, set $\rho := \exp(2 \pi \ii / 3)$ and denote by $[\rho]_\sim$ the orbit of $\rho$ under $\PSL{\Z}$. \index{Winding number} We define the number of times a loop $L$ turns around a point $z \in [\rho]_\sim$ the \emph{winding number} $\nu_z(L)$. Every full turn around $z$ in positive (\resp negative) direction shall give a contribution of +1 (\resp -1) to $\nu_z(L) \in \Z$. If the winding number $\nu_z(L)$ is zero for all $z \in [\rho]_\sim$, we call $L$ a \emph{degenerate loop}. In this case $L$ consists enirely of subpaths of the form 
 \begin{equation*}
 \Indisk \to \Indisk_1 \to \dots \to \Indisk_{n-1} \to \Indisk_n \to \Indisk_{n-1} \to \dots \to \Indisk_1 \to \Indisk
 \end{equation*}
@@ -305,5 +305,37 @@ Let now $\sigma \in \FreeGrp{\Syms}$ be an arbitrary relation, and call $S$ the 
 \begin{equation*}
 V := \prod_{z \in [\rho]_\sim} L_z^{\nu_z(S)}.
 \end{equation*}
-Note that the particular order of the individual factors in this product is irrelevant for our purposes. By going through the loop $S$ in forward and through $V$ in backward direction we obtain a degenerate loop $S\inv{V}$, \ie $\nu_z(S\inv{V}) = 0$ for all $z \in [\rho]_\sim$. In other words, with $V$ we have found a word $\psi \in \FreeGrp{\Syms}$ such that $\sigma\inv{\psi}$ can be reduced to 1 entirely by applying the relation $T^2 = 1$, \ie we have $\sigma\inv{\psi}\inv{\omega} = 1$ for some product $\omega \in \FreeGrp{\Syms}$ consisting entirely of factors conjugate to the word $T^2$. Therefore, with $\omega\psi$ we have found for the relation $\sigma$ a product representation of the desired form (\ref{eqn_RelationReduction}).
+Note that the particular order of the individual factors in this product is irrelevant for our purposes. By going through the loop $S$ in forward and through $V$ in backward direction we obtain a degenerate loop $S\inv{V}$, \ie $\nu_z(S\inv{V}) = 0$ for all $z \in [\rho]_\sim$. In other words, with $V$ we have found a word $\psi \in \FreeGrp{\Syms}$ such that $\sigma\inv{\psi}$ can be reduced to 1 entirely by applying the relation $T^2 = 1$, \ie we have $\sigma\inv{\psi}\inv{\omega} = 1$ for some product $\omega \in \FreeGrp{\Syms}$ consisting entirely of factors conjugate to the word $T^2$. Summing up, with $\omega\psi$ we have a product representation for the relation $\sigma$ of the desired form (\ref{eqn_RelationReduction}).
 \end{proof}
+
+Note that the above proof is essentially a discrete variant of the proof given in \Klein{}, p.\ 452ff.\footnote{Volume 1, part 2, chapter 9, §1.} We conclude this section with some final remarks and references for further reading:
+\begin{remark}
+The connection between Ford disks and continued fractions has been the object of many investigations in history. For example \Ford{} gives a geometric interpretation of continued fractions by identifying rational numbers $p/q$, with coprime $p,q \in \Z$, with circles of radius $r = (2q^2)^{-1}$ and center $C:(p/q,r)$. He also gives a reference to an interesting book of \Zuellig{}, containing a considerable number of concrete numerical examples and accurate figures relating continued fractions to curves along the boundary of chains of Ford disks. Note that these interpretations are essentially equivalent to the one given in Example~\ref{ex_ConFracPi}. However, both authors do not use a concept similar to indisks, nor do they make such an explicit connection to the modular group.
+\end{remark}
+
+\begin{remark}
+Considering the continued fraction expansion of $\pi$ from Example~\ref{ex_ConFracPi}, $\pi = [3,7,16,-294,\dots]$, and looking at the ford disk $\Forddisk_{c_3}$, $c_3 = \frac{355}{113}$ in the last row of Figure~\ref{fig_ConFracPi}, we see that (starting as usual at the indisk with label 0) we would have to go 294 (!) steps in clockwise direction to approach the Ford disk $\Forddisk_{c_4}$, $c_4 = \frac{104348}{33215}$. From the image we can only imagine how small $\Forddisk_{c_4}$ must be in comparison to $\Forddisk_{c_3}$. In fact, the ratio of the radii\footnote{The radius of a Ford disk $\Forddisk_{p/q}$, for coprime $p,q \in \Z$, is $\reci{2 q^2}$ -- see also \Ford{}.} between these two Ford disks is approximately $1 : 86~400$. This huge difference in size explains why the rational number $\frac{355}{133}$ is such an extraordinary good approximation for $\pi$. The absolute errors between $\pi$ and the convergents $c_2$, $c_3$ and $c_4$ are
+\begin{IEEEeqnarray*}{rCcCl}
+\pi &-& \frac{22}{7} &\approx& -1.2 \cdot 10^{-3},\\
+\pi &-& \frac{335}{133} &\approx& -2.7 \cdot 10^{-7},\\
+\pi &-& \frac{104348}{33215} &\approx& -3.3 \cdot 10^{-10}.
+\end{IEEEeqnarray*}
+Comparing $c_2 = \frac{22}{7}$ and $c_3 = \frac{335}{113}$, we see that by increasing the numerator and denominator by a relatively small factor of about $15$, we achieve more than 4000-fold increase in precision. In contrast to that, blowing up numerator and denominator further by an additional factor of roughly $300$ improves precision only by a factor of approximately $800$. 
+
+In \Lehner{}, p.\ 61ff., the approximations of $\pi$ obtained by its \emph{regular continued fraction expansion} are discussed in a similar fashion and some interesting historical details can be found there as well.
+\end{remark}
+
+Geometric considerations on Ford disks can also be used to prove the following number-theoretic theorem:
+\begin{theorem}
+\label{thm_RatApprox}
+If $\alpha \in \R \setminus \Q$ is an irrational number and if $k = \sqrt{5}$, then the equation 
+\begin{equation}
+\label{eqn_RatApprox}
+\abs{\frac{p}{q} - \alpha} < \reci{k \cdot q^2}
+\end{equation}
+is satisfied for infinitely many $p,q \in \Z$. In contrast to that, if $k < \sqrt{5}$, then there are irrational numbers $\alpha$, such that (\ref{eqn_RatApprox}) is satisfied for only finitely many $p,q \in \Z$.
+\end{theorem}
+
+\begin{remark}
+An elementary proof of Theorem~\ref{thm_RatApprox}, relying on continued fraction expansions of irrational numbers, can be found in \Lehner{}, §14. An alternative proof, based purely on geometric considerations on Ford circles, is given in \Ford{}.
+\end{remark}
