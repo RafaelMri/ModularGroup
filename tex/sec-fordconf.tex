@@ -53,7 +53,7 @@ An arbitrary modular transformation $A(z) = \moebius{a}{b}{c}{d}{z}$ can be writ
 \label{eqn_ModTransConFrac}
 A(z) = [q_0,q_1,\dots,q_n,(-1)^{n+1}(k+z)]
 \end{equation}
-where the integers $n$, $q_0,q_1,\dots,q_n$ and $k$ are determined by the algorithm described in Corollary \ref{cor_ModGrpTUAlg}.
+where the integers $n$, $q_0,q_1,\dots,q_n$ and $k$ are determined by the $T$-$U$ algorithm from Corollary \ref{cor_ModGrpTUAlg}.
 \end{corollary}
 \begin{proof}
 By using the continued fraction representation of $A$ given in (\ref{eqn_ALongConFrac}) and by applying the definition $e_j$ := $(-1)^j q_j$, we see
@@ -305,7 +305,7 @@ Let now $\sigma \in \FreeGrp{\Syms}$ be an arbitrary relation, and call $S$ the 
 \begin{equation*}
 V := \prod_{z \in [\rho]_\sim} L_z^{\nu_z(S)}.
 \end{equation*}
-Note that the particular order of the individual factors in this product is irrelevant for our purposes. By going through the loop $S$ in forward and through $V$ in backward direction we obtain a degenerate loop $S\inv{V}$, \ie $\nu_z(S\inv{V}) = 0$ for all $z \in [\rho]_\sim$. In other words, with $V$ we have found a word $\psi \in \FreeGrp{\Syms}$ such that $\sigma\inv{\psi}$ can be reduced to 1 entirely by applying the relation $T^2 = 1$, \ie we have $\sigma\inv{\psi}\inv{\omega} = 1$ for some product $\omega \in \FreeGrp{\Syms}$ consisting entirely of factors conjugate to the word $T^2$. Summing up, with $\omega\psi$ we have a product representation for the relation $\sigma$ of the desired form (\ref{eqn_RelationReduction}).
+Note that the particular order of the individual factors in this product is irrelevant for our purposes. By going through the loop $S$ in forward and through $V$ in backward direction, we obtain a degenerate loop $S\inv{V}$, \ie $\nu_z(S\inv{V}) = 0$ for all $z \in [\rho]_\sim$. In other words, with $V$ we have found a word $\psi \in \FreeGrp{\Syms}$ such that $\sigma\inv{\psi}$ can be reduced to 1 entirely by applying the relation $T^2 = 1$, \ie we have $\sigma\inv{\psi}\inv{\omega} = 1$ for some product $\omega \in \FreeGrp{\Syms}$ consisting entirely of factors conjugate to the word $T^2$. Summing up, with $\omega\psi$ we have a product representation for the relation $\sigma$ of the desired form (\ref{eqn_RelationReduction}).
 \end{proof}
 
 Note that the above proof is essentially a discrete variant of the proof given in \Klein{}, p.\ 452ff.\footnote{Volume 1, part 2, chapter 9, §1.} We conclude this section with some final remarks and references for further reading:
@@ -314,7 +314,7 @@ The connection between Ford disks and continued fractions has been the object of
 \end{remark}
 
 \begin{remark}
-Considering the continued fraction expansion of $\pi$ from Example~\ref{ex_ConFracPi}, $\pi = [3,7,16,-294,\dots]$, and looking at the ford disk $\Forddisk_{c_3}$, $c_3 = \frac{355}{113}$ in the last row of Figure~\ref{fig_ConFracPi}, we see that (starting as usual at the indisk with label 0) we would have to go 294 (!) steps in clockwise direction to approach the Ford disk $\Forddisk_{c_4}$, $c_4 = \frac{104348}{33215}$. From the image we can only imagine how small $\Forddisk_{c_4}$ must be in comparison to $\Forddisk_{c_3}$. In fact, the ratio of the radii\footnote{The radius of a Ford disk $\Forddisk_{p/q}$, for coprime $p,q \in \Z$, is $\reci{2 q^2}$ -- see also \Ford{}.} between these two Ford disks is approximately $1 : 86~400$. This huge difference in size explains why the rational number $\frac{355}{133}$ is such an extraordinary good approximation for $\pi$. The absolute errors between $\pi$ and the convergents $c_2$, $c_3$ and $c_4$ are
+Considering the continued fraction expansion of $\pi$ from Example~\ref{ex_ConFracPi}, $\pi = [3,7,16,-294,\dots]$, and looking at the ford disk $\Forddisk_{c_3}$, $c_3 = \frac{355}{113}$, in the last row of Figure~\ref{fig_ConFracPi}, we see that (starting as usual at the indisk with label 0) we would have to go 294 (!) steps in clockwise direction to approach the Ford disk $\Forddisk_{c_4}$, $c_4 = \frac{104348}{33215}$. From the image we can only imagine how small $\Forddisk_{c_4}$ must be in comparison to $\Forddisk_{c_3}$. In fact, the ratio of the radii\footnote{The radius of a Ford disk $\Forddisk_{p/q}$, for coprime $p,q \in \Z$, is $\reci{2 q^2}$ -- see also \Ford{}.} between these two Ford disks is approximately $1 : 86~400$. This huge difference in size explains why the rational number $\frac{355}{133}$ is such an extraordinary good approximation for $\pi$. The absolute errors between $\pi$ and the convergents $c_2$, $c_3$ and $c_4$ are
 \begin{IEEEeqnarray*}{rCcCl}
 \pi &-& \frac{22}{7} &\approx& -1.2 \cdot 10^{-3},\\
 \pi &-& \frac{335}{133} &\approx& -2.7 \cdot 10^{-7},\\
@@ -333,7 +333,7 @@ If $\alpha \in \R \setminus \Q$ is an irrational number and if $k = \sqrt{5}$, t
 \label{eqn_RatApprox}
 \abs{\frac{p}{q} - \alpha} < \reci{k \cdot q^2}
 \end{equation}
-is satisfied for infinitely many $p,q \in \Z$. In contrast to that, if $k < \sqrt{5}$, then there are irrational numbers $\alpha$, such that (\ref{eqn_RatApprox}) is satisfied for only finitely many $p,q \in \Z$.
+is satisfied by infinitely many $p,q \in \Z$. If $k > \sqrt{5}$, then there are irrational numbers $\alpha$, such that (\ref{eqn_RatApprox}) is satisfied by only finitely many $p,q \in \Z$.
 \end{theorem}
 
 \begin{remark}
