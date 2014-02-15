@@ -60,12 +60,7 @@ We note that the nature of Möbius transformations is threefold: Firstly, as in D
 \end{equation*} 
 Secondly $\phi$ has a natural interpretation as meromorphic function on the extended complex plane $\EC = \C \cup \{\infty\}$ in the sense of complex analysis:
 \begin{equation*}
-\phi_{\text{fun}}: \left\{ 
-\begin{array}{ccc}
-\EC &\to& \EC \\
-z  &\mapsto& \moebius{a}{b}{c}{d}{z}
-\end{array}
-\right.
+\fundef{\phi_{\text{fun}}}{\EC}{\EC}{z}{\moebius{a}{b}{c}{d}{z}.}
 \end{equation*}
 In a more formal context, this correspondence can also be seen the following light: The group of Möbius transformations acts on the set $\EC$ in the sense of Defintion~\ref{dfn_GroupAction} by $\phi_{\text{alg}} z := \phi_{\text{fun}}(z)$. Now, the homomorphism of Theorem~{\ref{thm_GroupActionHom}} is in fact an isomorphism which assigns each Möbius transformation $\phi_{\text{alg}}$ a permutation of the set $\EC$ which is exactly the meromorphic function $\phi_{\text{fun}}$.
 Last but not least we have seen in Theorem~\ref{thm_MoebiusGroup} that we can also regard $\phi$ as equivalence class of matrices:
