@@ -20,7 +20,7 @@ The matrix $J$ has one of the two possible forms
 and their respective matrix powers are given by
 \begin{equation}
 \label{eqn_JordanPower}
-(i)\ J^k = \mat{\lambda_1^k}{0}{0}{\lambda_2^k} \quad\text{and}\quad
+(i)\ J^k = \mat{\lambda_1^k}{0}{0}{\lambda_2^k} \quad\text{or}\quad
 (ii)\ J^k = \mat{\lambda^k}{k \lambda^{k-1}}{0}{\lambda^k}.
 \end{equation}
 From here it is just a small step to the generalization of matrix powers to real exponents: We choose a fixed branch of the natural (complex) logarithm, for example such that the imaginary part of the logarithm ranges in the interval $(-\pi,\pi]$, \ie $\Im{\ln z} = \arg z \in (-\pi,\pi]$ for all $z \in \C$. Now we can evaluate $\lambda^k$, for $\lambda \in \C$ and $k \in \R$, as $\lambda^k := \exp(k \ln \lambda)$.
@@ -31,7 +31,7 @@ Let $A \in \GL{\C}$ be a matrix. For $k \in \R$ we say $B$ is an $k$-th power of
 \begin{equation*}
 A = \inv{P} J P \quad \text{and} \quad B = \inv{P} J^k P,
 \end{equation*}
-where $J$ is in Jordan normal form and $J^k$ is defined through (\ref{eqn_JordanPower}), choosing a fixed branch of the natural logarithm and evaluating the expressions $\lambda^k$ as $\lambda^k := \exp(k \ln \lambda)$.
+where $J$ is in Jordan normal form and $J^k$ is determined by (\ref{eqn_JordanPower}), where a fixed branch of the natural logarithm is chosen and the expressions $\lambda^k$ are evaluated as $\lambda^k := \exp(k \ln \lambda)$.
 \end{definition}
 
 \begin{remark}[Eigenvectors and fixed points]
