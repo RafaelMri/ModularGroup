@@ -20,13 +20,21 @@ to the punctured unit disk $\mathbb{D} \setminus \{0\}$. Note that the exponenti
 \begin{equation*}
 e(\infty) := \lim_{\substack{\Im{z} \to \infty\\z \in S}} e(z) = 0.
 \end{equation*}
-In this way we obtain a bijective map from $S_\infty$ to the closed unit disk $\mathbb{D}$. We now can use $e : S_\infty \to \mathbb{D}$ to map the modular tessellation of the upper half-plane -- to be precise, the part of it which lies within $S_\infty$ -- to the unit disk. The result can be seen in Figure~\ref{fig_ModularTilingExp}.
-
+In this way we obtain a bijective map from $S_\infty$ to the closed unit disk $\mathbb{D}$. We now can use $e : S_\infty \to \mathbb{D}$ to map the modular tessellation of the upper half-plane -- to be precise, the part of it which lies within $S_\infty$ -- to the unit disk. The result can be seen in Figure~\ref{fig_ModularTilingExp}. 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{figures/modular-tiling-exp}
-\caption{The modular tessellation under the transformation $z \mapsto e(z)$. The equation $\abs{z} = \exp(-2\pi \ii \Im{z})$ implies that points with large imaginary part are mapped very closely to $0$. In particular the image of the fundamental domain $\FunDom$ cannot be seen in this scale any more. Its points, satisfying $\Im{z} > \frac{\sqrt{3}}{2}$, are mapped into a disk centered about the origin of a radius smaller than $0.005$.}
+\caption{The modular tessellation under the transformation $z \mapsto e(z)$. The equation $\abs{z} = \exp(-2\pi \ii \Im{z})$ implies that points with large imaginary part are mapped very closely to $0$. For this reason, the image of the fundamental domain $\FunDom$ cannot be seen any more in this scale. Its points, satisfying $\Im{z} > \frac{\sqrt{3}}{2}$, are mapped into a disk centered about the origin of a radius smaller than $0.005$.}
 \label{fig_ModularTilingExp}
+\end{figure}
+
+In order to trace the image of the fundamental domain $\FunDom$ and its indisk $\Indisk$ under the map $\ex$, we have to zoom in on the neighborhood of zero, which is done in Figure~\ref{fig_ModularTilingExpZoom}. The top-left frame again shows the image of the tessellation under $\ex$ on the whole unit disk. The second frame displays the images of the regions $TU\FunDom$ and $T\inv{U}\FunDom$ in more detail. Comparing with Figure~\ref{fig_ModularTiling}, we see that originally these two regions do not have any boundary arc in common. However, due to the periodicity of $e$, the left boundary arc of $TU\FunDom$ (being a segment of the line $\Re{z} = -1/2$) and the right boundary arc of $T\inv{U}\FunDom$ (being a segment of the line $\Re{z} = 1/2$) have the same image under the transformation $e$. Therefore the images of $TU\FunDom$ and $T\inv{U}\FunDom$ touch each other along a certain interval on the negative real axis. The third frame reveals some more detail on the real shape of $e(T\FunDom)$. Its ``tip'' is not round, but in fact it has a kink at the point $e(\rho) = e(T\rho) \approx -0.0043$. Moreover, the image of $T\FunDom$ completely surrounds the image of the fundamental domain $\FunDom$ as we see in the fourth frame: Denoting the boundary arcs of $\FunDom$ as in Figure~\ref{fig_FunDomGenDisks} by $a,b,c$ and $d$, we can see the image of the left boundary arc $a$ and the right boundary arc $b$ of $\FunDom$ are mapped to the interval $[e(\rho), 0]$ on the negative real axis. The images of $c$ and $d$ (arcs of the unit disk) form the drop-shaped boundary of $e(\FunDom)$. More precisely, $e(c)$ is the boundary part in the lower half-plane and $e(d)$ the part in the upper half-plane. Finally in the last row, we can see the image of the indisk $\Indisk$ in detail. Note that the transformed indisk touches itself in the point $e(\frac{\pm 1 + 3\ii}{2}) \approx -0.00008$. The points within $\FunDom$ lying ``above'' $\Indisk$ (including the point $\infty$) are mapped to just another tiny drop-shaped region surrounded entirely by $e(\Indisk)$.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/modular-tiling-exp-zoom}
+\caption{The image of the fundamental domain $\FunDom$ and its indisk $\Indisk$ under the map $z \mapsto e(z)$ can be seen by zooming in to a close neighborhood of $0$.}
+\label{fig_ModularTilingExpZoom}
 \end{figure}
 
 For a better understanding on how $S_\infty$ is deformed to the unit disk by the transformation $\ex$, we can again take advantage of a simple Möbius transformation: The map
@@ -41,17 +49,10 @@ In Figure~\ref{fig_ModularTilingExpFan} we can see a continuous transition from 
 \begin{equation*}
 h(t, z) := f(z)^{1-t} \cdot e(tz).
 \end{equation*}
-
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{figures/modular-tiling-exp-fan}
 \caption{The tessellation under the transformation $z \mapsto \exp(2 \pi \ii z)$.}
 \label{fig_ModularTilingExpFan}
 \end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{figures/modular-tiling-exp-zoom}
-\caption{The image of the modular tiling under the map $z \mapsto \exp(2 \pi \ii z)$ in the neighborhood of $\infty$.}
-\label{fig_ModularTilingExpZoom}
-\end{figure}
+\clearpage
