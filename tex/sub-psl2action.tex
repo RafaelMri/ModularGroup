@@ -22,11 +22,11 @@ Projection of the set $\hat{\mathcal{R}} \subseteq \C^2$ leads to the region $\m
 \end{figure}
 It follows that $\mathcal{R}$ contains a fundamental region for the action of $\PSL{\Z}$ on $\EC \setminus \Irrat$. As in the homogeneous case, we see from Theorem~\ref{thm_SL2FunDomGlobMin} that equivalence of points within $\mathcal{R}$ can be established only by powers of the transformation $T \in \PSL{\Z}$. Since $T^2 = 1$, in order to obtain a fundamental region we now need to choose for each $z \in \mathcal{R}$ just exactly one of the equivalent points $z$ and $Tz$. This can for example be done such that $\abs{z} > 1$.
 
-\index{Extended upper halfplane}
-Note that for understanding the group action of $\PSL{\Z}$ on $\EC \setminus \Irrat$ it is sufficient to look at either the upper or lower halfplane of $\C$, since the group action on one halfplane is symmetric to the group action on the other halfplane by $A\conj{z} = \conj{Az}$. Let us therefore denote by $\mathcal{H}$ the upper halfplane and by $\EU$ the \emph{extended upper halfplane}:
+\index{Extended upper half-plane}
+Note that for understanding the group action of $\PSL{\Z}$ on $\EC \setminus \Irrat$ it is sufficient to look at either the upper or lower half-plane of $\C$, since the group action on one half-plane is symmetric to the group action on the other half-plane by $A\conj{z} = \conj{Az}$. Let us therefore denote by $\mathcal{H}$ the upper half-plane and by $\EU$ the \emph{extended upper half-plane}:
 \begin{eqnarray}
-\label{eqn_UpperHalfplane}\mathcal{H} &:=& \setdefsz{\big}{z \in \C}{\Im{z} > 0} \\
-\label{eqn_ExtUpperHalfplane}
+\label{eqn_Upperhalf-plane}\mathcal{H} &:=& \setdefsz{\big}{z \in \C}{\Im{z} > 0} \\
+\label{eqn_ExtUpperhalf-plane}
 \EU &:=& \mathcal{H} \cup \Q \cup \{\infty\}.
 \end{eqnarray}
 Clearly $\EU$ is invariant under $\PSL{\Z}$, \ie $\PSL{\Z} \EU = \EU$ and we can also consider $\PSL{\Z}$ acting on $\EU$.
@@ -37,7 +37,7 @@ Let $\mathcal{H}$ and $\EU$ be defined as above. The set
 \begin{equation}
 \tilde{\FunDom} := \setdefsz{\bigg}{z \in \C}{\abs{\Re{z}} < \reci{2} \text{ and } \abs{z} > 1}
 \end{equation}
-is a fundamental region for the action of $\PSL{\Z}$ on $\EC \setminus \Irrat$. The part of $\tilde{\FunDom}$ lying in the upper halfplane $\mathcal{H}$, \ie the set
+is a fundamental region for the action of $\PSL{\Z}$ on $\EC \setminus \Irrat$. The part of $\tilde{\FunDom}$ lying in the upper half-plane $\mathcal{H}$, \ie the set
 \begin{equation}
 \label{eqn_PSL2FunDom}
 \FunDom := \tilde{\FunDom} \cap \mathcal{H}
@@ -70,7 +70,7 @@ These boundary arcs are mapped onto each other by $Ua = b$ and $Tc = d$. The set
 \label{eqn_PSL2FunSet}
 \FunSet := \FunDom \cup a \cup c
 \end{equation}
-is a fundamental set for the action of $\PSL{\Z}$ on the extended upper halfplane $\EU$.
+is a fundamental set for the action of $\PSL{\Z}$ on the extended upper half-plane $\EU$.
 \end{theorem}
 \begin{proof}
 It follows from Theorem~\ref{thm_SL2FunDomGlobMin} that equivalence of boundary points of $\FunDom$ can only be established by transformations $A \in \PSL{Z}$ with $n(A) \le 3$. The full list of candidate transformations therefore comprises of 9 transformations: $T$, $U$, $TU$, $UT$, $TUT$ and the respective inverse transformations (note that $T$ is self-inverse). After looking at these transformations individually, it turns out that in fact only $T$ and $U$ (and $\inv{U}$) map boundary points to boundary points. Indeed $Ua = b$ and $Tc = d$ can readily be seen.
@@ -81,7 +81,7 @@ It follows from Theorem~\ref{thm_SL2FunDomGlobMin} that equivalence of boundary 
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{figures/fundom}
-\caption{The fundamental domain $\FunDom$ for the action of the modular group $\PSL{\Z}$ on the extended upper halfplane $\EU$. It is bounded by ``generalized arcs'' $a$, $b$, $c$ and $d$ which correspond to the generalized disks $\mathbb{A}$, $\mathbb{B}$ and the unit disk $\mathbb{D}$. There is a unique disk $\Indisk \subseteq \FunDom$ which is tangent to $\mathbb{A}$, $\mathbb{B}$ and $\mathbb{D}$.}
+\caption{The fundamental domain $\FunDom$ for the action of the modular group $\PSL{\Z}$ on the extended upper half-plane $\EU$. It is bounded by ``generalized arcs'' $a$, $b$, $c$ and $d$ which correspond to the generalized disks $\mathbb{A}$, $\mathbb{B}$ and the unit disk $\mathbb{D}$. There is a unique disk $\Indisk \subseteq \FunDom$ which is tangent to $\mathbb{A}$, $\mathbb{B}$ and $\mathbb{D}$.}
 \label{fig_PSL2FunDom}
 \end{figure}
 In Figure~\ref{fig_PSL2FunDom}, we see that the fundamental region $\FunDom$ can also be described in terms of generalized disks (see Definition~\ref{dfn_GenDisk}): With the terminology of Theorem~\ref{thm_PSL2FunSet}, the boundary arcs $a$ and $b$ are indeed ``generalized arcs'' of the closed generalized disks $\mathbb{A}$ and $\mathbb{B}$. Their defining matrices are
