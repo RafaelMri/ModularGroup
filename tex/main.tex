@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{report}
+\documentclass[12pt,oneside,a4paper]{book}
 %\documentclass[12pt,twoside,a4paper]{report}
 
 \usepackage[latin1]{inputenc}
@@ -23,15 +23,17 @@
 
 \begin{document}
 
+\frontmatter
 \maketitle
 
 \pagestyle{headings}
 
+% ------------------------------------------------------- CHAPTER: INTRODUCTION
+%\chapter{Introduction}
+
 \tableofcontents
 
-% ------------------------------------------------------- CHAPTER: INTRODUCTION
-\chapter{Introduction}
-
+\mainmatter
 % ------------------------------------------------------------- CHAPTER: BASICS
 \chapter{Basic notions and definitions}
 
@@ -70,10 +72,11 @@
 % -------------------------------------------------- Section: Klein j invariant
 \input{sec-klein-j.tex}
 
-\listoffigures
+\backmatter
 
 \printindex
 
+\listoffigures
 \bibliographystyle{plain}
 \bibliography{literature}
 

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    152919,       3766]
-NotebookOptionsPosition[    150810,       3696]
-NotebookOutlinePosition[    151175,       3712]
-CellTagsIndexPosition[    151132,       3709]
+NotebookDataLength[    153756,       3785]
+NotebookOptionsPosition[    151647,       3715]
+NotebookOutlinePosition[    152012,       3731]
+CellTagsIndexPosition[    151969,       3728]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -2464,8 +2464,24 @@ Cell[BoxData[
        RowBox[{"AxesOrigin", "\[Rule]", 
         RowBox[{"{", 
          RowBox[{"0", ",", "0"}], "}"}]}], ",", 
-       RowBox[{"AxesStyle", "\[Rule]", "Gray"}]}], "]"}]}], ";", 
-    "\[IndentingNewLine]", 
+       RowBox[{"AxesStyle", "\[Rule]", "Gray"}], ",", 
+       RowBox[{"PlotLabel", "\[Rule]", 
+        RowBox[{"(", 
+         RowBox[{"t", "\[Equal]", 
+          RowBox[{"Module", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"n", "=", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"i", "-", "1"}], ")"}], "/", 
+               RowBox[{"(", 
+                RowBox[{"nPlots", "-", "1"}], ")"}]}]}], "}"}], ",", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"n", "\[Element]", "Integers"}], ",", "n", ",", 
+              RowBox[{"N", "@", "n"}]}], "]"}]}], "]"}]}], ")"}]}]}], "]"}]}],
+     ";", "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{"zoomPlot", "[", 
       RowBox[{"z_", ",", "nextZ_", ",", 
@@ -2777,7 +2793,10 @@ Cell[BoxData[
         RowBox[{
         "figure2", ",", "500", ",", "\"\<modular-tiling-exp-zoom.eps\>\""}], 
         "]"}]}], "\[IndentingNewLine]", "}"}]}]}]}], "\[IndentingNewLine]", 
-  "]"}]], "Input"]
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6022633174708633`*^9, 3.6022634116980906`*^9}, {
+  3.6022637318062625`*^9, 3.602263734536269*^9}, {3.6022642250662518`*^9, 
+  3.6022642288414607`*^9}, {3.6022642988086295`*^9, 3.6022643764988165`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3742,31 +3761,31 @@ Cell[62688, 1494, 13992, 338, 943, "Input"]
 Cell[CellGroupData[{
 Cell[76717, 1837, 142, 4, 77, "Subtitle"],
 Cell[76862, 1843, 13309, 318, 975, "Input"],
-Cell[90174, 2163, 5088, 123, 332, "Input"],
-Cell[95265, 2288, 18804, 491, 1379, "Input"]
+Cell[90174, 2163, 5088, 123, 312, "Input"],
+Cell[95265, 2288, 19641, 510, 1399, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[114106, 2784, 140, 4, 77, "Subtitle"],
-Cell[114249, 2790, 6122, 138, 512, "Input"],
-Cell[120374, 2930, 12644, 320, 1158, "Input"]
+Cell[114943, 2803, 140, 4, 77, "Subtitle"],
+Cell[115086, 2809, 6122, 138, 512, "Input"],
+Cell[121211, 2949, 12644, 320, 1158, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[133055, 3255, 203, 5, 77, "Subtitle"],
-Cell[133261, 3262, 3550, 91, 327, "Input"],
-Cell[136814, 3355, 1924, 41, 31, "Input"],
-Cell[138741, 3398, 4040, 76, 112, "Input"],
-Cell[142784, 3476, 439, 9, 31, "Input"],
-Cell[143226, 3487, 784, 24, 52, "Input"],
-Cell[144013, 3513, 461, 11, 31, "Input"],
-Cell[144477, 3526, 520, 12, 31, "Input"],
-Cell[145000, 3540, 466, 11, 33, "Input"],
-Cell[145469, 3553, 868, 22, 55, "Input"],
-Cell[146340, 3577, 982, 24, 55, "Input"]
+Cell[133892, 3274, 203, 5, 77, "Subtitle"],
+Cell[134098, 3281, 3550, 91, 327, "Input"],
+Cell[137651, 3374, 1924, 41, 31, "Input"],
+Cell[139578, 3417, 4040, 76, 112, "Input"],
+Cell[143621, 3495, 439, 9, 31, "Input"],
+Cell[144063, 3506, 784, 24, 52, "Input"],
+Cell[144850, 3532, 461, 11, 31, "Input"],
+Cell[145314, 3545, 520, 12, 31, "Input"],
+Cell[145837, 3559, 466, 11, 33, "Input"],
+Cell[146306, 3572, 868, 22, 55, "Input"],
+Cell[147177, 3596, 982, 24, 55, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[147359, 3606, 195, 5, 77, "Subtitle"],
-Cell[147557, 3613, 3140, 77, 299, "Input"],
-Cell[150700, 3692, 94, 1, 31, "Input"]
+Cell[148196, 3625, 195, 5, 77, "Subtitle"],
+Cell[148394, 3632, 3140, 77, 299, "Input"],
+Cell[151537, 3711, 94, 1, 31, "Input"]
 }, Open  ]]
 }
 ]
