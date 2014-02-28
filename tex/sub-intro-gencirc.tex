@@ -38,7 +38,7 @@ In the case when $A = 0$, equation (\ref{eqn_GenCircle}) can be written as
 \begin{equation*}
 \Re{\frac{C}{\abs{C}} z} = -\frac{D}{2 \abs{C}},
 \end{equation*}
-which defines a line on the complex plane. We see this by considering the simpler equation $\Re{z} = -\frac{D}{2 \abs{C}}$ first (we omit the factor $\frac{C}{\abs{C}}$), which obviously defines a line parallel to the imaginary axis through the real point $-\frac{D}{2 \abs{C}}$. Then we observe that the multiplication with $\frac{C}{\abs{C}}$ just rotates this line around the origin by an angle which is given by $-\arg(C)$. 
+which defines a line on the complex plane. We see this by considering the simpler equation $\Re{z} = -\frac{D}{2 \abs{C}}$ first (we omit the factor $\frac{C}{\abs{C}}$), which obviously defines a line parallel to the imaginary axis through the real point $-\frac{D}{2 \abs{C}}$. Then we observe that the multiplication with $\frac{C}{\abs{C}}$ just rotates this line around the origin by an angle which is given by $-\arg(C) = \arg(B)$. 
 
 Note that equation (\ref{eqn_GenCircle}) can also be written in matrix form:
 \begin{equation*}
@@ -108,7 +108,7 @@ In both cases we will use the term (open/closed) \emph{g-disk} for shortness.
 In contrast to generalized circles, the defining matrix $M = \smallmat{A}{B}{C}{D}$ of a generalized disk is unique up to a \emph{positive} real scalar factor. Switching from $M$ to $-M$ turns the g-disk inside out while its border (the g-circle $M$) is left intact. Dependent on the sign of the left upper matrix entry $A$, we can distinguish three types of g-disks:
 \begin{description}
 \item[Case $A > 0$:] The g-disk corresponds to a disk in the usual sense within $\C$. Its center is given by (\ref{eqn_GenCircCenter}) and its radius by (\ref{eqn_GenCircRadius}).
-\item[Case $A = 0$:] The g-disk corresponds to a half-plane of $\C$, which is obtained from the left half-plane, \ie $\Re{z} < 0$ (\resp $\le 0$), by translation by $\frac{-D}{2 \abs{C}}$ and rotation by $-\arg(C)$. The point $\infty$ is member of the generalized disk, if and only if it is closed.
+\item[Case $A = 0$:] The g-disk corresponds to a half-plane of $\C$, which is obtained from the left half-plane, \ie $\Re{z} < 0$ (\resp $\le 0$), by translation by $\frac{-D}{2 \abs{C}}$ and rotation by $\arg(B)$. The point $\infty$ is member of the generalized disk, if and only if it is closed.
 \item[Case $A < 0$:] The open g-disk $M$ corresponds to the set complement (within $\EC$) of the closed g-disk $-M$ (discussed in the first case, $A > 0$). Accordingly, the closed g-disk $M$ is the complement of the open g-disk $-M$. Open and closed g-disks with $A < 0$ contain the point  $\infty$.
 \end{description}
 \end{remark}
