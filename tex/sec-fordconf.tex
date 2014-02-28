@@ -175,7 +175,7 @@ with $n \ge 0$, $e_j \in \Z$ occurring in the definition of $g_1$ already is in 
 \begin{equation*}
 w = U^{k_1} T^{\ell_1} U^{k_2} T^{\ell_2} \dots U^{k_m} T^{\ell_m},
 \end{equation*}
-with $m >= 0$, $k_j \in \Z$ and $\ell_j \ge 1$. Because for $k \ge 1$, $T^k$ and $(TU^0)^{k-1}T$ are \emph{identical} as words, we can for sure notate $w$ alternatively in the form (\ref{eqn_ConFracTUWord}).
+with $m >= 0$, $k_j \in \Z$ and $\ell_j \ge 1$. Because for $\ell \ge 1$, $T^\ell$ and $(TU^0)^{\ell-1}T$ are \emph{identical} as words, we can for sure notate $w$ alternatively in the form (\ref{eqn_ConFracTUWord}).
 \end{proof}
 
 \begin{lemma}
@@ -183,7 +183,7 @@ with $m >= 0$, $k_j \in \Z$ and $\ell_j \ge 1$. Because for $k \ge 1$, $T^k$ and
 The map $g_3$ defined in (\ref{eqn_MapCosetToEQ}) is bijective. In particular there is a one-to-one correspondence between the left cosets of $\langle U \rangle$ in $\PSL{\Z}$ and the extended rational numbers $\EQ$.
 \end{lemma}
 \begin{proof}
-If $g_3(A \langle U \rangle) = g_3(B \langle U \rangle)$, then $A(\infty) = B (\infty)$. This is equivalent to $\inv{B}A \in \langle U \rangle$ or $A \langle U \rangle = B \langle U \rangle$. Therefore $g_3$ is injective. Since $f = g_3 \circ g_2 \circ g_1$ is surjective, the same must be true for $g_3$.
+If $g_3(A \langle U \rangle) = g_3(B \langle U \rangle)$, then $A(\infty) = B (\infty)$. This is equivalent to $\inv{B}A \in \langle U \rangle$ or $A \langle U \rangle = B \langle U \rangle$. Therefore $g_3$ is injective. Since every rational number has a finite continued fraction expansion, $f = g_3 \circ g_2 \circ g_1$ is surjective. Consequently $g_3$ must be as well surjective.
 \end{proof}
 
 \begin{figure}
@@ -193,7 +193,7 @@ If $g_3(A \langle U \rangle) = g_3(B \langle U \rangle)$, then $A(\infty) = B (\
 \label{fig_FordDisks}
 \end{figure}
 Looking at the modular tessellation, Figure~\ref{fig_ModularTiling}, we see that the images of the indisk $\Indisk$ of the fundamental region $\FunDom$ 
-have a natural one-to-one correspondence to modular transformations, \ie the disk $A\Indisk$ can be considered as a graphical representative for the modular transformation $A$. The question arises, if there is such a visual and clear representation also for left cosets of $\langle U \rangle$ in $\PSL{\Z}$. Indeed, we can see in Figure~\ref{fig_FordDisks} -- depicting the modular tessellation under the modified Cayley transform $\ModCayley$ -- that the disks $U^k\Indisk$, $k \in \Z$ form a ``generalized ring'' which asymptotically approaches the point $\infty$. We can enclose this ring in a generalized disk -- in Figure~\ref{fig_FordDisks}, this enclosing disk is shown in light gray and is labeled with ``$\infty$''.
+have a natural one-to-one correspondence to modular transformations, \ie the disk $A\Indisk$ can be considered as a graphical representative for the modular transformation $A$. The question arises, whether there is such a visual and clear representation also for left cosets of $\langle U \rangle$ in $\PSL{\Z}$. Indeed, we can see in Figure~\ref{fig_FordDisks} -- depicting the modular tessellation under the modified Cayley transform $\ModCayley$ -- that the disks $U^k\Indisk$, $k \in \Z$ form a ``generalized ring'' which asymptotically approaches the point $\infty$. We can enclose this ring in a generalized disk -- in Figure~\ref{fig_FordDisks}, this enclosing disk is shown in light gray and is labeled with ``$\infty$''.
 \begin{definition}
 \label{dfn_FordDisk}
 \index{Ford disk}
@@ -283,7 +283,7 @@ As above, in the definition of the map $g_2$ in (\ref{eqn_MapPathToCoset}), let 
 \label{eqn_RelationReduction}
 \sigma = \prod_{j=1}^n (\tau_j R_j \inv{\tau_j})^{k_j},
 \end{equation}
-with $k_j \in \Z$, $\tau_j \in \FreeGrp{\Syms}$ and $R_j$ being either the word $T^2$ or $(TU)^3$. From $\overline{\phi}(\sigma) = 1$ we see that the indisk path corresponding to $\sigma$ is closed, \ie it starts and ends at the indisk $\Indisk$. \index{Loop@Loop (closed indisk path)} Let us call such an indisk path a \emph{loop}. Next, set $\rho := \exp(2 \pi \ii / 3)$ and denote by $[\rho]_\sim$ the orbit of $\rho$ under $\PSL{\Z}$. \index{Winding number} We define the number of times a loop $L$ turns around a point $z \in [\rho]_\sim$ the \emph{winding number} $\nu_z(L)$. Every full turn around $z$ in positive (\resp negative) direction shall give a contribution of +1 (\resp -1) to $\nu_z(L) \in \Z$. If the winding number $\nu_z(L)$ is zero for all $z \in [\rho]_\sim$, we call $L$ a \emph{degenerate loop}. In this case $L$ consists enirely of subpaths of the form 
+with $k_j \in \Z$, $\tau_j \in \FreeGrp{\Syms}$ and $R_j$ being either the word $T^2$ or $(TU)^3$. From $\overline{\phi}(\sigma) = 1$ we see that the indisk path corresponding to $\sigma$ is closed, \ie it starts and ends at the indisk $\Indisk$. \index{Loop@Loop (closed indisk path)} Let us call such an indisk path a \emph{loop}. Next, set $\rho := \exp(2 \pi \ii / 3)$ and denote by $[\rho]_\sim$ the orbit of $\rho$ under $\PSL{\Z}$. \index{Winding number} We define the number of times a loop $L$ turns around a point $z \in [\rho]_\sim$ the \emph{winding number} $\nu_z(L)$. Every full turn around $z$ in positive (\resp negative) direction shall give a contribution of $+1$ (\resp $-1$) to $\nu_z(L) \in \Z$. If the winding number $\nu_z(L)$ is zero for all $z \in [\rho]_\sim$, we call $L$ a \emph{degenerate loop}. In this case $L$ consists enirely of subpaths of the form 
 \begin{equation*}
 \Indisk \to \Indisk_1 \to \dots \to \Indisk_{n-1} \to \Indisk_n \to \Indisk_{n-1} \to \dots \to \Indisk_1 \to \Indisk
 \end{equation*}
