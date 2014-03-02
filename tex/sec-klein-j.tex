@@ -7,14 +7,15 @@ Modular functions are meromorphic maps (\ie maps which are holomorphic\footnote{
 
 \begin{definition}[Modular function]
 Let the upper halfplane $\mathcal{H}$ and the extended upper halfplane $\EU$ be defined as in (\ref{eqn_Upperhalfplane}) and (\ref{eqn_ExtUpperhalfplane}) respectively.
-A map $f : \EU \to \EC$ is called a \emph{modular function}, if it satisfies the following conditions:
+A map $F : \EU \to \EC$ is called a \emph{modular function}, if it satisfies the following conditions:
 \begin{enumerate}[\quad(i)]
-\item $f$ is meromorphic on the upper half-plane $\mathcal{H}$.
-\item On $\EU$ we have $f = f \circ A$ for all $A \in \PSL{\Z}$.
-\item There is a constant $C \ge 0$ such that $f$ has a series expansion of the form
-\begin{equation*}
-f(z) = \sum_{k \ge k_0} a_k \exp(2 \pi \ii k z),
-\end{equation*}
+\item $F$ is meromorphic on the upper half-plane $\mathcal{H}$.
+\item On $\EU$ we have $F = F \circ A$ for all $A \in \PSL{\Z}$.
+\item There is a constant $C \ge 0$ such that $F$ has a series expansion of the form
+\begin{equation}
+\label{eqn_ModFunFourierSeries}
+F(z) = \sum_{k \ge k_0} a_k \exp(2 \pi \ii k z),
+\end{equation}
 with $k_0 \in \Z$, $a_k \in \C$, $a_{k_0} \ne 0$, which converges for all $z \in \mathcal{H}$ with $\Im{z} > C$. Moreover, 
 \begin{equation*}
 f(\infty) = \begin{cases}
@@ -97,17 +98,18 @@ We now wish to plot the $J$ function using the above idea and the color coding $
 \item $J$ has a zero of order 3 at every point equivalent to $\rho$: The points colored in black are precisely those vertices of all modular triangles\footnote{We consider the regions $\ModCayley A \FunDom$, $A \in \PSL{\Z}$ as triangles bounded by circular arcs here.} which lie in the interior of the unit disk. These are exactly the points equivalent to $\rho$. The order of a given zero $z$ can be read off by counting the number of times we go through the set of all color tones while walking once around $z$ along a small circular path which does not enclose any other zero except $z$. Applying this to $\rho$ or any of its equivalent points, this yields an order of 3, as we visit the color tone red (as well as every other color tone) exactly three times.
 \end{enumerate}
 
-The special importance of $J$ lies in the fact that all modular functions can be represented as rational function in $J$ with complex coefficients:
+The special importance of $J$ lies in the fact that all modular functions can be represented as rational function in $J$ with complex coefficients (for the proof of this fact we refer to \Schoeneberg{}, Chapter II, §3):
 
 \begin{theorem}
 \label{thm_ModFunRatJ}
 The set of all modular functions forms a field which is given by $\C(J)$.
 \end{theorem}
-\begin{proof}
-\end{proof}
+%\begin{proof}
+%We follow the proof given in \Schoeneberg{}, Chapter II, §3: Let $F$ be a non-constant modular function. Since $F$ is holomorphic and non-constant on $\mathcal{H}$, neither its zeros, nor its poles have an accumulation point within $\mathcal{H}$. Zeros and Poles of $F$ also cannot accumulate at $\infty$, as $F$ has an expansion of the form 
+%\end{proof}
 
 \begin{remark}
-Given a modular function $F$, then according to Theorem~\ref{thm_ModFunRatJ}, there is a $f \in \C(z)$ such that $F = f \circ J$. Clearly for any arbitrary Möbius transformation $A \in \PGL{\C}$, we trivially have $f \circ J = (f \circ \inv{A}) \circ (A \circ J)$. Clearly $f \circ \inv{A} \in \C(z)$ and therefore . 
+Given a modular function $F$, according to Theorem~\ref{thm_ModFunRatJ} there is a rational function $R\in \C(z)$ such that $F = R \circ J$. For any arbitrary Möbius transformation $A \in \PGL{\C}$, we have $\inv{A} \in \C(z)$ and -- since $\C(z)$ is closed under the operation of function composition -- $R \circ \inv{A} \in \C(z)$. For this reason, $F = (R \circ \inv{A}) \circ (A \circ J)$, is a representation of $F$ as rational function in $A \circ J$. In other words, we have $\C(J) = \C(A \circ J)$ for all Möbius transformations $A$.
 \end{remark}
 
 \begin{figure}
@@ -129,4 +131,4 @@ Given a modular function $F$, then according to Theorem~\ref{thm_ModFunRatJ}, th
 \caption[Klein meets Fibonacci]{The composition of the Klein modular invariant $J$ and the generating function of the Fibonacci sequence $\frac{x}{1 - x - x^2}$, \ie $z \mapsto \frac{J(z)}{1 - J(z) - J(z)^2}$. It has poles of order 1 at points $z$ satisfying $J(z) \in \{-\phi, \reci{\phi}\}$, where $\phi$ denotes the golden ratio, $\phi = \frac{1 + \sqrt{5}}{2}$.}
 \label{fig_KleinJFib}
 \end{figure}
-Figure~{\ref{fig_FunctionsOfJ}} shows exemplary four different modular functions, plotted in the same fashion as we did before for $J$. Note that 
+%Figure~{\ref{fig_FunctionsOfJ}} shows exemplary four different modular functions, plotted in the same fashion as we did before for $J$. Note that 
