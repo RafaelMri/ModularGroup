@@ -33,12 +33,12 @@ a_0 & \text{if } k_0 = 0,\\
 \index{Klein's complete invariant}
 A modular function of essential importance is the $J$ function, also known as the \emph{absolute modular invariant} or \emph{Klein's complete invariant}. One of its important properties is, that on the fundamental domain $\FunDom$ it takes on each value in $\EC$ exactly once. In other words, $J$ can be considered as bijective map from $\FunDom$ to $\EC$. 
 
-In order to discuss this one-to-one mapping between $\FunDom$ and $\EC$ under $J$, let us denote the boundary arcs of $\FunDom$ again by $a,b,c$ and $d$, as in Figure~\ref{fig_PSL2FunDom}. Moreover, denote by $e := \setdef{\lambda \ii}{\lambda \ge 1} \cup \{\infty\}$ the arc which splits $\FunDom$ into two symmetric havles, \ie two open connected components. Let us denote these open sets by $\FunDom_\text{left}$ and $\FunDom_\text{right}$ respectively. For the special boundary points $\ii$, $\rho$ and $\infty$ we have
+In order to discuss this one-to-one mapping between $\FunDom$ and $\EC$ under $J$, let us denote the boundary arcs of $\FunDom$ again by $a,b,c$ and $d$, as in Figure~\ref{fig_PSL2FunDom}. Moreover, denote by $e := \setdef{\lambda \ii}{\lambda \ge 1} \cup \{\infty\}$ the arc which splits $\FunDom$ into two symmetric halves, \ie two open connected components $\FunDom_\text{left}$ and $\FunDom_\text{right}$. For the special boundary points $\ii$, $\rho$ and $\infty$ of $\FunDom$ we have
 \begin{equation*}
 J(\ii) = 1, \quad J(\rho) = 0, \quad J(\infty) = \infty.
 \end{equation*}
-Moreover, the following mappings of sets are all injective:
-\begin{itemize}
+Additionally, the following mappings are pointwise one-to-one:
+\begin{enumerate}
 \item The left boundary arc $a$ and the right boundary arc $b$ of $\FunDom$ are both mapped to the set $\overline{\R}_{\le 0} := \setdef{z \in \R}{z \le 0} \cup \{\infty\}$:
 \begin{equation*}
 J(a) = J(b) = \overline{\R}_{\le 0}.
@@ -51,24 +51,24 @@ J(c) = J(d) = [0,1].
 \begin{equation*}
 J(e) = \overline{\R}_{\ge 1}. 
 \end{equation*}
-\end{itemize}
-In particular, the boundaries of $\FunDom_\text{left}$ and $\FunDom_\text{right}$ are both injectively mapped to $\R \cup \{\infty\}$. 
-Finally, the images of $\FunDom_\text{left}$ and $\FunDom_\text{right}$ under $J$ are exactly the upper and lower half-plane:
+\item In particular, the boundaries of $\FunDom_\text{left}$ and $\FunDom_\text{right}$ are both mapped to $\R \cup \{\infty\}$. 
+\item Finally, the images of $\FunDom_\text{left}$ and $\FunDom_\text{right}$ under $J$ are exactly the upper and lower half-plane:
 \begin{equation*}
 J(\FunDom_\text{left}) = \mathcal{H} \quad\text{and}\quad
 J(\FunDom_\text{right}) = -\mathcal{H}.
 \end{equation*}
+\end{enumerate}
 
-Unfortunately, plotting the function graph of $J$, or more generally the function graph of any map $f: \EC \to \EC$ is not directly possible, as it is in fact a 4-dimensional object.\footnote{It involves two dimensions for real and imaginary part of the function argument and two more dimensions for real and imaginary part of the function value.} However there is a simple idea for getting around this problem: We assign each $z \in \EC$ a certain color $\col{z}$ and obtain a picture of $f$ by dying each point $z$ on the complex plane in the color $\col{f(z)}$. Our choice of the color coding is quite simple: 
-\begin{itemize}
-\item The tone of the color $\col{z}$ encodes the complex argument of $z$:\\
+Unfortunately, plotting the function graph of $J$, or more generally the function graph of any map $f: \EC \to \EC$ is not directly possible, as it is in fact a 4-dimensional object.\footnote{It involves two dimensions for real and imaginary part of the function argument and two more dimensions for real and imaginary part of the function value.} However there is a simple idea for getting around this problem: We assign each $z \in \EC$ a certain color $\col(z)$ and obtain a picture of $f$ by dying each point $z$ within the domain of $f$ in the color $\col(f(z))$. Our choice of the color coding is quite simple: 
+\begin{enumerate}[\quad(i)]
+\item The tone of the color $\col(z)$ encodes the complex argument of $z$:\\
 \begin{tabular}{rlccccc}
 Red &($\arg{z} = 0$) &$\to$& Orange &$\to$& Yellow &$\to$ \\
 Green &($\arg{z} = \half{\pi}$) &$\to$& Turquoise &$\to$ \\
 Cyan &($\arg{z} = \pi$) &$\to$& Blue &$\to$\\
 Violet &($\arg{z} = -\half{\pi}$) &$\to$& Magenta &$\to$& Red (again).
 \end{tabular}
-\item The saturation and brightness of the color $\col{z}$ encodes the absolute value of $z$. For this purpose, we use the continuous map 
+\item The saturation and brightness of the color $\col(z)$ encodes the absolute value of $z$. For this purpose, we use the continuous map 
 \begin{equation*}
 b(r) := \begin{cases}
 0 & \text{if } r = 0,\\
@@ -76,15 +76,39 @@ b(r) := \begin{cases}
 1 & \text{if } r = \infty
 \end{cases}
 \end{equation*}
-to first bring $\abs{z}$ to the interval $[0,1]$. Then we define the saturation of $\col{z}$ as $1 - b(\abs{z})^2$ and its brightness as $1 - (1 - b(\abs{z})^2)$. This means that $\col{z}$ changes gradually from a perfect black (if $z = 0$) to a perfect white ($z = \infty$) as absolute value of $z$ grows.
-\end{itemize}
+to first bring $\abs{z}$ to the interval $[0,1]$. Note that $b$ has the neat property $b(\reci{r}) = 1 - b(r)$. Finally we define the saturation of $\col(z)$ as $1 - b(\abs{z})^2$ and its brightness as $1 - [1 - b(\abs{z})]^2$. This means that $\col(z)$ changes gradually from a perfect black (if $z = 0$) to a perfect white ($z = \infty$) as the absolute value of $z$ grows.
+\end{enumerate}
+
+\begin{remark}
+Obviously the choice of the color coding is to a great extent arbitrary. However, for our purposes there are three properties making $\col(z)$ a particularly good choice: First, $z \mapsto \col(z)$ is injective, \ie distinct points in $\EC$ are colored differently. Moreover, when considering colors as three-dimensional vectors of $[0,1]^3 \subseteq \R^3$ with red, green and blue component, $z \mapsto \col(z)$ is differentiable. This guarantees smooth color transitions without visible ``edges'' for visualization of continuous functions. Lastly, saturation and brightness depend logarithmically on the absolute value of $z$, capturing well the typical growth behavior of modular functions and allowing a visual distinction of values relatively close to $0$ (\resp $\infty$).
+\end{remark}
+
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{figures/klein-j}
-\caption{The composition of the Klein modular invariant function and the inverse modified Cayley transform $j \circ \inv{\ModCayley}$.}
+\includegraphics[width=\textwidth]{figures/klein-j}
+\caption[Klein's complete invariant $J$]{Klein's complete invariant $J$, defined on the upper half-plane, is visualized by dying each point $z$ of the unit disk in the color $\col \circ J \circ \inv{\ModCayley}(z)$, where $\inv{\ModCayley}$ is the inverse modified Cayley transform which takes the unit disk bijectively to the upper half-plane.} 
 \label{fig_KleinJ}
 \end{figure}
+We now wish to plot the $J$ function using the above idea and the color coding $\col(z)$. However, instead of plotting $J$ directly on the upper half-plane, we again prefer to translate the picture from the upper half-plane to the unit disk using the modified Cayley transform, \ie instead of plotting $\col \circ J$ on the upper half-plane, we plot $\col \circ J \circ \inv{\ModCayley}$ on the unit disk. The result is shown in Figure~\ref{fig_KleinJ}. In order to accentuate the symmetry of $J$ with respect to the transformations of the modular group, additionally the image of the modular tessellation under $\ModCayley$ is overlaid in gray. We can now read off the following properties from this illustration:
+\begin{enumerate}
+\item $J$ is injective from $\FunDom$ to $\EC$: No two distinct points within the region $\ModCayley \FunDom$ have the same color.
+\item $J(\infty) = \infty$: The point $\ModCayley(\infty) = \ii$ is colored in white.
+\item $J(\FunDom_\text{left}) = \mathcal{H}$ and $J(\FunDom_\text{right}) = -\mathcal{H}$: The color tones in the left half of $\ModCayley \FunDom$, that is $\ModCayley \FunDom_\text{left}$, range from red, orange, yellow and green to cyan, and therefore $\arg(J(z)) \in (0,\pi)$ for $z \in \FunDom_\text{left}$. Similarly we see $\arg(J(z)) \in (-\pi,0)$ for $z \in \FunDom_\text{right}$. 
+\item $J$ has a zero of order 3 at every point equivalent to $\rho$: The points colored in black are precisely those vertices of all modular triangles\footnote{We consider the regions $\ModCayley A \FunDom$, $A \in \PSL{\Z}$ as triangles bounded by circular arcs here.} which lie in the interior of the unit disk. These are exactly the points equivalent to $\rho$. The order of a given zero $z$ can be read off by counting the number of times we go through the set of all color tones while walking once around $z$ along a small circular path which does not enclose any other zero except $z$. Applying this to $\rho$ or any of its equivalent points, this yields an order of 3, as we visit the color tone red (as well as every other color tone) exactly three times.
+\end{enumerate}
 
+The special importance of $J$ lies in the fact that all modular functions can be represented as rational function in $J$ with complex coefficients:
+
+\begin{theorem}
+\label{thm_ModFunRatJ}
+The set of all modular functions forms a field which is given by $\C(J)$.
+\end{theorem}
+\begin{proof}
+\end{proof}
+
+\begin{remark}
+Given a modular function $F$, then according to Theorem~\ref{thm_ModFunRatJ}, there is a $f \in \C(z)$ such that $F = f \circ J$. Clearly for any arbitrary Möbius transformation $A \in \PGL{\C}$, we trivially have $f \circ J = (f \circ \inv{A}) \circ (A \circ J)$. Clearly $f \circ \inv{A} \in \C(z)$ and therefore . 
+\end{remark}
 
 \begin{figure}
 \centering
@@ -95,13 +119,14 @@ to first bring $\abs{z}$ to the interval $[0,1]$. Then we define the saturation 
 \includegraphics[width=0.45\textwidth]{figures/klein-jsqr} & \quad &
 \includegraphics[width=0.45\textwidth]{figures/klein-j-mod-cayley}
 \end{tabular}
-\caption{The composition of the Klein modular invariant function and the inverse modified Cayley transform $j \circ \inv{\ModCayley}$.}
+\caption[Rational functions in $J$]{Examples for rational functions in $J$: The function $z \mapsto \inv{J(z)}$ (top-left) is zero at all rational points (hence the dominant black color) and has a pole of order three at all points equivalent to $\rho$. The function $z \mapsto J(z) - 1$ (top-right) has a zero of order two at all points equivalent to $\ii$. For $z \mapsto J(z)^2$ (bottom-left), the order of the zeros at points equivalent to $\rho$ is six, \ie twice the order of the zeros of the original function $J$. Lastly, composing $J$ with the Cayley transform, that is $z \mapsto \ModCayley \circ J(z)$ (bottom-right) yields a zero (\resp pole) of order 1 at every point $z$ for which $J(z) = \ii$ (\resp $J(z) = -\ii$). Its value at rational points is $\ModCayley \circ J(\infty) = \ModCayley(\infty) = \ii$, explaining the dominant green coloring.}
 \label{fig_FunctionsOfJ}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{figures/klein-jfib-large}
-\caption{The composition of the Klein modular invariant function and the inverse modified Cayley transform $j \circ \inv{\ModCayley}$.}
+\includegraphics[width=\textwidth]{figures/klein-jfib-large}
+\caption[Klein meets Fibonacci]{The composition of the Klein modular invariant $J$ and the generating function of the Fibonacci sequence $\frac{x}{1 - x - x^2}$, \ie $z \mapsto \frac{J(z)}{1 - J(z) - J(z)^2}$. It has poles of order 1 at points $z$ satisfying $J(z) \in \{-\phi, \reci{\phi}\}$, where $\phi$ denotes the golden ratio, $\phi = \frac{1 + \sqrt{5}}{2}$.}
 \label{fig_KleinJFib}
 \end{figure}
+Figure~{\ref{fig_FunctionsOfJ}} shows exemplary four different modular functions, plotted in the same fashion as we did before for $J$. Note that 
