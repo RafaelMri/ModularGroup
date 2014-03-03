@@ -10,7 +10,7 @@ Let the upper halfplane $\mathcal{H}$ and the extended upper halfplane $\EU$ be 
 A map $F : \EU \to \EC$ is called a \emph{modular function}, if it satisfies the following conditions:
 \begin{enumerate}[\quad(i)]
 \item $F$ is meromorphic on the upper half-plane $\mathcal{H}$.
-\item On $\EU$ we have $F = F \circ A$ for all $A \in \PSL{\Z}$.
+\item On $\EU$, $F = F \circ A$ for all modular transformations $A \in \PSL{\Z}$.
 \item There is a constant $C \ge 0$ such that $F$ has a series expansion of the form
 \begin{equation}
 \label{eqn_ModFunFourierSeries}
@@ -90,7 +90,7 @@ Obviously the choice of the color coding is to a great extent arbitrary. However
 \caption[Klein's complete invariant $J$]{Klein's complete invariant $J$, defined on the upper half-plane, is visualized by dying each point $z$ of the unit disk in the color $\col \circ J \circ \inv{\ModCayley}(z)$, where $\inv{\ModCayley}$ is the inverse modified Cayley transform which takes the unit disk bijectively to the upper half-plane.} 
 \label{fig_KleinJ}
 \end{figure}
-We now wish to plot the $J$ function using the above idea and the color coding $\col(z)$. However, instead of plotting $J$ directly on the upper half-plane, we again prefer to translate the picture from the upper half-plane to the unit disk using the modified Cayley transform, \ie instead of plotting $\col \circ J$ on the upper half-plane, in Figure~\ref{fig_KleinJ} we plot $\col \circ J \circ \inv{\ModCayley}$ on the unit disk. In order to accentuate the symmetry of $J$ with respect to the transformations of the modular group, additionally the image of the modular tessellation under $\ModCayley$ is shown in gray lines. We can now read off the following properties from this illustration:
+We now wish to plot the $J$ function using the above idea and the color coding $\col(z)$. However, instead of plotting $J$ directly on the upper half-plane, we again prefer to translate the picture from the upper half-plane to the unit disk using the modified Cayley transform, \ie instead of visualizing $\col \circ J$ on the upper half-plane, Figure~\ref{fig_KleinJ} shows $\col \circ J \circ \inv{\ModCayley}$ on the unit disk. In order to accentuate the symmetry of $J$ with respect to the transformations of the modular group, additionally the image of the modular tessellation under $\ModCayley$ is displayed in gray lines. We can now read off the following properties from this illustration:
 \begin{enumerate}
 \item $J$ is injective from $\FunDom$ to $\EC$: No two distinct points within the region $\ModCayley \FunDom$ have the same color.
 \item $J(\infty) = \infty$: The point $\ModCayley(\infty) = \ii$ is colored in white.
@@ -132,7 +132,7 @@ In Figure~{\ref{fig_FunctionsOfJ}}, four examples for rational functions in $J$ 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{figures/klein-jfib-large}
-\caption[Klein meets Fibonacci]{The modular function $G = F \circ J$, obtained by composition of the Klein's complete invariant $J$ and the generating function of the Fibonacci sequence, $F(z) = \frac{z}{1 - z - z^2}$, \ie $G(z) = \frac{J(z)}{1 - J(z) - J(z)^2}$, has poles of order 1 at all points $z \in \mathcal{H}$ satisfying $J(z) \in \{-\phi, \reci{\phi}\}$, where $\phi := \frac{1 + \sqrt{5}}{2}$ denotes the golden ratio.}
+\caption[Klein meets Fibonacci]{The modular function $G = F \circ J$, obtained by composition of the Klein's complete invariant $J$ and the generating function of the Fibonacci sequence, $F(z) = \frac{z}{1 - z - z^2}$, \ie $G(z) = \frac{J(z)}{1 - J(z) - J(z)^2}$, satisfies $G(\infty) = 0$, has zeros of order 3 at all points equivalent to $\rho$ and poles of order 1 at all points $z \in \mathcal{H}$ satisfying $J(z) \in \{-\phi, \reci{\phi}\}$, where $\phi := \frac{1 + \sqrt{5}}{2}$ denotes the golden ratio.}
 \label{fig_KleinJFib}
 \end{figure}
 
@@ -146,11 +146,11 @@ The Fibonacci sequence $0, 1, 1, 2, 3, 5, 8, \dots$ is a so-called \emph{C-finit
 \begin{equation*}
 \sum_{i=0}^r c_i a_{n+i} = 0 \quad\text{for all $n \ge 0$},
 \end{equation*}
-where $r$ is the order of the recurrence, $c_i$ are fixed constants and $a_n$ is the $n$-th element of the sequence. The Fibonacci sequence and its elements $F_n$ satisfy the recurrence $F_{n+2} - F_{n+1} - F_n = 0$, for $n \ge 0$ with initial values $(F_0,F_1) = (0,1)$. The \emph{generating function} of a sequence $(a_n)_{n\ge 0}$ is defined as
+where $r$ is the order of the recurrence, $c_i$ are fixed constants and $a_n$ is the $n$-th element of the sequence. The Fibonacci sequence and its elements $F_n$ satisfy the recurrence $F_{n+2} - F_{n+1} - F_n = 0$, $n \ge 0$, with initial values $(F_0,F_1) = (0,1)$. The \emph{generating function} of a sequence $(a_n)_{n\ge 0}$ is defined as
 \begin{equation*}
 F(z) := \sum_{n \ge 0} a_n z^n.
 \end{equation*}
-For C-finite sequences, the generating function is always a rational function -- see for example Theorem 4.3 in \ConcreteTet{}. In particular, the generating function of the Fibonacci sequence is given by
+For C-finite sequences, the generating function is always a rational function -- see Theorem 4.3 in \ConcreteTet{}. In particular, the generating function of the Fibonacci sequence is given by
 \begin{equation*}
 F(z) := \sum_{n \ge 0} F_n z^n = \frac{z}{1 - z - z^2}.
 \end{equation*}
