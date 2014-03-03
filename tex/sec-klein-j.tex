@@ -90,26 +90,26 @@ Obviously the choice of the color coding is to a great extent arbitrary. However
 \caption[Klein's complete invariant $J$]{Klein's complete invariant $J$, defined on the upper half-plane, is visualized by dying each point $z$ of the unit disk in the color $\col \circ J \circ \inv{\ModCayley}(z)$, where $\inv{\ModCayley}$ is the inverse modified Cayley transform which takes the unit disk bijectively to the upper half-plane.} 
 \label{fig_KleinJ}
 \end{figure}
-We now wish to plot the $J$ function using the above idea and the color coding $\col(z)$. However, instead of plotting $J$ directly on the upper half-plane, we again prefer to translate the picture from the upper half-plane to the unit disk using the modified Cayley transform, \ie instead of plotting $\col \circ J$ on the upper half-plane, we plot $\col \circ J \circ \inv{\ModCayley}$ on the unit disk. The result is shown in Figure~\ref{fig_KleinJ}. In order to accentuate the symmetry of $J$ with respect to the transformations of the modular group, additionally the image of the modular tessellation under $\ModCayley$ is overlaid in gray. We can now read off the following properties from this illustration:
+We now wish to plot the $J$ function using the above idea and the color coding $\col(z)$. However, instead of plotting $J$ directly on the upper half-plane, we again prefer to translate the picture from the upper half-plane to the unit disk using the modified Cayley transform, \ie instead of plotting $\col \circ J$ on the upper half-plane, in Figure~\ref{fig_KleinJ} we plot $\col \circ J \circ \inv{\ModCayley}$ on the unit disk. In order to accentuate the symmetry of $J$ with respect to the transformations of the modular group, additionally the image of the modular tessellation under $\ModCayley$ is shown in gray lines. We can now read off the following properties from this illustration:
 \begin{enumerate}
 \item $J$ is injective from $\FunDom$ to $\EC$: No two distinct points within the region $\ModCayley \FunDom$ have the same color.
 \item $J(\infty) = \infty$: The point $\ModCayley(\infty) = \ii$ is colored in white.
 \item $J(\FunDom_\text{left}) = \mathcal{H}$ and $J(\FunDom_\text{right}) = -\mathcal{H}$: The color tones in the left half of $\ModCayley \FunDom$, that is $\ModCayley \FunDom_\text{left}$, range from red, orange, yellow and green to cyan, and therefore $\arg(J(z)) \in (0,\pi)$ for $z \in \FunDom_\text{left}$. Similarly we see $\arg(J(z)) \in (-\pi,0)$ for $z \in \FunDom_\text{right}$. 
-\item $J$ has a zero of order 3 at every point equivalent to $\rho$: The points colored in black are precisely those vertices of all modular triangles\footnote{We consider the regions $\ModCayley A \FunDom$, $A \in \PSL{\Z}$ as triangles bounded by circular arcs here.} which lie in the interior of the unit disk. These are exactly the points equivalent to $\rho$. The order of a given zero $z$ can be read off by counting the number of times we go through the set of all color tones while walking once around $z$ along a small circular path which does not enclose any other zero except $z$. Applying this to $\rho$ or any of its equivalent points, this yields an order of 3, as we visit the color tone red (as well as every other color tone) exactly three times.
+\item $J$ has a zero of order 3 at every point equivalent to $\rho$: The points colored in black are precisely those vertices of all modular triangles\footnote{We consider the regions $\ModCayley A \FunDom$, $A \in \PSL{\Z}$ as triangles bounded by circular arcs here.} which lie in the interior of the unit disk. These are exactly the points equivalent to $\rho$. The order of a given zero (\resp pole) at a point $z$ can be read off by counting the number of times we go through the set of all color tones while walking once around $z$ along a sufficiently small circular path which does not enclose any other zero or pole except $z$. Applying this to the zero at $\rho$ (or any of its equivalent points), this yields an order of 3, as we visit the color tone red (as well as every other color tone) exactly three times as we go once around this point.
 \end{enumerate}
 
-The special importance of $J$ lies in the fact that all modular functions can be represented as rational function in $J$ with complex coefficients (for the proof of this fact we refer to \Schoeneberg{}, Chapter II, §3):
+The special importance of $J$ lies in the fact that all modular functions can be represented as rational functions in $J$ with complex coefficients (for the proof of this fact we refer to \Schoeneberg{}, Chapter II, §3).
 
 \begin{theorem}
 \label{thm_ModFunRatJ}
-The set of all modular functions forms a field which is given by $\C(J)$.
+The set of modular functions is identical to the field $\C(J)$ of rational functions in $J$ with coefficients in $\C$.
 \end{theorem}
 %\begin{proof}
 %We follow the proof given in \Schoeneberg{}, Chapter II, §3: Let $F$ be a non-constant modular function. Since $F$ is holomorphic and non-constant on $\mathcal{H}$, neither its zeros, nor its poles have an accumulation point within $\mathcal{H}$. Zeros and Poles of $F$ also cannot accumulate at $\infty$, as $F$ has an expansion of the form 
 %\end{proof}
 
 \begin{remark}
-Given a modular function $F$, according to Theorem~\ref{thm_ModFunRatJ} there is a rational function $R\in \C(z)$ such that $F = R \circ J$. For any arbitrary Möbius transformation $A \in \PGL{\C}$, we have $\inv{A} \in \C(z)$ and -- since $\C(z)$ is closed under the operation of function composition -- $R \circ \inv{A} \in \C(z)$. For this reason, $F = (R \circ \inv{A}) \circ (A \circ J)$, is a representation of $F$ as rational function in $A \circ J$. In other words, we have $\C(J) = \C(A \circ J)$ for all Möbius transformations $A$.
+The statement of Theorem~\ref{thm_ModFunRatJ} remains true when $J$ is replaced by any modular function of the form $A \circ J$, where $A$ is a Möbius transformation: Let $A \in \PGL{\C}$ be arbitrary and $F$ be a modular function. By Theorem~\ref{thm_ModFunRatJ}, $F = R \circ J$ for some rational function $R \in \C(z)$. Since $F = (R \circ \inv{A}) \circ (A \circ J)$ and $R \circ \inv{A} \in \C(z)$, $F$ can as well be represented as rational function in terms of the modular function $A \circ J$. In other words, $\C(J) = \C(A \circ J)$ for all Möbius transformations $A$.
 \end{remark}
 
 \begin{figure}
@@ -121,14 +121,37 @@ Given a modular function $F$, according to Theorem~\ref{thm_ModFunRatJ} there is
 \includegraphics[width=0.45\textwidth]{figures/klein-jsqr} & \quad &
 \includegraphics[width=0.45\textwidth]{figures/klein-j-mod-cayley}
 \end{tabular}
-\caption[Rational functions in $J$]{Examples for rational functions in $J$: The function $z \mapsto \inv{J(z)}$ (top-left) is zero at all rational points (hence the dominant black color) and has a pole of order three at all points equivalent to $\rho$. The function $z \mapsto J(z) - 1$ (top-right) has a zero of order two at all points equivalent to $\ii$. For $z \mapsto J(z)^2$ (bottom-left), the order of the zeros at points equivalent to $\rho$ is six, \ie twice the order of the zeros of the original function $J$. Lastly, composing $J$ with the Cayley transform, that is $z \mapsto \ModCayley \circ J(z)$ (bottom-right) yields a zero (\resp pole) of order 1 at every point $z$ for which $J(z) = \ii$ (\resp $J(z) = -\ii$). Its value at rational points is $\ModCayley \circ J(\infty) = \ModCayley(\infty) = \ii$, explaining the dominant green coloring.}
+\caption[Rational functions in $J$]{Examples for rational functions in $J$: The function $z \mapsto \inv{J(z)}$ (top-left) is zero at all rational points (hence the dominant black color) and has a pole of order three at all points equivalent to $\rho$. The function $z \mapsto J(z) - 1$ (top-right) has a zero of order two at all points equivalent to $\ii$. For $z \mapsto J(z)^2$ (bottom-left), the order of the zeros at points equivalent to $\rho$ is six, \ie twice the order of the zeros of the original function $J$ at that points. Lastly, composing $J$ with the Cayley transform, that is $z \mapsto \ModCayley \circ J(z)$ (bottom-right) yields a zero (\resp pole) of order 1 at every point $z$ for which $J(z) = \ii$ (\resp $J(z) = -\ii$). Its value at rational points is $\ModCayley \circ J(\infty) = \ModCayley(\infty) = \ii$, explaining the dominant green coloring.}
 \label{fig_FunctionsOfJ}
 \end{figure}
+\begin{example}
+In Figure~{\ref{fig_FunctionsOfJ}}, four examples for rational functions in $J$ are given. Note that except $z \mapsto J(z)^2$, these maps are instances of modular functions of the form $A \circ J$, where $A$ is a Möbius transformation. 
+\end{example}
+\clearpage
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{figures/klein-jfib-large}
-\caption[Klein meets Fibonacci]{The composition of the Klein modular invariant $J$ and the generating function of the Fibonacci sequence $\frac{x}{1 - x - x^2}$, \ie $z \mapsto \frac{J(z)}{1 - J(z) - J(z)^2}$. It has poles of order 1 at points $z$ satisfying $J(z) \in \{-\phi, \reci{\phi}\}$, where $\phi$ denotes the golden ratio, $\phi = \frac{1 + \sqrt{5}}{2}$.}
+\caption[Klein meets Fibonacci]{The modular function $G = F \circ J$, obtained by composition of the Klein's complete invariant $J$ and the generating function of the Fibonacci sequence, $F(z) = \frac{z}{1 - z - z^2}$, \ie $G(z) = \frac{J(z)}{1 - J(z) - J(z)^2}$, has poles of order 1 at all points $z \in \mathcal{H}$ satisfying $J(z) \in \{-\phi, \reci{\phi}\}$, where $\phi := \frac{1 + \sqrt{5}}{2}$ denotes the golden ratio.}
 \label{fig_KleinJFib}
 \end{figure}
-%Figure~{\ref{fig_FunctionsOfJ}} shows exemplary four different modular functions, plotted in the same fashion as we did before for $J$. Note that 
+
+\begin{example}
+\index{Fibonacci sequence}
+\index{C-finite sequence}
+\index{Generating function}
+As a final example, Figure~\ref{fig_KleinJFib} shows what happens, when $J$ is composed with the generating function of the Fibonacci sequence. Although it is a slight digression -- more on the topic of sequences and generating functions, as well as symbolic sums and asymptotic estimates may be found in \ConcreteTet{} -- we will shortly give some background about the Fibonacci sequence here.
+
+The Fibonacci sequence $0, 1, 1, 2, 3, 5, 8, \dots$ is a so-called \emph{C-finite sequence}, \ie a sequence satisfying a recurrence of the form
+\begin{equation*}
+\sum_{i=0}^r c_i a_{n+i} = 0 \quad\text{for all $n \ge 0$},
+\end{equation*}
+where $r$ is the order of the recurrence, $c_i$ are fixed constants and $a_n$ is the $n$-th element of the sequence. The Fibonacci sequence and its elements $F_n$ satisfy the recurrence $F_{n+2} - F_{n+1} - F_n = 0$, for $n \ge 0$ with initial values $(F_0,F_1) = (0,1)$. The \emph{generating function} of a sequence $(a_n)_{n\ge 0}$ is defined as
+\begin{equation*}
+F(z) := \sum_{n \ge 0} a_n z^n.
+\end{equation*}
+For C-finite sequences, the generating function is always a rational function -- see for example Theorem 4.3 in \ConcreteTet{}. In particular, the generating function of the Fibonacci sequence is given by
+\begin{equation*}
+F(z) := \sum_{n \ge 0} F_n z^n = \frac{z}{1 - z - z^2}.
+\end{equation*}
+\end{example}
