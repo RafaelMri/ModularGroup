@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    155834,       3829]
-NotebookOptionsPosition[    153683,       3758]
-NotebookOutlinePosition[    154048,       3774]
-CellTagsIndexPosition[    154005,       3771]
+NotebookDataLength[    156700,       3850]
+NotebookOptionsPosition[    154508,       3778]
+NotebookOutlinePosition[    154873,       3794]
+CellTagsIndexPosition[    154830,       3791]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -3674,6 +3674,10 @@ Nice Generalized Disks under the Modular Group\
   3.5921461250922017`*^9, 3.5921461272512617`*^9}}],
 
 Cell[BoxData[
+ RowBox[{"?", "TRIndicateRight"}]], "Input",
+ CellChangeTimes->{{3.602854419490948*^9, 3.6028544236380615`*^9}}],
+
+Cell[BoxData[
  RowBox[{"Module", "[", 
   RowBox[{
    RowBox[{"{", 
@@ -3726,12 +3730,28 @@ Cell[BoxData[
         RowBox[{"{", 
          RowBox[{"Blue", ",", 
           RowBox[{"GCircle", "[", 
-           RowBox[{"gdT", ",", "ts"}], "]"}]}], "}"}], ",", 
+           RowBox[{"gdT", ",", 
+            RowBox[{"Rest", "@", 
+             RowBox[{"Pick", "[", 
+              RowBox[{"ts", ",", 
+               RowBox[{"Thread", "[", 
+                RowBox[{
+                 RowBox[{"TRIndicateRight", "[", 
+                  RowBox[{"Mat", "/@", "mtList"}], "]"}], "\[Equal]", "0"}], 
+                "]"}]}], "]"}]}]}], "]"}]}], "}"}], ",", 
         "\[IndentingNewLine]", 
         RowBox[{"{", 
          RowBox[{"Red", ",", 
           RowBox[{"GCircle", "[", 
-           RowBox[{"gdR", ",", "ts"}], "]"}]}], "}"}], ",", 
+           RowBox[{"gdR", ",", 
+            RowBox[{"Rest", "@", 
+             RowBox[{"Pick", "[", 
+              RowBox[{"ts", ",", 
+               RowBox[{"Thread", "[", 
+                RowBox[{
+                 RowBox[{"TRIndicateRight", "[", 
+                  RowBox[{"Mat", "/@", "mtList"}], "]"}], "\[Equal]", "1"}], 
+                "]"}]}], "]"}]}]}], "]"}]}], "}"}], ",", 
         "\[IndentingNewLine]", 
         RowBox[{"ModularTiling", "[", 
          RowBox[{"mtList", ",", "phi", ",", 
@@ -3750,7 +3770,7 @@ Cell[BoxData[
    3.589205999672281*^9, 3.589206151226774*^9}, {3.589206197371725*^9, 
    3.589206236465452*^9}, {3.589206454429362*^9, 3.5892064558489666`*^9}, {
    3.5892064926650867`*^9, 3.589206530370409*^9}, {3.591880590822035*^9, 
-   3.591880591789235*^9}}],
+   3.591880591789235*^9}, {3.6028543818719177`*^9, 3.602854633394809*^9}}],
 
 Cell[BoxData[""], "Input",
  CellChangeTimes->{{3.591880834291275*^9, 3.5918808347592754`*^9}}]
@@ -3828,8 +3848,9 @@ Cell[149213, 3639, 982, 24, 55, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[150232, 3668, 195, 5, 77, "Subtitle"],
-Cell[150430, 3675, 3140, 77, 299, "Input"],
-Cell[153573, 3754, 94, 1, 31, "Input"]
+Cell[150430, 3675, 126, 2, 31, "Input"],
+Cell[150559, 3679, 3836, 93, 299, "Input"],
+Cell[154398, 3774, 94, 1, 31, "Input"]
 }, Open  ]]
 }
 ]
