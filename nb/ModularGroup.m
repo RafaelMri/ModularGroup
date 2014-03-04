@@ -136,16 +136,16 @@ TUWord::usage = StringJoin[
 ];
 
 AssociatedMap::usage = StringJoin[
-  "AssociatedMap[z] returns a matrix ",
-  "representing the unique modular transformation ",
-  "where the preimage of z lies in the funcamental region ",
+  "AssociatedMap[z] returns the matrix ",
+  "of a modular transformation A, ",
+  "such that z \[Element] A(F), where F is the fundamental region, ",
   "F = {x \[Element] \[DoubleStruckCapitalC] | Abs[Re[x]] <= 1/2 && Abs[x] >= 1}."
 ];
 
 InvAssociatedMap::usage = StringJoin[
-  "InvAssociatedMap[z] returns a matrix ",
-  "representing the unique modular transformation ",
-  "where the image of z lies in the fundamental region ",
+  "InvAssociatedMap[z] returns the matrix ",
+  "of a modular transformation A, ",
+  "such that Az \[Element] F, where F is the fundamental region, ",
   "F = {x \[Element] \[DoubleStruckCapitalC] | Abs[Re[x]] <= 1/2 && Abs[x] >= 1}."
 ];
 
@@ -171,9 +171,9 @@ NoncompactDisk::usage = StringJoin[
 ];
 Halfplane::usage = StringJoin[
   "New[Halfplane, z, n] constructs a GeneralizedDisk ",
-  "containing all points of a halfplane ",
+  "containing all points of a half-plane ",
   "which is given by a point z on its border ",
-  "and a complex number n pointing inside the halfplane ",
+  "and a complex number n pointing inside the half-plane ",
   "in normal direction to its border."
 ];
 CompactDisk::usage = StringJoin[
@@ -235,7 +235,7 @@ GDiskMatCenter::usage = StringJoin[
 GDiskMatClass::usage = StringJoin[
   "GDiskMatClass[m] returns -1, 0 or 1, indicating if ",
   "if the generalized disk corresponding to the matrix m is ",
-  "a compact disk (1), a halfplane (0), or a non-compact disk (-1). ",
+  "a compact disk (1), a half-plane (0), or a non-compact disk (-1). ",
   "The matrix m must be Hermitian with negative determinant."
 ];  
 GDiskMatMap::usage = StringJoin[
@@ -285,24 +285,24 @@ GDiskLabel::noncompact = StringJoin[
 
 ModularTiling::usage = StringJoin[
   "ModularTiling[{\!\(\*SubscriptBox[\(m\), \(1\)]\), \!\(\*SubscriptBox[\(m\), \(2\)]\),...}, t] produces a graphic ",
-  "of the tiling of the upper halflplane associated to the modular group, ",
-  "with the optional MoebiusTransformation t applied. ", 
+  "of the tiling of the upper half-plane associated to the modular group, ",
+  "transformed by the given MoebiusTransformation t. ", 
   "By default, the output is just the orbit of the unit circle ",
   "under the given ModularTransformations \!\(\*SubscriptBox[\(m\), \(1\)]\), \!\(\*SubscriptBox[\(m\), \(2\)]\), ..., ",
   "(ModularGroupList may be used to generate a appropriate list of ModularTransformations). ",
   "\nFollowing Options are supported (default values are underlined): ",
   "\nInteriorMode \[Rule] GDisk/GCircle/\!\(\*
-StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): Function for drawing the (transformed) upper halfplane. ",
+StyleBox[\"Off\",\nFontVariations->{\"Underline\"->True}]\): Function for drawing the (transformed) upper half-plane. ",
   "\nInteriorStyle \[Rule] \!\(\*
-StyleBox[\"Black\",\nFontVariations->{\"Underline\"->True}]\): Graphics style for drawing the (transformed) upper halfplane. ",
+StyleBox[\"Black\",\nFontVariations->{\"Underline\"->True}]\): Graphics style for drawing the (transformed) upper half-plane. ",
   "\nBorderMode \[RightArrow] \!\(\*
 StyleBox[\"GCircle\",\nFontVariations->{\"Underline\"->True}]\)/Off: Function for drawing the (transformed) real axis. ",
   "\nBoderStyle \[Rule] \!\(\*
 StyleBox[\"Black\",\nFontVariations->{\"Underline\"->True}]\): Style for drawing the (transformed) real axis. ",
   "\nExteriorMode \[Rule] \!\(\*
-StyleBox[\"GDisk\",\nFontVariations->{\"Underline\"->True}]\)/GCircle/Off: Function for drawing the (transformed) lower halfplane. ", 
+StyleBox[\"GDisk\",\nFontVariations->{\"Underline\"->True}]\)/GCircle/Off: Function for drawing the (transformed) lower half-plane. ", 
   "\nExteriorStyle \[Rule] \!\(\*
-StyleBox[\"White\",\nFontVariations->{\"Underline\"->True}]\): Graphics style for drawing the (transformed) lower halfplane. ", 
+StyleBox[\"White\",\nFontVariations->{\"Underline\"->True}]\): Graphics style for drawing the (transformed) lower half-plane. ", 
   "\nTilingMode \[Rule] GDisk/\!\(\*
 StyleBox[\"GCircle\",\nFontVariations->{\"Underline\"->True}]\)/Off: Function for drawing the orbit of the unit disk (tiling). ",
   "\nTilingStyle \[Rule] \!\(\*
@@ -962,7 +962,7 @@ If[Length[ptlist] > 0,
 
     tTiling := tTiling = Rest@Pick[tlist, TRIndicateRight[Mat/@tlist], 0];
 
-    (* Draw upper halfplane *)
+    (* Draw upper half-plane *)
     f = OptionValue[InteriorMode]; 
     If[!(f === Off),
       AppendTo[output, {OptionValue[InteriorStyle], f[gdUpperHalfplane, {phi}]}];
@@ -1054,7 +1054,7 @@ If[Length[ptlist] > 0,
       }];
     ];
 
-    (* Draw lower halfplane *)
+    (* Draw lower half-plane *)
     f = OptionValue[ExteriorMode]; 
     If[!(f === Off),
       AppendTo[output, {OptionValue[ExteriorStyle], f[gdLowerHalfplane,{phi}]}];
