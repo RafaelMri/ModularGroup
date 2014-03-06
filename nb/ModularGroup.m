@@ -15,6 +15,9 @@ Mat::usage =
 Inv::usage = 
   "Inv[t] returns the inverse of the MoebiusTransformation t.";
 
+mtModCayley::usage =
+  "mtModCayley is the modified Cayley transform z \[RightTeeArrow] (\[ImaginaryI]z+1)/(z+\[ImaginaryI]).";
+
 PSL2CInv::usage = 
   "PSL2CInv[m] returns a matrix which is inverse to m within \!\(\*SubscriptBox[\(PSL\), \(2\)]\)(\[DoubleStruckCapitalC])";
 PSL2ZInv::usage = 
@@ -390,6 +393,7 @@ Begin["`Private`"];
 
 
 (* ---------------------------------------------- Basic PSL and PGL functions *)
+mtModCayley = New[MoebiusTransformation,{{I,1},{1,I}}];
 
 PSL2CInv = Compile[{{m,_Complex,2}},
   {{m[[2,2]], -m[[1,2]]}, {-m[[2,1]], m[[1,1]]}},
