@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    142088,       3595]
-NotebookOptionsPosition[    135844,       3414]
-NotebookOutlinePosition[    136637,       3443]
-CellTagsIndexPosition[    136507,       3437]
+NotebookDataLength[    136620,       3487]
+NotebookOptionsPosition[    131105,       3330]
+NotebookOutlinePosition[    131504,       3347]
+CellTagsIndexPosition[    131461,       3344]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1310,73 +1310,10 @@ easily plotted:\
    3.591200513662157*^9, 3.5912005186541576`*^9}, {3.591200550914963*^9, 
    3.591200611084173*^9}, 3.591205547775443*^9}],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{"?", "ModularTiling"}]], "Input",
  CellChangeTimes->{{3.591200615686174*^9, 3.591200621270975*^9}, 
    3.591205547775443*^9, {3.5918685882207556`*^9, 3.5918685949287567`*^9}}],
-
-Cell[BoxData[
- StyleBox["\<\"ModularTiling[{\!\(\*SubscriptBox[\(m\), \(1\)]\), \
-\!\(\*SubscriptBox[\(m\), \(2\)]\),...}, t] produces a graphic of the tiling \
-of the upper halflplane associated to the modular group, with the optional \
-MoebiusTransformation t applied. By default, the output is just the orbit of \
-the unit circle under the given ModularTransformations \!\(\*SubscriptBox[\(m\
-\), \(1\)]\), \!\(\*SubscriptBox[\(m\), \(2\)]\), ..., (ModularGroupList may \
-be used to generate a appropriate list of ModularTransformations). \
-\\nFollowing Options are supported (default values are underlined): \
-\\nInteriorMode \[Rule] \
-GDisk/GCircle/\!\(\*\\nStyleBox[\\\"Off\\\",\\nFontVariations->{\\\"Underline\
-\\\"->True}]\): Function for drawing the (transformed) upper halfplane. \
-\\nInteriorStyle \[Rule] \!\(\*\\nStyleBox[\\\"Black\\\",\\nFontVariations->{\
-\\\"Underline\\\"->True}]\): Graphics style for drawing the (transformed) \
-upper halfplane. \\nBorderMode \[RightArrow] \
-\!\(\*\\nStyleBox[\\\"GCircle\\\",\\nFontVariations->{\\\"Underline\\\"->True}\
-]\)/Off: Function for drawing the (transformed) real axis. \\nBoderStyle \
-\[Rule] \!\(\*\\nStyleBox[\\\"Black\\\",\\nFontVariations->{\\\"Underline\\\"-\
->True}]\): Style for drawing the (transformed) real axis. \\nExteriorMode \
-\[Rule] \!\(\*\\nStyleBox[\\\"GDisk\\\",\\nFontVariations->{\\\"Underline\\\"-\
->True}]\)/GCircle/Off: Function for drawing the (transformed) lower \
-halfplane. \\nExteriorStyle \[Rule] \
-\!\(\*\\nStyleBox[\\\"White\\\",\\nFontVariations->{\\\"Underline\\\"->True}]\
-\): Graphics style for drawing the (transformed) lower halfplane. \
-\\nTilingMode \[Rule] \
-GDisk/\!\(\*\\nStyleBox[\\\"GCircle\\\",\\nFontVariations->{\\\"Underline\\\"-\
->True}]\)/Off: Function for drawing the orbit of the unit disk (tiling). \
-\\nTilingStyle \[Rule] \!\(\*\\nStyleBox[\\\"Black\\\",\\nFontVariations->{\\\
-\"Underline\\\"->True}]\): Graphics style for drawing the orbit of the unit \
-disk (tiling). \\nTilingThreshold \[Rule] 0: Minimum radius for drawing \
-tiling arcs. \\nExtendedTilingMode \[Rule] GDisk/GCircle/\!\(\*\\nStyleBox[\\\
-\"Off\\\",\\nFontVariations->{\\\"Underline\\\"->True}]\): Function for \
-drawing the orbit of the imaginary axis (extended tiling). \
-\\nExtendedTilingStyle \[Rule] \
-\!\(\*\\nStyleBox[\\\"Gray\\\",\\nFontVariations->{\\\"Underline\\\"->True}]\)\
-: Graphics style for drawing the orbit of the imaginary axis (extended \
-tiling). \\nFordDiskMode \[Rule] GDisk/GCircle/\!\(\*\\nStyleBox[\\\"Off\\\",\
-\\nFontVariations->{\\\"Underline\\\"->True}]\): Function for drawing ford \
-circles. \\nFordDiskStyle \[Rule] \
-\!\(\*\\nStyleBox[\\\"Brown\\\",\\nFontVariations->{\\\"Underline\\\"->True}]\
-\): Graphics style for drawing ford circles. \\nFordDiskThreshold \[Rule] 0: \
-Minimum radius for drawing ford circles. \\nIncircleMode \[Rule] \
-GDisk/GCircle/\!\(\*\\nStyleBox[\\\"Off\\\",\\nFontVariations->{\\\"Underline\
-\\\"->True}]\): Function for drawing incircles of tiles. \\nIncircleStyle \
-\[Rule] \!\(\*\\nStyleBox[\\\"Blue\\\",\\nFontVariations->{\\\"Underline\\\"->\
-True}]\): Graphics style for drawing incircles of tiles. \\nIncircleThreshold \
-\[Rule] 0: Minimum radius for drawing incircles. \\nLabelMode \[Rule] \
-TUWord/TRWord/Mat/.../\!\(\*\\nStyleBox[\\\"Off\\\",\\nFontVariations->{\\\"\
-Underline\\\"->True}]\): Function for printing tile labels. \\nLabelStyle \
-\[Rule] \!\(\*\\nStyleBox[\\\"Black\\\",\\nFontVariations->{\\\"Underline\\\"-\
->True}]\): Style for printing tile lables. \\nLabelThreshold \[Rule] \
-\!\(\*SuperscriptBox[\(2\), \(-3\)]\): Minimum inradius of tiles for printing \
-tile labels. \\nMagnification \[Rule] \
-n/\!\(\*\\nStyleBox[\\\"Off\\\",\\nFontVariations->{\\\"Underline\\\"->True}]\
-\): If set to a numerical value n, labels are magnified with a factor n\
-\[CenterDot]r, where r is the according tile inradius. \"\>", "MSG"]], "Print",\
- "PrintUsage",
- CellChangeTimes->{3.602915966467883*^9},
- CellTags->"Info3602919566-3218778"]
-}, Open  ]],
 
 Cell["\<\
 To produce a list of modular transformations used by the function \
@@ -1682,33 +1619,11 @@ and its inverse can be found with the following routines:\
   3.6029154478905587`*^9, 3.602915781747526*^9}, {3.602915888264763*^9, 
   3.6029159155492744`*^9}}],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[{
  RowBox[{"?", "AssociatedMap"}], "\[IndentingNewLine]", 
  RowBox[{"?", "InvAssociatedMap"}]}], "Input",
  CellChangeTimes->{{3.6029082312457595`*^9, 3.6029082327277656`*^9}, {
   3.6029085349634037`*^9, 3.602908538005416*^9}}],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- StyleBox["\<\"AssociatedMap[z] returns the matrix of a modular \
-transformation A, such that z \[Element] A(F), where F is the fundamental \
-region F = {x \[Element] \[DoubleStruckCapitalC] | Abs[Re[x]] <= 1/2 && \
-Abs[x] >= 1}.\"\>", "MSG"]], "Print", "PrintUsage",
- CellChangeTimes->{3.6029147253171988`*^9},
- CellTags->"Info3602918325-6149704"],
-
-Cell[BoxData[
- StyleBox["\<\"InvAssociatedMap[z] returns the matrix of a modular \
-transformation A, such that Az \[Element] F, where F is the fundamental \
-region F = {x \[Element] \[DoubleStruckCapitalC] | Abs[Re[x]] <= 1/2 && \
-Abs[x] >= 1}.\"\>", "MSG"]], "Print", "PrintUsage",
- CellChangeTimes->{3.6029147255979996`*^9},
- CellTags->"Info3602918325-6149704"]
-}, Open  ]]
-}, Open  ]],
 
 Cell[TextData[{
  "We use the modified Cayley transform to map the tiling of the upper \
@@ -2367,9 +2282,9 @@ Cell[BoxData[{
                RowBox[{
                 RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
               RowBox[{"{", 
-               RowBox[{"0", ",", "3"}], "}"}]}], "}"}]}]}], 
-          "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "]"}], ",",
-       "\[IndentingNewLine]", 
+               RowBox[{"0", ",", "3"}], "}"}]}], "}"}]}], ",", 
+           RowBox[{"PlotLabel", "\[Rule]", "z"}]}], "\[IndentingNewLine]", 
+          "]"}]}]}], "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
       RowBox[{"{", 
        RowBox[{
         RowBox[{"{", 
@@ -2453,7 +2368,8 @@ Cell[BoxData[{
    3.5998416385483885`*^9, 3.5998416386623917`*^9}, {3.602855388105488*^9, 
    3.6028554032749033`*^9}, {3.6028554351157756`*^9, 3.602855478280958*^9}, {
    3.602855893609338*^9, 3.602855971994486*^9}, 3.602856140954115*^9, {
-   3.6028611649646873`*^9, 3.6028612220732527`*^9}}]
+   3.6028611649646873`*^9, 3.6028612220732527`*^9}, {3.6031132557596507`*^9, 
+   3.6031132708110633`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3423,22 +3339,10 @@ StyleDefinitions->"Default.nb"
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{
- "Info3602918325-6149704"->{
-  Cell[67640, 1694, 362, 6, 44, "Print",
-   CellTags->"Info3602918325-6149704"],
-  Cell[68005, 1702, 363, 6, 44, "Print",
-   CellTags->"Info3602918325-6149704"]},
- "Info3602919566-3218778"->{
-  Cell[50977, 1319, 4006, 58, 483, "Print",
-   CellTags->"Info3602919566-3218778"]}
- }
+CellTagsIndex->{}
 *)
 (*CellTagsIndex
-CellTagsIndex->{
- {"Info3602918325-6149704", 136207, 3426},
- {"Info3602919566-3218778", 136399, 3431}
- }
+CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
@@ -3535,66 +3439,54 @@ Cell[39549, 1055, 10551, 236, 673, "Input"]
 Cell[CellGroupData[{
 Cell[50137, 1296, 302, 6, 88, "Subtitle"],
 Cell[50442, 1304, 309, 6, 32, "Text"],
-Cell[CellGroupData[{
-Cell[50776, 1314, 198, 3, 32, "Input"],
-Cell[50977, 1319, 4006, 58, 483, "Print",
- CellTags->"Info3602919566-3218778"]
-}, Open  ]],
-Cell[54998, 1380, 344, 7, 32, "Text"],
-Cell[55345, 1389, 123, 2, 32, "Input"],
-Cell[55471, 1393, 338, 6, 32, "Text"],
-Cell[55812, 1401, 450, 11, 53, "Input"],
-Cell[56265, 1414, 852, 22, 53, "Input"],
-Cell[57120, 1438, 236, 4, 32, "Text"],
-Cell[57359, 1444, 9096, 216, 733, "Input"]
+Cell[50754, 1312, 198, 3, 32, "Input"],
+Cell[50955, 1317, 344, 7, 32, "Text"],
+Cell[51302, 1326, 123, 2, 32, "Input"],
+Cell[51428, 1330, 338, 6, 32, "Text"],
+Cell[51769, 1338, 450, 11, 53, "Input"],
+Cell[52222, 1351, 852, 22, 53, "Input"],
+Cell[53077, 1375, 236, 4, 32, "Text"],
+Cell[53316, 1381, 9096, 216, 733, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[66492, 1665, 153, 4, 88, "Subtitle"],
-Cell[66648, 1671, 703, 11, 73, "Text"],
-Cell[CellGroupData[{
-Cell[67376, 1686, 239, 4, 53, "Input"],
-Cell[CellGroupData[{
-Cell[67640, 1694, 362, 6, 44, "Print",
- CellTags->"Info3602918325-6149704"],
-Cell[68005, 1702, 363, 6, 44, "Print",
- CellTags->"Info3602918325-6149704"]
-}, Open  ]]
-}, Open  ]],
-Cell[68395, 1712, 980, 16, 114, "Text"],
-Cell[69378, 1730, 13148, 284, 993, "Input"]
+Cell[62449, 1602, 153, 4, 88, "Subtitle"],
+Cell[62605, 1608, 703, 11, 73, "Text"],
+Cell[63311, 1621, 239, 4, 53, "Input"],
+Cell[63553, 1627, 980, 16, 114, "Text"],
+Cell[64536, 1645, 13148, 284, 993, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[82563, 2019, 145, 4, 88, "Subtitle"],
-Cell[82711, 2025, 744, 13, 134, "Text"],
-Cell[83458, 2040, 1872, 53, 113, "Input"],
-Cell[85333, 2095, 188, 4, 32, "Text"],
-Cell[85524, 2101, 168, 3, 32, "Input"],
-Cell[85695, 2106, 2473, 79, 119, "Input"],
-Cell[88171, 2187, 1947, 52, 187, "Text"],
-Cell[90121, 2241, 10275, 214, 711, "Input"]
+Cell[77721, 1934, 145, 4, 88, "Subtitle"],
+Cell[77869, 1940, 744, 13, 134, "Text"],
+Cell[78616, 1955, 1872, 53, 113, "Input"],
+Cell[80491, 2010, 188, 4, 32, "Text"],
+Cell[80682, 2016, 168, 3, 32, "Input"],
+Cell[80853, 2021, 2473, 79, 119, "Input"],
+Cell[83329, 2102, 1947, 52, 187, "Text"],
+Cell[85279, 2156, 10378, 215, 711, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[100433, 2460, 138, 4, 88, "Subtitle"],
-Cell[100574, 2466, 5767, 154, 493, "Input"],
-Cell[106344, 2622, 3684, 88, 302, "Input"],
-Cell[110031, 2712, 9274, 209, 756, "Input",
+Cell[95694, 2376, 138, 4, 88, "Subtitle"],
+Cell[95835, 2382, 5767, 154, 493, "Input"],
+Cell[101605, 2538, 3684, 88, 302, "Input"],
+Cell[105292, 2628, 9274, 209, 756, "Input",
  CellOpen->True]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[119342, 2926, 183, 5, 88, "Subtitle"],
-Cell[119528, 2933, 146, 3, 32, "Input"],
-Cell[119677, 2938, 2771, 73, 233, "Input"],
-Cell[122451, 3013, 1352, 39, 113, "Input"],
-Cell[123806, 3054, 2246, 60, 193, "Input"],
-Cell[126055, 3116, 907, 24, 113, "Input"],
-Cell[126965, 3142, 643, 18, 32, "Input"],
-Cell[127611, 3162, 596, 17, 53, "Input"],
-Cell[128210, 3181, 2062, 66, 253, "Input"],
-Cell[130275, 3249, 656, 20, 53, "Input"],
-Cell[130934, 3271, 994, 29, 73, "Input"],
-Cell[131931, 3302, 2140, 59, 153, "Input"],
-Cell[134074, 3363, 1592, 42, 193, "Input"],
-Cell[135669, 3407, 147, 3, 32, "Input"]
+Cell[114603, 2842, 183, 5, 96, "Subtitle"],
+Cell[114789, 2849, 146, 3, 35, "Input"],
+Cell[114938, 2854, 2771, 73, 256, "Input"],
+Cell[117712, 2929, 1352, 39, 124, "Input"],
+Cell[119067, 2970, 2246, 60, 212, "Input"],
+Cell[121316, 3032, 907, 24, 124, "Input"],
+Cell[122226, 3058, 643, 18, 35, "Input"],
+Cell[122872, 3078, 596, 17, 58, "Input"],
+Cell[123471, 3097, 2062, 66, 278, "Input"],
+Cell[125536, 3165, 656, 20, 58, "Input"],
+Cell[126195, 3187, 994, 29, 80, "Input"],
+Cell[127192, 3218, 2140, 59, 168, "Input"],
+Cell[129335, 3279, 1592, 42, 212, "Input"],
+Cell[130930, 3323, 147, 3, 35, "Input"]
 }, Open  ]]
 }, Open  ]]
 }

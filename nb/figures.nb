@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    167877,       4144]
-NotebookOptionsPosition[    165433,       4065]
-NotebookOutlinePosition[    165799,       4081]
-CellTagsIndexPosition[    165756,       4078]
+NotebookDataLength[    172553,       4270]
+NotebookOptionsPosition[    170021,       4189]
+NotebookOutlinePosition[    170387,       4205]
+CellTagsIndexPosition[    170344,       4202]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -3036,7 +3036,7 @@ Cell[BoxData[{
   3.6031120891556864`*^9, 3.6031121307228255`*^9}, {3.603112198801691*^9, 
   3.6031122708606653`*^9}, {3.603112819151688*^9, 3.603112820722731*^9}, {
   3.603120601707924*^9, 3.6031206050460157`*^9}, {3.60312083585034*^9, 
-  3.603120839049427*^9}}],
+  3.603120839049427*^9}, {3.603125337136671*^9, 3.603125357803238*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -3082,7 +3082,131 @@ Cell[BoxData[{
    3.6031145668485737`*^9, 3.6031145669475765`*^9}, {3.6031150687643256`*^9, 
    3.603115101185214*^9}, {3.6031205961107707`*^9, 3.6031205981368265`*^9}, {
    3.603120883510645*^9, 3.603120886577729*^9}, {3.603121072514824*^9, 
-   3.6031210726548276`*^9}, {3.603121112300914*^9, 3.603121133484494*^9}}]
+   3.6031210726548276`*^9}, {3.603121112300914*^9, 3.603121133484494*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Needs", "[", "\"\<ModularGroup`\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Module", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"modGrpList", ",", "gammat2"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"modGrpList", "=", 
+     RowBox[{"ModularGroupList", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"PSL2ZGrading", "@", 
+         RowBox[{"Mat", "@", "#"}]}], "\[LessEqual]", "18"}], "&"}], "]"}]}], 
+    ";", "\[IndentingNewLine]", 
+    RowBox[{"gammat2", "=", 
+     RowBox[{"Select", "[", 
+      RowBox[{"modGrpList", ",", 
+       RowBox[{
+        RowBox[{"MatchQ", "[", 
+         RowBox[{
+          RowBox[{"Mod", "[", 
+           RowBox[{
+            RowBox[{"Mat", "[", "#", "]"}], ",", "2"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"_", ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "_"}], "}"}]}], "}"}]}], "]"}], "&"}]}], 
+      "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Column", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"MatrixForm", "@", 
+        RowBox[{"Mat", "@", "#"}]}], "&"}], "/@", "gammat2"}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"display", "[", 
+     RowBox[{
+      RowBox[{"CanonicalFunDom", "[", 
+       RowBox[{"I", ",", 
+        RowBox[{"Rest", "@", "gammat2"}], ",", "mtId", ",", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", 
+             RowBox[{"4", "/", "GoldenRatio"}]}], "}"}]}], "}"}]}], ",", 
+        RowBox[{"Axes", "\[Rule]", "True"}]}], "]"}], ",", "400", ",", 
+      "\"\<normpoly-gamma2-1.eps\>\""}], "]"}]}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6031217688819036`*^9, 3.6031220387832985`*^9}, {
+   3.6031220720142097`*^9, 3.603122132550868*^9}, {3.603122179560156*^9, 
+   3.60312222716446*^9}, {3.6031222787098727`*^9, 3.6031223040875683`*^9}, 
+   3.603122355872987*^9, {3.603124813414322*^9, 3.6031248166594105`*^9}, {
+   3.6031254705173264`*^9, 3.603125471292347*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Needs", "[", "\"\<ModularGroup`\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Module", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"modGrpList", ",", "gammat2"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"modGrpList", "=", 
+     RowBox[{"ModularGroupList", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"PSL2ZGrading", "@", 
+         RowBox[{"Mat", "@", "#"}]}], "\[LessEqual]", "18"}], "&"}], "]"}]}], 
+    ";", "\[IndentingNewLine]", 
+    RowBox[{"gammat2", "=", 
+     RowBox[{"Select", "[", 
+      RowBox[{"modGrpList", ",", 
+       RowBox[{
+        RowBox[{"MatchQ", "[", 
+         RowBox[{
+          RowBox[{"Mod", "[", 
+           RowBox[{
+            RowBox[{"Mat", "[", "#", "]"}], ",", "2"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"_", ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "_"}], "}"}]}], "}"}]}], "]"}], "&"}]}], 
+      "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Column", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"MatrixForm", "@", 
+        RowBox[{"Mat", "@", "#"}]}], "&"}], "/@", "gammat2"}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"display", "[", 
+     RowBox[{
+      RowBox[{"CanonicalFunDom", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"1", "/", "2"}], "+", "I"}], ",", 
+        RowBox[{"Rest", "@", "gammat2"}], ",", "mtId", ",", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "2"}], ",", "3"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", 
+             RowBox[{"5", "/", "GoldenRatio"}]}], "}"}]}], "}"}]}], ",", 
+        RowBox[{"Axes", "\[Rule]", "True"}]}], "]"}], ",", "400", ",", 
+      "\"\<normpoly-gamma2-2.eps\>\""}], "]"}]}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6031224142125854`*^9, 3.6031224924747295`*^9}, {
+  3.603122574454976*^9, 3.6031225763940287`*^9}, {3.603122757530992*^9, 
+  3.6031227635241566`*^9}, {3.6031228132125177`*^9, 3.603122840522266*^9}, {
+  3.603123345656106*^9, 3.6031234137399716`*^9}, {3.6031248720959296`*^9, 
+  3.6031248736269712`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4118,33 +4242,35 @@ Cell[CellGroupData[{
 Cell[114943, 2803, 149, 4, 77, "Subtitle"],
 Cell[115095, 2809, 125, 2, 31, "Input"],
 Cell[115223, 2813, 6686, 180, 472, "Input"],
-Cell[121912, 2995, 1940, 43, 132, "Input"],
-Cell[123855, 3040, 1928, 44, 132, "Input"]
+Cell[121912, 2995, 1986, 43, 132, "Input"],
+Cell[123901, 3040, 1928, 44, 132, "Input"],
+Cell[125832, 3086, 2250, 59, 172, "Input"],
+Cell[128085, 3147, 2286, 61, 172, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[125820, 3089, 188, 5, 77, "Subtitle"],
-Cell[126011, 3096, 6122, 138, 512, "Input"],
-Cell[132136, 3236, 12644, 320, 1158, "Input"]
+Cell[130408, 3213, 188, 5, 77, "Subtitle"],
+Cell[130599, 3220, 6122, 138, 512, "Input"],
+Cell[136724, 3360, 12644, 320, 1158, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[144817, 3561, 203, 5, 77, "Subtitle"],
-Cell[145023, 3568, 3550, 91, 327, "Input"],
-Cell[148576, 3661, 2024, 42, 31, "Input"],
-Cell[150603, 3705, 4289, 81, 112, "Input"],
-Cell[154895, 3788, 439, 9, 31, "Input"],
-Cell[155337, 3799, 784, 24, 52, "Input"],
-Cell[156124, 3825, 825, 18, 52, "Input"],
-Cell[156952, 3845, 679, 15, 31, "Input"],
-Cell[157634, 3862, 652, 15, 33, "Input"],
-Cell[158289, 3879, 975, 21, 52, "Input"],
-Cell[159267, 3902, 868, 22, 55, "Input"],
-Cell[160138, 3926, 982, 24, 55, "Input"]
+Cell[149405, 3685, 203, 5, 77, "Subtitle"],
+Cell[149611, 3692, 3550, 91, 327, "Input"],
+Cell[153164, 3785, 2024, 42, 31, "Input"],
+Cell[155191, 3829, 4289, 81, 112, "Input"],
+Cell[159483, 3912, 439, 9, 31, "Input"],
+Cell[159925, 3923, 784, 24, 52, "Input"],
+Cell[160712, 3949, 825, 18, 52, "Input"],
+Cell[161540, 3969, 679, 15, 31, "Input"],
+Cell[162222, 3986, 652, 15, 33, "Input"],
+Cell[162877, 4003, 975, 21, 52, "Input"],
+Cell[163855, 4026, 868, 22, 55, "Input"],
+Cell[164726, 4050, 982, 24, 55, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[161157, 3955, 195, 5, 77, "Subtitle"],
-Cell[161355, 3962, 126, 2, 31, "Input"],
-Cell[161484, 3966, 3836, 93, 299, "Input"],
-Cell[165323, 4061, 94, 1, 31, "Input"]
+Cell[165745, 4079, 195, 5, 77, "Subtitle"],
+Cell[165943, 4086, 126, 2, 31, "Input"],
+Cell[166072, 4090, 3836, 93, 299, "Input"],
+Cell[169911, 4185, 94, 1, 31, "Input"]
 }, Open  ]]
 }
 ]
