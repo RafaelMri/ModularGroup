@@ -19,7 +19,8 @@ There are various mathematical models of hyperbolic geometry. We will use a mode
 \index{Hyperbolic!plane}
 \index{H-line}
 \index{H-plane}
-Let $\mathcal{P} \subseteq \C$ be a generalized disk, which serves as a model for 2-dimensional hyperbolic geometry. In this context, we will refer to $\mathcal{P}$ as \emph{hyperbolic plane} (for short \emph{h-plane}). The interior points of $\mathcal{P}$ are called \emph{proper points}; the boundary points of $\mathcal{P}$ are called \emph{improper points}.\footnote{The notions of proper and improper points are taken over from \Fenchel{}.} Every generalized circle $C$, which intersects the boundary of $\mathcal{P}$ orthogonally in two distinct (improper) points, gives rise to exactly one \emph{hyperbolic line} (for short \emph{h-line}) $L$ which is given by the arc of $C$ which lies within $\mathcal{P}$, \ie $L = C \cap \mathcal{P}$. 
+\index{Horizon}
+Let $\mathcal{P} \subseteq \C$ be a generalized disk, which serves as a model for 2-dimensional hyperbolic geometry. In this context, we will refer to $\mathcal{P}$ as \emph{hyperbolic plane} (for short \emph{h-plane}). The interior points of $\mathcal{P}$ are called \emph{proper points}; the boundary points of $\mathcal{P}$ are called \emph{improper points}. The set of all improper points (which is a generalized circle) is called the \emph{horizon} of $\mathcal{P}$.\footnote{The notions of proper and improper points as well as horizon are taken over from \Fenchel{}.} Every generalized circle $C$, which intersects the horizon of $\mathcal{P}$ orthogonally in two distinct (improper) points, gives rise to exactly one \emph{hyperbolic line} (for short \emph{h-line}) $L$ which is given by $L = C \cap \mathcal{P}$. 
 \end{definition}
 
 In the above model of hyperbolic geometry, the angular measure is taken over from Euclidean geometry, \ie the angle enclosed by two h-lines which intersect each other in a proper point $z \in \mathcal{P}$ is defined as the Euclidean angle enclosed by the (Euclidean) tangents of the h-lines at the point $z$. It now remains to introduce a measure for the distance between proper points in $\mathcal{P}$.
@@ -129,17 +130,18 @@ By assumption the numbers $z_j$ are pairwise distinct and therefore $\lambda$ is
 
 \begin{corollary}
 \label{cor_CrossRatioGCircle}
-Denoting the extended real axis by $\R_\infty := \R \cup \{\infty\}$, the map $\lambda : \EC \to \EC$ satisfies $\lambda(z) \in \R_\infty$ if and only if $z$ lies on the generalized circle which is determined by the points $z_1,z_2,z_3$.
+Denoting the extended real axis by $\R_\infty := \R \cup \{\infty\}$, the map $\lambda : \EC \to \EC$ from (\ref{eqn_CrossRatioMoebius}) satisfies $\lambda(z) \in \R_\infty$ if and only if $z$ lies on the generalized circle which is determined by the points $z_1,z_2,z_3$.
 \end{corollary}
 \begin{proof}
 This statement is a consequence of the fact that $\lambda$ is a Möbius transformation and therefore maps the g-circle determined by the points $z_1,z_2,z_3$ pointwise one-to-one to the extended real axis $\R_\infty$.
 \end{proof}
 
-These properties of the cross ratio allow to define a metric on the hyperbolic plane $\mathcal{P}$ the following way:
+The above properties of the cross ratio allow to define a metric on the hyperbolic plane $\mathcal{P}$ the following way:
 
 \begin{definition}[\Poincare{} metric]
 \label{dfn_PoincareMetric}
 \index{Poincar{\'e}!metric}
+\index{Hyperbolic!distance}
 Let $z_1, z_2 \in \mathcal{P}$ be two distinct proper points of the hyperbolic plane and let $L$ be the unique h-line joining $z_1$ with $z_2$. Label the two (improper) endpoints of $L$ by $\infty_1$ and $\infty_2$, such that $\infty_1, z_1, z_2, \infty_2$ are in order along the h-line $L$. The hyperbolic distance between $z_1$ and $z_2$ is defined as
 \begin{equation}
 \label{eqn_PoincareMetric}
@@ -185,7 +187,43 @@ Clearly both models are equivalent in the sense that one model can be obtained f
 
 \subsection{Normal polygons and fundamental regions}
 
-%Vonroi diagram
+We can now exploit the concepts of 2-dimensional hyperbolic geometry, in the search of fundamental regions for the action of $\PSL{\Z}$ and its subgroups on $\EU$. 
+
+The idea -- taken from \Lehner{} -- may be shortly described as follows: Given a subgroup $G \le \PSL{\Z}$, we fix a point $z_0 \in \mathcal{H}$ which has a trivial stabilizer $G_{z_0} = \{1\}$. The points $z$ of the sought fundamental region $\mathcal{N}_{z_0}$ shall be characterized by the property $\hypdist{z}{z_0} \le \hypdist{gz}{z_0}$ for all $g \in G$. It turns out that such a fundamental region $\mathcal{N}_{z_0}$ can be obtained by a simple geometric construction, for which we will need the following notions:
+
+\begin{definition}[Hyperbolic half-plane]
+\label{dfn_HyperbolicHalfplane}
+\index{Hyperbolic!half-plane}
+Let $D$ be a generalized disk, such that its boundary intersects the horizon of $\mathcal{P}$ orthogonally in two distinct (improper) points. The (nonempty) set $H := D \cap \mathcal{P}$ is called a \emph{hyperbolic half-plane}.
+\end{definition}
+
+\begin{definition}[Perpendicular bisector]
+\label{dfn_PerpendicularBisector}
+\index{Perpendicular bisector}
+Let $z_1, z_2 \in \mathcal{P}$ be two proper points. The set of proper points $w$ for which $\hypdist{w}{z_1} = \hypdist{w}{z_2}$ defines a h-line and is called the \emph{perpendicular bisector}. Additionally we define $H_{z_1}(z_2)$ as the hyperbolic half-plane consisting of all points $w \in \mathcal{P}$ which are closer to $z_1$ than to $z_2$:
+\begin{equation}
+\label{eqn_NormPolyHalfplane}
+H_{z_1}(z_2) := \setdef{w \in \mathcal{P}}{\hypdist{w}{z_1} < \hypdist{w}{z_2}}.
+\end{equation}
+\end{definition}
+
+\begin{definition}[Normal polygon]
+\label{dfn_NormalPolygon}
+\index{Normal polygon}
+Let $G \le \PSL{\Z}$ be a subgroup of the modular group. Let $z \in \EU$ with trivial stabilizer $G_z = \{1\}$. The set
+\begin{equation}
+\label{eqn_NormalPolygon}
+\mathcal{N}_z := \bigcap_{g \in G} H_{z}(gz)
+\end{equation}
+is called the \emph{normal polygon} with respect to the group $G$ and the point $z_0$.
+\end{definition}
+
+\begin{theorem}
+Let $\mathcal{N}_z$ be a normal polygon with respect to a group $G \le \PSL{\Z}$ and a point $z \in \mathcal{H}$. $\mathcal{N}_z$ is a fundamental domain for the action of $G$ on $\EU$.
+\end{theorem}
+\begin{proof}
+For the proof of this fact we refer to \Lehner{}, p.146ff.\footnote{Chapter IV, section 7}
+\end{proof}
 
 \begin{figure}
 \centering
