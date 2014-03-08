@@ -11,7 +11,7 @@ Plane (\ie 2-dimensional) hyperbolic geometry is obtained from 2-di\-men\-si\-o\
 
 There are various mathematical models of hyperbolic geometry. We will use a model based on the notions of generalized disks and generalized circles which we introduced in Section~\ref{sec_GenCircles}.
 
-\begin{definition}[Hyperbolic disk/half-plane model]
+\begin{definition}[Elements of hyperbolic geometry]
 \label{def_HypGeomModel}
 \index{Proper point}
 \index{Improper point}
@@ -22,7 +22,7 @@ There are various mathematical models of hyperbolic geometry. We will use a mode
 Let $\mathcal{P} \subseteq \C$ be a generalized disk, which serves as a model for 2-dimensional hyperbolic geometry. In this context, we will refer to $\mathcal{P}$ as \emph{hyperbolic plane} (for short \emph{h-plane}). The interior points of $\mathcal{P}$ are called \emph{proper points}; the boundary points of $\mathcal{P}$ are called \emph{improper points}.\footnote{The notions of proper and improper points are taken over from \Fenchel{}.} Every generalized circle $C$, which intersects the boundary of $\mathcal{P}$ orthogonally in two distinct (improper) points, gives rise to exactly one \emph{hyperbolic line} (for short \emph{h-line}) $L$ which is given by the arc of $C$ which lies within $\mathcal{P}$, \ie $L = C \cap \mathcal{P}$. 
 \end{definition}
 
-In the hyperbolic disk (or half-plane) model, the angular measure is taken over from Euclidean geometry, \ie the angle enclosed by two h-lines which intersect each other in a proper point $z \in \mathcal{P}$ is defined as the Euclidean angle enclosed by the (Euclidean) tangents of the h-lines at the point $z$. It now remains to introduce a measure for the distance between proper points in $\mathcal{P}$.
+In the above model of hyperbolic geometry, the angular measure is taken over from Euclidean geometry, \ie the angle enclosed by two h-lines which intersect each other in a proper point $z \in \mathcal{P}$ is defined as the Euclidean angle enclosed by the (Euclidean) tangents of the h-lines at the point $z$. It now remains to introduce a measure for the distance between proper points in $\mathcal{P}$.
 
 \begin{definition}[Metric]
 \index{Metric}
@@ -59,7 +59,7 @@ It is direct to see that the set of all bijective isometries forms a group under
 \end{remark}
 
 \index{Rigid motion}
-We now wish to introduce a metric on the h-plane $\mathcal{P}$, such that every Möbius transformation which maps $\mathcal{P}$ onto itself can be regarded as an isometry of $\mathcal{P}$. Clearly all Möbius transformations with this property form a group. We will refer to the transformations of this group as \emph{rigid motions}\footnote{A rigid motion is an isometry which additionally leaves angles and their orientation invariant.} of the h-plane. 
+We wish to introduce a metric on the h-plane $\mathcal{P}$, such that every Möbius transformation which maps $\mathcal{P}$ onto itself is an isometry of $\mathcal{P}$. Clearly all Möbius transformations with this property form a group. We will refer to the transformations of this group as \emph{rigid motions}\footnote{A rigid motion is an isometry which additionally leaves angles and their orientation invariant.} of the h-plane. 
 
 \index{Cross ratio}
 For the definition of such a metric we will take advantage of the so-called \emph{cross ratio}. Note that in literature the term ``cross ratio'' is used with different notations and definitions. We will adhere to \Caratheodory{} in this regard, whose derivation of the cross ratio's elementary properties is particularly concise and elegant.
@@ -103,7 +103,7 @@ On the other hand, exploiting the symmetry of $A$ with respect to the numbers $z
 \begin{equation*}
 (w_1 - w_3)(w_2 - w_4) = A(z_1 - z_3)(z_2 - z_4).
 \end{equation*}
-In the case when all involved numbers $z_j$ and $w_j$ are finite (and in particular $A$ is finite and nonzero), division of these two equations yields (\ref{eqn_CrossRatioInvariance}). The prove of the general case, when one or two of the numbers $z_j$ (\resp $w_j$) are $\infty$ involves some inconvenient case distinctions which we will not carry out here.
+In the case when all involved numbers $z_j$ and $w_j$ are finite (and in particular $A$ is finite and nonzero), division of these two equations yields (\ref{eqn_CrossRatioInvariance}). The prove of the general case, when one or two of the numbers $z_j$ (\resp $w_j$) are $\infty$, involves some inconvenient case distinctions which we will not carry out here.
 \end{proof}
 
 \begin{lemma}
@@ -124,15 +124,15 @@ Moreover, we have
 \begin{equation*}
 ad - bc = (z_1 - z_2)(z_2 - z_3)(z_3 - z_1).
 \end{equation*}
-By assumption the numbers $z_j$ are pairwise distinct and therefore $\lambda$ is indeed a Möbius transformation. Note that for the other case, when some $z_k = \infty$, the cross ratio needs to be evaluated as specified in Definition~\ref{dfn_CrossRatio} and the coefficients $a,b,c,d$ need to be adapted appropriately. The statement on the images of $z_1,z_2,z_3$ under $\lambda$ are readily verified.
+By assumption the numbers $z_j$ are pairwise distinct and therefore $\lambda$ is indeed a Möbius transformation. Note that for the other case, when some $z_k = \infty$, the cross ratio needs to be evaluated as specified in Definition~\ref{dfn_CrossRatio} and the coefficients $a,b,c,d$ need to be adapted appropriately. The statement on the images of $z_1,z_2,z_3$ under $\lambda$ is readily verified.
 \end{proof}
 
 \begin{corollary}
 \label{cor_CrossRatioGCircle}
-Denoting the extended real axis by $\R_\infty := \R \cup \{\infty\}$, the map $\lambda : \EC \to \EC$ satisfies $\lambda(z) \in \R_\infty$ if and only if $z$ lies on the generalized circle $C$ which is determined by the points $z_1,z_2,z_3$.
+Denoting the extended real axis by $\R_\infty := \R \cup \{\infty\}$, the map $\lambda : \EC \to \EC$ satisfies $\lambda(z) \in \R_\infty$ if and only if $z$ lies on the generalized circle which is determined by the points $z_1,z_2,z_3$.
 \end{corollary}
 \begin{proof}
-This statement is a consequence of the fact that $\lambda$ is a Möbius transformation and therefore maps the g-circle $C$ pointwise one-to-one to the extended real axis $\R_\infty$.
+This statement is a consequence of the fact that $\lambda$ is a Möbius transformation and therefore maps the g-circle determined by the points $z_1,z_2,z_3$ pointwise one-to-one to the extended real axis $\R_\infty$.
 \end{proof}
 
 These properties of the cross ratio allow to define a metric on the hyperbolic plane $\mathcal{P}$ the following way:
@@ -145,16 +145,16 @@ Let $z_1, z_2 \in \mathcal{P}$ be two distinct proper points of the hyperbolic p
 \label{eqn_PoincareMetric}
 \hypdist{z_1}{z_2} := \reci{2} \log \chi \quad \text{with } \chi := (z_1,\infty_2,\infty_1,z_2).
 \end{equation}
-Additionally we define $\hypdist{z}{z} = 0$ for all $z \in \mathcal{P}$.
+Additionally we define $\hypdist{z}{z} = 0$ for all proper points $z \in \mathcal{P}$.
 \end{definition}
 
 \begin{theorem}
-The hyperbolic distance defined in $(\ref{eqn_PoincareMetric})$ is a metric on the hyperbolic plane $\mathcal{P}$. We call $d_\text{hyp}$ the \emph{\Poincare{} metric} on $\mathcal{P}$.
+The hyperbolic distance defined in $(\ref{eqn_PoincareMetric})$ is a metric on the hyperbolic plane $\mathcal{P}$ which we call the \emph{\Poincare{} metric} on $\mathcal{P}$.
 \end{theorem}
 \begin{proof}[Sketch of proof]
-The cross ratio $\chi$ in (\ref{eqn_PoincareMetric}) may alternatively be written as $\chi = \lambda(z_2)$, where $\lambda(z) := (z_1,\infty_2,\infty_1,z)$ is, according to Lemma~\ref{lem_CrossRatioMoebius}, a Möbius transformation satisfying $\lambda(z_1) = 1$ and $\lambda(\infty_2) = \infty$. Corollary~\ref{cor_CrossRatioGCircle} ensures that $\lambda(z)$ is real for all $z$ lying on the h-line $L$. It follows that $\lambda$ maps the h-line segment $S \subseteq L$ which is bounded by the points $z_1$ and $\infty_2$ pointwise one-to-one to the interval $[1,\infty] \subseteq \R_\infty$. For this reason, the hyperbolic metric is non-negative and $\hypdist{z_1}{z_2} \to 0$ as $z_2$ approaches $z_1$ along $S$ and similarly, $\hypdist{z_1}{z_2} \to \infty$ as $z_2$ approaches $\infty_2$ along $S$.
+The cross ratio $\chi$ in (\ref{eqn_PoincareMetric}) may alternatively be written as $\chi = \lambda(z_2)$, where $\lambda(z) := (z_1,\infty_2,\infty_1,z)$ is, according to Lemma~\ref{lem_CrossRatioMoebius}, a Möbius transformation satisfying $\lambda(z_1) = 1$ and $\lambda(\infty_2) = \infty$. Corollary~\ref{cor_CrossRatioGCircle} ensures that $\lambda(z)$ is real for all $z$ lying on the h-line $L$. It follows that $\lambda$ maps the h-line segment $S \subseteq L$ which is bounded by the points $z_1$ and $\infty_2$ pointwise one-to-one to the interval $[1,\infty] \subseteq \R_\infty$. For this reason, the hyperbolic metric is non-negative and $\hypdist{z_1}{z_2} \to 0$ as $z_2$ approaches $z_1$ along $S$. Similarly, $\hypdist{z_1}{z_2} \to \infty$ as $z_2$ approaches $\infty_2$ along $S$.
 
-The symmetry of $d_\text{hyp}$ can easily be verified: Note that exchanging $z_1$ and $z_2$ also swaps the improper points $\infty_1$ and $\infty_2$. We therefore need to show that $\chi_1 := (z_1,\infty_2,\infty_1,z_2) = (z_2,\infty_1,\infty_2,z_1) =: \chi_2$ which is indeed the case:
+The symmetry of $d_\text{hyp}$ can easily be verified: Note that exchanging $z_1$ and $z_2$ also swaps the roles of the improper points $\infty_1$ and $\infty_2$. We therefore need to show that $\chi_1 := (z_1,\infty_2,\infty_1,z_2) = (z_2,\infty_1,\infty_2,z_1) =: \chi_2$ which is indeed the case:
 \begin{equation*}
 \chi_1 = \crossrat{z_1}{\infty_2}{\infty_1}{z_2} = \crossrat{z_2}{\infty_1}{\infty_2}{z_1} = \chi_2.
 \end{equation*}
@@ -174,8 +174,14 @@ which is a consequence of
 \end{equation*}
 \end{remark}
 
-%\index{Poincar{\'e}!half-plane model}
-%\index{Poincar{\'e}!disk model}
+\begin{remark}[\Poincare{} disk and half-plane model]
+\label{rem_PoincareModel}
+\index{Poincar{\'e}!half-plane model}
+\index{Poincar{\'e}!disk model}
+If we choose the upper half-plane of $\EC$ as model for the hyperbolic plane, \ie $\mathcal{P} := \topcl{\mathcal{H}}$, we obtain the \emph{\Poincare{} half-plane model} of hyperbolic geometry. If instead the unit disk is chosen, $\mathcal{P} := \mathbb{D}$, then we talk of the \emph{\Poincare{} disk model}.
+
+Clearly both models are equivalent in the sense that one model can be obtained from the other by applying a Möbius map which transforms the upper half-plane to the unit disk (or vice-versa). For our purposes, the \Poincare{} half-plane model will be most relevant.
+\end{remark}
 
 \subsection{Normal polygons and fundamental regions}
 

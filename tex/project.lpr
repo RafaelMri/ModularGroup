@@ -66,15 +66,15 @@ Bookmark#6=0
 Bookmark#7=0
 Bookmark#8=0
 Bookmark#9=0
-CaretPos.X=17
-CaretPos.Y=166
+CaretPos.X=103
+CaretPos.Y=180
 CharSet=def
 FileName=sec-hypgeom.tex
 FoldedLines=
 IsMainFile=no
 Opened=yes
 ScrollPos.X=0
-ScrollPos.Y=246
+ScrollPos.Y=267
 SearchListCount=0
 ShowSyntax=yes
 SpellChecking=yes
@@ -670,7 +670,7 @@ Zoom=9
 
 [Project\DVI]
 FileName=1
-FirstPage=0
+FirstPage=1
 Magnifier=5
 Page=57
 PaperHeight=297
