@@ -19,10 +19,10 @@ There are various mathematical models of hyperbolic geometry. We will use a mode
 \index{Hyperbolic!plane}
 \index{H-line}
 \index{H-plane}
-Let $\mathcal{P} \subseteq \C$ be a generalized disk, which serves as a model for 2-dimensional hyperbolic geometry. In this context, we will refer to $\mathcal{P}$ as a \emph{hyperbolic plane} (for short \emph{h-plane}). The interior points of $\mathcal{P}$ are called \emph{proper points}; the boundary points of $\mathcal{P}$ are called \emph{improper points}.\footnote{The notions of proper and improper points are taken over from \Fenchel{}.} Every generalized circle $C$, which intersects the boundary of $\mathcal{P}$ orthogonally in two distinct (improper) points, gives rise to exactly one \emph{hyperbolic line} (for short \emph{h-line}) $L$ which is given by the arc of $C$ which lies within $\mathcal{P}$, \ie $L = C \cap \mathcal{P}$. 
+Let $\mathcal{P} \subseteq \C$ be a generalized disk, which serves as a model for 2-dimensional hyperbolic geometry. In this context, we will refer to $\mathcal{P}$ as \emph{hyperbolic plane} (for short \emph{h-plane}). The interior points of $\mathcal{P}$ are called \emph{proper points}; the boundary points of $\mathcal{P}$ are called \emph{improper points}.\footnote{The notions of proper and improper points are taken over from \Fenchel{}.} Every generalized circle $C$, which intersects the boundary of $\mathcal{P}$ orthogonally in two distinct (improper) points, gives rise to exactly one \emph{hyperbolic line} (for short \emph{h-line}) $L$ which is given by the arc of $C$ which lies within $\mathcal{P}$, \ie $L = C \cap \mathcal{P}$. 
 \end{definition}
 
-In the hyperbolic disk (or half-plane) model, the angular measure is taken over from Euclidean geometry, \ie the angle between two h-lines which intersect each other in a proper point $z \in \mathcal{P}$ is defined as the Euclidean angle between the (Euclidean) tangents of the h-lines at the point $z$. It now remains to introduce a measure for the distance between proper points in $\mathcal{P}$.
+In the hyperbolic disk (or half-plane) model, the angular measure is taken over from Euclidean geometry, \ie the angle enclosed by two h-lines which intersect each other in a proper point $z \in \mathcal{P}$ is defined as the Euclidean angle enclosed by the (Euclidean) tangents of the h-lines at the point $z$. It now remains to introduce a measure for the distance between proper points in $\mathcal{P}$.
 
 \begin{definition}[Metric]
 \index{Metric}
@@ -38,17 +38,17 @@ Let $\mathcal{S}$ be nonempty a set. A function $d : \mathcal{S} \times \mathcal
 \emph{Triangle inequality:} $d(x,z) \le d(x,y) + d(y,z)$.
 \end{enumerate}
 \end{definition}
-\begin{remark}
-The condition (\ref{itm_MetricNonneg}), non-negativity, is implied by the conditions (\ref{itm_MetricCoincidence}), (\ref{itm_MetricSymmetry}) and (\ref{itm_MetricTriIneq}) because
+\begin{remark} From
 \begin{equation*}
-0 = d(x,x) \le d(x,y) + d(y,x) = 2 d(x,y).
+0 = d(x,x) \le d(x,y) + d(y,x) = 2 d(x,y),
 \end{equation*}
+we see that non-negativity (\ref{itm_MetricNonneg}) is implied by the conditions (\ref{itm_MetricCoincidence}), (\ref{itm_MetricSymmetry}) and (\ref{itm_MetricTriIneq}).
 \end{remark}
 
 \begin{definition}[Isometry]
 \label{dfn_IsometryRigidMotion}
 \index{Isometry}
-Let $\mathcal{S}$ be a set and $d$ be a metric on $\mathcal{S}$. A map $\phi : \mathcal{S} \to \mathcal{S}$ is called an \emph{isometry}, if it leaves distances invariant, \ie
+Let $\mathcal{S}$ be a set and $d$ be a metric on $\mathcal{S}$. A map $\phi : \mathcal{S} \to \mathcal{S}$ is called an \emph{isometry}, if it leaves distances invariant, \ie if
 \begin{equation*}
 d(x,y) = d(\phi(x), \phi(y)) \quad \text{for all } x,y \in \mathcal{S}.
 \end{equation*}
@@ -59,20 +59,120 @@ It is direct to see that the set of all bijective isometries forms a group under
 \end{remark}
 
 \index{Rigid motion}
-We now wish to introduce a metric on the h-plane $\mathcal{P}$, such that every Möbius transformation which maps $\mathcal{P}$ onto itself can be regarded as an isometry of $\mathcal{P}$. Note that all Möbius transformations with this property form a group. We will refer to the transformations of this group as \emph{rigid motions}\footnote{A rigid motion is an isometry which additionally leaves angles and their orientation invariant.} of the h-plane. 
+We now wish to introduce a metric on the h-plane $\mathcal{P}$, such that every Möbius transformation which maps $\mathcal{P}$ onto itself can be regarded as an isometry of $\mathcal{P}$. Clearly all Möbius transformations with this property form a group. We will refer to the transformations of this group as \emph{rigid motions}\footnote{A rigid motion is an isometry which additionally leaves angles and their orientation invariant.} of the h-plane. 
 
-For the definition of such a metric we will take advantage of the so-called \emph{cross ratio}. Note that in literature the term ``cross ratio'' is used with different notations and definitions. We will in this regard adhere to \Caratheodory{}, whose derivation of the cross ratio's elementary properties is particularly elegant.
+\index{Cross ratio}
+For the definition of such a metric we will take advantage of the so-called \emph{cross ratio}. Note that in literature the term ``cross ratio'' is used with different notations and definitions. We will adhere to \Caratheodory{} in this regard, whose derivation of the cross ratio's elementary properties is particularly concise and elegant.
 
 \begin{definition}
 \label{dfn_CrossRatio}
-\index{Cross ratio}
 Let $z_1,z_2,z_3,z_4 \in \EC$ be numbers of the extended complex plane with the restriction that at most two of these numbers are equal. The \emph{cross-ratio} $(z_1,z_2,z_3,z_4) \in \EC$ is defined as
 \begin{equation}
 \label{eqn_CrossRatio}
-(z_1,z_2,z_3,z_4) := \frac{(z_1-z_2)(z_3-z_4)}{(z_1-z_3)(z_2-z_4)}.
+(z_1,z_2,z_3,z_4) := \crossrat{z_1}{z_2}{z_3}{z_4}.
 \end{equation}
-Note that in the case of an infinite quantity $z_k = \infty$, before evaluation the respective factors in the numerator and denominator of (\ref{eqn_CrossRatio}) have to be divided formally by $z_k$.
+Note that in the case of an infinite quantity $z_k = \infty$, the cross ratio (\ref{eqn_CrossRatio}) shall be evaluated by formally dividing the two respective factors in the numerator and denominator by $z_k$ and substitution of  expressions $\reci{\infty}$ by zero.
 \end{definition}
+
+We will need the following important properties of the cross ratio:
+
+\begin{lemma}[Invariance under Möbius transformations]
+\label{lem_CrossRatioInvariance}
+Let $\phi \in \PGL{\C}$ be a Möbius transformation and $z_1,z_2,z_3,z_4 \in \EC$ such that their cross ratio is defined. Set $w_j := \phi(z_j)$ for $j \in \{1,2,3,4\}$. The cross ratios of the numbers $z_j$ and $w_j$ are equal, \ie
+\begin{equation}
+\label{eqn_CrossRatioInvariance}
+(z_1,z_2,z_3,z_4) = (w_1,w_2,w_3,w_4).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Let us write the Möbius transformation $\phi$ as $\phi(z) = \moebius{a}{b}{c}{d}{z}$. For $i,j \in \{1,2,3,4\}$, we have
+\begin{equation*}
+w_i - w_j 
+= \moebius{a}{b}{c}{d}{z_i} - \moebius{a}{b}{c}{d}{z_j} 
+= \frac{ad - bc}{(c z_i + d)(c z_j + d)} \cdot (z_i - z_j).
+\end{equation*}
+Consequently, if we define
+\begin{equation*}
+A := \frac{(ad - bc)^2}{(c z_1 + d)(c z_2 + d)(c z_3 + d)(c z_4 + d)},
+\end{equation*}
+we obtain
+\begin{equation*}
+(w_1 - w_2)(w_3 - w_4) = A(z_1 - z_2)(z_3 - z_4).
+\end{equation*}
+On the other hand, exploiting the symmetry of $A$ with respect to the numbers $z_j$, we have
+\begin{equation*}
+(w_1 - w_3)(w_2 - w_4) = A(z_1 - z_3)(z_2 - z_4).
+\end{equation*}
+In the case when all involved numbers $z_j$ and $w_j$ are finite (and in particular $A$ is finite and nonzero), division of these two equations yields (\ref{eqn_CrossRatioInvariance}). The prove of the general case, when one or two of the numbers $z_j$ (\resp $w_j$) are $\infty$ involves some inconvenient case distinctions which we will not carry out here.
+\end{proof}
+
+\begin{lemma}
+\label{lem_CrossRatioMoebius}
+Let $z_1, z_2, z_3 \in \EC$ be pairwise distinct. The function
+\begin{equation}
+\label{eqn_CrossRatioMoebius}
+\fundef{\lambda}{\EC}{\EC}{z}{(z_1,z_2,z_3,z)}
+\end{equation}
+is a Möbius transformation and satisfies $\lambda(z_1) = 1$, $\lambda(z_2) = \infty$, $\lambda(z_3) = 0$.
+\end{lemma}
+\begin{proof}
+In the case when $\infty \notin \{z_1,z_2,z_3\}$, by setting $a := z_2 - z_1$, $b := z_2 (z_1 - z_2)$, $c := z_3 - z_1$ and $d := z_2 (z_1 - z_3)$ we can obviously write 
+\begin{equation*}
+\lambda(z) = \crossrat{z_1}{z_2}{z_3}{z} = \moebius{a}{b}{c}{d}{z}.
+\end{equation*}
+Moreover, we have
+\begin{equation*}
+ad - bc = (z_1 - z_2)(z_2 - z_3)(z_3 - z_1).
+\end{equation*}
+By assumption the numbers $z_j$ are pairwise distinct and therefore $\lambda$ is indeed a Möbius transformation. Note that for the other case, when some $z_k = \infty$, the cross ratio needs to be evaluated as specified in Definition~\ref{dfn_CrossRatio} and the coefficients $a,b,c,d$ need to be adapted appropriately. The statement on the images of $z_1,z_2,z_3$ under $\lambda$ are readily verified.
+\end{proof}
+
+\begin{corollary}
+\label{cor_CrossRatioGCircle}
+Denoting the extended real axis by $\R_\infty := \R \cup \{\infty\}$, the map $\lambda : \EC \to \EC$ satisfies $\lambda(z) \in \R_\infty$ if and only if $z$ lies on the generalized circle $C$ which is determined by the points $z_1,z_2,z_3$.
+\end{corollary}
+\begin{proof}
+This statement is a consequence of the fact that $\lambda$ is a Möbius transformation and therefore maps the g-circle $C$ pointwise one-to-one to the extended real axis $\R_\infty$.
+\end{proof}
+
+These properties of the cross ratio allow to define a metric on the hyperbolic plane $\mathcal{P}$ the following way:
+
+\begin{definition}[\Poincare{} metric]
+\label{dfn_PoincareMetric}
+\index{Poincar{\'e}!metric}
+Let $z_1, z_2 \in \mathcal{P}$ be two distinct proper points of the hyperbolic plane and let $L$ be the unique h-line joining $z_1$ with $z_2$. Label the two (improper) endpoints of $L$ by $\infty_1$ and $\infty_2$, such that $\infty_1, z_1, z_2, \infty_2$ are in order along the h-line $L$. The hyperbolic distance between $z_1$ and $z_2$ is defined as
+\begin{equation}
+\label{eqn_PoincareMetric}
+\hypdist{z_1}{z_2} := \reci{2} \log \chi \quad \text{with } \chi := (z_1,\infty_2,\infty_1,z_2).
+\end{equation}
+Additionally we define $\hypdist{z}{z} = 0$ for all $z \in \mathcal{P}$.
+\end{definition}
+
+\begin{theorem}
+The hyperbolic distance defined in $(\ref{eqn_PoincareMetric})$ is a metric on the hyperbolic plane $\mathcal{P}$. We call $d_\text{hyp}$ the \emph{\Poincare{} metric} on $\mathcal{P}$.
+\end{theorem}
+\begin{proof}[Sketch of proof]
+The cross ratio $\chi$ in (\ref{eqn_PoincareMetric}) may alternatively be written as $\chi = \lambda(z_2)$, where $\lambda(z) := (z_1,\infty_2,\infty_1,z)$ is, according to Lemma~\ref{lem_CrossRatioMoebius}, a Möbius transformation satisfying $\lambda(z_1) = 1$ and $\lambda(\infty_2) = \infty$. Corollary~\ref{cor_CrossRatioGCircle} ensures that $\lambda(z)$ is real for all $z$ lying on the h-line $L$. It follows that $\lambda$ maps the h-line segment $S \subseteq L$ which is bounded by the points $z_1$ and $\infty_2$ pointwise one-to-one to the interval $[1,\infty] \subseteq \R_\infty$. For this reason, the hyperbolic metric is non-negative and $\hypdist{z_1}{z_2} \to 0$ as $z_2$ approaches $z_1$ along $S$ and similarly, $\hypdist{z_1}{z_2} \to \infty$ as $z_2$ approaches $\infty_2$ along $S$.
+
+The symmetry of $d_\text{hyp}$ can easily be verified: Note that exchanging $z_1$ and $z_2$ also swaps the improper points $\infty_1$ and $\infty_2$. We therefore need to show that $\chi_1 := (z_1,\infty_2,\infty_1,z_2) = (z_2,\infty_1,\infty_2,z_1) =: \chi_2$ which is indeed the case:
+\begin{equation*}
+\chi_1 = \crossrat{z_1}{\infty_2}{\infty_1}{z_2} = \crossrat{z_2}{\infty_1}{\infty_2}{z_1} = \chi_2.
+\end{equation*}
+
+By the above observations, we have $\hypdist{z_1}{z_2} = 0$ if and only if $z_1 = z_2$. Consequently the coincidence axiom is satisfied. The proof of the fact that $d_\text{hyp}$ also satisfies the triangle inequality is out of scope of this work.
+\end{proof}
+
+\begin{remark}
+The hyperbolic distance along a h-line is additive, \ie for three points $z_1,z_2,z_3$ which are in order along a h-line, we have
+\begin{equation*}
+\hypdist{z_1}{z_3} = \hypdist{z_1}{z_2} + \hypdist{z_2}{z_3},
+\end{equation*}
+which is a consequence of
+\begin{equation*}
+\crossrat{z_1}{\infty_2}{\infty_1}{z_2} \cdot \crossrat{z_2}{\infty_2}{\infty_1}{z_3} = 
+\crossrat{z_1}{\infty_2}{\infty_1}{z_3}
+\end{equation*}
+\end{remark}
 
 %\index{Poincar{\'e}!half-plane model}
 %\index{Poincar{\'e}!disk model}
