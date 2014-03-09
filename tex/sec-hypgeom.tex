@@ -1,6 +1,6 @@
 \section{Hyperbolic geometry}
 
-It is the goal of this section to introduce a general method relying on the concepts of 2-dimensional hyperbolic geometry for the construction of fundamental regions with respect to the action of $\PSL{\Z}$ and its subgroups on $\EU$. 
+It is the goal of this section to introduce a general method for the construction of fundamental regions with respect to the action of $\PSL{\Z}$ and its subgroups on $\EU$ which relies on the concepts of 2-dimensional hyperbolic geometry. 
 
 \index{Hyperbolic!geometry}
 Plane (\ie 2-dimensional) hyperbolic geometry is obtained from 2-di\-men\-si\-o\-nal Euclidean geometry by replacing the parallel postulate by the following axiom: 
@@ -63,7 +63,7 @@ It is direct to see that the set of all bijective isometries forms a group under
 We wish to introduce a metric on the h-plane $\mathcal{P}$, such that every Möbius transformation which maps $\mathcal{P}$ onto itself is an isometry of $\mathcal{P}$. Clearly all Möbius transformations with this property form a group. We will refer to the transformations of this group as \emph{rigid motions}\footnote{A rigid motion is an isometry which additionally leaves angles and their orientation invariant.} of the h-plane. 
 
 \index{Cross ratio}
-For the definition of such a metric we will take advantage of the so-called \emph{cross ratio}. Note that in literature the term ``cross ratio'' is used with different notations and definitions. We will adhere to \Caratheodory{} in this regard, whose derivation of the cross ratio's elementary properties is particularly concise and elegant.
+For the definition of such a metric we will take advantage of the so-called \emph{cross ratio}. Note that in literature for the term ``cross ratio'' different notations and definitions are used. We will adhere to \Caratheodory{} in this regard whose derivation of the cross ratio's elementary properties is particularly concise and elegant.
 
 \begin{definition}
 \label{dfn_CrossRatio}
@@ -72,7 +72,7 @@ Let $z_1,z_2,z_3,z_4 \in \EC$ be numbers of the extended complex plane with the 
 \label{eqn_CrossRatio}
 (z_1,z_2,z_3,z_4) := \crossrat{z_1}{z_2}{z_3}{z_4}.
 \end{equation}
-Note that in the case of an infinite quantity $z_k = \infty$, the cross ratio (\ref{eqn_CrossRatio}) shall be evaluated by formally dividing the two respective factors in the numerator and denominator by $z_k$ and substitution of  expressions $\reci{\infty}$ by zero.
+Note that in the case of an infinite quantity $z_k = \infty$, the cross ratio  shall be evaluated by formally dividing the two respective factors in the numerator and denominator of (\ref{eqn_CrossRatio}) by $z_k$ and by substitution of expressions $\reci{\infty}$ with zero.
 \end{definition}
 
 We will need the following important properties of the cross ratio:
@@ -154,7 +154,7 @@ Additionally we define $\hypdist{z}{z} = 0$ for all proper points $z \in \mathca
 The hyperbolic distance defined in $(\ref{eqn_PoincareMetric})$ is a metric on the hyperbolic plane $\mathcal{P}$ which we call the \emph{\Poincare{} metric} on $\mathcal{P}$.
 \end{theorem}
 \begin{proof}[Sketch of proof]
-The cross ratio $\chi$ in (\ref{eqn_PoincareMetric}) may alternatively be written as $\chi = \lambda(z_2)$, where $\lambda(z) := (z_1,\infty_2,\infty_1,z)$ is, according to Lemma~\ref{lem_CrossRatioMoebius}, a Möbius transformation satisfying $\lambda(z_1) = 1$ and $\lambda(\infty_2) = \infty$. Corollary~\ref{cor_CrossRatioGCircle} ensures that $\lambda(z)$ is real for all $z$ lying on the h-line $L$. It follows that $\lambda$ maps the h-line segment $S \subseteq L$ which is bounded by the points $z_1$ and $\infty_2$ pointwise one-to-one to the interval $[1,\infty] \subseteq \R_\infty$. For this reason, the hyperbolic metric is non-negative and $\hypdist{z_1}{z_2} \to 0$ as $z_2$ approaches $z_1$ along $S$. Similarly, $\hypdist{z_1}{z_2} \to \infty$ as $z_2$ approaches $\infty_2$ along $S$.
+The cross ratio $\chi$ in (\ref{eqn_PoincareMetric}) may alternatively be written as $\chi = \lambda(z_2)$, where $\lambda(z) := (z_1,\infty_2,\infty_1,z)$ is, according to Lemma~\ref{lem_CrossRatioMoebius}, a Möbius transformation satisfying $\lambda(z_1) = 1$ and $\lambda(\infty_2) = \infty$. Corollary~\ref{cor_CrossRatioGCircle} ensures that $\lambda(z)$ is real for all $z$ lying on the h-line $L$. Since $\lambda$ is a continuous map, it follows that $\lambda$ maps the h-line segment $S \subseteq L$ which is bounded by the points $z_1$ and $\infty_2$ pointwise one-to-one to the interval $[1,\infty] \subseteq \R_\infty$. For this reason, the hyperbolic metric is non-negative and $\hypdist{z_1}{z_2} \to 0$ as $z_2$ approaches $z_1$ along $S$. Similarly, $\hypdist{z_1}{z_2} \to \infty$ as $z_2$ approaches $\infty_2$ along $S$.
 
 The symmetry of $d_\text{hyp}$ can easily be verified: Note that exchanging $z_1$ and $z_2$ also swaps the roles of the improper points $\infty_1$ and $\infty_2$. We therefore need to show that $\chi_1 := (z_1,\infty_2,\infty_1,z_2) = (z_2,\infty_1,\infty_2,z_1) =: \chi_2$ which is indeed the case:
 \begin{equation*}
@@ -187,9 +187,9 @@ Clearly both models are equivalent in the sense that one model can be obtained f
 
 \subsection{Normal polygons and fundamental regions}
 
-We can now exploit the concepts of 2-dimensional hyperbolic geometry, in the search of fundamental regions for the action of $\PSL{\Z}$ and its subgroups on $\EU$. 
+We can now exploit the concepts of 2-dimensional hyperbolic geometry in the search of fundamental regions for the action of $\PSL{\Z}$ and its subgroups on $\EU$. 
 
-The idea -- taken from \Lehner{} -- may be shortly described as follows: Given a subgroup $G \le \PSL{\Z}$, we fix a point $z_0 \in \mathcal{H}$ which has a trivial stabilizer $G_{z_0} = \{1\}$. The points $z$ of the sought fundamental region $\mathcal{N}_{z_0}$ shall be characterized by the property $\hypdist{z}{z_0} \le \hypdist{Az}{z_0}$ for all $A \in G$. It turns out that such a fundamental region $\mathcal{N}_{z_0}$ can be obtained by a simple geometric construction, for which we will need the following notions:
+The idea -- taken from \Lehner{} -- may be shortly described as follows: Given a subgroup $G \le \PSL{\Z}$, we fix a point $z_0 \in \mathcal{H}$ which has a trivial stabilizer $G_{z_0} = \{1\}$. The points $z$ of the sought fundamental region $\mathcal{N}_{z_0}$ shall be characterized by the property $\hypdist{z}{z_0} \le \hypdist{Az}{z_0}$ for all $A \in G$. It turns out that such a fundamental region $\mathcal{N}_{z_0}$ can be obtained by a simple geometric construction for which we will need the following notions:
 
 \begin{definition}[Hyperbolic half-plane]
 \label{dfn_HyperbolicHalfplane}
@@ -200,11 +200,12 @@ Let $D$ be a generalized disk, such that its boundary intersects the horizon of 
 \begin{definition}[Perpendicular bisector]
 \label{dfn_PerpendicularBisector}
 \index{Perpendicular bisector}
-Let $z_1, z_2 \in \mathcal{P}$ be two proper points. The set of proper points $w$ for which $\hypdist{w}{z_1} = \hypdist{w}{z_2}$ defines a h-line and is called the \emph{perpendicular bisector}. Additionally we define $H_{z_1}(z_2)$ as the hyperbolic half-plane consisting of all points $w \in \mathcal{P}$ which are closer to $z_1$ than to $z_2$:
+Let $z_1, z_2 \in \mathcal{P}$ be two distinct proper points and denote by $S$ the unique h-line segment whose endpoints are $z_1$ and $z_2$. The set of proper points $w$ for which $\hypdist{w}{z_1} = \hypdist{w}{z_2}$ defines a h-line and is called the \emph{perpendicular bisector} of $S$. Additionally we define $H_{z_1}(z_2)$ as the hyperbolic half-plane consisting of all points $w \in \mathcal{P}$ which are closer to $z_1$ than to $z_2$:
 \begin{equation}
 \label{eqn_NormPolyHalfplane}
 H_{z_1}(z_2) := \setdef{w \in \mathcal{P}}{\hypdist{w}{z_1} < \hypdist{w}{z_2}}.
 \end{equation}
+Note that the boundary of $H_{z_1}(z_2)$ is precisely the perpendicular bisector of the h-line segment $S$.
 \end{definition}
 
 \begin{definition}[Normal polygon]
@@ -219,11 +220,11 @@ is called the \emph{normal polygon} with respect to the group $G$ and the point 
 \end{definition}
 
 \begin{remark}
-The term ``normal polygon'' is justified by the fact that $\mathcal{N}_z$, as intersection of hyperbolic half-planes, is bounded entirely by h-line segments and can therefore be considered as a convex polygon in the sense of hyperbolic geometry.
+The term ``normal polygon'' is justified by the fact that $\mathcal{N}_z$, as intersection of hyperbolic half-planes, is bounded entirely by h-line segments and therefore can be considered as a convex (possibly generalized) polygon.\footnote{A region bounded by infinitely many h-line segments is called a generalized polygon.}
 \end{remark}
 
 \begin{theorem}
-Let $\mathcal{N}_z$ be a normal polygon with respect to a group $G \le \PSL{\Z}$ and a point $z \in \mathcal{H}$. $\mathcal{N}_z$ is a fundamental region for the action of $G$ on $\EU$.
+Let $\mathcal{N}_z$ be a normal polygon for the group $G \le \PSL{\Z}$ with respect to the point $z \in \mathcal{H}$. $\mathcal{N}_z$ is a fundamental region for the action of $G$ on $\EU$.
 \end{theorem}
 \begin{proof}
 For the proof of this fact in the more general context of \emph{principal circle groups}, \ie discontinuous groups of Möbius transformations fixing a given generalized circle, we refer to \Lehner{}, p.146ff.\footnote{Chapter IV, Section 7}
@@ -231,21 +232,21 @@ For the proof of this fact in the more general context of \emph{principal circle
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/normpoly-fundom-1}
+\includegraphics[width=.9\textwidth]{figures/normpoly-fundom-1}
 \caption[The fundamental region $\FunDom$ as normal polygon]{The fundamental region $\FunDom$ can alternatively obtained by constructing the normal polygon with respect to a point $z$ on the imaginary axis with $\Im{z} > 1$. Above the point $z = \phi \ii$ (red) has been chosen, where $\phi = \frac{\sqrt{5}+1}{2}$ denotes the golden ratio.}
 \label{fig_NormalPolyFunDom}
 \end{figure}
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/normpoly-fundom-2}
+\includegraphics[width=.9\textwidth]{figures/normpoly-fundom-2}
 \caption[An alternative fundamental region for $\PSL{\Z}$]{An alternative fundamental region for the action of $\PSL{\Z}$ on $\EU$. It is obtained by constructing the normal polygon for the point $\frac{2}{3}(1+\ii)$.}
 \label{fig_AltNormalPolyFunDom}
 \end{figure}
 
 \begin{example}[Fundamental regions for $\PSL{\Z}$]
-We see in Figure~\ref{fig_NormalPolyFunDom} that the fundamental region $\FunDom$ from (\ref{eqn_PSL2FunDom}) can alternatively be obtained by a construction in terms of normal polygons (compare also Figure~\ref{fig_PSL2FunDom}). A different fundamental region for the action of $\PSL{\Z}$ on $\EU$ is displayed in Figure~\ref{fig_AltNormalPolyFunDom}.
+We see in Figure~\ref{fig_NormalPolyFunDom} that the fundamental region $\FunDom$ from (\ref{eqn_PSL2FunDom}) can alternatively be obtained by constructing the normal polygon for a point $z$ on the imaginary axis with $\Im{z} > 1$ (compare also Figure~\ref{fig_PSL2FunDom}). A different fundamental region for the action of $\PSL{\Z}$ on $\EU$ is displayed in Figure~\ref{fig_AltNormalPolyFunDom}.
 
-In both figures, the point $z$ for which the normal polygon is constructed is colored red. Its equivalent points $Az$, $A \ne 1$ are seen in black. For every pair $(z, Az)$ the corresponding perpendicular bisector (black lines) can be found best by following the gray dashed h-line which joins $Az$ with $z$.
+In both figures, the point $z$ for which the normal polygon is constructed is colored red. Its equivalent points $Az$, $A \ne 1$ can be seen in black. For every pair $(z, Az)$, the corresponding perpendicular bisector (black) can be found best by following the gray dashed h-line which joins $Az$ with $z$.
 
 Note that for producing an accurate picture of the normal polygon, it was in both cases sufficient to enumerate just 9 different transformations. In case of Figure~\ref{fig_NormalPolyFunDom}, all transformations with $n(A) \le 3$ have been selected, where $n(A)$ denotes the grading of $A$ as defined in (\ref{eqn_grading}). 
 
@@ -254,16 +255,16 @@ In Figure~\ref{fig_AltNormalPolyFunDom}, in order to achieve a good ``locality''
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/normpoly-gamma2-1}
+\includegraphics[width=.9\textwidth]{figures/normpoly-gamma2-1}
 \caption[A fundamental region $\Gamma(2)$]{A fundamental region for the subgroup $\Gamma(2) \le \PSL{\Z}$. It is given by the normal polygon constructed with respect to the point $\ii$.}
 \label{fig_Gamma2NormalPoly}
 \end{figure}
 
 \begin{example}
 \index{Principal congruence subgroup}
-As a demonstrating of the normal polygon method in case of a proper subgroup of $\PSL{\Z}$, we see in Figure~\ref{fig_Gamma2NormalPoly} a normal polygon for the group $\Gamma(2) \le \PSL{\Z}$. For arbitrary $m \in \N$, the \emph{principal congruence subgroup} $\Gamma(m)$ is defined as
+As a demonstration of the normal polygon method in case of a proper subgroup of $\PSL{\Z}$, we see in Figure~\ref{fig_Gamma2NormalPoly} a normal polygon for the group $\Gamma(2) \le \PSL{\Z}$. For $m \in \N$, the \emph{principal congruence subgroup} $\Gamma(m)$ is defined as
 \begin{equation*}
 \Gamma(m) := \setdefsz{\bigg}{\mat{a}{b}{c}{d} \in \PSL{\Z}}{a \equiv d \equiv \pm 1,\ b \equiv c \equiv 0 \mod m}.
 \end{equation*}
-For drawing Figure~\ref{fig_Gamma2NormalPoly}, all nontrivial transformations in $\Gamma(2)$ with a grading not greater than $18$ (of which there are 12) have been selected. Note that for the particular chosen point $z$, also ``the first four'' nontrivial transformations of $\Gamma(2)$ (whose grading is $\le 6$) would have been enough.
+For drawing Figure~\ref{fig_Gamma2NormalPoly}, all nontrivial transformations in $\Gamma(2)$ with a grading not greater than $18$ (of which there are 12) have been selected. Note that for the particular chosen point $z$, also ``the first four'' nontrivial transformations of $\Gamma(2)$ (whose grading is $\le 6$) would have been enough to obtain the same region.
 \end{example}
