@@ -63,7 +63,7 @@ It is direct to see that the set of all bijective isometries forms a group under
 We wish to introduce a metric on the h-plane $\mathcal{P}$, such that every Möbius transformation which maps $\mathcal{P}$ onto itself is an isometry of $\mathcal{P}$. Clearly all Möbius transformations with this property form a group. We will refer to the transformations of this group as \emph{rigid motions}\footnote{A rigid motion is an isometry which additionally leaves angles and their orientation invariant.} of the h-plane. 
 
 \index{Cross ratio}
-For the definition of such a metric we will take advantage of the so-called \emph{cross ratio}. Note that in literature for the term ``cross ratio'' different notations and definitions are used. We will adhere to \Caratheodory{} in this regard whose derivation of the cross ratio's elementary properties is particularly concise and elegant.
+For the definition of such a metric we will take advantage of the so-called \emph{cross ratio}. Note that in literature for the term ``cross ratio'' different notations and definitions are used. We will in this regard adhere to \Caratheodory{}, whose derivation of the cross ratio's elementary properties is particularly concise and elegant.
 
 \begin{definition}
 \label{dfn_CrossRatio}
@@ -85,7 +85,7 @@ Let $\phi \in \PGL{\C}$ be a Möbius transformation and $z_1,z_2,z_3,z_4 \in \EC$
 (z_1,z_2,z_3,z_4) = (w_1,w_2,w_3,w_4).
 \end{equation}
 \end{lemma}
-\begin{proof}
+\begin{proof}[Sketch of proof]
 Let us write the Möbius transformation $\phi$ as $\phi(z) = \moebius{a}{b}{c}{d}{z}$. For $i,j \in \{1,2,3,4\}$, we have
 \begin{equation*}
 w_i - w_j 
@@ -116,7 +116,7 @@ Let $z_1, z_2, z_3 \in \EC$ be pairwise distinct. The function
 \end{equation}
 is a Möbius transformation and satisfies $\lambda(z_1) = 1$, $\lambda(z_2) = \infty$, $\lambda(z_3) = 0$.
 \end{lemma}
-\begin{proof}
+\begin{proof}[Sketch of proof]
 In the case when $\infty \notin \{z_1,z_2,z_3\}$, by setting $a := z_2 - z_1$, $b := z_2 (z_1 - z_2)$, $c := z_3 - z_1$ and $d := z_2 (z_1 - z_3)$ we can obviously write 
 \begin{equation*}
 \lambda(z) = \crossrat{z_1}{z_2}{z_3}{z} = \moebius{a}{b}{c}{d}{z}.
@@ -205,7 +205,7 @@ Let $z_1, z_2 \in \mathcal{P}$ be two distinct proper points and denote by $S$ t
 \label{eqn_NormPolyHalfplane}
 H_{z_1}(z_2) := \setdef{w \in \mathcal{P}}{\hypdist{w}{z_1} < \hypdist{w}{z_2}}.
 \end{equation}
-Note that the boundary of $H_{z_1}(z_2)$ is precisely the perpendicular bisector of the h-line segment $S$.
+Note that the hyperbolic boundary of $H_{z_1}(z_2)$ is precisely the perpendicular bisector of the h-line segment $S$.
 \end{definition}
 
 \begin{definition}[Normal polygon]
@@ -266,5 +266,5 @@ As a demonstration of the normal polygon method in case of a proper subgroup of 
 \begin{equation*}
 \Gamma(m) := \setdefsz{\bigg}{\mat{a}{b}{c}{d} \in \PSL{\Z}}{a \equiv d \equiv \pm 1,\ b \equiv c \equiv 0 \mod m}.
 \end{equation*}
-For drawing Figure~\ref{fig_Gamma2NormalPoly}, all nontrivial transformations in $\Gamma(2)$ with a grading not greater than $18$ (of which there are 12) have been selected. Note that for the particular chosen point $z$, also ``the first four'' nontrivial transformations of $\Gamma(2)$ (whose grading is $\le 6$) would have been enough to obtain the same region.
+For drawing Figure~\ref{fig_Gamma2NormalPoly}, all nontrivial transformations in $\Gamma(2)$ with a grading $\le 18$ (of which there are 12) have been selected. Note that for the particular chosen point $z$, also ``the first four'' nontrivial transformations of $\Gamma(2)$ (whose grading is $\le 6$) would have been enough for obtaining the same region.
 \end{example}

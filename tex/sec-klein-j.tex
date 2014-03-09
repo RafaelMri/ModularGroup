@@ -1,6 +1,6 @@
 \section{Modular functions}
 
-We devote the last section of this thesis to the visualization of modular functions. The theory of modular functions is a branch of complex analysis whose importance and beauty lies most notably in its connections to number theory. We will however not dive deeply into this theory. Instead we will content ourselves with depicting graphs of certain selected modular functions, enjoying their visual aesthetics and reading off some of its properties, like zeros and poles as well as their order. Unfortunately such illustrations of modular functions are rarely found in literature. Therefore this section should be considered as complementary material to more comprehensive treatments on modular functions given for example in \Klein{}, \Lehner{} or \Schoeneberg{}.
+We devote the last section of this thesis to the visualization of modular functions. The theory of modular functions is a branch of complex analysis whose importance and beauty lies most notably in its connections to number theory. We will however not dive deeply into this theory. Instead we will content ourselves with depicting graphs of certain selected modular functions, enjoying their visual aesthetics and reading off some of its properties, like zeros and poles as well as their order. Unfortunately such illustrations of modular functions are rarely found in literature. Therefore this section should be considered as complementary material to more comprehensive treatments on the theory of modular functions given for example in \Klein{}, \Lehner{} or \Schoeneberg{}.
 
 \index{Meromorphic function}
 Modular functions are meromorphic maps (\ie maps which are holomorphic\footnote{Holomorphic functions are also frequently called ``analytic''.} except for isolated poles, or in other words, maps which can be represented as quotient of two holomorphic functions) which are defined on the upper half-plane and which are invariant under the transformations of the modular group.
@@ -109,7 +109,8 @@ The set of modular functions is identical to the field $\C(J)$ of rational funct
 %\end{proof}
 
 \begin{remark}
-The statement of Theorem~\ref{thm_ModFunRatJ} remains true when $J$ is replaced by any modular function of the form $A \circ J$, where $A$ is a Möbius transformation: Let $A \in \PGL{\C}$ be arbitrary and $F$ be a modular function. By Theorem~\ref{thm_ModFunRatJ}, $F = R \circ J$ for some rational function $R \in \C(z)$. Since $F = (R \circ \inv{A}) \circ (A \circ J)$ and $R \circ \inv{A} \in \C(z)$, $F$ can as well be represented as rational function in terms of the modular function $A \circ J$. In other words, $\C(J) = \C(A \circ J)$ for all Möbius transformations $A$.
+The statement of Theorem~\ref{thm_ModFunRatJ} remains true when $J$ is replaced by any modular function of the form $A \circ J$, where $A$ is a Möbius transformation. %Let $A \in \PGL{\C}$ be arbitrary and $F$ be a modular function. By Theorem~\ref{thm_ModFunRatJ}, $F = R \circ J$ for some rational function $R \in \C(z)$. Since $F = (R \circ \inv{A}) \circ (A \circ J)$ and $R \circ \inv{A} \in \C(z)$, $F$ can as well be represented as rational function in terms of the modular function $A \circ J$. 
+In other words, we have $\C(J) = \C(A \circ J)$ for $A \in \PGL{\C}$.
 \end{remark}
 
 \begin{figure}
@@ -140,7 +141,7 @@ In Figure~{\ref{fig_FunctionsOfJ}}, four examples for rational functions in $J$ 
 \index{Fibonacci sequence}
 \index{C-finite sequence}
 \index{Generating function}
-As a final example, Figure~\ref{fig_KleinJFib} shows what happens, when $J$ is composed with the generating function of the Fibonacci sequence. Although it is a slight digression -- more on the topic of sequences and generating functions, as well as symbolic sums and asymptotic estimates may be found in \ConcreteTet{} -- we will shortly give some background about the Fibonacci sequence here.
+As a final example, Figure~\ref{fig_KleinJFib} shows what happens, when $J$ is composed with the generating function of the Fibonacci sequence. Although it is a slight digression, we will shortly give some background about the Fibonacci sequence here.
 
 The Fibonacci sequence $0, 1, 1, 2, 3, 5, 8, \dots$ is a so-called \emph{C-finite sequence}, \ie a sequence satisfying a recurrence of the form
 \begin{equation*}
@@ -154,4 +155,5 @@ For C-finite sequences, the generating function is always a rational function --
 \begin{equation*}
 F(z) := \sum_{n \ge 0} F_n z^n = \frac{z}{1 - z - z^2}.
 \end{equation*}
+More on the topic of sequences and generating functions, as well as symbolic sums and asymptotic estimates may be found in \ConcreteTet{}.
 \end{example}
