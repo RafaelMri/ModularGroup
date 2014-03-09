@@ -89,16 +89,18 @@ Similarly, $c = 0$ gives $a = d = \pm 1$ and
 \begin{equation*}
 A \sim a A = \mat{1}{a b}{0}{1} = U^{a b}.
 \end{equation*}
-In the more general case, when $a$ and $c$ are both nonzero, $ad - bc = 1$ implies that $a$ and $c$ are coprime and the Euclidean algorithm therefore yields
+In the more general case, when $a$ and $c$ are both nonzero, $ad - bc = 1$ implies that $a$ and $c$ are coprime and the Euclidean algorithm therefore yields a finite sequence of equations
 \begin{eqnarray*}
       a &=& q_0 \cdot c\phantom{_0} + r_1 \\
       c &=& q_1 \cdot r_1 + r_2 \\
     r_1 &=& q_2 \cdot r_2 + r_3 \\
         &\vdots& \\
 r_{n-1} &=& q_n \cdot r_n + r_{n+1}\\
-        &=& q_n \cdot 1\phantom{_n} + 0.
+        &=& q_n \cdot (\pm 1) + 0.
 \end{eqnarray*}
-We can use this to reduce the Matrix $A$ by successively multiplying powers of $U$ and $T$ from the left. Just note that multiplication with $U^k$ adds $k$ times the second row to the first row, whereas $T$ swaps the rows and changes the sign of one arbitrary row.\footnote{This freedom of choice is again due to the fact that the matrices $M$ and $-M$ represent the same element in $\PSL{\Z}$.} If we concentrate only on the first column of $A$ and apply the first few transformations
+Note that the quotients $q_j$ and the remainders $r_j$ depend on the choice of the rounding method for integer division (this will be discussed in more detail in Remark~\ref{rem_EuclideanAlgorithmRounding}).
+
+We can use the above sequence of equations to reduce the Matrix $A$ by successively multiplying powers of $U$ and $T$ from the left. Just note that multiplication with $U^k$ adds $k$ times the second row to the first row, whereas $T$ swaps the rows and changes the sign of one arbitrary row.\footnote{This freedom of choice is again due to the fact that the matrices $M$ and $-M$ represent the same element in $\PSL{\Z}$.} If we concentrate only on the first column of $A$ and apply the first few transformations
 \begin{equation*}
 \cvec{a}{c}                           \overset{U^{-q_0}}{\longmapsto}
 \cvec{r_1}{c\phantom{_1}}             \overset{T}{\mapsto} 
@@ -122,11 +124,11 @@ we soon recognize the general mapping rule, which is
 When we set $r_{-1} := a$ and $r_0 := c$, this rule is applicable for $0 \le j \le n$. Obviously the described procedure ends with
 \begin{equation*}
 \cdots \overset{T}{\mapsto}
-\cvec{\phantom{+}r_{n\phantom{+0}}}{\pm r_{n+1}} = \cvec{1}{0}.
+\cvec{\phantom{+}r_{n\phantom{+0}}}{\pm r_{n+1}} = \cvec{\pm 1}{\phantom{\pm}0}.
 \end{equation*} 
 Because we know the first column of the resulting matrix and its determinant, which is 1, we can conclude that for some $k \in \Z$ it must have the form
 \begin{equation*}
-\mat{1}{k}{0}{1} = U^k.
+\pm\mat{1}{k}{0}{1} \sim U^k.
 \end{equation*}
 By setting $e_n := (-1)^{n} q_n$ we therefore have 
 \begin{equation*}
@@ -235,7 +237,7 @@ R^3 &=& \mat{0}{-1}{1}{\phantom{+}1}^3 = \mat{-1}{\phantom{-}0}{\phantom{-}0}{-1
 Moreover the elements of $\presentation{T,R}{T^2 = R^3 = 1}$ are precisely the group words of the form~(\ref{eqn_ModGrpTRProd}), as we have seen in Examples~\ref{ex_RTGroup} and \ref{ex_RTFreeProd}.
 \end{proof}
 
-Before we turn to the proof of Theorem~\ref{thm_ModGrpTRProd}, we first make one helpful Definition and study its consequences.
+Before we turn to the proof of Theorem~\ref{thm_ModGrpTRProd}, we first make one helpful definition and study its consequences.
 
 \begin{definition}
 \label{dfn_trsPredicates}

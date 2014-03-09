@@ -20,18 +20,20 @@ Fundamental sets always exist, but they are not unique in any way. If $\FunSet$ 
 
 \begin{remark}
 \label{rem_FunSetUniqueElement}
-If $\FunSet$ is a fundamental set for the group action of $G$ on $\mathcal{S}$, then by definition for every $x \in \mathcal{S}$ there is a $g \in G$ such that $gx \in \FunSet$. Clearly this element $g$ is unique if and only if the stabilizer $\Stabilizer{G}{gx} = \setdef{h \in G}{hgx = gx}$ is trivial ($\Stabilizer{G}{gx}$ contains just the identity element). Since the groups $\Stabilizer{G}{gx}$ and $\Stabilizer{G}{x} = \setdef{h \in G}{hx = x}$ are conjugate, \ie
+If $\FunSet$ is a fundamental set for the group action of $G$ on $\mathcal{S}$, then by definition for every $x \in \mathcal{S}$ there is a $g \in G$ such that $gx \in \FunSet$. Clearly for $g,h \in G$ and $x \in \mathcal{S}$ we have
 \begin{equation*}
-\Stabilizer{G}{x} = \inv{g} \cdot \Stabilizer{G}{gx} \cdot g,
+gx = hx \quad\Leftrightarrow\quad
+\inv{h}g x = x \quad\Leftrightarrow\quad
+\inv{h}g \in \Stabilizer{G}{x}.
 \end{equation*}
-we conclude that the element $g \in G$ with $gx \in \FunSet$ is unique if and only if the stabilizer $\Stabilizer{G}{x}$ is trivial. Clearly $gx \in \FunSet$ is equivalent to $x \in \inv{g}\FunSet$, which allows us to reformulate the above fact the following way: The images of the fundamental set $\FunSet$ under the group action of $G$ cover the whole set $\mathcal{S}$, that is
+For this reason the element $g$ with $gx \in \FunSet$ is uniquely determined exactly when the stabilizer $\Stabilizer{G}{x}$ is trivial. Obviously $gx \in \FunSet$ is equivalent to $x \in \inv{g}\FunSet$, which allows us to reformulate the above fact the following way: The images of the fundamental set $\FunSet$ under the group action of $G$ cover the whole set $\mathcal{S}$, that is
 \begin{equation*}
 \mathcal{S} = \bigcup_{g \in G} g\FunSet.
 \end{equation*}
 A point $x \in \mathcal{S}$ is covered once, \ie there is a unique $g \in G$ with $x \in g\FunSet$, if and only if $\Stabilizer{G}{x}$ is trivial.
 \end{remark}
 
-If -- like in the case of $\EC$ -- the set $\mathcal{S}$ comes together with a topology defined on it, it is often advantageous to use a concept slightly different to fundamental sets:
+If -- like in the case of $\EC$ -- the set $\mathcal{S}$ is equipped with a topology, it is often advantageous to use a concept slightly different to fundamental sets:
 
 \begin{definition}[Fundamental region]
 \label{dfn_FunDom}
@@ -47,7 +49,7 @@ The relation between fundamental sets and fundamental regions is the following: 
 then a fundamental set $\FunSet$ can always be obtained from $\FunDom$ by adjoining certain boundary points of $\FunDom$ and we have $\FunDom \subseteq \FunSet \subseteq \topcl{\FunDom}$.
 
 \index{Discontinuity}
-However, a fundamental region must not always exist: Consider the group of translations $z \mapsto z + \alpha$, $\alpha \in \R$, acting on the complex plane $\C$. No matter how we arrange a fundamental set $\FunSet$, take for example the imaginary axis $\Re{z} = 0$, the interior of $\FunSet$ will always be empty and thus cannot be a fundamental region. In fact, a necessary and sufficient condition for the existence of a fundamental region is that the group action is \emph{discontinuous} on $\mathcal{S}$, \ie there exists and \emph{ordinary} point $x \in \mathcal{S}$, meaning that there is no sequence of the form $(g_n y)_{n \ge 0}$ with distinct $g_n \in G$ and arbitrary $y \in \mathcal{S}$ which converges to $x$ -- see \Lehner{}, Chapter IV, 1B.
+However, a fundamental region may not always exist: Consider the group of translations $z \mapsto z + \alpha$, $\alpha \in \R$, acting on the complex plane $\C$. No matter how we arrange a fundamental set $\FunSet$, take for example the imaginary axis $\Re{z} = 0$, the interior of $\FunSet$ will always be empty and thus cannot be a fundamental region. In fact, a necessary and sufficient condition for the existence of a fundamental region is that the group action is \emph{discontinuous} on $\mathcal{S}$, \ie there exists and \emph{ordinary} point $x \in \mathcal{S}$, meaning that there is no sequence of the form $(g_n y)_{n \ge 0}$ with distinct $g_n \in G$ and fixed $y \in \mathcal{S}$ which converges to $x$. Otherwise, if such an ordinary point does not exist, then every open subset of $\mathcal{S}$ necessarily contains distinct equivalent points. For further details see \Lehner{}, Chapter IV, 1B.
 
 Note that in \Schoeneberg{}, the term ``fundamental region'' is used for any set $X$ containing a fundamental set $\FunSet$ plus some or all of its (remaining) boundary points. We prefer the above definition for being more close to the commonly used meaning of ``region'', \ie a topologically connected and open set. However, we emphasize that according to our definition a fundamental region does not need to be topologically connected. 
 \end{remark}
