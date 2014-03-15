@@ -181,9 +181,9 @@ r_1 > r_2 > \ldots > r_n > r_{n+1} = 0.
 \end{equation*}
 All quotients, with the possible exception of $q_0$, are positive. In contrast to that, if we choose for each $j$ an arbitrary rounding direction (up- or downwards) and set $q_j$ to either $\floor{\frac{r_{j-1}}{r_j}}$ or $\ceil{\frac{r_{j-1}}{r_j}}$, then in general also negative remainders (and consequently negative quotients) will occur. Still, the absolute values of the remainders form a strictly monotonic decreasing sequence,
 \begin{equation*}
-\abs{r_1} > \abs{r_2} > \ldots > \abs{r_n} > \abs{r_{n+1}} = 0,
+\abs{r_1} > \abs{r_2} > \ldots > \abs{r_n} > \abs{r_{n+1}} = 0.
 \end{equation*}
-and therefore the Euclidean algorithm terminates and is correct.\footnote{The determined greatest common divisor is possibly negative, which is still admissible, because if $d$ is a greatest common divisor of $n,m \in \Z$, \ie $\forall d^\prime \in \Z: (d^\prime \mid n,m \Rightarrow d^\prime \mid d)$, then also $-d$ is.} Depending on the choice of the rounding directions we will in general obtain different product representations of $A$. Not only this, we can even go one step further and violate the constraint $\abs{r_j} > \abs{r_{j+1}}$ for a finite number of indices $j$ by choosing a completely random $q_j \in \Z$. As long as the remainders are calculated through (\ref{eqn_EuclideanAlgorithmLine}), all product representations obtained in this way are correct.
+Therefore the Euclidean algorithm terminates and yields a correct result.\footnote{The determined greatest common divisor is possibly negative, which is still admissible, because if $d$ is a greatest common divisor of $n,m \in \Z$, \ie $\forall d^\prime \in \Z: (d^\prime \mid n,m \Rightarrow d^\prime \mid d)$, then also $-d$ is.} Depending on the choice of the rounding directions we will in general obtain different product representations of $A$. Not only this, we can even go one step further and violate the constraint $\abs{r_j} > \abs{r_{j+1}}$ for a finite number of indices $j$ by choosing a completely random $q_j \in \Z$. As long as the remainders are calculated through (\ref{eqn_EuclideanAlgorithmLine}), all product representations obtained in this way are correct.
 \end{remark}
 \begin{example}
 \label{ex_TUWordRounding}
@@ -277,7 +277,7 @@ for all transformations with at least three nonzero coefficients (here, $\lxor$ 
 \end{description}
 \end{proof}
 
-We have not yet seen the real benefit and meaning of the predicates $t$, $r$ and $s$. The following lemma will imply that they do nothing but indicate the leftmost symbol in the unique $R$-$T$ product representation (\ref{eqn_ModGrpTRProd}) of $A$. To be precise, if we denote this leftmost symbol by $\alpha(A)$, we will see that $t(A) \Leftrightarrow \alpha(A) = T$, $r(A) \Leftrightarrow \alpha(A) = R$ and $s(A) \Leftrightarrow \alpha(A) = \inv{R}$. Moreover we will show that the grading $n(A)$ grows monotonically with the number of symbols $R$ and $\inv{R}$ in the product representation of $A$.
+We have not yet seen the real benefit and meaning of the predicates $t$, $r$ and $s$. The following lemma will imply that they do nothing but indicate the leftmost symbol in the unique $T$-$R$ product representation (\ref{eqn_ModGrpTRProd}) of $A$. To be precise, if we denote this leftmost symbol by $\alpha(A)$, we will see that $t(A) \Leftrightarrow \alpha(A) = T$, $r(A) \Leftrightarrow \alpha(A) = R$ and $s(A) \Leftrightarrow \alpha(A) = \inv{R}$. Moreover we will show that the grading $n(A)$ grows monotonically with the number of symbols $R$ and $\inv{R}$ in the product representation of $A$.
 
 \begin{lemma}
 \label{lem_trsnRelations}
