@@ -199,10 +199,11 @@ In contrast to that, setting $q_j := \ceil{\frac{r_{j-1}}{r_j}}$ in each step le
 \begin{equation*}
 A = U^{-1} TU^1 TU^{-1} TU^1 TU^{-2} T.
 \end{equation*}
-Last but not least, always rounding to the nearest integer, that is setting $q_j := \nint{\frac{r_{j-1}}{r_j}}$, gives the shortest representation:\footnote{It can be shown in general that rounding to the nearest integer always leads to a product representation with minimal number of factors $T$ and $U^k$, see Remark~\ref{rem_TUAlgConFrac}}
+Last but not least, always rounding to the nearest integer, that is setting $q_j := \nint{\frac{r_{j-1}}{r_j}}$, gives the shortest representation:
 \begin{equation*}
 A = U^{-2} TU^{-3} TU^{-3} T.
 \end{equation*}
+Note that this is true in general: Rounding to the nearest integer always leads to a product representation with minimal number of factors $T$ and $U^k$. According to \Ore{}, already Leopold Kronecker has shown that among all variants of the Euclidean algorithm, the one which uses rounding to the nearest integer requires a minimum number of steps. We will come back to this fact once more in  Remark~\ref{rem_TUAlgConFrac}.
 \end{example}
 
 We have now seen that $T$ and $U$ generate the modular group and different product representations for a given modular transformation $A$ can be found using the above $T$-$U$ algorithm. Of course the questions arises, which  relations (in sense of Definition~\ref{dfn_GrpConstructGenRel}) lie behind the ambiguity of these product representations. For example, it is easy to see that $T^2 = 1$ and $(TU)^3 = 1$ are relations which are satisfied by $T$ and $U$. It is the goal of the following paragraphs to show that these two relations are in fact the only ones in the sense that all other relations are derived from these. We will do this by proving the following theorem:

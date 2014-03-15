@@ -1,4 +1,4 @@
-\section{The modular tessellation of the upper half-plane}
+\section{The tessellation of the upper half-plane}
 
 Since $\FunSet$ is a fundamental set for the action of $\PSL{\Z}$ on $\EU$, its images under all modular transformations cover the extended upper half-plane $\EU$ -- compare also Remark~\ref{rem_FunSetUniqueElement}. Thus for a point $z \in \EU$ there exists a transformation $A \in \PSL{\Z}$ such that $z \in A\FunSet$. We can effectively determine such a transformation by adopting the algorithm of Theorem~\ref{thm_SL2FunDomAlg}:
 
@@ -27,6 +27,10 @@ Instead of using the $\nint{}$ function, we use the above definition  for determ
 \item Theorem~\ref{thm_SL2FunDomAlg} yields a final vector $x_n$ such that $w := \pi(x_n) \in \topcl{\mathcal{R}}$, where $\mathcal{R}$ is defined as in (\ref{eqn_PSL2MinRegion}). In order to obtain a point in $\FunSet \subseteq \topcl{\mathcal{R}}$, we need to apply to $w$ possibly $T$ and -- if this point lies on the boundary arc $b$ -- possibly $U^{-1}$. We take this into account by explicitly checking whether the application of $T$ in the last iteration of the algorithm is necessary or not (see step \ref{itm_PSL2FunSetAlgNext}) and by the modification discussed in (\ref{itm_PSL2FunDomAlgModNint}).\qedhere
 \end{enumerate}
 \end{proof}
+
+\begin{remark}
+The fundamental set algorithm also appears in \Klein{}, p.\ 212ff.,\footnote{Volume 1, part 2, chapter 2, §3.}\ in the proof that every point on the upper half-plane is equivalent to a point within $\FunSet$. We note that the proof given there is different and more direct than ours. However, formulating and proving the algorithm for the homogeneous case first and carrying over the result to the inhomogeneous case might be considered to be more instructive.
+\end{remark}
 
 \begin{figure}
 \centering
