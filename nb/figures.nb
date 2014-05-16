@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    178230,       4427]
-NotebookOptionsPosition[    175528,       4342]
-NotebookOutlinePosition[    175893,       4358]
-CellTagsIndexPosition[    175850,       4355]
+NotebookDataLength[    180273,       4488]
+NotebookOptionsPosition[    177446,       4400]
+NotebookOutlinePosition[    177811,       4416]
+CellTagsIndexPosition[    177768,       4413]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -4225,7 +4225,65 @@ Cell[BoxData[
    RowBox[{"Axes", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellChangeTimes->{{3.607515727971029*^9, 3.6075159473233433`*^9}, {
   3.60751598608947*^9, 3.607516064900926*^9}, {3.6075164268221045`*^9, 
-  3.607516429442913*^9}}]
+  3.607516429442913*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", "[", 
+    RowBox[{"y_", ",", "x_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"c", ",", "z"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"c", "=", 
+       RowBox[{"x", "+", 
+        RowBox[{"I", " ", "y"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"z", "=", 
+       RowBox[{
+        RowBox[{"Inv", "[", "phi", "]"}], "@", "c"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"z", "===", "ComplexInfinity"}], ",", "0", ",", 
+        RowBox[{"Exp", "[", 
+         RowBox[{"2", " ", "Pi", " ", "I", " ", "z"}], "]"}]}], "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"expdata", "=", 
+   RowBox[{"Quiet", "[", 
+    RowBox[{
+     RowBox[{"With", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"n", "=", "103"}], "}"}], ",", 
+       RowBox[{"Array", "[", 
+        RowBox[{"g", ",", 
+         RowBox[{"{", 
+          RowBox[{"n", ",", "n"}], "}"}], ",", 
+         RowBox[{"N", "@", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "}"}]}]}], "]"}]}], 
+      "]"}], ",", 
+     RowBox[{"Power", "::", "infy"}]}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6084634465528927`*^9, 3.6084634527928953`*^9}, {
+  3.608463495474515*^9, 3.6084636733613944`*^9}, {3.6084638160234585`*^9, 
+  3.6084638390334687`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ModularPlot", "[", 
+  RowBox[{"expdata", ",", "mtList"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6084637254498177`*^9, 3.6084637379766235`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.608463676309796*^9, 3.608463677011796*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4421,13 +4479,16 @@ Cell[166165, 4092, 868, 22, 99, "Input"],
 Cell[167036, 4116, 982, 24, 99, "Input"],
 Cell[168021, 4142, 1678, 43, 92, "Input"],
 Cell[169702, 4187, 1199, 32, 72, "Input"],
-Cell[170904, 4221, 311, 6, 31, "Input"]
+Cell[170904, 4221, 311, 6, 31, "Input"],
+Cell[171218, 4229, 1649, 48, 132, "Input"],
+Cell[172870, 4279, 168, 3, 31, "Input"],
+Cell[173041, 4284, 92, 1, 31, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[171252, 4232, 195, 5, 77, "Subtitle"],
-Cell[171450, 4239, 126, 2, 31, "Input"],
-Cell[171579, 4243, 3836, 93, 299, "Input"],
-Cell[175418, 4338, 94, 1, 31, "Input"]
+Cell[173170, 4290, 195, 5, 77, "Subtitle"],
+Cell[173368, 4297, 126, 2, 31, "Input"],
+Cell[173497, 4301, 3836, 93, 299, "Input"],
+Cell[177336, 4396, 94, 1, 31, "Input"]
 }, Open  ]]
 }
 ]
