@@ -1,0 +1,41 @@
+\chapter*{Preface}
+
+The centerpiece of the present diploma thesis, \emph{Computer Algebra and Analysis: Complex Variables Visualized}, is the modular group. It plays an important role in many areas of mathematics, as for example in number theory due to its connection with partition numbers or continued fractions.
+
+This thesis is structured in three parts. In Chapter 1, we introduce basic notions and definitions which are fundamental for the rest of this work. Firstly, we summarize the most important basic concepts of group theory. Moreover, we introduce \emph{Möbius transformations} and study their connection to \emph{stereographic projection} in detail. Finally, we define the concept of \emph{generalized circles} and \emph{generalized disks}, using an elegant characterization in terms of Hermitian matrices which turns out to be particularly advantageous in the context of Möbius transformations. 
+
+Chapter 2 is devoted to the study of the modular group from an algebraic and geometric point of view. Two different and independent algorithms, the $T$-$U$ algorithm and the $T$-$R$ algorithm, are presented which both yield group word representations for arbitrary modular transformations in terms of the transformations $T : z \mapsto \reci{z}$, $U : z \mapsto z+1$ and $R : z \mapsto \reci{z+1}$. Geometric considerations come into play when introducing \emph{fundamental regions} for the action of the modular group on the extended complex plane. A canonical fundamental region is derived which gives rise to the \emph{modular tessellation of the upper-half plane}. Lastly, the basic concepts of 2-dimensional \emph{hyperbolic geometry} are introduced in order to present an alternative and more general method for finding fundamental regions. This method gives rise to so-called \emph{normal polygons} and works as well for subgroups of the modular group.
+
+Finally, Chapter 3 has a clear emphasis on visualization. Firstly, \emph{generalized matrix powers} are introduced as a device for visualizing continuous transitions between given sets and their Möbius-transformed images. Secondly, the relation between the modular transformations, \emph{Ford circles} and \emph{continued fractions} is studied in detail and visually explained using the continued fraction expansion of the irrational number $\pi$ as an example. Lastly, documenting the important role of the modular group within complex analysis, the most basic results from the theory of \emph{modular functions} are summarized. Using an adequate color coding, graphs of certain selected modular functions are depicted whose inherent visual aesthetics and symmetry reflect well the beauty of this theory.
+
+\section*{Achievements}
+
+Complementary to this thesis, the \emph{Mathematica} package \emph{ModularGroup} has been developed. This package, together with some \emph{interactive demonstrations}, may be downloaded from the website of the \emph{Research Institute for Symbolic Computation} (RISC).\footnote{http://www.risc.jku.at/} It contains essentially all algorithms described in this thesis as well as functions for visualization of generalized circles, generalized disks, modular tessellations and more. The main attention has been paid to an efficient and fast implementation of these algorithms, relying in many aspects on compiled functions using machine-precision integer and floating point arithmetic. Note that all figures included in this thesis are based on this package. 
+
+Furthermore it is worth noting that this thesis also contains ideas which have not been found directly in this form in the referenced literature. During the implementation of the enumeration algorithm for modular transformations, it got apparent that the left- or rightmost symbol of the unique $T$-$R$ group word of any given modular transformation can be read off directly from its corresponding matrix. This observation leads to the $T$-$R$ algorithm of Section~\ref{sec_ModularGroupGenRel} and to the alternative proof for the presentation for the modular group in terms of the generators $T$ and $R$ (Theorem~\ref{thm_ModGrpTRProd}). 
+
+For the proof that the region $\FunDom := \setdef{z \in \C}{\abs{\Re{z}} < 1 \land \abs{z} > 1}$ is a fundamental region for the action of the modular group on the upper half-plane, we intentionally take a different and slightly longer track than for example \Klein{} or \Schoeneberg{}. We first derive a fundamental region for the action of the homogeneous modular group on $\C^2$ by looking for representative vectors of minimal Euclidean norm. By carrying over the result to the inhomogeneous case, we indeed obtain the fundamental region $\FunDom$ in a very natural and instructive way.
+
+%As the Euclidean algorithm prominently appears at several different places within this thesis, we take into account that there is more than one ``Euclidean algorithm'', depending on the chosen method for integer divison.
+
+For visualization of objects living on the upper half-plane of $\C$, such as the modular tessellation or graphs of modular functions, we frequently make use of a Möbius transformation which maps the upper half-plane to the unit disk. This allows us to visualize the whole picture rather than just an arbitrary rectangular fragment of it. It turns out that in this context the most natural choice for such a Möbius transformation is \emph{not} the well-known Cayley transform, but in fact a map which we introduce in Example~\ref{ex_ModCayleyTransform} as the \emph{modified Cayley transform}.
+
+%For visualization of continuous transitions between sets and their Möbius-transformed images, \emph{generalized matrix powers} which are available as undocumented feature in \emph{Mathematica}'s built-in function \emph{MatrixPower} have been formalized in Section~\ref{sec_ActionVisu}.
+
+Another idea suggesting itself is to consider the inscribed circle of the canonical fundamental region $\FunDom$ (see Figure~\ref{fig_PSL2FunDom}). Indeed, the introduction of so-called \emph{indisks} turns out to be very fruitful in the study of the relation between modular transformations and continued fractions in Section~\ref{sec_ConFrac}. It leads to the notion of \emph{indisk-paths}, which in turn give rise to an alternative proof for the presentation of the modular group in terms of the generators $T$ and $R$ (Corollary~\ref{cor_TRRelationsIndiskPaths}).
+
+\section*{Outlook}
+
+The \emph{Mathematica} package \emph{ModularGroup} may be extended for a systematic treatment of various congruence subgroups of the modular group. The algorithm which has been used for drawing the \emph{normal polygons} in Section~\ref{sec_NormalPolygons} has been one of the latest results of this work. It is still preliminary and may be added to the package at a later stage.
+
+Also the implementation of H.\ A.\ Verrill's algorithm for the visualization of fundamental regions of congruence subgroups\footnote{See https://www.math.lsu.edu/$\sim$verrill/} -- which has actually been the starting point for this thesis -- is easily possible based on the present \emph{Mathematica} package.
+
+\section*{Acknowledgment}
+
+I want to thank everybody who supported me in the course of my work on this  diploma thesis. 
+
+I am particularly grateful to my supervisor \emph{Prof.\ Peter Paule} for proposing this truly rewarding topic and its neat working title. I very much appreciated his valuable input and guidance as well as our constructive project meetings.
+
+My special thanks also go to \emph{Prof.\ Günther Karigl} for his prompt and kind answers to my administrative questions and for approving this thesis at the Research Institute for Symbolic Computation of the Johannes Kepler University Linz.
+
+Last but not least I want to thank my family for supporting me. Thanks to my little daughter Lisa for being my sunshine and reminding me of the importance of baby steps. To my beloved wife I want to say thank you for always motivating me. Thank you for being the wind in my sails!
