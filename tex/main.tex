@@ -13,6 +13,7 @@
 \usepackage[bindingoffset=1cm]{geometry}
 %\usepackage{showidx}
 \usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[toc,page]{appendix}
 
 \makeindex
 
@@ -29,13 +30,13 @@
 \frontmatter
 
 %\maketitle
-\input{titlepage.tex}
+\input{titlepage-corr.tex}
 
 % ----------------------------------------------------------- CHAPTER: ABSTRACT
 \input{abstract.tex}
 
 % ------------------------------------------------------- CHAPTER: INTRODUCTION
-\input{preface.tex}
+\input{preface-corr.tex}
 
 \tableofcontents
 
@@ -86,5 +87,9 @@
 
 \bibliographystyle{plain}
 \bibliography{literature}
+
+\begin{appendices}
+\input{errorsheet.tex}
+\end{appendices}
 
 \end{document}
