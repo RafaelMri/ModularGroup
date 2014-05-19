@@ -168,7 +168,7 @@ With $s_j := (-1)^{\ceil{\half{j}}} r_j$, we can write these vectors as $x_j := 
 In the case when $u$ and $v$ are linear dependent over $\Q$, the vector $x$ can be written as $x = \lambda ({}^p_q)$ with $\lambda \in \C$ and $p,q \in \Z$. We observe the striking similarity between the Euclidean and the above algorithm: If we apply the Euclidean algorithm to $p$ and $q$ while rounding all quotients to the nearest integer (compare Remark~\ref{rem_EuclideanAlgorithmRounding}), we obtain a sequence of quotients $\tilde{q}_0, \tilde{q}_1, \dots, \tilde{q}_n$ and a sequence of remainders $\tilde{r}_0, \tilde{r}_1, \dots, \tilde{r}_n, \tilde{r}_{n+1}$ with $\tilde{r}_{n+1} = 0$. It is immediate to see that $q_j = \tilde{q}_j$ and $r_j = \lambda \tilde{r}_j$ for all $j \ge 0$. In particular, our algorithm terminates and we end up with the vector
 \begin{equation*}
 \label{err_x0Missing}
-y := x_n = TU^{-e_n} TU^{-e_{n-1}} \cdots TU^{-e_0} = \lambda \cvec{\pm \gcd(p,q)}{0}
+y := x_n = TU^{-e_n} TU^{-e_{n-1}} \cdots TU^{-e_0} x_0 = \lambda \cvec{\pm \gcd(p,q)}{0}
 \end{equation*}
 having minimal norm in $O_x$.
 
@@ -194,9 +194,9 @@ One obvious solution to this is $q_j = 0$. For the other factor, we substitute $
 According to Lemma~{\ref{lem_SL2FunDomMinExists}}, the set $O_x \cap K_{\eucnorm{x}}$ is finite and thus we cannot have $\eucnorm{x_j} > \eucnorm{x_{j+1}}$ for infinitely many indices $j$. In other words, $q_n$ must be zero for some $n \in \N$ and we have
 \begin{equation*}
 \label{mod_yDefClarity}
-TU^{-e_n} \cdots TU^{-e_1} TU^{-e_0} x_0 = x_n.
+y := x_n = TU^{-e_n} \cdots TU^{-e_1} TU^{-e_0} x_0.
 \end{equation*}
-Since the vector $y := x_n$ satisfies (\ref{eqn_SL2FunDomLokMin}) and consequently ({\ref{eqn_SL2MinRegionCond}}), we conclude from  Theorem~\ref{thm_SL2FunDomGlobMin} that $\eucnorm{y} = \min{\eucnorm{O_x}}$. 
+Since the vector $y$ satisfies (\ref{eqn_SL2FunDomLokMin}) and consequently ({\ref{eqn_SL2MinRegionCond}}), we conclude from  Theorem~\ref{thm_SL2FunDomGlobMin} that $\eucnorm{y} = \min{\eucnorm{O_x}}$. 
 
 In both cases (linear dependence of $u,v$ over $\Q$ or linear independence of $u,v$ over $\R$), we trivially have $\eucnorm{y} = \eucnorm{\inv{T}y}$ and we therefore can define $B$ as in ($\ref{eqn_SL2FunDomMinMat}$).
 \end{proof}
