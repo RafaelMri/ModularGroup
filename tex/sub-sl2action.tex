@@ -99,7 +99,7 @@ Now we find an upper bound of the right hand side by taking its absolute value a
 \begin{equation*}
 (a^2 + b^2 + c^2 + d^2 - 2) \cdot m \ge \abs{ab + cd} \cdot m.
 \end{equation*}
-Since $m$ is nonzero ($uv \ne 0$), it can be canceled. Moreover, $ad - bc = 1$ implies that the terms $ad$ and $bc$ can never have opposite signs. In other words we always have $(ad)(bc) \ge 0$. Obviously also $(ab)(cd) \ge 0$, \ie also the terms $ad$ and $bc$ have non-opposite signs, which is why $\abs{ab + cd} = \abs{ab} + \abs{bd}$. For this reason we can transform the last inequality to
+Since $m$ is nonzero ($uv \ne 0$), it can be canceled. Moreover, $ad - bc = 1$ implies that the terms $ad$ and $bc$ can never have opposite signs. In other words we always have $(ad)(bc) \ge 0$. Obviously also $(ab)(cd) \ge 0$, \ie also the terms $ad$ and \label{err_bcInsteadOfcd} $bc$ have non-opposite signs, which is why $\abs{ab + cd} = \abs{ab} + \abs{bd}$. For this reason we can transform the last inequality to
 \begin{equation}
 \label{eqn_SL2FunDomIneq}
 \underbrace{(a^2 - \abs{ab} + b^2)}_{\ge(\abs{a}-\abs{b})^2 =: \ell} + 
@@ -127,7 +127,7 @@ In both cases (\ref{eqn_SL2FunDomIneq}) is strictly fulfilled, which proves (\re
 For $n(A) = 3$ we have $\{(a^2 + c^2 - 1),(b^2 + d^2 - 1)\} = \{0,1\}$, which means that the left hand side simplifies to either $\abs{u}^2$ or $\abs{v}^2$, whereas on the right hand side we have $\abs{u\conj{v} + \conj{u}v}$ as upper bound, because of $(ab + cd) = \pm 1$. Since by assumption $\abs{u\conj{v} + \conj{u}v} < \min\{\abs{u}^2,\abs{v}^2\}$, inequality (\ref{eqn_SL2FunDomIneqB}) is thus satisfied.
 \end{proof}
 
-We can now summarize the algorithm and prove its correctness. Note that we can slightly relax the requirement on the coordinates of $x = ({}^u_v)$ being linear independent over $\R$. We will see that with a minor adaption the algorithm works as well in the case when $u$ and $v$ are linear dependent over $\Q$.
+We can now summarize the algorithm and prove its correctness. Note that we can slightly relax the requirement on the coordinates of $x = ({}^u_v)$ being linear independent over $\R$. We will see that with a minor modification the algorithm works as well in the case when $u$ and $v$ are linear dependent over $\Q$.
 
 \begin{theorem}
 \label{thm_SL2FunDomAlg}
@@ -167,6 +167,7 @@ With $s_j := (-1)^{\ceil{\half{j}}} r_j$, we can write these vectors as $x_j := 
 
 In the case when $u$ and $v$ are linear dependent over $\Q$, the vector $x$ can be written as $x = \lambda ({}^p_q)$ with $\lambda \in \C$ and $p,q \in \Z$. We observe the striking similarity between the Euclidean and the above algorithm: If we apply the Euclidean algorithm to $p$ and $q$ while rounding all quotients to the nearest integer (compare Remark~\ref{rem_EuclideanAlgorithmRounding}), we obtain a sequence of quotients $\tilde{q}_0, \tilde{q}_1, \dots, \tilde{q}_n$ and a sequence of remainders $\tilde{r}_0, \tilde{r}_1, \dots, \tilde{r}_n, \tilde{r}_{n+1}$ with $\tilde{r}_{n+1} = 0$. It is immediate to see that $q_j = \tilde{q}_j$ and $r_j = \lambda \tilde{r}_j$ for all $j \ge 0$. In particular, our algorithm terminates and we end up with the vector
 \begin{equation*}
+\label{err_x0Missing}
 y := x_n = TU^{-e_n} TU^{-e_{n-1}} \cdots TU^{-e_0} = \lambda \cvec{\pm \gcd(p,q)}{0}
 \end{equation*}
 having minimal norm in $O_x$.
@@ -192,6 +193,7 @@ One obvious solution to this is $q_j = 0$. For the other factor, we substitute $
 \end{equation}
 According to Lemma~{\ref{lem_SL2FunDomMinExists}}, the set $O_x \cap K_{\eucnorm{x}}$ is finite and thus we cannot have $\eucnorm{x_j} > \eucnorm{x_{j+1}}$ for infinitely many indices $j$. In other words, $q_n$ must be zero for some $n \in \N$ and we have
 \begin{equation*}
+\label{mod_yDefClarity}
 TU^{-e_n} \cdots TU^{-e_1} TU^{-e_0} x_0 = x_n.
 \end{equation*}
 Since the vector $y := x_n$ satisfies (\ref{eqn_SL2FunDomLokMin}) and consequently ({\ref{eqn_SL2MinRegionCond}}), we conclude from  Theorem~\ref{thm_SL2FunDomGlobMin} that $\eucnorm{y} = \min{\eucnorm{O_x}}$. 
