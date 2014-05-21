@@ -1,9 +1,9 @@
-\chapter{Errors and corrections}
+\chapter{Errors and modifications}
 
 In comparison to the officially submitted diploma thesis, the following changes have been made in this revised version:
 
 \begin{description}
-\correction{\pageref{err_TRsign}}{Wrong sign}
+\correction{\pageref{err_TRsign}}{Forgotten minus sign}
 {\dots in terms of the transformations $T : z \mapsto \reci{z}$, $U : z \mapsto z+1$ and $R : z \mapsto \reci{z+1}$.}
 {\dots in terms of the transformations $T : z \mapsto -\reci{z}$, $U : z \mapsto z+1$ and $R : z \mapsto -\reci{z+1}$.}
 
@@ -29,15 +29,26 @@ $\abs{ab} = 0$ implies $\abs{cd} \ne 0$ (and vice versa).}
 {$y := x_n = TU^{-e_n} TU^{-e_{n-1}} \cdots TU^{-e_0} = \dots$}
 {$y := x_n = TU^{-e_n} TU^{-e_{n-1}} \cdots TU^{-e_0} x_0 = \dots$}
 
-\correction{\pageref{mod_yDefClarity}}{Minor modification for clarity}
+\modification{\pageref{mod_yDefClarity}}{Minor modification for clarity}
 {$TU^{-e_n} \cdots TU^{-e_1} TU^{-e_0} x_0 = x_n.$ \quad Since the vector $y := x_n$ satisfies \dots}
 {$y := x_n = TU^{-e_n} \cdots TU^{-e_1} TU^{-e_0} x_0.$ \quad Since the vector $y$ satisfies \dots}
 
+\modification{\pageref{fig_PSL2MinRegion}}{Simplification}
+{Figure \ref{fig_PSL2MinRegion}: The region $\mathcal{R} \subseteq \EC$ of numbers $z = u/v \in \EC$ with $\abs{u\conj{v} + \conj{u}v} < \min\{\abs{u}^2,\abs{v}^2\}$.}
+{Figure \ref{fig_PSL2MinRegion}: The region $\mathcal{R}$ of numbers $z \in \C$ with $\abs{z + \conj{z}} < \min\{\abs{z}^2, 1\}$.}
+
+\modification{\pageref{eqn_PSL2MinRegion}}{Clarification}
+{$\mathcal{R} := \pi\left(\hat{\mathcal{R}}\right) = 
+\setdefsz{\Big}{\frac{u}{v} \in \EC}{\abs{u\conj{v} + \conj{u}v} < \min\{\abs{u}^2, \abs{v}^2\}}.$}
+{$\mathcal{R} := \pi\left(\hat{\mathcal{R}}\right) = 
+\setdefsz{\Big}{z \in \C}{\abs{z + \conj{z}} < \min\{\abs{z}^2, 1\}}.$}
+
 \correction{\pageref{err_leInsteadOflt}}{``$\le$'' instead of ``$<$''}
-{\dots shall be characterized by the property $\hypdist{z}{z_0} \le \hypdist{Az}{z_0}$ \dots}
-{\dots shall be characterized by the property $\hypdist{z}{z_0} < \hypdist{Az}{z_0}$ \dots}
+{\dots{} shall be characterized by the property $\hypdist{z}{z_0} \le \hypdist{Az}{z_0}$ \dots}
+{\dots{} shall be characterized by the property $\hypdist{z}{z_0} < \hypdist{Az}{z_0}$ \dots}
 
 \correction{\pageref{err_fLowerCase}}{$f$ instead of $F$}
 {(iii) \dots{} Moreover, \quad $f(\infty) = \dots$}
 {(iii) \dots{} Moreover, \quad $F(\infty) = \dots$}
+
 \end{description}

@@ -12,12 +12,12 @@ Projection of the set $\hat{\mathcal{R}} \subseteq \C^2$ leads to the region $\m
 \begin{equation}
 \label{eqn_PSL2MinRegion}
 \mathcal{R} := \pi\left(\hat{\mathcal{R}}\right) = 
-\setdefsz{\Big}{\frac{u}{v} \in \EC}{\abs{u\conj{v} + \conj{u}v} < \min\{\abs{u}^2, \abs{v}^2\}}.
+\setdefsz{\Big}{z \in \C}{\abs{z + \conj{z}} < \min\{\abs{z}^2, 1\}}.
 \end{equation}
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{figures/minimal-region}
-\caption[The region $\mathcal{R} \subseteq \EC$]{The region $\mathcal{R} \subseteq \EC$ of numbers $z = u/v \in \EC$ with $\abs{u\conj{v} + \conj{u}v} < \min\{\abs{u}^2,\abs{v}^2\}$. It is obtained by taking the strip $\setdefsz{\big}{z \in \C}{\abs{\Re{z}} < \reci{2}}$  and cutting out two closed disks of unit radius centered about the real points $\pm 1$. The arising vertices are labeled. As usual, $T$ is the transformation $z \mapsto -\reci{z}$ and $\rho = \exp(2 \pi \ii / 3)$ is a third root of unity.}
+\caption[The region $\mathcal{R} \subseteq \EC$]{The region $\mathcal{R}$ of numbers $z \in \C$ with $\abs{z + \conj{z}} < \min\{\abs{z}^2, 1\}$. It is obtained by taking the strip $\setdefsz{\big}{z \in \C}{\abs{\Re{z}} < \reci{2}}$  and cutting out two closed disks of unit radius centered about the real points $\pm 1$. The arising vertices are labeled. As usual, $T$ is the transformation $z \mapsto -\reci{z}$ and $\rho = \exp(2 \pi \ii / 3)$ is a third root of unity.}
 \label{fig_PSL2MinRegion}
 \end{figure}
 It follows that $\mathcal{R}$ contains a fundamental region for the action of $\PSL{\Z}$ on $\EC \setminus \Irrat$. As in the homogeneous case, we see from Theorem~\ref{thm_SL2FunDomGlobMin} that equivalence of points within $\mathcal{R}$ can be established only by powers of the transformation $T \in \PSL{\Z}$. Since $T^2 = 1$, in order to obtain a fundamental region we now need to choose for each $z \in \mathcal{R}$ just exactly one of the equivalent points $z$ and $Tz$. This can for example be done such that $\abs{z} > 1$.
