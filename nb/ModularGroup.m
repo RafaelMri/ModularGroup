@@ -393,8 +393,6 @@ Begin["`Private`"];
 
 
 (* ---------------------------------------------- Basic PSL and PGL functions *)
-mtModCayley = New[MoebiusTransformation,{{I,1},{1,I}}];
-
 PSL2CInv = Compile[{{m,_Complex,2}},
   {{m[[2,2]], -m[[1,2]]}, {-m[[2,1]], m[[1,1]]}},
   RuntimeAttributes->Listable
@@ -475,6 +473,8 @@ Inv[t_?(InstanceQ[MoebiusTransformation])] := Inv[t] ^=
     inverse
   ];
 
+(* ------------------------------------------- Special MoebiusTransformations *)
+mtModCayley = New[MoebiusTransformation,{{I,1},{1,I}}];
 
 
 
@@ -486,10 +486,10 @@ Init[ModularTransformation, obj_, mat_?(MatrixQ[#,IntegerQ]&)] ^:= (
   Super[MoebiusTransformation, obj, PSL2ZNormalForm@mat];
 );
 
-(* ------------------------------------------- Special ModularTransformations *)
 mtId = New[ModularTransformation, IdentityMatrix[2]];
 Inv[mtId] ^= mtId; (* Identity is self-inverse *)
 
+(* ------------------------------------------- Special ModularTransformations *)
 mtU = New[ModularTransformation, {{1,1},{0,1}}];
 
 mtT = New[ModularTransformation, {{0,-1},{1,0}}];
