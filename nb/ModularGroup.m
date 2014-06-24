@@ -1,5 +1,9 @@
 (* ::Package:: *)
 
+(* 
+ * Mathematica package ModularGroup, version 0.1 
+ *)
+
 (*
  * The MIT License (MIT)
  *
