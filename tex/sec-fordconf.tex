@@ -176,7 +176,7 @@ with $n \ge 0$, $e_j \in \Z$ occurring in the definition of $g_1$ already is in 
 \begin{equation*}
 w = U^{k_1} T^{\ell_1} U^{k_2} T^{\ell_2} \dots U^{k_m} T^{\ell_m},
 \end{equation*}
-with $m >= 0$, $k_j \in \Z$ and $\ell_j \ge 1$. Because for $\ell \ge 1$, $T^\ell$ and $(TU^0)^{\ell-1}T$ are \emph{identical} as words, we can for sure notate $w$ alternatively in the form (\ref{eqn_ConFracTUWord}).
+with $m \ge 0$, $k_j \in \Z$ and $\ell_j \ge 1$. Because for $\ell \ge 1$, $T^\ell$ and $(TU^0)^{\ell-1}T$ are \emph{identical} as words, we can for sure notate $w$ alternatively in the form (\ref{eqn_ConFracTUWord}).
 \end{proof}
 
 \begin{lemma}
@@ -301,7 +301,7 @@ we call a loop $L$ a \emph{primitive loop} for the point $z \in [\rho]_\sim$, if
 \begin{equation*}
 L_\rho^\prime: 1 \to T \to TU \to \inv{U}T\inv{U} \to \inv{U}T \to \inv{U} \to 1.
 \end{equation*}
-We see that $L_\rho^\prime$ goes once around the point $\rho$ in clockwise (negative) direction. Going the loop in reverse direction yields a primitive loop for the point $\rho$, $L_\rho := \inv{(L_\rho^\prime)}$, corresponding to the relation $(TU)^{-3} = 1$. Next we define such a primitive loop $L_z$ for every $z \in [\rho]_\sim$. We do so by going from $\Indisk$ to any indisk in the ``neighbourhood'' of $z$ along a path $P_z$, then going around $z$ (and no other point) once in positive direction and finally returning to $\Indisk$ by going back the reverse path $\inv{P_z}$. Every such primitive loop $L_z$ corresponds to a relation of the form $\tau (TU)^{-3} \inv{\tau} = 1$.
+We see that $L_\rho^\prime$ goes once around the point $\rho$ in clockwise (negative) direction. Going the loop in reverse direction yields a primitive loop for the point $\rho$, $L_\rho := \inv{(L_\rho^\prime)}$, corresponding to the relation $(TU)^{-3} = 1$. Next we define such a primitive loop $L_z$ for every $z \in [\rho]_\sim$. We do so by going from $\Indisk$ to any indisk in the ``neighborhood'' of $z$ along a path $P_z$, then going around $z$ (and no other point) once in positive direction and finally returning to $\Indisk$ by going back the reverse path $\inv{P_z}$. Every such primitive loop $L_z$ corresponds to a relation of the form $\tau (TU)^{-3} \inv{\tau} = 1$.
 
 Let now $\sigma \in \FreeGrp{\Syms}$ be an arbitrary relation, and call $S$ the closed indisk path corresponding to the word $\sigma$. There are only finitely many points $z \in [\rho]_\sim$ with $\nu_z(S) \ne 0$. We can therefore define a loop $V$ as the composition of primitive loops $L_z$, where $z$ runs over this finite set of points -- each primitive loop $L_z$ shall be taken as often as the winding number $\nu_z(S)$ declares:
 \begin{equation*}
@@ -316,10 +316,11 @@ The connection between Ford disks and continued fractions has been the object of
 \end{remark}
 
 \begin{remark}
-Considering the continued fraction expansion of $\pi$ from Example~\ref{ex_ConFracPi}, $\pi = [3,7,16,-294,\dots]$, and looking at the ford disk $\Forddisk_{c_3}$, $c_3 = \frac{355}{113}$, in the last row of Figure~\ref{fig_ConFracPi}, we see that (starting as usual at the indisk with label 0) we would have to go 294 (!) steps in clockwise direction to approach the Ford disk $\Forddisk_{c_4}$, $c_4 = \frac{104348}{33215}$. From the image one can hardly to grasp how small $\Forddisk_{c_4}$ must be in comparison to $\Forddisk_{c_3}$. In fact, the ratio of the radii\footnote{The radius of a Ford disk $\Forddisk_{p/q}$, for coprime $p,q \in \Z$, is $\reci{2 q^2}$ -- see also \Ford{}.} between these two Ford disks is approximately $1 : 86~400$. This huge difference in size explains why the rational number $\frac{355}{133}$ is such an extraordinary good approximation for $\pi$. The absolute errors between $\pi$ and the convergents $c_2$, $c_3$ and $c_4$ are
+Considering the continued fraction expansion of $\pi$ from Example~\ref{ex_ConFracPi}, $\pi = [3,7,16,-294,\dots]$, and looking at the ford disk $\Forddisk_{c_3}$, $c_3 = \frac{355}{113}$, in the last row of Figure~\ref{fig_ConFracPi}, we see that (starting as usual at the indisk with label 0) we would have to go 294 (!) steps in clockwise direction to approach the Ford disk $\Forddisk_{c_4}$, $c_4 = \frac{104348}{33215}$. From the image one can hardly to grasp how small $\Forddisk_{c_4}$ must be in comparison to $\Forddisk_{c_3}$. In fact, the ratio of the radii\footnote{The radius of a Ford disk $\Forddisk_{p/q}$, for coprime $p,q \in \Z$, is $\reci{2 q^2}$ -- see also \Ford{}.} between these two Ford disks is approximately $1 : 86~400$. This huge difference in size explains why the rational number \label{err_PiApprox} $\frac{355}{113}$ is such an extraordinary good approximation for $\pi$. The absolute errors between $\pi$ and the convergents $c_2$, $c_3$ and $c_4$ are
 \begin{IEEEeqnarray*}{rCcCl}
+\label{err_PiApproxx}
 \pi &-& \frac{22}{7} &\approx& -1.2 \cdot 10^{-3},\\
-\pi &-& \frac{335}{133} &\approx& -2.7 \cdot 10^{-7},\\
+\pi &-& \frac{335}{113} &\approx& -2.7 \cdot 10^{-7},\\
 \pi &-& \frac{104348}{33215} &\approx& -3.3 \cdot 10^{-10}.
 \end{IEEEeqnarray*}
 Comparing $c_2 = \frac{22}{7}$ and $c_3 = \frac{335}{113}$, we see that by increasing the numerator and denominator by a relatively small factor of about $15$, we achieve more than 4000-fold increase in precision. In contrast to that, blowing up numerator and denominator further by an additional factor of roughly $300$ improves precision only by a factor of approximately $800$. 
